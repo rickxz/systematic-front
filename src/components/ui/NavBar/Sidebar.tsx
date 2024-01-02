@@ -9,7 +9,7 @@ export default function Sidebar() {
       position={"sticky"}
       left={5}
       h={"95vh"}
-      w={"10vw"}
+      w={navSize == "small" ? "75px" : "200px"}
       marginTop={"2.5vh"}
       boxShadow={"0 4px 12px 0 rgba(0, 0 , 0, 0.05)"}
       flexDir={"column"}
@@ -34,7 +34,7 @@ export default function Sidebar() {
         <Flex mt={4} justifyContent={"center"} flexDir={"column"} alignItems={"center"}>
           <Avatar size={"md"}></Avatar>
           <Flex flexDir={"column"} ml={4}>
-            <Heading as={"h3"} size={"sm"}>
+            <Heading display={navSize == "small" ? "none" : "flex"} as={"h3"} size={"sm"}>
               User Name
             </Heading>
           </Flex>
