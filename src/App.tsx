@@ -1,12 +1,10 @@
-import { Box, Text } from "@chakra-ui/react";
+import Sidebar from "./components/ui/NavBar/Sidebar";
 
 function App() {
   return (
-    <Box>
-      <Text color={"Black"} padding={"10%"} fontSize={"32px"} textAlign={"center"}>
-        Olá, Mundo!
-      </Text>
-    </Box>
+    <>
+      <Sidebar />
+    </>
   );
 }
 
