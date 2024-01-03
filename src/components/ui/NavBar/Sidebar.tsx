@@ -4,6 +4,7 @@ import { FaHome } from "react-icons/fa";
 import { SiAddthis } from "react-icons/si";
 import { useState } from "react";
 import NavItem from "./NavItem";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const [navSize, changeNavSize] = useState("large");
@@ -30,8 +31,12 @@ export default function Sidebar() {
           }}
           aria-label={""}
         />
-        <NavItem navSize={navSize} icon={FaHome} title="Página Principal" />
-        <NavItem navSize={navSize} icon={SiAddthis} title="Nova Revisão" />
+        <Link to={"/"}>
+          <NavItem navSize={navSize} icon={FaHome} title="Página Principal" />
+        </Link>
+        <Link to={"/novaRevisao"}>
+          <NavItem navSize={navSize} icon={SiAddthis} title="Nova Revisão" />
+        </Link>
         <NavItem navSize={navSize} icon={FaHome} title="Outra Página" />
       </Flex>
 
