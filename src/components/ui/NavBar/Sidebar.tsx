@@ -5,16 +5,11 @@ import AccordionNav from "./subcomponents/AccordionNavigation";
 import UserInfos from "./subcomponents/UserInfos";
 import MenuButton from "./subcomponents/MenuButton";
 
-enum NavigationType {
-  Default = "Default",
-  Accordion = "Accordion",
-}
-
 const SMALL_SIZE = "small";
 const LARGE_SIZE = "large";
 
 interface ISidebarProps {
-  type: NavigationType;
+  type: string;
 }
 
 export default function Sidebar({ type }: ISidebarProps): JSX.Element {
@@ -38,8 +33,8 @@ export default function Sidebar({ type }: ISidebarProps): JSX.Element {
     >
       <Flex p="%5" flexDir="column" alignItems={navSize === SMALL_SIZE ? "center" : "flex-start"}>
         <MenuButton onClick={toggleNavSize} />
-        {type === NavigationType.Default && <DefaultNavigation navSize={navSize} />}
-        {type === NavigationType.Accordion && <AccordionNav navSize={navSize} />}
+        {type === "Default " && <DefaultNavigation navSize={navSize} />}
+        {type === "Accordion" && <AccordionNav navSize={navSize} />}
       </Flex>
       <UserInfos navSize={navSize} />
     </Flex>
