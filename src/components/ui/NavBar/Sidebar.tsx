@@ -3,13 +3,14 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 import { FaHome } from "react-icons/fa";
 import { SiAddthis } from "react-icons/si";
 import { useState } from "react";
-import NavItem from "./NavItem";
+import NavItem from "./subcomponents/NavItem";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const [navSize, changeNavSize] = useState("large");
   return (
     <Flex
+      as={"nav"}
       position={"sticky"}
       left={5}
       h={"95vh"}
