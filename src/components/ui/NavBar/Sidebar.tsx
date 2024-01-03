@@ -1,12 +1,14 @@
 import { Avatar, Divider, Flex, Heading, IconButton } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { FaHome } from "react-icons/fa";
-import { SiAddthis } from "react-icons/si";
 import { useState } from "react";
-import NavItem from "./subcomponents/NavItem";
-import { Link } from "react-router-dom";
+import DefaultNavigation from "./subcomponents/DefaultNav";
+import AccordionNav from "./subcomponents/AccordionNavigation";
 
-export default function Sidebar() {
+interface ISidebar {
+  page: string;
+}
+
+export default function Sidebar({ page }: ISidebar) {
   const [navSize, changeNavSize] = useState("large");
   return (
     <Flex
@@ -32,13 +34,9 @@ export default function Sidebar() {
           }}
           aria-label={""}
         />
-        <Link to={"/"}>
-          <NavItem navSize={navSize} icon={FaHome} title="Página Principal" />
-        </Link>
-        <Link to={"/novaRevisao"}>
-          <NavItem navSize={navSize} icon={SiAddthis} title="Nova Revisão" />
-        </Link>
-        <NavItem navSize={navSize} icon={FaHome} title="Outra Página" />
+
+        {page == "home" && <DefaultNavigation navSize={navSize} />}
+        {page == "other" && <AccordionNav navSize={navSize} />}
       </Flex>
 
       <Flex p={"5%"} flexDir={"column"} w={"100%"} alignItems={"center"} mb={4}>

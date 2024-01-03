@@ -4,7 +4,7 @@ import Sidebar from "../../components/ui/NavBar/Sidebar";
 export default function Home() {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
-      <Sidebar />
+      <Sidebar page="home" />
       <GridItem>
         <Heading mt={10} as={"h1"} alignSelf={"center"}>
           Você está na página Principal!
