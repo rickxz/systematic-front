@@ -4,7 +4,7 @@ import Sidebar from "../../components/ui/NavBar/Sidebar";
 export default function NovaRevisao() {
   return (
     <Grid templateColumns={"repeat(3,1fr)"}>
-      <Sidebar page="other" />
+      <Sidebar type="Accordion" />
 
       <GridItem>
         <Heading mt={10} as={"h1"}>

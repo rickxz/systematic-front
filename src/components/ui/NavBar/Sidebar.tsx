@@ -1,14 +1,15 @@
-import { Avatar, Divider, Flex, Heading, IconButton } from "@chakra-ui/react";
+import { Flex, IconButton } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import DefaultNavigation from "./subcomponents/DefaultNav";
 import AccordionNav from "./subcomponents/AccordionNavigation";
+import UserInfos from "./subcomponents/UserInfos";
 
 interface ISidebar {
-  page: string;
+  type: string;
 }
 
-export default function Sidebar({ page }: ISidebar) {
+export default function Sidebar({ type }: ISidebar) {
   const [navSize, changeNavSize] = useState("large");
   return (
     <Flex
@@ -22,7 +23,7 @@ export default function Sidebar({ page }: ISidebar) {
       flexDir={"column"}
       justifyContent={"space-between"}
     >
-      <Flex p={"%5"} flexDir={"column"} alignItems={navSize == "small" ? "center" : "flex-start"} as={"nav"}>
+      <Flex p={"%5"} flexDir={"column"} alignItems={navSize == "small" ? "center" : "flex-start"}>
         <IconButton
           background={"none"}
           mt={9}
@@ -34,22 +35,10 @@ export default function Sidebar({ page }: ISidebar) {
           }}
           aria-label={""}
         />
-
-        {page == "home" && <DefaultNavigation navSize={navSize} />}
-        {page == "other" && <AccordionNav navSize={navSize} />}
+        {type == "Default" && <DefaultNavigation navSize={navSize} />}
+        {type == "Accordion" && <AccordionNav navSize={navSize} />}
       </Flex>
-
-      <Flex p={"5%"} flexDir={"column"} w={"100%"} alignItems={"center"} mb={4}>
-        <Divider />
-        <Flex mt={4} justifyContent={"center"} flexDir={"column"} alignItems={"center"}>
-          <Avatar size={"md"} mb={2}></Avatar>
-          <Flex flexDir={"column"} ml={4}>
-            <Heading display={navSize == "small" ? "none" : "flex"} as={"h3"} size={"sm"}>
-              Nome do usuário
-            </Heading>
-          </Flex>
-        </Flex>
-      </Flex>
+      <UserInfos navSize={navSize} />
     </Flex>
   );
 }
