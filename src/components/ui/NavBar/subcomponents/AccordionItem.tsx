@@ -14,7 +14,7 @@ export default function AccordionElement({ navSize, icon, title, names }: IAccor
       <AccordionItem>
         <AccordionButton>
           {navSize === "small" ? (
-            <Icon />
+            <Icon as={icon} />
           ) : (
             <Box flex="1" alignContent={"flex-start"}>
               <Icon as={icon} /> {title}
