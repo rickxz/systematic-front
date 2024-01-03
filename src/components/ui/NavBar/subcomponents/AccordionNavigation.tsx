@@ -1,7 +1,7 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box } from "@chakra-ui/react";
 import { FaHome } from "react-icons/fa";
 import NavItem from "./NavItem";
 import { Link } from "react-router-dom";
+import AccordionElement from "./AccordionItem";
 interface IAccordion {
   navSize: string;
 }
@@ -9,55 +9,9 @@ interface IAccordion {
 export default function AccordionNav({ navSize }: IAccordion) {
   return (
     <>
-      <Accordion allowMultiple>
-        <AccordionItem>
-          <AccordionButton>
-            <Box flex="1" alignContent={"flex-start"}>
-              Planejamento
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel>
-            <ul>
-              <li>Protocolo </li>
-            </ul>
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion>{" "}
-      <Accordion allowMultiple>
-        <AccordionItem>
-          <AccordionButton>
-            <Box flex="1" alignContent={"flex-start"}>
-              Execução
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel>
-            <ul>
-              <li>Identificação de Estudos</li>
-              <li>Seleção</li>
-              <li>Extração</li>
-            </ul>
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion>{" "}
-      <Accordion allowMultiple>
-        <AccordionItem>
-          <AccordionButton>
-            <Box flex="1" alignContent={"flex-start"}>
-              Sumarização
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel>
-            <ul>
-              <li>Gráficos</li>
-              <li>Visualização</li>
-              <li>Finalizar Revisão</li>
-            </ul>
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion>
+      <AccordionElement navSize={navSize} title="Planejamento" names={["Protocólo"]} />
+      <AccordionElement navSize={navSize} title="Execução" names={["Identificação", "Seleção", "Extração"]} />
+      <AccordionElement navSize={navSize} title="Sumarização" names={["Gráficos", "Visualização", "Finalização"]} />
       <Link to="/">
         {" "}
         <NavItem navSize={navSize} icon={FaHome} title="Página Principal" />
