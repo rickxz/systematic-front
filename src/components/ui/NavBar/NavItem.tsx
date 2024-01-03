@@ -12,9 +12,9 @@ export default function NavItem({ navSize, icon, title }: INavItem) {
       <Menu>
         <Link>
           <MenuButton>
-            <Flex>
-              <Icon as={icon} />
-              <Text>{title}</Text>
+            <Flex alignItems={"center"} gap={1.5}>
+              <Icon marginLeft={navSize != "small" ? "10px" : 0} size={"bg"} as={icon} />
+              <Text display={navSize == "small" ? "none" : "flex"}>{title}</Text>
             </Flex>
           </MenuButton>
         </Link>

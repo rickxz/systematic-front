@@ -1,6 +1,9 @@
 import { Avatar, Divider, Flex, Heading, IconButton } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { FaHome } from "react-icons/fa";
+import { SiAddthis } from "react-icons/si";
 import { useState } from "react";
+import NavItem from "./NavItem";
 
 export default function Sidebar() {
   const [navSize, changeNavSize] = useState("large");
@@ -15,7 +18,7 @@ export default function Sidebar() {
       flexDir={"column"}
       justifyContent={"space-between"}
     >
-      <Flex p={"%5"} flexDir={"column"} alignItems={"flex-start"} as={"nav"}>
+      <Flex p={"%5"} flexDir={"column"} alignItems={navSize == "small" ? "center" : "flex-start"} as={"nav"}>
         <IconButton
           background={"none"}
           mt={9}
@@ -26,16 +29,19 @@ export default function Sidebar() {
             else changeNavSize("small");
           }}
           aria-label={""}
-        ></IconButton>
+        />
+        <NavItem navSize={navSize} icon={FaHome} title="Página Principal" />{" "}
+        <NavItem navSize={navSize} icon={SiAddthis} title="Nova Revisão" />{" "}
+        <NavItem navSize={navSize} icon={FaHome} title="Outra Página" />
       </Flex>
 
       <Flex p={"5%"} flexDir={"column"} w={"100%"} alignItems={"center"} mb={4}>
         <Divider />
         <Flex mt={4} justifyContent={"center"} flexDir={"column"} alignItems={"center"}>
-          <Avatar size={"md"}></Avatar>
+          <Avatar size={"md"} mb={2}></Avatar>
           <Flex flexDir={"column"} ml={4}>
             <Heading display={navSize == "small" ? "none" : "flex"} as={"h3"} size={"sm"}>
-              User Name
+              Nome do usuário
             </Heading>
           </Flex>
         </Flex>
