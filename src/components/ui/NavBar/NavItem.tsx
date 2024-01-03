@@ -9,7 +9,7 @@ interface INavItem {
 export default function NavItem({ navSize, icon, title }: INavItem) {
   return (
     <Flex mt={30} flexDir={"column"} w={"100%"} align={navSize == "small" ? "center" : "flex-start"}>
-      <Menu>
+      <Menu placement="right">
         <Link>
           <MenuButton>
             <Flex alignItems={"center"} gap={1.5}>

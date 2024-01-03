@@ -30,8 +30,8 @@ export default function Sidebar() {
           }}
           aria-label={""}
         />
-        <NavItem navSize={navSize} icon={FaHome} title="Página Principal" />{" "}
-        <NavItem navSize={navSize} icon={SiAddthis} title="Nova Revisão" />{" "}
+        <NavItem navSize={navSize} icon={FaHome} title="Página Principal" />
+        <NavItem navSize={navSize} icon={SiAddthis} title="Nova Revisão" />
         <NavItem navSize={navSize} icon={FaHome} title="Outra Página" />
       </Flex>
 
