@@ -33,7 +33,7 @@ export default function Sidebar({ type }: ISidebarProps): JSX.Element {
     >
       <Flex p="%5" flexDir="column" alignItems={navSize === SMALL_SIZE ? "center" : "flex-start"}>
         <MenuButton onClick={toggleNavSize} />
-        {type === "Default " && <DefaultNavigation navSize={navSize} />}
+        {type === "Default" && <DefaultNavigation navSize={navSize} />}
         {type === "Accordion" && <AccordionNav navSize={navSize} />}
       </Flex>
       <UserInfos navSize={navSize} />
