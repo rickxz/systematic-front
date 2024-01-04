@@ -5,7 +5,7 @@ interface IButtonProps {
 }
 export default function EnterRevisionButton({ text }: IButtonProps) {
   return (
-    <Button ml={"100%"} mt={4} w={"106px"} h={"25px"}>
+    <Button ml={"15rem"} mt={4} w={"100px"} h={"25px"}>
       {text}
     </Button>
   );

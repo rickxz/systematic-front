@@ -17,7 +17,7 @@ export default function RevisionCard({ title, RevisorNames, lastEdition, creatio
     <>
       <Card
         h={"100PX"}
-        w={"1100PX"}
+        w={"1020PX"}
         boxShadow={"0 4px 12px 0 rgba(0, 0 , 0, 0.5)"}
         display={"flex"}
         flexDir="row"
@@ -28,7 +28,7 @@ export default function RevisionCard({ title, RevisorNames, lastEdition, creatio
       >
         <CardIcon />
         <CardInfos title={title} RevisorNames={RevisorNames} />
-        <Box ml={"20%"}>
+        <Box ml={"200px"}>
           <EnterRevisionButton text="Ver Revisão" />
           <EditionInfos lastEdition={lastEdition} creation={creation} isEdited={isEdited} />
         </Box>
