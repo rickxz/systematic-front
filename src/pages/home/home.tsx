@@ -1,16 +1,15 @@
-import { Flex, Grid, GridItem, Heading } from "@chakra-ui/react";
+import { Flex, Grid, GridItem } from "@chakra-ui/react";
 
 import Sidebar from "../../components/ui/NavBar/Sidebar";
 import RevisionCard from "./subcomponents/Card";
+import Header from "../../components/ui/Header/Header";
 
 export default function Home() {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Default" />
       <GridItem>
-        <Heading mt={10} as={"h1"} alignSelf={"center"} ml={"45%"}>
-          Minhas Revisões
-        </Heading>
+        <Header text="Minhas Revisões" />
         <Flex mt={"2.5vh"} display={"flex"} flexDir={"column"} rowGap={5}>
           <RevisionCard
             title="Minha primeira revisão Sistemática"
