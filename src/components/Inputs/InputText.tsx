@@ -7,7 +7,7 @@ interface ITextFieldProps {
 
 export default function InputText({ label, placeholder }: ITextFieldProps) {
   return (
-    <FormControl>
+    <FormControl w={"60vw"}>
       <FormLabel>{label}</FormLabel>
       <Input type="text" name="title" placeholder={placeholder} />
     </FormControl>
