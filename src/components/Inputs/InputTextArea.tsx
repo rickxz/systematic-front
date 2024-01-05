@@ -6,7 +6,7 @@ interface ITextInputProps {
 }
 export default function TextAreaInput({ label, placeholder }: ITextInputProps) {
   return (
-    <FormControl w={"60vw"}>
+    <FormControl maxW={"60vw"}>
       <FormLabel>{label}</FormLabel>
       <Textarea placeholder={placeholder}></Textarea>
     </FormControl>

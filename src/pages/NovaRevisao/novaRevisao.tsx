@@ -11,7 +11,7 @@ export default function NovaRevisao() {
       <GridItem>
         <Header text="Nova Revisão" />
 
-        <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"100%"}>
+        <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"100%"} ml={"10vw"}>
           <InputText label="Título:" placeholder="Informe o título da revisao sistemática..." />
           <InputTextArea label="Descrição:" placeholder="Informa a descrição da revisão sistemática..."></InputTextArea>
         </FormControl>
