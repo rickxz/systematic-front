@@ -14,7 +14,7 @@ export default function NovaRevisao() {
           <InputText label="Título:" placeholder="Informe o título da revisao sistemática..." type="text" nome="text" />
           <InputTextArea label="Descrição:" placeholder="Informa a descrição da revisão sistemática..."></InputTextArea>
           <InputText label="Pesquisadores:" placeholder="e-mail do pesquisador..." type="search" nome="emai" />
-          <NavButton path={"/novaRevisao/protocol"} text="Criar nova Revisão" />
+          <NavButton path={"/newRevision/protocol"} text="Criar nova Revisão" />
         </FormControl>
       </GridItem>
     </Grid>

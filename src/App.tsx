@@ -8,10 +8,10 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/novaRevisao" element={<NovaRevisao />} />
+          <Route path="/newRevision" element={<NovaRevisao />} />
 
           {/*Nested Routes*/}
-          <Route path="/novaRevisao/protocol" element={<Protocol />} />
+          <Route path="/newRevision/protocol" element={<Protocol />} />
         </Routes>
       </Router>
     </>
