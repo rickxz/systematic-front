@@ -10,7 +10,6 @@ interface IDefaultNavigation {
 const routes = [
   { path: "/", icon: FaHome, title: "Página Principal" },
   { path: "/novaRevisao", icon: SiAddthis, title: "Nova Revisão" },
-  { path: "/outraPagina", icon: FaHome, title: "Outra Página" },
 ];
 
 export default function DefaultNavigation({ navSize }: IDefaultNavigation) {

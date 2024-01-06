@@ -9,7 +9,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/novaRevisao" element={<NovaRevisao />} />
-          <Route path="/outraPagina" element={<NovaRevisao />} />
+
+          {/*Nested Routes*/}
           <Route path="/novaRevisao/protocol" element={<Protocol />} />
         </Routes>
       </Router>
