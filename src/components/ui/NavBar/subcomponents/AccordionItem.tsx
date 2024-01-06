@@ -7,9 +7,10 @@ interface IAccordionElementProps {
   icon?: React.ElementType;
   title: string;
   names: string[];
+  basePath: string;
 }
 
-export default function AccordionElement({ navSize, icon, title, names }: IAccordionElementProps) {
+export default function AccordionElement({ navSize, icon, title, names, basePath }: IAccordionElementProps) {
   const isSmallSize = navSize === "small";
   const shouldRenderIcon = isSmallSize || (
     <Box flex="1" alignContent="flex-start">
@@ -27,8 +28,8 @@ export default function AccordionElement({ navSize, icon, title, names }: IAccor
         </AccordionButton>
         <AccordionPanel>
           {names.map((name) => (
-            <Link to="/novaRevisao/protocolo">
-              <NavItem key={name} title={name} navSize={navSize} />
+            <Link to={`${basePath}/${name.toLowerCase()}`} key={name}>
+              <NavItem title={name} navSize={navSize} />
             </Link>
           ))}
         </AccordionPanel>

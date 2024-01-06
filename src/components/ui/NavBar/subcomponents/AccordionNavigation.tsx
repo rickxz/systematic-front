@@ -9,9 +9,19 @@ interface IAccordion {
 export default function AccordionNav({ navSize }: IAccordion) {
   return (
     <>
-      <AccordionElement navSize={navSize} title="Planejamento" names={["Protocólo"]} />
-      <AccordionElement navSize={navSize} title="Execução" names={["Identificação", "Seleção", "Extração"]} />
-      <AccordionElement navSize={navSize} title="Sumarização" names={["Gráficos", "Visualização", "Finalização"]} />
+      <AccordionElement navSize={navSize} title="Planejamento" names={["Protocol"]} basePath="/novaRevisao" />
+      <AccordionElement
+        navSize={navSize}
+        title="Execução"
+        names={["Identification", "Selection", "Extraction"]}
+        basePath="/novaRevisao"
+      />
+      <AccordionElement
+        navSize={navSize}
+        title="Sumarização"
+        names={["Grafics", "Visualization", "Finalization"]}
+        basePath="/novaRevisao"
+      />
       <Link to="/">
         {" "}
         <NavItem navSize={navSize} icon={FaHome} title="Página Principal" />
