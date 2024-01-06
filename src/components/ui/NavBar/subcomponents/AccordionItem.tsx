@@ -1,5 +1,6 @@
 import { Accordion, AccordionButton, Icon, AccordionIcon, Box, AccordionItem, AccordionPanel } from "@chakra-ui/react";
 import NavItem from "./NavItem";
+import { Link } from "react-router-dom";
 
 interface IAccordionElementProps {
   navSize: string;
@@ -26,7 +27,9 @@ export default function AccordionElement({ navSize, icon, title, names }: IAccor
         </AccordionButton>
         <AccordionPanel>
           {names.map((name) => (
-            <NavItem key={name} title={name} navSize={navSize} />
+            <Link to="/novaRevisao/protocolo">
+              <NavItem key={name} title={name} navSize={navSize} />
+            </Link>
           ))}
         </AccordionPanel>
       </AccordionItem>
