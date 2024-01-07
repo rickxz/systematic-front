@@ -9,11 +9,10 @@ export default function ProtocolPartThree() {
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Accordion" />
       <GridItem>
-        <Header text="Protocólo" />;
+        <Header text="Protocólo" />
         <Progress value={66} />
         <FormControl></FormControl>
-        <Box display={"flex"} justifyContent={"space-between"}>
-          <NavButton text="Anterior" path="/newRevision/protocolpartTwo" />
+        <Box ml={"65%"} alignSelf={"flex-end"}>
           <NavButton text="Finalizar" path="/newRevision" />
         </Box>
       </GridItem>
