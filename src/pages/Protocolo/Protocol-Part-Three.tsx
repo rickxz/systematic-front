@@ -1,4 +1,5 @@
 import { Grid, GridItem, Progress, FormControl, Box } from "@chakra-ui/react";
+
 import NavButton from "../../components/Buttons/NavButton";
 import Header from "../../components/ui/Header/Header";
 import Sidebar from "../../components/ui/NavBar/Sidebar";
@@ -13,7 +14,7 @@ export default function ProtocolPartThree() {
         <FormControl></FormControl>
         <Box display={"flex"} justifyContent={"space-between"}>
           <NavButton text="Anterior" path="/newRevision/protocolpartTwo" />
-          <NavButton text="Next" path="/newRevision" />
+          <NavButton text="Finalizar" path="/newRevision" />
         </Box>
       </GridItem>
     </Grid>

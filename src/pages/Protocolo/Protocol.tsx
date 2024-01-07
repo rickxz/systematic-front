@@ -12,7 +12,7 @@ export default function Protocol() {
         <Header text="Protocólo" />;
         <Progress value={0} />
         <FormControl></FormControl>
-        <Box ml={"50%"} alignSelf={"flex-end"}>
+        <Box ml={"60%"} alignSelf={"flex-end"}>
           <NavButton text="Next" path="/newRevision/protocolpartTwo" />
         </Box>
       </GridItem>

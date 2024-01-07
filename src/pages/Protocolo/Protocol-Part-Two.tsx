@@ -3,7 +3,7 @@ import NavButton from "../../components/Buttons/NavButton";
 import Header from "../../components/ui/Header/Header";
 import Sidebar from "../../components/ui/NavBar/Sidebar";
 
-export default function ProtocolPartTwo() {
+export default function ProtocolPartTwo2() {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Accordion" />
