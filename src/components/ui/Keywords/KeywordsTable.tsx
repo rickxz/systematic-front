@@ -12,7 +12,7 @@ export default function KeywordsTable() {
   return (
     <FormControl display={"flex"} flexDir={"row"} columnGap={"20%"}>
       <KeywordInput event={addNewKeyword}></KeywordInput>
-      <InfosTable keywords={["keyword1", "keyword2", "keyWord3"]} />
+      <InfosTable keywords={["keyword1", "keyword2", "keyword3"]} />
     </FormControl>
   );
 }
