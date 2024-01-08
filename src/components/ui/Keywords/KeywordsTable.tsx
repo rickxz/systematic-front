@@ -10,9 +10,9 @@ export default function KeywordsTable() {
   }
 
   return (
-    <FormControl display={"flex"} flexDir={"row"} columnGap={"10%"}>
-      <InfosTable keywords={["keyword1", "keyword2", "keyWord3"]} />
+    <FormControl display={"flex"} flexDir={"row"} columnGap={"20%"}>
       <KeywordInput event={addNewKeyword}></KeywordInput>
+      <InfosTable keywords={["keyword1", "keyword2", "keyWord3"]} />
     </FormControl>
   );
 }

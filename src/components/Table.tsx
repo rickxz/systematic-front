@@ -7,7 +7,7 @@ interface KeywordTableProps {
 
 const KeywordTable: React.FC<KeywordTableProps> = ({ keywords }) => {
   return (
-    <TableContainer border={"solid black 1px"} maxWidth="50%">
+    <TableContainer border={"solid black 1px"} w="550px">
       <Table variant="simple" size="sm">
         <Tbody className="tableBody">
           {keywords.map((keyword, index) => (
