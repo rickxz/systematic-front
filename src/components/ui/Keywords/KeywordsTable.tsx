@@ -9,11 +9,15 @@ export default function KeywordsTable() {
   const handleAddKeyword = (newKeyword: string) => {
     setKeywords((prevKeywords) => [...prevKeywords, newKeyword]);
   };
-
+  const handleDeleteKeyword = (index: number) => {
+    const updatedKeywords = [...keywords];
+    updatedKeywords.splice(index, 1);
+    setKeywords(updatedKeywords);
+  };
   return (
     <FormControl display={"flex"} flexDir={"row"} columnGap={"20%"}>
       <KeywordInput onAddKeyword={handleAddKeyword} />
-      <InfosTable keywords={keywords} />
+      <InfosTable onDeleteKeyword={handleDeleteKeyword} keywords={keywords} />
     </FormControl>
   );
 }
