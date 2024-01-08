@@ -7,8 +7,8 @@ interface KeywordTableProps {
 
 export default function KeywordTable({ keywords }: KeywordTableProps) {
   return (
-    <TableContainer border={"solid black 1px"} w="550px" maxHeight={"120px"} overflowY={"auto"}>
-      <Table variant="simple" size="sm">
+    <TableContainer border={"solid black 1px"} w="1050px" maxHeight={"120px"} overflowY={"auto"}>
+      <Table variant="simple" size="md">
         <Tbody className="tableBody">
           {keywords.map((keyword, index) => (
             <Tr key={index}>
