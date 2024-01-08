@@ -5,9 +5,9 @@ interface KeywordTableProps {
   keywords: string[];
 }
 
-const KeywordTable: React.FC<KeywordTableProps> = ({ keywords }) => {
+export default function KeywordTable({ keywords }: KeywordTableProps) {
   return (
-    <TableContainer border={"solid black 1px"} w="550px">
+    <TableContainer border={"solid black 1px"} w="550px" maxHeight={"120px"} overflowY={"auto"}>
       <Table variant="simple" size="sm">
         <Tbody className="tableBody">
           {keywords.map((keyword, index) => (
@@ -27,6 +27,4 @@ const KeywordTable: React.FC<KeywordTableProps> = ({ keywords }) => {
       </Table>
     </TableContainer>
   );
-};
-
-export default KeywordTable;
+}
