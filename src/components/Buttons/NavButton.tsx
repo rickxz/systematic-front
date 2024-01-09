@@ -8,7 +8,7 @@ interface iButtonProps {
 
 export default function NavButton({ text, path }: iButtonProps) {
   return (
-    <Box alignSelf={"flex-end"} justifySelf={"baseline"} mt={150}>
+    <Box alignSelf={"flex-end"} mt={50} mb={10}>
       <Link to={path}>
         <Button w={250} borderRadius={12}>
           {text}
