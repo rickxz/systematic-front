@@ -1,19 +1,17 @@
 import { Button, ButtonProps } from "@chakra-ui/react";
 
 interface IEventButtonProps extends ButtonProps {
-  event: (newKeyword: string) => void;
+  event: () => void;
   text: string;
 }
 
 export default function EventButton({ event, text, ...buttonProps }: IEventButtonProps) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleClick = (_e: React.MouseEvent<HTMLButtonElement>) => {
-    const newKeyword = "valor_da_nova_palavra_chave";
-    event(newKeyword);
+  const handleClick = () => {
+    event();
   };
 
   return (
-    <Button onClick={handleClick} {...buttonProps}>
+    <Button onClick={handleClick} {...buttonProps} w={"fit-content"}>
       {text}
     </Button>
   );

@@ -3,9 +3,13 @@ import NavButton from "../../components/Buttons/NavButton";
 import Header from "../../components/ui/Header/Header";
 import Sidebar from "../../components/ui/NavBar/Sidebar";
 import CheckboxInput from "../../components/Inputs/Checkbox";
-import SelectInput from "../../components/Inputs/SelectInput";
+{
+  /*import SelectInput from "../../components/Inputs/SelectInput";*/
+}
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";
+
+import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable";
 
 export default function ProtocolPartTwo2() {
   return (
@@ -25,10 +29,15 @@ export default function ProtocolPartTwo2() {
           />
           <AddTextTable text="Critérios de inclusão:" placeholder="Informe o critério de inclusão..." />
           <AddTextTable text="Critérios de exclusão:" placeholder="Informe o critério de exclusao..." />
-          <SelectInput
+          {/*<SelectInput
             label="Data Bases: "
             values={["", "googleAcademy", "IEE", "Scielo"]}
             names={["", "Google Academy", "IEE", "Scielo"]}
+  />*/}
+          <AddSelectionTable
+            text="Data Bases: "
+            options={["", "Google", "Bing"]}
+            placeholder="Informe as bases de dado"
           />
 
           <TextAreaInput label="Estratégia de pesquisa" placeholder="Informe a estratégia de pesquisa..." />
