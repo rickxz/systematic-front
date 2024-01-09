@@ -1,14 +1,10 @@
-import { Grid, GridItem, Progress, FormControl, Box } from "@chakra-ui/react";
-import NavButton from "../../components/Buttons/NavButton";
 import Header from "../../components/ui/Header/Header";
 import Sidebar from "../../components/ui/NavBar/Sidebar";
+import NavButton from "../../components/Buttons/NavButton";
 import CheckboxInput from "../../components/Inputs/Checkbox";
-{
-  /*import SelectInput from "../../components/Inputs/SelectInput";*/
-}
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";
-
+import { Grid, GridItem, Progress, FormControl, Box } from "@chakra-ui/react";
 import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable";
 
 export default function ProtocolPartTwo2() {
@@ -22,21 +18,19 @@ export default function ProtocolPartTwo2() {
           <FormControl display={"flex"}>
             <AddTextTable text="Palvras-chave" placeholder="Informe a palavra-chave..." />
           </FormControl>
+
           <CheckboxInput
             label="Linguagens: "
             value={["ingles", "portugues", "frances"]}
             name={["Inglês", "Português", "Francês"]}
           />
+
           <AddTextTable text="Critérios de inclusão:" placeholder="Informe o critério de inclusão..." />
           <AddTextTable text="Critérios de exclusão:" placeholder="Informe o critério de exclusao..." />
-          {/*<SelectInput
-            label="Data Bases: "
-            values={["", "googleAcademy", "IEE", "Scielo"]}
-            names={["", "Google Academy", "IEE", "Scielo"]}
-  />*/}
+
           <AddSelectionTable
             text="Data Bases: "
-            options={["", "Google", "Bing"]}
+            options={["", "Google Acadêmico", "Scopus", "Scielo", "BDTD", "PubMed"]}
             placeholder="Informe as bases de dado"
           />
 
