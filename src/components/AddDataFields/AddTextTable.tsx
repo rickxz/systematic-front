@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FormControl, FormLabel } from "@chakra-ui/react";
 import AddTextField from "./AddTextField";
-import InfosTable from "../../Table";
+import InfosTable from "../Tables/ProtocolAddTable";
 
 interface AddTextTableProps {
   text: string;

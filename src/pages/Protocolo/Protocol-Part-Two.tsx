@@ -5,7 +5,7 @@ import Sidebar from "../../components/ui/NavBar/Sidebar";
 import CheckboxInput from "../../components/Inputs/Checkbox";
 import SelectInput from "../../components/Inputs/SelectInput";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
-import AddTextTable from "../../components/ui/Keywords/AddTextTable";
+import AddTextTable from "../../components/AddDataFields/AddTextTable";
 
 export default function ProtocolPartTwo2() {
   return (
