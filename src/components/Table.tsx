@@ -1,24 +1,23 @@
 import { Table, Tbody, Tr, Td, TableContainer, Button, Icon } from "@chakra-ui/react";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
-import React from "react";
 
-interface KeywordTableProps {
-  keywords: string[];
-  onDeleteKeyword: (index: number) => void;
+interface InfosTableProps {
+  AddTexts: string[];
+  onDeleteAddedText: (index: number) => void;
 }
 
-const KeywordTable: React.FC<KeywordTableProps> = ({ keywords, onDeleteKeyword }) => {
+export default function InfosTable({ AddTexts, onDeleteAddedText }: InfosTableProps) {
   const handleDelete = (index: number) => {
-    onDeleteKeyword(index);
+    onDeleteAddedText(index);
   };
 
   return (
     <TableContainer border={"solid black 1px"} w="1050px" maxHeight={"120px"} overflowY={"auto"}>
       <Table variant="simple" size="md">
         <Tbody className="tableBody">
-          {keywords.map((keyword, index) => (
+          {AddTexts.map((addText, index) => (
             <Tr key={index}>
-              <Td>{keyword}</Td>
+              <Td>{addText}</Td>
               <Td textAlign={"right"}>
                 <Button variant="ghost" onClick={() => handleDelete(index)}>
                   <Icon as={DeleteIcon} w={"15px"} h={"15px"} />
@@ -33,6 +32,4 @@ const KeywordTable: React.FC<KeywordTableProps> = ({ keywords, onDeleteKeyword }
       </Table>
     </TableContainer>
   );
-};
-
-export default KeywordTable;
+}

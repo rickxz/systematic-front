@@ -1,23 +1,23 @@
 import { useState } from "react";
 import { FormControl } from "@chakra-ui/react";
-import KeywordInput from "./KeywordInput";
+import KeywordInput from "./AddTextField";
 import InfosTable from "../../Table";
 
-export default function KeywordsTable() {
-  const [keywords, setKeywords] = useState<string[]>([]);
+export default function AddTextTable() {
+  const [AddText, setAddText] = useState<string[]>([]);
 
-  const handleAddKeyword = (newKeyword: string) => {
-    setKeywords((prevKeywords) => [...prevKeywords, newKeyword]);
+  const handleAddText = (newKeyword: string) => {
+    setAddText((prevAddText) => [...prevAddText, newKeyword]);
   };
-  const handleDeleteKeyword = (index: number) => {
-    const updatedKeywords = [...keywords];
-    updatedKeywords.splice(index, 1);
-    setKeywords(updatedKeywords);
+  const handleDeleteText = (index: number) => {
+    const updatedAddText = [...AddText];
+    updatedAddText.splice(index, 1);
+    setAddText(updatedAddText);
   };
   return (
     <FormControl display={"flex"} flexDir={"row"} columnGap={"20%"}>
-      <KeywordInput onAddKeyword={handleAddKeyword} />
-      <InfosTable onDeleteKeyword={handleDeleteKeyword} keywords={keywords} />
+      <KeywordInput onAddText={handleAddText} />
+      <InfosTable onDeleteAddedText={handleDeleteText} AddTexts={AddText} />
     </FormControl>
   );
 }
