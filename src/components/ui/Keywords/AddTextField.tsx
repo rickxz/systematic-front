@@ -5,9 +5,10 @@ import { useState } from "react";
 
 interface IAddTextFieldProps {
   onAddText: (newKeyword: string) => void;
+  text: string;
 }
 
-export default function AddTextField({ onAddText }: IAddTextFieldProps) {
+export default function AddTextField({ onAddText, text }: IAddTextFieldProps) {
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -25,7 +26,7 @@ export default function AddTextField({ onAddText }: IAddTextFieldProps) {
 
   return (
     <FormControl rowGap={5} display={"flex"} flexDir={"column"}>
-      <TextAreaInput label="" placeholder="Informe a palavra-chave" onChange={handleInputChange}></TextAreaInput>
+      <TextAreaInput label="" placeholder={text} onChange={handleInputChange}></TextAreaInput>
       <EventButton event={handleAddText} text="ADD" />
     </FormControl>
   );

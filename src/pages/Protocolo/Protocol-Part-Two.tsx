@@ -5,7 +5,7 @@ import Sidebar from "../../components/ui/NavBar/Sidebar";
 import CheckboxInput from "../../components/Inputs/Checkbox";
 import SelectInput from "../../components/Inputs/SelectInput";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
-import KeywordsTable from "../../components/ui/Keywords/KeywordsTable";
+import AddTextTable from "../../components/ui/Keywords/AddTextTable";
 
 export default function ProtocolPartTwo2() {
   return (
@@ -16,15 +16,15 @@ export default function ProtocolPartTwo2() {
         <Progress value={33} />
         <FormControl display={"flex"} flexDir={"column"} gap={20} mt={20}>
           <FormControl display={"flex"}>
-            <KeywordsTable />
+            <AddTextTable text="Palvras-chave" placeholder="Informe a palavra-chave..." />
           </FormControl>
           <CheckboxInput
             label="Linguagens: "
             value={["ingles", "portugues", "frances"]}
             name={["Inglês", "Português", "Francês"]}
           />
-          {/*<Heading as={"h4"}>campo de critérios de inclusão</Heading>*/}
-          {/*<Heading as={"h4"}>campo de critérios de exclusão</Heading>*/}
+          <AddTextTable text="Critérios de inclusão:" placeholder="Informe o critério de inclusão..." />
+          <AddTextTable text="Critérios de exclusão:" placeholder="Informe o critério de exclusao..." />
           <SelectInput
             label="Data Bases: "
             values={["", "googleAcademy", "IEE", "Scielo"]}
