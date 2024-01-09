@@ -1,14 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/home";
 import NovaRevisao from "./pages/NovaRevisao/novaRevisao";
+import Protocol from "./pages/Protocolo/Protocol";
+import ProtocolPartTwo from "./pages/Protocolo/Protocol-Part-Two";
+import ProtocolPartThree from "./pages/Protocolo/Protocol-Part-Three";
 function App() {
   return (
     <>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/novaRevisao" element={<NovaRevisao />} />
-          <Route path="/outraPagina" element={<NovaRevisao />} />
+          <Route path="/newRevision" element={<NovaRevisao />} />
+
+          {/*Nested Routes*/}
+          <Route path="/newRevision/protocol" element={<Protocol />} />
+          <Route path="/newRevision/protocolpartTwo" element={<ProtocolPartTwo />} />
+          <Route path="/newRevision/protocolpartThree" element={<ProtocolPartThree />} />
         </Routes>
       </Router>
     </>
