@@ -12,31 +12,31 @@ export default function ProtocolPartTwo2() {
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Accordion" />
       <GridItem>
-        <Header text="Protocólo" />
+        <Header text="Protocol" />
         <Progress value={33} />
         <FormControl display={"flex"} flexDir={"column"} gap={20} mt={20}>
           <FormControl display={"flex"}>
-            <AddTextTable text="Palvras-chave" placeholder="Informe a palavra-chave..." />
+            <AddTextTable text="Keywords" placeholder="Enter keywords" />
           </FormControl>
 
           <CheckboxInput
-            label="Linguagens: "
+            label="Languages: "
             value={["ingles", "portugues", "frances"]}
-            name={["Inglês", "Português", "Francês"]}
+            name={["English", "Portuguese", "French"]}
           />
 
-          <AddTextTable text="Critérios de inclusão:" placeholder="Informe o critério de inclusão..." />
-          <AddTextTable text="Critérios de exclusão:" placeholder="Informe o critério de exclusao..." />
+          <AddTextTable text="Inclusion Criteria:" placeholder="Enter the criteria" />
+          <AddTextTable text="Exclusion Criteria:" placeholder="Enter the criteria" />
 
           <AddSelectionTable
             text="Data Bases: "
-            options={["", "Google Acadêmico", "Scopus", "Scielo", "BDTD", "PubMed"]}
-            placeholder="Informe as bases de dado"
+            options={["", "Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
+            placeholder="Select a Data Base"
           />
 
-          <TextAreaInput label="Estratégia de pesquisa" placeholder="Informe a estratégia de pesquisa..." />
-          <TextAreaInput label="Processo de Seleção" placeholder="Informe o Processo de Seleção" />
-          <TextAreaInput label="Processo de Coleta de Dados" placeholder="Informe o processo de coleta de dados..." />
+          <TextAreaInput label="Research Strategy" placeholder="Enter research strategy" />
+          <TextAreaInput label="Article Selection Process" placeholder="Enter selection process" />
+          <TextAreaInput label="Data Acquisition" placeholder="Enter the data acquisition method" />
         </FormControl>
 
         <Box ml={"65%"} alignSelf={"flex-end"}>
