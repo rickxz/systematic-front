@@ -10,7 +10,7 @@ export default function CardInfos({ title, RevisorNames }: ICardInfosProps) {
       <Text as={"h4"} w={"26em"}>
         {title}
       </Text>
-      <Text>Revisores: {RevisorNames} </Text>
+      <Text>Reviewer: {RevisorNames} </Text>
     </Box>
   );
 }
