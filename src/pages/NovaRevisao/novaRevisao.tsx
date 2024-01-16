@@ -9,12 +9,12 @@ export default function NovaRevisao() {
     <Grid templateColumns={"repeat(3,1fr)"}>
       <Sidebar type="Accordion" />
       <GridItem>
-        <Header text="Nova Revisão" />
+        <Header text="New Systematic Review" />
         <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"100%"}>
-          <InputText label="Título:" placeholder="Informe o título da revisao sistemática..." type="text" nome="text" />
-          <InputTextArea label="Descrição:" placeholder="Informa a descrição da revisão sistemática..."></InputTextArea>
-          <InputText label="Pesquisadores:" placeholder="e-mail do pesquisador..." type="search" nome="emai" />
-          <NavButton path={"/newRevision/protocol"} text="Criar nova Revisão" />
+          <InputText label="Title:" placeholder="Enter review title" type="text" nome="text" />
+          <InputTextArea label="Description:" placeholder="Enter review description"></InputTextArea>
+          <InputText label="Researchers:" placeholder="Researcher`s email" type="search" nome="emai" />
+          <NavButton path={"/newRevision/protocol"} text="Create new Review" />
         </FormControl>
       </GridItem>
     </Grid>
