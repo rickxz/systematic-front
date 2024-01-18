@@ -11,18 +11,18 @@ export default function ProtocolPartThree() {
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Accordion" />
       <GridItem>
-        <Header text="Protocólo" />
+        <Header text="Protocol" />
         <Progress value={66} />
         <FormControl display={"flex"} flexDir={"column"} mt={10} rowGap={10}>
           <AddTextTable
-            text={"Formulário de extraçao de dados"}
-            placeholder="Informe os critérios para extração de dados"
+            text={"Data extraction form"}
+            placeholder="Enter data extraction criteria"
           />
-          <TextAreaInput label="Análise e Síntese" placeholder="Escreva aqui a análise..." />
+          <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" />
           <AddTextTable text={"Study Risk of Bias (RoB) Assesment"} placeholder="..." />
         </FormControl>
         <Box ml={"65%"} alignSelf={"flex-end"}>
-          <NavButton text="Finalizar" path="/newRevision" />
+          <NavButton text="Save Protocol" path="/newRevision" />
         </Box>
       </GridItem>
     </Grid>
