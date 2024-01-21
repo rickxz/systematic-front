@@ -22,16 +22,15 @@ export default function InfosTable({ AddTexts, onDeleteAddedText }: InfosTablePr
 
   const handleSaveEdit = () => {
     if (editIndex !== null) {
-      // Substitui o valor antigo pelo novo valor editado
       AddTexts[editIndex] = editedValue;
-      // Limpa o estado de edição
+
       setEditIndex(null);
       setEditedValue("");
     }
   };
 
   return (
-    <TableContainer border={"solid black 1px"} w="1050px" h={"120px"} overflowY={"auto"}>
+    <TableContainer border={"solid black 1px"} w="1000px" h={"120px"} overflowY={"auto"}>
       <Table variant="simple" size="md">
         <Tbody className="tableBody">
           {AddTexts.map((addText, index) => (

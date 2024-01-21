@@ -10,14 +10,11 @@ export default function ProtocolPartThree() {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Accordion" />
-      <GridItem>
+      <GridItem justifyContent={"center"} alignContent={"center"} display={"flex"} flexDir={"column"} ml={"10%"}>
         <Header text="Protocol" />
         <Progress value={66} />
         <FormControl display={"flex"} flexDir={"column"} mt={10} rowGap={10}>
-          <AddTextTable
-            text={"Data extraction form"}
-            placeholder="Enter data extraction criteria"
-          />
+          <AddTextTable text={"Data extraction form"} placeholder="Enter data extraction criteria" />
           <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" />
           <AddTextTable text={"Study Risk of Bias (RoB) Assesment"} placeholder="..." />
         </FormControl>
