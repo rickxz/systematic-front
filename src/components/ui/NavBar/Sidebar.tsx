@@ -24,7 +24,7 @@ export default function Sidebar({ type }: ISidebarProps): JSX.Element {
       as="nav"
       position="sticky"
       left={5}
-      h="95vh"
+      h="100vh"
       w={navSize === SMALL_SIZE ? "75px" : "200px"}
       marginTop="2.5vh"
       boxShadow="0 4px 12px 0 rgba(0, 0 , 0, 0.05)"
