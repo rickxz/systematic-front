@@ -10,7 +10,7 @@ export default function ProtocolPartThree() {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Accordion" />
-      <GridItem justifyContent={"center"} alignContent={"center"} display={"flex"} flexDir={"column"} ml={"10%"}>
+      <GridItem justifyContent={"center"} alignContent={"center"} display={"flex"} flexDir={"column"} ml={"5%"}>
         <Header text="Protocol" />
         <Progress value={66} />
         <FormControl display={"flex"} flexDir={"column"} mt={10} rowGap={10}>
