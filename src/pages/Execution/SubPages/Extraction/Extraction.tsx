@@ -73,7 +73,7 @@ export default function Extraction() {
               selectedValue={selectedValue}
             />
           </Box>
-          <Box display={"flex"} flexDir={"row"}>
+          <Box display={"flex"} flexDir={"row"} columnGap={20}>
             <CheckboxInput
               label="General Information: "
               name={[
@@ -88,7 +88,7 @@ export default function Extraction() {
               value={["idPaper", "title", "author", "statusSelection", "statusExtraction", "readingPriority", "score"]}
             />
             <EventButton
-              mt={5}
+              mt={7}
               text="Sort by Score"
               event={() => {
                 console.log("sorted");
