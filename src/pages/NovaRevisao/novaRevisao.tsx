@@ -4,6 +4,7 @@ import Header from "../../components/ui/Header/Header";
 import InputText from "../../components/Inputs/InputText";
 import InputTextArea from "../../components/Inputs/InputTextArea";
 import NavButton from "../../components/Buttons/NavButton";
+import ResearcherFilter from "../home/subcomponents/ResearcherFilter";
 export default function NovaRevisao() {
   return (
     <Grid templateColumns={"repeat(3,1fr)"}>
@@ -13,7 +14,7 @@ export default function NovaRevisao() {
         <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"100%"}>
           <InputText label="Title:" placeholder="Enter review title" type="text" nome="text" />
           <InputTextArea label="Description:" placeholder="Enter review description"></InputTextArea>
-          <InputText label="Researchers:" placeholder="Researcher`s email" type="search" nome="emai" />
+          <ResearcherFilter></ResearcherFilter>
           <NavButton path={"/newRevision/protocol"} text="Create new Review" />
         </FormControl>
       </GridItem>
