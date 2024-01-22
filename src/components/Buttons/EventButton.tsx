@@ -11,7 +11,7 @@ export default function EventButton({ event, text, ...buttonProps }: IEventButto
   };
 
   return (
-    <Button onClick={handleClick} {...buttonProps} w={"fit-content"}>
+    <Button onClick={handleClick} {...buttonProps} w={250}>
       {text}
     </Button>
   );

@@ -8,6 +8,7 @@ import Identification from "./pages/Execution/Identification";
 import KeyWordScreen from "./pages/KeyWordScreen/KeyWordScreen";
 import Selection from "./pages/Execution/SubPages/Selection/Selection";
 import Extraction from "./pages/Execution/SubPages/Extraction/Extraction";
+import Insertion from "./pages/Execution/SubPages/Insertion/Insertion";
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
           <Route path="/newRevision/keywords" element={<KeyWordScreen />} />
           <Route path="/newRevision/selection" element={<Selection />} />
           <Route path="/newRevision/extraction" element={<Extraction />} />
+          <Route path="/newRevision/insertion" element={<Insertion />} />
         </Routes>
       </Router>
     </>
