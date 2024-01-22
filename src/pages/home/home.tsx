@@ -1,7 +1,7 @@
 import { Flex, Grid, GridItem } from "@chakra-ui/react";
 
 import Sidebar from "../../components/ui/NavBar/Sidebar";
-import RevisionCard from "./subcomponents/Card";
+import RevisionCard from "./subcomponents/RevisionCard";
 import Header from "../../components/ui/Header/Header";
 
 export default function Home() {
@@ -10,15 +10,8 @@ export default function Home() {
       <Sidebar type="Default" />
       <GridItem display={"flex"} flexDir={"column"}>
         <Header text="My Systematic Reviews" />
-        <Flex
-          mt={"2.5vh"}
-          display={"flex"}
-          flexDir={"column"}
-          rowGap={5}
-          justifyContent={"center"}
-          alignContent={"center"}
-          w={"80%"}
-        >
+
+        <Flex mt={"2.5vh"} display={"flex"} flexDir={"column"} rowGap={5}>
           <RevisionCard
             title="First Review"
             RevisorNames={[" Lucas Sigoli,", " Eduardo Derisso,", " Gabriel Gatti"]}

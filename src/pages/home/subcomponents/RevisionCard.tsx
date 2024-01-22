@@ -29,7 +29,7 @@ export default function RevisionCard({ title, RevisorNames, lastEdition, creatio
         <CardIcon />
         <CardInfos title={title} RevisorNames={RevisorNames} />
         <Box ml={"200px"}>
-          <EnterRevisionButton text="Ver Revisão" />
+          <EnterRevisionButton text="Review Info" />
           <EditionInfos lastEdition={lastEdition} creation={creation} isEdited={isEdited} />
         </Box>
       </Card>
