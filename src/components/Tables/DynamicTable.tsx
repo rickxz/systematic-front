@@ -21,7 +21,7 @@ export default function DynamicTable({ headerData, bodyData, icon }: DynamicTabl
 
   return (
     <TableContainer mt={10}>
-      <Table variant={"striped"} border={1} colorScheme="telegram" size={"lg"}>
+      <Table variant={"striped"} size={"lg"}>
         <Thead>
           <Tr bgColor={"darkblue"}>
             {headerData.map((header, index) => (
