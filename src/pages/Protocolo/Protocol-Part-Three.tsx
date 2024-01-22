@@ -19,7 +19,7 @@ export default function ProtocolPartThree() {
           <AddTextTable text={"Study Risk of Bias (RoB) Assesment"} placeholder="..." />
         </FormControl>
         <Box ml={"65%"} alignSelf={"flex-end"}>
-          <NavButton text="Save Protocol" path="/newRevision" />
+          <NavButton text="Save Protocol" path="/newRevision/identification" />
         </Box>
       </GridItem>
     </Grid>

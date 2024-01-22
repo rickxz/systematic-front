@@ -8,9 +8,17 @@ export default function Home() {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Default" />
-      <GridItem>
+      <GridItem display={"flex"} flexDir={"column"}>
         <Header text="My Systematic Reviews" />
-        <Flex mt={"2.5vh"} display={"flex"} flexDir={"column"} rowGap={5}>
+        <Flex
+          mt={"2.5vh"}
+          display={"flex"}
+          flexDir={"column"}
+          rowGap={5}
+          justifyContent={"center"}
+          alignContent={"center"}
+          w={"80%"}
+        >
           <RevisionCard
             title="First Review"
             RevisorNames={[" Lucas Sigoli,", " Eduardo Derisso,", " Gabriel Gatti"]}
