@@ -1,12 +1,12 @@
 import { Grid, GridItem, Box } from "@chakra-ui/react";
-import Sidebar from "../../components/ui/NavBar/Sidebar";
-import Header from "../../components/ui/Header/Header";
-import DynamicTable from "../../components/Tables/DynamicTable";
-import InputText from "../../components/Inputs/InputText";
-import CheckboxInput from "../../components/Inputs/Checkbox";
-import SelectInput from "../../components/Inputs/SelectInput";
+import Sidebar from "../../../../components/ui/NavBar/Sidebar";
+import Header from "../../../../components/ui/Header/Header";
+import DynamicTable from "../../../../components/Tables/DynamicTable";
+import InputText from "../../../../components/Inputs/InputText";
+import CheckboxInput from "../../../../components/Inputs/Checkbox";
+import SelectInput from "../../../../components/Inputs/SelectInput";
 import { useState } from "react";
-import EventButton from "../../components/Buttons/EventButton";
+import EventButton from "../../../../components/Buttons/EventButton";
 
 export default function Selection() {
   const handleSelectChange = (value: string) => {

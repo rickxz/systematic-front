@@ -6,7 +6,8 @@ import ProtocolPartTwo from "./pages/Protocolo/Protocol-Part-Two";
 import ProtocolPartThree from "./pages/Protocolo/Protocol-Part-Three";
 import Identification from "./pages/Execution/Identification";
 import KeyWordScreen from "./pages/KeyWordScreen/KeyWordScreen";
-import Selection from "./pages/Selection/Selection";
+import Selection from "./pages/Execution/SubPages/Selection/Selection";
+import Extraction from "./pages/Execution/SubPages/Extraction/Extraction";
 function App() {
   return (
     <>
@@ -22,6 +23,7 @@ function App() {
           <Route path="/newRevision/identification" element={<Identification />} />
           <Route path="/newRevision/keywords" element={<KeyWordScreen />} />
           <Route path="/newRevision/selection" element={<Selection />} />
+          <Route path="/newRevision/extraction" element={<Extraction />} />
         </Routes>
       </Router>
     </>
