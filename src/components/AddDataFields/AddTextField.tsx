@@ -17,10 +17,10 @@ export default function AddTextField({ onAddText, text }: IAddTextFieldProps) {
 
   const handleAddText = () => {
     if (inputValue.trim() !== "") {
-      setInputValue("");
       onAddText(inputValue.trim());
+      setInputValue("");
     } else {
-      window.alert("Valor informado é inválido");
+      window.alert("The field must be filled!");
     }
   };
 

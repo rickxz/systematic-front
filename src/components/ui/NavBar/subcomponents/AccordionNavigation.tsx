@@ -13,7 +13,7 @@ export default function AccordionNav({ navSize }: IAccordion) {
       <AccordionElement
         navSize={navSize}
         title="Execution"
-        names={["Identification", "Selection", "Extraction"]}
+        names={["KeyWords", "Insertion", "Identification", "Selection", "Extraction"]}
         basePath="/newRevision"
       />
       <AccordionElement

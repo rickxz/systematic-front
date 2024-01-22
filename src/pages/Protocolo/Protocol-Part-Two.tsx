@@ -11,7 +11,7 @@ export default function ProtocolPartTwo2() {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Accordion" />
-      <GridItem>
+      <GridItem justifyContent={"center"} alignContent={"center"} display={"flex"} flexDir={"column"} ml={"5%"}>
         <Header text="Protocol" />
         <Progress value={33} />
         <FormControl display={"flex"} flexDir={"column"} gap={20} mt={20}>
@@ -39,7 +39,7 @@ export default function ProtocolPartTwo2() {
           <TextAreaInput label="Data Acquisition" placeholder="Enter the data acquisition method" />
         </FormControl>
 
-        <Box ml={"65%"} alignSelf={"flex-end"}>
+        <Box alignSelf={"flex-end"}>
           <NavButton text="Next" path="/newRevision/protocolpartThree" />
         </Box>
       </GridItem>

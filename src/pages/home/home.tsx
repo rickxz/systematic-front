@@ -1,18 +1,24 @@
 import { Flex, Grid, GridItem } from "@chakra-ui/react";
 
 import Sidebar from "../../components/ui/NavBar/Sidebar";
-import RevisionCard from "./subcomponents/RevisionCard";
+import RevisionCard from "./subcomponents/Card";
 import Header from "../../components/ui/Header/Header";
-import ResearcherFilter from "./subcomponents/ResearcherFilter";
 
 export default function Home() {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Default" />
-      <GridItem>
+      <GridItem display={"flex"} flexDir={"column"}>
         <Header text="My Systematic Reviews" />
-        <ResearcherFilter></ResearcherFilter>
-        <Flex mt={"2.5vh"} display={"flex"} flexDir={"column"} rowGap={5}>
+        <Flex
+          mt={"2.5vh"}
+          display={"flex"}
+          flexDir={"column"}
+          rowGap={5}
+          justifyContent={"center"}
+          alignContent={"center"}
+          w={"80%"}
+        >
           <RevisionCard
             title="First Review"
             RevisorNames={[" Lucas Sigoli,", " Eduardo Derisso,", " Gabriel Gatti"]}
