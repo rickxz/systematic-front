@@ -16,7 +16,7 @@ export default function UserInfos({ navSize }: IUserInfosProps): JSX.Element {
         <Avatar size="md" mb={2}></Avatar>
         <Flex flexDir="column" ml={4}>
           <Heading display={isSmallSize ? "none" : "flex"} as="h3" size="sm">
-            Nome do usuário
+            Username
           </Heading>
         </Flex>
       </Flex>

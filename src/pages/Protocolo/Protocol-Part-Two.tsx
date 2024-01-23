@@ -1,7 +1,6 @@
 import Header from "../../components/ui/Header/Header";
 import Sidebar from "../../components/ui/NavBar/Sidebar";
 import NavButton from "../../components/Buttons/NavButton";
-import CheckboxInput from "../../components/Inputs/Checkbox";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";
 import { Grid, GridItem, Progress, FormControl, Box } from "@chakra-ui/react";
@@ -11,35 +10,35 @@ export default function ProtocolPartTwo2() {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Accordion" />
-      <GridItem>
-        <Header text="Protocólo" />
+      <GridItem justifyContent={"center"} alignContent={"center"} display={"flex"} flexDir={"column"} ml={"5%"}>
+        <Header text="Protocol" />
         <Progress value={33} />
         <FormControl display={"flex"} flexDir={"column"} gap={20} mt={20}>
           <FormControl display={"flex"}>
-            <AddTextTable text="Palvras-chave" placeholder="Informe a palavra-chave..." />
+            <AddTextTable text="Keywords" placeholder="Enter keywords" />
           </FormControl>
 
-          <CheckboxInput
-            label="Linguagens: "
-            value={["ingles", "portugues", "frances"]}
-            name={["Inglês", "Português", "Francês"]}
+          <AddSelectionTable
+            text="Languages:"
+            options={["", "English", "Portuguese", "French", "Spanish", "German"]}
+            placeholder="Select the languages"
           />
 
-          <AddTextTable text="Critérios de inclusão:" placeholder="Informe o critério de inclusão..." />
-          <AddTextTable text="Critérios de exclusão:" placeholder="Informe o critério de exclusao..." />
+          <AddTextTable text="Inclusion Criteria:" placeholder="Enter the criteria" />
+          <AddTextTable text="Exclusion Criteria:" placeholder="Enter the criteria" />
 
           <AddSelectionTable
             text="Data Bases: "
-            options={["", "Google Acadêmico", "Scopus", "Scielo", "BDTD", "PubMed"]}
-            placeholder="Informe as bases de dado"
+            options={["", "Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
+            placeholder="Select a Data Base"
           />
 
-          <TextAreaInput label="Estratégia de pesquisa" placeholder="Informe a estratégia de pesquisa..." />
-          <TextAreaInput label="Processo de Seleção" placeholder="Informe o Processo de Seleção" />
-          <TextAreaInput label="Processo de Coleta de Dados" placeholder="Informe o processo de coleta de dados..." />
+          <TextAreaInput label="Research Strategy" placeholder="Enter research strategy" />
+          <TextAreaInput label="Article Selection Process" placeholder="Enter selection process" />
+          <TextAreaInput label="Data Acquisition" placeholder="Enter the data acquisition method" />
         </FormControl>
 
-        <Box ml={"65%"} alignSelf={"flex-end"}>
+        <Box alignSelf={"flex-end"}>
           <NavButton text="Next" path="/newRevision/protocolpartThree" />
         </Box>
       </GridItem>
