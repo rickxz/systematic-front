@@ -1,7 +1,6 @@
 import Header from "../../components/ui/Header/Header";
 import Sidebar from "../../components/ui/NavBar/Sidebar";
 import NavButton from "../../components/Buttons/NavButton";
-import CheckboxInput from "../../components/Inputs/Checkbox";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";
 import { Grid, GridItem, Progress, FormControl, Box } from "@chakra-ui/react";
@@ -19,10 +18,10 @@ export default function ProtocolPartTwo2() {
             <AddTextTable text="Keywords" placeholder="Enter keywords" />
           </FormControl>
 
-          <CheckboxInput
-            label="Languages: "
-            value={["ingles", "portugues", "frances"]}
-            name={["English", "Portuguese", "French"]}
+          <AddSelectionTable
+            text="Languages:"
+            options={["", "English", "Portuguese", "French", "Spanish", "German"]}
+            placeholder="Select the languages"
           />
 
           <AddTextTable text="Inclusion Criteria:" placeholder="Enter the criteria" />
