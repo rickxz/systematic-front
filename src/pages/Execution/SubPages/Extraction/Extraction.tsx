@@ -54,13 +54,7 @@ export default function Extraction() {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Accordion" />
-      <GridItem
-        alignContent={"center"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        textAlign={"center"}
-        justifySelf={"center"}
-      >
+      <GridItem textAlign={"center"} justifySelf={"center"} w={"80vw"} ml={5}>
         <Header text="Extraction" />
         <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
           <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} justifyContent={"space-between"}>

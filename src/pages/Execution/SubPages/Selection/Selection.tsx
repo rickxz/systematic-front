@@ -1,14 +1,14 @@
-import { Grid, GridItem, Box } from "@chakra-ui/react";
-import Sidebar from "../../../../components/ui/NavBar/Sidebar";
-import Header from "../../../../components/ui/Header/Header";
-import DynamicTable from "../../../../components/Tables/DynamicTable";
-import InputText from "../../../../components/Inputs/InputText";
-import CheckboxInput from "../../../../components/Inputs/Checkbox";
-import SelectInput from "../../../../components/Inputs/SelectInput";
 import { useState } from "react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 import EventButton from "../../../../components/Buttons/EventButton";
+import CheckboxInput from "../../../../components/Inputs/Checkbox";
+import InputText from "../../../../components/Inputs/InputText";
+import SelectInput from "../../../../components/Inputs/SelectInput";
+import DynamicTable from "../../../../components/Tables/DynamicTable";
+import Header from "../../../../components/ui/Header/Header";
+import Sidebar from "../../../../components/ui/NavBar/Sidebar";
 
-export default function Selection() {
+export default function Extraction() {
   const handleSelectChange = (value: string) => {
     setSelectedValue(value);
   };
@@ -54,13 +54,7 @@ export default function Selection() {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Accordion" />
-      <GridItem
-        alignContent={"center"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        textAlign={"center"}
-        justifySelf={"center"}
-      >
+      <GridItem textAlign={"center"} justifySelf={"center"} w={"80vw"} ml={5}>
         <Header text="Selection" />
         <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
           <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} justifyContent={"space-between"}>

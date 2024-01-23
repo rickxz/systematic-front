@@ -55,16 +55,10 @@ export default function Insertion() {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Accordion" />
-      <GridItem
-        alignContent={"center"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        textAlign={"center"}
-        justifySelf={"center"}
-      >
+      <GridItem textAlign={"center"} justifySelf={"center"} w={"82vw"} marginLeft={5}>
         <Header text="Manualy Study Insertion" />
         <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
-          <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} justifyContent={"space-between"}>
+          <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} columnGap={5}>
             <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
             <SelectInput
               label="Classification:"
@@ -74,7 +68,7 @@ export default function Insertion() {
               selectedValue={selectedValue}
             />
           </Box>
-          <Box display={"flex"} flexDir={"row"} columnGap={20}>
+          <Box display={"flex"} flexDir={"row"} columnGap={5}>
             <CheckboxInput
               label="General Information: "
               name={[
@@ -89,7 +83,7 @@ export default function Insertion() {
               value={["idPaper", "title", "author", "statusSelection", "statusExtraction", "readingPriority", "score"]}
             />
             <EventButton
-              mt={7}
+              mt={8}
               text="Sort by Score"
               event={() => {
                 console.log("sorted");
