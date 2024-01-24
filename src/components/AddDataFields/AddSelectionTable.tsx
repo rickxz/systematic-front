@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { FormControl } from "@chakra-ui/react";
 import SelectInput from "../Inputs/SelectInput";
-import InfosTable from "../Tables/ProtocolAddTable";
 import EventButton from "../Buttons/EventButton";
+import InfosTable from "../Tables/ProtocolAddTable";
+import { handleSelectChange } from "../../hooks/useSelectChange";
 import { handleAddButtonClick } from "../../hooks/useAddButtonClick";
 interface AddSelectTableProps {
   options: string[];
@@ -11,12 +12,8 @@ interface AddSelectTableProps {
 }
 
 export default function AddSelectTable({ options, placeholder, typeField }: AddSelectTableProps) {
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
+  const [selectedValue] = useState<string | null>(null);
   const [selectedValues] = useState<string[]>([]);
-
-  const handleSelectChange = (value: string) => {
-    setSelectedValue(value);
-  };
 
   return (
     <FormControl display={"flex"} flexDir={"row"} columnGap={"5"}>
