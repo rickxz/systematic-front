@@ -8,6 +8,12 @@ export default function KeyWordScreen() {
     ["", "Lorem", 5],
     ["", "Lorem", 3],
     ["", "Lorem", 2],
+    ["", "Lorem", 2],
+    ["", "Lorem", 2],
+    ["", "Lorem", 2],
+    ["", "Lorem", 2],
+    ["", "Lorem", 2],
+    ["", "Lorem", 2],
   ];
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>

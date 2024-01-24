@@ -12,7 +12,7 @@ interface DynamicTableProps {
 export default function DynamicTable({ headerData, bodyData, type }: DynamicTableProps) {
   const isKeyWordTable = type === "keyword";
   return (
-    <TableContainer mt={10}>
+    <TableContainer mt={10} h={isKeyWordTable ? "50vh" : 250} overflowY={"scroll"}>
       <Table variant={"striped"} size={"lg"}>
         <Thead>
           <Tr bgColor={"darkblue"}>

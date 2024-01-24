@@ -12,7 +12,7 @@ interface AddSelectTableProps {
 }
 
 export default function AddSelectTable({ options, placeholder, typeField }: AddSelectTableProps) {
-  const [selectedValue] = useState<string | null>(null);
+  const [selectedValue] = useState<string>("");
   const [selectedValues] = useState<string[]>([]);
 
   return (
