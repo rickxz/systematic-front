@@ -6,7 +6,7 @@ import { Table, TableContainer, Thead, Tbody, Tr, Th, Td, Icon } from "@chakra-u
 interface DynamicTableProps {
   headerData: string[];
   bodyData: (string | number)[][];
-  type: string;
+  type?: string;
 }
 
 export default function DynamicTable({ headerData, bodyData, type }: DynamicTableProps) {

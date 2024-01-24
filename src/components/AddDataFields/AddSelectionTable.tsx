@@ -25,12 +25,6 @@ export default function AddSelectTable({ options, placeholder, typeField }: AddS
     }
   };
 
-  const handleDeleteSelect = (index: number) => {
-    const updatedSelectedValues = [...selectedValues];
-    updatedSelectedValues.splice(index, 1);
-    setSelectedValues(updatedSelectedValues);
-  };
-
   return (
     <FormControl display={"flex"} flexDir={"row"} columnGap={"5"}>
       <FormControl display={"flex"} flexDir={"column"} rowGap={"5"}>
@@ -44,7 +38,7 @@ export default function AddSelectTable({ options, placeholder, typeField }: AddS
         <EventButton text="Add" event={handleAddButtonClick} />
       </FormControl>
 
-      <InfosTable typeField={typeField} onDeleteAddedText={handleDeleteSelect} AddTexts={selectedValues} />
+      <InfosTable typeField={typeField} AddTexts={selectedValues} />
     </FormControl>
   );
 }
