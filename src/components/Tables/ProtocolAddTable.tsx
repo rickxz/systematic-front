@@ -5,9 +5,10 @@ import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 interface InfosTableProps {
   AddTexts: string[];
   onDeleteAddedText: (index: number) => void;
+  typeField: string;
 }
 
-export default function InfosTable({ AddTexts, onDeleteAddedText }: InfosTableProps) {
+export default function InfosTable({ AddTexts, onDeleteAddedText, typeField }: InfosTableProps) {
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [editedValue, setEditedValue] = useState<string>("");
 
@@ -46,15 +47,17 @@ export default function InfosTable({ AddTexts, onDeleteAddedText }: InfosTablePr
                 <Button variant="ghost" onClick={() => handleDelete(index)}>
                   <Icon as={DeleteIcon} w={"15px"} h={"15px"} />
                 </Button>
-                {editIndex === index ? (
-                  <Button variant="ghost" onClick={handleSaveEdit}>
-                    Save
-                  </Button>
-                ) : (
-                  <Button variant="ghost" onClick={() => handleEdit(index)}>
-                    <Icon as={EditIcon} w={"15px"} h={"15px"} />
-                  </Button>
-                )}
+                {typeField !== "select" ? (
+                  editIndex === index ? (
+                    <Button variant="ghost" onClick={handleSaveEdit}>
+                      Save
+                    </Button>
+                  ) : (
+                    <Button variant="ghost" onClick={() => handleEdit(index)}>
+                      <Icon as={EditIcon} w={"15px"} h={"15px"} />
+                    </Button>
+                  )
+                ) : null}
               </Td>
             </Tr>
           ))}

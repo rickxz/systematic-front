@@ -19,18 +19,18 @@ export default function ProtocolPartTwo2() {
           </FormControl>
 
           <AddSelectionTable
-            text="Languages:"
             options={["", "English", "Portuguese", "French", "Spanish", "German"]}
-            placeholder="Select the languages"
+            placeholder={"Languages:"}
+            typeField="select"
           />
 
           <AddTextTable text="Inclusion Criteria:" placeholder="Enter the criteria" />
           <AddTextTable text="Exclusion Criteria:" placeholder="Enter the criteria" />
 
           <AddSelectionTable
-            text="Data Bases: "
             options={["", "Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
-            placeholder="Select a Data Base"
+            placeholder={"Data bases"}
+            typeField="select"
           />
 
           <TextAreaInput label="Research Strategy" placeholder="Enter research strategy" />
