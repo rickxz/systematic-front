@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Table, Tbody, Tr, Td, TableContainer, Button, Icon, Input } from "@chakra-ui/react";
-import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { Table, Tbody, Tr, Td, TableContainer, Input } from "@chakra-ui/react";
+import EditButton from "../Buttons/EditButton";
+import DeleteButton from "../Buttons/DeleteButton";
 
 interface InfosTableProps {
   AddTexts: string[];
@@ -44,19 +45,14 @@ export default function InfosTable({ AddTexts, onDeleteAddedText, typeField }: I
                 )}
               </Td>
               <Td textAlign={"right"}>
-                <Button variant="ghost" onClick={() => handleDelete(index)}>
-                  <Icon as={DeleteIcon} w={"15px"} h={"15px"} />
-                </Button>
+                <DeleteButton index={index} handleDelete={(index) => handleDelete(index)} />
                 {typeField !== "select" ? (
-                  editIndex === index ? (
-                    <Button variant="ghost" onClick={handleSaveEdit}>
-                      Save
-                    </Button>
-                  ) : (
-                    <Button variant="ghost" onClick={() => handleEdit(index)}>
-                      <Icon as={EditIcon} w={"15px"} h={"15px"} />
-                    </Button>
-                  )
+                  <EditButton
+                    index={index}
+                    editIndex={editIndex}
+                    handleEdit={(index) => handleEdit(index)}
+                    handleSaveEdit={handleSaveEdit}
+                  />
                 ) : null}
               </Td>
             </Tr>
