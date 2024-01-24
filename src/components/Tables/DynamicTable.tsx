@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React from "react";
 import { FaRegCircle } from "react-icons/fa";
 import { useIconColorByFrequency } from "../../hooks/UseIconColorByFrequency";
 import { Table, TableContainer, Thead, Tbody, Tr, Th, Td, Icon } from "@chakra-ui/react";
@@ -7,10 +6,11 @@ import { Table, TableContainer, Thead, Tbody, Tr, Th, Td, Icon } from "@chakra-u
 interface DynamicTableProps {
   headerData: string[];
   bodyData: (string | number)[][];
-  icon?: React.ReactNode;
+  type: string;
 }
 
-export default function DynamicTable({ headerData, bodyData, icon }: DynamicTableProps) {
+export default function DynamicTable({ headerData, bodyData, type }: DynamicTableProps) {
+  const isKeyWordTable = type === "keyword";
   return (
     <TableContainer mt={10}>
       <Table variant={"striped"} size={"lg"}>
@@ -28,7 +28,7 @@ export default function DynamicTable({ headerData, bodyData, icon }: DynamicTabl
             <Tr key={rowIndex}>
               {row.map((cell, cellIndex) => (
                 <Td key={cellIndex}>
-                  {cellIndex === 0 && icon ? (
+                  {cellIndex === 0 && isKeyWordTable ? (
                     <Icon
                       as={FaRegCircle}
                       color={useIconColorByFrequency(row[2] as number)}
