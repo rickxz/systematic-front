@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Table, Tbody, Tr, Td, TableContainer, Input } from "@chakra-ui/react";
 import EditButton from "../Buttons/EditButton";
 import DeleteButton from "../Buttons/DeleteButton";
-import { handleEdit, handleSaveEdit } from "../../hooks/useEditText";
 import { handleDelete } from "../../hooks/UseDeleteText";
+import { handleEdit, handleSaveEdit } from "../../hooks/useEditText";
+import { Table, Tbody, Tr, Td, TableContainer, Input } from "@chakra-ui/react";
 
 interface InfosTableProps {
   AddTexts: string[];
