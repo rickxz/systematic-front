@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { FormControl, FormLabel } from "@chakra-ui/react";
 import SelectInput from "../Inputs/SelectInput";
 import InfosTable from "../Tables/ProtocolAddTable";
 import EventButton from "../Buttons/EventButton";
+import { useSelect } from "../../hooks/useSelect"; // Importe o hook
 
 interface AddSelectTableProps {
   text: string;
@@ -11,25 +11,8 @@ interface AddSelectTableProps {
 }
 
 export default function AddSelectTable({ text, options, placeholder }: AddSelectTableProps) {
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
-  const [selectedValues, setSelectedValues] = useState<string[]>([]);
-
-  const handleSelectChange = (value: string) => {
-    setSelectedValue(value);
-  };
-
-  const handleAddButtonClick = () => {
-    if (selectedValue !== null) {
-      setSelectedValues((prevSelectedValues) => [...prevSelectedValues, selectedValue]);
-      setSelectedValue(null);
-    }
-  };
-
-  const handleDeleteSelect = (index: number) => {
-    const updatedSelectedValues = [...selectedValues];
-    updatedSelectedValues.splice(index, 1);
-    setSelectedValues(updatedSelectedValues);
-  };
+  const { selectedValue, selectedValues, handleSelectChange, handleSelectAddButtonClick, handleDeleteSelect } =
+    useSelect();
 
   return (
     <FormControl display={"flex"} flexDir={"column"} rowGap={"5"}>
@@ -43,10 +26,14 @@ export default function AddSelectTable({ text, options, placeholder }: AddSelect
           onSelect={handleSelectChange}
           selectedValue={selectedValue}
         />
-        <EventButton text="Add" event={handleAddButtonClick} />
+        <EventButton text="Add" event={handleSelectAddButtonClick} />
       </FormControl>
 
-      <InfosTable onDeleteAddedText={handleDeleteSelect} AddTexts={selectedValues} />
+      <InfosTable
+        typeField="select"
+        onDeleteAddedText={(index) => handleDeleteSelect(index)}
+        AddTexts={selectedValues}
+      />
     </FormControl>
   );
 }
