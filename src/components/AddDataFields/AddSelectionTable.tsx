@@ -1,23 +1,20 @@
-import { FormControl, FormLabel } from "@chakra-ui/react";
+import { FormControl } from "@chakra-ui/react";
 import SelectInput from "../Inputs/SelectInput";
 import InfosTable from "../Tables/ProtocolAddTable";
 import EventButton from "../Buttons/EventButton";
 import { useSelect } from "../../hooks/useSelect"; // Importe o hook
 
 interface AddSelectTableProps {
-  text: string;
   options: string[];
   placeholder: string;
 }
 
-export default function AddSelectTable({ text, options, placeholder }: AddSelectTableProps) {
+export default function AddSelectTable({ options, placeholder }: AddSelectTableProps) {
   const { selectedValue, selectedValues, handleSelectChange, handleSelectAddButtonClick, handleDeleteSelect } =
     useSelect();
 
   return (
-    <FormControl display={"flex"} flexDir={"column"} rowGap={"5"}>
-      <FormLabel>{text}</FormLabel>
-
+    <FormControl display={"flex"} flexDir={"row"} columnGap={"5"}>
       <FormControl display={"flex"} flexDir={"column"} rowGap={"5"}>
         <SelectInput
           values={options}
