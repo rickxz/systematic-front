@@ -1,6 +1,6 @@
 import { FormControl } from "@chakra-ui/react";
 import SelectInput from "../Inputs/SelectInput";
-import InfosTable from "../Tables/ProtocolAddTable";
+import InfosTable from "../Tables/InfosTable";
 import EventButton from "../Buttons/EventButton";
 import { useSelect } from "../../hooks/useSelect"; // Importe o hook
 

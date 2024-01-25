@@ -1,6 +1,6 @@
 import { FormControl, FormLabel } from "@chakra-ui/react";
 import AddTextField from "./AddTextField";
-import InfosTable from "../Tables/ProtocolAddTable";
+import InfosTable from "../Tables/InfosTable";
 import { useAddText } from "../../hooks/useAddText";
 import { useDeleteText } from "../../hooks/useDeleteText";
 

@@ -1,7 +1,7 @@
-import { useState } from "react";
 import { Table, Tbody, Tr, Td, TableContainer, Input } from "@chakra-ui/react";
 import DeleteButton from "../Buttons/DeleteButton";
 import EditButton from "../Buttons/EditButton";
+import { useEditState } from "../../hooks/useEdit";
 
 interface InfosTableProps {
   AddTexts: string[];
@@ -10,26 +10,12 @@ interface InfosTableProps {
 }
 
 export default function InfosTable({ AddTexts, onDeleteAddedText, typeField }: InfosTableProps) {
-  const [editIndex, setEditIndex] = useState<number | null>(null);
-  const [editedValue, setEditedValue] = useState<string>("");
-
-  const handleDelete = (index: number) => {
-    onDeleteAddedText(index);
-  };
-
-  const handleEdit = (index: number) => {
-    setEditIndex(index);
-    setEditedValue(AddTexts[index]);
-  };
-
-  const handleSaveEdit = () => {
-    if (editIndex !== null) {
+  const { editIndex, handleEdit, handleSaveEdit, editedValue, handleChange } = useEditState({
+    AddTexts,
+    onSaveEdit: (editedValue, editIndex) => {
       AddTexts[editIndex] = editedValue;
-
-      setEditIndex(null);
-      setEditedValue("");
-    }
-  };
+    },
+  });
 
   return (
     <TableContainer border={"solid black 1px"} w="1000px" h={"120px"} overflowY={"auto"}>
@@ -37,20 +23,14 @@ export default function InfosTable({ AddTexts, onDeleteAddedText, typeField }: I
         <Tbody className="tableBody">
           {AddTexts.map((addText, index) => (
             <Tr key={index}>
-              <Td>
-                {editIndex === index ? (
-                  <Input value={editedValue} onChange={(e) => setEditedValue(e.target.value)} />
-                ) : (
-                  addText
-                )}
-              </Td>
+              <Td>{editIndex === index ? <Input value={editedValue} onChange={handleChange} /> : addText}</Td>
               <Td textAlign={"right"}>
-                <DeleteButton index={index} handleDelete={(index) => handleDelete(index)} />
+                <DeleteButton index={index} handleDelete={() => onDeleteAddedText(index)} />
                 {typeField !== "select" ? (
                   <EditButton
                     index={index}
                     editIndex={editIndex}
-                    handleEdit={(index) => handleEdit(index)}
+                    handleEdit={() => handleEdit(index)}
                     handleSaveEdit={handleSaveEdit}
                   />
                 ) : null}
