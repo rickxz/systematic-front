@@ -18,7 +18,11 @@ export default function AddTextTable({ text, placeholder }: AddTextTableProps) {
 
       <FormControl display={"flex"} flexDir={"row"} columnGap={"5%"}>
         <AddTextField onAddText={handleAddText} text={placeholder} />
-        <InfosTable onDeleteAddedText={(index) => handleDeleteText(index, setAddText)} AddTexts={AddText} />
+        <InfosTable
+          typeField={""}
+          onDeleteAddedText={(index) => handleDeleteText(index, setAddText)}
+          AddTexts={AddText}
+        />
       </FormControl>
     </FormControl>
   );

@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { Table, Tbody, Tr, Td, TableContainer, Button, Icon, Input } from "@chakra-ui/react";
-import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { Table, Tbody, Tr, Td, TableContainer, Input } from "@chakra-ui/react";
+import DeleteButton from "../Buttons/DeleteButton";
+import EditButton from "../Buttons/EditButton";
 
 interface InfosTableProps {
   AddTexts: string[];
   onDeleteAddedText: (index: number) => void;
+  typeField: string;
 }
 
-export default function InfosTable({ AddTexts, onDeleteAddedText }: InfosTableProps) {
+export default function InfosTable({ AddTexts, onDeleteAddedText, typeField }: InfosTableProps) {
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [editedValue, setEditedValue] = useState<string>("");
 
@@ -43,18 +45,15 @@ export default function InfosTable({ AddTexts, onDeleteAddedText }: InfosTablePr
                 )}
               </Td>
               <Td textAlign={"right"}>
-                <Button variant="ghost" onClick={() => handleDelete(index)}>
-                  <Icon as={DeleteIcon} w={"15px"} h={"15px"} />
-                </Button>
-                {editIndex === index ? (
-                  <Button variant="ghost" onClick={handleSaveEdit}>
-                    Save
-                  </Button>
-                ) : (
-                  <Button variant="ghost" onClick={() => handleEdit(index)}>
-                    <Icon as={EditIcon} w={"15px"} h={"15px"} />
-                  </Button>
-                )}
+                <DeleteButton index={index} handleDelete={(index) => handleDelete(index)} />
+                {typeField !== "select" ? (
+                  <EditButton
+                    index={index}
+                    editIndex={editIndex}
+                    handleEdit={(index) => handleEdit(index)}
+                    handleSaveEdit={handleSaveEdit}
+                  />
+                ) : null}
               </Td>
             </Tr>
           ))}
