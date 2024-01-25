@@ -1,16 +1,17 @@
-import React from "react";
 import { Table, TableContainer, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import ColoredIcon from "../Icons/ColoredIcon";
 
 interface DynamicTableProps {
   headerData: string[];
   bodyData: (string | number)[][];
-  icon?: React.ReactNode;
+  type?: string;
 }
 
-export default function DynamicTable({ headerData, bodyData, icon }: DynamicTableProps) {
+export default function DynamicTable({ headerData, bodyData, type }: DynamicTableProps) {
+  const isKeyWordTable = type === "keyword";
+
   return (
-    <TableContainer mt={10}>
+    <TableContainer mt={10} h={isKeyWordTable ? "50vh" : 250} overflowY={"scroll"}>
       <Table variant={"striped"} size={"lg"}>
         <Thead>
           <Tr bgColor={"darkblue"}>
@@ -25,7 +26,9 @@ export default function DynamicTable({ headerData, bodyData, icon }: DynamicTabl
           {bodyData.map((row, rowIndex) => (
             <Tr key={rowIndex}>
               {row.map((cell, cellIndex) => (
-                <Td key={cellIndex}>{cellIndex === 0 && icon ? <ColoredIcon frequency={row[2] as number} /> : cell}</Td>
+                <Td key={cellIndex}>
+                  {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={row[2] as number} /> : cell}
+                </Td>
               ))}
             </Tr>
           ))}

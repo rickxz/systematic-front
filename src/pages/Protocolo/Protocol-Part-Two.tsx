@@ -20,7 +20,8 @@ export default function ProtocolPartTwo2() {
 
           <AddSelectionTable
             options={["", "English", "Portuguese", "French", "Spanish", "German"]}
-            placeholder="Select the languages"
+            placeholder={"Languages:"}
+            typeField="select"
           />
 
           <AddTextTable text="Inclusion Criteria:" placeholder="Enter the criteria" />
@@ -28,7 +29,8 @@ export default function ProtocolPartTwo2() {
 
           <AddSelectionTable
             options={["", "Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
-            placeholder="Select a Data Base"
+            placeholder={"Data bases"}
+            typeField="select"
           />
 
           <TextAreaInput label="Research Strategy" placeholder="Enter research strategy" />

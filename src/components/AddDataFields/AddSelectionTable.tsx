@@ -7,6 +7,7 @@ import { useSelect } from "../../hooks/useSelect"; // Importe o hook
 interface AddSelectTableProps {
   options: string[];
   placeholder: string;
+  typeField: string;
 }
 
 export default function AddSelectTable({ options, placeholder }: AddSelectTableProps) {
