@@ -1,4 +1,4 @@
-import Revisions from "../../data/Revisions.json";
+import Revisions from "../../../public/data/revisions.json";
 import Header from "../../components/ui/Header/Header";
 import RevisionCard from "./subcomponents/RevisionCard";
 import { Flex, Grid, GridItem } from "@chakra-ui/react";
