@@ -2,6 +2,7 @@ import { Box, Grid, GridItem } from "@chakra-ui/react";
 import Sidebar from "../../components/ui/NavBar/Sidebar";
 import Header from "../../components/ui/Header/Header";
 import DataBaseCard from "./Cards/DatabaseCards";
+import DataBases from "../../data/dataBases.json";
 
 export default function Identification() {
   return (
@@ -23,10 +24,11 @@ export default function Identification() {
             justifySelf={"center"}
             margin={"auto"}
           >
-            <DataBaseCard text="Scopus" type="" />
-            <DataBaseCard text="Scopus" type="" />
-            <DataBaseCard text="Scopus" type="" />
-            <DataBaseCard text="Scopus" type="" />
+            {DataBases &&
+              DataBases.map((data) => {
+                return <DataBaseCard text={data.dbName} type={data.type} />;
+              })}
+            ;
           </Box>
         </Box>
       </GridItem>
