@@ -9,7 +9,7 @@ interface IEditionInfosProps {
 
 export default function EditionInfos({ lastEdition, creation, isEdited }: IEditionInfosProps) {
   return (
-    <Box display={"flex"} flexDir={"row"} mt={"1.5rem"} mr={0}>
+    <Box display={"flex"} flexDir={"row"} mt={"1.5rem"} mr={0} ml={5}>
       <EditionIcon isEdited={isEdited} />
       <Box display={"flex"} flexDir={"row"}>
         <Text w={"200px"}>Latest change: {lastEdition}</Text>

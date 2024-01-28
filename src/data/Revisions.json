@@ -1,7 +1,8 @@
 [
     {
+        "key": "1",
         "title": "First Revison",
-        "Revisor": [
+        "revisors": [
             "Lucas Sigoli",
             "Eduardo Derisso",
             "Gabriel Gatti"
@@ -11,8 +12,9 @@
         "isEdited": true
     },
     {
+        "key": "2",
         "title": "First Revison",
-        "Revisor": [
+        "revisors": [
             "Lucas Sigoli",
             "Eduardo Derisso",
             "Gabriel Gatti"
@@ -22,8 +24,9 @@
         "isEdited": false
     },
     {
+        "key": "3",
         "title": "First Revison",
-        "Revisor": [
+        "revisors": [
             "Lucas Sigoli",
             "Eduardo Derisso",
             "Gabriel Gatti"

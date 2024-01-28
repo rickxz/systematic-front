@@ -8,9 +8,9 @@ export default function EnterRevisionButton({ text }: IButtonProps) {
   return (
     <div>
       <Dashboard></Dashboard>
-      <Button ml={"1rem"} mt={4} w={"100px"} h={"25px"}>
-      {text}
-    </Button>
+      <Button ml={".8rem"} mt={4} w={"100px"} h={"25px"}>
+        {text}
+      </Button>
     </div>
   );
 }
