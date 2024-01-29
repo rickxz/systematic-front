@@ -8,13 +8,21 @@ import SelectInput from "../../../../components/Inputs/SelectInput";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
 
 export default function Extraction() {
-  const handleSelectChange = (value: string) => {
-    setSelectedValue(value);
-  };
+  const headerData = [
+    "IDSS",
+    "ID Paper",
+    "Title",
+    "Author",
+    "Year",
+    "Status/Selection",
+    "Status/Extraction",
+    "Reading Priority",
+    "Score",
+  ];
 
-  const headerData = ["IDSS", "ID Paper", "Title", "Author", "Year", "S/S", "S/E", "RP", "Score"];
   const bodyData = [
     ["03", "00001", "titulo1", "Jão da Silva, Cleitin, et all", "2002", "undefined", "undefined", "001", 100],
+
     [
       "02",
       "00006",
@@ -26,7 +34,9 @@ export default function Extraction() {
       "002",
       12,
     ],
+
     ["04", "00009", "terceiroTitulo", "José Pereira, Ana Souza, et all", "2010", "maisTexto", "outraCoisa", "003", 4],
+
     [
       "01",
       "00012",
@@ -39,12 +49,21 @@ export default function Extraction() {
       120,
     ],
   ];
-
+  const [checkedValues, setCheckedValues] = useState<string[]>([]);
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
+
+  const handleCheckboxChange = (selectedItems: string[]) => {
+    setCheckedValues(selectedItems);
+  };
+
+  const handleSelectChange = (value: string) => {
+    setSelectedValue(value);
+  };
+
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Accordion" />
-      <GridItem textAlign={"center"} justifySelf={"center"} w={"80vw"} ml={5}>
+      <GridItem textAlign={"center"} justifySelf={"center"} w={"85vw"} ml={5}>
         <Header text="Extraction" />
         <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
           <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} justifyContent={"space-between"}>
@@ -61,20 +80,22 @@ export default function Extraction() {
             <CheckboxInput
               label="General Information: "
               name={[
+                "IDSS",
                 "ID PAPER",
                 "TITLE",
                 "AUTHOR",
+                "YEAR",
                 "STATUS/SELECTION",
                 "STATUS/EXTRACTION",
                 "READING PRIORITY",
                 "SCORE",
               ]}
-              value={["idPaper", "title", "author", "statusSelection", "statusExtraction", "readingPriority", "score"]}
+              handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
             />
           </Box>
         </Box>
 
-        <DynamicTable headerData={headerData} bodyData={bodyData} />
+        <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
       </GridItem>
     </Grid>
   );

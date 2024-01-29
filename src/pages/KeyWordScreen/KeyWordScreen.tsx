@@ -20,7 +20,7 @@ export default function KeyWordScreen() {
       <Sidebar type="Accordion" />
       <GridItem display={"flex"} flexDir={"column"} alignContent={"center"}>
         <Header text="Keyword Screen" />
-        <DynamicTable headerData={headerData} bodyData={bodyData} type="keyword" />
+        <DynamicTable headerData={headerData} bodyData={bodyData} type="keyword" filteredColumns={[]} />
       </GridItem>
     </Grid>
   );

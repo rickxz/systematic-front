@@ -15,7 +15,7 @@ export default function Identification() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("../../../public/data/dataBases.json");
+      const response = await fetch("/data/dataBases.json");
       const data = await response.json();
       if (!data) console.log("erro no formado ou arquivo vázio!");
       setdatabase(data.databases);

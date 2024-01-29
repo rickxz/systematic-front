@@ -6,9 +6,10 @@ interface DynamicTableProps {
   headerData: string[];
   bodyData: (string | number)[][];
   type?: string;
+  filteredColumns: string[];
 }
 
-const DynamicTable: React.FC<DynamicTableProps> = ({ headerData, bodyData, type }) => {
+const DynamicTable: React.FC<DynamicTableProps> = ({ headerData, bodyData, type, filteredColumns }) => {
   const isKeyWordTable = type === "keyword";
 
   const [sortBy, setSortBy] = useState<string | null>(null);
@@ -22,6 +23,14 @@ const DynamicTable: React.FC<DynamicTableProps> = ({ headerData, bodyData, type 
       setSortDesc(false);
     }
   };
+
+  const shouldHideColumn = (columnName: string) => {
+    if (filteredColumns.length === 0) {
+      return false;
+    }
+    return !filteredColumns.includes(columnName);
+  };
+
   const sortedData = React.useMemo(() => {
     if (sortBy) {
       return [...bodyData].sort((a, b) => {
@@ -40,12 +49,18 @@ const DynamicTable: React.FC<DynamicTableProps> = ({ headerData, bodyData, type 
   }, [bodyData, headerData, sortBy, sortDesc]);
 
   return (
-    <TableContainer mt={10} h={isKeyWordTable ? "50vh" : 250} overflowY={"scroll"}>
+    <TableContainer mt={10} h={isKeyWordTable ? "50vh" : 250} overflowY={"scroll"} w={"fit-content"}>
       <Table variant={"striped"} size={"lg"}>
         <Thead>
           <Tr>
             {headerData.map((header) => (
-              <Th key={header} onClick={() => handleSort(header)} _hover={{ cursor: "pointer" }}>
+              <Th
+                key={header}
+                onClick={() => handleSort(header)}
+                _hover={{ cursor: "pointer" }}
+                id={header.toLowerCase()}
+                display={shouldHideColumn(header.toLowerCase()) ? "none" : ""}
+              >
                 {header}
               </Th>
             ))}
@@ -55,8 +70,11 @@ const DynamicTable: React.FC<DynamicTableProps> = ({ headerData, bodyData, type 
           {sortedData.map((rowData, rowIndex) => (
             <Tr key={rowIndex}>
               {rowData.map((cell, cellIndex) => (
-                <Td key={cellIndex}>
-                  {cellIndex == 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
+                <Td
+                  key={cellIndex}
+                  display={isKeyWordTable ? "" : shouldHideColumn(headerData[cellIndex].toLowerCase()) ? "none" : ""}
+                >
+                  {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
                 </Td>
               ))}
             </Tr>

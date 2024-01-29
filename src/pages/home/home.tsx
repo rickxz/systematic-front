@@ -18,7 +18,7 @@ export default function Home() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("../../../public/data/revisions.json");
+      const response = await fetch("data/revisions.json");
       const data = await response.json();
       setCardData(data);
     } catch (error) {
