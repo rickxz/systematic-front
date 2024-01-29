@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
-import EventButton from "../../../../components/Buttons/EventButton";
-import CheckboxInput from "../../../../components/Inputs/Checkbox";
-import InputText from "../../../../components/Inputs/InputText";
-import SelectInput from "../../../../components/Inputs/SelectInput";
-import DynamicTable from "../../../../components/Tables/DynamicTable";
 import Header from "../../../../components/ui/Header/Header";
 import Sidebar from "../../../../components/ui/NavBar/Sidebar";
+import InputText from "../../../../components/Inputs/InputText";
+import CheckboxInput from "../../../../components/Inputs/Checkbox";
+import SelectInput from "../../../../components/Inputs/SelectInput";
+import DynamicTable from "../../../../components/Tables/DynamicTable";
 
 export default function Extraction() {
   const handleSelectChange = (value: string) => {
@@ -15,38 +14,29 @@ export default function Extraction() {
 
   const headerData = ["IDSS", "ID Paper", "Title", "Author", "Year", "S/S", "S/E", "RP", "Score"];
   const bodyData = [
+    ["03", "00001", "titulo1", "Jão da Silva, Cleitin, et all", "2002", "undefined", "undefined", "001", 100],
     [
-      "01",
-      "00001",
-      "Lorem ipsum dolor sit amet consectur",
-      "Jão da Silva, Cleitin, et all",
-      "2002",
-      "undefined",
-      "undefined",
-      "001",
-      100,
+      "02",
+      "00006",
+      "outroTitulo",
+      "Maria Oliveira, Joãozinho, et all",
+      "2005",
+      "algumTexto",
+      "qualquerCoisa",
+      "002",
+      12,
     ],
+    ["04", "00009", "terceiroTitulo", "José Pereira, Ana Souza, et all", "2010", "maisTexto", "outraCoisa", "003", 4],
     [
       "01",
-      "00001",
-      "Lorem ipsum dolor sit amet consectur",
-      "Jão da Silva, Cleitin, et all",
-      "2002",
-      "undefined",
-      "undefined",
-      "001",
-      100,
-    ],
-    [
-      "01",
-      "00001",
-      "Lorem ipsum dolor sit amet consectur",
-      "Jão da Silva, Cleitin, et all",
-      "2002",
-      "undefined",
-      "undefined",
-      "001",
-      100,
+      "00012",
+      "quartoTitulo",
+      "Fernanda Santos, Carlos Silva, et all",
+      "2015",
+      "textoAleatório",
+      "coisaQualquer",
+      "004",
+      120,
     ],
   ];
 
@@ -80,13 +70,6 @@ export default function Extraction() {
                 "SCORE",
               ]}
               value={["idPaper", "title", "author", "statusSelection", "statusExtraction", "readingPriority", "score"]}
-            />
-            <EventButton
-              mt={7}
-              text="Sort by Score"
-              event={() => {
-                console.log("sorted");
-              }}
             />
           </Box>
         </Box>

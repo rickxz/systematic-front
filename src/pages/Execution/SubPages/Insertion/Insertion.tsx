@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
-import EventButton from "../../../../components/Buttons/EventButton";
-import CheckboxInput from "../../../../components/Inputs/Checkbox";
-import InputText from "../../../../components/Inputs/InputText";
-import SelectInput from "../../../../components/Inputs/SelectInput";
-import DynamicTable from "../../../../components/Tables/DynamicTable";
 import Header from "../../../../components/ui/Header/Header";
 import Sidebar from "../../../../components/ui/NavBar/Sidebar";
+import InputText from "../../../../components/Inputs/InputText";
 import NavButton from "../../../../components/Buttons/NavButton";
+import CheckboxInput from "../../../../components/Inputs/Checkbox";
+import SelectInput from "../../../../components/Inputs/SelectInput";
+import EventButton from "../../../../components/Buttons/EventButton";
+import DynamicTable from "../../../../components/Tables/DynamicTable";
 
 export default function Insertion() {
   const handleSelectChange = (value: string) => {
@@ -81,13 +81,6 @@ export default function Insertion() {
                 "SCORE",
               ]}
               value={["idPaper", "title", "author", "statusSelection", "statusExtraction", "readingPriority", "score"]}
-            />
-            <EventButton
-              mt={8}
-              text="Sort by Score"
-              event={() => {
-                console.log("sorted");
-              }}
             />
           </Box>
         </Box>
