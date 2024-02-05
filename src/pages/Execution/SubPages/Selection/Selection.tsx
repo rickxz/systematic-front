@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import GridLayout from "../../../../components/ui/Grid/Grid";
 import Header from "../../../../components/ui/Header/Header";
-import Sidebar from "../../../../components/ui/NavBar/Sidebar";
 import InputText from "../../../../components/Inputs/InputText";
 import CheckboxInput from "../../../../components/Inputs/Checkbox";
 import SelectInput from "../../../../components/Inputs/SelectInput";
@@ -61,42 +61,39 @@ export default function Selection() {
   };
 
   return (
-    <Grid templateColumns={"1fr 1fr 1fr"}>
-      <Sidebar type="Accordion" />
-      <GridItem textAlign={"center"} justifySelf={"center"} w={"80vw"} ml={5}>
-        <Header text="Selection" />
-        <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
-          <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} justifyContent={"space-between"}>
-            <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
-            <SelectInput
-              label="Classification:"
-              names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
-              values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
-              onSelect={handleSelectChange}
-              selectedValue={selectedValue}
-            />
-          </Box>
-          <Box display={"flex"} flexDir={"row"} columnGap={20} flexWrap={"wrap"}>
-            <CheckboxInput
-              label="General Information: "
-              name={[
-                "IDSS",
-                "ID PAPER",
-                "TITLE",
-                "AUTHOR",
-                "YEAR",
-                "STATUS/SELECTION",
-                "STATUS/EXTRACTION",
-                "READING PRIORITY",
-                "SCORE",
-              ]}
-              handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
-            />
-          </Box>
+    <GridLayout navigationType="Accordion">
+      <Header text="Selection" />
+      <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
+        <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} justifyContent={"space-between"}>
+          <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
+          <SelectInput
+            label="Classification:"
+            names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+            values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+            onSelect={handleSelectChange}
+            selectedValue={selectedValue}
+          />
         </Box>
+        <Box display={"flex"} flexDir={"row"} columnGap={20} flexWrap={"wrap"}>
+          <CheckboxInput
+            label="General Information: "
+            name={[
+              "IDSS",
+              "ID PAPER",
+              "TITLE",
+              "AUTHOR",
+              "YEAR",
+              "STATUS/SELECTION",
+              "STATUS/EXTRACTION",
+              "READING PRIORITY",
+              "SCORE",
+            ]}
+            handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
+          />
+        </Box>
+      </Box>
 
-        <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
-      </GridItem>
-    </Grid>
+      <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+    </GridLayout>
   );
 }
