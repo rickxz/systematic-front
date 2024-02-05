@@ -18,7 +18,7 @@ export default function InfosTable({ AddTexts, onDeleteAddedText, typeField }: I
   });
 
   return (
-    <TableContainer border={"solid black 1px"} w="1000px" h={"120px"} overflowY={"auto"}>
+    <TableContainer border={"solid black 1px"} w={"60vw"} h={"120px"} overflowY={"auto"}>
       <Table variant="simple" size="md">
         <Tbody className="tableBody">
           {AddTexts.map((addText, index) => (

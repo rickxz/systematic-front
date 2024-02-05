@@ -15,8 +15,8 @@ export default function AddSelectTable({ options, placeholder }: AddSelectTableP
     useSelect();
 
   return (
-    <FormControl display={"flex"} flexDir={"row"} columnGap={"5"}>
-      <FormControl display={"flex"} flexDir={"column"} rowGap={"5"}>
+    <FormControl display={"flex"} flexDir={"column"} gap={"5"}>
+      <FormControl display={"flex"} flexDir={"row"} gap={"5"}>
         <SelectInput
           values={options}
           names={options}
@@ -24,7 +24,7 @@ export default function AddSelectTable({ options, placeholder }: AddSelectTableP
           onSelect={handleSelectChange}
           selectedValue={selectedValue}
         />
-        <EventButton text="Add" event={handleSelectAddButtonClick} />
+        <EventButton text="Add" event={handleSelectAddButtonClick} mt={8} />
       </FormControl>
 
       <InfosTable

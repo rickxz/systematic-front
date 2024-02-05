@@ -10,12 +10,12 @@ export default function ProtocolPartThree() {
     <GridLayout navigationType="Accordion">
       <Header text="Protocol" />
       <Progress value={66} />
-      <FormControl display={"flex"} flexDir={"column"} mt={10} rowGap={10}>
+      <FormControl display={"flex"} flexDir={"column"} mt={10} rowGap={10} ml={"5%"}>
         <AddTextTable text={"Data extraction form"} placeholder="Enter data extraction criteria" />
         <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" />
         <AddTextTable text={"Study Risk of Bias (RoB) Assesment"} placeholder="..." />
       </FormControl>
-      <Box ml={"75%"} alignSelf={"flex-end"}>
+      <Box ml={"43em"} alignSelf={"flex-end"}>
         <NavButton text="Save Protocol" path="/newRevision/identification" />
       </Box>
     </GridLayout>

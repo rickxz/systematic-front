@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <GridLayout navigationType="Default">
       <Header text="My Systematic Reviews" />
-      <Flex mt={"2.5vh"} display={"flex"} flexDir={"column"} rowGap={5}>
+      <Flex mt={"2.5vh"} display={"flex"} flexDir={"column"} rowGap={5} alignItems={"center"}>
         {cardData.map((data) => {
           return (
             <RevisionCard

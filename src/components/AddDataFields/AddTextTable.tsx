@@ -16,7 +16,7 @@ export default function AddTextTable({ text, placeholder }: AddTextTableProps) {
     <FormControl display={"flex"} flexDir={"column"}>
       <FormLabel>{text}</FormLabel>
 
-      <FormControl display={"flex"} flexDir={"row"} columnGap={"5%"}>
+      <FormControl display={"flex"} flexDir={"column"} gap={10}>
         <AddTextField onAddText={handleAddText} text={placeholder} />
         <InfosTable
           typeField={""}
