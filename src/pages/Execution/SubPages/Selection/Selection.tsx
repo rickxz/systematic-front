@@ -63,7 +63,7 @@ export default function Selection() {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
       <Sidebar type="Accordion" />
-      <GridItem textAlign={"center"} justifySelf={"center"} w={"85vw"} ml={5}>
+      <GridItem textAlign={"center"} justifySelf={"center"} w={"80vw"} ml={5}>
         <Header text="Selection" />
         <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
           <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} justifyContent={"space-between"}>
@@ -76,7 +76,7 @@ export default function Selection() {
               selectedValue={selectedValue}
             />
           </Box>
-          <Box display={"flex"} flexDir={"row"} columnGap={20}>
+          <Box display={"flex"} flexDir={"row"} columnGap={20} flexWrap={"wrap"}>
             <CheckboxInput
               label="General Information: "
               name={[

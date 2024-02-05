@@ -49,8 +49,13 @@ const DynamicTable: React.FC<DynamicTableProps> = ({ headerData, bodyData, type,
   }, [bodyData, headerData, sortBy, sortDesc]);
 
   return (
-    <TableContainer mt={10} h={isKeyWordTable ? "50vh" : 250} overflowY={"scroll"} w={"fit-content"}>
-      <Table variant={"striped"} size={"lg"}>
+    <TableContainer
+      mt={10}
+      h={isKeyWordTable ? "50vh" : 250}
+      overflowY={"scroll"}
+      w={{ base: "60%", md: "85%", lg: "100%" }}
+    >
+      <Table variant={"striped"}>
         <Thead>
           <Tr>
             {headerData.map((header) => (
