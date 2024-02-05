@@ -1,8 +1,8 @@
+import { Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import GridLayout from "../../components/ui/Grid/Grid";
 import Header from "../../components/ui/Header/Header";
 import RevisionCard from "./subcomponents/RevisionCard";
-import { Flex, Grid, GridItem } from "@chakra-ui/react";
-import Sidebar from "../../components/ui/NavBar/Sidebar";
 
 interface cardDataProps {
   key: string;
@@ -30,25 +30,22 @@ export default function Home() {
   });
 
   return (
-    <Grid templateColumns={"1fr 1fr 1fr"}>
-      <Sidebar type="Default" />
-      <GridItem display={"flex"} flexDir={"column"} w={"70vw"}>
-        <Header text="My Systematic Reviews" />;
-        <Flex mt={"2.5vh"} display={"flex"} flexDir={"column"} rowGap={5}>
-          {cardData.map((data) => {
-            return (
-              <RevisionCard
-                id={data.key}
-                title={data.title}
-                RevisorNames={data.revisors}
-                lastEdition={data.lastChange}
-                creation={data.creation}
-                isEdited={data.isEdited}
-              />
-            );
-          })}
-        </Flex>
-      </GridItem>
-    </Grid>
+    <GridLayout navigationType="Default">
+      <Header text="My Systematic Reviews" />
+      <Flex mt={"2.5vh"} display={"flex"} flexDir={"column"} rowGap={5}>
+        {cardData.map((data) => {
+          return (
+            <RevisionCard
+              id={data.key}
+              title={data.title}
+              RevisorNames={data.revisors}
+              lastEdition={data.lastChange}
+              creation={data.creation}
+              isEdited={data.isEdited}
+            />
+          );
+        })}
+      </Flex>
+    </GridLayout>
   );
 }

@@ -1,7 +1,7 @@
-import { Grid, GridItem } from "@chakra-ui/react";
-import Sidebar from "../../components/ui/NavBar/Sidebar";
+import GridLayout from "../../components/ui/Grid/Grid";
 import Header from "../../components/ui/Header/Header";
 import DynamicTable from "../../components/Tables/DynamicTable";
+
 export default function KeyWordScreen() {
   const headerData = ["", "keyword", "Frequency"];
   const bodyData = [
@@ -16,12 +16,9 @@ export default function KeyWordScreen() {
     ["", "Lorem", 2],
   ];
   return (
-    <Grid templateColumns={"1fr 1fr 1fr"}>
-      <Sidebar type="Accordion" />
-      <GridItem display={"flex"} flexDir={"column"} alignContent={"center"}>
-        <Header text="Keyword Screen" />
-        <DynamicTable headerData={headerData} bodyData={bodyData} type="keyword" filteredColumns={[]} />
-      </GridItem>
-    </Grid>
+    <GridLayout navigationType="Accordion">
+      <Header text="Keyword Screen" />
+      <DynamicTable headerData={headerData} bodyData={bodyData} type="keyword" filteredColumns={[]} />
+    </GridLayout>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import GridLayout from "../../../../components/ui/Grid/Grid";
 import Header from "../../../../components/ui/Header/Header";
-import Sidebar from "../../../../components/ui/NavBar/Sidebar";
 import InputText from "../../../../components/Inputs/InputText";
 import NavButton from "../../../../components/Buttons/NavButton";
 import CheckboxInput from "../../../../components/Inputs/Checkbox";
@@ -63,52 +63,49 @@ export default function Insertion() {
   };
 
   return (
-    <Grid templateColumns={"1fr 1fr 1fr"}>
-      <Sidebar type="Accordion" />
-      <GridItem textAlign={"center"} justifySelf={"center"} w={"85vw"} ml={5}>
-        <Header text="Insertion" />
-        <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
-          <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} justifyContent={"space-between"}>
-            <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
-            <SelectInput
-              label="Classification:"
-              names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
-              values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
-              onSelect={handleSelectChange}
-              selectedValue={selectedValue}
-            />
-          </Box>
-          <Box display={"flex"} flexDir={"row"} columnGap={20}>
-            <CheckboxInput
-              label="General Information: "
-              name={[
-                "IDSS",
-                "ID PAPER",
-                "TITLE",
-                "AUTHOR",
-                "YEAR",
-                "STATUS/SELECTION",
-                "STATUS/EXTRACTION",
-                "READING PRIORITY",
-                "SCORE",
-              ]}
-              handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
-            />
-          </Box>
-        </Box>
-
-        <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
-        <Box display={"flex"} flexDir={"row"} alignItems={"center"} columnGap={5} alignSelf={"baseline"} ml={"60%"}>
-          <NavButton text={"Back"} path={"/newRevision/identification"} />
-          <EventButton
-            mt={2}
-            event={function (): void {
-              console.log("Adicionando novo paper!");
-            }}
-            text={"Add Paper"}
+    <GridLayout navigationType="Accordion">
+      <Header text="Insertion" />
+      <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
+        <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} justifyContent={"space-between"}>
+          <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
+          <SelectInput
+            label="Classification:"
+            names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+            values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+            onSelect={handleSelectChange}
+            selectedValue={selectedValue}
           />
         </Box>
-      </GridItem>
-    </Grid>
+        <Box display={"flex"} flexDir={"row"} columnGap={20}>
+          <CheckboxInput
+            label="General Information: "
+            name={[
+              "IDSS",
+              "ID PAPER",
+              "TITLE",
+              "AUTHOR",
+              "YEAR",
+              "STATUS/SELECTION",
+              "STATUS/EXTRACTION",
+              "READING PRIORITY",
+              "SCORE",
+            ]}
+            handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
+          />
+        </Box>
+      </Box>
+
+      <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+      <Box display={"flex"} flexDir={"row"} alignItems={"center"} columnGap={5} alignSelf={"baseline"} ml={"60%"}>
+        <NavButton text={"Back"} path={"/newRevision/identification"} />
+        <EventButton
+          mt={2}
+          event={function (): void {
+            console.log("Adicionando novo paper!");
+          }}
+          text={"Add Paper"}
+        />
+      </Box>
+    </GridLayout>
   );
 }
