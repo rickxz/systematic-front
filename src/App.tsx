@@ -9,6 +9,7 @@ import KeyWordScreen from "./pages/KeyWordScreen/KeyWordScreen";
 import Selection from "./pages/Execution/SubPages/Selection/Selection";
 import Extraction from "./pages/Execution/SubPages/Extraction/Extraction";
 import Insertion from "./pages/Execution/SubPages/Insertion/Insertion";
+import Finalization from "./pages/NovaRevisao/finalization/Finalization";
 function App() {
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
           <Route path="/newRevision/selection" element={<Selection />} />
           <Route path="/newRevision/extraction" element={<Extraction />} />
           <Route path="/newRevision/insertion" element={<Insertion />} />
+          <Route path="/newRevision/finalization" element={<Finalization/>} />
         </Routes>
       </Router>
     </>
