@@ -104,17 +104,19 @@ export default function Finalization() {
         <Box display="flex" flexDirection="column" gap={7}>
           <DynamicTable headerData={headerData} bodyData={bodyData} />
           <Textarea bg="gray.100" minHeight="20vh" placeholder="Write stuff here..."></Textarea>
+        
+          <Flex justifyContent="flex-end">
+            <EventButton
+              mt={2}
+              event={function (): void {
+                console.log("Export the Review!");
+              }}
+              text={"Export"}
+            />
+          </Flex>
         </Box>
         
-        <Flex justifyContent="flex-end">
-          <EventButton
-            mt={2}
-            event={function (): void {
-              console.log("Export the Review!");
-            }}
-            text={"Export"}
-          />
-        </Flex>
+        
 
       </GridItem>
     </Grid>
