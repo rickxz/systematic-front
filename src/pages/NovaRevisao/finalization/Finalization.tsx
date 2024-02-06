@@ -1,13 +1,12 @@
 import { useState } from "react";
 import EventButton from "../../../components/Buttons/EventButton";
-import NavButton from "../../../components/Buttons/NavButton";
 import InputText from "../../../components/Inputs/InputText";
 import SelectInput from "../../../components/Inputs/SelectInput";
 import DynamicTable from "../../../components/Tables/DynamicTable";
 import Header from "../../../components/ui/Header/Header";
 import Sidebar from "../../../components/ui/NavBar/Sidebar";
 
-import {Box, Flex, Grid, GridItem} from "@chakra-ui/react";
+import {Box, Flex, Grid, GridItem, Textarea} from "@chakra-ui/react";
 import CheckboxInput from "../../../components/Inputs/Checkbox";
 
 export default function Finalization() {
@@ -63,61 +62,60 @@ export default function Finalization() {
 
         <Header text="Review Finalization" />
 
-        <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
-          <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} columnGap={5}>
-            <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
-            <SelectInput
-              label="Classification:"
-              names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
-              values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
-              onSelect={handleSelectChange}
-              selectedValue={selectedValue}
-            />
+        <Flex flexDirection="column" gap={5}>
+          <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
+            <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} columnGap={5}>
+              <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
+              <SelectInput
+                label="Classification:"
+                names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+                values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+                onSelect={handleSelectChange}
+                selectedValue={selectedValue}
+              />
+            </Box>
           </Box>
-        </Box>
 
-        <Box display={"flex"} flexDir={"row"} columnGap={5}>
-          <CheckboxInput
-            label="General Information: "
-            name={[
-              "ID PAPER",
-              "TITLE",
-              "AUTHOR",
-              "STATUS/SELECTION",
-              "STATUS/EXTRACTION",
-              "READING PRIORITY",
-              "SCORE",
-            ]}
-            value={["idPaper", "title", "author", "statusSelection", "statusExtraction", "readingPriority", "score"]}
-          />
+          <Box display={"flex"} flexDir={"row"} columnGap={5}>
+            <CheckboxInput
+              label="General Information: "
+              name={[
+                "ID PAPER",
+                "TITLE",
+                "AUTHOR",
+                "STATUS/SELECTION",
+                "STATUS/EXTRACTION",
+                "READING PRIORITY",
+                "SCORE",
+              ]}
+              value={["idPaper", "title", "author", "statusSelection", "statusExtraction", "readingPriority", "score"]}
+            />
+
           <EventButton
             mt={8}
             text="Sort by Score"
             event={() => {
               console.log("sorted");
             }}
-          />
+            />
+          </Box>
+        </Flex>
+
+        <Box display="flex" flexDirection="column" gap={7}>
+          <DynamicTable headerData={headerData} bodyData={bodyData} />
+          <Textarea bg="gray.100" minHeight="20vh" placeholder="Write stuff here..."></Textarea>
         </Box>
-
-        <DynamicTable headerData={headerData} bodyData={bodyData} />
-
-        <Box
-          display={"flex"}
-          flexDir={"row"}
-          alignItems={"center"}
-          columnGap={5}
-          alignSelf={"baseline"}
-        >
-          <NavButton text={"Back"} path={"/newRevision/identification"} />
+        
+        <Flex justifyContent="flex-end">
           <EventButton
             mt={2}
             event={function (): void {
-              console.log("Finished the Review!");
+              console.log("Export the Review!");
             }}
-            text={"Finish Review"}
+            text={"Export"}
           />
-        </Box>
-        
+        </Flex>
+
       </GridItem>
     </Grid>
   )
