@@ -7,7 +7,7 @@ import DynamicTable from "../../../components/Tables/DynamicTable";
 import Header from "../../../components/ui/Header/Header";
 import Sidebar from "../../../components/ui/NavBar/Sidebar";
 
-import {Box, Flex} from "@chakra-ui/react";
+import {Box, Flex, Grid, GridItem} from "@chakra-ui/react";
 import CheckboxInput from "../../../components/Inputs/Checkbox";
 
 export default function Finalization() {
@@ -55,12 +55,11 @@ export default function Finalization() {
 
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
 
-
   return (
-    <Flex>
-      <Sidebar type="accordion"/>
+    <Grid templateColumns={"1fr 1fr 1fr"}>
+      <Sidebar type="Default"/>
 
-      <Flex flexDirection="column" p="2%">
+      <GridItem textAlign={"center"} justifySelf={"center"} w={"82vw"} marginLeft={5}>
 
         <Header text="Review Finalization" />
 
@@ -119,7 +118,7 @@ export default function Finalization() {
           />
         </Box>
         
-      </Flex>
-    </Flex>
+      </GridItem>
+    </Grid>
   )
 }
