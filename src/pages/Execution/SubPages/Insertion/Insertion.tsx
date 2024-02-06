@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Box } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import GridLayout from "../../../../components/ui/Grid/Grid";
 import Header from "../../../../components/ui/Header/Header";
 import InputText from "../../../../components/Inputs/InputText";
@@ -10,49 +10,29 @@ import EventButton from "../../../../components/Buttons/EventButton";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
 
 export default function Insertion() {
-  const headerData = [
-    "IDSS",
-    "ID Paper",
-    "Title",
-    "Author",
-    "Year",
-    "Status/Selection",
-    "Status/Extraction",
-    "Reading Priority",
-    "Score",
-  ];
-
-  const bodyData = [
-    ["03", "00001", "titulo1", "Jão da Silva, Cleitin, et all", "2002", "undefined", "undefined", "001", 100],
-
-    [
-      "02",
-      "00006",
-      "outroTitulo",
-      "Maria Oliveira, Joãozinho, et all",
-      "2005",
-      "algumTexto",
-      "qualquerCoisa",
-      "002",
-      12,
-    ],
-
-    ["04", "00009", "terceiroTitulo", "José Pereira, Ana Souza, et all", "2010", "maisTexto", "outraCoisa", "003", 4],
-
-    [
-      "01",
-      "00012",
-      "quartoTitulo",
-      "Fernanda Santos, Carlos Silva, et all",
-      "2015",
-      "textoAleatório",
-      "coisaQualquer",
-      "004",
-      120,
-    ],
-  ];
+  const [headerData, setHeaderData] = useState([]);
+  const [bodyData, setBodyData] = useState([]);
   const [checkedValues, setCheckedValues] = useState<string[]>([]);
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/data/tableData.json");
+        const data = await response.json();
+        if (data && data.headerData && data.bodyData) {
+          setHeaderData(data.headerData);
+          setBodyData(data.bodyData);
+        } else {
+          console.error("O arquivo JSON não possui a estrutura esperada.");
+        }
+      } catch (error) {
+        console.error("Erro ao buscar os dados:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleCheckboxChange = (selectedItems: string[]) => {
     setCheckedValues(selectedItems);
@@ -79,17 +59,7 @@ export default function Insertion() {
         <Box display={"flex"} flexDir={"row"} columnGap={20}>
           <CheckboxInput
             label="General Information: "
-            name={[
-              "IDSS",
-              "ID PAPER",
-              "TITLE",
-              "AUTHOR",
-              "YEAR",
-              "STATUS/SELECTION",
-              "STATUS/EXTRACTION",
-              "READING PRIORITY",
-              "SCORE",
-            ]}
+            name={headerData}
             handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
           />
         </Box>
