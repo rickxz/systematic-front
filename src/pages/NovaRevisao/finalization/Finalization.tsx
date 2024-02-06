@@ -49,12 +49,34 @@ export default function Finalization() {
     ],
   ];
 
+  const handleSelectChange = (value: string) => {
+    setSelectedValue(value);
+  };
+
+  const [selectedValue, setSelectedValue] = useState<string | null>(null);
+
+
   return (
     <Flex>
       <Sidebar type="accordion"/>
 
       <Flex flexDirection="column" p="2%">
-        
+
+        <Header text="Review Finalization" />
+
+        <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
+          <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} columnGap={5}>
+            <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
+            <SelectInput
+              label="Classification:"
+              names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+              values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+              onSelect={handleSelectChange}
+              selectedValue={selectedValue}
+            />
+          </Box>
+        </Box>
+
         <Box display={"flex"} flexDir={"row"} columnGap={5}>
           <CheckboxInput
             label="General Information: "
@@ -77,8 +99,6 @@ export default function Finalization() {
             }}
           />
         </Box>
-
-        <Header text="Review Finalization" />
 
         <DynamicTable headerData={headerData} bodyData={bodyData} />
 
