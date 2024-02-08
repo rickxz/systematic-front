@@ -9,7 +9,9 @@ interface iGridLayout {
 export default function GridLayout({ navigationType, children }: iGridLayout) {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"}>
-      <Sidebar type={navigationType} />
+      <GridItem>
+        <Sidebar type={navigationType} />
+      </GridItem>
       <GridItem textAlign={"center"} justifySelf={"center"} w={"80vw"} ml={10}>
         {children}
       </GridItem>

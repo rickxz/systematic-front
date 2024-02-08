@@ -10,7 +10,7 @@ export default function CheckboxInput({ label, name, handleCheckboxChange }: ICh
   const values: string[] = name.map((value) => value.toLowerCase());
 
   return (
-    <FormControl>
+    <FormControl w={"80vw"}>
       <FormLabel>{label}</FormLabel>
       <CheckboxGroup colorScheme="green" onChange={handleCheckboxChange} defaultValue={values}>
         <Stack spacing={[1, 5]} direction={["column", "row"]}>
