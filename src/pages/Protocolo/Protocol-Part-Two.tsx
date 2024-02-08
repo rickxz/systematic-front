@@ -11,7 +11,7 @@ export default function ProtocolPartTwo2() {
     <GridLayout navigationType="Accordion">
       <Header text="Protocol" />
       <Progress value={33} />
-      <FormControl display={"flex"} flexDir={"column"} gap={20} mt={20} ml={"5%"}>
+      <FormControl display={"flex"} flexDir={"column"} gap={20} mt={20} ml={"2%"}>
         <FormControl display={"flex"}>
           <AddTextTable text="Keywords" placeholder="Enter keywords" />
         </FormControl>
@@ -36,7 +36,7 @@ export default function ProtocolPartTwo2() {
         <TextAreaInput label="Data Acquisition" placeholder="Enter the data acquisition method" />
       </FormControl>
 
-      <Box ml={"43em"} alignSelf={"flex-end"}>
+      <Box ml={"23rem"} alignSelf={"flex-end"}>
         <NavButton text="Next" path="/newRevision/protocolpartThree" />
       </Box>
     </GridLayout>
