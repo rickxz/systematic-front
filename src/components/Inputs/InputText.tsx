@@ -14,7 +14,7 @@ export default function InputText({ label, placeholder, type, nome }: ITextField
   return (
     <FormControl display={"flex"} flexDir={"column"} mt={isSearchField ? "" : 10} ml={isSearchField ? "" : "5em"}>
       <FormLabel>{label}</FormLabel>
-      <FormControl display={"flex"} flexDir={"row"} gap={"1rem"} alignItems={"center"}>
+      <FormControl display={"flex"} flexDir={"row"} gap={".3rem"} alignItems={"center"}>
         <Input type={type} name={nome} placeholder={placeholder} w={isSearchField ? "250px" : "93.5%"} />
         {isSearchField && <SearchButton />}
       </FormControl>

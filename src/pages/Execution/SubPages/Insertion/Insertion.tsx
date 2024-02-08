@@ -46,7 +46,14 @@ export default function Insertion() {
     <GridLayout navigationType="Accordion">
       <Header text="Insertion" />
       <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
-        <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} justifyContent={"space-between"}>
+        <Box
+          display={"flex"}
+          flexDir={"row"}
+          w={"60%"}
+          alignContent={"center"}
+          justifyContent={"space-between"}
+          gap={"1rem"}
+        >
           <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
           <SelectInput
             label="Classification:"
