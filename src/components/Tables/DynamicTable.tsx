@@ -1,5 +1,6 @@
 import ColoredIcon from "../Icons/ColoredIcon";
 import useTableSorting from "../../hooks/useTableSorting";
+import useColumnVisibility from "../../hooks/useColumnVisibility";
 import { Table, TableContainer, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 
 interface DynamicTableProps {
@@ -11,14 +12,8 @@ interface DynamicTableProps {
 
 export default function DynamicTable({ headerData, bodyData, type, filteredColumns }: DynamicTableProps) {
   const isKeyWordTable = type === "keyword";
+  const getColumnVisibility = useColumnVisibility(filteredColumns);
   const { handleSort, sortedData } = useTableSorting(headerData, bodyData);
-
-  const shouldHideColumn = (columnName: string) => {
-    if (filteredColumns.length === 0) {
-      return false;
-    }
-    return !filteredColumns.includes(columnName);
-  };
 
   return (
     <TableContainer
@@ -36,7 +31,7 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
                 onClick={() => handleSort(header)}
                 _hover={{ cursor: "pointer" }}
                 id={header.toLowerCase()}
-                display={shouldHideColumn(header.toLowerCase()) ? "none" : ""}
+                display={getColumnVisibility(header.toLowerCase()) ? "none" : ""}
               >
                 {header}
               </Th>
@@ -49,7 +44,7 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
               {rowData.map((cell, cellIndex) => (
                 <Td
                   key={cellIndex}
-                  display={isKeyWordTable ? "" : shouldHideColumn(headerData[cellIndex].toLowerCase()) ? "none" : ""}
+                  display={isKeyWordTable ? "" : getColumnVisibility(headerData[cellIndex].toLowerCase()) ? "none" : ""}
                 >
                   {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
                 </Td>
