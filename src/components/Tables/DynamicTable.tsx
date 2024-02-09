@@ -1,5 +1,5 @@
 import ColoredIcon from "../Icons/ColoredIcon";
-import useTableSorting from "../../hooks/useSortData";
+import useTableSorting from "../../hooks/useTableSorting";
 import { Table, TableContainer, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 
 interface DynamicTableProps {
