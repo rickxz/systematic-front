@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import ColoredIcon from "../Icons/ColoredIcon";
+import useTableSorting from "../../hooks/useSortData";
 import { Table, TableContainer, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 
 interface DynamicTableProps {
@@ -9,20 +9,9 @@ interface DynamicTableProps {
   filteredColumns: string[];
 }
 
-const DynamicTable: React.FC<DynamicTableProps> = ({ headerData, bodyData, type, filteredColumns }) => {
+export default function DynamicTable({ headerData, bodyData, type, filteredColumns }: DynamicTableProps) {
   const isKeyWordTable = type === "keyword";
-
-  const [sortBy, setSortBy] = useState<string | null>(null);
-  const [sortDesc, setSortDesc] = useState(false);
-
-  const handleSort = (column: string) => {
-    if (sortBy === column) {
-      setSortDesc(!sortDesc);
-    } else {
-      setSortBy(column);
-      setSortDesc(false);
-    }
-  };
+  const { handleSort, sortedData } = useTableSorting(headerData, bodyData);
 
   const shouldHideColumn = (columnName: string) => {
     if (filteredColumns.length === 0) {
@@ -30,23 +19,6 @@ const DynamicTable: React.FC<DynamicTableProps> = ({ headerData, bodyData, type,
     }
     return !filteredColumns.includes(columnName);
   };
-
-  const sortedData = React.useMemo(() => {
-    if (sortBy) {
-      return [...bodyData].sort((a, b) => {
-        const valueA = a[headerData.indexOf(sortBy)];
-        const valueB = b[headerData.indexOf(sortBy)];
-        const comparison =
-          typeof valueA === "number" && typeof valueB === "number"
-            ? valueA - valueB
-            : String(valueA).localeCompare(String(valueB));
-
-        return sortDesc ? comparison * -1 : comparison;
-      });
-    } else {
-      return bodyData;
-    }
-  }, [bodyData, headerData, sortBy, sortDesc]);
 
   return (
     <TableContainer
@@ -88,6 +60,4 @@ const DynamicTable: React.FC<DynamicTableProps> = ({ headerData, bodyData, type,
       </Table>
     </TableContainer>
   );
-};
-
-export default DynamicTable;
+}
