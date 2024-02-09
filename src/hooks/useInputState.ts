@@ -1,4 +1,3 @@
-// useInputState.ts
 import { useState } from "react";
 
 const useInputState = <T>(initialValue: T) => {

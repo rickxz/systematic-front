@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 const useFetchTableData = (url: string) => {
-  // Adicione a URL como parâmetro
   const [headerData, setHeaderData] = useState([]);
   const [bodyData, setBodyData] = useState([]);
 
