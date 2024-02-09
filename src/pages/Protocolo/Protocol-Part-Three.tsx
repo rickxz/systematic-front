@@ -10,7 +10,7 @@ export default function ProtocolPartThree() {
     <GridLayout navigationType="Accordion">
       <Header text="Protocol" />
       <Progress value={66} />
-      <FormControl display={"flex"} flexDir={"column"} mt={10} rowGap={10} ml={"5%"}>
+      <FormControl display={"flex"} flexDir={"column"} mt={10} rowGap={10} ml={"2%"}>
         <AddTextTable text={"Data extraction form"} placeholder="Enter data extraction criteria" />
         <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" />
         <AddTextTable text={"Study Risk of Bias (RoB) Assesment"} placeholder="..." />
