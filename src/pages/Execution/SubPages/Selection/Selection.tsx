@@ -1,44 +1,17 @@
 import { Box } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import useInputState from "../../../../hooks/useInputState";
 import GridLayout from "../../../../components/ui/Grid/Grid";
 import Header from "../../../../components/ui/Header/Header";
 import InputText from "../../../../components/Inputs/InputText";
 import CheckboxInput from "../../../../components/Inputs/Checkbox";
 import SelectInput from "../../../../components/Inputs/SelectInput";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
+import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
 
 export default function Selection() {
-  const [headerData, setHeaderData] = useState([]);
-  const [bodyData, setBodyData] = useState([]);
-  const [checkedValues, setCheckedValues] = useState<string[]>([]);
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/data/tableData.json");
-        const data = await response.json();
-        if (data && data.headerData && data.bodyData) {
-          setHeaderData(data.headerData);
-          setBodyData(data.bodyData);
-        } else {
-          console.error("O arquivo JSON não possui a estrutura esperada.");
-        }
-      } catch (error) {
-        console.error("Erro ao buscar os dados:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const handleCheckboxChange = (selectedItems: string[]) => {
-    setCheckedValues(selectedItems);
-  };
-
-  const handleSelectChange = (value: string) => {
-    setSelectedValue(value);
-  };
+  const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
+  const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
+  const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
 
   return (
     <GridLayout navigationType="Accordion">
