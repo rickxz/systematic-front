@@ -12,7 +12,6 @@ export default function Extraction() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
   const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
-
   return (
     <GridLayout navigationType="Accordion">
       <Header text="Extraction" />
@@ -40,6 +39,17 @@ export default function Extraction() {
             label="General Information: "
             name={headerData}
             handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
+            checkedByDefault={[
+              "idss",
+              "id paper",
+              "title",
+              "author",
+              "year",
+              "status/selection",
+              "status/extraction",
+              "reading priority",
+              "score",
+            ]}
           />
         </Box>
       </Box>

@@ -40,6 +40,17 @@ export default function Insertion() {
             label="General Information: "
             name={headerData}
             handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
+            checkedByDefault={[
+              "idss",
+              "id paper",
+              "title",
+              "author",
+              "year",
+              "status/selection",
+              "status/extraction",
+              "reading priority",
+              "score",
+            ]}
           />
         </Box>
       </Box>

@@ -3,16 +3,15 @@ import { FormControl, FormLabel, CheckboxGroup, Stack, Checkbox } from "@chakra-
 interface ICheckBoxprops {
   label: string;
   name: string[];
+  checkedByDefault?: (string | number)[];
   handleCheckboxChange?: (selectedItems: string[]) => void;
 }
 
-export default function CheckboxInput({ label, name, handleCheckboxChange }: ICheckBoxprops) {
-  const values: string[] = name.map((value) => value.toLowerCase());
-
+export default function CheckboxInput({ label, name, checkedByDefault, handleCheckboxChange }: ICheckBoxprops) {
   return (
     <FormControl w={"80vw"}>
       <FormLabel>{label}</FormLabel>
-      <CheckboxGroup colorScheme="green" onChange={handleCheckboxChange} defaultValue={values}>
+      <CheckboxGroup colorScheme="green" onChange={handleCheckboxChange} defaultValue={checkedByDefault}>
         <Stack spacing={[1, 5]} direction={["column", "row"]}>
           {name.map((checkboxName, index) => (
             <Checkbox key={index} value={checkboxName.toLowerCase()}>
