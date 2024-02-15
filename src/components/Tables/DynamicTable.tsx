@@ -1,51 +1,52 @@
-import React from "react";
-import { Table, TableContainer, Thead, Tbody, Tr, Th, Td, Icon } from "@chakra-ui/react";
-import { FaRegCircle } from "react-icons/fa";
+import ColoredIcon from "../Icons/ColoredIcon";
+import useTableSorting from "../../hooks/useTableSorting";
+import useColumnVisibility from "../../hooks/useColumnVisibility";
+import { Table, TableContainer, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 
 interface DynamicTableProps {
   headerData: string[];
   bodyData: (string | number)[][];
-  icon?: React.ReactNode;
+  type?: string;
+  filteredColumns: string[];
 }
 
-export default function DynamicTable({ headerData, bodyData, icon }: DynamicTableProps) {
-  const handleIconColorByFrequency = (frequency: number): string => {
-    if (frequency <= 2) {
-      return "red";
-    } else if (frequency === 3) {
-      return "yellow";
-    } else {
-      return "blue";
-    }
-  };
+export default function DynamicTable({ headerData, bodyData, type, filteredColumns }: DynamicTableProps) {
+  const isKeyWordTable = type === "keyword";
+  const getColumnVisibility = useColumnVisibility(filteredColumns);
+  const { handleSort, sortedData } = useTableSorting(headerData, bodyData);
 
   return (
-    <TableContainer mt={10}>
-      <Table variant={"striped"} size={"lg"}>
+    <TableContainer
+      mt={10}
+      h={isKeyWordTable ? "50vh" : 250}
+      overflowY={"scroll"}
+      w={{ base: "60%", md: "85%", lg: "100%" }}
+    >
+      <Table variant={"striped"}>
         <Thead>
-          <Tr bgColor={"darkblue"}>
-            {headerData.map((header, index) => (
-              <Th key={index} color={"#FFFF"}>
+          <Tr>
+            {headerData.map((header) => (
+              <Th
+                key={header}
+                onClick={() => handleSort(header)}
+                _hover={{ cursor: "pointer" }}
+                id={header.toLowerCase()}
+                display={getColumnVisibility(header.toLowerCase()) ? "none" : ""}
+              >
                 {header}
               </Th>
             ))}
           </Tr>
         </Thead>
         <Tbody>
-          {bodyData.map((row, rowIndex) => (
+          {sortedData.map((rowData, rowIndex) => (
             <Tr key={rowIndex}>
-              {row.map((cell, cellIndex) => (
-                <Td key={cellIndex}>
-                  {cellIndex === 0 && icon ? (
-                    <Icon
-                      as={FaRegCircle}
-                      color={handleIconColorByFrequency(row[2] as number)}
-                      bgColor={handleIconColorByFrequency(row[2] as number)}
-                      borderRadius={360}
-                    />
-                  ) : (
-                    cell
-                  )}
+              {rowData.map((cell, cellIndex) => (
+                <Td
+                  key={cellIndex}
+                  display={isKeyWordTable ? "" : getColumnVisibility(headerData[cellIndex].toLowerCase()) ? "none" : ""}
+                >
+                  {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
                 </Td>
               ))}
             </Tr>

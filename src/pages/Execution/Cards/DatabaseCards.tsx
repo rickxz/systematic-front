@@ -66,5 +66,3 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
     </Card>
   );
 }
-
-// Em Identification.tsx

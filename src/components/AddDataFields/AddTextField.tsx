@@ -25,9 +25,9 @@ export default function AddTextField({ onAddText, text }: IAddTextFieldProps) {
   };
 
   return (
-    <FormControl rowGap={5} display={"flex"} flexDir={"column"}>
+    <FormControl rowGap={5} display={"flex"} flexDir={"column"} w={"100%"}>
       <TextAreaInput label="" placeholder={text} onChange={handleInputChange}></TextAreaInput>
-      <EventButton event={handleAddText} text="ADD" />
+      <EventButton event={handleAddText} text="ADD" mt={2} />
     </FormControl>
   );
 }

@@ -1,115 +1,71 @@
-import { useState } from "react";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
-import EventButton from "../../../../components/Buttons/EventButton";
-import CheckboxInput from "../../../../components/Inputs/Checkbox";
-import InputText from "../../../../components/Inputs/InputText";
-import SelectInput from "../../../../components/Inputs/SelectInput";
-import DynamicTable from "../../../../components/Tables/DynamicTable";
+import { Box } from "@chakra-ui/react";
+import useInputState from "../../../../hooks/useInputState";
+import GridLayout from "../../../../components/ui/Grid/Grid";
 import Header from "../../../../components/ui/Header/Header";
-import Sidebar from "../../../../components/ui/NavBar/Sidebar";
+import InputText from "../../../../components/Inputs/InputText";
 import NavButton from "../../../../components/Buttons/NavButton";
+import CheckboxInput from "../../../../components/Inputs/Checkbox";
+import SelectInput from "../../../../components/Inputs/SelectInput";
+import EventButton from "../../../../components/Buttons/EventButton";
+import DynamicTable from "../../../../components/Tables/DynamicTable";
+import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
 
 export default function Insertion() {
-  const handleSelectChange = (value: string) => {
-    setSelectedValue(value);
-  };
-
-  const headerData = ["IDSS", "ID Paper", "Title", "Author", "Year", "S/S", "S/E", "RP", "Score"];
-  const bodyData = [
-    [
-      "01",
-      "00001",
-      "Lorem ipsum dolor sit amet consectur",
-      "Jão da Silva, Cleitin, et all",
-      "2002",
-      "undefined",
-      "undefined",
-      "001",
-      100,
-    ],
-    [
-      "01",
-      "00001",
-      "Lorem ipsum dolor sit amet consectur",
-      "Jão da Silva, Cleitin, et all",
-      "2002",
-      "undefined",
-      "undefined",
-      "001",
-      100,
-    ],
-    [
-      "01",
-      "00001",
-      "Lorem ipsum dolor sit amet consectur",
-      "Jão da Silva, Cleitin, et all",
-      "2002",
-      "undefined",
-      "undefined",
-      "001",
-      100,
-    ],
-  ];
-
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
+  const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
+  const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
+  const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   return (
-    <Grid templateColumns={"1fr 1fr 1fr"}>
-      <Sidebar type="Accordion" />
-      <GridItem textAlign={"center"} justifySelf={"center"} w={"82vw"} marginLeft={5}>
-        <Header text="Manualy Study Insertion" />
-        <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
-          <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} columnGap={5}>
-            <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
-            <SelectInput
-              label="Classification:"
-              names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
-              values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
-              onSelect={handleSelectChange}
-              selectedValue={selectedValue}
-            />
-          </Box>
-          <Box display={"flex"} flexDir={"row"} columnGap={5}>
-            <CheckboxInput
-              label="General Information: "
-              name={[
-                "ID PAPER",
-                "TITLE",
-                "AUTHOR",
-                "STATUS/SELECTION",
-                "STATUS/EXTRACTION",
-                "READING PRIORITY",
-                "SCORE",
-              ]}
-              value={["idPaper", "title", "author", "statusSelection", "statusExtraction", "readingPriority", "score"]}
-            />
-            <EventButton
-              mt={8}
-              text="Sort by Score"
-              event={() => {
-                console.log("sorted");
-              }}
-            />
-          </Box>
-        </Box>
-        <DynamicTable headerData={headerData} bodyData={bodyData} />
+    <GridLayout navigationType="Accordion">
+      <Header text="Insertion" />
+      <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
         <Box
           display={"flex"}
           flexDir={"row"}
-          alignItems={"center"}
-          justifyContent={"flex-end"}
-          columnGap={5}
-          alignSelf={"baseline"}
+          w={"60%"}
+          alignContent={"center"}
+          justifyContent={"space-between"}
+          gap={"1rem"}
         >
-          <NavButton text={"Back"} path={"/newRevision/identification"} />
-          <EventButton
-            mt={2}
-            event={function (): void {
-              console.log("Adicionando novo paper!");
-            }}
-            text={"Add Paper"}
+          <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
+          <SelectInput
+            label="Classification:"
+            names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+            values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+            onSelect={handleSelectChange}
+            selectedValue={selectedValue}
           />
         </Box>
-      </GridItem>
-    </Grid>
+        <Box display={"flex"} flexDir={"row"} columnGap={20}>
+          <CheckboxInput
+            label="General Information: "
+            name={headerData}
+            handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
+            checkedByDefault={[
+              "idss",
+              "id paper",
+              "title",
+              "author",
+              "year",
+              "status/selection",
+              "status/extraction",
+              "reading priority",
+              "score",
+            ]}
+          />
+        </Box>
+      </Box>
+
+      <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+      <Box display={"flex"} flexDir={"row"} alignItems={"center"} columnGap={5} alignSelf={"baseline"} ml={"60%"}>
+        <NavButton text={"Back"} path={"/newRevision/identification"} />
+        <EventButton
+          mt={2}
+          event={function (): void {
+            console.log("Adicionando novo paper!");
+          }}
+          text={"Add Paper"}
+        />
+      </Box>
+    </GridLayout>
   );
 }

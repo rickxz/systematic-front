@@ -6,7 +6,15 @@ interface ICardInfosProps {
 }
 export default function CardInfos({ title, RevisorNames }: ICardInfosProps) {
   return (
-    <Box display={"flex"} flexDir={"column"} ml={"4.4rem"} alignSelf={"center"} justifySelf={"center"} rowGap={"0.5em"}>
+    <Box
+      display={"flex"}
+      flexDir={"column"}
+      ml={"4.4rem"}
+      alignSelf={"center"}
+      justifySelf={"center"}
+      w={"fit-content"}
+      rowGap={"0.5em"}
+    >
       <Text as={"h4"} w={"26em"}>
         {title}
       </Text>
