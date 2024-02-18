@@ -32,6 +32,7 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
                 _hover={{ cursor: "pointer" }}
                 id={header.toLowerCase()}
                 display={getColumnVisibility(header.toLowerCase()) ? "none" : ""}
+                textAlign={"center"}
               >
                 {header}
               </Th>
@@ -45,6 +46,7 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
                 <Td
                   key={cellIndex}
                   display={isKeyWordTable ? "" : getColumnVisibility(headerData[cellIndex].toLowerCase()) ? "none" : ""}
+                  textAlign={"center"}
                 >
                   {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
                 </Td>
