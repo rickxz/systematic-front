@@ -1,5 +1,5 @@
-import { Box, Card, Icon, Text } from "@chakra-ui/react";
-import { FaFile } from "react-icons/fa";
+import { Box, Card, Text } from "@chakra-ui/react";
+import UploadIcon from "../../components/Icons/UploadIcon";
 import EventButton from "../../components/Buttons/EventButton";
 
 export default function UploadBox() {
@@ -17,7 +17,7 @@ export default function UploadBox() {
         Import reference file:{" "}
       </Text>
       <Card h={200} w={"100%"} textAlign={"center"} justifyContent={"center"}>
-        <Icon as={FaFile} w={"60px"} h={"60px"} justifySelf={"center"} alignSelf={"center"} ml={"0.5rem"} mb={5} />
+        <UploadIcon />
         Insert file here
       </Card>
       <EventButton
