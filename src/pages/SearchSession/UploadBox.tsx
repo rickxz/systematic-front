@@ -4,15 +4,7 @@ import EventButton from "../../components/Buttons/EventButton";
 
 export default function UploadBox() {
   return (
-    <Box
-      ml={"10%"}
-      display={"flex"}
-      flexDir={"column"}
-      rowGap={10}
-      width={"50%"}
-      justifyContent={"flex-start"}
-      textAlign={"initial"}
-    >
+    <Box ml={"10%"} display={"flex"} flexDir={"column"} rowGap={10} width={"50%"} textAlign={"initial"}>
       <Text fontWeight={"bold"} fontSize={18}>
         Import reference file:{" "}
       </Text>

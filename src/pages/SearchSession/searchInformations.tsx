@@ -12,12 +12,14 @@ export default function SearchInformations() {
       <Text>
         <b>Number of Papers:</b> 22 <b>Date of search:</b> dd/mm/aa{" "}
       </Text>
-      <Text fontWeight={"bold"} fontSize={18}>
-        Observation:{" "}
-      </Text>
-      <Card h={200} w={"100%"} textAlign={"center"} justifyContent={"center"}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </Card>
+      <Box mt={10} w={"100%"} display={"flex"} flexDir={"column"} gap={2}>
+        <Text fontWeight={"bold"} fontSize={18} textAlign={"initial"}>
+          Observation:{" "}
+        </Text>
+        <Card h={200} w={"100%"} textAlign={"center"} justifyContent={"center"}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </Card>
+      </Box>
     </Box>
   );
 }
