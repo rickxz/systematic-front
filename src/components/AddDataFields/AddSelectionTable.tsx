@@ -24,7 +24,7 @@ export default function AddSelectTable({ options, placeholder }: AddSelectTableP
           onSelect={handleSelectChange}
           selectedValue={selectedValue}
         />
-        <EventButton text="Add" event={handleSelectAddButtonClick} mt={8} />
+        <EventButton text="Add" event={handleSelectAddButtonClick} mt={8} w={"10%"} />
       </FormControl>
 
       <InfosTable

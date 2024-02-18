@@ -56,14 +56,22 @@ export default function Insertion() {
       </Box>
 
       <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
-      <Box display={"flex"} flexDir={"row"} alignItems={"center"} columnGap={5} alignSelf={"baseline"} ml={"60%"}>
-        <NavButton text={"Back"} path={"/newRevision/identification"} />
+      <Box
+        display={"flex"}
+        flexDir={"row"}
+        alignItems={"center"}
+        columnGap={5}
+        alignSelf={"baseline"}
+        ml={"70%"}
+        mt={10}
+      >
+        <NavButton text={"Back"} path={"/newRevision/identification"} w={"200px"} />
         <EventButton
-          mt={2}
           event={function (): void {
             console.log("Adicionando novo paper!");
           }}
           text={"Add Paper"}
+          w={"200px"}
         />
       </Box>
     </GridLayout>

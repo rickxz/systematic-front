@@ -60,6 +60,7 @@ export default function Finalization() {
               console.log("Export the Review!");
             }}
             text={"Export"}
+            w={"200px"}
           />
         </Flex>
       </Box>
