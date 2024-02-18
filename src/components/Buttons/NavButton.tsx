@@ -1,19 +1,15 @@
-import { Box, Button } from "@chakra-ui/react";
+import { Button, ButtonProps } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-interface iButtonProps {
+interface iButtonProps extends ButtonProps {
   text: string;
   path: string;
 }
 
-export default function NavButton({ text, path }: iButtonProps) {
+export default function NavButton({ text, path, ...buttonProps }: iButtonProps) {
   return (
-    <Box alignSelf={"flex-end"} mt={50} mb={10} mr={"2em"}>
-      <Link to={path}>
-        <Button w={250} borderRadius={12}>
-          {text}
-        </Button>
-      </Link>
-    </Box>
+    <Link to={path}>
+      <Button {...buttonProps}>{text}</Button>
+    </Link>
   );
 }

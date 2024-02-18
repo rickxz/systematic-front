@@ -21,7 +21,7 @@ const useFetchTableData = (url: string) => {
     };
 
     fetchData();
-  }, [url]); // Certifique-se de adicionar a URL como dependência do useEffect
+  }, [url]);
 
   return { headerData, bodyData };
 };

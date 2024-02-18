@@ -10,8 +10,8 @@ import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
 
 export default function Extraction() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
-  const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
+  const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
   return (
     <GridLayout navigationType="Accordion">
       <Header text="Extraction" />

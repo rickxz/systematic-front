@@ -11,7 +11,7 @@ export default function EventButton({ event, text, ...buttonProps }: IEventButto
   };
 
   return (
-    <Button onClick={handleClick} {...buttonProps} w={250}>
+    <Button onClick={handleClick} {...buttonProps}>
       {text}
     </Button>
   );
