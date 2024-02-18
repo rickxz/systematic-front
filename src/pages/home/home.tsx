@@ -1,40 +1,51 @@
-import { Flex, Grid, GridItem } from "@chakra-ui/react";
-
-import Sidebar from "../../components/ui/NavBar/Sidebar";
-import RevisionCard from "./subcomponents/RevisionCard";
+import { Flex } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import GridLayout from "../../components/ui/Grid/Grid";
 import Header from "../../components/ui/Header/Header";
+import RevisionCard from "./subcomponents/RevisionCard";
+
+interface cardDataProps {
+  key: string;
+  title: string;
+  revisors: string[];
+  lastChange: string;
+  creation: string;
+  isEdited: boolean;
+}
 
 export default function Home() {
-  return (
-    <Grid templateColumns={"1fr 1fr 1fr"}>
-      <Sidebar type="Default" />
-      <GridItem display={"flex"} flexDir={"column"}>
-        <Header text="My Systematic Reviews" />
+  const [cardData, setCardData] = useState<cardDataProps[] | []>([]);
 
-        <Flex mt={"2.5vh"} display={"flex"} flexDir={"column"} rowGap={5}>
-          <RevisionCard
-            title="First Review"
-            RevisorNames={[" Lucas Sigoli,", " Eduardo Derisso,", " Gabriel Gatti"]}
-            lastEdition="04/01.2024"
-            creation="01/01/2024"
-            isEdited
-          />{" "}
-          <RevisionCard
-            title="Another one"
-            RevisorNames={[" Erick dos Santos,", "Gabriela Henriques,", "Prof. Dr. Daniel Porto"]}
-            lastEdition="04/01.2024"
-            creation="01/01/2024"
-            isEdited
-          />{" "}
-          <RevisionCard
-            title="And another one"
-            RevisorNames={["Prof. Dr. Lucas Bueno,", "Vitor Bonelli"]}
-            lastEdition="04/01.2024"
-            creation="01/01/2024"
-            isEdited={false}
-          />
-        </Flex>
-      </GridItem>
-    </Grid>
+  const fetchData = async () => {
+    try {
+      const response = await fetch("data/revisions.json");
+      const data = await response.json();
+      setCardData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  });
+
+  return (
+    <GridLayout navigationType="Default">
+      <Header text="My Systematic Reviews" />
+      <Flex mt={"2.5vh"} display={"flex"} flexDir={"column"} rowGap={5} alignItems={"center"}>
+        {cardData.map((data) => {
+          return (
+            <RevisionCard
+              id={data.key}
+              title={data.title}
+              RevisorNames={data.revisors}
+              lastEdition={data.lastChange}
+              creation={data.creation}
+              isEdited={data.isEdited}
+            />
+          );
+        })}
+      </Flex>
+    </GridLayout>
   );
 }

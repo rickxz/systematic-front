@@ -1,98 +1,60 @@
-import { useState } from "react";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
-import EventButton from "../../../../components/Buttons/EventButton";
-import CheckboxInput from "../../../../components/Inputs/Checkbox";
+import { Box } from "@chakra-ui/react";
+import useInputState from "../../../../hooks/useInputState";
+import GridLayout from "../../../../components/ui/Grid/Grid";
+import Header from "../../../../components/ui/Header/Header";
 import InputText from "../../../../components/Inputs/InputText";
+import CheckboxInput from "../../../../components/Inputs/Checkbox";
 import SelectInput from "../../../../components/Inputs/SelectInput";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
-import Header from "../../../../components/ui/Header/Header";
-import Sidebar from "../../../../components/ui/NavBar/Sidebar";
+import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
 
-export default function Extraction() {
-  const handleSelectChange = (value: string) => {
-    setSelectedValue(value);
-  };
+export default function Selection() {
+  const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
+  const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
+  const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
 
-  const headerData = ["IDSS", "ID Paper", "Title", "Author", "Year", "S/S", "S/E", "RP", "Score"];
-  const bodyData = [
-    [
-      "01",
-      "00001",
-      "Lorem ipsum dolor sit amet consectur",
-      "Jão da Silva, Cleitin, et all",
-      "2002",
-      "undefined",
-      "undefined",
-      "001",
-      100,
-    ],
-    [
-      "01",
-      "00001",
-      "Lorem ipsum dolor sit amet consectur",
-      "Jão da Silva, Cleitin, et all",
-      "2002",
-      "undefined",
-      "undefined",
-      "001",
-      100,
-    ],
-    [
-      "01",
-      "00001",
-      "Lorem ipsum dolor sit amet consectur",
-      "Jão da Silva, Cleitin, et all",
-      "2002",
-      "undefined",
-      "undefined",
-      "001",
-      100,
-    ],
-  ];
-
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
   return (
-    <Grid templateColumns={"1fr 1fr 1fr"}>
-      <Sidebar type="Accordion" />
-      <GridItem textAlign={"center"} justifySelf={"center"} w={"80vw"} ml={5}>
-        <Header text="Selection" />
-        <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
-          <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} justifyContent={"space-between"}>
-            <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
-            <SelectInput
-              label="Classification:"
-              names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
-              values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
-              onSelect={handleSelectChange}
-              selectedValue={selectedValue}
-            />
-          </Box>
-          <Box display={"flex"} flexDir={"row"} columnGap={20}>
-            <CheckboxInput
-              label="General Information: "
-              name={[
-                "ID PAPER",
-                "TITLE",
-                "AUTHOR",
-                "STATUS/SELECTION",
-                "STATUS/EXTRACTION",
-                "READING PRIORITY",
-                "SCORE",
-              ]}
-              value={["idPaper", "title", "author", "statusSelection", "statusExtraction", "readingPriority", "score"]}
-            />
-            <EventButton
-              mt={7}
-              text="Sort by Score"
-              event={() => {
-                console.log("sorted");
-              }}
-            />
-          </Box>
+    <GridLayout navigationType="Accordion">
+      <Header text="Selection" />
+      <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
+        <Box
+          display={"flex"}
+          flexDir={"row"}
+          w={"60%"}
+          alignContent={"center"}
+          justifyContent={"space-between"}
+          gap={"1rem"}
+        >
+          <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
+          <SelectInput
+            label="Classification:"
+            names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+            values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+            onSelect={handleSelectChange}
+            selectedValue={selectedValue}
+          />
         </Box>
+        <Box display={"flex"} flexDir={"row"} columnGap={20} flexWrap={"wrap"}>
+          <CheckboxInput
+            label="General Information: "
+            name={headerData}
+            handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
+            checkedByDefault={[
+              "idss",
+              "id paper",
+              "title",
+              "author",
+              "year",
+              "status/selection",
+              "status/extraction",
+              "reading priority",
+              "score",
+            ]}
+          />
+        </Box>
+      </Box>
 
-        <DynamicTable headerData={headerData} bodyData={bodyData} />
-      </GridItem>
-    </Grid>
+      <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+    </GridLayout>
   );
 }

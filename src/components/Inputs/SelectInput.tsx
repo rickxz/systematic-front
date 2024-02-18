@@ -15,7 +15,7 @@ export default function SelectInput({ values, names, label, onSelect, selectedVa
   };
 
   return (
-    <FormControl display={"flex"} flexDir={"column"}>
+    <FormControl display={"flex"} flexDir={"column"} w={"30vw"}>
       <FormLabel>{label}</FormLabel>
       <Select value={selectedValue || ""} onChange={handleSelectChange}>
         {names.map((optionName, index) => (
