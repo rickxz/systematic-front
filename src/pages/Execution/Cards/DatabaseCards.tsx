@@ -1,19 +1,8 @@
-import {
-  Card,
-  Icon,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionIcon,
-  AccordionPanel,
-  Box,
-  Text,
-} from "@chakra-ui/react";
-
 import { FaBoxArchive } from "react-icons/fa6";
-import { useState } from "react";
+import { Card, Icon, Box, Text } from "@chakra-ui/react";
 import NavButton from "../../../components/Buttons/NavButton";
 import EventButton from "../../../components/Buttons/EventButton";
+import AccordionDashboard from "./subcomponents/AccordionDashboard";
 
 interface DatabaseCardProps {
   text: string;
@@ -21,12 +10,6 @@ interface DatabaseCardProps {
 }
 
 export default function DataBaseCard({ text, type }: DatabaseCardProps) {
-  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
-
-  const handleAccordionToggle = () => {
-    setIsAccordionOpen(!isAccordionOpen);
-  };
-
   return (
     <Card w={type === "allData" ? "80vw" : "32vw"} mb={5} h={"fit-content"}>
       <Box display={"flex"} flexDir={"row"} justifyContent={"space-between"}>
@@ -64,15 +47,7 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
           />
         </Box>
       </Box>
-
-      <Accordion allowToggle w={"100%"} justifySelf={"center"} onChange={handleAccordionToggle}>
-        <AccordionItem>
-          <AccordionButton display={"flex"} alignContent={"center"} justifyContent={"center"}>
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel>Aqui fica o dashboard</AccordionPanel>
-        </AccordionItem>
-      </Accordion>
+      <AccordionDashboard />
     </Card>
   );
 }
