@@ -1,6 +1,6 @@
 import { Box, Card, Text } from "@chakra-ui/react";
-import UploadIcon from "../../components/Icons/UploadIcon";
-import EventButton from "../../components/Buttons/EventButton";
+import UploadIcon from "../../../components/Icons/UploadIcon";
+import EventButton from "../../../components/Buttons/EventButton";
 
 export default function UploadBox() {
   return (

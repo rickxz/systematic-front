@@ -2,7 +2,7 @@ import { Box, Card, Text } from "@chakra-ui/react";
 
 export default function SearchInformations() {
   return (
-    <Box w={"40%"} display={"flex"} flexDir={"column"} gap={2} justifyContent={"flex-start"} alignItems={"flex-start"}>
+    <Box w={"45%"} display={"flex"} flexDir={"column"} gap={2} justifyContent={"flex-start"} alignItems={"flex-start"}>
       <Text fontWeight={"bold"} fontSize={18}>
         Search String:{" "}
       </Text>
