@@ -14,8 +14,8 @@ export default function Protocol() {
         <TextAreaInput label="Objectives:" placeholder="What are your goals?" />
         <TextAreaInput label="Main question:" placeholder="The reason behind your research..." />
       </FormControl>
-      <Box ml={"55%"} alignSelf={"flex-end"}>
-        <NavButton text="Next" path="/newRevision/protocolpartTwo" />
+      <Box ml={"55%"} alignSelf={"flex-end"} mt={10}>
+        <NavButton text="Next" path="/newRevision/protocolpartTwo" w={"30%"} />
       </Box>
     </GridLayout>
   );

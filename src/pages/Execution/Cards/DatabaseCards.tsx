@@ -1,7 +1,6 @@
 import {
   Card,
   Icon,
-  Button,
   Accordion,
   AccordionItem,
   AccordionButton,
@@ -13,6 +12,8 @@ import {
 
 import { FaBoxArchive } from "react-icons/fa6";
 import { useState } from "react";
+import NavButton from "../../../components/Buttons/NavButton";
+import EventButton from "../../../components/Buttons/EventButton";
 
 interface DatabaseCardProps {
   text: string;
@@ -40,18 +41,27 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
           display={"flex"}
           flexDir={"row"}
           justifyContent={"space-evenly"}
-          columnGap={"20%"}
+          columnGap={"10%"}
           w={"50%"}
           mt={5}
           mb={3}
           mr={4}
         >
-          <Button fontSize={type === "allData" ? 16 : 12} w={"200PX"}>
-            Add Session
-          </Button>{" "}
-          <Button fontSize={type === "allData" ? 16 : 12} w={"200PX"}>
-            Remove Session
-          </Button>
+          <NavButton
+            fontSize={type === "allData" ? 16 : 12}
+            w={"fit-content"}
+            text={"Add Session"}
+            path={"/newRevision/searchSession"}
+          />
+
+          <EventButton
+            fontSize={type === "allData" ? 16 : 12}
+            w={"200px"}
+            event={function (): void {
+              console.log("Session deleted");
+            }}
+            text={"Remove Session"}
+          />
         </Box>
       </Box>
 

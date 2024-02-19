@@ -15,7 +15,7 @@ export default function ProtocolPartThree() {
         <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" />
         <AddTextTable text={"Study Risk of Bias (RoB) Assesment"} placeholder="..." />
       </FormControl>
-      <Box ml={"43em"} alignSelf={"flex-end"}>
+      <Box ml={"43em"} alignSelf={"flex-end"} mt={10} mb={10}>
         <NavButton text="Save Protocol" path="/newRevision/identification" />
       </Box>
     </GridLayout>

@@ -36,8 +36,8 @@ export default function ProtocolPartTwo2() {
         <TextAreaInput label="Data Acquisition" placeholder="Enter the data acquisition method" />
       </FormControl>
 
-      <Box ml={"23rem"} alignSelf={"flex-end"}>
-        <NavButton text="Next" path="/newRevision/protocolpartThree" />
+      <Box ml={"25rem"} alignSelf={"flex-end"} mt={10} mb={10}>
+        <NavButton text="Next" path="/newRevision/protocolpartThree" w={"30%"} />
       </Box>
     </GridLayout>
   );
