@@ -6,18 +6,18 @@ import InputText from "../../components/Inputs/InputText";
 import SelectInput from "../../components/Inputs/SelectInput";
 import EventButton from "../../components/Buttons/EventButton";
 import PasswordInput from "../../components/Inputs/PasswordInput";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import EmailInput from "../../components/Inputs/EmailInput";
+import usePassWordValidation from "../../hooks/validation/usePassWordValidation";
 
 export default function Register() {
   const { selectedValue, handleSelectChange } = useSelect();
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+
   const [email, setEmail] = useState("");
-  const [passwordMatch, setPasswordMatch] = useState(true);
   const [validEmail, setValidEmail] = useState(true);
   const [name, setName] = useState("");
   const [affiliattion, setAffiliattion] = useState("");
+  const { password, passwordMatch, handlePasswordChange, handleConfirmPasswordChange } = usePassWordValidation();
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const nameValue = e.target.value;
@@ -36,16 +36,6 @@ export default function Register() {
   const isMailValid = (email: string) => {
     const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
     return regEx.test(email);
-  };
-
-  const handlePasswordChange = (e: { target: { value: SetStateAction<string> } }) => {
-    setPassword(e.target.value);
-    setPasswordMatch(e.target.value === confirmPassword);
-  };
-
-  const handleConfirmPasswordChange = (e: { target: { value: SetStateAction<string> } }) => {
-    setConfirmPassword(e.target.value);
-    setPasswordMatch(e.target.value === password);
   };
 
   const handleRegister = () => {
@@ -83,8 +73,6 @@ export default function Register() {
     setAffiliattion("");
     setEmail("");
     handleSelectChange("");
-    setPassword("");
-    setConfirmPassword("");
   };
 
   return (
