@@ -1,16 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/home";
-import NovaRevisao from "./pages/NovaRevisao/novaRevisao";
+import Register from "./pages/Register/register";
 import Protocol from "./pages/Protocolo/Protocol";
+import NovaRevisao from "./pages/NovaRevisao/novaRevisao";
+import Identification from "./pages/Execution/Identification";
+import SearchSession from "./pages/SearchSession/SearchSession";
 import ProtocolPartTwo from "./pages/Protocolo/Protocol-Part-Two";
 import ProtocolPartThree from "./pages/Protocolo/Protocol-Part-Three";
-import Identification from "./pages/Execution/Identification";
-import KeyWordScreen from "./pages/Execution/SubPages/KeyWordScreen/KeyWordScreen";
 import Selection from "./pages/Execution/SubPages/Selection/Selection";
-import Extraction from "./pages/Execution/SubPages/Extraction/Extraction";
 import Insertion from "./pages/Execution/SubPages/Insertion/Insertion";
 import Finalization from "./pages/NovaRevisao/finalization/Finalization";
-import SearchSession from "./pages/SearchSession/SearchSession";
+import Extraction from "./pages/Execution/SubPages/Extraction/Extraction";
+import KeyWordScreen from "./pages/Execution/SubPages/KeyWordScreen/KeyWordScreen";
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/newRevision" element={<NovaRevisao />} />
+          <Route path="/register" element={<Register />} />
 
           {/*Nested Routes*/}
           <Route path="/newRevision/protocol" element={<Protocol />} />
