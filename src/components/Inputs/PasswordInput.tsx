@@ -5,9 +5,10 @@ import EventButton from "../Buttons/EventButton";
 interface iPasswordProps {
   text: string;
   handlechange: (e: { target: { value: SetStateAction<string> } }) => void;
+  inputProps?: Record<string, unknown>; // Props adicionais para o Input
 }
 
-export default function PasswordInput({ text, handlechange }: iPasswordProps) {
+export default function PasswordInput({ text, handlechange, inputProps }: iPasswordProps) {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
@@ -21,8 +22,9 @@ export default function PasswordInput({ text, handlechange }: iPasswordProps) {
           placeholder="Enter password"
           w={"50%"}
           onChange={handlechange}
+          {...inputProps}
         />
-        <EventButton event={handleClick} text={"show"} />
+        <EventButton event={handleClick} text={show ? "Hide" : "Show"} />
       </InputGroup>
     </FormControl>
   );
