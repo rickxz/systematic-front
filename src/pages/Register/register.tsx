@@ -14,40 +14,77 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [passwordMatch, setPasswordMatch] = useState(true);
+  const [validEmail, setValidEmail] = useState(true);
+  const [name, setName] = useState("");
+  const [affiliattion, setAffiliattion] = useState("");
 
-  const handleEmailchange = (e: { target: { value: SetStateAction<string> } }) => {
-    setEmail(e.target.value);
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const nameValue = e.target.value;
+    setName(nameValue);
   };
-
-  const isMailValid = () => {
+  const handleAffiliattionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const affiliattionValue = e.target.value;
+    setAffiliattion(affiliattionValue);
+  };
+  const handleEmailchange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(email);
+    const emailValue = e.target.value;
+    setEmail(emailValue);
+    setValidEmail(isMailValid(emailValue));
+  };
+  const isMailValid = (email: string) => {
     const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
-    if (regEx.test(email)) return true;
-    else if (!regEx.test(email) && email !== "") return false;
-    else return false;
+    return regEx.test(email);
   };
 
   const handlePasswordChange = (e: { target: { value: SetStateAction<string> } }) => {
     setPassword(e.target.value);
+    setPasswordMatch(e.target.value === confirmPassword);
   };
 
   const handleConfirmPasswordChange = (e: { target: { value: SetStateAction<string> } }) => {
     setConfirmPassword(e.target.value);
-  };
-
-  const ArePasswordsEqual = (password: string, confirmPassword: string) => {
-    return password.trim() === confirmPassword.trim();
+    setPasswordMatch(e.target.value === password);
   };
 
   const handleRegister = () => {
-    if (!ArePasswordsEqual(password, confirmPassword)) {
-      window.alert("Passwords are different!");
+    if (name === "") {
+      window.alert("Name is required!");
       return;
     }
-    if (!isMailValid()) {
+    if (affiliattion === "") {
+      window.alert("Affiliattion is required");
+      return;
+    }
+
+    if (email === "") {
+      window.alert("email  is required!");
+      return;
+    }
+    if (!validEmail) {
       window.alert("Invalid email");
       return;
     }
+    if (selectedValue === "") {
+      window.alert("Country is required");
+      return;
+    }
+    if (!passwordMatch) {
+      window.alert("Passwords don't match!");
+      return;
+    }
+    if (password === "") {
+      window.alert("Password is required!");
+      return;
+    }
     window.alert("User registered with success!");
+    setName("");
+    setAffiliattion("");
+    setEmail("");
+    handleSelectChange("");
+    setPassword("");
+    setConfirmPassword("");
   };
 
   return (
@@ -65,9 +102,15 @@ export default function Register() {
         <Header text="Create Account" />
         <Text> Already have an account? Log in</Text>
         <FormControl mb={10} display={"flex"} flexDir={"column"} alignItems={"center"}>
-          <InputText label={"Name: "} placeholder={""} type={"text"} nome={"name"} />
+          <InputText label={"Name: "} placeholder={""} type={"text"} nome={"name"} onChange={handleNameChange} />
           <EmailInput handleChange={handleEmailchange} />
-          <InputText label={"Affiliation: "} placeholder={""} type={"text"} nome={"affiliattion"} />
+          <InputText
+            label={"Affiliation: "}
+            placeholder={""}
+            type={"text"}
+            nome={"affiliattion"}
+            onChange={handleAffiliattionChange}
+          />
 
           <FormControl display={"flex"} flexDir={"column"} gap={10} mt={10} w={"75%"} alignSelf={"center"}>
             <SelectInput
@@ -77,8 +120,12 @@ export default function Register() {
               onSelect={handleSelectChange}
               selectedValue={selectedValue}
             />
-            <PasswordInput text="Choose a password:" handlechange={handlePasswordChange} />
-            <PasswordInput text="Confirm your password: " handlechange={handleConfirmPasswordChange} />
+            <PasswordInput text="Choose a password:" handlechange={handlePasswordChange} isValid={passwordMatch} />
+            <PasswordInput
+              text="Confirm your password: "
+              handlechange={handleConfirmPasswordChange}
+              isValid={passwordMatch}
+            />
           </FormControl>
         </FormControl>
         <EventButton

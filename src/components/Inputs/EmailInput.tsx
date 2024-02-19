@@ -1,8 +1,7 @@
-import { SetStateAction } from "react";
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 
 interface iEmailInputProps {
-  handleChange: (e: { target: { value: SetStateAction<string> } }) => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export default function EmailInput({ handleChange }: iEmailInputProps) {
   return (
