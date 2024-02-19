@@ -1,13 +1,15 @@
+import NavItem from "./NavItem";
+import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { SiAddthis } from "react-icons/si";
-import { Link } from "react-router-dom";
-import NavItem from "./NavItem";
+import { GiArchiveRegister } from "react-icons/gi";
 
 interface IDefaultNavigation {
   navSize: string;
 }
 
 const routes = [
+  { path: "/register", icon: GiArchiveRegister, title: "Register" },
   { path: "/", icon: FaHome, title: "Home Page" },
   { path: "/newRevision", icon: SiAddthis, title: "New Revision" },
 ];

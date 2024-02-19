@@ -1,6 +1,5 @@
-import UploadBox from "./UploadBox";
 import { Box } from "@chakra-ui/react";
-import SearchInformations from "./searchInformations";
+import UploadBox from "./subcomponents/UploadBox";
 import useInputState from "../../hooks/useInputState";
 import GridLayout from "../../components/ui/Grid/Grid";
 import Header from "../../components/ui/Header/Header";
@@ -8,6 +7,7 @@ import NavButton from "../../components/Buttons/NavButton";
 import CheckboxInput from "../../components/Inputs/Checkbox";
 import DynamicTable from "../../components/Tables/DynamicTable";
 import useFetchTableData from "../../hooks/fetch/useFetchTableData";
+import SearchInformations from "./subcomponents/searchInformations";
 
 export default function SearchSession() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");

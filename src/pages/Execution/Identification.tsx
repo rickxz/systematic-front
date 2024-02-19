@@ -1,33 +1,11 @@
 import { Box } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
 import DataBaseCard from "./Cards/DatabaseCards";
 import Header from "../../components/ui/Header/Header";
 import GridLayout from "../../components/ui/Grid/Grid";
-
-interface Database {
-  id: string;
-  dbName: string;
-  type: string;
-}
+import useFetchDataBases from "../../hooks/fetch/useFetchDataBases";
 
 export default function Identification() {
-  const [databases, setdatabase] = useState<Database[] | []>([]);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch("/data/dataBases.json");
-      const data = await response.json();
-      if (!data) console.log("erro no formado ou arquivo vázio!");
-      setdatabase(data.databases);
-    } catch (error) {
-      console.log("Erro: ", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  });
-
+  const { databases } = useFetchDataBases("/data/dataBases.json");
   return (
     <GridLayout navigationType="Accordion">
       <Header text="Studies Identification" />
