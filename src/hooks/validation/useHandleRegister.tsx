@@ -1,8 +1,8 @@
 import { useSelect } from "../useSelect";
-import useAffiliattionValidation from "./useAffiliattionValidation";
-import useEmailValidation from "./useEmailValidation";
 import useNameValidation from "./useNameValidation";
+import useEmailValidation from "./useEmailValidation";
 import usePassWordValidation from "./usePassWordValidation";
+import useAffiliattionValidation from "./useAffiliattionValidation";
 
 export default function useHandleRegister() {
   const { name, handleNameChange } = useNameValidation();

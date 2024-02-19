@@ -7,6 +7,7 @@ import SelectInput from "../../components/Inputs/SelectInput";
 import EventButton from "../../components/Buttons/EventButton";
 import PasswordInput from "../../components/Inputs/PasswordInput";
 import useHandleRegister from "../../hooks/validation/useHandleRegister";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const {
@@ -34,13 +35,23 @@ export default function Register() {
         mb={20}
       >
         <Header text="Create Account" />
-        <Text> Already have an account? Log in</Text>
+        <Box display={"flex"} flexDir={"row"} gap={1}>
+          <Text> Already have an account?</Text>
+          <Link to={"/"}> Log in</Link>
+        </Box>
+
         <FormControl mb={10} display={"flex"} flexDir={"column"} alignItems={"center"}>
-          <InputText label={"Name: "} placeholder={""} type={"text"} nome={"name"} onChange={handleNameChange} />
+          <InputText
+            label={"Name: "}
+            placeholder={"Enter your name here..."}
+            type={"text"}
+            nome={"name"}
+            onChange={handleNameChange}
+          />
           <EmailInput handleChange={handleEmailchange} />
           <InputText
             label={"Affiliation: "}
-            placeholder={""}
+            placeholder={"Enter your Affiliation here..."}
             type={"text"}
             nome={"affiliattion"}
             onChange={handleAffiliattionChange}
