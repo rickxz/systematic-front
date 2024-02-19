@@ -1,8 +1,8 @@
-import { FaBoxArchive } from "react-icons/fa6";
-import { Card, Icon, Box, Text } from "@chakra-ui/react";
+import { Card, Box, Text } from "@chakra-ui/react";
 import NavButton from "../../../components/Buttons/NavButton";
 import EventButton from "../../../components/Buttons/EventButton";
 import AccordionDashboard from "./subcomponents/AccordionDashboard";
+import DataBaseIcon from "../../../components/Icons/DataBaseIcon";
 
 interface DatabaseCardProps {
   text: string;
@@ -14,7 +14,7 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
     <Card w={type === "allData" ? "80vw" : "32vw"} mb={5} h={"fit-content"}>
       <Box display={"flex"} flexDir={"row"} justifyContent={"space-between"}>
         <Box display={"flex"} flexDir={"row"} alignContent={"center"} justifyContent={"flex-start"} w={"50%"}>
-          <Icon w={"3rem"} h={"auto"} mt={"2%"} ml={"2%"} as={FaBoxArchive} />
+          <DataBaseIcon />
           <Text ml={"5%"} mt={5}>
             {" "}
             {text}
