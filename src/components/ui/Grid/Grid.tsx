@@ -3,7 +3,7 @@ import { Grid, GridItem } from "@chakra-ui/react";
 
 interface iGridLayout {
   navigationType: string;
-  children: React.ReactElement[];
+  children: React.ReactElement | React.ReactElement[];
 }
 
 export default function GridLayout({ navigationType, children }: iGridLayout) {
