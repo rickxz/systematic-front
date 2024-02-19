@@ -7,6 +7,7 @@ import {
   } from '@chakra-ui/react';
 
 import style from "./modal.module.css";
+import InputText from '../../Inputs/InputText';
 
 export default function DataExtractionFormItensValueList() {
 const { isOpen, onOpen, onClose } = useDisclosure()
@@ -21,18 +22,15 @@ return (
         <ModalCloseButton />
         <ModalBody bg="gray.300" p="50px">
             <Flex flexDirection="column" gap="5">
-                <Flex gap="5">
-                    <label>Insert the list item label:</label>
-                    <input type="text"></input>
-                </Flex>
-                <Flex gap="5">
-                    <label>Insert the list item:</label>
-                    <input type="text"></input>
+                <>
+                    <InputText label='Insert the list item label:' placeholder={'Insert the list item label...'} type={'text'} nome={''}/>
+                </>
+                <Flex gap="5" >
+                    <InputText label='Insert the list item:' placeholder={'Insert the list item...'} type={'text'} nome={''}/>
                     <Button>Add</Button>
                 </Flex>
                 <Flex gap="5" className={style.border} p="5">
-                    <label>List Item:</label>
-                    <input type="number"></input>
+                    <InputText label='List item:' placeholder={'List item...'} type={'text'} nome={''}/>
                     <Button>Remove</Button>
                 </Flex>
                 <Flex gap="5" justifyContent="flex-end">

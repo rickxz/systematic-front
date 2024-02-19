@@ -5,10 +5,10 @@ import {
     ModalBody, ModalCloseButton,
     Button, Flex, useDisclosure, Input
   } from '@chakra-ui/react';
+import InputText from '../../Inputs/InputText';
 
 export default function DataExtractionFormNumberInterval() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-
   
   return (
     <>
@@ -21,18 +21,9 @@ export default function DataExtractionFormNumberInterval() {
           <ModalCloseButton />
           <ModalBody bg="gray.300">
               <Flex flexDirection="column" gap="5" p="20">
-                  <Flex gap="5">
-                      <label>Min Number:</label>
-                      <input type="number"></input>
-                  </Flex>
-                  <Flex gap="5">
-                      <label>Max Number:</label>
-                      <input type="number"></input>
-                  </Flex>
-                  <Flex gap="5">
-                      <label>Increment:</label>
-                      <input type="number"></input>
-                  </Flex>
+                      <InputText label='Min Number:' placeholder={'digite o número...'} type={'number'} nome={''}/>
+                      <InputText label='Max Number:' placeholder={'digite o número...'} type={'number'} nome={''}/>
+                      <InputText label='Increment:' placeholder={'digite o número...'} type={'number'} nome={''}/>
                   <Flex gap="5" justifyContent="flex-end">
                       <Button>Ok</Button>
                       <Button>Cancel</Button>
