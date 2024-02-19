@@ -1,63 +1,25 @@
-import { Box, FormControl, Text } from "@chakra-ui/react";
-import { useSelect } from "../../hooks/useSelect";
 import GridLayout from "../../components/ui/Grid/Grid";
 import Header from "../../components/ui/Header/Header";
+import { Box, FormControl, Text } from "@chakra-ui/react";
 import InputText from "../../components/Inputs/InputText";
+import EmailInput from "../../components/Inputs/EmailInput";
 import SelectInput from "../../components/Inputs/SelectInput";
 import EventButton from "../../components/Buttons/EventButton";
 import PasswordInput from "../../components/Inputs/PasswordInput";
-//import { useState } from "react";
-import EmailInput from "../../components/Inputs/EmailInput";
-import usePassWordValidation from "../../hooks/validation/usePassWordValidation";
-import useEmailValidation from "../../hooks/validation/useEmailValidation";
-import useNameValidation from "../../hooks/validation/useNameValidation";
-import useAffiliattionValidation from "../../hooks/validation/useAffiliattionValidation";
+import useHandleRegister from "../../hooks/validation/useHandleRegister";
 
 export default function Register() {
-  const { selectedValue, handleSelectChange } = useSelect();
-  const { name, handleNameChange } = useNameValidation();
-  //const [affiliattion, setAffiliattion] = useState("");
-  const { affiliattion, handleAffiliattionChange } = useAffiliattionValidation();
-  const { email, validEmail, handleEmailchange } = useEmailValidation();
-  const { password, passwordMatch, handlePasswordChange, handleConfirmPasswordChange } = usePassWordValidation();
-
-  /*const handleAffiliattionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const affiliattionValue = e.target.value;
-    setAffiliattion(affiliattionValue);
-  };*/
-
-  const handleRegister = () => {
-    if (name === "") {
-      window.alert("Name is required!");
-      return;
-    }
-    if (affiliattion === "") {
-      window.alert("Affiliattion is required");
-      return;
-    }
-
-    if (email === "") {
-      window.alert("email  is required!");
-      return;
-    }
-    if (!validEmail) {
-      window.alert("Invalid email");
-      return;
-    }
-    if (selectedValue === "") {
-      window.alert("Country is required");
-      return;
-    }
-    if (!passwordMatch) {
-      window.alert("Passwords don't match!");
-      return;
-    }
-    if (password === "") {
-      window.alert("Password is required!");
-      return;
-    }
-    window.alert("User registered with success!");
-  };
+  const {
+    handleNameChange,
+    selectedValue,
+    handleSelectChange,
+    handleEmailchange,
+    handleAffiliattionChange,
+    passwordMatch,
+    handlePasswordChange,
+    handleConfirmPasswordChange,
+    handleRegister,
+  } = useHandleRegister();
 
   return (
     <GridLayout navigationType="Default">
