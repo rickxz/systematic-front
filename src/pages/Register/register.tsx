@@ -9,14 +9,16 @@ import PasswordInput from "../../components/Inputs/PasswordInput";
 import { useState } from "react";
 import EmailInput from "../../components/Inputs/EmailInput";
 import usePassWordValidation from "../../hooks/validation/usePassWordValidation";
+import useEmailValidation from "../../hooks/validation/useEmailValidation";
 
 export default function Register() {
   const { selectedValue, handleSelectChange } = useSelect();
 
-  const [email, setEmail] = useState("");
-  const [validEmail, setValidEmail] = useState(true);
+  //const [email, setEmail] = useState("");
+  //const [validEmail, setValidEmail] = useState(true);
   const [name, setName] = useState("");
   const [affiliattion, setAffiliattion] = useState("");
+  const { email, validEmail, handleEmailchange } = useEmailValidation();
   const { password, passwordMatch, handlePasswordChange, handleConfirmPasswordChange } = usePassWordValidation();
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +29,7 @@ export default function Register() {
     const affiliattionValue = e.target.value;
     setAffiliattion(affiliattionValue);
   };
-  const handleEmailchange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  /* const handleEmailchange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(email);
     const emailValue = e.target.value;
     setEmail(emailValue);
@@ -36,7 +38,7 @@ export default function Register() {
   const isMailValid = (email: string) => {
     const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
     return regEx.test(email);
-  };
+  };*/
 
   const handleRegister = () => {
     if (name === "") {
@@ -71,7 +73,6 @@ export default function Register() {
     window.alert("User registered with success!");
     setName("");
     setAffiliattion("");
-    setEmail("");
     handleSelectChange("");
   };
 
