@@ -1,26 +1,13 @@
 import GridLayout from "../../components/ui/Grid/Grid";
-import Header from "../../components/ui/Header/Header";
-import { Box, FormControl, Text } from "@chakra-ui/react";
-import InputText from "../../components/Inputs/InputText";
-import EmailInput from "../../components/Inputs/EmailInput";
-import SelectInput from "../../components/Inputs/SelectInput";
-import EventButton from "../../components/Buttons/EventButton";
-import PasswordInput from "../../components/Inputs/PasswordInput";
-import useHandleRegister from "../../hooks/validation/useHandleRegister";
-import { Link } from "react-router-dom";
+import { Box, Card, Text } from "@chakra-ui/react";
+import { useState } from "react";
+import Register from "../../components/Landing/Register";
+import Login from "../../components/Landing/Login";
+import RecoverPassWord from "../../components/Landing/RecoverPassWord";
 
-export default function Register() {
-  const {
-    handleNameChange,
-    selectedValue,
-    handleSelectChange,
-    handleEmailchange,
-    handleAffiliattionChange,
-    passwordMatch,
-    handlePasswordChange,
-    handleConfirmPasswordChange,
-    handleRegister,
-  } = useHandleRegister();
+export default function LandingPage() {
+  const [renderForm, SetRenderForm] = useState("Login");
+  const renderLogin = renderForm === "Login";
 
   return (
     <GridLayout navigationType="Default">
@@ -28,61 +15,69 @@ export default function Register() {
         borderWidth={"1px"}
         borderRadius={"lg"}
         display={"flex"}
-        flexDir={"column"}
-        justifyContent={"center"}
+        flexDir={"row"}
+        justifyContent={"space-between"}
         alignItems={"center"}
-        mt={10}
+        mt={"5em"}
         mb={20}
+        h={"70vh"}
+        gap={10}
       >
-        <Header text="Create Account" />
-        <Box display={"flex"} flexDir={"row"} gap={1}>
-          <Text> Already have an account?</Text>
-          <Link to={"/"}> Log in</Link>
+        <Box ml={"10em"} pb={"5em"} alignContent={"center"} textAlign={"center"}>
+          {" "}
+          <Card w={400} h={200} textAlign={"center"} fontWeight={"bold"} bgColor={"teal"}>
+            {" "}
+            <Text mt={"5em"}>Logo da Start Aqui</Text>
+          </Card>
         </Box>
-
-        <FormControl mb={10} display={"flex"} flexDir={"column"} alignItems={"center"}>
-          <InputText
-            label={"Name: "}
-            placeholder={"Enter your name here..."}
-            type={"text"}
-            nome={"name"}
-            onChange={handleNameChange}
-          />
-          <EmailInput handleChange={handleEmailchange} />
-          <InputText
-            label={"Affiliation: "}
-            placeholder={"Enter your Affiliation here..."}
-            type={"text"}
-            nome={"affiliattion"}
-            onChange={handleAffiliattionChange}
-          />
-
-          <FormControl display={"flex"} flexDir={"column"} gap={10} mt={10} w={"75%"} alignSelf={"center"}>
-            <SelectInput
-              values={["", "Brazil", "England", "France", "Spain"]}
-              names={["", "Brazil", "England", "France", "Spain"]}
-              label={"Country: "}
-              onSelect={handleSelectChange}
-              selectedValue={selectedValue}
+        <Box display={"flex"} flexDir={"column"} gap={1} justifyContent={"flex-end"} w={"50%"} mt={10}>
+          <Box display={"flex"} flexDir={"row"} gap={4} mb={3}>
+            <Text
+              fontWeight={renderLogin ? "bold" : ""}
+              color={"teal"}
+              _hover={{ cursor: "pointer" }}
+              onClick={() => {
+                SetRenderForm("Login");
+              }}
+            >
+              Login
+            </Text>
+            <Text
+              fontWeight={!renderLogin ? "bold" : ""}
+              color={"teal"}
+              _hover={{ cursor: "pointer" }}
+              onClick={() => {
+                SetRenderForm("Register");
+              }}
+            >
+              Register
+            </Text>
+          </Box>
+          {renderForm === "Login" && (
+            <Login
+              handleRender={(renderForm) => {
+                SetRenderForm("Password");
+                return renderForm;
+              }}
             />
-            <PasswordInput text="Choose a password:" handlechange={handlePasswordChange} isValid={passwordMatch} />
-            <PasswordInput
-              text="Confirm your password: "
-              handlechange={handleConfirmPasswordChange}
-              isValid={passwordMatch}
+          )}{" "}
+          {renderForm === "Register" && (
+            <Register
+              handleRender={(renderForm) => {
+                SetRenderForm("Login");
+                return renderForm;
+              }}
             />
-          </FormControl>
-        </FormControl>
-        <EventButton
-          event={handleRegister}
-          text={"Create Account"}
-          display={"flex"}
-          justifySelf={"flex-end"}
-          mb={5}
-          colorScheme="teal"
-          variant={"solid"}
-          w={"200px"}
-        />
+          )}
+          {renderForm === "Password" && (
+            <RecoverPassWord
+              handleRender={(renderForm) => {
+                SetRenderForm("Login");
+                return renderForm;
+              }}
+            />
+          )}
+        </Box>
       </Box>
     </GridLayout>
   );

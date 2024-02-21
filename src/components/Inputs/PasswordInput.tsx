@@ -1,6 +1,5 @@
-import { SetStateAction, useState } from "react";
-import { FormControl, FormLabel, Input, InputGroup } from "@chakra-ui/react";
-import EventButton from "../Buttons/EventButton";
+import { SetStateAction } from "react";
+import { FormControl, Input, InputGroup } from "@chakra-ui/react";
 
 interface iPasswordProps {
   text: string;
@@ -9,22 +8,16 @@ interface iPasswordProps {
 }
 
 export default function PasswordInput({ text, handlechange, isValid }: iPasswordProps) {
-  const [show, setShow] = useState(false);
-  const handleClick = () => setShow(!show);
-
   return (
     <FormControl display={"flex"} flexDir={"column"}>
-      <FormLabel>{text}</FormLabel>
       <InputGroup size="md" display={"flex"}>
         <Input
           pr="4.5rem"
-          type={show ? "text" : "password"}
-          placeholder="Enter password"
-          w={"50%"}
+          type={"password"}
+          placeholder={text}
           onChange={handlechange}
           errorBorderColor={isValid === false ? "red" : ""}
         />
-        <EventButton event={handleClick} text={show ? "Hide" : "Show"} />
       </InputGroup>
     </FormControl>
   );
