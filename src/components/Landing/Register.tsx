@@ -24,9 +24,9 @@ export default function Register({ handleRender }: iRegisterProps) {
   return (
     <>
       <FormControl mb={10} display={"flex"} flexDir={"column"} alignItems={"center"} w={"80%"} rowGap={3} pr={5}>
-        <Input placeholder={"Name ..."} type={"text"} onChange={handleEmailchange} />
-        <Input placeholder={"Email ..."} type={"text"} onChange={handleNameChange} />
-        <Input placeholder={"Affiliation ..."} type={"text"} onChange={handleAffiliattionChange} />
+        <Input id="nome" placeholder={"Name ..."} type={"text"} onChange={handleNameChange} />
+        <Input id="mail" placeholder={"Email ..."} type={"email"} onChange={handleEmailchange} />
+        <Input id="affiliation" placeholder={"Affiliation ..."} type={"text"} onChange={handleAffiliattionChange} />
 
         <SelectInput
           values={["Brazil", "England", "France", "Spain"]}
@@ -34,7 +34,6 @@ export default function Register({ handleRender }: iRegisterProps) {
           label={" "}
           onSelect={handleSelectChange}
           selectedValue={selectedValue}
-          placeholder="Country..."
         />
         <PasswordInput text="Password..." handlechange={handlePasswordChange} isValid={passwordMatch} />
         <PasswordInput
@@ -42,6 +41,7 @@ export default function Register({ handleRender }: iRegisterProps) {
           handlechange={handleConfirmPasswordChange}
           isValid={passwordMatch}
         />
+
         <Box display={"flex"} flexDir={"row"} columnGap={55}>
           <EventButton
             event={handleRegister}
