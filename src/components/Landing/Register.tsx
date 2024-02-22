@@ -42,7 +42,7 @@ export default function Register({ handleRender }: iRegisterProps) {
           isValid={passwordMatch}
         />
 
-        <Box display={"flex"} flexDir={"row"} columnGap={55}>
+        <Box display={"flex"} flexDir={"row"} justifyContent={"space-between"} w={"100%"}>
           <EventButton
             event={handleRegister}
             text={"Create Account"}

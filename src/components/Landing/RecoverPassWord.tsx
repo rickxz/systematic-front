@@ -12,7 +12,7 @@ export default function RecoverPassWord({ handleRender }: iRecoverProps) {
       {" "}
       <FormControl mb={10} display={"flex"} flexDir={"column"} alignItems={"center"} w={"80%"} rowGap={3}>
         <Input placeholder={"Email ..."} type={"text"} onChange={handleEmailchange} />
-        <Box display={"flex"} flexDir={"row"} columnGap={55}>
+        <Box display={"flex"} flexDir={"row"} w={"100%"} justifyContent={"space-between"}>
           <EventButton
             event={() => {
               window.alert("Recover mail sent!!!");

@@ -1,7 +1,8 @@
-import { FormControl, Input, Box, Text } from "@chakra-ui/react";
+import { FormControl, Input, Box } from "@chakra-ui/react";
 import EventButton from "../Buttons/EventButton";
 import PasswordInput from "../Inputs/PasswordInput";
 import useHandleRegister from "../../hooks/validation/useHandleRegister";
+import FormOptions from "./subcomponents/FormOptions";
 
 interface iLoginProps {
   handleRender: (renderForm: string) => void;
@@ -20,7 +21,7 @@ export default function Login({ handleRender }: iLoginProps) {
         <Input placeholder={"Email ..."} type={"text"} onChange={handleEmailchange} />
         <PasswordInput text="Password..." handlechange={handlePasswordChange} />
 
-        <Box display={"flex"} flexDir={"row"} columnGap={55}>
+        <Box display={"flex"} flexDir={"row"} w={"100%"} justifyContent={"space-between"}>
           <EventButton
             event={() => {
               window.alert("Loged-in!!!");
@@ -33,16 +34,7 @@ export default function Login({ handleRender }: iLoginProps) {
             w={"fit-content"}
           />
 
-          <Text
-            mt={2}
-            onClick={() => {
-              handleRender("Password");
-            }}
-            _hover={{ cursor: "pointer" }}
-          >
-            {" "}
-            Forgot Password?{" "}
-          </Text>
+          <FormOptions text="Forgot Password?" onClick={() => handleRender("Password")} />
         </Box>
       </FormControl>
     </Box>

@@ -8,7 +8,7 @@ interface iFormOptionsProps {
 
 export default function FormOptions({ text, active, onClick }: iFormOptionsProps) {
   return (
-    <Text fontWeight={active ? "bold" : ""} color={"teal"} _hover={{ cursor: "pointer" }} onClick={onClick}>
+    <Text mt={2.5} fontWeight={active ? "bold" : ""} color={"teal"} _hover={{ cursor: "pointer" }} onClick={onClick}>
       {text}
     </Text>
   );
