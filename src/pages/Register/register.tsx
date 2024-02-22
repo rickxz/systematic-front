@@ -1,13 +1,14 @@
 import GridLayout from "../../components/ui/Grid/Grid";
-import { Box, Card, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { useState } from "react";
 import Register from "../../components/Landing/Register";
 import Login from "../../components/Landing/Login";
 import RecoverPassWord from "../../components/Landing/RecoverPassWord";
+import LogoConteiner from "../../components/Landing/subcomponents/LogoConteiner";
+import FormOptions from "../../components/Landing/subcomponents/FormOptions";
 
 export default function LandingPage() {
   const [renderForm, SetRenderForm] = useState("Login");
-  const renderLogin = renderForm === "Login";
 
   return (
     <GridLayout navigationType="Default">
@@ -23,35 +24,17 @@ export default function LandingPage() {
         h={"500px"}
         gap={10}
       >
-        <Box ml={"3em"} pb={"5em"} alignContent={"center"} textAlign={"center"}>
-          {" "}
-          <Card w={400} h={200} textAlign={"center"} fontWeight={"bold"} bgColor={"teal"}>
-            {" "}
-            <Text mt={"5em"}>Logo da Start Aqui</Text>
-          </Card>
-        </Box>
+        <LogoConteiner />
         <Box display={"flex"} flexDir={"column"} gap={1} justifyContent={"flex-end"} w={"50%"} mt={"5em"} ml={"5em"}>
           <Box display={"flex"} flexDir={"row"} gap={4} mb={3}>
-            <Text
-              fontWeight={renderLogin ? "bold" : ""}
-              color={"teal"}
-              _hover={{ cursor: "pointer" }}
+            <FormOptions
+              text={"Login"}
+              active={renderForm === "Login"}
               onClick={() => {
                 SetRenderForm("Login");
               }}
-            >
-              Login
-            </Text>
-            <Text
-              fontWeight={!renderLogin ? "bold" : ""}
-              color={"teal"}
-              _hover={{ cursor: "pointer" }}
-              onClick={() => {
-                SetRenderForm("Register");
-              }}
-            >
-              Register
-            </Text>
+            />
+            <FormOptions text="Register" active={renderForm === "Register"} onClick={() => SetRenderForm("Register")} />
           </Box>
           {renderForm === "Login" && (
             <Login

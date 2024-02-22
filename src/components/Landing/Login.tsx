@@ -14,7 +14,7 @@ export default function Login({ handleRender }: iLoginProps) {
     handlePasswordChange,
   } = useHandleRegister();
   return (
-    <Box mb={"12em"}>
+    <Box mb={"13em"}>
       {" "}
       <FormControl mb={10} display={"flex"} flexDir={"column"} alignItems={"center"} w={"80%"} rowGap={3}>
         <Input placeholder={"Email ..."} type={"text"} onChange={handleEmailchange} />
