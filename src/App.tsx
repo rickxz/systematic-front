@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/home";
-import Register from "./pages/Register/register";
 import Protocol from "./pages/Protocolo/Protocol";
 import NovaRevisao from "./pages/NovaRevisao/novaRevisao";
 import Identification from "./pages/Execution/Identification";
@@ -12,6 +11,7 @@ import Insertion from "./pages/Execution/SubPages/Insertion/Insertion";
 import Finalization from "./pages/NovaRevisao/finalization/Finalization";
 import Extraction from "./pages/Execution/SubPages/Extraction/Extraction";
 import KeyWordScreen from "./pages/Execution/SubPages/KeyWordScreen/KeyWordScreen";
+import LandingPage from "./pages/LandingPage/LandingPage";
 function App() {
   return (
     <>
@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/newRevision" element={<NovaRevisao />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/landing" element={<LandingPage />} />
 
           {/*Nested Routes*/}
           <Route path="/newRevision/protocol" element={<Protocol />} />

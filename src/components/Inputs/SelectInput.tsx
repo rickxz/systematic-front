@@ -7,17 +7,18 @@ interface ISelectInputProps {
   label: string;
   onSelect: (selectValue: string) => void;
   selectedValue: string | null;
+  placeholder?: string;
 }
 
-export default function SelectInput({ values, names, label, onSelect, selectedValue }: ISelectInputProps) {
+export default function SelectInput({ values, names, label, onSelect, selectedValue, placeholder }: ISelectInputProps) {
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onSelect(event.target.value);
   };
 
   return (
-    <FormControl display={"flex"} flexDir={"column"} w={"30vw"}>
+    <FormControl display={"flex"} flexDir={"column"}>
       <FormLabel>{label}</FormLabel>
-      <Select value={selectedValue || ""} onChange={handleSelectChange}>
+      <Select placeholder={placeholder} value={selectedValue || ""} onChange={handleSelectChange}>
         {names.map((optionName, index) => (
           <option key={index} value={values[index]}>
             {optionName}
