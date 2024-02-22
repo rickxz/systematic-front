@@ -1,26 +1,21 @@
-import { FormControl, Input, Box } from "@chakra-ui/react";
 import EventButton from "../Buttons/EventButton";
+import { FormControl, Box } from "@chakra-ui/react";
 import PasswordInput from "../Inputs/PasswordInput";
-import useHandleRegister from "../../hooks/validation/useHandleRegister";
 import FormOptions from "./subcomponents/FormOptions";
+import RegisterInputs from "./subcomponents/inputs/RegisterInputs";
+import useHandleRegister from "../../hooks/validation/useHandleRegister";
 
 interface iLoginProps {
   handleRender: (renderForm: string) => void;
 }
 
 export default function Login({ handleRender }: iLoginProps) {
-  const {
-    handleEmailchange,
-
-    handlePasswordChange,
-  } = useHandleRegister();
+  const { handleEmailchange, handlePasswordChange } = useHandleRegister();
   return (
     <Box mb={"13em"}>
-      {" "}
       <FormControl mb={10} display={"flex"} flexDir={"column"} alignItems={"center"} w={"80%"} rowGap={3}>
-        <Input placeholder={"Email ..."} type={"text"} onChange={handleEmailchange} />
+        <RegisterInputs id="mail" placeholder={"Email ..."} handlechange={handleEmailchange} />
         <PasswordInput text="Password..." handlechange={handlePasswordChange} />
-
         <Box display={"flex"} flexDir={"row"} w={"100%"} justifyContent={"space-between"}>
           <EventButton
             event={() => {

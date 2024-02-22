@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Box } from "@chakra-ui/react";
 import GridLayout from "../../components/ui/Grid/Grid";
-import LogoConteiner from "../../components/Landing/subcomponents/LogoConteiner";
-import FormOptions from "../../components/Landing/subcomponents/FormOptions";
 import RenderForm from "../../components/Landing/subcomponents/RenderForm";
+import FormOptions from "../../components/Landing/subcomponents/FormOptions";
+import LogoConteiner from "../../components/Landing/subcomponents/LogoConteiner";
 
 export default function LandingPage() {
   const [renderForm, SetRenderForm] = useState("Login");

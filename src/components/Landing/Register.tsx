@@ -1,9 +1,10 @@
-import { FormControl, Input, Box } from "@chakra-ui/react";
-import EventButton from "../Buttons/EventButton";
-import PasswordInput from "../Inputs/PasswordInput";
 import SelectInput from "../Inputs/SelectInput";
-import useHandleRegister from "../../hooks/validation/useHandleRegister";
+import EventButton from "../Buttons/EventButton";
+import { FormControl, Box } from "@chakra-ui/react";
+import PasswordInput from "../Inputs/PasswordInput";
 import FormOptions from "./subcomponents/FormOptions";
+import RegisterInputs from "./subcomponents/inputs/RegisterInputs";
+import useHandleRegister from "../../hooks/validation/useHandleRegister";
 
 interface iRegisterProps {
   handleRender: (renderForm: string) => void;
@@ -24,9 +25,9 @@ export default function Register({ handleRender }: iRegisterProps) {
   return (
     <>
       <FormControl mb={10} display={"flex"} flexDir={"column"} alignItems={"center"} w={"80%"} rowGap={3} pr={5}>
-        <Input id="nome" placeholder={"Name ..."} type={"text"} onChange={handleNameChange} />
-        <Input id="mail" placeholder={"Email ..."} type={"email"} onChange={handleEmailchange} />
-        <Input id="affiliation" placeholder={"Affiliation ..."} type={"text"} onChange={handleAffiliattionChange} />
+        <RegisterInputs id="nome" placeholder={"Name ..."} handlechange={handleNameChange} />
+        <RegisterInputs id="mail" placeholder={"Email ..."} handlechange={handleEmailchange} />
+        <RegisterInputs id="affiliation" placeholder={"Affiliation ..."} handlechange={handleAffiliattionChange} />
 
         <SelectInput
           values={["Brazil", "England", "France", "Spain"]}

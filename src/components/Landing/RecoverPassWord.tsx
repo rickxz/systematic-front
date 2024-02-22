@@ -1,7 +1,9 @@
-import { FormControl, Input, Box } from "@chakra-ui/react";
 import EventButton from "../Buttons/EventButton";
-import useHandleRegister from "../../hooks/validation/useHandleRegister";
 import FormOptions from "./subcomponents/FormOptions";
+import { FormControl, Box } from "@chakra-ui/react";
+import RegisterInputs from "./subcomponents/inputs/RegisterInputs";
+import useHandleRegister from "../../hooks/validation/useHandleRegister";
+
 interface iRecoverProps {
   handleRender: (renderForm: string) => void;
 }
@@ -9,9 +11,8 @@ export default function RecoverPassWord({ handleRender }: iRecoverProps) {
   const { handleEmailchange } = useHandleRegister();
   return (
     <Box mb={"12em"}>
-      {" "}
       <FormControl mb={10} display={"flex"} flexDir={"column"} alignItems={"center"} w={"80%"} rowGap={3}>
-        <Input placeholder={"Email ..."} type={"text"} onChange={handleEmailchange} />
+        <RegisterInputs id="mail" placeholder={"Email ..."} handlechange={handleEmailchange} />
         <Box display={"flex"} flexDir={"row"} w={"100%"} justifyContent={"space-between"}>
           <EventButton
             event={() => {
@@ -24,7 +25,6 @@ export default function RecoverPassWord({ handleRender }: iRecoverProps) {
             variant={"solid"}
             w={"fit-content"}
           />
-
           <FormOptions text={"Back"} onClick={() => handleRender("Login")} />
         </Box>
       </FormControl>
