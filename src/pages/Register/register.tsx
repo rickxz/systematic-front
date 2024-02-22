@@ -18,19 +18,19 @@ export default function LandingPage() {
         flexDir={"row"}
         justifyContent={"space-between"}
         alignItems={"center"}
-        mt={"5em"}
+        mt={"9em"}
         mb={20}
-        h={"70vh"}
+        h={"500px"}
         gap={10}
       >
-        <Box ml={"10em"} pb={"5em"} alignContent={"center"} textAlign={"center"}>
+        <Box ml={"3em"} pb={"5em"} alignContent={"center"} textAlign={"center"}>
           {" "}
           <Card w={400} h={200} textAlign={"center"} fontWeight={"bold"} bgColor={"teal"}>
             {" "}
             <Text mt={"5em"}>Logo da Start Aqui</Text>
           </Card>
         </Box>
-        <Box display={"flex"} flexDir={"column"} gap={1} justifyContent={"flex-end"} w={"50%"} mt={10}>
+        <Box display={"flex"} flexDir={"column"} gap={1} justifyContent={"flex-end"} w={"50%"} mt={"5em"} ml={"5em"}>
           <Box display={"flex"} flexDir={"row"} gap={4} mb={3}>
             <Text
               fontWeight={renderLogin ? "bold" : ""}
