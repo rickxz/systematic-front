@@ -1,8 +1,9 @@
-import { FormControl, Input, Box, Text } from "@chakra-ui/react";
+import { FormControl, Input, Box } from "@chakra-ui/react";
 import EventButton from "../Buttons/EventButton";
 import PasswordInput from "../Inputs/PasswordInput";
 import SelectInput from "../Inputs/SelectInput";
 import useHandleRegister from "../../hooks/validation/useHandleRegister";
+import FormOptions from "./subcomponents/FormOptions";
 
 interface iRegisterProps {
   handleRender: (renderForm: string) => void;
@@ -22,7 +23,6 @@ export default function Register({ handleRender }: iRegisterProps) {
   } = useHandleRegister();
   return (
     <>
-      {" "}
       <FormControl mb={10} display={"flex"} flexDir={"column"} alignItems={"center"} w={"80%"} rowGap={3} pr={5}>
         <Input placeholder={"Name ..."} type={"text"} onChange={handleEmailchange} />
         <Input placeholder={"Email ..."} type={"text"} onChange={handleNameChange} />
@@ -42,7 +42,6 @@ export default function Register({ handleRender }: iRegisterProps) {
           handlechange={handleConfirmPasswordChange}
           isValid={passwordMatch}
         />
-
         <Box display={"flex"} flexDir={"row"} columnGap={55}>
           <EventButton
             event={handleRegister}
@@ -53,16 +52,7 @@ export default function Register({ handleRender }: iRegisterProps) {
             variant={"solid"}
             w={"fit-content"}
           />
-
-          <Text
-            mt={2}
-            onClick={() => {
-              handleRender("Login");
-            }}
-            _hover={{ cursor: "pointer" }}
-          >
-            Already have an account?
-          </Text>
+          <FormOptions text="Already have an account? " onClick={() => handleRender("Login")} />
         </Box>
       </FormControl>
     </>

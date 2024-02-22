@@ -1,6 +1,6 @@
 import Login from "../Login";
-import RecoverPassWord from "../RecoverPassWord";
 import Register from "../Register";
+import RecoverPassWord from "../RecoverPassWord";
 
 interface iRenderFormProps {
   renderForm: string;

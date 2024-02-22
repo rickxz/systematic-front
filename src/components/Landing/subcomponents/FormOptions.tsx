@@ -2,7 +2,7 @@ import { Text } from "@chakra-ui/react";
 
 interface iFormOptionsProps {
   text: string;
-  active: boolean;
+  active?: boolean;
   onClick: () => void;
 }
 
