@@ -5,7 +5,7 @@ import SelectInput from "../Inputs/SelectInput";
 import useHandleRegister from "../../hooks/validation/useHandleRegister";
 
 interface iRegisterProps {
-  handleRender: (renderForm: string) => string;
+  handleRender: (renderForm: string) => void;
 }
 
 export default function Register({ handleRender }: iRegisterProps) {

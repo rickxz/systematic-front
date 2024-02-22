@@ -2,7 +2,7 @@ import { FormControl, Input, Box, Text } from "@chakra-ui/react";
 import EventButton from "../Buttons/EventButton";
 import useHandleRegister from "../../hooks/validation/useHandleRegister";
 interface iRecoverProps {
-  handleRender: (renderForm: string) => string;
+  handleRender: (renderForm: string) => void;
 }
 export default function RecoverPassWord({ handleRender }: iRecoverProps) {
   const { handleEmailchange } = useHandleRegister();

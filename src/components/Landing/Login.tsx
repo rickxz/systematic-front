@@ -4,7 +4,7 @@ import PasswordInput from "../Inputs/PasswordInput";
 import useHandleRegister from "../../hooks/validation/useHandleRegister";
 
 interface iLoginProps {
-  handleRender: (renderForm: string) => string;
+  handleRender: (renderForm: string) => void;
 }
 
 export default function Login({ handleRender }: iLoginProps) {
