@@ -20,7 +20,7 @@ export default function SNumberInput({label, value}: INumberInputProps) {
     return (
       <FormControl maxW={"60vw"}>
         <FormLabel>{label}</FormLabel>
-          <NumberInput value={value}>
+          <NumberInput value={value} size='md' maxW={24}>
               <NumberInputField/>
               <NumberInputStepper>
                   <NumberIncrementStepper />

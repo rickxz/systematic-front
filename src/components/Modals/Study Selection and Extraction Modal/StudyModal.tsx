@@ -25,22 +25,33 @@ export default function StudyModal({title, status, readingPriority, searchSessio
         <>
             <Button onClick={onOpen}>Study Modal</Button>
         
-            <Modal isOpen={isOpen} onClose={onClose} size={'xl'}>
+            <Modal isOpen={isOpen} onClose={onClose} size={'6xl'}>
                 <ModalOverlay />
 
                 <ModalContent>
-                    <ModalHeader>{title}</ModalHeader>
+                    <ModalHeader color='white' bg='gray.800'>{title}</ModalHeader>
                     <ModalCloseButton />
 
                     <ModalBody>
                         <Box>{"Conteudo"}</Box>
                     </ModalBody>
-                    <ModalFooter>
-                        <StatusSelection />
-                        <ReadingPrioritySelection/>
-                        <Text>Search session: {searchSession}</Text>
-                        <SNumberInput label={'Score'} value={score}/ >
-                        
+                    <ModalFooter color='white' bg='gray.800'>
+                        <Flex justify={'space-around'} flex={'1'}>
+                            <StatusSelection />
+                            <Button>Get full text</Button>
+
+                            <Flex gap='10px'>
+                                <Button>Discard Changes</Button>
+                                <Button>Save</Button>
+                                <Button>Chose</Button>
+                            </Flex>
+                          
+                            <Flex gap='10px'>
+                                <Button>Previous</Button>
+                                <Button>Next</Button>
+                            </Flex>
+                        </Flex>
+
                     </ModalFooter>
                 </ModalContent>
 
