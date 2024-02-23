@@ -6,11 +6,7 @@ import {
     Button, Flex, useDisclosure, Box,
     Text
   } from '@chakra-ui/react';
-import ReadingPriority from './Subcomponents/ReadingPrioritySelection';
-import ReadingPrioritySelection from './Subcomponents/ReadingPrioritySelection';
 import StatusSelection from './Subcomponents/StatusSelection';
-import SNumberInput from '../../Inputs/NumberInput';
-
 interface IStudy {
     title: string;
     status: 'Accepted' | 'Rejected' | 'Unclassified' | 'Duplicated' ;
