@@ -7,27 +7,20 @@ import {
   FormControl,
   FormLabel,
 } from '@chakra-ui/react'
-import { useState } from 'react';
 
 interface INumberInputProps {
     label: string;
-    onChange?: any;
+    value?: number;
   }
 
-export default function SNumberInput({label, onChange}: INumberInputProps) {
-   
-  const [value, setValue] = useState(0);
-
-  const handleChange = (newValue: any) => {
-    setValue(newValue);
-  };
+export default function SNumberInput({label, value}: INumberInputProps) {
 
   console.log(value);
 
     return (
       <FormControl maxW={"60vw"}>
         <FormLabel>{label}</FormLabel>
-          <NumberInput value={value} onChange={handleChange}>
+          <NumberInput value={value}>
               <NumberInputField/>
               <NumberInputStepper>
                   <NumberIncrementStepper />
