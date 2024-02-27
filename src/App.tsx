@@ -1,17 +1,18 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/home/home";
-import Protocol from "./pages/Protocolo/Protocol";
-import NovaRevisao from "./pages/NovaRevisao/novaRevisao";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Identification from "./pages/Execution/Identification";
-import SearchSession from "./pages/SearchSession/SearchSession";
-import ProtocolPartTwo from "./pages/Protocolo/Protocol-Part-Two";
-import ProtocolPartThree from "./pages/Protocolo/Protocol-Part-Three";
-import Selection from "./pages/Execution/SubPages/Selection/Selection";
-import Insertion from "./pages/Execution/SubPages/Insertion/Insertion";
-import Finalization from "./pages/NovaRevisao/finalization/Finalization";
 import Extraction from "./pages/Execution/SubPages/Extraction/Extraction";
+import Insertion from "./pages/Execution/SubPages/Insertion/Insertion";
 import KeyWordScreen from "./pages/Execution/SubPages/KeyWordScreen/KeyWordScreen";
+import Selection from "./pages/Execution/SubPages/Selection/Selection";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import Finalization from "./pages/NovaRevisao/finalization/Finalization";
+import Graphics from "./pages/NovaRevisao/graphics/Graphics";
+import NovaRevisao from "./pages/NovaRevisao/novaRevisao";
+import Protocol from "./pages/Protocolo/Protocol";
+import ProtocolPartThree from "./pages/Protocolo/Protocol-Part-Three";
+import ProtocolPartTwo from "./pages/Protocolo/Protocol-Part-Two";
+import SearchSession from "./pages/SearchSession/SearchSession";
+import Home from "./pages/home/home";
 function App() {
   return (
     <>
@@ -30,6 +31,7 @@ function App() {
           <Route path="/newRevision/selection" element={<Selection />} />
           <Route path="/newRevision/extraction" element={<Extraction />} />
           <Route path="/newRevision/insertion" element={<Insertion />} />
+          <Route path="/newRevision/graphics" element={<Graphics />} />
           <Route path="/newRevision/finalization" element={<Finalization />} />
           <Route path="/newRevision/searchSession" element={<SearchSession />} />
         </Routes>

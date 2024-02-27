@@ -4,7 +4,7 @@ import GridLayout from "../../../components/ui/Grid/Grid";
 import Header from "../../../components/ui/Header/Header";
 
 import BarChart from "../../../components/Charts/BarChart/BarChart";
-import PieChart from "../../../components/Charts/PieChart/PieChart"
+import PieChart from "../../../components/Charts/PieChart/PieChart";
 
 export default function Graphics() {
   return (

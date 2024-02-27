@@ -1,7 +1,7 @@
 import { FaHome } from "react-icons/fa";
-import NavItem from "./NavItem";
 import { Link } from "react-router-dom";
 import AccordionElement from "./AccordionItem";
+import NavItem from "./NavItem";
 interface IAccordion {
   navSize: string;
 }
@@ -19,7 +19,7 @@ export default function AccordionNav({ navSize }: IAccordion) {
       <AccordionElement
         navSize={navSize}
         title="Summarizaton"
-        names={["Grafics", "Visualization", "Finalization"]}
+        names={["Graphics", "Visualization", "Finalization"]}
         basePath="/newRevision"
       />
       <Link to="/">
