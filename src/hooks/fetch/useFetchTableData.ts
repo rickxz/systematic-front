@@ -21,7 +21,11 @@ const useFetchTableData = (url: string) => {
     };
 
     fetchData();
+<<<<<<< HEAD
   }, [url]);
+=======
+  }, [url]); // Certifique-se de adicionar a URL como dependência do useEffect
+>>>>>>> barChart
 
   return { headerData, bodyData };
 };

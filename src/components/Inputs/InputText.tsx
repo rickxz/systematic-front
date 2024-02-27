@@ -15,6 +15,7 @@ export default function InputText({ label, placeholder, type, nome, onChange }: 
     <FormControl display={"flex"} flexDir={"column"} mt={isSearchField ? "" : 10} maxW={"60vw"}>
       <FormLabel>{label}</FormLabel>
       <FormControl display={"flex"} flexDir={"row"} gap={".3rem"}>
+<<<<<<< HEAD
         <Input
           type={type}
           name={nome}
@@ -22,6 +23,9 @@ export default function InputText({ label, placeholder, type, nome, onChange }: 
           onChange={onChange}
           w={isSearchField ? "250px" : "100%"}
         />
+=======
+        <Input type={type} name={nome} placeholder={placeholder} w={isSearchField ? "250px" : "100%"} />
+>>>>>>> barChart
         {isSearchField && <SearchButton />}
       </FormControl>
     </FormControl>

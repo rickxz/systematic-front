@@ -46,7 +46,10 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
                 <Td
                   key={cellIndex}
                   display={isKeyWordTable ? "" : getColumnVisibility(headerData[cellIndex].toLowerCase()) ? "none" : ""}
+<<<<<<< HEAD
                   textAlign={"center"}
+=======
+>>>>>>> barChart
                 >
                   {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
                 </Td>
