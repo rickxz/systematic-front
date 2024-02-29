@@ -17,7 +17,7 @@ const context = useContext(SidebarContext);
     return (<>Problema com useContext em NavItem.tsx</>);
   }
 
-  const {button, setButton,} = context;
+  const {button, setButton} = context;
 
   const isSmallSize = navSize === "small";
   const isSelected = button === title;
