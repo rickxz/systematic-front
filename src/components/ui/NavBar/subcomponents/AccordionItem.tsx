@@ -31,7 +31,7 @@ export default function AccordionElement({ navSize, icon, title, names, basePath
         <AccordionPanel>
           {names.map((name) => (
             <Link to={`${basePath}/${name.toLowerCase()}`} key={name}>
-              <NavItem title={name} navSize={navSize} /*isSelected={isSelected}*/ />
+              <NavItem title={name} navSize={navSize} />
             </Link>
           ))}
         </AccordionPanel>
