@@ -9,20 +9,23 @@ import {
 ChartJs.register(ArcElement, Tooltip, Legend);
 
 import { Pie } from "react-chartjs-2";
-import PieChartData from "../../../data/pieChartTest.json";
-import useFetchDataBases from "../../../hooks/fetch/useFetchDataBases";
+import useFetchGraphicsData from "../../../hooks/fetch/useFetchGraphicsData";
 
-defaults.maintainAspectRatio = false;
-defaults.responsive = true;
+interface iGraphicsData {
+  label: string;
+  value: number;
+}
 
 function PieChart() {
-  const database = useFetchDataBases("../../../data/pieChartTest.json");
+  const barChartData: iGraphicsData[] = useFetchGraphicsData(
+    "/data/pieChartTest.json"
+  );
   const data = {
-    labels: PieChartData.map((data) => data.label),
+    labels: barChartData.map((data) => data.label),
     datasets: [
       {
         label: "Source",
-        data: PieChartData.map((data) => data.value),
+        data: barChartData.map((data) => data.value),
         backgroundColor: ["purple", "blue", "green", "lightblue"],
       },
     ],
@@ -35,6 +38,9 @@ function PieChart() {
       },
     },
   };
+
+  defaults.maintainAspectRatio = false;
+  defaults.responsive = true;
 
   return <Pie data={data} options={options} />;
 }
