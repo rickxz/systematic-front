@@ -14,7 +14,7 @@ export default function DataExtractionFormNumberInterval() {
     <>
       <Button onClick={onOpen}>Open Modal</Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size={'sm'}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Data Extraction Field Creation</ModalHeader>

@@ -15,7 +15,7 @@ return (
     <>
     <Button onClick={onOpen}>Open Modal</Button>
 
-    <Modal isOpen={isOpen} onClose={onClose} size={"xl"}>
+    <Modal isOpen={isOpen} onClose={onClose} size={"sm"}>
         <ModalOverlay />
         <ModalContent>
         <ModalHeader>Data Extraction Field Creation</ModalHeader>
