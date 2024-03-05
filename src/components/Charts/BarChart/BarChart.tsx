@@ -28,7 +28,7 @@ function BarChart() {
       {
         label: "Extraction",
         data: barChartData.map((data) => data.value),
-        backgroundColor: ["red", "blue", "green", "yellow"],
+        backgroundColor: ["purple", "blue", "green", "lightblue"],
       },
     ],
   };
