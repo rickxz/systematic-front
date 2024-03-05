@@ -17,12 +17,13 @@ const context = useContext(SidebarContext);
     return (<>Problema com useContext em NavItem.tsx</>);
   }
 
-  const {button, setButton} = context;
+  const {button, setButton, item} = context;
 
   const isSmallSize = navSize === "small";
   const isSelected = button === title;
 
   console.log('actual button: ' + button);
+  console.log('actual item: ' + item);
 
   const handleClick = () => {
     console.log('last button: ' + button);

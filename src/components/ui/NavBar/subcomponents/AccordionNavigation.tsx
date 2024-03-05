@@ -18,7 +18,7 @@ export default function AccordionNav({ navSize }: IAccordion) {
       />
       <AccordionElement
         navSize={navSize}
-        title="Summarizaton"
+        title="Summarization"
         names={["Graphics", "Visualization", "Finalization"]}
         basePath="/newRevision"
       />
