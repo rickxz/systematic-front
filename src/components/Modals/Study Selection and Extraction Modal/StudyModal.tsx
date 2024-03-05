@@ -4,10 +4,16 @@ import {
     ModalHeader,ModalFooter,
     ModalBody, ModalCloseButton,
     Button, Flex, useDisclosure, Box,
-    Text
+    Tr, Td
   } from '@chakra-ui/react';
 import StatusSelection from './Subcomponents/StatusSelection';
+import ColoredIcon from '../../Icons/ColoredIcon';
 interface IStudy {
+    rowData: (string | number)[];
+    rowIndex: number; 
+    isKeyWordTable: boolean;
+    getColumnVisibility: (text: string) => boolean;
+    headerData: (string)[];
     title: string;
     status: 'Accepted' | 'Rejected' | 'Unclassified' | 'Duplicated' ;
     readingPriority: 'Very high'| 'High' | 'Low' | 'Very low';
@@ -15,11 +21,22 @@ interface IStudy {
     score: number;
 }
 
-export default function StudyModal({title, status, readingPriority, searchSession, score}: IStudy) {
+export default function StudyModal({rowData, rowIndex, isKeyWordTable, getColumnVisibility, headerData,
+     title, status, readingPriority, searchSession, score}: IStudy) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     return (
         <>
-            <Button onClick={onOpen}>Study Modal</Button>
+            <Tr key={rowIndex} onClick={onOpen}>
+              {rowData.map((cell, cellIndex) => (
+                <Td
+                  key={cellIndex}
+                  display={isKeyWordTable ? "" : getColumnVisibility(headerData[cellIndex].toLowerCase()) ? "none" : ""}
+                  textAlign={"center"}
+                >
+                  {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
+                </Td>
+              ))}
+            </Tr>
         
             <Modal isOpen={isOpen} onClose={onClose} size={'6xl'}>
                 <ModalOverlay />
