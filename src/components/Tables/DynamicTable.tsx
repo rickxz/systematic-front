@@ -2,8 +2,7 @@ import ColoredIcon from "../Icons/ColoredIcon";
 import useTableSorting from "../../hooks/useTableSorting";
 import useColumnVisibility from "../../hooks/useColumnVisibility";
 import { Table, TableContainer, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
-import TableRow from "../Modals/Study Selection and Extraction Modal/TableRow";
-
+import TableRow from "./Subcomponents/TableRow";
 interface DynamicTableProps {
   headerData: string[];
   bodyData: (string | number)[][];
