@@ -2,7 +2,7 @@ import ColoredIcon from "../Icons/ColoredIcon";
 import useTableSorting from "../../hooks/useTableSorting";
 import useColumnVisibility from "../../hooks/useColumnVisibility";
 import { Table, TableContainer, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
-import StudyModal from "../Modals/Study Selection and Extraction Modal/StudyModal";
+import TableRow from "../Modals/Study Selection and Extraction Modal/TableRow";
 
 interface DynamicTableProps {
   headerData: string[];
@@ -42,7 +42,7 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
         </Thead>
         <Tbody>
           {sortedData.map((rowData, rowIndex) => (
-            <StudyModal rowData={rowData} rowIndex={rowIndex} isKeyWordTable={isKeyWordTable}
+            <TableRow rowData={rowData} rowIndex={rowIndex} isKeyWordTable={isKeyWordTable}
              getColumnVisibility={getColumnVisibility} headerData={headerData}
               title={""} status={"Accepted"} readingPriority={"Very high"} searchSession={"Scopus"} score={0} />
           ))}

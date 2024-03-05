@@ -1,7 +1,7 @@
 import DataExtractionFormItensList from "../../components/Modals/Data Extraciton Field Creation/FormModalItensList";
 import DataExtractionFormItensValueList from "../../components/Modals/Data Extraciton Field Creation/FormModalItensValueList";
 import DataExtractionFormNumberInterval from "../../components/Modals/Data Extraciton Field Creation/FormModalNumberInterval";
-import StudyModal from "../../components/Modals/Study Selection and Extraction Modal/StudyModal";
+import StudyModal from "../../components/Modals/Study Selection and Extraction Modal/TableRow";
 
 export default function TestPage() {
   return (

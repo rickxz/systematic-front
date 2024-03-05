@@ -6,7 +6,7 @@ import {
     Button, Flex, useDisclosure, Box,
     Tr, Td
   } from '@chakra-ui/react';
-import StatusSelection from './Subcomponents/StatusSelection';
+import StatusSelection from './TableRowSubcomponents/StatusSelection';
 import ColoredIcon from '../../Icons/ColoredIcon';
 interface IStudy {
     rowData: (string | number)[];
@@ -21,7 +21,7 @@ interface IStudy {
     score: number;
 }
 
-export default function StudyModal({rowData, rowIndex, isKeyWordTable, getColumnVisibility, headerData,
+export default function TableRow({rowData, rowIndex, isKeyWordTable, getColumnVisibility, headerData,
      title, status, readingPriority, searchSession, score}: IStudy) {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
