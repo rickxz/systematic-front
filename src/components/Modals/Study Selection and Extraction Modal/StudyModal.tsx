@@ -24,6 +24,11 @@ interface IStudy {
 export default function StudyModal({rowData, rowIndex, isKeyWordTable, getColumnVisibility, headerData,
      title, status, readingPriority, searchSession, score}: IStudy) {
     const { isOpen, onOpen, onClose } = useDisclosure();
+
+    function showData() {
+        console.log(rowData);
+    }
+
     return (
         <>
             <Tr key={rowIndex} onClick={onOpen}>
@@ -47,6 +52,7 @@ export default function StudyModal({rowData, rowIndex, isKeyWordTable, getColumn
 
                     <ModalBody>
                         <Box>{"Conteudo"}</Box>
+                        <Button color='white' bg='black' onClick={showData}>Imprimir dados do estudo</Button>
                     </ModalBody>
                     <ModalFooter color='white' bg='gray.800'>
                         <Flex justify={'space-around'} flex={'1'}>
