@@ -6,7 +6,7 @@ interface IHeaderProps {
 
 export default function Header({ text }: IHeaderProps) {
   return (
-    <Heading mt={10} as={"h1"} alignSelf={"center"}>
+    <Heading mt={2} as={"h1"} alignSelf={"center"}>
       {text}
     </Heading>
   );
