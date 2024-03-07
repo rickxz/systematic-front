@@ -1,8 +1,9 @@
-import { Box, Card } from "@chakra-ui/react";
 import CardIcon from "./CardIcon";
 import CardInfos from "./CardInfos";
 import EditionInfos from "./EditionInfos";
+import { Box, Card } from "@chakra-ui/react";
 import EnterRevisionButton from "./EnterRevisionButton";
+import { conteiner, infoconteiner } from "../styles/CardStyles";
 
 interface iRevisionCardProps {
   title: string;
@@ -15,20 +16,10 @@ interface iRevisionCardProps {
 export default function RevisionCard({ title, RevisorNames, lastEdition, creation, isEdited }: iRevisionCardProps) {
   return (
     <>
-      <Card
-        h={"100PX"}
-        w={"1020PX"}
-        boxShadow={"0 4px 12px 0 rgba(0, 0 , 0, 0.5)"}
-        display={"flex"}
-        flexDir="row"
-        borderRadius={"20px"}
-        ml={"5%"}
-        fontSize={"12px"}
-        justifySelf={"flex-start"}
-      >
+      <Card sx={conteiner}>
         <CardIcon />
         <CardInfos title={title} RevisorNames={RevisorNames} />
-        <Box ml={"200px"}>
+        <Box sx={infoconteiner}>
           <EnterRevisionButton text="Ver Revisão" />
           <EditionInfos lastEdition={lastEdition} creation={creation} isEdited={isEdited} />
         </Box>

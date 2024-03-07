@@ -13,7 +13,6 @@ export default function ResearcherFilter() {
   const [filteredResearchers, setFilteredResearchers] = useState<IResearcherData[]>([]);
 
   useEffect(() => {
-    // This useEffect is fetching the local json file for test purposes, this will later fetch from the database.
     fetch("src/data/test.json")
       .then((response) => response.json())
       .then((res) => setResearchers(res))
