@@ -4,10 +4,11 @@ import {
     ModalHeader,ModalFooter,
     ModalBody, ModalCloseButton,
     Button, Flex, useDisclosure, Box,
-    Tr, Td, Checkbox
+    Tr, Td, Checkbox, useStyleConfig
   } from '@chakra-ui/react';
 import StatusSelection from './TableRowSubcomponents/StatusSelection';
 import ColoredIcon from '../../Icons/ColoredIcon';
+import { Dispatch, SetStateAction, useState } from 'react';
 interface IStudy {
     rowData: (string | number)[];
     rowIndex: number; 
@@ -24,6 +25,14 @@ interface IStudy {
 export default function TableRow({rowData, rowIndex, isKeyWordTable, getColumnVisibility, headerData,
      title, status, readingPriority, searchSession, score}: IStudy) {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [ setCursor, cursor ] = useState("default");
+
+    const style = useStyleConfig("Box", {
+        base: {
+            cursor: "pointer",
+        }
+    });
+
 
     function showData() {
         console.log(rowData);
@@ -35,9 +44,9 @@ export default function TableRow({rowData, rowIndex, isKeyWordTable, getColumnVi
                 <Td>
                     <Checkbox/>
                 </Td>
-                <Box onClick={onOpen}>
                 {rowData.map((cell, cellIndex) => (
-                    <Td
+                    <Td 
+                    onClick={onOpen}
                     key={cellIndex}
                     display={isKeyWordTable ? "" : getColumnVisibility(headerData[cellIndex].toLowerCase()) ? "none" : ""}
                     textAlign={"center"}
@@ -45,7 +54,6 @@ export default function TableRow({rowData, rowIndex, isKeyWordTable, getColumnVi
                     {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
                     </Td>
                 ))}
-                </Box>
             </Tr>
         
             <Modal isOpen={isOpen} onClose={onClose} size={'6xl'}>
