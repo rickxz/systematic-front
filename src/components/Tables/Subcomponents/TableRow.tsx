@@ -27,7 +27,7 @@ export default function TableRow({rowData, rowIndex, isKeyWordTable, getColumnVi
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [ setCursor, cursor ] = useState("default");
 
-    const style = useStyleConfig("Box", {
+    const style = useStyleConfig("Td", {
         base: {
             cursor: "pointer",
         }
@@ -45,7 +45,7 @@ export default function TableRow({rowData, rowIndex, isKeyWordTable, getColumnVi
                     <Checkbox/>
                 </Td>
                 {rowData.map((cell, cellIndex) => (
-                    <Td 
+                    <Td cursor={"pointer"}
                     onClick={onOpen}
                     key={cellIndex}
                     display={isKeyWordTable ? "" : getColumnVisibility(headerData[cellIndex].toLowerCase()) ? "none" : ""}
