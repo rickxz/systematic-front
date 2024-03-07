@@ -4,7 +4,7 @@ import {
     ModalHeader,ModalFooter,
     ModalBody, ModalCloseButton,
     Button, Flex, useDisclosure, Box,
-    Tr, Td
+    Tr, Td, Checkbox
   } from '@chakra-ui/react';
 import StatusSelection from './TableRowSubcomponents/StatusSelection';
 import ColoredIcon from '../../Icons/ColoredIcon';
@@ -32,15 +32,18 @@ export default function TableRow({rowData, rowIndex, isKeyWordTable, getColumnVi
     return (
         <>
             <Tr key={rowIndex} onClick={onOpen}>
-              {rowData.map((cell, cellIndex) => (
-                <Td
-                  key={cellIndex}
-                  display={isKeyWordTable ? "" : getColumnVisibility(headerData[cellIndex].toLowerCase()) ? "none" : ""}
-                  textAlign={"center"}
-                >
-                  {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
+                <Td>
+                    <Checkbox/>
                 </Td>
-              ))}
+                {rowData.map((cell, cellIndex) => (
+                    <Td
+                    key={cellIndex}
+                    display={isKeyWordTable ? "" : getColumnVisibility(headerData[cellIndex].toLowerCase()) ? "none" : ""}
+                    textAlign={"center"}
+                    >
+                    {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
+                    </Td>
+                ))}
             </Tr>
         
             <Modal isOpen={isOpen} onClose={onClose} size={'6xl'}>

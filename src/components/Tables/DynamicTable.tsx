@@ -25,6 +25,7 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
       <Table variant={"striped"}>
         <Thead>
           <Tr>
+            <Th></Th>
             {headerData.map((header) => (
               <Th
                 key={header}
