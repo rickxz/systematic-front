@@ -1,5 +1,6 @@
 import { FormControl } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { FormControlstyle } from "../styles/ResearcherFilterStyles";
 import TextAreaInput from "../../../components/Inputs/InputTextArea";
 
 interface IResearcherData {
@@ -25,7 +26,7 @@ export default function ResearcherFilter() {
   };
 
   return (
-    <FormControl rowGap={5} display={"flex"} flexDir={"column"} alignItems={"center"}>
+    <FormControl sx={FormControlstyle}>
       <TextAreaInput
         label="Researchers:"
         placeholder={"Enter researcher name"}
