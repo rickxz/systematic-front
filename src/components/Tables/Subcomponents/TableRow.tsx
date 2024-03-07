@@ -31,10 +31,11 @@ export default function TableRow({rowData, rowIndex, isKeyWordTable, getColumnVi
 
     return (
         <>
-            <Tr key={rowIndex} onClick={onOpen}>
+            <Tr key={rowIndex}>
                 <Td>
                     <Checkbox/>
                 </Td>
+                <Box onClick={onOpen}>
                 {rowData.map((cell, cellIndex) => (
                     <Td
                     key={cellIndex}
@@ -44,6 +45,7 @@ export default function TableRow({rowData, rowIndex, isKeyWordTable, getColumnVi
                     {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
                     </Td>
                 ))}
+                </Box>
             </Tr>
         
             <Modal isOpen={isOpen} onClose={onClose} size={'6xl'}>
