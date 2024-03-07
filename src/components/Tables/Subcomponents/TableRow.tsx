@@ -25,13 +25,6 @@ interface IStudy {
 export default function TableRow({rowData, rowIndex, isKeyWordTable, getColumnVisibility, headerData,
      title, status, readingPriority, searchSession, score}: IStudy) {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [ setCursor, cursor ] = useState("default");
-
-    const style = useStyleConfig("Td", {
-        base: {
-            cursor: "pointer",
-        }
-    });
 
 
     function showData() {
