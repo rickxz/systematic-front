@@ -1,7 +1,5 @@
 {
     "headerData": [
-        "IDSS",
-        "ID Paper",
         "Title",
         "Author",
         "Year",
@@ -12,8 +10,6 @@
     ],
     "bodyData": [
         [
-            "03",
-            "00001",
             "titulo1",
             "Jão da Silva, Cleitin, et all",
             "2002",
@@ -23,8 +19,6 @@
             100
         ],
         [
-            "02",
-            "00006",
             "outroTitulo",
             "Maria Oliveira, Joãozinho, et all",
             "2005",
@@ -34,8 +28,6 @@
             12
         ],
         [
-            "04",
-            "00009",
             "terceiroTitulo",
             "José Pereira, Ana Souza, et all",
             "2010",
@@ -45,8 +37,6 @@
             4
         ],
         [
-            "01",
-            "00012",
             "quartoTitulo",
             "Fernanda Santos, Carlos Silva, et all",
             "2015",

@@ -1,7 +1,6 @@
-import ColoredIcon from "../Icons/ColoredIcon";
 import useTableSorting from "../../hooks/useTableSorting";
 import useColumnVisibility from "../../hooks/useColumnVisibility";
-import { Table, TableContainer, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
+import { Table, TableContainer, Thead, Tbody, Tr, Th } from "@chakra-ui/react";
 import TableRow from "./Subcomponents/TableRow";
 interface DynamicTableProps {
   headerData: string[];
@@ -42,9 +41,18 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
         </Thead>
         <Tbody>
           {sortedData.map((rowData, rowIndex) => (
-            <TableRow rowData={rowData} rowIndex={rowIndex} isKeyWordTable={isKeyWordTable}
-             getColumnVisibility={getColumnVisibility} headerData={headerData}
-              title={""} status={"Accepted"} readingPriority={"Very high"} searchSession={"Scopus"} score={0} />
+            <TableRow
+              rowData={rowData}
+              rowIndex={rowIndex}
+              isKeyWordTable={isKeyWordTable}
+              getColumnVisibility={getColumnVisibility}
+              headerData={headerData}
+              title={""}
+              status={"Accepted"}
+              readingPriority={"Very high"}
+              searchSession={"Scopus"}
+              score={0}
+            />
           ))}
         </Tbody>
       </Table>
