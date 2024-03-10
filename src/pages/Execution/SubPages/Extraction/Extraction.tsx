@@ -13,7 +13,7 @@ export default function Extraction() {
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
   return (
-    <GridLayout navigationType="Accordion">
+    <GridLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Extraction" />
       <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
         <Box

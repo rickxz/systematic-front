@@ -7,7 +7,7 @@ import TextAreaInput from "../../components/Inputs/InputTextArea";
 
 export default function Protocol() {
   return (
-    <GridLayout navigationType="Accordion">
+    <GridLayout defaultOpen={0} navigationType="Accordion">
       <Header text="Protocol" />
       <Progress value={0} ml={"10%"} mt={10} w={"80%"} alignSelf={"center"} />
       <FormControl display={"flex"} flexDir={"column"} gap={20} mt={10} alignItems={"center"}>

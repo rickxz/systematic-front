@@ -7,7 +7,7 @@ import InputTextArea from "../../components/Inputs/InputTextArea";
 import ResearcherFilter from "../home/subcomponents/ResearcherFilter";
 export default function NovaRevisao() {
   return (
-    <GridLayout navigationType="Accordion">
+    <GridLayout navigationType="Accordion" defaultOpen={0}>
       <Header text="New Systematic Review" />
       <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"80%"} alignItems={"center"} ml={"10em"}>
         <InputText label="Title:" placeholder="Enter review title" type="text" nome="text" />

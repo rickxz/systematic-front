@@ -8,28 +8,28 @@ import PieChart from "../../../components/Charts/PieChart/PieChart";
 
 export default function Graphics() {
   return (
-    <GridLayout navigationType="Accordion">
-        <Header text="Graphics" />
-            <Box maxW='100%' maxH="100%" borderWidth='1px' borderRadius='lg' padding="2em" display="column"  >
-              <Box maxW='100%' maxH="100%" borderWidth='1px' borderRadius='lg' padding="2em" display="flex"  >
-                  <Box width="50%" padding="2px" >
-                      <BarChart/>
-                  </Box>
+    <GridLayout navigationType="Accordion" defaultOpen={2}>
+      <Header text="Graphics" />
+      <Box maxW="100%" maxH="100%" borderWidth="1px" borderRadius="lg" padding="2em" display="column">
+        <Box maxW="100%" maxH="100%" borderWidth="1px" borderRadius="lg" padding="2em" display="flex">
+          <Box width="50%" padding="2px">
+            <BarChart />
+          </Box>
 
-                  <Box width="50%" padding="2px" borderLeft="1px">
-                      <PieChart/>
-                  </Box>
-              </Box>
-              <Box maxW='100%' maxH="100%" borderWidth='1px' borderRadius='lg' padding="2em" display="flex"  >
-                  <Box width="50%" padding="2px" >
-                      <BarChart/>
-                  </Box>
+          <Box width="50%" padding="2px" borderLeft="1px">
+            <PieChart />
+          </Box>
+        </Box>
+        <Box maxW="100%" maxH="100%" borderWidth="1px" borderRadius="lg" padding="2em" display="flex">
+          <Box width="50%" padding="2px">
+            <BarChart />
+          </Box>
 
-                  <Box width="50%" padding="2px" borderLeft="1px">
-                      <PieChart/>
-                  </Box>
-              </Box>
-            </Box>
+          <Box width="50%" padding="2px" borderLeft="1px">
+            <PieChart />
+          </Box>
+        </Box>
+      </Box>
     </GridLayout>
   );
 }

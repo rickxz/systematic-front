@@ -8,7 +8,7 @@ import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable"
 
 export default function ProtocolPartTwo2() {
   return (
-    <GridLayout navigationType="Accordion">
+    <GridLayout defaultOpen={0} navigationType="Accordion">
       <Header text="Protocol" />
       <Progress value={33} />
       <FormControl display={"flex"} flexDir={"column"} gap={20} mt={20} ml={"2%"}>

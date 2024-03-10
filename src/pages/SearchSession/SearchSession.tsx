@@ -13,7 +13,7 @@ export default function SearchSession() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   return (
-    <GridLayout navigationType="Accordion">
+    <GridLayout navigationType="Accordion" defaultOpen={1}>
       <Header text={"Database Name-Studies Identification"} />
       <Box mt={10} display={"flex"} flexDir={"row"} columnGap={20}>
         <SearchInformations />
@@ -25,8 +25,6 @@ export default function SearchSession() {
           name={headerData}
           handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
           checkedByDefault={[
-            "idss",
-            "id paper",
             "title",
             "author",
             "year",

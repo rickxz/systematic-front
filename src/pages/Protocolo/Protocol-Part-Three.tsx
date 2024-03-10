@@ -7,7 +7,7 @@ import AddTextTable from "../../components/AddDataFields/AddTextTable";
 
 export default function ProtocolPartThree() {
   return (
-    <GridLayout navigationType="Accordion">
+    <GridLayout navigationType="Accordion" defaultOpen={0}>
       <Header text="Protocol" />
       <Progress value={66} />
       <FormControl display={"flex"} flexDir={"column"} mt={10} rowGap={10} ml={"2%"}>
