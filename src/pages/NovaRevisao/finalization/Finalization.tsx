@@ -15,7 +15,7 @@ export default function Finalization() {
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
 
   return (
-    <GridLayout navigationType="Accordion">
+    <GridLayout defaultOpen={2} navigationType="Accordion">
       <Header text="Review Finalization" />
       <Flex flexDirection="column" gap={5}>
         <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>

@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, Icon, AccordionIcon, Box, AccordionItem, AccordionPanel } from "@chakra-ui/react";
+import { AccordionButton, Icon, AccordionIcon, Box, AccordionItem, AccordionPanel } from "@chakra-ui/react";
 import NavItem from "./NavItem";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
@@ -39,21 +39,19 @@ export default function AccordionElement({ navSize, icon, title, names, basePath
   }
 
   return (
-    <Accordion allowMultiple>
-      <AccordionItem alignContent={isSmallSize ? "center" : "flex-start"}>
-        <AccordionButton bg={isSelected() ? "black" : "white"} color={isSelected() ? "white" : "black"}>
-          {isSmallSize && <Icon as={icon} />}
-          {shouldRenderIcon}
-          <AccordionIcon />
-        </AccordionButton>
-        <AccordionPanel>
-          {names.map((name) => (
-            <Link to={`${basePath}/${name.toLowerCase()}`} key={name}>
-              <NavItem title={name} navSize={navSize} />
-            </Link>
-          ))}
-        </AccordionPanel>
-      </AccordionItem>
-    </Accordion>
+    <AccordionItem alignContent={isSmallSize ? "center" : "flex-start"}>
+      <AccordionButton bg={isSelected() ? "black" : "white"} color={isSelected() ? "white" : "black"}>
+        {isSmallSize && <Icon as={icon} />}
+        {shouldRenderIcon}
+        <AccordionIcon />
+      </AccordionButton>
+      <AccordionPanel>
+        {names.map((name) => (
+          <Link to={`${basePath}/${name.toLowerCase()}`} key={name}>
+            <NavItem title={name} navSize={navSize} />
+          </Link>
+        ))}
+      </AccordionPanel>
+    </AccordionItem>
   );
 }

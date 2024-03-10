@@ -6,7 +6,7 @@ import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
 export default function KeyWordScreen() {
   const { headerData, bodyData } = useFetchTableData("/data/keywordData.json");
   return (
-    <GridLayout navigationType="Accordion">
+    <GridLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Keyword Screen" />
       <DynamicTable headerData={headerData} bodyData={bodyData} type="keyword" filteredColumns={[]} />
     </GridLayout>

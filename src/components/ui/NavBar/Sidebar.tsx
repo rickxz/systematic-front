@@ -10,9 +10,10 @@ const LARGE_SIZE = "large";
 
 interface ISidebarProps {
   type: string;
+  defaultOpen: number;
 }
 
-export default function Sidebar({ type }: ISidebarProps): JSX.Element {
+export default function Sidebar({ type, defaultOpen }: ISidebarProps): JSX.Element {
   const [navSize, setNavSize] = useState(LARGE_SIZE);
 
   const toggleNavSize = (): void => {
@@ -33,7 +34,7 @@ export default function Sidebar({ type }: ISidebarProps): JSX.Element {
       <Flex p="%5" flexDir="column" alignItems={navSize === SMALL_SIZE ? "center" : "flex-start"}>
         <MenuButton onClick={toggleNavSize} />
         {type === "Default" && <DefaultNavigation navSize={navSize} />}
-        {type === "Accordion" && <AccordionNav navSize={navSize} />}
+        {type === "Accordion" && <AccordionNav navSize={navSize} defaultOpen={defaultOpen} />}
       </Flex>
       <UserInfos navSize={navSize} />
     </Flex>

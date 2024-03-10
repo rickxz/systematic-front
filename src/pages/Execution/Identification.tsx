@@ -7,7 +7,7 @@ import useFetchDataBases from "../../hooks/fetch/useFetchDataBases";
 export default function Identification() {
   const { databases } = useFetchDataBases("/data/dataBases.json");
   return (
-    <GridLayout navigationType="Accordion">
+    <GridLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Studies Identification" />
       <Box mt={20}>
         <DataBaseCard text="All data bases" type="allData" />
