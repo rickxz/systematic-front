@@ -1,3 +1,12 @@
+import {
+  btnStyles,
+  checkboxConteiner,
+  conteiner,
+  flex,
+  inputconteiner,
+  tableconteiner,
+  textArea,
+} from "../styles/finalizationStyles";
 import { Box, Flex, Textarea } from "@chakra-ui/react";
 import useInputState from "../../../hooks/useInputState";
 import GridLayout from "../../../components/ui/Grid/Grid";
@@ -17,9 +26,9 @@ export default function Finalization() {
   return (
     <GridLayout defaultOpen={2} navigationType="Accordion">
       <Header text="Review Finalization" />
-      <Flex flexDirection="column" gap={5}>
-        <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
-          <Box display={"flex"} flexDir={"row"} w={"60%"} alignContent={"center"} columnGap={5}>
+      <Flex sx={flex}>
+        <Box sx={conteiner}>
+          <Box sx={inputconteiner}>
             <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
             <SelectInput
               label="Classification:"
@@ -31,7 +40,7 @@ export default function Finalization() {
           </Box>
         </Box>
 
-        <Box display={"flex"} flexDir={"row"} columnGap={5}>
+        <Box sx={checkboxConteiner}>
           <CheckboxInput
             label="General Information: "
             name={headerData}
@@ -50,17 +59,16 @@ export default function Finalization() {
           />
         </Box>
       </Flex>
-      <Box display="flex" flexDirection="column" gap={7}>
+      <Box sx={tableconteiner}>
         <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
-        <Textarea bg="gray.100" minHeight="20vh" placeholder="Write stuff here..."></Textarea>
+        <Textarea sx={textArea} placeholder="Write stuff here..."></Textarea>
         <Flex justifyContent="flex-end">
           <EventButton
-            mt={2}
+            sx={btnStyles}
+            text={"Export"}
             event={function (): void {
               console.log("Export the Review!");
             }}
-            text={"Export"}
-            w={"200px"}
           />
         </Flex>
       </Box>

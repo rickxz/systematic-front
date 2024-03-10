@@ -6,30 +6,37 @@ export const conteiner = {
   flexDir: "column",
   rowGap: 5,
 };
-export const inputcontrol = {
+
+export const flex = {
+  flexDirection: "column",
+  gap: 5,
+};
+
+export const inputconteiner = {
   display: "flex",
   flexDir: "row",
   w: "60%",
   alignContent: "center",
   columnGap: 5,
 };
-export const ckControl = {
+
+export const checkboxConteiner = {
   display: "flex",
   flexDir: "row",
   columnGap: 5,
 };
 
-export const tableConteiner = {
+export const tableconteiner = {
   display: "flex",
   flexDirection: "column",
   gap: 7,
 };
-
 export const textArea = {
   bg: "gray.100",
   minHeight: "20vh",
 };
-export const flexconteiner = {
-  flexDirection: "column",
-  gap: 5,
+
+export const btnStyles = {
+  mt: 2,
+  w: "200px",
 };
