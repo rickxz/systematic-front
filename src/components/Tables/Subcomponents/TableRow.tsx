@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import StatusSelection from "./TableRowSubcomponents/StatusSelection";
 import ColoredIcon from "../../Icons/ColoredIcon";
+import StudyDataFiel from "../../Modals/StudyModal/StudyData";
 interface IStudy {
   rowData: (string | number)[];
   rowIndex: number;
@@ -38,10 +39,6 @@ export default function TableRow({
   title,
 }: IStudy) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  function showData() {
-    console.log(rowData);
-  }
 
   return (
     <>
@@ -74,10 +71,7 @@ export default function TableRow({
           <ModalCloseButton />
 
           <ModalBody>
-            <Box>{"Conteudo"}</Box>
-            <Button color="white" bg="black" onClick={showData}>
-              Imprimir dados do estudo
-            </Button>
+            <StudyDataFiel studyData={rowData}/>
           </ModalBody>
           <ModalFooter color="white" bg="gray.800">
             <Flex justify={"space-around"} flex={"1"}>

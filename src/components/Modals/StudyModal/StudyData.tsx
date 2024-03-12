@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Checkbox, Flex, Input } from "@chakra-ui/react";
 
 interface IStudyDataFiel {
     studyData: (string | number)[];
@@ -6,10 +6,10 @@ interface IStudyDataFiel {
 
 export default function StudyDataFiel({studyData}: IStudyDataFiel) {
     return(
-        <Flex bg='gray.500' w="300px" alignContent={'center'} justifyContent={'center'}>
+        <Flex bg='black' w="300px" direction={"column"} alignContent={'center'} justifyContent={'center'} p="5">
             {
             studyData.map((cell, cellIndex) => (
-                <li key={cellIndex}>{cell}</li>
+                <Input placeholder="cell" key={cellIndex} bg="gray.700"color="black"/>
             ))
             }
         </Flex>
