@@ -25,14 +25,12 @@ export default function Selection() {
           justifyContent={"space-between"}
           gap={"1rem"}
         >
-          <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
+          <InputText type="search" placeholder="Insert article's name" nome="search" />
           <SelectInput
-            label="Classification:"
-            names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+            names={["Classification", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
             values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
             onSelect={handleSelectChange}
-            selectedValue={selectedValue}
-          />
+            selectedValue={selectedValue} />
         </Box>
         <Box display={"flex"} flexDir={"row"} columnGap={20} flexWrap={"wrap"}>
           <CheckboxInput
