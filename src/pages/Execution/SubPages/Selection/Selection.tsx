@@ -7,6 +7,7 @@ import CheckboxInput from "../../../../components/Inputs/Checkbox";
 import SelectInput from "../../../../components/Inputs/SelectInput";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
 import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
+import StudySelectionArea from "./subcomponents/StudySelectionArea";
 
 export default function Selection() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
@@ -53,6 +54,7 @@ export default function Selection() {
       </Box>
 
       <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+      <StudySelectionArea />
     </GridLayout>
   );
 }
