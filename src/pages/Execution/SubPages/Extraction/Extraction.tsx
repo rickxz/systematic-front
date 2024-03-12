@@ -24,9 +24,8 @@ export default function Extraction() {
           justifyContent={"space-between"}
           gap={"1rem"}
         >
-          <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
+          <InputText type="search"  placeholder="Insert article's name" nome="search" />
           <SelectInput
-            label="Classification:"
             names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
             values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
             onSelect={handleSelectChange}
