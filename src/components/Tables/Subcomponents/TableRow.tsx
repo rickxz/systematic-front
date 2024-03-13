@@ -13,6 +13,8 @@ import {
   Tr,
   Td,
   Checkbox,
+  Text,
+  Icon
 } from "@chakra-ui/react";
 import StatusSelection from "./TableRowSubcomponents/StatusSelection";
 import ColoredIcon from "../../Icons/ColoredIcon";
@@ -66,9 +68,22 @@ export default function TableRow({
 
         <ModalContent>
           <ModalHeader color="white" bg="gray.800">
-            {title}
+            <Flex direction={"column"} alignItems={"center"}>
+              <Text>{rowData[0]}</Text>
+              <Flex w="100%" h='10' gap="5">
+                <Flex bg="white" w="30%" h='100%'>
+                <Icon viewBox='0 0 200 200' color='red.500'>
+                  <path
+                    fill='currentColor'
+                    d='M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0'
+                  />
+                </Icon>
+                </Flex>
+                <Flex bg="white" w="70%" h='100%'></Flex>
+              </Flex>
+            </Flex>
           </ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton bg="white"/>
 
           <ModalBody>
             <StudyDataFiel studyData={rowData}/>
