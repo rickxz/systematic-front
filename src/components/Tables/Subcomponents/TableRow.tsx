@@ -26,6 +26,7 @@ import {ReferencesIcon} from "../../../../public/icons/StudyModal/ReferencesIcon
 import {SelectionDataIcon} from "../../../../public/icons//StudyModal/SelectionDataIcon";
 import {SimilarStudiesIcon} from "../../../../public/icons/StudyModal/SimilarStudiesIcon";
 import {StudyDataIcon} from "../../../../public/icons/StudyModal/StudyDataIcon";
+import StudyDataButton from "./TableRowSubcomponents/ModalHeaderButtons/StudyDataButton";
 
 interface IStudy {
   rowData: (string | number)[];
@@ -80,7 +81,7 @@ export default function TableRow({
               <Text>{rowData[0]}</Text>
               <Flex w="100%" h='10' gap="5">
                 <Flex bg="white" w="30%" h='100%'>
-                  <StudyDataIcon/>
+                  <StudyDataButton/>
                 </Flex>
                 <Flex bg="white" w="70%" h='100%'></Flex>p
               </Flex>
