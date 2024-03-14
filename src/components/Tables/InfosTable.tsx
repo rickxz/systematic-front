@@ -1,7 +1,8 @@
-import { Table, Tbody, Tr, Td, TableContainer, Input } from "@chakra-ui/react";
-import DeleteButton from "../Buttons/DeleteButton";
 import EditButton from "../Buttons/EditButton";
+import DeleteButton from "../Buttons/DeleteButton";
 import { useEditState } from "../../hooks/useEdit";
+import { tbConteiner } from "./Subcomponents/styles/infosTableStyles";
+import { Table, Tbody, Tr, Td, TableContainer, Input } from "@chakra-ui/react";
 
 interface InfosTableProps {
   AddTexts: string[];
@@ -18,7 +19,7 @@ export default function InfosTable({ AddTexts, onDeleteAddedText, typeField }: I
   });
 
   return (
-    <TableContainer border={"solid black 1px"} w={"60vw"} h={"120px"} overflowY={"auto"}>
+    <TableContainer sx={tbConteiner}>
       <Table variant="simple" size="md">
         <Tbody className="tableBody">
           {AddTexts.map((addText, index) => (

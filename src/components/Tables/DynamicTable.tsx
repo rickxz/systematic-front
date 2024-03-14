@@ -1,7 +1,9 @@
+import TableRow from "./Subcomponents/TableRow";
 import useTableSorting from "../../hooks/useTableSorting";
 import useColumnVisibility from "../../hooks/useColumnVisibility";
+import { tbConteiner } from "./Subcomponents/styles/DynamicTableStyle";
 import { Table, TableContainer, Thead, Tbody, Tr, Th } from "@chakra-ui/react";
-import TableRow from "./Subcomponents/TableRow";
+
 interface DynamicTableProps {
   headerData: string[];
   bodyData: (string | number)[][];
@@ -15,12 +17,7 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
   const { handleSort, sortedData } = useTableSorting(headerData, bodyData);
 
   return (
-    <TableContainer
-      mt={10}
-      h={isKeyWordTable ? "50vh" : 250}
-      overflowY={"scroll"}
-      w={{ base: "60%", md: "85%", lg: "100%" }}
-    >
+    <TableContainer sx={tbConteiner} h={isKeyWordTable ? "50vh" : 250}>
       <Table variant={"striped"}>
         <Thead>
           <Tr>
