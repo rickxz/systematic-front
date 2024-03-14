@@ -1,7 +1,7 @@
 import EditButton from "../Buttons/EditButton";
 import DeleteButton from "../Buttons/DeleteButton";
 import { useEditState } from "../../hooks/useEdit";
-import { tbConteiner } from "./Subcomponents/styles/infosTableStyles";
+import { tbConteiner } from "./styles/infosTableStyles";
 import { Table, Tbody, Tr, Td, TableContainer, Input } from "@chakra-ui/react";
 
 interface InfosTableProps {

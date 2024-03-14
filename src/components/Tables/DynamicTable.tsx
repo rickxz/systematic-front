@@ -1,7 +1,7 @@
 import TableRow from "./Subcomponents/TableRow";
 import useTableSorting from "../../hooks/useTableSorting";
 import useColumnVisibility from "../../hooks/useColumnVisibility";
-import { tbConteiner } from "./Subcomponents/styles/DynamicTableStyle";
+import { tbConteiner } from "./styles/DynamicTableStyle";
 import { Table, TableContainer, Thead, Tbody, Tr, Th } from "@chakra-ui/react";
 
 interface DynamicTableProps {

@@ -1,5 +1,5 @@
 import { Flex, Select, Text } from "@chakra-ui/react";
-import { select } from "../styles/StatusSelectionStyle";
+import { select } from "../../styles/StatusSelectionStyle";
 
 export default function StatusSelection() {
   return (
