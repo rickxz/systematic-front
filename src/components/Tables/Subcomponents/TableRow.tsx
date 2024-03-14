@@ -19,13 +19,7 @@ import {
 import StatusSelection from "./TableRowSubcomponents/StatusSelection";
 import ColoredIcon from "../../Icons/ColoredIcon";
 import StudyDataFiel from "../../Modals/StudyModal/StudyData";
-//icones
-import {DataExtractionFormIcon} from "../../../../public/icons/StudyModal/DataExtractionFormIcon"
-import {QualityFormIcon} from "../../../../public/icons/StudyModal/QualityFormIcon";
-import {ReferencesIcon} from "../../../../public/icons/StudyModal/ReferencesIcon";
-import {SelectionDataIcon} from "../../../../public/icons//StudyModal/SelectionDataIcon";
-import {SimilarStudiesIcon} from "../../../../public/icons/StudyModal/SimilarStudiesIcon";
-import {StudyDataIcon} from "../../../../public/icons/StudyModal/StudyDataIcon";
+//buttons
 import StudyDataButton from "./TableRowSubcomponents/ModalHeaderButtons/StudyDataButton";
 
 interface IStudy {

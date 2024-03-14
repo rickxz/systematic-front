@@ -6,7 +6,7 @@ import { DataExtractionFormIcon } from "../../../../../../public/icons/StudyModa
 import { ReferencesIcon } from "../../../../../../public/icons/StudyModal/ReferencesIcon";
 
 
-export default function StudyDataButton() {
+export default function ReferencesButton() {
     return(
         <Flex alignItems={"center"} gap="5" bg="gray" pl="3" pr="3" w="100%">
             <ReferencesIcon /> <Text color="black">References</Text>

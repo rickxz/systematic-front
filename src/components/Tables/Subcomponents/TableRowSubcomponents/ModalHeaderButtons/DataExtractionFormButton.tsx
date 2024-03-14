@@ -5,7 +5,7 @@ import { QualityFormIcon } from "../../../../../../public/icons/StudyModal/Quali
 import { DataExtractionFormIcon } from "../../../../../../public/icons/StudyModal/DataExtractionFormIcon";
 
 
-export default function StudyDataButton() {
+export default function DataExtractionFormButton() {
     return(
         <Flex alignItems={"center"} gap="5" bg="gray" pl="3" pr="3" w="100%">
             <DataExtractionFormIcon /> <Text color="black">Data Extraction Form</Text>

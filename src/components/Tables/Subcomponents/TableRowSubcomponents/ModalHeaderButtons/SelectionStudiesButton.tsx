@@ -7,7 +7,7 @@ import { ReferencesIcon } from "../../../../../../public/icons/StudyModal/Refere
 import { SelectionDataIcon } from "../../../../../../public/icons/StudyModal/SelectionDataIcon";
 
 
-export default function StudyDataButton() {
+export default function SelectionDataButton() {
     return(
         <Flex alignItems={"center"} gap="5" bg="gray" pl="3" pr="3" w="100%">
             <SelectionDataIcon /> <Text color="black">Selection Data</Text>
