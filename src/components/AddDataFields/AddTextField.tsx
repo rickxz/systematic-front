@@ -2,6 +2,7 @@ import { FormControl } from "@chakra-ui/react";
 import TextAreaInput from "../Inputs/InputTextArea";
 import EventButton from "../Buttons/EventButton";
 import { useState } from "react";
+import { formcontrol } from "./styles/AddTextFieldStyle";
 
 interface IAddTextFieldProps {
   onAddText: (newKeyword: string) => void;
@@ -25,7 +26,7 @@ export default function AddTextField({ onAddText, text }: IAddTextFieldProps) {
   };
 
   return (
-    <FormControl rowGap={5} display={"flex"} flexDir={"column"} w={"100%"}>
+    <FormControl sx={formcontrol}>
       <TextAreaInput label="" placeholder={text} onChange={handleInputChange}></TextAreaInput>
       <EventButton event={handleAddText} text="ADD" mt={2} w={"10%"} />
     </FormControl>

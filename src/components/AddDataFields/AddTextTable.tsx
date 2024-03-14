@@ -3,6 +3,7 @@ import AddTextField from "./AddTextField";
 import InfosTable from "../Tables/InfosTable";
 import { useAddText } from "../../hooks/useAddText";
 import { useDeleteText } from "../../hooks/useDeleteText";
+import { formcontrol, label } from "./styles/AddTextTableStyles";
 
 interface AddTextTableProps {
   text: string;
@@ -13,10 +14,10 @@ export default function AddTextTable({ text, placeholder }: AddTextTableProps) {
   const { AddText, handleAddText, setAddText } = useAddText();
   const { handleDeleteText } = useDeleteText();
   return (
-    <FormControl display={"flex"} flexDir={"column"}>
+    <FormControl sx={label}>
       <FormLabel>{text}</FormLabel>
 
-      <FormControl display={"flex"} flexDir={"column"} gap={10}>
+      <FormControl sx={formcontrol}>
         <AddTextField onAddText={handleAddText} text={placeholder} />
         <InfosTable
           typeField={""}

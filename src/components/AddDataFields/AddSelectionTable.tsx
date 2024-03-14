@@ -2,7 +2,8 @@ import { FormControl } from "@chakra-ui/react";
 import SelectInput from "../Inputs/SelectInput";
 import InfosTable from "../Tables/InfosTable";
 import EventButton from "../Buttons/EventButton";
-import { useSelect } from "../../hooks/useSelect"; // Importe o hook
+import { useSelect } from "../../hooks/useSelect";
+import { conteiner, formcontrol } from "./styles/AddSelectionStyles";
 
 interface AddSelectTableProps {
   options: string[];
@@ -10,20 +11,14 @@ interface AddSelectTableProps {
   typeField: string;
 }
 
-export default function AddSelectTable({ options, placeholder }: AddSelectTableProps) {
+export default function AddSelectTable({ options }: AddSelectTableProps) {
   const { selectedValue, selectedValues, handleSelectChange, handleSelectAddButtonClick, handleDeleteSelect } =
     useSelect();
 
   return (
-    <FormControl display={"flex"} flexDir={"column"} gap={"5"}>
-      <FormControl display={"flex"} flexDir={"row"} gap={"5"}>
-        <SelectInput
-          values={options}
-          names={options}
-          label={placeholder}
-          onSelect={handleSelectChange}
-          selectedValue={selectedValue}
-        />
+    <FormControl sx={conteiner}>
+      <FormControl sx={formcontrol}>
+        <SelectInput values={options} names={options} onSelect={handleSelectChange} selectedValue={selectedValue} />
         <EventButton text="Add" event={handleSelectAddButtonClick} mt={8} w={"10%"} />
       </FormControl>
 
