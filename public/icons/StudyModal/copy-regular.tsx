@@ -1,7 +1,7 @@
 import { createIcon } from '@chakra-ui/icons'
 import React from 'react'
 
-export const SimilarStudyIcon
+export const SimilarStudiesIcon
  = createIcon({
   displayName: 'UpDownIcon',
   viewBox: "0 0 448 512",

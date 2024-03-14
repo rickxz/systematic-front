@@ -1,7 +1,7 @@
 import { createIcon } from '@chakra-ui/icons'
 import React from 'react'
 
-export const AwardSolid = createIcon({
+export const QualityFormIcon = createIcon({
   displayName: 'UpDownIcon',
   viewBox: "0 0 384 512",
   // path can also be an array of elements, if you have multiple paths, lines, shapes, etc.

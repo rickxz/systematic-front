@@ -1,7 +1,7 @@
 import { createIcon } from '@chakra-ui/icons'
 import React from 'react'
 
-export const BookWithBookMark = createIcon({
+export const ReferencesIscon = createIcon({
   displayName: 'UpDownIcon',
   viewBox: "0 0 448 512",
   path: (
