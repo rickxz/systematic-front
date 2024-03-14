@@ -1,4 +1,4 @@
-export const conteiner = {
+export const flexconteiner = {
   mt: "10",
   direction: "column",
   bg: "gray.600",

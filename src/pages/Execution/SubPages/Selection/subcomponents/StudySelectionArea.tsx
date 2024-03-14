@@ -1,13 +1,12 @@
 import { Box, Flex } from "@chakra-ui/react";
 import ButtonsForSelection from "./ButtonsForSelection";
-import { box, conteiner } from "../../../styles/StudySelectionAreaStyles";
 
 export default function StudySelectionArea() {
   return (
     <>
-      <Flex sx={conteiner}>
+      <Flex mt="10" direction="column" bg="gray.600" w="auto" p="5" alignItems={"center"}>
         <ButtonsForSelection />
-        <Box sx={box}></Box>
+        <Box h={"300"} w={"100%"} bg="gray.200"></Box>
       </Flex>
     </>
   );
