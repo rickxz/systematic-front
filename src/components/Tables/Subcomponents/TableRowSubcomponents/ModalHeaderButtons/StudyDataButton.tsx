@@ -5,7 +5,7 @@ import { StudyDataIcon } from "../../../../../../public/icons/StudyModal/StudyDa
 export default function StudyDataButton() {
     return(
         <Flex alignItems={"center"} gap="5" bg="gray" pl="3" pr="3" w="100%">
-            <StudyDataIcon /> <Text color="black">Study Data</Text>
+            <StudyDataIcon /> <Text color="black"  fontSize={"sm"}>Study Data</Text>
         </Flex>
     );
 }

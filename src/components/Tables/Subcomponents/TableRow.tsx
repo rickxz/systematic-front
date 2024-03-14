@@ -21,6 +21,11 @@ import ColoredIcon from "../../Icons/ColoredIcon";
 import StudyDataFiel from "../../Modals/StudyModal/StudyData";
 //buttons
 import StudyDataButton from "./TableRowSubcomponents/ModalHeaderButtons/StudyDataButton";
+import SelectionDataButton from "./TableRowSubcomponents/ModalHeaderButtons/SelectionStudiesButton";
+import DataExtractionFormButton from "./TableRowSubcomponents/ModalHeaderButtons/DataExtractionFormButton";
+import SimilarStudiesButton from "./TableRowSubcomponents/ModalHeaderButtons/SimilarStudiesButton";
+import QualityFormButton from "./TableRowSubcomponents/ModalHeaderButtons/QualityFormButton";
+import ReferencesButton from "./TableRowSubcomponents/ModalHeaderButtons/ReferencesButton";
 
 interface IStudy {
   rowData: (string | number)[];
@@ -77,7 +82,13 @@ export default function TableRow({
                 <Flex bg="white" w="30%" h='100%'>
                   <StudyDataButton/>
                 </Flex>
-                <Flex bg="white" w="70%" h='100%'></Flex>p
+                <Flex bg="white" w="70%" h='100%' gap="3">
+                  <SelectionDataButton/>
+                  <DataExtractionFormButton/>
+                  <SimilarStudiesButton/>
+                  <QualityFormButton/>
+                  <ReferencesButton/>
+                </Flex>
               </Flex>
             </Flex>
           </ModalHeader>

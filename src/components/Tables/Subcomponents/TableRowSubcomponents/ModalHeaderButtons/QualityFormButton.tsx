@@ -7,7 +7,7 @@ import { QualityFormIcon } from "../../../../../../public/icons/StudyModal/Quali
 export default function QualityFormButton() {
     return(
         <Flex alignItems={"center"} gap="5" bg="gray" pl="3" pr="3" w="100%">
-            <QualityFormIcon /> <Text color="black">Quality Form</Text>
+            <QualityFormIcon /> <Text color="black" fontSize={"sm"}>Quality Form</Text>
         </Flex>
     );
 }

@@ -6,7 +6,7 @@ import { SimilarStudiesIcon } from "../../../../../../public/icons/StudyModal/Si
 export default function SimilarStudiesButton() {
     return(
         <Flex alignItems={"center"} gap="5" bg="gray" pl="3" pr="3" w="100%">
-            <SimilarStudiesIcon /> <Text color="black">Similar Studies</Text>
+            <SimilarStudiesIcon /> <Text color="black"  fontSize={"sm"}>Similar Studies</Text>
         </Flex>
     );
 }

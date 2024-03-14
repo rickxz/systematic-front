@@ -8,7 +8,7 @@ import { DataExtractionFormIcon } from "../../../../../../public/icons/StudyModa
 export default function DataExtractionFormButton() {
     return(
         <Flex alignItems={"center"} gap="5" bg="gray" pl="3" pr="3" w="100%">
-            <DataExtractionFormIcon /> <Text color="black">Data Extraction Form</Text>
+            <DataExtractionFormIcon /> <Text color="black" fontSize={"sm"}>Data Extraction Form</Text>
         </Flex>
     );
 }

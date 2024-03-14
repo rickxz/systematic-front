@@ -10,7 +10,7 @@ import { SelectionDataIcon } from "../../../../../../public/icons/StudyModal/Sel
 export default function SelectionDataButton() {
     return(
         <Flex alignItems={"center"} gap="5" bg="gray" pl="3" pr="3" w="100%">
-            <SelectionDataIcon /> <Text color="black">Selection Data</Text>
+            <SelectionDataIcon /> <Text color="black"  fontSize={"sm"}>Selection Data</Text>
         </Flex>
     );
 }
