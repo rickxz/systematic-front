@@ -5,6 +5,7 @@ import PasswordInput from "../Inputs/PasswordInput";
 import FormOptions from "./subcomponents/FormOptions";
 import RegisterInputs from "./subcomponents/inputs/RegisterInputs";
 import useHandleRegister from "../../hooks/validation/useHandleRegister";
+import { bxconteiner, evbtn, formcontrol } from "./styles/RegisterStyle";
 
 interface iRegisterProps {
   handleRender: (renderForm: string) => void;
@@ -24,7 +25,7 @@ export default function Register({ handleRender }: iRegisterProps) {
   } = useHandleRegister();
   return (
     <>
-      <FormControl mb={10} display={"flex"} flexDir={"column"} alignItems={"center"} w={"80%"} rowGap={3} pr={5}>
+      <FormControl sx={formcontrol}>
         <RegisterInputs id="nome" placeholder={"Name ..."} handlechange={handleNameChange} />
         <RegisterInputs id="mail" placeholder={"Email ..."} handlechange={handleEmailchange} />
         <RegisterInputs id="affiliation" placeholder={"Affiliation ..."} handlechange={handleAffiliattionChange} />
@@ -32,7 +33,6 @@ export default function Register({ handleRender }: iRegisterProps) {
         <SelectInput
           values={["Brazil", "England", "France", "Spain"]}
           names={["Brazil", "England", "France", "Spain"]}
-          label={" "}
           onSelect={handleSelectChange}
           selectedValue={selectedValue}
         />
@@ -43,16 +43,8 @@ export default function Register({ handleRender }: iRegisterProps) {
           isValid={passwordMatch}
         />
 
-        <Box display={"flex"} flexDir={"row"} justifyContent={"space-between"} w={"100%"}>
-          <EventButton
-            event={handleRegister}
-            text={"Create Account"}
-            display={"flex"}
-            mb={5}
-            colorScheme="teal"
-            variant={"solid"}
-            w={"fit-content"}
-          />
+        <Box sx={bxconteiner}>
+          <EventButton event={handleRegister} text={"Create Account"} sx={evbtn} />
           <FormOptions text="Already have an account? " onClick={() => handleRender("Login")} />
         </Box>
       </FormControl>

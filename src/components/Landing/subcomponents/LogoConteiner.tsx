@@ -1,10 +1,11 @@
 import { Box, Card, Text } from "@chakra-ui/react";
+import { bxconteiner, cardConteiner } from "../styles/LogoConteinerStyles";
 
 export default function LogoConteiner() {
   return (
-    <Box ml={"3em"} pb={"5em"} alignContent={"center"} textAlign={"center"}>
+    <Box sx={bxconteiner}>
       {" "}
-      <Card w={400} h={200} textAlign={"center"} fontWeight={"bold"} bgColor={"teal"}>
+      <Card sx={cardConteiner}>
         {" "}
         <Text mt={"5em"}>Logo da Start Aqui</Text>
       </Card>
