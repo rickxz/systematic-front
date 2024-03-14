@@ -29,9 +29,8 @@ export default function Finalization() {
       <Flex sx={flex}>
         <Box sx={conteiner}>
           <Box sx={inputconteiner}>
-            <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
+            <InputText type="search" placeholder="Insert article's name" nome="search" />
             <SelectInput
-              label="Classification:"
               names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
               values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
               onSelect={handleSelectChange}
