@@ -1,13 +1,10 @@
 import { Heading } from "@chakra-ui/react";
+import { header } from "./headerStyles";
 
 interface IHeaderProps {
   text: string;
 }
 
 export default function Header({ text }: IHeaderProps) {
-  return (
-    <Heading mt={2} as={"h1"} alignSelf={"center"}>
-      {text}
-    </Heading>
-  );
+  return <Heading sx={header}>{text}</Heading>;
 }

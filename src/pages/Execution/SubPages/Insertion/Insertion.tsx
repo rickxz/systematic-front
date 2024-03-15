@@ -9,6 +9,7 @@ import SelectInput from "../../../../components/Inputs/SelectInput";
 import EventButton from "../../../../components/Buttons/EventButton";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
 import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
+import { btnconteiner, ckconteiner, conteiner, inputconteiner } from "../../styles/executionStyles";
 
 export default function Insertion() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
@@ -17,32 +18,23 @@ export default function Insertion() {
   return (
     <GridLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Insertion" />
-      <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
-        <Box
-          display={"flex"}
-          flexDir={"row"}
-          w={"60%"}
-          alignContent={"center"}
-          justifyContent={"space-between"}
-          gap={"1rem"}
-        >
-          <InputText type="search" label="Search : " placeholder="Insert article's name" nome="search" />
+      <Box sx={conteiner}>
+        <Box sx={inputconteiner}>
+          <InputText type="search" placeholder="Insert article's name" nome="search" />
           <SelectInput
-            label="Classification:"
             names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
             values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
             onSelect={handleSelectChange}
             selectedValue={selectedValue}
           />
         </Box>
-        <Box display={"flex"} flexDir={"row"} columnGap={20}>
+
+        <Box sx={ckconteiner}>
           <CheckboxInput
             label="General Information: "
             name={headerData}
             handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
             checkedByDefault={[
-              "idss",
-              "id paper",
               "title",
               "author",
               "year",
@@ -54,17 +46,8 @@ export default function Insertion() {
           />
         </Box>
       </Box>
-
       <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
-      <Box
-        display={"flex"}
-        flexDir={"row"}
-        alignItems={"center"}
-        columnGap={5}
-        alignSelf={"baseline"}
-        ml={"70%"}
-        mt={10}
-      >
+      <Box sx={btnconteiner}>
         <NavButton text={"Back"} path={"/newRevision/identification"} w={"200px"} />
         <EventButton
           event={function (): void {

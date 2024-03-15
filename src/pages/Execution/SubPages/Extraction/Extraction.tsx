@@ -7,6 +7,7 @@ import CheckboxInput from "../../../../components/Inputs/Checkbox";
 import SelectInput from "../../../../components/Inputs/SelectInput";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
 import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
+import { ckconteiner, conteiner, inputconteiner } from "../../styles/executionStyles";
 
 export default function Extraction() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
@@ -15,16 +16,9 @@ export default function Extraction() {
   return (
     <GridLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Extraction" />
-      <Box mt={10} w={"80%"} display={"flex"} flexWrap={"wrap"} flexDir={"column"} rowGap={5}>
-        <Box
-          display={"flex"}
-          flexDir={"row"}
-          w={"60%"}
-          alignContent={"center"}
-          justifyContent={"space-between"}
-          gap={"1rem"}
-        >
-          <InputText type="search"  placeholder="Insert article's name" nome="search" />
+      <Box sx={conteiner}>
+        <Box sx={inputconteiner}>
+          <InputText type="search" placeholder="Insert article's name" nome="search" />
           <SelectInput
             names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
             values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
@@ -33,14 +27,12 @@ export default function Extraction() {
           />
         </Box>
 
-        <Box display={"flex"} flexDir={"row"} columnGap={20}>
+        <Box sx={ckconteiner}>
           <CheckboxInput
             label="General Information: "
             name={headerData}
             handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
             checkedByDefault={[
-              "idss",
-              "id paper",
               "title",
               "author",
               "year",

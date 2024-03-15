@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Accordionbtn, accordion } from "../../styles/CardsStyle";
 import { Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel } from "@chakra-ui/react";
 
 export default function AccordionDashboard() {
@@ -7,10 +8,11 @@ export default function AccordionDashboard() {
   const handleAccordionToggle = () => {
     setIsAccordionOpen(!isAccordionOpen);
   };
+
   return (
-    <Accordion allowToggle w={"100%"} justifySelf={"center"} onChange={handleAccordionToggle}>
+    <Accordion allowToggle sx={accordion} onChange={handleAccordionToggle}>
       <AccordionItem>
-        <AccordionButton display={"flex"} alignContent={"center"} justifyContent={"center"}>
+        <AccordionButton sx={Accordionbtn}>
           <AccordionIcon />
         </AccordionButton>
         <AccordionPanel>Aqui fica o dashboard</AccordionPanel>

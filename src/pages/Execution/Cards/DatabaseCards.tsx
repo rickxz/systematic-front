@@ -1,8 +1,9 @@
 import { Card, Box, Text } from "@chakra-ui/react";
 import NavButton from "../../../components/Buttons/NavButton";
 import EventButton from "../../../components/Buttons/EventButton";
-import AccordionDashboard from "./subcomponents/AccordionDashboard";
 import DataBaseIcon from "../../../components/Icons/DataBaseIcon";
+import AccordionDashboard from "./subcomponents/AccordionDashboard";
+import { btnConteiner, card, conteiner, iconConteiner, testo } from "../styles/CardsStyle";
 
 interface DatabaseCardProps {
   text: string;
@@ -11,32 +12,19 @@ interface DatabaseCardProps {
 
 export default function DataBaseCard({ text, type }: DatabaseCardProps) {
   return (
-    <Card w={type === "allData" ? "80vw" : "32vw"} mb={5} h={"fit-content"}>
-      <Box display={"flex"} flexDir={"row"} justifyContent={"space-between"}>
-        <Box display={"flex"} flexDir={"row"} alignContent={"center"} justifyContent={"flex-start"} w={"50%"}>
+    <Card w={type === "allData" ? "80vw" : "32vw"} sx={card}>
+      <Box sx={conteiner}>
+        <Box sx={iconConteiner}>
           <DataBaseIcon />
-          <Text ml={"5%"} mt={5}>
-            {" "}
-            {text}
-          </Text>
+          <Text sx={testo}> {text}</Text>
         </Box>
-        <Box
-          display={"flex"}
-          flexDir={"row"}
-          justifyContent={"space-evenly"}
-          columnGap={"10%"}
-          w={"50%"}
-          mt={5}
-          mb={3}
-          mr={4}
-        >
+        <Box sx={btnConteiner}>
           <NavButton
             fontSize={type === "allData" ? 16 : 12}
             w={"fit-content"}
             text={"Add Session"}
             path={"/newRevision/searchSession"}
           />
-
           <EventButton
             fontSize={type === "allData" ? 16 : 12}
             w={"200px"}

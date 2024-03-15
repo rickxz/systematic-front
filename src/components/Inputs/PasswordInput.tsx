@@ -1,5 +1,6 @@
 import { SetStateAction } from "react";
 import { FormControl, Input, InputGroup } from "@chakra-ui/react";
+import { formControl, inputGroup } from "./styles/PasswordInputStyle";
 
 interface iPasswordProps {
   text: string;
@@ -9,8 +10,8 @@ interface iPasswordProps {
 
 export default function PasswordInput({ text, handlechange, isValid }: iPasswordProps) {
   return (
-    <FormControl display={"flex"} flexDir={"column"}>
-      <InputGroup size="md" display={"flex"}>
+    <FormControl sx={formControl}>
+      <InputGroup sx={inputGroup}>
         <Input
           pr="4.5rem"
           type={"password"}

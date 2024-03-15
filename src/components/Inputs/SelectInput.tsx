@@ -1,5 +1,6 @@
 import { FormControl, Select } from "@chakra-ui/react";
 import React from "react";
+import { formcontrol } from "./styles/SelectInputStyles";
 
 interface ISelectInputProps {
   values: string[];
@@ -15,7 +16,7 @@ export default function SelectInput({ values, names, onSelect, selectedValue, pl
   };
 
   return (
-    <FormControl display={"flex"} flexDir={"column"} w={"30vw"}>
+    <FormControl sx={formcontrol}>
       <Select placeholder={placeholder} value={selectedValue || ""} onChange={handleSelectChange}>
         {names.map((optionName, index) => (
           <option key={index} value={values[index]}>
