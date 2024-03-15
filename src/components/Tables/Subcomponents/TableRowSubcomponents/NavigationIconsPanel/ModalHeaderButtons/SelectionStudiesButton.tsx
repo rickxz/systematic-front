@@ -1,9 +1,4 @@
-import { Button, Flex, Show, Text} from "@chakra-ui/react";
-import { StudyDataIcon } from "../../../../../../../public/icons/StudyModal/StudyDataIcon";
-import { SimilarStudiesIcon } from "../../../../../../../public/icons/StudyModal/SimilarStudiesIcon";
-import { QualityFormIcon } from "../../../../../../../public/icons/StudyModal/QualityFormIcon";
-import { DataExtractionFormIcon } from "../../../../../../../public/icons/StudyModal/DataExtractionFormIcon";
-import { ReferencesIcon } from "../../../../../../../public/icons/StudyModal/ReferencesIcon";
+import { Button, Text} from "@chakra-ui/react";
 import { SelectionDataIcon } from "../../../../../../../public/icons/StudyModal/SelectionDataIcon";
 
 
