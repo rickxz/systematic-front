@@ -1,8 +1,9 @@
-import { AccordionButton, Icon, AccordionIcon, Box, AccordionItem, AccordionPanel } from "@chakra-ui/react";
 import NavItem from "./NavItem";
-import { Link } from "react-router-dom";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import SidebarContext from "../../../Context/sidebarContext";
+import { AccordionButton, Icon, AccordionIcon, Box, AccordionItem, AccordionPanel } from "@chakra-ui/react";
+import { iconbox } from "../styles/AccordionItenStyles";
 
 interface IAccordionElementProps {
   navSize: string;
@@ -15,14 +16,12 @@ interface IAccordionElementProps {
 export default function AccordionElement({ navSize, icon, title, names, basePath }: IAccordionElementProps) {
   const isSmallSize = navSize === "small";
   const shouldRenderIcon = isSmallSize || (
-    <Box flex="1" alignContent="flex-start">
+    <Box sx={iconbox}>
       <Icon as={icon} /> {title}
     </Box>
   );
   const context = useContext(SidebarContext);
-
   if (!context) {
-    // Se o contexto não estiver definido, retorne algo apropriado
     return <>Problema com useContext em NavItem.tsx</>;
   }
 
@@ -34,7 +33,6 @@ export default function AccordionElement({ navSize, icon, title, names, basePath
     if (Planning.includes(button)) setItem("Planning");
     else if (Execution.includes(button)) setItem("Execution");
     else if (Summarization.includes(button)) setItem("Summarization");
-
     return item == title;
   }
 

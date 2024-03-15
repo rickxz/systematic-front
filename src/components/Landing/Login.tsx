@@ -4,29 +4,25 @@ import PasswordInput from "../Inputs/PasswordInput";
 import FormOptions from "./subcomponents/FormOptions";
 import RegisterInputs from "./subcomponents/inputs/RegisterInputs";
 import useHandleRegister from "../../hooks/validation/useHandleRegister";
+import { bxconteiner, evbtn, formcontrol } from "./styles/loginstyles";
 
 interface iLoginProps {
   handleRender: (renderForm: string) => void;
 }
-
 export default function Login({ handleRender }: iLoginProps) {
   const { handleEmailchange, handlePasswordChange } = useHandleRegister();
   return (
     <Box mb={"13em"}>
-      <FormControl mb={10} display={"flex"} flexDir={"column"} alignItems={"center"} w={"80%"} rowGap={3}>
+      <FormControl sx={formcontrol}>
         <RegisterInputs id="mail" placeholder={"Email ..."} handlechange={handleEmailchange} />
         <PasswordInput text="Password..." handlechange={handlePasswordChange} />
-        <Box display={"flex"} flexDir={"row"} w={"100%"} justifyContent={"space-between"}>
+        <Box sx={bxconteiner}>
           <EventButton
             event={() => {
               window.alert("Loged-in!!!");
             }}
             text={"Log in"}
-            display={"flex"}
-            mb={5}
-            colorScheme="teal"
-            variant={"solid"}
-            w={"fit-content"}
+            sx={evbtn}
           />
 
           <FormOptions text="Forgot Password?" onClick={() => handleRender("Password")} />

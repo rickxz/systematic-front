@@ -1,3 +1,4 @@
+import { gridItem } from "./GridStyle";
 import Sidebar from "../NavBar/Sidebar";
 import { Grid, GridItem } from "@chakra-ui/react";
 
@@ -13,9 +14,7 @@ export default function GridLayout({ navigationType, children, defaultOpen }: iG
       <GridItem>
         <Sidebar type={navigationType} defaultOpen={defaultOpen} />
       </GridItem>
-      <GridItem textAlign={"center"} justifySelf={"center"} w={"80vw"} ml={10}>
-        {children}
-      </GridItem>
+      <GridItem sx={gridItem}>{children}</GridItem>
     </Grid>
   );
 }

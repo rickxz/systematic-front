@@ -9,7 +9,6 @@ import {
   Button,
   Flex,
   useDisclosure,
-  Box,
   Tr,
   Td,
   Checkbox,
@@ -95,7 +94,7 @@ export default function TableRow({
           <ModalCloseButton bg="white"/>
 
           <ModalBody>
-            <StudyDataFiel studyData={rowData}/>
+            <StudyDataFiel studyData={rowData} />
           </ModalBody>
           <ModalFooter color="white" bg="gray.800">
             <Flex justify={"space-around"} flex={"1"}>

@@ -2,6 +2,7 @@ import GridLayout from "../../components/ui/Grid/Grid";
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
 import { Progress, FormControl, Box } from "@chakra-ui/react";
+import { btnBox, conteiner, flex } from "./styles/partTwooStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";
 import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable";
@@ -11,8 +12,8 @@ export default function ProtocolPartTwo2() {
     <GridLayout defaultOpen={0} navigationType="Accordion">
       <Header text="Protocol" />
       <Progress value={33} />
-      <FormControl display={"flex"} flexDir={"column"} gap={20} mt={20} ml={"2%"}>
-        <FormControl display={"flex"}>
+      <FormControl sx={conteiner}>
+        <FormControl sx={flex}>
           <AddTextTable text="Keywords" placeholder="Enter keywords" />
         </FormControl>
 
@@ -36,7 +37,7 @@ export default function ProtocolPartTwo2() {
         <TextAreaInput label="Data Acquisition" placeholder="Enter the data acquisition method" />
       </FormControl>
 
-      <Box ml={"25rem"} alignSelf={"flex-end"} mt={10} mb={10}>
+      <Box sx={btnBox}>
         <NavButton text="Next" path="/newRevision/protocolpartThree" w={"30%"} />
       </Box>
     </GridLayout>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Box } from "@chakra-ui/react";
 import GridLayout from "../../components/ui/Grid/Grid";
+import { conteiner, content, formConteiner } from "./styles/styles";
 import RenderForm from "../../components/Landing/subcomponents/RenderForm";
 import FormOptions from "../../components/Landing/subcomponents/FormOptions";
 import LogoConteiner from "../../components/Landing/subcomponents/LogoConteiner";
@@ -10,21 +11,10 @@ export default function LandingPage() {
 
   return (
     <GridLayout navigationType="Default">
-      <Box
-        borderWidth={"1px"}
-        borderRadius={"lg"}
-        display={"flex"}
-        flexDir={"row"}
-        justifyContent={"space-between"}
-        alignItems={"center"}
-        mt={"9em"}
-        mb={20}
-        h={"500px"}
-        gap={10}
-      >
+      <Box sx={conteiner}>
         <LogoConteiner />
-        <Box display={"flex"} flexDir={"column"} gap={1} justifyContent={"flex-end"} w={"50%"} mt={"5em"} ml={"5em"}>
-          <Box display={"flex"} flexDir={"row"} gap={4} mb={3}>
+        <Box sx={content}>
+          <Box sx={formConteiner}>
             <FormOptions text="Login" active={renderForm === "Login"} onClick={() => SetRenderForm("Login")} />
             <FormOptions text="Register" active={renderForm === "Register"} onClick={() => SetRenderForm("Register")} />
           </Box>

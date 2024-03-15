@@ -1,14 +1,13 @@
 import { Box, Card, Text } from "@chakra-ui/react";
 import UploadIcon from "../../../components/Icons/UploadIcon";
 import EventButton from "../../../components/Buttons/EventButton";
+import { conteiner, label, uploadbox } from "../styles/uploadBoxStyle";
 
 export default function UploadBox() {
   return (
-    <Box ml={"10%"} display={"flex"} flexDir={"column"} rowGap={10} width={"50%"} textAlign={"initial"}>
-      <Text fontWeight={"bold"} fontSize={18}>
-        Import reference file:{" "}
-      </Text>
-      <Card h={200} w={"100%"} textAlign={"center"} justifyContent={"center"}>
+    <Box sx={conteiner}>
+      <Text sx={label}>Import reference file: </Text>
+      <Card sx={uploadbox}>
         <UploadIcon />
         Insert file here
       </Card>

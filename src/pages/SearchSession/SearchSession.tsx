@@ -8,6 +8,7 @@ import CheckboxInput from "../../components/Inputs/Checkbox";
 import DynamicTable from "../../components/Tables/DynamicTable";
 import useFetchTableData from "../../hooks/fetch/useFetchTableData";
 import SearchInformations from "./subcomponents/searchInformations";
+import { ckbox, conteiner, navbtnStyles } from "./styles/searchSessionStyles";
 
 export default function SearchSession() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
@@ -15,11 +16,11 @@ export default function SearchSession() {
   return (
     <GridLayout navigationType="Accordion" defaultOpen={1}>
       <Header text={"Database Name-Studies Identification"} />
-      <Box mt={10} display={"flex"} flexDir={"row"} columnGap={20}>
+      <Box sx={conteiner}>
         <SearchInformations />
         <UploadBox />
       </Box>
-      <Box display={"flex"} flexDir={"row"} columnGap={20} mt={10}>
+      <Box sx={ckbox}>
         <CheckboxInput
           label="General Information: "
           name={headerData}
@@ -36,14 +37,7 @@ export default function SearchSession() {
         />
       </Box>
       <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
-      <NavButton
-        text={"Back"}
-        path={"/newRevision/identification"}
-        mt={"5"}
-        w={150}
-        display={"flex"}
-        justifySelf={"flex-start"}
-      />
+      <NavButton text={"Back"} path={"/newRevision/identification"} sx={navbtnStyles} />
     </GridLayout>
   );
 }

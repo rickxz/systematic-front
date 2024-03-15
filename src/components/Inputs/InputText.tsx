@@ -1,5 +1,6 @@
 import { FormControl, Input } from "@chakra-ui/react";
 import SearchButton from "../Buttons/SearchButton";
+import { conteiner, inputconteiner } from "./styles/inputTextStyle";
 
 interface ITextFieldProps {
   placeholder: string;
@@ -10,9 +11,10 @@ interface ITextFieldProps {
 
 export default function InputText({ placeholder, type, nome, onChange }: ITextFieldProps) {
   const isSearchField = type === "search";
+
   return (
-    <FormControl display={"flex"} flexDir={"column"} mt={isSearchField ? "" : 10} maxW={"60vw"}>
-      <FormControl display={"flex"} flexDir={"row"} gap={".3rem"}>
+    <FormControl mt={isSearchField ? "" : 10} sx={conteiner}>
+      <FormControl sx={inputconteiner}>
         <Input
           type={type}
           name={nome}

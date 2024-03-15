@@ -1,4 +1,5 @@
 import { Text } from "@chakra-ui/react";
+import { option } from "../styles/formOption";
 
 interface iFormOptionsProps {
   text: string;
@@ -8,7 +9,7 @@ interface iFormOptionsProps {
 
 export default function FormOptions({ text, active, onClick }: iFormOptionsProps) {
   return (
-    <Text mt={2.5} fontWeight={active ? "bold" : ""} color={"teal"} _hover={{ cursor: "pointer" }} onClick={onClick}>
+    <Text sx={option} fontWeight={active ? "bold" : ""} onClick={onClick}>
       {text}
     </Text>
   );

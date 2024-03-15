@@ -1,20 +1,19 @@
 import { Flex, Divider, Avatar, Heading } from "@chakra-ui/react";
+import { SMALL_SIZE, avatar, flexconteiner, infoconteiner, nameconteiner } from "../styles/userInfossStyles";
 
 interface IUserInfosProps {
   navSize: string;
 }
 
-const SMALL_SIZE = "small";
-
 export default function UserInfos({ navSize }: IUserInfosProps): JSX.Element {
   const isSmallSize = navSize === SMALL_SIZE;
 
   return (
-    <Flex p="5%" flexDir="column" w="100%" alignItems="center" mb={4}>
+    <Flex sx={flexconteiner}>
       <Divider />
-      <Flex mt={4} justifyContent="center" flexDir="column" alignItems="center">
-        <Avatar size="md" mb={2}></Avatar>
-        <Flex flexDir="column" ml={4}>
+      <Flex sx={infoconteiner}>
+        <Avatar sx={avatar}></Avatar>
+        <Flex sx={nameconteiner}>
           <Heading display={isSmallSize ? "none" : "flex"} as="h3" size="sm">
             Username
           </Heading>

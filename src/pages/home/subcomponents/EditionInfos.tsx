@@ -1,5 +1,6 @@
-import { Box, Text } from "@chakra-ui/react";
 import EditionIcon from "./EditionIcon";
+import { Box, Text } from "@chakra-ui/react";
+import { conteiner, infosconteiner, text } from "../styles/EditionINfosStyles";
 
 interface IEditionInfosProps {
   lastEdition: string;
@@ -9,11 +10,11 @@ interface IEditionInfosProps {
 
 export default function EditionInfos({ lastEdition, creation, isEdited }: IEditionInfosProps) {
   return (
-    <Box display={"flex"} flexDir={"row"} mt={"1.5rem"} mr={0} ml={5}>
+    <Box sx={conteiner}>
       <EditionIcon isEdited={isEdited} />
-      <Box display={"flex"} flexDir={"row"}>
-        <Text w={"200px"}>Latest change: {lastEdition}</Text>
-        <Text w={"200px"}>Created: {creation}</Text>
+      <Box sx={infosconteiner}>
+        <Text sx={text}>Latest change: {lastEdition}</Text>
+        <Text sx={text}>Created: {creation}</Text>
       </Box>
     </Box>
   );
