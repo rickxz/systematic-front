@@ -12,8 +12,7 @@ import {
   Tr,
   Td,
   Checkbox,
-  Text,
-  Icon
+  Text
 } from "@chakra-ui/react";
 import StatusSelection from "./TableRowSubcomponents/StatusSelection";
 import ColoredIcon from "../../Icons/ColoredIcon";
