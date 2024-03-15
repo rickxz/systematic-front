@@ -19,12 +19,12 @@ import StatusSelection from "./TableRowSubcomponents/StatusSelection";
 import ColoredIcon from "../../Icons/ColoredIcon";
 import StudyDataFiel from "../../Modals/StudyModal/StudyData";
 //buttons
-import StudyDataButton from "./TableRowSubcomponents/ModalHeaderButtons/StudyDataButton";
-import SelectionDataButton from "./TableRowSubcomponents/ModalHeaderButtons/SelectionStudiesButton";
-import DataExtractionFormButton from "./TableRowSubcomponents/ModalHeaderButtons/DataExtractionFormButton";
-import SimilarStudiesButton from "./TableRowSubcomponents/ModalHeaderButtons/SimilarStudiesButton";
-import QualityFormButton from "./TableRowSubcomponents/ModalHeaderButtons/QualityFormButton";
-import ReferencesButton from "./TableRowSubcomponents/ModalHeaderButtons/ReferencesButton";
+import StudyDataButton from "./TableRowSubcomponents/ModalHeader/ModalHeaderButtons/StudyDataButton";
+import SelectionDataButton from "./TableRowSubcomponents/ModalHeader/ModalHeaderButtons/SelectionStudiesButton";
+import DataExtractionFormButton from "./TableRowSubcomponents/ModalHeader/ModalHeaderButtons/DataExtractionFormButton";
+import SimilarStudiesButton from "./TableRowSubcomponents/ModalHeader/ModalHeaderButtons/SimilarStudiesButton";
+import QualityFormButton from "./TableRowSubcomponents/ModalHeader/ModalHeaderButtons/QualityFormButton";
+import ReferencesButton from "./TableRowSubcomponents/ModalHeader/ModalHeaderButtons/ReferencesButton";
 
 interface IStudy {
   rowData: (string | number)[];
@@ -70,10 +70,10 @@ export default function TableRow({
         ))}
       </Tr>
 
-      <Modal isOpen={isOpen} onClose={onClose} size={"6xl"}>
+      <Modal isOpen={isOpen} onClose={onClose} size={"8xl"}>
         <ModalOverlay />
 
-        <ModalContent>
+        <ModalContent w="90%">
           <ModalHeader color="white" bg="gray.800">
             <Flex direction={"column"} alignItems={"center"}>
               <Text>{rowData[0]}</Text>

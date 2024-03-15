@@ -1,6 +1,6 @@
 import { Flex, Text} from "@chakra-ui/react";
-import { StudyDataIcon } from "../../../../../../public/icons/StudyModal/StudyDataIcon";
-import { SimilarStudiesIcon } from "../../../../../../public/icons/StudyModal/SimilarStudiesIcon";
+import { StudyDataIcon } from "../../../../../../../public/icons/StudyModal/StudyDataIcon";
+import { SimilarStudiesIcon } from "../../../../../../../public/icons/StudyModal/SimilarStudiesIcon";
 
 
 export default function SimilarStudiesButton() {

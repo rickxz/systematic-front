@@ -1,5 +1,5 @@
 import { Flex, Text} from "@chakra-ui/react";
-import { StudyDataIcon } from "../../../../../../public/icons/StudyModal/StudyDataIcon";
+import { StudyDataIcon } from "../../../../../../../public/icons/StudyModal/StudyDataIcon";
 
 
 export default function StudyDataButton() {

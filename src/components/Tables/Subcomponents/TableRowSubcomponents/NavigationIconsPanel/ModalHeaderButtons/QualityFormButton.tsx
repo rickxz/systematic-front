@@ -1,7 +1,7 @@
 import { Flex, Text} from "@chakra-ui/react";
-import { StudyDataIcon } from "../../../../../../public/icons/StudyModal/StudyDataIcon";
-import { SimilarStudiesIcon } from "../../../../../../public/icons/StudyModal/SimilarStudiesIcon";
-import { QualityFormIcon } from "../../../../../../public/icons/StudyModal/QualityFormIcon";
+import { StudyDataIcon } from "../../../../../../../public/icons/StudyModal/StudyDataIcon";
+import { SimilarStudiesIcon } from "../../../../../../../public/icons/StudyModal/SimilarStudiesIcon";
+import { QualityFormIcon } from "../../../../../../../public/icons/StudyModal/QualityFormIcon";
 
 
 export default function QualityFormButton() {
