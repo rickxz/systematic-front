@@ -18,13 +18,7 @@ import {
 import StatusSelection from "./TableRowSubcomponents/StatusSelection";
 import ColoredIcon from "../../Icons/ColoredIcon";
 import StudyDataFiel from "../../Modals/StudyModal/StudyData";
-//buttons
-import StudyDataButton from "./TableRowSubcomponents/ModalHeader/ModalHeaderButtons/StudyDataButton";
-import SelectionDataButton from "./TableRowSubcomponents/ModalHeader/ModalHeaderButtons/SelectionStudiesButton";
-import DataExtractionFormButton from "./TableRowSubcomponents/ModalHeader/ModalHeaderButtons/DataExtractionFormButton";
-import SimilarStudiesButton from "./TableRowSubcomponents/ModalHeader/ModalHeaderButtons/SimilarStudiesButton";
-import QualityFormButton from "./TableRowSubcomponents/ModalHeader/ModalHeaderButtons/QualityFormButton";
-import ReferencesButton from "./TableRowSubcomponents/ModalHeader/ModalHeaderButtons/ReferencesButton";
+import NavegationIconsPanel from "./TableRowSubcomponents/NavigationIconsPanel/NavigationIconPanel";
 
 interface IStudy {
   rowData: (string | number)[];
@@ -77,24 +71,14 @@ export default function TableRow({
           <ModalHeader color="white" bg="gray.800">
             <Flex direction={"column"} alignItems={"center"}>
               <Text>{rowData[0]}</Text>
-              <Flex w="100%" h='10' gap="5">
-                <Flex bg="white" w="30%" h='100%'>
-                  <StudyDataButton/>
-                </Flex>
-                <Flex bg="white" w="70%" h='100%' gap="3">
-                  <SelectionDataButton/>
-                  <DataExtractionFormButton/>
-                  <SimilarStudiesButton/>
-                  <QualityFormButton/>
-                  <ReferencesButton/>
-                </Flex>
-              </Flex>
+              <NavegationIconsPanel/>
             </Flex>
           </ModalHeader>
           <ModalCloseButton bg="white"/>
 
           <ModalBody>
             <StudyDataFiel studyData={rowData} />
+            
           </ModalBody>
           <ModalFooter color="white" bg="gray.800">
             <Flex justify={"space-around"} flex={"1"}>
