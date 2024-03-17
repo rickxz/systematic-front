@@ -18,10 +18,15 @@ export default function StudyDataFiel({ studyData }: IStudyDataFiel) {
       <Text align={"center"} fontSize={"xl"} fontWeight={"semibold"}>Titulo do Artigo</Text>
       <Text align={"center"} p="1">Autor SOBRENOME, autor 2 SOBRENOME</Text>
       
-      <Text align={"justify"}>
-        <Text as="b">Keywords. </Text>aaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaa aaaaaaa aaaaa
-      </Text>
+      <Flex direction={"column"} textAlign={"justify"} p="1">
+        <Text>
+          <Text as="b">Keywords. </Text> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </Text>
       
+        <Text>
+          <Text as="b">Abstract. </Text> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </Text>
+      </Flex>
       {/*studyData.map((cell, cellIndex) => (
         <Input placeholder="cell" key={cellIndex} bg="gray.700" color="black" />
       ))*/}
