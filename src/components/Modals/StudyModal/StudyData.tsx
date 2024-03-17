@@ -1,4 +1,5 @@
-import { Flex, Input } from "@chakra-ui/react";
+import { IconButton, Flex, Input , Stack, Text, Center} from "@chakra-ui/react";
+import { FaPen } from "react-icons/fa";
 
 interface IStudyDataFiel {
   studyData: (string | number)[];
@@ -6,7 +7,14 @@ interface IStudyDataFiel {
 
 export default function StudyDataFiel({ studyData }: IStudyDataFiel) {
   return (
-    <Flex bg="black" w="300px" direction={"column"} alignContent={"center"} justifyContent={"center"} p="5">
+    
+    <Flex bg="gray.300" w="450px" h="350px" direction={"column"} alignContent={"center"} justifyContent={"center"} p="3">
+      <Center>
+        <Stack direction={"row"} p="1">
+          <Text fontSize={"lg"}>Study Data</Text>
+          <IconButton aria-label="Edit Study Data" w="28px" h="28px" icon={<FaPen/>}/>
+        </Stack>
+      </Center>
       {studyData.map((cell, cellIndex) => (
         <Input placeholder="cell" key={cellIndex} bg="gray.700" color="black" />
       ))}
