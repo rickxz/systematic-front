@@ -10,11 +10,12 @@ export default function StudyDataFiel({ studyData }: IStudyDataFiel) {
     
     <Flex bg="gray.300" w="450px" h="350px" direction={"column"} alignContent={"center"} /*justifyContent={"center"}*/ p="3">
       <Center>
-        <Stack direction={"row"} p="1">
+        <Stack direction={"row"} p="2">
           <Text fontSize={"lg"}>Study Data</Text>
           <IconButton aria-label="Edit Study Data" w="28px" h="28px" icon={<FaPen/>}/>
         </Stack>
       </Center>
+      <Text align={"center"} fontSize={"xl"} fontWeight={"semibold"}>Titulo do Artigo</Text>
       <Text align={"center"}>Autor 1, autor 2, autor 3</Text>
       <Text>
         <Text as="b">Keywords. </Text>aaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaa aaaaaaa aaaaa
