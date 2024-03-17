@@ -16,10 +16,12 @@ export default function StudyDataFiel({ studyData }: IStudyDataFiel) {
         </Stack>
       </Center>
       <Text align={"center"} fontSize={"xl"} fontWeight={"semibold"}>Titulo do Artigo</Text>
-      <Text align={"center"}>Autor 1, autor 2, autor 3</Text>
-      <Text>
+      <Text align={"center"} p="1">Autor SOBRENOME, autor 2 SOBRENOME</Text>
+      
+      <Text align={"justify"}>
         <Text as="b">Keywords. </Text>aaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaa aaaaaaa aaaaa
       </Text>
+      
       {/*studyData.map((cell, cellIndex) => (
         <Input placeholder="cell" key={cellIndex} bg="gray.700" color="black" />
       ))*/}
