@@ -8,16 +8,17 @@ interface IStudyDataFiel {
 export default function StudyDataFiel({ studyData }: IStudyDataFiel) {
   return (
     
-    <Flex bg="gray.300" w="450px" h="350px" direction={"column"} alignContent={"center"} justifyContent={"center"} p="3">
+    <Flex bg="gray.300" w="450px" h="350px" direction={"column"} alignContent={"center"} /*justifyContent={"center"}*/ p="3">
       <Center>
         <Stack direction={"row"} p="1">
           <Text fontSize={"lg"}>Study Data</Text>
           <IconButton aria-label="Edit Study Data" w="28px" h="28px" icon={<FaPen/>}/>
         </Stack>
       </Center>
-      {studyData.map((cell, cellIndex) => (
+      <Text align={"center"}>Autor 1, autor 2, autor 3</Text>
+      {/*studyData.map((cell, cellIndex) => (
         <Input placeholder="cell" key={cellIndex} bg="gray.700" color="black" />
-      ))}
+      ))*/}
     </Flex>
   );
 }
