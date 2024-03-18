@@ -3,7 +3,7 @@ import TextAreaInput from "../../Inputs/InputTextArea";
 
 export default function References() {
     return(
-        <Container p="1px" style={{ maxHeight: "300px", overflowY: "auto" }}>
+        <Container p="1px" style={{ maxHeight: "350px", overflowY: "auto" }}>
             <Heading textAlign="center" mb=".5em">References</Heading>
 
             <Container background="gray.300" border="1px solid black" my=".5rem">
@@ -11,7 +11,7 @@ export default function References() {
                     <HStack spacing='.2em' mt=".5em">
                         <Text fontWeight="bold" my=".5rem" mr=".3em">Author:</Text>
                         <InputGroup>
-                            <Input w="19.5em"  variant='filled' placeholder="Garfield, Andre; Manguari, Toni" 
+                            <Input w="19.5em"  variant='filled' placeholder="SOBRENOME, Autor; SOBRENOME, Autor" 
                             _placeholder={{ color: 'black', opacity: "1" }}></Input>
                         </InputGroup>
                     </HStack>
@@ -39,7 +39,7 @@ export default function References() {
                     <HStack spacing='.2em' mt=".5em">
                         <Text fontWeight="bold" my=".5rem" mr=".3em">Author:</Text>
                         <InputGroup>
-                            <Input w="19.5em"  variant='filled' placeholder="Garfield, Andre; Manguari, Toni" 
+                            <Input w="19.5em"  variant='filled' placeholder="SOBRENOME, Autor" 
                             _placeholder={{ color: 'black', opacity: "1" }}></Input>
                         </InputGroup>
                     </HStack>
@@ -67,7 +67,7 @@ export default function References() {
                     <HStack spacing='.2em' mt=".5em">
                         <Text fontWeight="bold" my=".5rem" mr=".3em">Author:</Text>
                         <InputGroup>
-                            <Input w="19.5em"  variant='filled' placeholder="Garfield, Andre; Manguari, Toni" 
+                            <Input w="19.5em"  variant='filled' placeholder="SOBRENOME, Autor" 
                             _placeholder={{ color: 'black', opacity: "1" }}></Input>
                         </InputGroup>
                     </HStack>

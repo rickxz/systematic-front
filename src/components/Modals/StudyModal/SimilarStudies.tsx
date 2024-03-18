@@ -8,9 +8,9 @@ export default function SimilarStudies() {
     const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
     return(
         <Container  m="1rem">
-            <Heading textAlign="right">Similar Studies</Heading>
+            <Heading textAlign="right" mx="2em" >Similar Studies</Heading>
             
-            <Box style={{ maxHeight: "300px", overflowY: "auto" }} w="47rem">
+            <Box style={{ maxHeight: "350px", overflowY: "auto" }} w="39rem">
                 <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
             </Box>
             
