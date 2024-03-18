@@ -10,7 +10,7 @@ const textTheme ={
 
 export default function DataExtractionForm() {
     return(
-        <Container flex="row" style={{ maxHeight: "300px", overflowY: "auto" }}>
+        <Container flex="row" style={{ maxHeight: "350px", overflowY: "auto" }}>
             <Heading textAlign="center" my="1rem">Data Extraction Form</Heading>
             <Box sx={boxTheme}>
                 <Text sx={textTheme}>Label:</Text>
