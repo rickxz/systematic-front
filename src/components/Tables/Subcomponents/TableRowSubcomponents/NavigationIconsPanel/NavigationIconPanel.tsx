@@ -10,16 +10,12 @@ export default function NavegationIconsPanel() {
     return (
         <>
             <Flex w="100%" h='10' gap="5">
-                <Flex bg="white" w="30%" h='100%'>
                     <StudyDataButton/>
-                </Flex>
-                <Flex w="70%" h='100%' gap="3">
                     <SelectionDataButton />
                     <DataExtractionFormButton/>
                     <SimilarStudiesButton/>
                     <QualityFormButton/>
                     <ReferencesButton/>
-                </Flex>
             </Flex>
         </>
     );
