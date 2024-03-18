@@ -1,6 +1,6 @@
 export const conteiner = {
   mt: 10,
-  w: "100%",
+  w: "80%",
   display: "flex",
   flexWrap: "wrap",
   flexDir: "column",
@@ -10,9 +10,10 @@ export const conteiner = {
 export const inputconteiner = {
   display: "flex",
   flexDir: "row",
-  w: "100%",
+  w: "70%",
   alignContent: "center",
   justifyContent: "space-between",
+  gap: 5,
 };
 
 export const ckconteiner = {
