@@ -1,32 +1,31 @@
-import { Button, Checkbox, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { useState } from "react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import { Button, Checkbox, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 
 interface IComboBoxProps {
   options: string[];
-  handleComboBoxChange?: (selectedItems: string[]) => void;
+  selectedItems: string[];
+  handleCheckboxChange: (selectedItems: string[]) => void;
 }
 
-export default function ComboBox({ options, handleComboBoxChange }: IComboBoxProps) {
-  const [selectedItems, setSelectedItems] = useState<string[]>(options);
-
-  const handleCheckboxChange = (option: string) => {
-    const updatedSelection = selectedItems.includes(option)
-      ? selectedItems.filter((item) => item !== option)
-      : [...selectedItems, option];
-
-    setSelectedItems(updatedSelection);
-    if (handleComboBoxChange) {
-      handleComboBoxChange(updatedSelection);
-    }
+export default function ComboBox({ options, selectedItems, handleCheckboxChange }: IComboBoxProps) {
+  const [localSelectedItems, setLocalSelectedItems] = useState<string[]>(selectedItems);
+  const handleItemClick = (item: string) => {
+    const updatedSelection = localSelectedItems.includes(item)
+      ? localSelectedItems.filter((selectedItem) => selectedItem !== item)
+      : [...localSelectedItems, item];
+    setLocalSelectedItems(updatedSelection);
+    handleCheckboxChange(updatedSelection);
   };
-
   return (
     <Menu closeOnSelect={false}>
-      <MenuButton as={Button}>filter options</MenuButton>
+      <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+        filter options
+      </MenuButton>
       <MenuList>
         {options.map((option, index) => (
           <MenuItem key={index}>
-            <Checkbox defaultChecked={selectedItems.includes(option)} onChange={() => handleCheckboxChange(option)}>
+            <Checkbox defaultChecked onChange={() => handleItemClick(option.toLowerCase())}>
               {option}
             </Checkbox>
           </MenuItem>
