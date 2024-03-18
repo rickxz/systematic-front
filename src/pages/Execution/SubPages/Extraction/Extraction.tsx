@@ -2,12 +2,12 @@ import { Box } from "@chakra-ui/react";
 import useInputState from "../../../../hooks/useInputState";
 import GridLayout from "../../../../components/ui/Grid/Grid";
 import Header from "../../../../components/ui/Header/Header";
-import InputText from "../../../../components/Inputs/InputText";
 import ComboBox from "../../../../components/Inputs/ComboBox";
+import InputText from "../../../../components/Inputs/InputText";
+import SelectInput from "../../../../components/Inputs/SelectInput";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
 import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
 import { conteiner, inputconteiner } from "../../styles/executionStyles";
-import SelectInput from "../../../../components/Inputs/SelectInput";
 
 export default function Extraction() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
