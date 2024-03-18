@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+/*import { Flex } from "@chakra-ui/react";
 import DataExtractionFormItensList from "../../components/Modals/Data Extraciton Field Creation/FormModalItensList";
 import DataExtractionFormItensValueList from "../../components/Modals/Data Extraciton Field Creation/FormModalItensValueList";
 import DataExtractionFormNumberInterval from "../../components/Modals/Data Extraciton Field Creation/FormModalNumberInterval";
@@ -8,8 +8,6 @@ import {ReferencesIcon} from "../../../public/icons/StudyModal/ReferencesIcon";
 import {SelectionDataIcon} from "../../../public/icons//StudyModal/SelectionDataIcon";
 import {SimilarStudiesIcon} from "../../../public/icons/StudyModal/SimilarStudiesIcon";
 import {StudyDataIcon} from "../../../public/icons/StudyModal/StudyDataIcon";
-
-
 
 export default function TestPage() {
   return (
@@ -32,3 +30,18 @@ export default function TestPage() {
     </>
   );
 }
+*/
+
+import ComboBox from "../../components/Inputs/ComboBox";
+
+const CheckboxInSelect = () => {
+  return (
+    <>
+      <ComboBox
+        options={["title", "author", "year", "status/selection", "status/extraction", "reading priority", "score"]}
+      />
+    </>
+  );
+};
+
+export default CheckboxInSelect;
