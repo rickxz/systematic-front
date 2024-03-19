@@ -4,11 +4,11 @@ import useInputState from "../../hooks/useInputState";
 import GridLayout from "../../components/ui/Grid/Grid";
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
-import CheckboxInput from "../../components/Inputs/Checkbox";
 import DynamicTable from "../../components/Tables/DynamicTable";
 import useFetchTableData from "../../hooks/fetch/useFetchTableData";
 import SearchInformations from "./subcomponents/searchInformations";
 import { ckbox, conteiner, navbtnStyles } from "./styles/searchSessionStyles";
+import ComboBox from "../../components/Inputs/ComboBox";
 
 export default function SearchSession() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
@@ -21,11 +21,10 @@ export default function SearchSession() {
         <UploadBox />
       </Box>
       <Box sx={ckbox}>
-        <CheckboxInput
-          label="General Information: "
-          name={headerData}
-          handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
-          checkedByDefault={[
+        <ComboBox
+          options={headerData}
+          handleCheckboxChange={handleCheckboxChange}
+          selectedItems={[
             "title",
             "author",
             "year",

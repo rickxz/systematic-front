@@ -2,13 +2,13 @@ import { Box } from "@chakra-ui/react";
 import useInputState from "../../../../hooks/useInputState";
 import GridLayout from "../../../../components/ui/Grid/Grid";
 import Header from "../../../../components/ui/Header/Header";
+import ComboBox from "../../../../components/Inputs/ComboBox";
 import InputText from "../../../../components/Inputs/InputText";
-import CheckboxInput from "../../../../components/Inputs/Checkbox";
 import SelectInput from "../../../../components/Inputs/SelectInput";
 import StudySelectionArea from "./subcomponents/StudySelectionArea";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
 import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
-import { ckconteiner, conteiner, inputconteiner } from "../../styles/executionStyles";
+import { conteiner, inputconteiner } from "../../styles/executionStyles";
 
 export default function Selection() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
@@ -27,14 +27,10 @@ export default function Selection() {
             onSelect={handleSelectChange}
             selectedValue={selectedValue}
           />
-        </Box>
-
-        <Box sx={ckconteiner}>
-          <CheckboxInput
-            label="General Information: "
-            name={headerData}
-            handleCheckboxChange={(selectedItems) => handleCheckboxChange(selectedItems)}
-            checkedByDefault={[
+          <ComboBox
+            options={headerData}
+            handleCheckboxChange={handleCheckboxChange}
+            selectedItems={[
               "title",
               "author",
               "year",

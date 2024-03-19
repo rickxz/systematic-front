@@ -15,7 +15,7 @@ export const flex = {
 export const inputconteiner = {
   display: "flex",
   flexDir: "row",
-  w: "60%",
+  w: "70%",
   alignContent: "center",
   columnGap: 5,
 };
