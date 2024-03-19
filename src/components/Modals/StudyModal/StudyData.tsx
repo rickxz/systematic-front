@@ -1,13 +1,18 @@
 import { IconButton, Flex, Input , Stack, Text, Center} from "@chakra-ui/react";
 import { FaPen } from "react-icons/fa";
+import ModalContext from "../../Tables/Subcomponents/ModalContext";
+import { useContext } from "react";
 
 interface IStudyDataFiel {
   studyData: (string | number)[];
 }
 
 export default function StudyDataFiel({ studyData }: IStudyDataFiel) {
-  return (
-    
+  const context = useContext(ModalContext);
+  console.log("E ai??:" + context?.StudyDataButtonState);
+  const isOpen = context?.StudyDataButtonState;
+
+  if (isOpen) return (
     <Flex bg="gray.300" w="450px" h="350px" direction={"column"} alignContent={"center"} overflowY={"scroll"} p="3">
       <Center>
         <Stack direction={"row"} p="2">
@@ -43,5 +48,8 @@ export default function StudyDataFiel({ studyData }: IStudyDataFiel) {
         <Input placeholder="cell" key={cellIndex} bg="gray.700" color="black" />
       ))*/}
     </Flex>
+  );
+  return (
+    <></>
   );
 }
