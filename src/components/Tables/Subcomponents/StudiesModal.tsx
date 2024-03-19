@@ -5,9 +5,6 @@
   import StudyDataFiel from "../../Modals/StudyModal/StudyData";
   import NavegationIconsPanel from "./TableRowSubcomponents/NavigationIconsPanel/NavigationIconPanel";
   import { ModalProvider } from './ModalContext';
-  import  ModalContext  from "./ModalContext";
-import { useContext } from "react";
-
 
   interface IStudy {
     rowData: (string | number)[],

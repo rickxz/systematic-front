@@ -10,10 +10,10 @@ export const conteiner = {
 export const inputconteiner = {
   display: "flex",
   flexDir: "row",
-  w: "60%",
+  w: "70%",
   alignContent: "center",
   justifyContent: "space-between",
-  gap: "1rem",
+  gap: 5,
 };
 
 export const ckconteiner = {

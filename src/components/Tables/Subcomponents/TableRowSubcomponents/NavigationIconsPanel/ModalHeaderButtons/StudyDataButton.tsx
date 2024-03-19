@@ -1,4 +1,4 @@
-import { Button, ModalContent, Text} from "@chakra-ui/react";
+import { Button, Text} from "@chakra-ui/react";
 import { StudyDataIcon } from "../../../../../../../public/icons/StudyModal/StudyDataIcon";
 import { useContext, useState } from "react";
 import ModalContext from "../../../ModalContext";

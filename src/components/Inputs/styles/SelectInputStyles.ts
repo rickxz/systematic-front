@@ -1,5 +1,5 @@
 export const formcontrol = {
   display: "flex",
   flexDir: "column",
-  w: "30vw",
+  w: "20vw",
 };
