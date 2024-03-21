@@ -7,7 +7,6 @@ import ModalContext from "../../../ModalContext";
 export default function SelectionDataButton() {
     const context = useContext(ModalContext);
     function handleClick() {
-        console.log(context?.PanelState);
         context?.setPanelState("Selection Data");
     }
 

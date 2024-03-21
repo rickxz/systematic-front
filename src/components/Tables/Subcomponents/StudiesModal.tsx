@@ -4,7 +4,9 @@
   import StatusSelection from "./TableRowSubcomponents/StatusSelection";
   import StudyDataFiel from "../../Modals/StudyModal/StudyData";
   import NavegationIconsPanel from "./TableRowSubcomponents/NavigationIconsPanel/NavigationIconPanel";
-  import { ModalProvider } from './ModalContext';
+import OtherStudyPanels from "./OtherStudyPanels";
+import ModalContext from "./ModalContext";
+import { useContext } from "react";
 
   interface IStudy {
     rowData: (string | number)[],
@@ -12,10 +14,11 @@
     onClose: () => void;
   }
   export default function StudiesModal({ rowData, isOpen, onClose}: IStudy) {
+    const context = useContext(ModalContext);
 
     return (  
       <>
-        <ModalProvider>
+        
           <Modal isOpen={isOpen} onClose={onClose} size={"8xl"}>
             <ModalOverlay />
     
@@ -29,9 +32,12 @@
               <ModalCloseButton bg="white"/>
     
               <ModalBody>
-
-                <StudyDataFiel studyData={rowData} />
                 
+                    <Flex bg="gray.500" gap="25px">
+                      {context?.StudyDataButtonState ? <StudyDataFiel studyData={rowData} /> : <></>}
+                      <OtherStudyPanels/>
+                    </Flex>
+
               </ModalBody>
               <ModalFooter color="white" bg="gray.800">
                 <Flex justify={"space-around"} flex={"1"}>
@@ -52,7 +58,6 @@
               </ModalFooter>
             </ModalContent>
           </Modal>
-        </ModalProvider>
       </>
     );
   }

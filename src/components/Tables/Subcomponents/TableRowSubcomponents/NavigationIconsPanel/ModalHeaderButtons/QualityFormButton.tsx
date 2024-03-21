@@ -7,8 +7,7 @@ import { useContext } from "react";
 export default function QualityFormButton() {
     const context = useContext(ModalContext);
     function handleClick() {
-        console.log(context?.PanelState);
-        context?.setPanelState("Quality Forms");
+        context?.setPanelState("Quality Form");
     }
 
     return(

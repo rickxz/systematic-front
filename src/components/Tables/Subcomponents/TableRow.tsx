@@ -19,6 +19,7 @@ import ColoredIcon from "../../Icons/ColoredIcon";
 import StudyDataFiel from "../../Modals/StudyModal/StudyData";
 import NavegationIconsPanel from "./TableRowSubcomponents/NavigationIconsPanel/NavigationIconPanel";
 import StudiesModal from "./StudiesModal";
+import { ModalProvider } from "./ModalContext";
 
 interface IStudy {
   rowData: (string | number)[];
@@ -63,7 +64,7 @@ export default function TableRow({
           </Td>
         ))}
       </Tr>
-      {isOpen ? <StudiesModal rowData={rowData} isOpen={isOpen} onClose={onClose}/> : <></> }
+      {isOpen ? <ModalProvider><StudiesModal rowData={rowData} isOpen={isOpen} onClose={onClose}/></ModalProvider> : <></> }
     </>
   );
 }

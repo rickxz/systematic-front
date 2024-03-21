@@ -7,7 +7,6 @@ import { useContext } from "react";
 export default function DataExtractionFormButton() {
     const context = useContext(ModalContext);
     function handleClick() {
-        console.log(context?.PanelState);
         context?.setPanelState("Data Extraction Form");
     }
 

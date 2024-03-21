@@ -49,7 +49,7 @@ interface ModalProviderProps {
 }
 
 export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
-    const [PanelState, setPanelState] = useState<string>("");
+    const [PanelState, setPanelState] = useState<string>("Selection Data");
     const [StudyDataButtonState, setStudyDataButtonState] = useState<boolean>(true);
 
     return (

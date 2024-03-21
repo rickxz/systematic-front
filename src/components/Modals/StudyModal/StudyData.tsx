@@ -3,19 +3,15 @@ import { FaPen } from "react-icons/fa";
 import ModalContext from "../../Tables/Subcomponents/ModalContext";
 import { useContext } from "react";
 
-{
-  /*interface IStudyDataFiel {
+
+  interface IStudyDataFiel {
   studyData: (string | number)[];
-}*/
 }
 
 export default function StudyDataFiel({ studyData }: IStudyDataFiel) {
-  const context = useContext(ModalContext);
-  console.log("E ai??:" + context?.StudyDataButtonState);
-  const isOpen = context?.StudyDataButtonState;
 
-  if (isOpen) return (
-    <Flex bg="gray.300" w="450px" h="350px" direction={"column"} alignContent={"center"} overflowY={"scroll"} p="3">
+  return (
+    <Flex bg="gray.300" w="350px" h="350px" direction={"column"} alignContent={"center"} overflowY={"scroll"} p="3">
       <Center>
         <Stack direction={"row"} p="2">
           <Text fontSize={"lg"}>Study Data</Text>
@@ -23,10 +19,10 @@ export default function StudyDataFiel({ studyData }: IStudyDataFiel) {
         </Stack>
       </Center>
       <Text align={"center"} fontSize={"xl"} fontWeight={"semibold"}>
-        Titulo do Artigo
+        {studyData[0]}
       </Text>
       <Text align={"center"} p="1">
-        Autor SOBRENOME, autor 2 SOBRENOME
+        {studyData[1]}
       </Text>
 
       <Flex direction={"column"} textAlign={"justify"} p="1">
@@ -59,8 +55,5 @@ export default function StudyDataFiel({ studyData }: IStudyDataFiel) {
         <Input placeholder="cell" key={cellIndex} bg="gray.700" color="black" />
       ))*/}
     </Flex>
-  );
-  return (
-    <></>
   );
 }

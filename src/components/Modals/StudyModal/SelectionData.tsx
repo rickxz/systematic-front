@@ -2,7 +2,7 @@ import { Box, Checkbox, CheckboxGroup, Container, Flex, Heading, Spacer, Stack }
 
 export default function StatusSelection() {
     return(
-        <Container style={{ maxHeight: "350px", overflowY: "auto" }}>
+        <Container style={{ maxHeight: "350px", overflowY: "auto", margin: "0px"}}>
             <Heading as="h1" textAlign="center" my="1rem">Selection Data</Heading>
             <Flex>
                 <Box>
