@@ -7,7 +7,7 @@ export default function SimilarStudies() {
     const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
     const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
     return(
-        <Container  m="1rem">
+        <Container>
             <Heading textAlign="right" mx="2em" >Similar Studies</Heading>
             
             <Box style={{ maxHeight: "350px", overflowY: "auto" }} w="39rem">

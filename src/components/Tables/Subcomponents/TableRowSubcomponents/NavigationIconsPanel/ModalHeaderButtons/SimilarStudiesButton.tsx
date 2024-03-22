@@ -7,7 +7,6 @@ import { useContext } from "react";
 export default function SimilarStudiesButton() {
     const context = useContext(ModalContext);
     function handleClick() {
-        console.log(context?.PanelState);
         context?.setPanelState("Similar Studies");
     }
 
