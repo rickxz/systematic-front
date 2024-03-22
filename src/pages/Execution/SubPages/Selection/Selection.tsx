@@ -28,6 +28,7 @@ export default function Selection() {
             selectedValue={selectedValue}
           />
           <ComboBox
+            text="filter options"
             options={headerData}
             handleCheckboxChange={handleCheckboxChange}
             selectedItems={[
