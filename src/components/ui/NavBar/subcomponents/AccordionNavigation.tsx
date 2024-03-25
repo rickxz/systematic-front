@@ -29,7 +29,7 @@ export default function AccordionNav({ navSize, defaultOpen }: IAccordion) {
 
       <Link to="/">
         {" "}
-        <NavItem navSize={navSize} icon={FaHome} title="Home Page" />
+        <NavItem navSize={navSize} icon={FaHome} title="My Reviews" />
       </Link>
     </>
   );

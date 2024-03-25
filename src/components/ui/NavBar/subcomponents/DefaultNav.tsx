@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { SiAddthis } from "react-icons/si";
 import { GiArchiveRegister } from "react-icons/gi";
+import { IoLibrarySharp } from "react-icons/io5";
 
 interface IDefaultNavigation {
   navSize: string;
@@ -10,7 +11,7 @@ interface IDefaultNavigation {
 
 const routes = [
   { path: "/landing", icon: GiArchiveRegister, title: "LandingPage" },
-  { path: "/", icon: FaHome, title: "Home Page" },
+  { path: "/", icon: IoLibrarySharp, title: "My reviews" },
   { path: "/newRevision", icon: SiAddthis, title: "New Revision" },
 ];
 

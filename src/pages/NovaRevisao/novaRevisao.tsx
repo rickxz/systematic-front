@@ -4,7 +4,7 @@ import Header from "../../components/ui/Header/Header";
 import InputText from "../../components/Inputs/InputText";
 import NavButton from "../../components/Buttons/NavButton";
 import InputTextArea from "../../components/Inputs/InputTextArea";
-import ResearcherFilter from "../home/subcomponents/ResearcherFilter";
+import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 export default function NovaRevisao() {
   return (
     <GridLayout navigationType="Accordion" defaultOpen={0}>

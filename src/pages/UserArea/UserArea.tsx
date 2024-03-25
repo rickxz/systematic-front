@@ -5,7 +5,7 @@ import Header from "../../components/ui/Header/Header";
 import RevisionCard from "./subcomponents/RevisionCard";
 import useFetchRevisionCard from "../../hooks/fetch/useFetchRevisionCard";
 
-export default function Home() {
+export default function UserArea() {
   const { cardData } = useFetchRevisionCard("data/revisions.json");
 
   return (

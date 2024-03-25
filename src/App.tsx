@@ -16,7 +16,7 @@ import Protocol from "./pages/Protocolo/Protocol";
 import ProtocolPartThree from "./pages/Protocolo/Protocol-Part-Three";
 import ProtocolPartTwo from "./pages/Protocolo/Protocol-Part-Two";
 import SearchSession from "./pages/SearchSession/SearchSession";
-import Home from "./pages/home/home";
+import UserArea from "./pages/UserArea/UserArea";
 function App() {
   const context = useContext(SidebarContext);
 
@@ -27,7 +27,7 @@ function App() {
           <Router>
             <SidebarProvider>
               <Routes>
-                  <Route path="/" element={<Home />} />
+                  <Route path="/" element={<UserArea />} />
                   <Route path="/newRevision" element={<NovaRevisao />} />              
                   <Route path="/landing" element={<LandingPage />} />
                   <Route path="/test" element={<TestPage />} />
@@ -60,7 +60,7 @@ function App() {
       <Router>
         <SidebarProvider>
           <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<UserArea />} />
               <Route path="/newRevision" element={<NovaRevisao />} />
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/test" element={<TestPage />} />
