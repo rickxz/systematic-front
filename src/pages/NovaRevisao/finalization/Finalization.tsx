@@ -40,6 +40,7 @@ export default function Finalization() {
                 "reading priority",
                 "score",
               ]}
+              text={"filter options"}
             />
           </Box>
         </Box>

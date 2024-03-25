@@ -10,7 +10,7 @@ export default function NovaRevisao() {
     <GridLayout navigationType="Accordion" defaultOpen={0}>
       <Header text="New Systematic Review" />
       <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"80%"} alignItems={"center"} ml={"10em"}>
-        <InputText label="Title:" placeholder="Enter review title" type="text" nome="text" />
+        <InputText placeholder="Enter review title" type="text" nome="text" />
         <InputTextArea label="Description:" placeholder="Enter review description"></InputTextArea>
         <ResearcherFilter />
         <Box ml={"80%"}>

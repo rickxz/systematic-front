@@ -39,6 +39,7 @@ export default function Insertion() {
               "reading priority",
               "score",
             ]}
+            text={"filter options"}
           />
         </Box>
       </Box>

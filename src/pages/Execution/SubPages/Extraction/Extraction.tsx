@@ -37,6 +37,7 @@ export default function Extraction() {
               "reading priority",
               "score",
             ]}
+            text={"filter options"}
           />
         </Box>
       </Box>

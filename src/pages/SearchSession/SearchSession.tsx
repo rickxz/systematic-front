@@ -33,6 +33,7 @@ export default function SearchSession() {
             "reading priority",
             "score",
           ]}
+          text={"filter options"}
         />
       </Box>
       <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
