@@ -17,6 +17,7 @@ import ProtocolPartThree from "./pages/Protocolo/Protocol-Part-Three";
 import ProtocolPartTwo from "./pages/Protocolo/Protocol-Part-Two";
 import SearchSession from "./pages/SearchSession/SearchSession";
 import UserArea from "./pages/UserArea/UserArea";
+import Homepage from "./pages/Homepage/Homepage";
 function App() {
   const context = useContext(SidebarContext);
 
@@ -31,6 +32,7 @@ function App() {
                   <Route path="/newRevision" element={<NovaRevisao />} />              
                   <Route path="/landing" element={<LandingPage />} />
                   <Route path="/test" element={<TestPage />} />
+                  <Route path="/homepage" element={<Homepage />} />
     
     
                   {/*Nested Routes*/}
@@ -64,6 +66,7 @@ function App() {
               <Route path="/newRevision" element={<NovaRevisao />} />
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/test" element={<TestPage />} />
+              <Route path="/homepage" element={<Homepage />} />
 
 
               {/*Nested Routes*/}

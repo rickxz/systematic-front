@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AccordionElement from "./AccordionItem";
 import NavItem from "./NavItem";
 import { Accordion } from "@chakra-ui/react";
+import { IoLibrarySharp } from "react-icons/io5";
 interface IAccordion {
   navSize: string;
   defaultOpen: number;
@@ -29,7 +30,12 @@ export default function AccordionNav({ navSize, defaultOpen }: IAccordion) {
 
       <Link to="/">
         {" "}
-        <NavItem navSize={navSize} icon={FaHome} title="My Reviews" />
+        <NavItem navSize={navSize} icon={IoLibrarySharp} title="My Reviews" />
+      </Link>
+
+      <Link to="/homepage">
+        {" "}
+        <NavItem navSize={navSize} icon={FaHome} title="Homepage" />
       </Link>
     </>
   );
