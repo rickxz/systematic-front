@@ -34,59 +34,47 @@ export default function Article({header, bodyText, src, alt, imgPosition, style}
         styles.textColor = "black";
     }
 
-    if ( imgPosition === "left") return (
-        <Flex direction="column" alignItems={"center"} gap="50px" pt="30px" pb="30px" pl="150px" pr="150px" background={styles.background}>
-            <Heading color={styles.textColor}>{header}</Heading>
-            <Flex gap="25px">
-                <Flex direction={"column"} alignItems={"center"} gap="50px">
-                    <Text color={styles.textColor}>{bodyText}</Text>
-                    <Button w={"40%"} colorScheme={styles.buttonColor}>Saiba mais</Button>
-                </Flex>
-                <Image src={src} alt={alt} borderRadius="30px"/>
-            </Flex>
-        </Flex>
-    );
-    
-    if ( imgPosition === "right") return (
-        <Flex direction="column" alignItems={"center"} gap="50px" pt="30px" pb="30px" pl="150px" pr="150px" background={styles.background}>
-            <Heading color={styles.textColor}>{header}</Heading>
-            <Flex gap="25px">
-                <Image src={src} alt={alt} borderRadius="30px"/>
-                <Flex direction={"column"} alignItems={"center"} gap="50px">
-                    <Text color={styles.textColor}>{bodyText}</Text>
-                    <Button w={"40%"} colorScheme={styles.buttonColor}>Saiba mais</Button>
-                </Flex>
-            </Flex>
-        </Flex>
-    );
+    let mainDirection: string = "column";
+    let imgDirection: string = "row";
+    let imgIndex: number = 1;
+    let textIndex: number = 2;
 
-    if ( imgPosition === "top") return (
-        <Flex direction="column" alignItems={"center"} gap="50px" pt="30px" pb="30px" pl="150px" pr="150px" background={styles.background}>
+    if (imgPosition === "right") {
+        imgDirection = "row";
+        imgIndex = 2;
+        textIndex = 1;
+    } else if (imgPosition === "top") {
+        mainDirection = "column-reverse";
+        imgIndex = 2;
+        textIndex = 1;
+    } else if (imgPosition === "bottom") {
+        mainDirection = "column-reverse";
+        imgIndex = 1;
+        textIndex = 2;
+    }
+
+    return (
+        <Flex direction={mainDirection} alignItems="center" gap="50px" pt="30px" pb="30px" pl="150px" pr="150px" background={styles.background}>
             <Heading color={styles.textColor}>{header}</Heading>
-            <Flex gap="25px" direction="column" >
-                <Image src={src} alt={alt} borderRadius="30px"/>
-                <Flex direction={"column"} alignItems={"center"} gap="50px">
-                    <Text color={styles.textColor}>{bodyText}</Text>
-                    <Button w={"40%"} colorScheme={styles.buttonColor}>Saiba mais</Button>
-                </Flex>
+            <Flex gap="25px" direction={imgDirection}>
+                {imgPosition === "left" || imgPosition === "top" ? (
+                    <>
+                        <Image src={src} alt={alt} borderRadius="30px" order={imgIndex} />
+                        <Flex direction="column" alignItems="center" gap="50px" order={textIndex}>
+                            <Text color={styles.textColor}>{bodyText}</Text>
+                            <Button w="40%" colorScheme={styles.buttonColor}>Saiba mais</Button>
+                        </Flex>
+                    </>
+                ) : (
+                    <>
+                        <Flex direction="column" alignItems="center" gap="50px" order={textIndex}>
+                            <Text color={styles.textColor}>{bodyText}</Text>
+                            <Button w="40%" colorScheme={styles.buttonColor}>Saiba mais</Button>
+                        </Flex>
+                        <Image src={src} alt={alt} borderRadius="30px" order={imgIndex} />
+                    </>
+                )}
             </Flex>
         </Flex>
-    );
-
-    if ( imgPosition === "bottom") return (
-        <Flex direction="column" alignItems={"center"} gap="50px" pt="30px" pb="30px" pl="150px" pr="150px" background={styles.background}>
-            <Heading color={styles.textColor}>{header}</Heading>
-            <Flex gap="25px" direction="column" >
-                <Flex direction={"column"} alignItems={"center"} gap="50px">
-                    <Text color={styles.textColor}>{bodyText}</Text>
-                    <Button w={"40%"} colorScheme={styles.buttonColor}>Saiba mais</Button>
-                </Flex>
-                <Image src={src} alt={alt} borderRadius="30px"/>
-            </Flex>
-        </Flex>
-    );
-
-    return(
-        <>Falta informar o valor da props 'imgPosition'!</>
     );
 }
