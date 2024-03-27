@@ -1,5 +1,6 @@
 import { Box, Button, Flex , Text} from "@chakra-ui/react";
 import { IoLibrary } from "react-icons/io5";
+import HeaderButton from "./subcomponents/HeaderButton";
 
 export default function Header() {
     return (
@@ -15,10 +16,9 @@ export default function Header() {
                     <Text color="white" fontSize='2xl'>Contato</Text>
                 </Flex>
             </Flex>
-
             <Flex gap="20%">
-                <Button>Sing Up</Button>
-                <Button>Log In</Button>
+                <HeaderButton text="Sing Up"/>
+                <HeaderButton text="Log In"/>
             </Flex>
             
         </Flex>

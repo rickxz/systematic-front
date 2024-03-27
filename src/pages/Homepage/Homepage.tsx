@@ -1,7 +1,7 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
-import Header from "./subcomponents/Header";
-import Footer from "./subcomponents/Footer";
-import Article from "./subcomponents/Article";
+import Header from "./subcomponents/Header/Header";
+import Footer from "./subcomponents/Footer/Footer";
+import Article from "./subcomponents/Article/Article";
 
 export default function Homepage() {
   return (
