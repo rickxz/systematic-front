@@ -6,7 +6,7 @@ import HeaderLink from "./subcomponents/HeaderLink";
 export default function Header() {
     return (
         <Flex bg="gray.800" padding={"20px"} width={"100%"} justifyContent={"space-between"}>
-            <Flex width="auto" gap="20%" alignItems={"center"}>
+            <Flex width="auto" gap="10%" alignItems={"center"}>
                 <Box>
                     <IoLibrary color="white" size="40"/>
                 </Box>
