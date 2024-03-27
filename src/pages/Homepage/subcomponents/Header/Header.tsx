@@ -18,9 +18,9 @@ export default function Header() {
                     <HeaderLink text="Contato"/>
                 </Flex>
             </Flex>
-            <Flex gap="20%">
-                <HeaderButton text="Sing Up"/>
-                <HeaderButton text="Log In"/>
+            <Flex gap="5%">
+                <HeaderButton text="Sing Up" path="/landing"/>
+                <HeaderButton text="Log In" path="/landing"/>
             </Flex>
             
         </Flex>
