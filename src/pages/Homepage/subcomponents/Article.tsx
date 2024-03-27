@@ -24,9 +24,9 @@ export default function Article({header, bodyText, src, alt, imgPosition, style}
     };
 
     if (style == "dark") {
-        styles.background = "gray.900";
+        styles.background = "gray.400";
         styles.buttonColor = "gray";
-        styles.textColor = "white";
+        styles.textColor = "black";
     }
     if (style == "light") {
         styles.background = "gray.200";
@@ -54,7 +54,7 @@ export default function Article({header, bodyText, src, alt, imgPosition, style}
     }
 
     return (
-        <Flex direction={mainDirection} alignItems="center" gap="50px" pt="30px" pb="30px" pl="150px" pr="150px" background={styles.background}>
+        <Flex direction={mainDirection} alignItems="center" gap="50px" pt="30px" pb="30px" pl="300px" pr="300px" background={styles.background}>
             <Heading color={styles.textColor}>{header}</Heading>
             <Flex gap="25px" direction={imgDirection}>
                 {imgPosition === "left" || imgPosition === "top" ? (
