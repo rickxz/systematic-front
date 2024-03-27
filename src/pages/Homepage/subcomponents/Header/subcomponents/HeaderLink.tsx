@@ -9,7 +9,7 @@ interface IHeaderLink {
 }
 
 export default function HeaderLink({text}: IHeaderLink) {
-    const [onHover, SetOnHover] = useState(true);
+    const [onHover, SetOnHover] = useState(false);
 
     return (
         <Box sx={onHover ? DarkBackground : LightBackground}>

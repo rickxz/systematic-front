@@ -12,7 +12,7 @@ export const DarkBackground = {
     background: "white",
     pl: "40px",
     pr: "40px",
-    radius
+    borderRadius: "50px",
 }
 
 export const LightBackground = {

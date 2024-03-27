@@ -1,4 +1,4 @@
-import { Box, Button, Flex , Text} from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import { IoLibrary } from "react-icons/io5";
 import HeaderButton from "./subcomponents/HeaderButton";
 import HeaderLink from "./subcomponents/HeaderLink";
@@ -10,7 +10,7 @@ export default function Header() {
                 <Box>
                     <IoLibrary color="white" size="40"/>
                 </Box>
-                <Flex gap="20%">
+                <Flex>
                     <HeaderLink text="Sobre"/>
                     <HeaderLink text="Comunidade"/>
                     <HeaderLink text="Tutorias"/>
