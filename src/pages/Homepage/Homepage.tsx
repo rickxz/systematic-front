@@ -8,7 +8,7 @@ export default function Homepage() {
     <Box height={"80vh"}>
         <Header />
 
-        <Flex bg="gray.200" direction={"column"}>
+        <Flex bg="gray.200" direction={"column"} pt="80px">
             <Article header={"Sobre a ferramenta"} 
               bodyText={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."+
               " Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque"+
