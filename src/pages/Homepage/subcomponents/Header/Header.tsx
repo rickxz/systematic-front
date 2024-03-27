@@ -1,6 +1,7 @@
 import { Box, Button, Flex , Text} from "@chakra-ui/react";
 import { IoLibrary } from "react-icons/io5";
 import HeaderButton from "./subcomponents/HeaderButton";
+import HeaderLink from "./subcomponents/HeaderLink";
 
 export default function Header() {
     return (
@@ -10,10 +11,10 @@ export default function Header() {
                     <IoLibrary color="white" size="40"/>
                 </Box>
                 <Flex gap="20%">
-                    <Text color="white" fontSize='2xl'>Sobre</Text>
-                    <Text color="white" fontSize='2xl'>Comunidade</Text>
-                    <Text color="white" fontSize='2xl'>Tutorias</Text>
-                    <Text color="white" fontSize='2xl'>Contato</Text>
+                    <HeaderLink text="Sobre"/>
+                    <HeaderLink text="Comunidade"/>
+                    <HeaderLink text="Tutorias"/>
+                    <HeaderLink text="Contato"/>
                 </Flex>
             </Flex>
             <Flex gap="20%">

@@ -1,5 +1,4 @@
 export const buttonTheme = {
-    
             size: 'md',
             pt: "10px",
             pb: "10px",

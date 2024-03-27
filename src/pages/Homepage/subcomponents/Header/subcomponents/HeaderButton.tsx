@@ -1,6 +1,6 @@
 import { Button} from "@chakra-ui/react";
 import { useState } from "react";
-import { buttonTheme } from "./ButtonTheme";
+import { buttonTheme } from "./styles/ButtonTheme";
 
 interface IHeaderButton {
     text: string
