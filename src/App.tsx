@@ -18,6 +18,7 @@ import ProtocolPartTwo from "./pages/Protocolo/Protocol-Part-Two";
 import SearchSession from "./pages/SearchSession/SearchSession";
 import UserArea from "./pages/UserArea/UserArea";
 import Homepage from "./pages/Homepage/Homepage";
+import CollaboratorsPage from "./pages/CollaboratorsPage/CollaboratorsPage";
 function App() {
   const context = useContext(AppContext);
 
@@ -33,6 +34,7 @@ function App() {
                   <Route path="/landing" element={<LandingPage />} />
                   <Route path="/test" element={<TestPage />} />
                   <Route path="/homepage" element={<Homepage />} />
+                  <Route path="/collaborators" element={<CollaboratorsPage/>} />
     
     
                   {/*Nested Routes*/}
@@ -67,6 +69,7 @@ function App() {
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/test" element={<TestPage />} />
               <Route path="/homepage" element={<Homepage />} />
+              <Route path="/collaborators" element={<CollaboratorsPage/>} />
 
 
               {/*Nested Routes*/}
