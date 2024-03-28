@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { flexconteiner } from "../styles/Navitemstyles";
-import SidebarContext from "../../../Context/sidebarContext";
+import AppContext from "../../../Context/AppContext";
 import { Flex, Icon, Menu, MenuButton, Text } from "@chakra-ui/react";
 
 interface INavItemProps {
@@ -11,7 +11,7 @@ interface INavItemProps {
 }
 
 export default function NavItem({ navSize, icon, title }: INavItemProps): JSX.Element {
-  const context = useContext(SidebarContext);
+  const context = useContext(AppContext);
 
   if (!context) {
     return <>Problema com useContext em NavItem.tsx</>;

@@ -3,7 +3,7 @@ import Identification from "./pages/Execution/Identification";
 import Extraction from "./pages/Execution/SubPages/Extraction/Extraction";
 import Insertion from "./pages/Execution/SubPages/Insertion/Insertion";
 import TestPage from "./pages/TestPage/TestPage";
-import SidebarContext, { SidebarProvider } from "./components/Context/sidebarContext";
+import AppContext, { AppProvider } from "./components/Context/AppContext";
 import { useContext } from "react";
 
 import KeyWordScreen from "./pages/Execution/SubPages/KeyWordScreen/KeyWordScreen";
@@ -19,14 +19,14 @@ import SearchSession from "./pages/SearchSession/SearchSession";
 import UserArea from "./pages/UserArea/UserArea";
 import Homepage from "./pages/Homepage/Homepage";
 function App() {
-  const context = useContext(SidebarContext);
+  const context = useContext(AppContext);
 
   if (!context) {
     // Se o contexto não estiver definido, retorne algo apropriado
     return (
         <>
           <Router>
-            <SidebarProvider>
+            <AppProvider>
               <Routes>
                   <Route path="/" element={<UserArea />} />
                   <Route path="/newRevision" element={<NovaRevisao />} />              
@@ -48,7 +48,7 @@ function App() {
                   <Route path="/newRevision/finalization" element={<Finalization />} />
                   <Route path="/newRevision/searchSession" element={<SearchSession />} />
                 </Routes>
-              </SidebarProvider>
+              </AppProvider>
           </Router>
         </>
       );
@@ -60,7 +60,7 @@ function App() {
   return (
     <>
       <Router>
-        <SidebarProvider>
+        <AppProvider>
           <Routes>
               <Route path="/" element={<UserArea />} />
               <Route path="/newRevision" element={<NovaRevisao />} />
@@ -82,7 +82,7 @@ function App() {
               <Route path="/newRevision/finalization" element={<Finalization />} />
               <Route path="/newRevision/searchSession" element={<SearchSession />} />
             </Routes>
-          </SidebarProvider>
+          </AppProvider>
       </Router>
     </>
   );

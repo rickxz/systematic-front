@@ -1,7 +1,7 @@
 import NavItem from "./NavItem";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import SidebarContext from "../../../Context/sidebarContext";
+import SidebarContext from "../../../Context/AppContext";
 import { AccordionButton, Icon, AccordionIcon, Box, AccordionItem, AccordionPanel } from "@chakra-ui/react";
 import { iconbox } from "../styles/AccordionItenStyles";
 
