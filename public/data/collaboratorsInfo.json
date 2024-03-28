@@ -1,0 +1,62 @@
+[
+    {
+        "nome": "Dr. Banana Bean",
+        "foto": "Bean.02jpg.jpg",
+        "github": ""
+    },
+    {
+        "nome": "Sir Frijoles Bean III",
+        "foto": "Bean.03.webp",
+        "github": ""
+    },
+    {
+        "nome": "Baron Von Beanstalk",
+        "foto": "Bean.04.jpeg",
+        "github": ""
+    },
+    {
+        "nome": "Countess Lima Bean",
+        "foto": "Bean01.jpg",
+        "github": ""
+    },
+    {
+        "nome": "Captain Nick Noodle",
+        "foto": "Nick01jpg.jpg",
+        "github": ""
+    },
+    {
+        "nome": "Sergeant Spaghetti Nick",
+        "foto": "Nick02.jpeg",
+        "github": ""
+    },
+    {
+        "nome": "Major Meatball Nick",
+        "foto": "Nick03.jpg",
+        "github": ""
+    },
+    {
+        "nome": "Doctor Linguine Nick",
+        "foto": "Nick04jpeg.jpeg",
+        "github": ""
+    },
+    {
+        "nome": "Master Sammy Spork",
+        "foto": "Sammy01.jpeg",
+        "github": ""
+    },
+    {
+        "nome": "Professor Sammy Spoon",
+        "foto": "Sammy02jpg.jpg",
+        "github": ""
+    },
+    {
+        "nome": "Miss Forky Sammy",
+        "foto": "Sammy03.webp",
+        "github": ""
+    },
+    {
+        "nome": "Lady Spatula Sammy",
+        "foto": "Sammy04.jpeg",
+        "github": ""
+    }
+]

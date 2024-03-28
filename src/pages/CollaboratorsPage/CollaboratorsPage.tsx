@@ -8,7 +8,7 @@ export default function CollaboratorsPage() {
         <Flex direction={"column"} justify={"space-between"}>
             <Header />
             <Flex h="100vh" bg="gray.200" align="center" justify="center">
-                <CollaboratorCard />                
+                <CollaboratorCard src={""} alt={""}/>                
             </Flex>
             <Footer />
         </Flex>

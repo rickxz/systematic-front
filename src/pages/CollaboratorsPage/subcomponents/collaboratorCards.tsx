@@ -1,10 +1,21 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
-export default function CollaboratorCard() {
+interface CollaboratorType {
+    src: string,
+    alt: string,
+}
+
+export default function CollaboratorCard({src, alt}: CollaboratorType) {
     return (
         <>
-            <Box h="100px" w="100px" bg="black"></Box>
-            <Text>Etaaaaa</Text>
+            <Flex bg="gray.600" p="100px" direction="column" alignItems="center">
+                <Image src={src} alt={alt}
+                 borderRadius="30px" 
+                 h="200px"
+                 w="200px"
+                 />
+                <Text>Nome da pessoa</Text>
+            </Flex>
         </>
     );
 }
