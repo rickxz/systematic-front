@@ -19,8 +19,8 @@ export default function Header() {
                 </Flex>
             </Flex>
             <Flex gap="5%">
-                <HeaderButton text="Sing Up" path="/landing"/>
-                <HeaderButton text="Log In" path="/landing"/>
+                <HeaderButton text="Sing Up" path="/landing" type="Register"/>
+                <HeaderButton text="Log In" path="/landing" type="Login"/>
             </Flex>
             
         </Flex>

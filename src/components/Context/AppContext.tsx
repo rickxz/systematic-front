@@ -18,7 +18,7 @@ interface AppProviderProps {
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     const [button, setButton] = useState<string>("");
     const [item, setItem] = useState<string>("");
-    const [renderForm, SetRenderForm] = useState<string>("");
+    const [renderForm, SetRenderForm] = useState<string>("Login");
 
     return (
         <AppContext.Provider value={{ button, setButton, item, setItem, renderForm, SetRenderForm }}>
