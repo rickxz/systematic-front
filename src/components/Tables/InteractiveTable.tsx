@@ -5,17 +5,17 @@ import { useInteractiveTable } from "../../hooks/useInteractiveTable";
 import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
 
 export default function InteractiveTable() {
-  const { rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options } = useInteractiveTable();
+  const { rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers } =
+    useInteractiveTable();
 
   return (
     <TableContainer>
       <Table variant="simple" size="md" w={"60vw"} border={"solid black 1px"} borderRadius={"16px"}>
         <Thead>
           <Tr>
-            <Th>Id</Th>
-            <Th>Question</Th>
-            <Th>Type</Th>
-            <Th></Th>
+            {headers.map((header) => (
+              <Th>{header}</Th>
+            ))}
           </Tr>
         </Thead>
         <Tbody>

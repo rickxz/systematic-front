@@ -9,6 +9,7 @@ interface Row {
 export function useInteractiveTable() {
   const [rows, setRows] = useState<Row[]>([]);
   const options = ["", "Pick one list", "Pick many list", "Number scale", "LabeledList"];
+  const headers = ["Id", "Question", "Type", ""];
 
   const addRow = () => {
     setRows([...rows, { id: rows.length + 1, question: "", type: "" }]);
@@ -32,5 +33,5 @@ export function useInteractiveTable() {
     setRows(updatedRows);
   };
 
-  return { rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options };
+  return { rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers };
 }
