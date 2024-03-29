@@ -1,27 +1,11 @@
-import { useState } from "react";
 import { AddIcon } from "@chakra-ui/icons";
 import EditButton from "../Buttons/EditButton";
 import DeleteButton from "../Buttons/DeleteButton";
+import { useInteractiveTable } from "../../hooks/useInteractiveTable";
 import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
 
-interface Row {
-  id: number;
-  question: string;
-  type: string;
-}
-
 export default function InteractiveTable() {
-  const [rows, setRows] = useState<Row[]>([]);
-  const options = ["", "Pick one list", "Pick many list", "Number scale", "LabeledList"];
-  const addRow = () => {
-    setRows([...rows, { id: rows.length + 1, question: "", type: "" }]);
-  };
-
-  const handleDelete = (index: number) => {
-    const updatedRows = [...rows];
-    updatedRows.splice(index, 1);
-    setRows(updatedRows);
-  };
+  const { rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options } = useInteractiveTable();
 
   return (
     <TableContainer>
@@ -39,26 +23,14 @@ export default function InteractiveTable() {
             <Tr key={index}>
               <Td>{row.id}</Td>
               <Td>
-                <Input
-                  value={row.question}
-                  onChange={(e) => {
-                    const updatedRows = [...rows];
-                    updatedRows[index].question = e.target.value;
-                    setRows(updatedRows);
-                  }}
-                />
+                <Input value={row.question} onChange={(e) => handleQuestionChange(index, e.target.value)} />
               </Td>
               <Td>
-                <Select
-                  value={row.type}
-                  onChange={(e) => {
-                    const updatedRows = [...rows];
-                    updatedRows[index].type = e.target.value;
-                    setRows(updatedRows);
-                  }}
-                >
-                  {options.map((opt) => (
-                    <option value={opt.toLowerCase()}>{opt} </option>
+                <Select value={row.type} onChange={(e) => handleTypeChange(index, e.target.value)}>
+                  {options.map((opt, i) => (
+                    <option key={i} value={opt.toLowerCase()}>
+                      {opt}
+                    </option>
                   ))}
                 </Select>
               </Td>
@@ -68,10 +40,10 @@ export default function InteractiveTable() {
                   index={index}
                   editIndex={index}
                   handleEdit={() => {
-                    ("");
+                    // handle edit logic
                   }}
                   handleSaveEdit={() => {
-                    ("");
+                    // handle save edit logic
                   }}
                 />
               </Td>
