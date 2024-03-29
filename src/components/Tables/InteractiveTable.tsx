@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
-import DeleteButton from "../Buttons/DeleteButton";
 import EditButton from "../Buttons/EditButton";
+import DeleteButton from "../Buttons/DeleteButton";
+import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
 
 interface Row {
   id: number;
@@ -12,9 +12,7 @@ interface Row {
 
 export default function InteractiveTable() {
   const [rows, setRows] = useState<Row[]>([]);
-
   const options = ["", "Pick one list", "Pick many list", "Number scale", "LabeledList"];
-
   const addRow = () => {
     setRows([...rows, { id: rows.length + 1, question: "", type: "" }]);
   };
