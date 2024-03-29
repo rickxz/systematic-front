@@ -1,62 +1,62 @@
 [
     {
-        "nome": "Dr. Banana Bean",
-        "foto": "Bean.02jpg.jpg",
+        "name": "Dr. Banana Bean",
+        "photo": "Bean.02jpg.jpg",
         "github": ""
     },
     {
-        "nome": "Sir Frijoles Bean III",
-        "foto": "Bean.03.webp",
+        "name": "Sir Frijoles Bean III",
+        "photo": "Bean.03.webp",
         "github": ""
     },
     {
-        "nome": "Baron Von Beanstalk",
-        "foto": "Bean.04.jpeg",
+        "name": "Baron Von Beanstalk",
+        "photo": "Bean.04.jpeg",
         "github": ""
     },
     {
-        "nome": "Countess Lima Bean",
-        "foto": "Bean01.jpg",
+        "name": "Countess Lima Bean",
+        "photo": "Bean01.jpg",
         "github": ""
     },
     {
-        "nome": "Captain Nick Noodle",
-        "foto": "Nick01jpg.jpg",
+        "name": "Captain Nick Noodle",
+        "photo": "Nick01jpg.jpg",
         "github": ""
     },
     {
-        "nome": "Sergeant Spaghetti Nick",
-        "foto": "Nick02.jpeg",
+        "name": "Sergeant Spaghetti Nick",
+        "photo": "Nick02.jpeg",
         "github": ""
     },
     {
-        "nome": "Major Meatball Nick",
-        "foto": "Nick03.jpg",
+        "name": "Major Meatball Nick",
+        "photo": "Nick03.jpg",
         "github": ""
     },
     {
-        "nome": "Doctor Linguine Nick",
-        "foto": "Nick04jpeg.jpeg",
+        "name": "Doctor Linguine Nick",
+        "photo": "Nick04jpeg.jpeg",
         "github": ""
     },
     {
-        "nome": "Master Sammy Spork",
-        "foto": "Sammy01.jpeg",
+        "name": "Master Sammy Spork",
+        "photo": "Sammy01.jpeg",
         "github": ""
     },
     {
-        "nome": "Professor Sammy Spoon",
-        "foto": "Sammy02jpg.jpg",
+        "name": "Professor Sammy Spoon",
+        "photo": "Sammy02jpg.jpg",
         "github": ""
     },
     {
-        "nome": "Miss Forky Sammy",
-        "foto": "Sammy03.webp",
+        "name": "Miss Forky Sammy",
+        "photo": "Sammy03.webp",
         "github": ""
     },
     {
-        "nome": "Lady Spatula Sammy",
-        "foto": "Sammy04.jpeg",
+        "name": "Lady Spatula Sammy",
+        "photo": "Sammy04.jpeg",
         "github": ""
     }
 ]

@@ -3,9 +3,10 @@ import { Box, Flex, Image, Text } from "@chakra-ui/react";
 interface CollaboratorType {
     src: string,
     alt: string,
+    name: string,
 }
 
-export default function CollaboratorCard({src, alt}: CollaboratorType) {
+export default function CollaboratorCard({src, alt, name}: CollaboratorType) {
     return (
         <>
             <Flex bg="gray.600" p="100px" direction="column" alignItems="center">
@@ -14,7 +15,7 @@ export default function CollaboratorCard({src, alt}: CollaboratorType) {
                  h="200px"
                  w="200px"
                  />
-                <Text>Nome da pessoa</Text>
+                <Text>{name}</Text>
             </Flex>
         </>
     );

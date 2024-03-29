@@ -34,7 +34,7 @@ import { useContext } from "react";
               <ModalBody>
                 
                     <Flex gap="25px">
-                      {context?.StudyDataButtonState ? <StudyDataFiel studyData={rowData} /> : <></>}
+                      {context?.StudyDataButtonState ? <StudyDataFiel studyData={rowData} type={"Extraction"} /> : <></>}
                       <OtherStudyPanels/>
                     </Flex>
 
