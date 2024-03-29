@@ -4,7 +4,7 @@ import NavButton from "../../components/Buttons/NavButton";
 import { Progress, FormControl, Box } from "@chakra-ui/react";
 import { buttonBox, formControl } from "./styles/partThreeStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
-import AddTextTable from "../../components/AddDataFields/AddTextTable";
+import InteractiveTable from "../../components/Tables/InteractiveTable";
 
 export default function ProtocolPartThree() {
   return (
@@ -12,9 +12,9 @@ export default function ProtocolPartThree() {
       <Header text="Protocol" />
       <Progress value={66} />
       <FormControl sx={formControl}>
-        <AddTextTable text={"Data extraction form"} placeholder="Enter data extraction criteria" />
+        <InteractiveTable />
         <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" />
-        <AddTextTable text={"Study Risk of Bias (RoB) Assesment"} placeholder="..." />
+        <InteractiveTable />
       </FormControl>
       <Box sx={buttonBox}>
         <NavButton text="Save Protocol" path="/newRevision/identification" />
