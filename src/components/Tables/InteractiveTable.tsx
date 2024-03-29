@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import DeleteButton from "../Buttons/DeleteButton";
@@ -10,8 +10,10 @@ interface Row {
   type: string;
 }
 
-const InteractiveTable: React.FC = () => {
+export default function InteractiveTable() {
   const [rows, setRows] = useState<Row[]>([]);
+
+  const options = ["", "Pick one list", "Pick many list", "Number scale", "LabeledList"];
 
   const addRow = () => {
     setRows([...rows, { id: rows.length + 1, question: "", type: "" }]);
@@ -22,25 +24,6 @@ const InteractiveTable: React.FC = () => {
     updatedRows.splice(index, 1);
     setRows(updatedRows);
   };
-
-  {
-    /*const handleEdit = (index: number) => {
-    // handle edit logic here if needed
-  };
-
-  const handleSaveEdit = (index: number) => {
-    // handle save edit logic here if needed
-  };*/
-  }
-
-  function handleSaveEdit(): void {
-    throw new Error("Function not implemented.");
-  }
-
-  function handleEdit(index: number): void {
-    throw new Error("Function not implemented.");
-    console.log(index);
-  }
 
   return (
     <TableContainer>
@@ -76,28 +59,22 @@ const InteractiveTable: React.FC = () => {
                     setRows(updatedRows);
                   }}
                 >
-                  {/* options for types */}
+                  {options.map((opt) => (
+                    <option value={opt.toLowerCase()}>{opt} </option>
+                  ))}
                 </Select>
               </Td>
               <Td>
-                {/*<Button
-                  size="sm"
-                  leftIcon={<EditIcon />}
-                  onClick={() => {
-                    console.log("handle Edit");
-                  }}
-                >
-                  Edit
-                </Button>
-                <Button size="sm" leftIcon={<DeleteIcon />} onClick={() => handleDelete(index)}>
-                  Delete
-                </Button>*/}
                 <DeleteButton index={index} handleDelete={() => handleDelete(index)} />
                 <EditButton
                   index={index}
                   editIndex={index}
-                  handleEdit={() => handleEdit(index)}
-                  handleSaveEdit={handleSaveEdit}
+                  handleEdit={() => {
+                    ("");
+                  }}
+                  handleSaveEdit={() => {
+                    ("");
+                  }}
                 />
               </Td>
             </Tr>
@@ -115,6 +92,4 @@ const InteractiveTable: React.FC = () => {
       </Table>
     </TableContainer>
   );
-};
-
-export default InteractiveTable;
+}
