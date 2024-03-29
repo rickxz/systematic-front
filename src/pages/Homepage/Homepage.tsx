@@ -2,6 +2,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import Header from "./subcomponents/Header/Header";
 import Footer from "./subcomponents/Footer/Footer";
 import Article from "./subcomponents/Article/Article";
+import CollaboratorsCarrocel from "./subcomponents/CollaboratorsCarrocel";
 
 export default function Homepage() {
   return (
@@ -9,6 +10,10 @@ export default function Homepage() {
         <Header />
 
         <Flex bg="gray.200" direction={"column"} pt="80px">
+
+            <CollaboratorsCarrocel/>
+
+
             <Article header={"Sobre a ferramenta"} 
               bodyText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque
@@ -19,6 +24,7 @@ export default function Homepage() {
               cursus vel. Aenean consequat lorem eros, in egestas orci iaculis at. Nulla eget`}
                src={"../../../public/photos/homepagePhotos/examploPhoto02.png"} alt={"foto de exemplo"}
                imgPosition={"left"} style="light"/>
+
 
 
                <Article header={"Comece a usar a StArt"} 
