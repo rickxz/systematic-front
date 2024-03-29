@@ -13,6 +13,7 @@ interface DynamicTableProps {
 
 export default function DynamicTable({ headerData, bodyData, type, filteredColumns }: DynamicTableProps) {
   const isKeyWordTable = type === "keyword";
+  const isModalTable = type === "modal";
   const getColumnVisibility = useColumnVisibility(filteredColumns);
   const { handleSort, sortedData } = useTableSorting(headerData, bodyData);
 
@@ -49,6 +50,7 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
               readingPriority={"Very high"}
               searchSession={"Scopus"}
               score={0}
+              isModalTabel={isModalTable}
             />
           ))}
         </Tbody>
