@@ -1,62 +1,62 @@
 [
     {
         "name": "Dr. Banana Bean",
-        "photo": "Bean.02jpg.jpg",
+        "photo": "./../../../public/photos/collaboratorsPhotos/Bean.02jpg.jpg",
         "github": ""
     },
     {
         "name": "Sir Frijoles Bean III",
-        "photo": "Bean.03.webp",
+        "photo": "./../../../public/photos/collaboratorsPhotos/Bean.03.webp",
         "github": ""
     },
     {
         "name": "Baron Von Beanstalk",
-        "photo": "Bean.04.jpeg",
+        "photo": "./../../../public/photos/collaboratorsPhotos/Bean.04.jpeg",
         "github": ""
     },
     {
         "name": "Countess Lima Bean",
-        "photo": "Bean01.jpg",
+        "photo": "./../../../public/photos/collaboratorsPhotos/Bean01.jpg",
         "github": ""
     },
     {
         "name": "Captain Nick Noodle",
-        "photo": "Nick01jpg.jpg",
+        "photo": "./../../../public/photos/collaboratorsPhotos/Nick01jpg.jpg",
         "github": ""
     },
     {
         "name": "Sergeant Spaghetti Nick",
-        "photo": "Nick02.jpeg",
+        "photo": "./../../../public/photos/collaboratorsPhotos/Nick02.jpeg",
         "github": ""
     },
     {
         "name": "Major Meatball Nick",
-        "photo": "Nick03.jpg",
+        "photo": "./../../../public/photos/collaboratorsPhotos/Nick03.jpg",
         "github": ""
     },
     {
         "name": "Doctor Linguine Nick",
-        "photo": "Nick04jpeg.jpeg",
+        "photo": "./../../../public/photos/collaboratorsPhotos/Nick04jpeg.jpeg",
         "github": ""
     },
     {
         "name": "Master Sammy Spork",
-        "photo": "Sammy01.jpeg",
+        "photo": "./../../../public/photos/collaboratorsPhotos/Sammy01.jpeg",
         "github": ""
     },
     {
         "name": "Professor Sammy Spoon",
-        "photo": "Sammy02jpg.jpg",
+        "photo": "./../../../public/photos/collaboratorsPhotos/Sammy02.jpg",
         "github": ""
     },
     {
         "name": "Miss Forky Sammy",
-        "photo": "Sammy03.webp",
+        "photo": "./../../../public/photos/collaboratorsPhotos/Sammy03.webp",
         "github": ""
     },
     {
         "name": "Lady Spatula Sammy",
-        "photo": "Sammy04.jpeg",
+        "photo": "./../../../public/photos/collaboratorsPhotos/Sammy04.jpeg",
         "github": ""
     }
 ]

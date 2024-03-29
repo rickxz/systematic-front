@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 
+interface collabsCardProps {
+    name: string;
+    photo: string;
+    github: string;
+}
+
 const useFecthCollaboratorsInfo = (url: string) => {
-    const [collabInfos, SetCollabInfos] = useState([]);
+    const [collabInfos, SetCollabInfos] = useState<collabsCardProps[] | []>([]);
 
     useEffect(() => {
         const fetchData = async () => {

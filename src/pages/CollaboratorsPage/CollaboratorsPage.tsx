@@ -5,15 +5,17 @@ import CollaboratorCard from "./subcomponents/collaboratorCards";
 import useFecthCollaboratorsInfo from "../../hooks/fetch/useFetchCollaboratorsInfo";
 
 export default function CollaboratorsPage() {
-    const collabsInfos = useFecthCollaboratorsInfo("/data/collaborationInfo.json");
-    console.log(collabsInfos);
+    const { collabInfos } = useFecthCollaboratorsInfo("./../../../public/data/collaboratorsInfo.json");
+    console.log(collabInfos);
 
     return (
         <Flex direction={"column"} justify={"space-between"}>
             <Header />
-            <Flex h="100vh" bg="gray.200" align="center" justify="center">
-                    <CollaboratorCard src="" alt="" name=""/> 
-            </Flex>
+            <Flex wrap={"wrap"} mt="200px" h="100%" bg="gray.200" align="center" justify="center">
+                {collabInfos.map((person) => {
+                    return(<CollaboratorCard src={person.photo} alt={"foto de " + person.name} name={person.name} /> );
+                })}
+                </Flex>
             <Footer />
         </Flex>
     );
