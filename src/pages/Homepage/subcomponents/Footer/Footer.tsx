@@ -4,11 +4,14 @@ import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa6";
+import { IoLibrary } from "react-icons/io5";
 export default function Footer() {
   return (
     <Flex bg="gray.600" height="20%" flexDir={"row"} justifyContent={"space-evenly"} color={"#FFFF"}>
-      <Box justifySelf={"center"} alignSelf={"center"}>
-        <Text>Logo</Text>
+      <Box justifySelf={"flex-start"} alignSelf={"center"}>
+        <Box>
+          <IoLibrary color="white" size="40" />
+        </Box>
       </Box>
       <Box>
         <Stack direction="row" h="150px" p={4}>
@@ -38,10 +41,10 @@ export default function Footer() {
           <Flex flexDir={"row"} alignSelf={"center"} justifyContent={"space-between"} gap={10}>
             <Text>Redes Sociais</Text>
             <Box display={"flex"} flexDir={"row"} gap={5} justifyContent={"space-between"} alignSelf={"center"}>
-              <Icon as={FaFacebookF} fontSize={"24px"} />
-              <Icon as={FaInstagram} fontSize={"24px"} />
-              <Icon as={FaYoutube} fontSize={"24px"} />
-              <Icon as={FaWhatsapp} fontSize={"24px"} />
+              <Icon as={FaFacebookF} fontSize={"30px"} />
+              <Icon as={FaInstagram} fontSize={"30px"} />
+              <Icon as={FaYoutube} fontSize={"30px"} />
+              <Icon as={FaWhatsapp} fontSize={"30px"} />
             </Box>
           </Flex>
         </Stack>
