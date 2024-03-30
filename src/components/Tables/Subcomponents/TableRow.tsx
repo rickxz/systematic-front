@@ -1,23 +1,6 @@
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Button,
-  Flex,
-  useDisclosure,
-  Tr,
-  Td,
-  Checkbox,
-  Text
-} from "@chakra-ui/react";
-import StatusSelection from "./TableRowSubcomponents/StatusSelection";
+import { useDisclosure, Tr, Td, Checkbox } from "@chakra-ui/react";
+
 import ColoredIcon from "../../Icons/ColoredIcon";
-import StudyDataFiel from "../../Modals/StudyModal/StudyData";
-import NavegationIconsPanel from "./TableRowSubcomponents/NavigationIconsPanel/NavigationIconPanel";
 import StudiesModal from "./StudiesModal";
 import { ModalProvider } from "./ModalContext";
 
@@ -32,15 +15,16 @@ interface IStudy {
   readingPriority: "Very high" | "High" | "Low" | "Very low";
   searchSession: "Scopus" | "Web of Science";
   score: number;
+  isModalTabel: boolean;
 }
 
 export default function TableRow({
   rowData,
   rowIndex,
   isKeyWordTable,
+  isModalTabel,
   getColumnVisibility,
   headerData,
-  title,
 }: IStudy) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -64,7 +48,15 @@ export default function TableRow({
           </Td>
         ))}
       </Tr>
-      {isOpen ? <ModalProvider><StudiesModal rowData={rowData} isOpen={isOpen} onClose={onClose}/></ModalProvider> : <></> }
+
+      {!isModalTabel &&
+        (isOpen ? (
+          <ModalProvider>
+            <StudiesModal rowData={rowData} isOpen={isOpen} onClose={onClose} />
+          </ModalProvider>
+        ) : (
+          <></>
+        ))}
     </>
   );
 }
