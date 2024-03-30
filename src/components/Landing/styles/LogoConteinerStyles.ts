@@ -9,6 +9,8 @@ export const cardConteiner = {
   w: 400,
   h: 200,
   textAlign: "center",
+  alignItems: "center",
+  justifyContent: "center",
   fontWeight: "bold",
   bgColor: "teal",
 };

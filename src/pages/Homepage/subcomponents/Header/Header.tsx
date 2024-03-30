@@ -9,7 +9,7 @@ export default function Header() {
         <Flex sx={HeaderTheme}>
             <Flex width="auto" gap="10%" alignItems={"center"}>
                 <Box>
-                    <Logo />
+                    <Logo type="homepage"/>
                 </Box>
                 <Flex>
                     <HeaderLink text="Sobre"/>
