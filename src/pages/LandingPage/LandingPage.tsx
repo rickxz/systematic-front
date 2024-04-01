@@ -10,14 +10,26 @@ import AppContext from "../../components/Context/AppContext";
 export default function LandingPage() {
   const context = useContext(AppContext);
 
+  if (!context) {
+    return null;
+  }
+
   return (
-    <GridLayout navigationType="Default">
+    <GridLayout navigationType="Default" defaultOpen={0}>
       <Box sx={conteiner}>
         <LogoConteiner />
         <Box sx={content}>
           <Box sx={formConteiner}>
-            <FormOptions text="Login" active={context.renderForm === "Login"} onClick={() => context.SetRenderForm("Login")} />
-            <FormOptions text="Register" active={context.renderForm === "Register"} onClick={() => context.SetRenderForm("Register")} />
+            <FormOptions
+              text="Login"
+              active={context.renderForm === "Login"}
+              onClick={() => context.SetRenderForm("Login")}
+            />
+            <FormOptions
+              text="Register"
+              active={context.renderForm === "Register"}
+              onClick={() => context.SetRenderForm("Register")}
+            />
           </Box>
           <RenderForm renderForm={context.renderForm} setRenderForm={context.SetRenderForm} />
         </Box>
