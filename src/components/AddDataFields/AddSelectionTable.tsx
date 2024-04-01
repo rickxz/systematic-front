@@ -16,10 +16,10 @@ export default function AddSelectTable({ options }: AddSelectTableProps) {
     useSelect();
 
   return (
-    <FormControl sx={conteiner}>
+    <FormControl sx={conteiner} alignContent={"center"}>
       <FormControl sx={formcontrol}>
         <SelectInput values={options} names={options} onSelect={handleSelectChange} selectedValue={selectedValue} />
-        <EventButton text="Add" event={handleSelectAddButtonClick} mt={8} w={"10%"} />
+        <EventButton text="Add" event={handleSelectAddButtonClick} w={"10%"} />
       </FormControl>
 
       <InfosTable
