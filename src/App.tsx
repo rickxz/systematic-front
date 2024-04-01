@@ -1,4 +1,4 @@
-/*import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Identification from "./pages/Execution/Identification";
 import Extraction from "./pages/Execution/SubPages/Extraction/Extraction";
 import Insertion from "./pages/Execution/SubPages/Insertion/Insertion";
@@ -25,54 +25,18 @@ function App() {
   if (!context) {
     // Se o contexto não estiver definido, retorne algo apropriado
     return (
-        <>
-          <Router>
-            <AppProvider>
-              <Routes>
-                  <Route path="/" element={<UserArea />} />
-                  <Route path="/newRevision" element={<NovaRevisao />} />              
-                  <Route path="/landing" element={<LandingPage />} />
-                  <Route path="/test" element={<TestPage />} />
-                  <Route path="/homepage" element={<Homepage />} />
-                  <Route path="/collaborators" element={<CollaboratorsPage/>} />
-    
-    
-                  {/*Nested Routes}
-                  <Route path="/newRevision/protocol" element={<Protocol />} />
-                  <Route path="/newRevision/protocolpartTwo" element={<ProtocolPartTwo />} />
-                  <Route path="/newRevision/protocolpartThree" element={<ProtocolPartThree />} />
-                  <Route path="/newRevision/identification" element={<Identification />} />
-                  <Route path="/newRevision/keywords" element={<KeyWordScreen />} />
-                  <Route path="/newRevision/selection" element={<Selection />} />
-                  <Route path="/newRevision/extraction" element={<Extraction />} />
-                  <Route path="/newRevision/insertion" element={<Insertion />} />
-                  <Route path="/newRevision/graphics" element={<Graphics />} />
-                  <Route path="/newRevision/finalization" element={<Finalization />} />
-                  <Route path="/newRevision/searchSession" element={<SearchSession />} />
-                </Routes>
-              </AppProvider>
-          </Router>
-        </>
-      );
-  }
-
-  const {button} = context;
-  console.log('App -> button: ' + button);
-  
-  return (
-    <>
-      <Router>
-        <AppProvider>
-          <Routes>
+      <>
+        <Router>
+          <AppProvider>
+            <Routes>
               <Route path="/" element={<UserArea />} />
               <Route path="/newRevision" element={<NovaRevisao />} />
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/test" element={<TestPage />} />
               <Route path="/homepage" element={<Homepage />} />
-              <Route path="/collaborators" element={<CollaboratorsPage/>} />
+              <Route path="/collaborators" element={<CollaboratorsPage />} />
 
-
-              {/*Nested Routes}
+              {/*Nested Routes*/}
               <Route path="/newRevision/protocol" element={<Protocol />} />
               <Route path="/newRevision/protocolpartTwo" element={<ProtocolPartTwo />} />
               <Route path="/newRevision/protocolpartThree" element={<ProtocolPartThree />} />
@@ -86,9 +50,43 @@ function App() {
               <Route path="/newRevision/searchSession" element={<SearchSession />} />
             </Routes>
           </AppProvider>
+        </Router>
+      </>
+    );
+  }
+
+  const { button } = context;
+  console.log("App -> button: " + button);
+
+  return (
+    <>
+      <Router>
+        <AppProvider>
+          <Routes>
+            <Route path="/" element={<UserArea />} />
+            <Route path="/newRevision" element={<NovaRevisao />} />
+            <Route path="/landing" element={<LandingPage />} />
+            <Route path="/test" element={<TestPage />} />
+            <Route path="/homepage" element={<Homepage />} />
+            <Route path="/collaborators" element={<CollaboratorsPage />} />
+
+            {/*Nested Routes*/}
+            <Route path="/newRevision/protocol" element={<Protocol />} />
+            <Route path="/newRevision/protocolpartTwo" element={<ProtocolPartTwo />} />
+            <Route path="/newRevision/protocolpartThree" element={<ProtocolPartThree />} />
+            <Route path="/newRevision/identification" element={<Identification />} />
+            <Route path="/newRevision/keywords" element={<KeyWordScreen />} />
+            <Route path="/newRevision/selection" element={<Selection />} />
+            <Route path="/newRevision/extraction" element={<Extraction />} />
+            <Route path="/newRevision/insertion" element={<Insertion />} />
+            <Route path="/newRevision/graphics" element={<Graphics />} />
+            <Route path="/newRevision/finalization" element={<Finalization />} />
+            <Route path="/newRevision/searchSession" element={<SearchSession />} />
+          </Routes>
+        </AppProvider>
       </Router>
     </>
   );
 }
 
-export default App;*/
+export default App;
