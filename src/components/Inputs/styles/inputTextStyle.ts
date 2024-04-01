@@ -1,11 +1,12 @@
 export const conteiner = {
   display: "flex",
   flexDir: "column",
-  maxW: "fit-content",
+  w: "100%",
 };
 
 export const inputconteiner = {
   display: "flex",
   flexDir: "row",
   gap: ".3rem",
+  w: "100%",
 };

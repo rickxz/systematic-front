@@ -20,7 +20,8 @@ export default function InputText({ placeholder, type, nome, onChange }: ITextFi
           name={nome}
           placeholder={placeholder}
           onChange={onChange}
-          w={isSearchField ? "250px" : "100%"}
+          w={isSearchField ? "250px" : "94%"}
+          ml={"2em"}
         />
         {isSearchField && <SearchButton />}
       </FormControl>
