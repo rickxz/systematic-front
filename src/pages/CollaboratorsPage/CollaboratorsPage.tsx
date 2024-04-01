@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react"
+import { Flex, Heading } from "@chakra-ui/react"
 import Header from "../Homepage/subcomponents/Header/Header";
 import Footer from "../Homepage/subcomponents/Footer/Footer";
 import CollaboratorCard from "./subcomponents/collaboratorCards";
@@ -9,12 +9,15 @@ export default function CollaboratorsPage() {
     console.log(collabInfos);
 
     return (
-        <Flex direction={"column"} justify={"space-between"}>
+        <Flex direction={"column"} justify={"space-between"} >
             <Header />
-            <Flex wrap={"wrap"} mt="200px" h="100%" bg="gray.200" align="center" justify="center">
-                {collabInfos.map((person) => {
-                    return(<CollaboratorCard src={person.photo} alt={"foto de " + person.name} name={person.name} /> );
-                })}
+            <Flex mt="200px" h="100%" alignItems={"center"} direction={"column"}>
+                <Heading>Colaboradores</Heading>
+                <Flex wrap={"wrap"}  h="100%" align="center" justify="center">
+                    {collabInfos.map((person) => {
+                        return(<CollaboratorCard src={person.photo} alt={"foto de " + person.name} name={person.name} /> );
+                    })}
+                </Flex>
                 </Flex>
             <Footer />
         </Flex>

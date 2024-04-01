@@ -9,9 +9,9 @@ interface CollaboratorType {
 export default function CollaboratorCard({src, alt, name}: CollaboratorType) {
     return (
         <>
-            <Flex bg="gray.600" p="100px" direction="column" alignItems="center">
+            <Flex p="100px" direction="column" alignItems="center">
                 <Image src={src} alt={alt}
-                 borderRadius="30px" 
+                 borderRadius="100px" 
                  h="200px"
                  w="200px"
                  />
