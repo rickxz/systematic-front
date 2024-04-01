@@ -53,7 +53,7 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
           </Text>
 
           <Text marginBottom={"7px"}>
-            <Text as="b">Journal. </Text> Lorem ipsum dolor sit amet
+            <Text as="b">Venue. </Text> Lorem ipsum dolor sit amet
           </Text>
 
           <Text marginBottom={"7px"}>
