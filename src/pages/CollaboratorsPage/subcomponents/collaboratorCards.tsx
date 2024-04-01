@@ -1,14 +1,15 @@
-import { Box, Flex, Image, Text, transition } from "@chakra-ui/react";
+import { Box, Flex, Image, Link, Text, transition } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa6";
 
 interface CollaboratorType {
-    src: string,
+    photo: string,
     alt: string,
     name: string,
+    github: string
 }
 
-export default function CollaboratorCard({src, alt, name}: CollaboratorType) {
+export default function CollaboratorCard({photo, alt, name, github}: CollaboratorType) {
     const withBlur = { filter: "blur(2px) grayscale(70%) brightness(0.5)", transition: "0.3s"};
     const noBlur = { filter: "blur(0px) grayscale(0%)", transition: "0.3s"};
     const [imageStyle, SetImageStyle] = useState(noBlur);
@@ -39,14 +40,16 @@ export default function CollaboratorCard({src, alt, name}: CollaboratorType) {
                 position="relative"
                 alignItems="center"
                 justifyContent="center">
-                    <Image src={src} alt={alt}
+                    <Image src={photo} alt={alt}
                     borderRadius="100px" 
                     h="125px"
                     w="125px"
                     style={imageStyle}
                     />
                     <Box position="absolute" top={isIconAppeating ? "50%" : "100%"} left="50%" transform="translate(-50%, -50%)" zIndex={1} w="32px" h="32px">
-                        <FaGithub size={32} style={iconStyle}/>
+                        <Link href={github}>
+                            <FaGithub size={32} style={iconStyle}/>
+                        </Link>
                     </Box>
                  </Flex>
                 <Text>{name}</Text>
