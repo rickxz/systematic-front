@@ -9,7 +9,6 @@ import { FaPen } from "react-icons/fa";
 export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
   const isTypeValibel: boolean = ( type == "Selection" || type == "Extraction");
   const isTypeSelection: boolean = ( type == "Selection");
-  //const yearPlaceHolder: string ="20xx";
   const year:string|number = studyData[2] ? studyData[2]:"20xx";
   const selectionSX={
     bg: "gray.300",
