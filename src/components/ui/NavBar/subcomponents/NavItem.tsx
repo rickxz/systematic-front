@@ -15,7 +15,7 @@ export default function NavItem({ navSize, icon, title }: INavItemProps): JSX.El
   const location = useLocation();
 
   if (!context) {
-    return <>Problema com useContext em NavItem.tsx</>; // Lidar com o contexto não carregado
+    return <>Problema com useContext em NavItem.tsx</>;
   }
 
   const { button, setButton } = context;
