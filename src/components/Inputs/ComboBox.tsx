@@ -9,12 +9,12 @@ interface IComboBoxProps {
   handleCheckboxChange: (selectedItems: string[]) => void;
 }
 
-export default function ComboBox({text, options, selectedItems, handleCheckboxChange }: IComboBoxProps) {
+export default function ComboBox({ text, options, selectedItems, handleCheckboxChange }: IComboBoxProps) {
   const { handleItemClick } = useComboBoxSelection(selectedItems, handleCheckboxChange);
 
   return (
     <Menu closeOnSelect={false}>
-      <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+      <MenuButton as={Button} rightIcon={<ChevronDownIcon />} w={"40%"}>
         {text}
       </MenuButton>
       <MenuList>
