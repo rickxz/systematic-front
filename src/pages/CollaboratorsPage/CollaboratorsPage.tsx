@@ -11,7 +11,7 @@ export default function CollaboratorsPage() {
     return (
         <Flex direction={"column"} justify={"space-between"} >
             <Header />
-            <Flex mt="200px" h="100%" alignItems={"center"} direction={"column"}>
+            <Flex mt="150px" mb="50px"  h="100%" alignItems={"center"} direction={"column"}>
                 <Heading>Colaboradores</Heading>
                 <Flex wrap={"wrap"}  h="100%" align="center" justify="center">
                     {collabInfos.map((person) => {

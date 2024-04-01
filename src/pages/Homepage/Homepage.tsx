@@ -11,7 +11,7 @@ export default function Homepage() {
 
         <Flex bg="gray.200" direction={"column"} pt="80px">
 
-            <CollaboratorsCarrocel/>
+            {/* <CollaboratorsCarrocel/> */}
 
 
             <Article header={"Sobre a ferramenta"} 
