@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+/*import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Identification from "./pages/Execution/Identification";
 import Extraction from "./pages/Execution/SubPages/Extraction/Extraction";
 import Insertion from "./pages/Execution/SubPages/Insertion/Insertion";
@@ -37,7 +37,7 @@ function App() {
                   <Route path="/collaborators" element={<CollaboratorsPage/>} />
     
     
-                  {/*Nested Routes*/}
+                  {/*Nested Routes}
                   <Route path="/newRevision/protocol" element={<Protocol />} />
                   <Route path="/newRevision/protocolpartTwo" element={<ProtocolPartTwo />} />
                   <Route path="/newRevision/protocolpartThree" element={<ProtocolPartThree />} />
@@ -72,7 +72,7 @@ function App() {
               <Route path="/collaborators" element={<CollaboratorsPage/>} />
 
 
-              {/*Nested Routes*/}
+              {/*Nested Routes}
               <Route path="/newRevision/protocol" element={<Protocol />} />
               <Route path="/newRevision/protocolpartTwo" element={<ProtocolPartTwo />} />
               <Route path="/newRevision/protocolpartThree" element={<ProtocolPartThree />} />
@@ -91,4 +91,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;*/
