@@ -11,9 +11,19 @@ interface IAccordionElementProps {
   title: string;
   names: string[];
   basePath: string;
+  index: number;
+  defaultOpen: number;
 }
 
-export default function AccordionElement({ navSize, icon, title, names, basePath }: IAccordionElementProps) {
+export default function AccordionElement({
+  navSize,
+  icon,
+  title,
+  names,
+  basePath,
+  index,
+  defaultOpen,
+}: IAccordionElementProps) {
   const isSmallSize = navSize === "small";
   const shouldRenderIcon = isSmallSize || (
     <Box sx={iconbox}>
@@ -24,21 +34,11 @@ export default function AccordionElement({ navSize, icon, title, names, basePath
   if (!context) {
     return <>Problema com useContext em NavItem.tsx</>;
   }
-
-  const { item, setItem, button } = context;
-  function isSelected(): boolean {
-    const Planning: string[] = ["Protocol"];
-    const Execution: string[] = ["KeyWords", "Insertion", "Identification", "Selection", "Extraction"];
-    const Summarization: string[] = ["Graphics", "Visualization", "Finalization"];
-    if (Planning.includes(button)) setItem("Planning");
-    else if (Execution.includes(button)) setItem("Execution");
-    else if (Summarization.includes(button)) setItem("Summarization");
-    return item == title;
-  }
+  const isOpen = index === defaultOpen;
 
   return (
     <AccordionItem alignContent={isSmallSize ? "center" : "flex-start"}>
-      <AccordionButton bg={isSelected() ? "black" : "white"} color={isSelected() ? "white" : "black"}>
+      <AccordionButton bg={isOpen ? "black" : "white"} color={isOpen ? "white" : "black"}>
         {isSmallSize && <Icon as={icon} />}
         {shouldRenderIcon}
         <AccordionIcon />
