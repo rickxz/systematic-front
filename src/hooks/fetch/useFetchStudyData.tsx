@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 interface IStudyData {
     title: string;
     authors:string[];
+    venue: string;
     
 }
 
