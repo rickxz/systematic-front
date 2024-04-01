@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { flexconteiner } from "../styles/Navitemstyles";
+import { useLocation } from "react-router-dom";
 import AppContext from "../../../Context/AppContext";
 import { Flex, Icon, Menu, MenuButton, Text } from "@chakra-ui/react";
 
@@ -7,20 +8,20 @@ interface INavItemProps {
   navSize: string;
   icon?: React.ElementType;
   title: string;
-  isSelected?: boolean;
 }
 
 export default function NavItem({ navSize, icon, title }: INavItemProps): JSX.Element {
   const context = useContext(AppContext);
+  const location = useLocation();
 
   if (!context) {
-    return <>Problema com useContext em NavItem.tsx</>;
+    return <>Problema com useContext em NavItem.tsx</>; // Lidar com o contexto não carregado
   }
 
   const { button, setButton } = context;
 
   const isSmallSize = navSize === "small";
-  const isSelected = button === title;
+  const isSelected = button === title || location.pathname.includes(title.toLowerCase());
 
   const handleClick = () => {
     console.log("last button: " + button);
