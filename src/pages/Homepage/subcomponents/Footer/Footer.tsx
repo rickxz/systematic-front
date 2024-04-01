@@ -4,13 +4,13 @@ import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa6";
-import { IoLibrary } from "react-icons/io5";
+import Logo from "../../../../../public/icons/Logo";
 export default function Footer() {
   return (
-    <Flex bg="gray.600" height="20%" flexDir={"row"} justifyContent={"space-evenly"} color={"#FFFF"}>
+    <Flex bg="gray.900" height="20%" flexDir={"row"} justifyContent={"space-evenly"} color={"#FFFF"}>
       <Box justifySelf={"flex-start"} alignSelf={"center"}>
         <Box>
-          <IoLibrary color="white" size="40" />
+          <Logo type="homepage"/>
         </Box>
       </Box>
       <Box>
