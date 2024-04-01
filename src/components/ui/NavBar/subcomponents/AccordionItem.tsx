@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { AccordionButton, Icon, AccordionIcon, Box, AccordionItem, AccordionPanel } from "@chakra-ui/react";
-
 import NavItem from "./NavItem";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import SidebarContext from "../../../Context/AppContext";
+import { AccordionButton, Icon, AccordionIcon, Box, AccordionItem, AccordionPanel } from "@chakra-ui/react";
 import { iconbox } from "../styles/AccordionItenStyles";
 
 interface IAccordionElementProps {
@@ -11,41 +11,43 @@ interface IAccordionElementProps {
   title: string;
   names: string[];
   basePath: string;
+  index: number;
+  defaultOpen: number;
 }
 
-export default function AccordionElement({ navSize, icon, title, names, basePath }: IAccordionElementProps) {
+export default function AccordionElement({
+  navSize,
+  icon,
+  title,
+  names,
+  basePath,
+  index,
+  defaultOpen,
+}: IAccordionElementProps) {
   const isSmallSize = navSize === "small";
   const shouldRenderIcon = isSmallSize || (
     <Box sx={iconbox}>
       <Icon as={icon} /> {title}
     </Box>
   );
-
-  // Estado para armazenar a URL atual
-  const [activeLink, setActiveLink] = useState("");
-
-  // Atualiza o estado da URL atual ao montar o componente
-  useEffect(() => {
-    const path = window.location.pathname; // Obtém a URL atual
-    setActiveLink(path);
-  }, []);
+  const context = useContext(SidebarContext);
+  if (!context) {
+    return <>Problema com useContext em NavItem.tsx</>;
+  }
+  const isOpen = index === defaultOpen;
 
   return (
     <AccordionItem alignContent={isSmallSize ? "center" : "flex-start"}>
-      <AccordionButton>
+      <AccordionButton bg={isOpen ? "black" : "white"} color={isOpen ? "white" : "black"}>
         {isSmallSize && <Icon as={icon} />}
         {shouldRenderIcon}
         <AccordionIcon />
       </AccordionButton>
       <AccordionPanel>
         {names.map((name) => (
-          <NavLink
-            key={name}
-            to={`${basePath}/${name.toLowerCase()}`}
-            className={`nav-link ${`${basePath}/${name.toLowerCase()}` === activeLink ? "active" : ""}`}
-          >
+          <Link to={`${basePath}/${name.toLowerCase()}`} key={name}>
             <NavItem title={name} navSize={navSize} />
-          </NavLink>
+          </Link>
         ))}
       </AccordionPanel>
     </AccordionItem>

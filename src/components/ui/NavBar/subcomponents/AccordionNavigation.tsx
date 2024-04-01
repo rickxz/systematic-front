@@ -13,18 +13,29 @@ export default function AccordionNav({ navSize, defaultOpen }: IAccordion) {
   return (
     <>
       <Accordion defaultIndex={defaultOpen} allowMultiple>
-        <AccordionElement navSize={navSize} title="Planning" names={["Protocol"]} basePath="/newRevision" />
+        <AccordionElement
+          navSize={navSize}
+          title="Planning"
+          names={["Protocol"]}
+          basePath="/newRevision"
+          index={0}
+          defaultOpen={defaultOpen}
+        />
         <AccordionElement
           navSize={navSize}
           title="Execution"
           names={["KeyWords", "Insertion", "Identification", "Selection", "Extraction"]}
           basePath="/newRevision"
+          index={1}
+          defaultOpen={defaultOpen}
         />
         <AccordionElement
           navSize={navSize}
           title="Summarization"
           names={["Graphics", "Visualization", "Finalization"]}
           basePath="/newRevision"
+          index={2}
+          defaultOpen={defaultOpen}
         />
       </Accordion>
 
