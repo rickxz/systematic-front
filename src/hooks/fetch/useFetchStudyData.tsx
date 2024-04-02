@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 interface IStudyData {
     title: string;
+    authors: string[];
     year:string;
     venue: string;
-    authors: string[];
     abstract: string;
     keywords:string[];
     type:string;
