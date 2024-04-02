@@ -1,7 +1,5 @@
 import { IconButton, Flex, Stack, Text, Center } from "@chakra-ui/react";
 import { FaPen } from "react-icons/fa";
-import useFetchStudyData from "../../../hooks/fetch/useFetchStudyData";
-
 
 interface IStudyData {
   title: string;
@@ -14,13 +12,14 @@ interface IStudyData {
 }
 
 interface IStudyDataFiel {
-  studyData: (string | number | IStudyData)[];
+  studyData: (string | number)[];
   type: string;
 }
 
 export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
   const isTypeValibel: boolean = ( type == "Selection" || type == "Extraction");
   const isTypeSelection: boolean = ( type == "Selection");
+  //const isJsonType: boolean = (typeof studyData !== ? true: false);
   const year:string|number = studyData[2] ? studyData[2]:"20xx";
   const selectionSX={
     bg: "gray.300",

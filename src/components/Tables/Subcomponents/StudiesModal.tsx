@@ -1,9 +1,9 @@
   import {Modal,ModalOverlay, ModalContent, ModalHeader,
     ModalFooter,ModalBody, ModalCloseButton, Button, Flex,  Text,}
   from "@chakra-ui/react";
-  import StatusSelection from "./TableRowSubcomponents/StatusSelection";
-  import StudyDataFiel from "../../Modals/StudyModal/StudyData";
-  import NavegationIconsPanel from "./TableRowSubcomponents/NavigationIconsPanel/NavigationIconPanel";
+import StatusSelection from "./TableRowSubcomponents/StatusSelection";
+import StudyDataFiel from "../../Modals/StudyModal/StudyData";
+import NavegationIconsPanel from "./TableRowSubcomponents/NavigationIconsPanel/NavigationIconPanel";
 import OtherStudyPanels from "./OtherStudyPanels";
 import ModalContext from "./ModalContext";
 import { useContext } from "react";
