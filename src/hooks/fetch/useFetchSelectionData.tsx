@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 
-interface ISelectionData {
+/*interface ISelectionData {
     inclusionCriteria: string[];
     exclusionCriteria: string[];
-}
+}*/
 
 const useFecthSelectionData = (url: string) => {
-    const [selectionData, SetSelectionData] = useState<ISelectionData[]|[]>([]);
+    const [selectionInclusionData, setSelectionInclusionData] = useState([]);
+    const [selectionExclusionData, setSelectionExclusionData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -14,8 +15,9 @@ const useFecthSelectionData = (url: string) => {
                 const response = await fetch(url);
                 const data = await response.json();
 
-                if (data) {
-                    SetSelectionData(data);
+                if (data && data.inclusionCriteria && data.exclusionCriteria) {
+                    setSelectionExclusionData(data.exclusionCriteria);
+                    setSelectionInclusionData(data.inclusionCriteria);
                 } else {
                     console.error("O arquivo JSON não possui dados");
                 }
@@ -27,7 +29,7 @@ const useFecthSelectionData = (url: string) => {
         fetchData();
     }, [url]);
 
-    return { selectionData }
+    return { selectionInclusionData, selectionExclusionData };
 };
 
 export default useFecthSelectionData;
