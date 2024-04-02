@@ -1,8 +1,20 @@
 import { IconButton, Flex, Stack, Text, Center } from "@chakra-ui/react";
 import { FaPen } from "react-icons/fa";
+import useFetchStudyData from "../../../hooks/fetch/useFetchStudyData";
 
-  interface IStudyDataFiel {
-  studyData: (string | number)[];
+
+interface IStudyData {
+  title: string;
+  authors: string[];
+  year:string;
+  venue: string;
+  abstract: string;
+  keywords:string[];
+  type:string;
+}
+
+interface IStudyDataFiel {
+  studyData: (string | number | IStudyData)[];
   type: string;
 }
 
