@@ -9,5 +9,32 @@
         "abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ILARIILARI E O O O",
         "keywords":["aaaa", "bbbbbb","cccccc"],
         "type":"TYPE1"
+    }, 
+    {
+        "title":"outroTitulo",
+        "year":"2005",
+        "venue":"journal 2",
+        "authors":["Maria Oliveira, Joãozinho, et all"],
+        "abstract":"Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "keywords":["coisa 1", "coisa 2", "coisa3"],
+        "type":"type2"
+    },
+    {
+        "title":"terceiroTitulo",
+        "year":"2010",
+        "venue": "venue 3",
+        "authors":["José Pereira", "Ana Souza", "et all"],
+        "abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit aaaaaaaaaaa",
+        "keywords":["kw1", "kw2", "kw3", "xuxa"],
+        "type": "type3"
+    },
+    {
+        "title":"quartoTitulo",
+        "year":"2015",
+        "venue": "venue 4",
+        "authors":["Fernanda Santos, Carlos Silva, et all"],
+        "abstract":"Lorem ipsum dolor sit amet, consectetur ndsjkandasjndksa",
+        "keywords":["text1", "text3", "text4", "text5"],
+        "type": "type4"
     }
 ]

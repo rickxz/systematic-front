@@ -29,7 +29,7 @@ const useFetchStudyData = (url: string) => {
     
         fetchData();
       }, [url]);
-      return studyData;
+      return {studyData};
 }
 
 export default useFetchStudyData;
