@@ -7,15 +7,15 @@ interface extractionForm {
 }
 
 const useFetchExtractionForm = (url: string) => {
-  const [extractionForm, setExtractionForm] = useState<extractionForm[] | []>([]);
+  const [extractionForm, setExtractionForm] = useState<extractionForm | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        if (data) {
-          setExtractionForm(extractionForm);
+        if (data && data.label && data.selector && data.checkboxes) {
+          setExtractionForm(data);
         } else {
           console.error("O arquivo JSON não possui a estrutura esperada.");
         }
@@ -25,6 +25,6 @@ const useFetchExtractionForm = (url: string) => {
     };
     fetchData();
   }, [url]);
-  return { extractionForm };
+  return extractionForm;
 };
 export default useFetchExtractionForm;
