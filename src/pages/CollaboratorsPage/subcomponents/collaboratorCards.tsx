@@ -4,12 +4,12 @@ import { FaGithub } from "react-icons/fa6";
 
 interface CollaboratorType {
     photo: string,
-    alt: string,
     name: string,
-    github: string
+    github: string,
+    filiacao: string 
 }
 
-export default function CollaboratorCard({photo, alt, name, github}: CollaboratorType) {
+export default function CollaboratorCard({collaborator}: {collaborator: CollaboratorType}) {
     const withBlur = { filter: "blur(2px) grayscale(70%) brightness(0.5)", transition: "0.3s"};
     const noBlur = { filter: "blur(0px) grayscale(0%)", transition: "0.3s"};
     const [imageStyle, SetImageStyle] = useState(noBlur);
@@ -40,19 +40,20 @@ export default function CollaboratorCard({photo, alt, name, github}: Collaborato
                 position="relative"
                 alignItems="center"
                 justifyContent="center">
-                    <Image src={photo} alt={alt}
+                    <Image src={collaborator.photo} alt={"Foto de integrante " + collaborator.name}
                     borderRadius="100px" 
                     h="125px"
                     w="125px"
                     style={imageStyle}
                     />
                     <Box position="absolute" top={isIconAppeating ? "50%" : "100%"} left="50%" transform="translate(-50%, -50%)" zIndex={1} w="32px" h="32px">
-                        <Link href={github}>
+                        <Link href={collaborator.github}>
                             <FaGithub size={32} style={iconStyle}/>
                         </Link>
                     </Box>
                  </Flex>
-                <Text>{name}</Text>
+                <Text>{collaborator.name}</Text>
+                <Text>{collaborator.filiacao}</Text>
             </Box>
         </>
     );
