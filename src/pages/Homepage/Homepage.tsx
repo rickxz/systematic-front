@@ -17,10 +17,7 @@ export default function Homepage() {
           bodyText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque
               commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt
-              vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla.
-              Integer a nunc quis diam sollicitudin interdum sed eget leo. Cras mollis magna
-              vitae gravida ornare. Pellentesque convallis egestas est, non tincidunt lectus
-              cursus vel. Aenean consequat lorem eros, in egestas orci iaculis at. Nulla eget`}
+              vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla.`}
           src={"../../../public/photos/homepagePhotos/examploPhoto02.png"}
           alt={"foto de exemplo"}
           imgPosition={"left"}
@@ -30,15 +27,10 @@ export default function Homepage() {
 
         <Article
           header={"Comece a usar a StArt"}
-          bodyText={
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
-            " Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque" +
-            " commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt" +
-            " vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla." +
-            "\n\n Integer a nunc quis diam sollicitudin interdum sed eget leo. Cras mollis magna" +
-            " vitae gravida ornare. Pellentesque convallis egestas est, non tincidunt lectus" +
-            " cursus vel. Aenean consequat lorem eros, in egestas orci iaculis at. Nulla eget"
-          }
+          bodyText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque
+              commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt
+              vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla.`}
           src={"../../../public/photos/homepagePhotos/examploPhoto01.png"}
           alt={"foto de exemplo"}
           imgPosition={"right"}
@@ -48,15 +40,10 @@ export default function Homepage() {
 
         <Article
           header={"Colaboradores"}
-          bodyText={
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
-            " Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque" +
-            " commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt" +
-            " vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla." +
-            "\n\n Integer a nunc quis diam sollicitudin interdum sed eget leo. Cras mollis magna" +
-            " vitae gravida ornare. Pellentesque convallis egestas est, non tincidunt lectus" +
-            " cursus vel. Aenean consequat lorem eros, in egestas orci iaculis at. Nulla eget"
-          }
+          bodyText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque
+              commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt
+              vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla.`}
           src={"../../../public/photos/homepagePhotos/examploPhoto02.png"}
           alt={"foto de exemplo"}
           imgPosition={"left"}
@@ -66,15 +53,10 @@ export default function Homepage() {
 
         <Article
           header={"Contato"}
-          bodyText={
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
-            " Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque" +
-            " commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt" +
-            " vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla." +
-            "\n\n Integer a nunc quis diam sollicitudin interdum sed eget leo. Cras mollis magna" +
-            " vitae gravida ornare. Pellentesque convallis egestas est, non tincidunt lectus" +
-            " cursus vel. Aenean consequat lorem eros, in egestas orci iaculis at. Nulla eget"
-          }
+          bodyText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque
+              commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt
+              vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla.`}
           src={"../../../public/photos/homepagePhotos/examploPhoto01.png"}
           alt={"foto de exemplo"}
           imgPosition={"right"}
@@ -84,15 +66,10 @@ export default function Homepage() {
 
         <Article
           header={"Comunidade"}
-          bodyText={
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
-            " Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque" +
-            " commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt" +
-            " vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla." +
-            "\n\n Integer a nunc quis diam sollicitudin interdum sed eget leo. Cras mollis magna" +
-            " vitae gravida ornare. Pellentesque convallis egestas est, non tincidunt lectus" +
-            " cursus vel. Aenean consequat lorem eros, in egestas orci iaculis at. Nulla eget"
-          }
+          bodyText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque
+              commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt
+              vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla.`}
           src={"../../../public/photos/homepagePhotos/examploPhoto02.png"}
           alt={"foto de exemplo"}
           imgPosition={"left"}

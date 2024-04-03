@@ -4,6 +4,7 @@ interface collabsCardProps {
     name: string;
     photo: string;
     github: string;
+    filiacao: string
 }
 
 const useFecthCollaboratorsInfo = (url: string) => {

@@ -15,7 +15,7 @@ export default function CollaboratorsPage() {
                 <Heading>Colaboradores</Heading>
                 <Flex wrap={"wrap"}  h="100%" align="center" justify="center">
                     {collabInfos.map((person) => {
-                        return(<CollaboratorCard photo={person.photo} alt={"foto de " + person.name} name={person.name} github={person.github} /> );
+                        return(<CollaboratorCard collaborator={person} /> );
                     })}
                 </Flex>
                 </Flex>

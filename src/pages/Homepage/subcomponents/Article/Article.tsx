@@ -67,24 +67,27 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
       id={id}
     >
       {" "}
-      <Box paddingTop={"4%"} display={"flex"} flexDir={mainDirection} gap={10}>
-        <Heading color={styles.textColor} alignSelf={"center"}>
-          {header}
-        </Heading>
+      <Box paddingTop={"4%"} h="75vh" display={"flex"} justifyContent={"center"} flexDir={mainDirection} gap={10}>
         <Flex gap="25px" direction={imgDirection}>
           {imgPosition === "left" || imgPosition === "top" ? (
             <>
               <Image src={src} alt={alt} borderRadius="30px" order={imgIndex} />
               <Flex direction="column" alignItems="center" gap="50px" order={textIndex}>
-                <Text color={styles.textColor}>{bodyText}</Text>
-                <Button w="40%" colorScheme={styles.buttonColor}>
-                  Saiba mais
-                </Button>
+                <Heading color={styles.textColor} alignSelf={"center"}>
+                  {header}
+                </Heading>
+                  <Text color={styles.textColor}>{bodyText}</Text>
+                  <Button w="40%" colorScheme={styles.buttonColor}>
+                    Saiba mais
+                  </Button>
               </Flex>
             </>
           ) : (
             <>
               <Flex direction="column" alignItems="center" gap="50px" order={textIndex}>
+                <Heading color={styles.textColor} alignSelf={"center"}>
+                  {header}
+                </Heading>
                 <Text color={styles.textColor}>{bodyText}</Text>
                 <Button w="40%" colorScheme={styles.buttonColor}>
                   Saiba mais
