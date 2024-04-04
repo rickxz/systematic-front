@@ -1,0 +1,60 @@
+.carousel {
+    display: flex;
+    height: max-content;
+    flex-direction: row;
+    transition: all .75s;
+    margin-bottom: 2%;
+}
+
+.carousel-window {
+    width: calc(250px*4);
+
+    position: relative;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+.carousel-card {
+    height: 100%;
+    margin: 0 15px;
+}
+
+
+@media screen and (max-width : 1550px) {
+    .carousel-window {
+        width: calc(250px*3);
+    }
+}
+
+@media screen and (max-width : 1200px) {
+    .carousel-window {
+        width: calc(250px*2);
+    }
+}
+
+@media screen and (max-width : 850px) {
+    .carousel-window {
+        width: calc(250px);
+    }
+}
+
+@media screen and (max-width : 400px) {
+    .carousel-card {
+        margin: 0 10px;
+    }
+
+    .carousel-window {
+        width: calc(204px);
+    }
+}
+
+@media screen and (max-width : 320px) {
+    .carousel-card {
+        margin: 0 5px;
+    }
+
+    .carousel-window {
+        width: calc(184px);
+    }
+}
