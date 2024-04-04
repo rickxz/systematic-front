@@ -41,13 +41,15 @@ export default function CollaboratorCard({ collaborator }: { collaborator: Colla
           justifyContent="center"
           display={"flex"}
           flexDir={"row"}
+          width={"180px"}
+          h={"auto"}
         >
           <Image
             src={collaborator.photo}
             alt={"Foto de integrante " + collaborator.name}
             borderRadius="100px"
-            h="125px"
-            w="125px"
+            h="150px"
+            w="160px"
             style={imageStyle}
           />
           <Box

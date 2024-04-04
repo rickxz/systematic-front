@@ -1,5 +1,6 @@
-import React, { useState, useEffect, ReactNode } from "react";
 import Arrow from "./subcomponents/Arrow";
+import React, { useState, useEffect, ReactNode, CSSProperties, useCallback } from "react";
+import "./Carousel.css";
 
 interface CarouselProps {
   children: ReactNode[];
@@ -9,30 +10,35 @@ function Carousel({ children }: CarouselProps): JSX.Element {
   const [index, setIndex] = useState<number>(0);
   const [maxNumberOfVisibleCards, setMaxNumberOfVisibleCards] = useState<number | null>(null);
   const [carouselPosition, setCarouselPosition] = useState<number>(0);
+  const [carouselTransformation, setCarouselTransformation] = useState<CSSProperties>({ transform: "translateX(0px)" });
+  const [windowJustification, setWindowJustification] = useState<CSSProperties>({ justifyContent: "flex-start" });
   const [touchPosition, setTouchPosition] = useState<number | null>(null);
+  let countChildren = 0;
 
-  const getCurrentCardWidth = (): number => {
-    const card = document.querySelector(".carousel-card") as HTMLElement;
+  const getCurrentCardWidth = useCallback((): number => {
+    const card = document.querySelector(".carousel-card") as HTMLElement | null;
     if (!card) return 0;
 
-    const cardComputedStyle = window.getComputedStyle(card);
+    const cardComputedStyle = getComputedStyle(card);
     const width = parseInt(cardComputedStyle.width);
-    const lateralWidth = parseInt(cardComputedStyle.marginRight) + parseInt(cardComputedStyle.marginLeft);
-    return width + lateralWidth;
-  };
+    const lateralWidth = parseInt(cardComputedStyle.margin.split(" ")[1]);
+    return 2 * lateralWidth + width;
+  }, []);
 
-  const calculateMaxNumberOfVisibleCards = (): number => {
-    const carouselWindow = document.querySelector(".carousel-window") as HTMLElement;
+  const calculateMaxNumberOfVisibleCards = useCallback((): number => {
+    const carouselWindow = document.querySelector(".carousel-window") as HTMLElement | null;
     if (!carouselWindow) return 0;
 
-    const windowWidth = carouselWindow.clientWidth;
-    const cardWidth = getCurrentCardWidth();
-    return Math.floor(windowWidth / cardWidth);
-  };
+    const windowWidth = parseInt(getComputedStyle(carouselWindow).width);
+    return Math.min(10, Math.floor(windowWidth / getCurrentCardWidth()));
+  }, [getCurrentCardWidth]);
 
-  const calculateFixedPosition = (currentIndex: number): number => {
-    return -currentIndex * getCurrentCardWidth();
-  };
+  const calculateFixedPosition = useCallback(
+    (currentIndex: number): number => {
+      return -currentIndex * getCurrentCardWidth();
+    },
+    [getCurrentCardWidth]
+  );
 
   const getForwardLimit = (): number => calculateFixedPosition(children.length - 1);
 
@@ -41,8 +47,11 @@ function Carousel({ children }: CarouselProps): JSX.Element {
   const disrespectsBackwardLimit = (value: number): boolean => value > 0;
 
   const isAllowedToMoveForward = (): boolean => {
-    const maxVisible = maxNumberOfVisibleCards ?? 0;
-    return children.length > maxVisible && index + 1 <= children.length - maxVisible;
+    return (
+      maxNumberOfVisibleCards !== null &&
+      children.length > maxNumberOfVisibleCards &&
+      index + 1 <= children.length - maxNumberOfVisibleCards
+    );
   };
 
   const isAllowedToMoveBackward = (): boolean => {
@@ -97,9 +106,30 @@ function Carousel({ children }: CarouselProps): JSX.Element {
   };
 
   useEffect(() => {
-    setMaxNumberOfVisibleCards(calculateMaxNumberOfVisibleCards());
-    setCarouselPosition(calculateFixedPosition(index));
-  }, [index]);
+    const updateMaxNumberOfVisibleCards = (): void => {
+      const maxVisibleCards = calculateMaxNumberOfVisibleCards();
+      setMaxNumberOfVisibleCards(maxVisibleCards);
+      setCarouselPosition(calculateFixedPosition(index));
+    };
+
+    updateMaxNumberOfVisibleCards();
+
+    window.addEventListener("resize", updateMaxNumberOfVisibleCards);
+
+    return () => {
+      window.removeEventListener("resize", updateMaxNumberOfVisibleCards);
+    };
+  }, [index, calculateFixedPosition, calculateMaxNumberOfVisibleCards]);
+
+  useEffect(() => {
+    setWindowJustification({
+      justifyContent: children.length > (maxNumberOfVisibleCards ?? 0) ? "flex-start" : "center",
+    });
+  }, [maxNumberOfVisibleCards, children]);
+
+  useEffect(() => {
+    setCarouselTransformation({ transform: `translateX(${carouselPosition}px)` });
+  }, [carouselPosition]);
 
   return (
     <div className="carousel">
@@ -109,19 +139,10 @@ function Carousel({ children }: CarouselProps): JSX.Element {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        style={{ overflowX: "hidden" }} // Adicionado para garantir que os itens não causem rolagem horizontal
       >
-        <div
-          className="carousel"
-          style={{
-            display: "flex",
-            flexDirection: "row", // Renderiza os itens em uma linha
-            transition: "transform 0.5s ease", // Adiciona uma transição suave ao mover o carrossel
-            transform: `translateX(${carouselPosition}px)`,
-          }}
-        >
-          {children.map((child, index) => (
-            <div key={index} className="carousel-card">
+        <div className="carousel" style={{ ...carouselTransformation, ...windowJustification }}>
+          {children.map((child) => (
+            <div key={++countChildren} className="carousel-card">
               {child}
             </div>
           ))}
