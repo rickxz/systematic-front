@@ -72,8 +72,6 @@ function Carousel({ children }: CarouselProps): JSX.Element {
   }, [index, children.length, calculateFixedPosition]);
   const moveBackward = useCallback((): void => {
     let nextIndex = index - 1;
-
-    // Se estiver no início, ir para o último índice
     if (nextIndex < 0) {
       nextIndex = children.length - 1;
     }
@@ -143,12 +141,9 @@ function Carousel({ children }: CarouselProps): JSX.Element {
   }, [carouselPosition]);
 
   useEffect(() => {
-    // Adicione o temporizador aqui para avançar automaticamente
     const interval = setInterval(() => {
       moveForward();
-    }, 5000); // ajuste o intervalo conforme necessário
-
-    // Limpar o temporizador quando o componente desmontar ou quando o índice ou o número máximo de cartões visíveis mudar
+    }, 3000);
     return () => clearInterval(interval);
   }, [index, maxNumberOfVisibleCards, moveForward]);
 
