@@ -19,7 +19,7 @@
 }
 
 .clickable>path {
-    fill: #FFF;
+    fill: black;
 }
 
 .nonClickable>path {
