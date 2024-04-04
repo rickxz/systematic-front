@@ -9,18 +9,21 @@ export default function CollaboratorsPage() {
   console.log(collabInfos);
 
   return (
-    <Flex direction={"column"} justify={"space-between"}>
+    <Flex direction={"column"} justify={"space-between"} alignItems={"center"}>
       <Header />
-      <Flex mt="150px" mb="50px" h="100%" alignItems={"center"} direction={"column"}>
-        <Heading>Colaboradores</Heading>
-        <Flex wrap={"wrap"} h="100%" align="center" justify="center">
-          <Carousel>
-            {collabInfos.map((person) => {
-              return <CollaboratorCard collaborator={person} />;
-            })}
-          </Carousel>
+
+      <div id="colaboradores">
+        <Flex mt="150px" mb="50px" h="100%" alignItems={"center"} direction={"column"} pb={"5%"}>
+          <Heading pb={"15%"}>Colaboradores</Heading>
+          <Flex wrap={"wrap"} h="100%" align="center" justify="center">
+            <Carousel>
+              {collabInfos.map((person) => {
+                return <CollaboratorCard collaborator={person} />;
+              })}
+            </Carousel>
+          </Flex>
         </Flex>
-      </Flex>
+      </div>
     </Flex>
   );
 }
