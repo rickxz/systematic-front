@@ -58,11 +58,11 @@ function Carousel({ children }: CarouselProps): JSX.Element {
     return index - 1 >= 0;
   };
 
-  const moveForward = (): void => {
+  const moveForward = useCallback((): void => {
     if (!isAllowedToMoveForward()) return;
     setCarouselPosition(calculateFixedPosition(index + 1));
     setIndex(index + 1);
-  };
+  }, [index, isAllowedToMoveForward, calculateFixedPosition]);
 
   const moveBackward = (): void => {
     if (!isAllowedToMoveBackward()) return;
@@ -130,6 +130,16 @@ function Carousel({ children }: CarouselProps): JSX.Element {
   useEffect(() => {
     setCarouselTransformation({ transform: `translateX(${carouselPosition}px)` });
   }, [carouselPosition]);
+
+  useEffect(() => {
+    // Adicione o temporizador aqui para avançar automaticamente
+    const interval = setInterval(() => {
+      moveForward();
+    }, 5000); // ajuste o intervalo conforme necessário
+
+    // Limpar o temporizador quando o componente desmontar ou quando o índice ou o número máximo de cartões visíveis mudar
+    return () => clearInterval(interval);
+  }, [index, maxNumberOfVisibleCards, moveForward]);
 
   return (
     <div className="carousel">
