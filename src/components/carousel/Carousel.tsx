@@ -57,19 +57,30 @@ function Carousel({ children }: CarouselProps): JSX.Element {
   const isAllowedToMoveBackward = (): boolean => {
     return index - 1 >= 0;
   };
-
   const moveForward = useCallback((): void => {
-    if (!isAllowedToMoveForward()) return;
-    setCarouselPosition(calculateFixedPosition(index + 1));
-    setIndex(index + 1);
-  }, [index, isAllowedToMoveForward, calculateFixedPosition]);
+    let nextIndex = index + 1;
 
-  const moveBackward = (): void => {
-    if (!isAllowedToMoveBackward()) return;
+    if (nextIndex > children.length - 4) {
+      nextIndex = 0;
+      setCarouselPosition(calculateFixedPosition(nextIndex));
+      setIndex(nextIndex);
+      return;
+    }
 
-    setCarouselPosition(calculateFixedPosition(index - 1));
-    setIndex(index - 1);
-  };
+    setCarouselPosition(calculateFixedPosition(nextIndex));
+    setIndex(nextIndex);
+  }, [index, children.length, calculateFixedPosition]);
+  const moveBackward = useCallback((): void => {
+    let nextIndex = index - 1;
+
+    // Se estiver no início, ir para o último índice
+    if (nextIndex < 0) {
+      nextIndex = children.length - 1;
+    }
+
+    setCarouselPosition(calculateFixedPosition(nextIndex));
+    setIndex(nextIndex);
+  }, [index, children.length, calculateFixedPosition]);
 
   const handleTouchStart = (event: React.TouchEvent): void => {
     setTouchPosition(event.touches[0].clientX);
