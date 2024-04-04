@@ -1,0 +1,20 @@
+[
+    {
+        "type": "comboBox",
+        "text": "Avaluation Type: ",
+        "select": [
+            "Experiment",
+            "Case Study",
+            "Survey"
+        ]
+    },
+    {
+        "type": "comboBox",
+        "text": "Study Type: ",
+        "select": [
+            "Experiment",
+            "Case Study",
+            "Survey"
+        ]
+    }
+]
