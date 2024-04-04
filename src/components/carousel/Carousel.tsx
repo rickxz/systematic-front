@@ -1,6 +1,5 @@
-import "./Carousel.css";
+import React, { useState, useEffect, ReactNode } from "react";
 import Arrow from "./subcomponents/Arrow";
-import React, { useState, useEffect, ReactNode, CSSProperties } from "react";
 
 interface CarouselProps {
   children: ReactNode[];
@@ -10,26 +9,25 @@ function Carousel({ children }: CarouselProps): JSX.Element {
   const [index, setIndex] = useState<number>(0);
   const [maxNumberOfVisibleCards, setMaxNumberOfVisibleCards] = useState<number | null>(null);
   const [carouselPosition, setCarouselPosition] = useState<number>(0);
-  const [carouselTranformation, setCarouselTranformation] = useState<CSSProperties>({ transform: "translateX(0px)" });
-  const [windowJustification, setWindowJustification] = useState<CSSProperties>({ justifyContent: "flex-start" });
   const [touchPosition, setTouchPosition] = useState<number | null>(null);
-  let countChildren = 0;
 
   const getCurrentCardWidth = (): number => {
     const card = document.querySelector(".carousel-card") as HTMLElement;
+    if (!card) return 0;
 
-    const cardComputedStyle = getComputedStyle(card);
+    const cardComputedStyle = window.getComputedStyle(card);
     const width = parseInt(cardComputedStyle.width);
-    const lateralWidth = parseInt(cardComputedStyle.margin.split(" ")[1]);
-    return 2 * lateralWidth + width;
+    const lateralWidth = parseInt(cardComputedStyle.marginRight) + parseInt(cardComputedStyle.marginLeft);
+    return width + lateralWidth;
   };
 
   const calculateMaxNumberOfVisibleCards = (): number => {
     const carouselWindow = document.querySelector(".carousel-window") as HTMLElement;
+    if (!carouselWindow) return 0;
 
-    const windowWidth = parseInt(getComputedStyle(carouselWindow).width);
-    setMaxNumberOfVisibleCards(windowWidth / getCurrentCardWidth());
-    return windowWidth / getCurrentCardWidth();
+    const windowWidth = carouselWindow.clientWidth;
+    const cardWidth = getCurrentCardWidth();
+    return Math.floor(windowWidth / cardWidth);
   };
 
   const calculateFixedPosition = (currentIndex: number): number => {
@@ -103,16 +101,6 @@ function Carousel({ children }: CarouselProps): JSX.Element {
     setCarouselPosition(calculateFixedPosition(index));
   }, [index]);
 
-  useEffect(() => {
-    setWindowJustification({
-      justifyContent: children.length > (maxNumberOfVisibleCards ?? 0) ? "flex-start" : "center",
-    });
-  }, [maxNumberOfVisibleCards, children]);
-
-  useEffect(() => {
-    setCarouselTranformation({ transform: `translateX(${carouselPosition}px)` });
-  }, [carouselPosition]);
-
   return (
     <div className="carousel">
       <Arrow action={moveBackward} direction="backward" clickability={isAllowedToMoveBackward()} />
@@ -121,10 +109,19 @@ function Carousel({ children }: CarouselProps): JSX.Element {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        style={{ overflowX: "hidden" }} // Adicionado para garantir que os itens não causem rolagem horizontal
       >
-        <div className="carousel" style={{ ...carouselTranformation, ...windowJustification }}>
-          {children.map((child) => (
-            <div key={++countChildren} className="carousel-card">
+        <div
+          className="carousel"
+          style={{
+            display: "flex",
+            flexDirection: "row", // Renderiza os itens em uma linha
+            transition: "transform 0.5s ease", // Adiciona uma transição suave ao mover o carrossel
+            transform: `translateX(${carouselPosition}px)`,
+          }}
+        >
+          {children.map((child, index) => (
+            <div key={index} className="carousel-card">
               {child}
             </div>
           ))}
