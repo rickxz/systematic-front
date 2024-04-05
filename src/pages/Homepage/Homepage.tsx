@@ -2,7 +2,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import Header from "./subcomponents/Header/Header";
 import Footer from "./subcomponents/Footer/Footer";
 import Article from "./subcomponents/Article/Article";
-import CollaboratorsPage from "../CollaboratorsPage/CollaboratorsPage";
+import CollaboratorsCarousel from "./subcomponents/CollaboratorsCaroulse/collaboratorsCarousel";
 //import CollaboratorsCarrocel from "./subcomponents/CollaboratorsCarrocel";
 
 export default function Homepage() {
@@ -39,7 +39,7 @@ export default function Homepage() {
           id={"tutoriais"}
         />
 
-        <CollaboratorsPage />
+        <CollaboratorsCarousel />
 
         <Article
           header={"Contato"}
