@@ -2,7 +2,6 @@ import { Flex, Heading } from "@chakra-ui/react";
 import Header from "../Homepage/subcomponents/Header/Header";
 import CollaboratorCard from "./subcomponents/collaboratorCards";
 import useFecthCollaboratorsInfo from "../../hooks/fetch/useFetchCollaboratorsInfo";
-import Carousel from "../../components/carousel/Carousel";
 import Footer from "../Homepage/subcomponents/Footer/Footer";
 
 export default function CollaboratorsPage() {
