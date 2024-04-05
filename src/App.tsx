@@ -29,11 +29,11 @@ function App() {
         <Router>
           <AppProvider>
             <Routes>
-              <Route path="/" element={<UserArea />} />
+              <Route path="/" element={<Homepage />} />
               <Route path="/newRevision" element={<NovaRevisao />} />
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/test" element={<TestPage />} />
-              <Route path="/homepage" element={<Homepage />} />
+              <Route path="/user" element={<UserArea />} />
               <Route path="/collaborators" element={<CollaboratorsPage />} />
 
               {/*Nested Routes*/}
