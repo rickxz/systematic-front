@@ -11,10 +11,9 @@ interface IDefaultNavigation {
 
 const routes = [
   { path: "/landing", icon: GiArchiveRegister, title: "LandingPage" },
-  { path: "/", icon: IoLibrarySharp, title: "My reviews" },
+  { path: "/user", icon: IoLibrarySharp, title: "My reviews" },
   { path: "/newRevision", icon: SiAddthis, title: "New Revision" },
-  { path: "/homepage", icon: FaHome, title: "Homepage" }
-
+  { path: "/", icon: FaHome, title: "Homepage" },
 ];
 
 export default function DefaultNavigation({ navSize }: IDefaultNavigation) {

@@ -35,6 +35,7 @@ function App() {
               <Route path="/test" element={<TestPage />} />
               <Route path="/user" element={<UserArea />} />
               <Route path="/collaborators" element={<CollaboratorsPage />} />
+              <Route path="/user" element={<UserArea />} />
 
               {/*Nested Routes*/}
               <Route path="/newRevision/protocol" element={<Protocol />} />

@@ -9,7 +9,7 @@ export default function UserArea() {
   const { cardData } = useFetchRevisionCard("data/revisions.json");
 
   return (
-    <GridLayout navigationType="Default">
+    <GridLayout defaultOpen={0} navigationType="Default">
       <Header text="My Systematic Reviews" />
       <Flex sx={flexStyles}>
         {cardData.map((data) => {

@@ -39,12 +39,12 @@ export default function AccordionNav({ navSize, defaultOpen }: IAccordion) {
         />
       </Accordion>
 
-      <Link to="/">
+      <Link to="/user">
         {" "}
         <NavItem navSize={navSize} icon={IoLibrarySharp} title="My Reviews" />
       </Link>
 
-      <Link to="/homepage">
+      <Link to="/">
         {" "}
         <NavItem navSize={navSize} icon={FaHome} title="Homepage" />
       </Link>
