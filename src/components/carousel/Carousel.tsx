@@ -73,7 +73,7 @@ function Carousel({ children }: CarouselProps): JSX.Element {
   const moveBackward = useCallback((): void => {
     let nextIndex = index - 1;
     if (nextIndex < 0) {
-      nextIndex = children.length - 1;
+      nextIndex = children.length - 4;
     }
 
     setCarouselPosition(calculateFixedPosition(nextIndex));
