@@ -1,4 +1,4 @@
-import { UploadFunctions } from "./upload.functions";
+import { useUploadHandler } from "../../hooks/useUploadHandler"; // Import the custom hook
 import CloudIcon from "/assets/CloudArrowUp.svg";
 import FailedProgressIcon from "/assets/FailedProgress.svg";
 import FinishProgressIcon from "/assets/FinishedProgress.svg";
@@ -6,18 +6,10 @@ import InProgressIcon from "/assets/InProgress.svg";
 import CloseIcon from "/assets/Close.svg";
 import ReloadIcon from "/assets/Reload.svg";
 import "./upload.css";
-import { useState } from "react";
 
 const Upload = () => {
-  const { dropHandler, dragOverHandler, files, abortList, reloadUploadFile } = UploadFunctions();
-  const [visibilities, setVisibilities] = useState(Array(files.length).fill("block"));
-
-  const abortUploadProgress = (index: number) => {
-    abortList[index].cancel();
-    const newVisibilities = [...visibilities];
-    newVisibilities[index] = "none";
-    setVisibilities(newVisibilities);
-  };
+  const { dropHandler, dragOverHandler, files, reloadUploadFile, visibilities, abortUploadProgress } =
+    useUploadHandler(); // Use the custom hook
 
   return (
     <>

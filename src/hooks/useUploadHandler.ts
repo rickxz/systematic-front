@@ -12,9 +12,10 @@ interface IFileCustom extends File {
   onAbortUpload: CancelTokenSource;
 }
 
+const abortList: any[] = [];
 const useUploadHandler = () => {
   const [files, setFiles] = useState<IFileCustom[]>([]);
-  const abortList: any[] = [];
+  const [visibilities, setVisibilities] = useState(Array(files.length).fill("block"));
 
   const dropHandler = (ev: React.DragEvent<HTMLDivElement>) => {
     ev.preventDefault();
@@ -37,7 +38,6 @@ const useUploadHandler = () => {
   };
 
   const dragOverHandler = (ev: React.DragEvent<HTMLDivElement>) => {
-    console.log("File(s) in drop zone");
     ev.preventDefault();
   };
 
@@ -52,7 +52,6 @@ const useUploadHandler = () => {
           if (progress === 100) {
             x.status = "FINISH_PROGRESS";
           }
-          console.log(progress);
         }
         return x;
       });
@@ -64,7 +63,6 @@ const useUploadHandler = () => {
       const CancelToken = axios.CancelToken;
       const source = CancelToken.source();
       abortList.push(source);
-      console.log(abortList);
       return source;
     };
 
@@ -80,7 +78,7 @@ const useUploadHandler = () => {
         cancelToken: source.token,
       })
       .then((response: { data: any }) => {
-        console.log(response.data);
+        response;
       })
       .catch((error: { message: string }) => {
         if (axios.isCancel(error)) {
@@ -93,7 +91,6 @@ const useUploadHandler = () => {
             })
           );
         }
-        console.error(error);
       });
   };
 
@@ -103,12 +100,20 @@ const useUploadHandler = () => {
     uploadFile(formData, file);
   };
 
+  const abortUploadProgress = (index: number) => {
+    abortList[index].cancel();
+    const newVisibilities = [...visibilities];
+    newVisibilities[index] = "none";
+    setVisibilities(newVisibilities);
+  };
   return {
     dropHandler,
     dragOverHandler,
     files,
     abortList,
     reloadUploadFile,
+    abortUploadProgress,
+    visibilities,
   };
 };
 
