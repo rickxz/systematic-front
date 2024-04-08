@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import UploadBox from "./subcomponents/UploadBox";
+import { Upload } from "../../components/upload/Upload";
 import useInputState from "../../hooks/useInputState";
 import GridLayout from "../../components/ui/Grid/Grid";
 import Header from "../../components/ui/Header/Header";
@@ -18,7 +18,7 @@ export default function SearchSession() {
       <Header text={"Database Name-Studies Identification"} />
       <Box sx={conteiner}>
         <SearchInformations />
-        <UploadBox />
+        <Upload />
       </Box>
       <Box sx={ckbox}>
         <ComboBox

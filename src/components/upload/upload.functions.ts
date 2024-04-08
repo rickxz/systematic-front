@@ -17,13 +17,10 @@ const UploadFunctions = () => {
   const [files, setFiles] = useState<IFileCustom[]>([] as IFileCustom[]);
 
   const dropHandler = (ev: React.DragEvent<HTMLDivElement>) => {
-    // Impedir o comportamento padrão (impedir que o arquivo seja aberto)
     ev.preventDefault();
 
     if (ev.dataTransfer.items) {
-      // Use a interface DataTransferItemList para acessar o (s) arquivo (s)
       for (let i = 0; i < ev.dataTransfer.items.length; i++) {
-        // Se os itens soltos não forem arquivos, rejeite-os
         if (ev.dataTransfer.items[i].kind === "file") {
           const file = ev.dataTransfer.items[i].getAsFile() as any;
           file.sizeFormatted = FormatFileSize(file.size as number, 2);
@@ -42,7 +39,6 @@ const UploadFunctions = () => {
   const dragOverHandler = (ev: React.DragEvent<HTMLDivElement>) => {
     console.log("File(s) in drop zone");
 
-    // Impedir o comportamento padrão (impedir que o arquivo seja aberto)
     ev.preventDefault();
   };
 
