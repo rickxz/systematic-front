@@ -71,7 +71,8 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
         <Flex gap="25px" direction={imgDirection}>
           {imgPosition === "left" || imgPosition === "top" ? (
             <>
-              <Image src={src} alt={alt} borderRadius="30px" order={imgIndex} />
+              <Image src={src} alt={alt} borderRadius="30px" order={imgIndex} 
+              maxW={"500px"} maxHeight={"500px"} />
               <Flex direction="column" alignItems="center" gap="50px" order={textIndex}>
                 <Heading color={styles.textColor} alignSelf={"center"}>
                   {header}
@@ -93,7 +94,8 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
                   Saiba mais
                 </Button>
               </Flex>
-              <Image src={src} alt={alt} borderRadius="30px" order={imgIndex} />
+              <Image src={src} alt={alt} borderRadius="30px" order={imgIndex}
+              maxW={"500px"} maxHeight={"500px"} />
             </>
           )}
         </Flex>
