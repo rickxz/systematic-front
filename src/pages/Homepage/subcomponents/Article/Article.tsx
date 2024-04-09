@@ -25,14 +25,14 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
   };
 
   if (style === "dark") {
-    styles.background = "#C9D9E5";
+    styles.background = "#526D82";
     styles.buttonColor = "gray";
-    styles.textColor = "black";
+    styles.textColor = "#FDF0D5";
   }
   if (style === "light") {
-    styles.background = "#526D82";
+    styles.background = "#C9D9E5";
     styles.buttonColor = "blackAlpha";
-    styles.textColor = "black";
+    styles.textColor = "#301E1A";
   }
 
   let mainDirection: "column" | "column-reverse" = "column";
