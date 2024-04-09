@@ -11,6 +11,8 @@ export default function Homepage() {
 
       <Flex bg="gray.200" direction={"column"} pt="80px">
 
+        <HeroSection />
+
         <Article
           header={"Sobre a ferramenta"}
           bodyText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
