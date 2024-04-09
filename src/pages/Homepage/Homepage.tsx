@@ -20,7 +20,7 @@ export default function Homepage() {
               Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque
               commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt
               vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla.`}
-          src={"../../../public/photos/homepagePhotos/examploPhoto02.png"}
+          src={"../../../public/photos/homepagePhotos/exemploSoftwareScreens.png"}
           alt={"foto de exemplo"}
           imgPosition={"left"}
           style="light"
