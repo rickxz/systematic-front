@@ -5,6 +5,11 @@ import { HeaderTheme } from "./HeaterStyle";
 import Logo from "./../../../../../public/icons/Logo";
 
 export default function Header() {
+  enum LinkTypeEnum {
+    GoToOtherPage = "GoToOtherPage",
+    StayInSamePage = "StayInSamePage"
+  }
+
   return (
     <Flex sx={HeaderTheme}>
       <Flex width="auto" gap="10%" alignItems={"center"}>
@@ -12,11 +17,11 @@ export default function Header() {
           <Logo type="homepage" />
         </Box>
         <Flex>
-          <HeaderLink text="Sobre" id={"sobre"} />
-          <HeaderLink text="Tutorias" id={"tutoriais"} />
-          <HeaderLink text="Colaboradores" id={"colaboradores"} />
-          <HeaderLink text="Contato" id={"contato"} />
-          <HeaderLink text="Comunidade" id={"comuinidade"} />
+          <HeaderLink text="Sobre" id={"sobre"} type={LinkTypeEnum.StayInSamePage}/>
+          <HeaderLink text="Tutorias" id={"tutoriais"} type={LinkTypeEnum.StayInSamePage}/>
+          <HeaderLink text="Colaboradores" id={"collaborators"} type={LinkTypeEnum.GoToOtherPage}/>
+          <HeaderLink text="Contato" id={"contato"} type={LinkTypeEnum.StayInSamePage}/>
+          <HeaderLink text="Comunidade" id={"comuinidade"} type={LinkTypeEnum.StayInSamePage}/>
         </Flex>
       </Flex>
       <Flex gap="5%">
