@@ -1,22 +1,22 @@
 export const DarkText = {
-    color: "black",
+    color: "#301E1A",
     fontSize: '2xl',
 }
 
 export const LightText = {
-    color: "white",
+    color: "#FDF0D5",
     fontSize: '2xl',
 }
 
 export const DarkBackground = {
-    background: "white",
+    background: "#FDF0D5",
     pl: "20px",
     pr: "20px",
     borderRadius: "50px",
 }
 
 export const LightBackground = {
-    background: "rgba(0,0,0,0.0)",
+    background: "#301E1A",
     pl: "20px",
     pr: "20px",
 }
