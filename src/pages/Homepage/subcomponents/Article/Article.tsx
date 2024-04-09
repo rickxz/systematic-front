@@ -25,12 +25,12 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
   };
 
   if (style === "dark") {
-    styles.background = "gray.400";
+    styles.background = "#C9D9E5";
     styles.buttonColor = "gray";
     styles.textColor = "black";
   }
   if (style === "light") {
-    styles.background = "gray.200";
+    styles.background = "#526D82";
     styles.buttonColor = "blackAlpha";
     styles.textColor = "black";
   }

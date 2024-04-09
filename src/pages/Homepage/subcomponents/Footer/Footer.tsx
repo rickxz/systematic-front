@@ -7,7 +7,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 import Logo from "../../../../../public/icons/Logo";
 export default function Footer() {
   return (
-    <Flex bg="gray.900" height={"fit-content"} flexDir={"row"} justifyContent={"space-evenly"} color={"#FFFF"}>
+    <Flex bg="#301E1A" height={"fit-content"} flexDir={"row"} justifyContent={"space-evenly"} color={"#FDF0D5"}>
       <Box justifySelf={"flex-start"} alignSelf={"center"}>
         <Box>
           <Logo type="homepage" />
