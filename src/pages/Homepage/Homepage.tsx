@@ -3,6 +3,7 @@ import Header from "./subcomponents/Header/Header";
 import Footer from "./subcomponents/Footer/Footer";
 import Article from "./subcomponents/Article/Article";
 import CollaboratorsCarousel from "./subcomponents/CollaboratorsCaroulse/collaboratorsCarousel";
+import HeroSection from "./subcomponents/HeroSection/HeroSection";
 
 export default function Homepage() {
   return (
