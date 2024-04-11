@@ -6,6 +6,7 @@ export const flexconteiner = {
   w: "100%",
   alignItems: "center",
   mb: 4,
+  color: "#FDF0D5",
 };
 
 export const infoconteiner = {
@@ -13,6 +14,7 @@ export const infoconteiner = {
   justifyContent: "center",
   flexDir: "column",
   alignItems: "center",
+  color: "#FDF0D5"
 };
 
 export const avatar = {
