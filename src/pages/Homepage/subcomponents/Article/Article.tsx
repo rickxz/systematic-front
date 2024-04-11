@@ -25,9 +25,9 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
   };
 
   if (style === "dark") {
-    styles.background = "gray.400";
-    styles.buttonColor = "gray";
-    styles.textColor = "black";
+    styles.background = "black";
+    styles.buttonColor = "whiteAlpha";
+    styles.textColor = "white";
   }
   if (style === "light") {
     styles.background = "gray.200";
