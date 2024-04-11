@@ -1,5 +1,6 @@
 export const iconbox = {
   flex: "1",
   alignContent: "flex-start",
-  bgColor: "#FDF0D5"
+  bgColor: "#FDF0D5",
+  w: "100%",
 };

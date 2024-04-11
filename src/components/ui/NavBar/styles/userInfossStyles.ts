@@ -3,7 +3,6 @@ export const SMALL_SIZE = "small";
 export const flexconteiner = {
   p: "5%",
   flexDir: "column",
-  w: "100%",
   alignItems: "center",
   mb: 4,
   color: "#FDF0D5",
