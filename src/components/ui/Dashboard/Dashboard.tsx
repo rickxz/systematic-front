@@ -28,18 +28,18 @@ export default function Dashboard(){
                     <ModalCloseButton />
                     <ModalBody textAlign='center'>
                     <Box>
-                        <CircularProgress value={progressValue} size="120px" color="green.400">
+                        <CircularProgress value={progressValue} size="120px" color="#EF476F">
                             <CircularProgressLabel>{progressValue}%</CircularProgressLabel>
                         </CircularProgress>
-                        <CircularProgress ml={"5rem"} value={progressValue} size="120px" color="red.400">
+                        <CircularProgress ml={"5rem"} value={progressValue} size="120px" color="#235789">
                             <CircularProgressLabel>{progressValue}%</CircularProgressLabel>
                         </CircularProgress>
                     </Box>
                     <Box mt={'3rem'}>
-                        <CircularProgress value={progressValue} size="120px" color="blue.400">
+                        <CircularProgress value={progressValue} size="120px" color="#FB8B24">
                             <CircularProgressLabel>{progressValue}%</CircularProgressLabel>
                         </CircularProgress>
-                        <CircularProgress ml={"5rem"} value={progressValue} size="120px" color="yellow.400">
+                        <CircularProgress ml={"5rem"} value={progressValue} size="120px" color="#226F54">
                             <CircularProgressLabel>{progressValue}%</CircularProgressLabel>
                         </CircularProgress>
                     </Box>
