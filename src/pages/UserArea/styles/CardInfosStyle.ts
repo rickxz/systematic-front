@@ -1,11 +1,9 @@
 export const conteiner = {
   display: "flex",
-  flexDir: "column",
-  ml: "4.4rem",
+  flexDir: {base:"column", sm:"column", md:"column", lg:"row", xl:"row"},
   alignSelf: "center",
   justifySelf: "center",
   w: "fit-content",
-  rowGap: "0.5em",
 };
 
 export const text = {

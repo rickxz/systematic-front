@@ -7,7 +7,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 import Logo from "../../../../../public/icons/Logo";
 export default function Footer() {
   return (
-    <Flex bg="gray.900" height={"fit-content"} flexDir={"row"} justifyContent={"space-evenly"} color={"#FFFF"}>
+    <Flex bg="#301E1A" height={"fit-content"} flexDir={"row"} justifyContent={"space-evenly"} color={"#FDF0D5"}>
       <Box justifySelf={"flex-start"} alignSelf={"center"}>
         <Box>
           <Logo type="homepage" />
@@ -41,7 +41,7 @@ export default function Footer() {
           <Flex flexDir={"row"} alignSelf={"center"} justifyContent={"space-between"} gap={10}>
             <Text>Redes Sociais</Text>
             <Box display={"flex"} flexDir={"row"} gap={5} justifyContent={"space-between"} alignSelf={"center"}>
-              <Icon as={FaFacebookF} fontSize={"30px"} />
+              <Icon as={FaFacebookF} fontSize={"30px"}/>
               <Icon as={FaInstagram} fontSize={"30px"} />
               <Icon as={FaYoutube} fontSize={"30px"} />
               <Icon as={FaWhatsapp} fontSize={"30px"} />

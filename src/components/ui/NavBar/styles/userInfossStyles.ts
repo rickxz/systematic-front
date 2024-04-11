@@ -3,9 +3,9 @@ export const SMALL_SIZE = "small";
 export const flexconteiner = {
   p: "5%",
   flexDir: "column",
-  w: "100%",
   alignItems: "center",
   mb: 4,
+  color: "#FDF0D5",
 };
 
 export const infoconteiner = {
@@ -13,6 +13,7 @@ export const infoconteiner = {
   justifyContent: "center",
   flexDir: "column",
   alignItems: "center",
+  color: "#FDF0D5"
 };
 
 export const avatar = {
@@ -22,5 +23,4 @@ export const avatar = {
 
 export const nameconteiner = {
   flexDir: "column",
-  ml: 4,
 };
