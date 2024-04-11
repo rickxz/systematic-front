@@ -19,7 +19,7 @@ export default function Dashboard(){
 
     return (
         <>
-            <Button ml={"5rem"} mt={4} w={"160px"} h={"25px"} onClick={onOpen}>Progress Dashboard</Button>
+            <Button bgColor={"#301E1A"} color={"#C9D9E5"} ml={"5rem"} mt={4} w={"160px"} h={"25px"} onClick={onOpen}>Progress Dashboard</Button>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
