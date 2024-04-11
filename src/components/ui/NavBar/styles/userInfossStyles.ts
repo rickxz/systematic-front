@@ -23,5 +23,4 @@ export const avatar = {
 
 export const nameconteiner = {
   flexDir: "column",
-  ml: 4,
 };
