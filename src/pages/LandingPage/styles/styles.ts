@@ -9,6 +9,7 @@ export const conteiner = {
   mb: 20,
   h: "500px",
   gap: 10,
+  bgColor: "#C9D9E5",
 };
 
 export const content = {

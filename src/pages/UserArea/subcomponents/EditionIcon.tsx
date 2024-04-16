@@ -11,8 +11,8 @@ export default function EditionIcon({ isEdited }: IEditedProps) {
     <Icon
       as={FaRegCircle}
       sx={editionicon}
-      color={!isEdited ? "green" : "yellow"}
-      bgColor={!isEdited ? "green" : "yellow"}
+      color={!isEdited ? "#235789" : "#FB8B24"}
+      bgColor={!isEdited ? "#235789" : "#FB8B24"}
     />
   );
 }
