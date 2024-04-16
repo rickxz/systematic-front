@@ -7,12 +7,17 @@ interface EmailAreaInterface{
 
 export default function EmailArea({title, buttonText}: EmailAreaInterface) {
     return (
-        <Flex h="400px" w="400px" bg="gray">
-            <Heading fontSize="20">{title}</Heading>
-            <Input/>
-            <Input/>
-            <Input/>
-            <Button>{buttonText}</Button>
+        <Flex h="400px" w="400px" bg="gray" 
+        alignItems={"center"}
+        direction="column" gap="50px">
+            <Heading fontSize="30">{title}</Heading>
+            <Flex direction="column" gap="10px">
+                <Heading fontSize={"20"}>Infos:</Heading>
+                <Input/>
+                <Input/>
+                <Input/>
+            </Flex>
+            <Button w="100px">{buttonText}</Button>
         </Flex>
     );
 }
