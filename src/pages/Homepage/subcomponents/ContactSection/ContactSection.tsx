@@ -11,7 +11,7 @@ export default function ContactSection() {
                 <ContactCard icon={""} title={"Fax"} text={"(16) 98765-4321"} />
                 <ContactCard icon={""} title={"O email"} text={"nosso_email@gmail.com.br"} />
             </Flex>
-            <EmailArea />
+            <EmailArea title={"Entre em contato conosco"} buttonText={"Enviar"} />
         </Flex>
     );
 }
