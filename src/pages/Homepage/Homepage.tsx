@@ -4,6 +4,7 @@ import Footer from "./subcomponents/Footer/Footer";
 import Article from "./subcomponents/Article/Article";
 import CollaboratorsCarousel from "./subcomponents/CollaboratorsCaroulse/collaboratorsCarousel";
 import HeroSection from "./subcomponents/HeroSection/HeroSection";
+import ContactSection from "./subcomponents/ContactSection/ContactSection";
 
 export default function Homepage() {
   return (
@@ -54,6 +55,8 @@ export default function Homepage() {
           style="dark"
           id={"contato"}
         />
+
+        <ContactSection/>
 
         <Article
           header={"Comunidade"}
