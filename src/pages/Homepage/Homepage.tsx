@@ -3,7 +3,8 @@ import Header from "./subcomponents/Header/Header";
 import Footer from "./subcomponents/Footer/Footer";
 import Article from "./subcomponents/Article/Article";
 import CollaboratorsCarousel from "./subcomponents/CollaboratorsCaroulse/collaboratorsCarousel";
-//import CollaboratorsCarrocel from "./subcomponents/CollaboratorsCarrocel";
+import HeroSection from "./subcomponents/HeroSection/HeroSection";
+import ContactSection from "./subcomponents/ContactSection/ContactSection";
 
 export default function Homepage() {
   return (
@@ -11,7 +12,8 @@ export default function Homepage() {
       <Header />
 
       <Flex bg="gray.200" direction={"column"} pt="80px">
-        {/* <CollaboratorsCarrocel/> */}
+
+        <HeroSection />
 
         <Article
           header={"Sobre a ferramenta"}
@@ -19,7 +21,7 @@ export default function Homepage() {
               Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque
               commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt
               vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla.`}
-          src={"../../../public/photos/homepagePhotos/examploPhoto02.png"}
+          src={"../../../public/photos/homepagePhotos/exemploSoftwareScreens.png"}
           alt={"foto de exemplo"}
           imgPosition={"left"}
           style="light"
@@ -53,6 +55,8 @@ export default function Homepage() {
           style="dark"
           id={"contato"}
         />
+
+        <ContactSection/>
 
         <Article
           header={"Comunidade"}

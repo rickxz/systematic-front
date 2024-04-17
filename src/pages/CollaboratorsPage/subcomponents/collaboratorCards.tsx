@@ -32,7 +32,7 @@ export default function CollaboratorCard({ collaborator }: { collaborator: Colla
 
   return (
     <>
-      <Box p="20px" alignItems="center">
+      <Flex direction="column" p="20px" alignItems="center" maxWidth="220px">
         <Flex
           onMouseEnter={handleOnMouseEnter}
           onMouseLeave={handleOnMouseLeave}
@@ -68,7 +68,7 @@ export default function CollaboratorCard({ collaborator }: { collaborator: Colla
         </Flex>
         <Text>{collaborator.name}</Text>
         <Text>{collaborator.filiacao}</Text>
-      </Box>
+      </Flex>
     </>
   );
 }
