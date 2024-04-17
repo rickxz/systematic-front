@@ -9,7 +9,12 @@ interface iButtonProps extends ButtonProps {
 export default function NavButton({ text, path, ...buttonProps }: iButtonProps) {
   return (
     <Link to={path}>
-      <Button {...buttonProps}>{text}</Button>
+      <Button bgColor={"#526D82"} color={"#E5EBEF"} 
+          _hover={{ 
+            bgColor:"#C9D9E5",
+            color:"#526D82",
+           }}
+           {...buttonProps}>{text}</Button>
     </Link>
   );
 }
