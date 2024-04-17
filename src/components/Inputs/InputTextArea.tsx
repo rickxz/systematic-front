@@ -15,8 +15,10 @@ export default function TextAreaInput({ label, placeholder, onChange, ...textare
 
   return (
     <FormControl maxW={"60vw"}>
-      <FormLabel>{label}</FormLabel>
-      <Textarea placeholder={placeholder} onChange={handleChange} {...textareaProps} />
+      <FormLabel color={"#301E1A"}>{label}</FormLabel>
+      <Textarea bgColor={"#C9D9E5"} _placeholder={{ opacity: 1, color: 'gray.500' }}
+          focusBorderColor="#526D82" placeholder={placeholder} onChange={handleChange}
+          {...textareaProps} />
     </FormControl>
   );
 }
