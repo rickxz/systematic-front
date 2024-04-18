@@ -17,7 +17,7 @@ export default function SelectInput({ values, names, onSelect, selectedValue, pl
 
   return (
     <FormControl sx={formcontrol}>
-      <Select placeholder={placeholder} value={selectedValue || ""} onChange={handleSelectChange}>
+      <Select bgColor={"#C9D9E5"} placeholder={placeholder} value={selectedValue || ""} onChange={handleSelectChange}>
         {names.map((optionName, index) => (
           <option key={index} value={values[index]}>
             {optionName}
