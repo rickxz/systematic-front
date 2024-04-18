@@ -7,5 +7,9 @@ interface iInputProps {
 }
 
 export default function RegisterInputs({ id, placeholder, handlechange }: iInputProps) {
-  return <Input id={id} placeholder={placeholder} type={"text"} onChange={handlechange} />;
+  return <Input 
+  bgColor={"#C9D9E5"} 
+  _placeholder={{ opacity: 1, color: 'gray.500' }}
+  focusBorderColor="#526D82"
+  id={id} placeholder={placeholder} type={"text"} onChange={handlechange} />;
 }
