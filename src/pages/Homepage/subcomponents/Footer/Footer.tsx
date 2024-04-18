@@ -1,16 +1,17 @@
 import { Box, Divider, Flex, Icon, Stack, Text } from "@chakra-ui/react";
-
+import { Image } from '@chakra-ui/react';
 import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa6";
-import Logo from "../../../../../public/icons/Logo";
+//import Logo from "../../../../../public/icons/Logo";
+import Logo from "../../../../../public/assets/StartLogos/startwhite.png";
 export default function Footer() {
   return (
     <Flex bg="#301E1A" height={"fit-content"} flexDir={"row"} justifyContent={"space-evenly"} color={"#FDF0D5"}>
       <Box justifySelf={"flex-start"} alignSelf={"center"}>
         <Box>
-          <Logo type="homepage" />
+          <Image src={Logo} alt="Start Logo" />
         </Box>
       </Box>
       <Box>
