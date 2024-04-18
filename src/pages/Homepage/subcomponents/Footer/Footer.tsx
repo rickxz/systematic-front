@@ -4,7 +4,6 @@ import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa6";
-//import Logo from "../../../../../public/icons/Logo";
 import Logo from "../../../../../public/assets/StartLogos/startwhite.png";
 export default function Footer() {
   return (
