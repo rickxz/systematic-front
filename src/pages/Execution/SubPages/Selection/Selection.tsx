@@ -9,6 +9,7 @@ import StudySelectionArea from "./subcomponents/StudySelectionArea";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
 import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
 import { conteiner, inputconteiner } from "../../styles/executionStyles";
+import { StudySelectionAreaProvider } from "./subcomponents/StudySelectionAreaContext";
 
 export default function Selection() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
@@ -16,35 +17,39 @@ export default function Selection() {
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
 
   return (
-    <GridLayout defaultOpen={1} navigationType="Accordion">
-      <Header text="Selection" />
-      <Box sx={conteiner}>
-        <Box sx={inputconteiner}>
-          <InputText type="search" placeholder="Insert article's name" nome="search" />
-          <SelectInput
-            names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
-            values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
-            onSelect={handleSelectChange}
-            selectedValue={selectedValue}
-          />
-          <ComboBox
-            text="filter options"
-            options={headerData}
-            handleCheckboxChange={handleCheckboxChange}
-            selectedItems={[
-              "title",
-              "author",
-              "year",
-              "status/selection",
-              "status/extraction",
-              "reading priority",
-              "score",
-            ]}
-          />
-        </Box>
-      </Box>
-      <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} type="isKeyWord"/>
-      <StudySelectionArea />
-    </GridLayout>
+    <StudySelectionAreaProvider>
+      
+        <GridLayout defaultOpen={1} navigationType="Accordion">
+          <Header text="Selection" />
+          <Box sx={conteiner}>
+            <Box sx={inputconteiner}>
+              <InputText type="search" placeholder="Insert article's name" nome="search" />
+              <SelectInput
+                names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+                values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
+                onSelect={handleSelectChange}
+                selectedValue={selectedValue}
+              />
+              <ComboBox
+                text="filter options"
+                options={headerData}
+                handleCheckboxChange={handleCheckboxChange}
+                selectedItems={[
+                  "title",
+                  "author",
+                  "year",
+                  "status/selection",
+                  "status/extraction",
+                  "reading priority",
+                  "score",
+                ]}
+              />
+            </Box>
+          </Box>
+          <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} type="isKeyWord"/>
+          <StudySelectionArea />
+        </GridLayout>
+
+    </StudySelectionAreaProvider>
   );
 }
