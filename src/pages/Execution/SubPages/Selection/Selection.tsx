@@ -43,7 +43,7 @@ export default function Selection() {
           />
         </Box>
       </Box>
-      <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+      <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} type="isKeyWord"/>
       <StudySelectionArea />
     </GridLayout>
   );
