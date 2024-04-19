@@ -10,7 +10,6 @@ interface IDefaultNavigation {
 }
 
 const routes = [
-  { path: "/landing", icon: GiArchiveRegister, title: "LandingPage" },
   { path: "/user", icon: IoLibrarySharp, title: "My reviews" },
   { path: "/newRevision", icon: SiAddthis, title: "New Revision" },
   { path: "/", icon: FaHome, title: "Homepage" },
