@@ -1,38 +1,3 @@
-/*import React from 'react';
-
-interface PanelState {
-  actualPainel: string;
-  setActualPainel: (newPanel: string) => void;
-}
-
-const ModalContext = React.createContext<PanelState>({
-  actualPainel: "SelectionData",
-  setActualPainel: () => {},
-});
-
-export const ModalProvider: React.FC = ({ children }) => {
-  const [panelState, setPanelState] = React.useState<PanelState>({
-    actualPainel: "SelectionData",
-    setActualPainel: (newPanel: string) => setPanelState({ ...panelState, actualPainel: newPanel }),
-  });
-
-  return (
-    <ModalContext.Provider value={panelState}>
-      {children}
-    </ModalContext.Provider>
-  );
-};
-
-export const useModalContext = () => React.useContext(ModalContext);
-
-
-*/
-
-
-
-
-
-
 import React, { ReactNode, createContext , useState } from 'react';
 
 interface ModalContextType {
