@@ -28,6 +28,7 @@ export default function TableRow({
 }: IStudy) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  console.log(isModalTabel);
   return (
     <>
       <Tr key={rowIndex}>
@@ -49,7 +50,7 @@ export default function TableRow({
         ))}
       </Tr>
 
-      {!isModalTabel &&
+      {isModalTabel &&
         (isOpen ? (
           <ModalProvider>
             <StudiesModal rowData={rowData} isOpen={isOpen} onClose={onClose} />
