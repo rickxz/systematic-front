@@ -28,7 +28,19 @@ export default function TableRow({
 }: IStudy) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  console.log(isModalTabel);
+  function handleClick(rowData: (string|number)[]) {
+    if (isModalTabel) {
+      onOpen();
+      return;
+    }
+    if (!isKeyWordTable) {
+      console.log(rowData);
+      
+    }
+  }
+
+
+
   return (
     <>
       <Tr key={rowIndex}>
@@ -40,7 +52,7 @@ export default function TableRow({
         {rowData.map((cell, cellIndex) => (
           <Td
             cursor={"pointer"}
-            onClick={onOpen}
+            onClick={ () => {handleClick(rowData)}}
             key={cellIndex}
             display={isKeyWordTable ? "" : getColumnVisibility(headerData[cellIndex].toLowerCase()) ? "none" : ""}
             textAlign={"center"}
