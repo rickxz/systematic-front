@@ -1,0 +1,6 @@
+export enum ExtractionStatus{
+    UNCLASSIFIED = "UNCLASSIFIED",
+    DUPLICATED = "DUPLICATED",
+    INCLUDED = "INCLUDED",
+    EXCLUDED = "EXCLUDED"
+}
