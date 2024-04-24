@@ -30,16 +30,25 @@ export default function NavItem({ navSize, icon, title }: INavItemProps): JSX.El
 
   return (
     <Flex sx={flexconteiner} align={isSmallSize ? "center" : "flex-start"}>
+
       <Menu placement="right">
+
         <MenuButton onClick={handleClick} bg={isSelected ? "#FDF0D5" : "#301E1A"}>
-          <Flex alignItems="center" gap={1.5}>
-            <Icon marginLeft={isSmallSize ? 0 : "10px"} color={isSelected ? "#301E1A" : "#FDF0D5"} size="sm" as={icon} />
+
+          <Flex justifyContent={isSmallSize ? "center" : "none"} pl={isSmallSize ? "none" : "20px"}
+          alignItems="center" gap={1.5} w={isSmallSize ? "75px" : "180px"} h={isSmallSize ? "75px" : "3.5em"}>
+
+            <Icon color={isSelected ? "#301E1A" : "#FDF0D5"} boxSize={isSmallSize ? "1.8em" : "1.1em"} as={icon} />
             <Text display={isSmallSize ? "none" : "flex"} textColor={isSelected ? "#301E1A" : "#FDF0D5"}>
               {title}
             </Text>
+
           </Flex>
+
         </MenuButton>
+
       </Menu>
+
     </Flex>
   );
 }

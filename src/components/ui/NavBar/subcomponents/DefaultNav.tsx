@@ -2,7 +2,6 @@ import NavItem from "./NavItem";
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { SiAddthis } from "react-icons/si";
-import { GiArchiveRegister } from "react-icons/gi";
 import { IoLibrarySharp } from "react-icons/io5";
 
 interface IDefaultNavigation {
