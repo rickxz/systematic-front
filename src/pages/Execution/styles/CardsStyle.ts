@@ -11,13 +11,15 @@ export const accordion = {
 
 export const card = {
   mb: 5,
-  h: "fit-content",
 };
 
 export const conteiner = {
   display: "flex",
   flexDir: "row",
   justifyContent: "space-between",
+  h: "6em",
+  borderTopLeftRadius: "15px",
+  borderTopRightRadius: "15px",
 };
 
 export const iconConteiner = {
@@ -31,6 +33,17 @@ export const iconConteiner = {
 export const testo = {
   ml: "5%",
   mt: 5,
+};
+
+export const btnConteinerAllBases = {
+  display: "flex",
+  flexDir: "row",
+ justifyContent: "flex-end",
+  columnGap: "7%",
+  w: "50%",
+  mt: 5,
+  mb: 3,
+  mr: 7,
 };
 
 export const btnConteiner = {
