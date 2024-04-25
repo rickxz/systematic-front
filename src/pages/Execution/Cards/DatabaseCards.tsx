@@ -12,7 +12,7 @@ interface DatabaseCardProps {
 
 export default function DataBaseCard({ text, type }: DatabaseCardProps) {
   return (
-    <Card w={type === "allData" ? "80vw" : "32vw"} sx={card}>
+    <Card w={type === "allData" ? "80vw" : "38vw"} sx={card}>
       <Box sx={conteiner}>
         <Box sx={iconConteiner}>
           <DataBaseIcon />

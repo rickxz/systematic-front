@@ -6,18 +6,30 @@ import useFetchDataBases from "../../hooks/fetch/useFetchDataBases";
 import { conteiner, dataBaseconteiner } from "./styles/Identification";
 
 export default function Identification() {
+
   const { databases } = useFetchDataBases("/data/dataBases.json");
+
   return (
+
     <FlexLayout defaultOpen={1} navigationType="Accordion">
+
       <Header text="Studies Identification" />
-      <Box sx={conteiner}>
-        <DataBaseCard text="All data bases" type="allData" />
+
+      <Box sx={conteiner} display={"flex"} flexDirection={"column"}>
+
+        <Box ml={"5.3vw"}>
+          <DataBaseCard text="All data bases" type="allData" />
+        </Box>
+
         <Box sx={dataBaseconteiner}>
           {databases.map((data) => {
             return <DataBaseCard text={data.dbName} type={data.type} />;
           })}
         </Box>
+
       </Box>
+
     </FlexLayout>
+
   );
 }
