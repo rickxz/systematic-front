@@ -14,6 +14,7 @@ export default function GridLayout({ navigationType, children, defaultOpen }: iG
       <GridItem>
         <Sidebar type={navigationType} defaultOpen={defaultOpen} />
       </GridItem>
+      
       <GridItem sx={gridItem}>{children}</GridItem>
     </Grid>
   );
