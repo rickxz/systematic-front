@@ -1,6 +1,6 @@
 import { Box, Flex, Textarea } from "@chakra-ui/react";
 import useInputState from "../../../hooks/useInputState";
-import GridLayout from "../../../components/ui/Grid/Grid";
+import FlexLayout from "../../../components/ui/Flex/Flex";
 import Header from "../../../components/ui/Header/Header";
 import ComboBox from "../../../components/Inputs/ComboBox";
 import InputText from "../../../components/Inputs/InputText";
@@ -16,7 +16,7 @@ export default function Finalization() {
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
 
   return (
-    <GridLayout defaultOpen={2} navigationType="Accordion">
+    <FlexLayout defaultOpen={2} navigationType="Accordion">
       <Header text="Review Finalization" />
       <Flex sx={flex}>
         <Box sx={conteiner}>
@@ -58,6 +58,6 @@ export default function Finalization() {
           />
         </Flex>
       </Box>
-    </GridLayout>
+    </FlexLayout>
   );
 }
