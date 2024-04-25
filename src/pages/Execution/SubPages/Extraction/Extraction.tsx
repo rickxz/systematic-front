@@ -41,7 +41,10 @@ export default function Extraction() {
           />
         </Box>
       </Box>
-      <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+
+      <Box ml={"3em"} mr={"3em"}>
+        <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+      </Box>
     </FlexLayout>
   );
 }
