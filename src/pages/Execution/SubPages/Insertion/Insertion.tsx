@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import useInputState from "../../../../hooks/useInputState";
-import GridLayout from "../../../../components/ui/Grid/Grid";
+import FlexLayout from "../../../../components/ui/Flex/Flex";
 import Header from "../../../../components/ui/Header/Header";
 import ComboBox from "../../../../components/Inputs/ComboBox";
 import InputText from "../../../../components/Inputs/InputText";
@@ -16,7 +16,7 @@ export default function Insertion() {
   const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   return (
-    <GridLayout defaultOpen={1} navigationType="Accordion">
+    <FlexLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Insertion" />
       <Box sx={conteiner}>
         <Box sx={inputconteiner}>
@@ -54,6 +54,6 @@ export default function Insertion() {
           w={"200px"}
         />
       </Box>
-    </GridLayout>
+    </FlexLayout>
   );
 }
