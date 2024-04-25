@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Box } from "@chakra-ui/react";
-import GridLayout from "../../components/ui/Grid/Grid";
+import FlexLayout from "../../components/ui/Flex/Flex";
 import { conteiner, content, formConteiner } from "./styles/styles";
 import RenderForm from "../../components/Landing/subcomponents/RenderForm";
 import FormOptions from "../../components/Landing/subcomponents/FormOptions";
@@ -15,7 +15,7 @@ export default function LandingPage() {
   }
 
   return (
-    <GridLayout navigationType="Default" defaultOpen={0}>
+    <FlexLayout navigationType="Default" defaultOpen={0}>
       <Box sx={conteiner}>
         <LogoConteiner />
         <Box sx={content}>
@@ -34,6 +34,6 @@ export default function LandingPage() {
           <RenderForm renderForm={context.renderForm} setRenderForm={context.SetRenderForm} />
         </Box>
       </Box>
-    </GridLayout>
+    </FlexLayout>
   );
 }

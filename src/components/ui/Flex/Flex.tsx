@@ -10,7 +10,7 @@ interface iFlexLayout {
 
 export default function FlexLayout({ navigationType, children, defaultOpen }: iFlexLayout) {
   return (
-    <Flex direction={"row"} justify={"space-between"} grow={1}>
+    <Flex direction={"row"} justify={"space-between"}>
         <Sidebar type={navigationType} defaultOpen={defaultOpen} />
         <Box sx={style}>{children}</Box>
     </Flex>
