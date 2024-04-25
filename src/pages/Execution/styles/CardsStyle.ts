@@ -7,6 +7,10 @@ export const Accordionbtn = {
 export const accordion = {
   w: "100%",
   justifySelf: "center",
+  bgColor: "#414B53",
+  color: "#969595",
+  borderBottomLeftRadius: "15px",
+  borderBottomRightRadius: "15px",
 };
 
 export const card = {
