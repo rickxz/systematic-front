@@ -11,15 +11,16 @@ export default function NovaRevisao() {
 
       <Header text="New Systematic Review" />
 
-      <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"80%"} alignItems={"center"} ml={"10em"}>
-        
+      <FormControl mt={"20px"} display={"flex"} gap={5}
+      flexDir={"column"} w={"80%"} alignItems={"center"} ml={"10em"}>
+
         <InputText placeholder="Enter review title" type="text" nome="text" />
 
         <InputTextArea label="Description:" placeholder="Enter review description"></InputTextArea>
 
         <ResearcherFilter />
 
-        <Box ml={"80%"}>
+        <Box ml={"71%"}>
           <NavButton path={"/newRevision/protocol"} text="Create new Review" />
         </Box>
 
