@@ -1,6 +1,7 @@
 export const header = {
   as: "h1",
   alignSelf: "center",
+  textAlign: "center",
   w: "100%",
   color: "#C9D9E5",
   bgColor: "#191919",
