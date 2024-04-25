@@ -1,6 +1,6 @@
 import { Progress } from "@chakra-ui/react";
 import { Box, FormControl } from "@chakra-ui/react";
-import GridLayout from "../../components/ui/Grid/Grid";
+import FlexLayout from "../../components/ui/Flex/Flex";
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
 import { btnBox, formControl } from "./styles/partOneStyles";
@@ -8,7 +8,7 @@ import TextAreaInput from "../../components/Inputs/InputTextArea";
 
 export default function Protocol() {
   return (
-    <GridLayout defaultOpen={0} navigationType="Accordion">
+    <FlexLayout defaultOpen={0} navigationType="Accordion">
       <Header text="Protocol" />
       <Progress value={0} />
       <FormControl sx={formControl}>
@@ -18,6 +18,6 @@ export default function Protocol() {
       <Box sx={btnBox}>
         <NavButton text="Next" path="/newRevision/protocolpartTwo" w={"30%"} />
       </Box>
-    </GridLayout>
+    </FlexLayout>
   );
 }
