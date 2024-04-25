@@ -17,9 +17,13 @@ export default function LandingPage() {
   return (
     <FlexLayout navigationType="Default" defaultOpen={0}>
       <Box sx={conteiner}>
-        <LogoConteiner />
+
+        <LogoConteiner/>
+        
         <Box sx={content}>
+
           <Box sx={formConteiner}>
+
             <FormOptions
               text="Login"
               active={context.renderForm === "Login"}
@@ -30,9 +34,13 @@ export default function LandingPage() {
               active={context.renderForm === "Register"}
               onClick={() => context.SetRenderForm("Register")}
             />
+
           </Box>
+
           <RenderForm renderForm={context.renderForm} setRenderForm={context.SetRenderForm} />
+
         </Box>
+
       </Box>
     </FlexLayout>
   );

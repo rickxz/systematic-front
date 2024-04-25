@@ -1,23 +1,18 @@
 export const conteiner = {
-  borderWidth: "1px",
-  borderRadius: "lg",
   display: "flex",
   flexDir: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
-  mt: "9em",
-  mb: 20,
-  h: "500px",
-  gap: 10,
+  justifyContent: "space-around",
+  align: "center",
+  mt: "5vh",
+  ml: "5vw",
 };
 
 export const content = {
   display: "flex",
   flexDir: "column",
-  gap: 1,
   justifyContent: "flex-end",
   w: "50%",
-  mt: "5em",
+  mt: "10em",
   ml: "5em",
 };
 
