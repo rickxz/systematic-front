@@ -13,8 +13,6 @@ interface IHeaderButton {
 export default function HeaderButton({ text, path, type }: IHeaderButton) {
   const location = useLocation();
   const context = useContext(AppContext);
-
-  // Considerando que '/landing' é a página de formulários
   const isActive = context?.activeButton === type && location.pathname === "/landing";
 
   function handleClick() {
