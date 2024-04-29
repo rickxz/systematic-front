@@ -5,7 +5,7 @@ import useFecthCollaboratorsInfo from "../../hooks/fetch/useFetchCollaboratorsIn
 import Footer from "../Homepage/subcomponents/Footer/Footer";
 
 export default function CollaboratorsPage() {
-  const { collabInfos } = useFecthCollaboratorsInfo("./../../../public/data/collaboratorsInfo.json");
+  const { collabInfos } = useFecthCollaboratorsInfo("/data/collaboratorsInfo.json");
   console.log(collabInfos);
 
   return (
