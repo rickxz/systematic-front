@@ -9,7 +9,7 @@ import ContactSection from "./subcomponents/ContactSection/ContactSection";
 export default function Homepage() {
   return (
     <Box height={"80vh"}>
-      <Header />
+      <Header show={true} />
 
       <Flex bg="gray.200" direction={"column"} pt="80px">
         <HeroSection />
