@@ -1,6 +1,4 @@
 export const bxconteiner = {
-  ml: "3em",
-  pb: "5em",
   alignContent: "center",
   textAlign: "center",
 };

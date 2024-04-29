@@ -1,3 +1,4 @@
+
 export const conteiner = {
   mt: 10,
   w: "80%",
@@ -32,7 +33,7 @@ export const tableconteiner = {
   gap: 7,
 };
 export const textArea = {
-  bg: "gray.100",
+  bg: "#C9D9E5",
   minHeight: "20vh",
 };
 

@@ -5,6 +5,7 @@ export const conteiner = {
   flexWrap: "wrap",
   flexDir: "column",
   rowGap: 5,
+  ml: "1em",
 };
 
 export const inputconteiner = {

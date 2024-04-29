@@ -11,12 +11,17 @@ export default function AccordionDashboard() {
 
   return (
     <Accordion allowToggle sx={accordion} onChange={handleAccordionToggle}>
+
       <AccordionItem>
+
         <AccordionButton sx={Accordionbtn}>
           <AccordionIcon />
         </AccordionButton>
+
         <AccordionPanel>Aqui fica o dashboard</AccordionPanel>
+
       </AccordionItem>
+
     </Accordion>
   );
 }

@@ -1,23 +1,35 @@
 import { Box } from "@chakra-ui/react";
 import DataBaseCard from "./Cards/DatabaseCards";
 import Header from "../../components/ui/Header/Header";
-import GridLayout from "../../components/ui/Grid/Grid";
+import FlexLayout from "../../components/ui/Flex/Flex";
 import useFetchDataBases from "../../hooks/fetch/useFetchDataBases";
 import { conteiner, dataBaseconteiner } from "./styles/Identification";
 
 export default function Identification() {
+
   const { databases } = useFetchDataBases("/data/dataBases.json");
+
   return (
-    <GridLayout defaultOpen={1} navigationType="Accordion">
+
+    <FlexLayout defaultOpen={1} navigationType="Accordion">
+
       <Header text="Studies Identification" />
-      <Box sx={conteiner}>
-        <DataBaseCard text="All data bases" type="allData" />
+
+      <Box sx={conteiner} display={"flex"} flexDirection={"column"}>
+
+        <Box ml={"5.3vw"}>
+          <DataBaseCard text="All data bases" type="allData" />
+        </Box>
+
         <Box sx={dataBaseconteiner}>
           {databases.map((data) => {
             return <DataBaseCard text={data.dbName} type={data.type} />;
           })}
         </Box>
+
       </Box>
-    </GridLayout>
+
+    </FlexLayout>
+
   );
 }

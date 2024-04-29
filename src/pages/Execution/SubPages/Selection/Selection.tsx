@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import useInputState from "../../../../hooks/useInputState";
-import GridLayout from "../../../../components/ui/Grid/Grid";
+import FlexLayout from "../../../../components/ui/Flex/Flex";
 import Header from "../../../../components/ui/Header/Header";
 import ComboBox from "../../../../components/Inputs/ComboBox";
 import InputText from "../../../../components/Inputs/InputText";
@@ -16,8 +16,9 @@ export default function Selection() {
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
 
   return (
-    <GridLayout defaultOpen={1} navigationType="Accordion">
+    <FlexLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Selection" />
+
       <Box sx={conteiner}>
         <Box sx={inputconteiner}>
           <InputText type="search" placeholder="Insert article's name" nome="search" />
@@ -43,8 +44,12 @@ export default function Selection() {
           />
         </Box>
       </Box>
-      <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
-      <StudySelectionArea />
-    </GridLayout>
+
+      <Box ml={"3em"} mr={"3em"}>
+        <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+        <StudySelectionArea />
+      </Box>
+
+    </FlexLayout>
   );
 }

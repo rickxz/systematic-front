@@ -37,16 +37,17 @@ export default function AccordionElement({
   const isOpen = index === defaultOpen;
 
   return (
-    <AccordionItem alignContent={isSmallSize ? "center" : "flex-start"}>
-      <AccordionButton bg={isOpen ? "#301E1A" : "#FDF0D5"} color={isOpen ? "#301E1A" : "#301E1A"}>
+    <AccordionItem alignContent={isSmallSize ? "center" : "flex-start"}
+    w={isSmallSize ? "75px" : "180px"}>
+      <AccordionButton  bg={isOpen ? "#FDF0D5" : "#301E1A"} color={isOpen ? "#301E1A" : "#FDF0D5"}>
         {isSmallSize && <Icon as={icon} />}
         {shouldRenderIcon}
         <AccordionIcon />
       </AccordionButton>
-      <AccordionPanel>
+      <AccordionPanel padding={"0px"}>
         {names.map((name) => (
           <Link to={`${basePath}/${name.toLowerCase()}`} key={name}>
-            <NavItem title={name} navSize={navSize} />
+            <NavItem title={name} navSize={navSize} submenu={true}/>
           </Link>
         ))}
       </AccordionPanel>

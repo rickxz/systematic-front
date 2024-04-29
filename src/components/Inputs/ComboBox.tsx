@@ -14,7 +14,7 @@ export default function ComboBox({ text, options, selectedItems, handleCheckboxC
 
   return (
     <Menu closeOnSelect={false}>
-      <MenuButton as={Button} rightIcon={<ChevronDownIcon />} w={"40%"}>
+      <MenuButton bgColor={"#303D50"} color={"#9DB2BF"} as={Button} rightIcon={<ChevronDownIcon />} w={"40%"}>
         {text}
       </MenuButton>
       <MenuList>

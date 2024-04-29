@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import useInputState from "../../../../hooks/useInputState";
-import GridLayout from "../../../../components/ui/Grid/Grid";
+import FlexLayout from "../../../../components/ui/Flex/Flex";
 import Header from "../../../../components/ui/Header/Header";
 import ComboBox from "../../../../components/Inputs/ComboBox";
 import InputText from "../../../../components/Inputs/InputText";
@@ -14,7 +14,7 @@ export default function Extraction() {
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
   return (
-    <GridLayout defaultOpen={1} navigationType="Accordion">
+    <FlexLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Extraction" />
       <Box sx={conteiner}>
         <Box sx={inputconteiner}>
@@ -41,7 +41,10 @@ export default function Extraction() {
           />
         </Box>
       </Box>
-      <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
-    </GridLayout>
+
+      <Box ml={"3em"} mr={"3em"}>
+        <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+      </Box>
+    </FlexLayout>
   );
 }
