@@ -59,8 +59,8 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
       gap="50px"
       pt="30px"
       pb="30px"
-      pl="100px"
-      pr="100px"
+      pl="150px"
+      pr="150px"
       background={styles.background}
       id={id}
       w={"100%"}
@@ -83,8 +83,8 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
                 alt={alt}
                 borderRadius="30px"
                 order={imgIndex}
-                maxW={"500px"}
-                maxHeight={"4000px"}
+                maxW={"400px"}
+                maxHeight={"400px"}
                 objectFit={"scale-down"}
               />
               <Flex direction="column" w={"50%"} alignItems="center" gap="50px" order={textIndex}>
@@ -99,7 +99,7 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
             </>
           ) : (
             <>
-              <Flex direction="column" alignItems="center" gap="50px" order={textIndex}>
+              <Flex direction="column" alignItems="center" gap="50px" order={textIndex} w={" 300px"}>
                 <Heading color={styles.textColor} alignSelf={"center"}>
                   {header}
                 </Heading>
