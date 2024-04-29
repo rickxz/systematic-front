@@ -26,7 +26,9 @@ export default function CollaboratorsCarousel() {
             </Carousel>
           </Flex>
           <Button bgColor={"gray"} color={"white"}>
-            <Link to={"/collaborators"}>Vejo todos os colaboradores</Link>
+            <Link to={"/collaborators"} target="_blank">
+              Vejo todos os colaboradores
+            </Link>
           </Button>
         </Flex>
       </div>
