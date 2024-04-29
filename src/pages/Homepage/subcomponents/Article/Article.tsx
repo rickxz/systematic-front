@@ -17,7 +17,6 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
     buttonColor: string;
   }
 
-  // Implementação do objeto
   const styles: CustomStyles = {
     textColor: "",
     background: "",
@@ -57,30 +56,45 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
   return (
     <Flex
       direction={mainDirection}
-      alignItems="center"
       gap="50px"
       pt="30px"
       pb="30px"
-      pl="300px"
-      pr="300px"
+      pl="100px"
+      pr="100px"
       background={styles.background}
       id={id}
+      w={"100%"}
     >
       {" "}
-      <Box paddingTop={"4%"} h="75vh" display={"flex"} justifyContent={"center"} flexDir={mainDirection} gap={10}>
-        <Flex gap="25px" direction={imgDirection}>
+      <Box
+        paddingTop={"4%"}
+        h="80vh"
+        display={"flex"}
+        justifyContent={"center"}
+        flexDir={mainDirection}
+        gap={10}
+        w={"100% "}
+      >
+        <Flex gap="50px" direction={imgDirection} justifyContent={"space-between"}>
           {imgPosition === "left" || imgPosition === "top" ? (
             <>
-              <Image src={src} alt={alt} borderRadius="30px" order={imgIndex} 
-              maxW={"500px"} maxHeight={"500px"} />
-              <Flex direction="column" alignItems="center" gap="50px" order={textIndex}>
+              <Image
+                src={src}
+                alt={alt}
+                borderRadius="30px"
+                order={imgIndex}
+                maxW={"500px"}
+                maxHeight={"4000px"}
+                objectFit={"scale-down"}
+              />
+              <Flex direction="column" w={"50%"} alignItems="center" gap="50px" order={textIndex}>
                 <Heading color={styles.textColor} alignSelf={"center"}>
                   {header}
                 </Heading>
-                  <Text color={styles.textColor}>{bodyText}</Text>
-                  <Button w="40%" colorScheme={styles.buttonColor}>
-                    Saiba mais
-                  </Button>
+                <Text color={styles.textColor}>{bodyText}</Text>
+                <Button w="fit-content" colorScheme={styles.buttonColor}>
+                  Saiba mais
+                </Button>
               </Flex>
             </>
           ) : (
@@ -94,8 +108,7 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
                   Saiba mais
                 </Button>
               </Flex>
-              <Image src={src} alt={alt} borderRadius="30px" order={imgIndex}
-              maxW={"500px"} maxHeight={"500px"} />
+              <Image src={src} alt={alt} borderRadius="30px" order={imgIndex} maxW={"500px"} maxHeight={"500px"} />
             </>
           )}
         </Flex>
