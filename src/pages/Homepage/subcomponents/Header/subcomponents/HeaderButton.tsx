@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { buttonTheme } from "./styles/ButtonTheme";
 import AppContext from "../../../../../components/Context/AppContext";
@@ -8,16 +8,20 @@ interface IHeaderButton {
   text: string;
   path: string;
   type: string;
-  isActive: boolean;
-  setActiveButton: (type: string) => void;
 }
 
-export default function HeaderButton({ text, path, type, isActive, setActiveButton }: IHeaderButton) {
+export default function HeaderButton({ text, path, type }: IHeaderButton) {
+  const location = useLocation();
   const context = useContext(AppContext);
 
+  // Considerando que '/landing' é a página de formulários
+  const isActive = context?.activeButton === type && location.pathname === "/landing";
+
   function handleClick() {
-    context?.SetRenderForm(type);
-    setActiveButton(type);
+    if (context) {
+      context.SetRenderForm(type);
+      context.setActiveButton(type);
+    }
   }
 
   return (

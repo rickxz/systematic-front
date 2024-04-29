@@ -5,7 +5,6 @@ import { HeaderTheme } from "./HeaterStyle";
 import Logo from "../../../../../public/assets/StartLogos/startwhite.png";
 import { Image } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 interface IHeaderProps {
   show: boolean;
 }
@@ -17,7 +16,6 @@ export default function Header({ show }: IHeaderProps) {
   }
 
   const showLinks = show;
-  const [activeButton, setActiveButton] = useState<string | null>(null);
 
   return (
     <Flex sx={HeaderTheme}>
@@ -38,20 +36,8 @@ export default function Header({ show }: IHeaderProps) {
         )}
       </Flex>
       <Flex gap="5%">
-        <HeaderButton
-          text="Sign Up"
-          path="/landing"
-          type="Register"
-          isActive={activeButton === "Register"}
-          setActiveButton={setActiveButton}
-        />
-        <HeaderButton
-          text="Log In"
-          path="/landing"
-          type="Login"
-          isActive={activeButton === "Login"}
-          setActiveButton={setActiveButton}
-        />
+        <HeaderButton text="Sign Up" path="/landing" type="Register" />
+        <HeaderButton text="Log In" path="/landing" type="Login" />
       </Flex>
     </Flex>
   );
