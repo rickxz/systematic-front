@@ -10,7 +10,7 @@ export default function CollaboratorsPage() {
 
   return (
     <Flex direction={"column"} justify={"space-between"} bgColor={"#C9D9E5"}>
-      <Header />
+      <Header show={false} />
       <Flex mt="150px" mb="50px" h="100%" alignItems={"center"} direction={"column"}>
         <Heading>Colaboradores</Heading>
         <Flex wrap={"wrap"} h="100%" align="center" justify="center" gap={10}>
