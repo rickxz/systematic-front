@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 
 export default function CollaboratorsCarousel() {
   const { collabInfos } = useFecthCollaboratorsInfo("./../../../public/data/collaboratorsInfo.json");
-  const collabInfosShuffled = shuffleElements(collabInfos);[]
+  const collabInfosShuffled = shuffleElements(collabInfos);
+  [];
 
   return (
     <Flex direction={"column"} justify={"space-between"} alignItems={"center"}>
@@ -24,7 +25,7 @@ export default function CollaboratorsCarousel() {
               })}
             </Carousel>
           </Flex>
-          <Button>
+          <Button bgColor={"gray"} color={"white"}>
             <Link to={"/collaborators"}>Vejo todos os colaboradores</Link>
           </Button>
         </Flex>

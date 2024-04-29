@@ -3,12 +3,12 @@ import HeaderButton from "./subcomponents/HeaderButton";
 import HeaderLink from "./subcomponents/HeaderLink";
 import { HeaderTheme } from "./HeaterStyle";
 import Logo from "../../../../../public/assets/StartLogos/startwhite.png";
-import { Image } from '@chakra-ui/react';
+import { Image } from "@chakra-ui/react";
 
 export default function Header() {
   enum LinkTypeEnum {
     GoToOtherPage = "GoToOtherPage",
-    StayInSamePage = "StayInSamePage"
+    StayInSamePage = "StayInSamePage",
   }
 
   return (
@@ -18,11 +18,11 @@ export default function Header() {
           <Image src={Logo} alt="Start Logo" />
         </Box>
         <Flex>
-          <HeaderLink text="Sobre" id={"sobre"} type={LinkTypeEnum.StayInSamePage}/>
-          <HeaderLink text="Tutorias" id={"tutoriais"} type={LinkTypeEnum.StayInSamePage}/>
-          <HeaderLink text="Colaboradores" id={"collaborators"} type={LinkTypeEnum.GoToOtherPage}/>
-          <HeaderLink text="Contato" id={"contato"} type={LinkTypeEnum.StayInSamePage}/>
-          <HeaderLink text="Comunidade" id={"comuinidade"} type={LinkTypeEnum.StayInSamePage}/>
+          <HeaderLink text="Sobre" id={"sobre"} type={LinkTypeEnum.StayInSamePage} />
+          <HeaderLink text="Tutorias" id={"tutoriais"} type={LinkTypeEnum.StayInSamePage} />
+          <HeaderLink text="Colaboradores" id={"colaboradores"} type={LinkTypeEnum.StayInSamePage} />
+          <HeaderLink text="Contato" id={"contato"} type={LinkTypeEnum.StayInSamePage} />
+          <HeaderLink text="Comunidade" id={"comuinidade"} type={LinkTypeEnum.StayInSamePage} />
         </Flex>
       </Flex>
       <Flex gap="5%">
