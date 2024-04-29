@@ -12,5 +12,5 @@ export const cardConteiner = {
   alignItems: "center",
   justifyContent: "center",
   fontWeight: "bold",
-  bgColor: "teal",
+  bgColor: "#526D82",
 };

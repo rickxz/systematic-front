@@ -20,9 +20,9 @@ export default function SearchSession() {
       <Header text={"Database Name-Studies Identification"} />
       <Box sx={conteiner}>
         <SearchInformations />
-        <Box display={flex} flexDir={"column"}>
+        <Box sx={flex} flexDir={"column"}>
           <Upload />
-          <Box mt={5} display={flex} flexDir={"row"} justifyContent={"space-evenly"}>
+          <Box mt={5} sx={flex} flexDir={"row"} justifyContent={"space-evenly"}>
             <ComboBox
               options={headerData}
               handleCheckboxChange={handleCheckboxChange}

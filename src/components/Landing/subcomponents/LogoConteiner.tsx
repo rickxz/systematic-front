@@ -1,6 +1,7 @@
-import { Box, Card, Text } from "@chakra-ui/react";
+import { Box, Card } from "@chakra-ui/react";
 import { bxconteiner, cardConteiner } from "../styles/LogoConteinerStyles";
-import Logo from "../../../../public/icons/Logo";
+import Logo from "../../../../public/assets/StartLogos/startwhite.png";
+import { Image } from '@chakra-ui/react';
 
 export default function LogoConteiner() {
   return (
@@ -8,8 +9,7 @@ export default function LogoConteiner() {
       {" "}
       <Card sx={cardConteiner} >
         {" "}
-        <Logo type="ladingpage" />
-        <Text mt={"5em"}>Logo da Start Aqui</Text>
+        <Image src={Logo} w="18em" objectFit={"contain"}/>
       </Card>
     </Box>
   );

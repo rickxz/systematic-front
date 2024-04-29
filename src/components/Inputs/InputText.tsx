@@ -22,6 +22,9 @@ export default function InputText({ placeholder, type, nome, onChange }: ITextFi
           onChange={onChange}
           w={isSearchField ? "250px" : "94%"}
           ml={"2em"}
+          bgColor={"#C9D9E5"}
+          _placeholder={{ opacity: 1, color: 'gray.500' }}
+          focusBorderColor="#526D82"
         />
         {isSearchField && <SearchButton />}
       </FormControl>

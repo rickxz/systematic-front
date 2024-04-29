@@ -12,7 +12,6 @@ export default function Homepage() {
       <Header />
 
       <Flex bg="gray.200" direction={"column"} pt="80px">
-
         <HeroSection />
 
         <Article
@@ -56,7 +55,7 @@ export default function Homepage() {
           id={"contato"}
         />
 
-        <ContactSection/>
+        <ContactSection />
 
         <Article
           header={"Comunidade"}
