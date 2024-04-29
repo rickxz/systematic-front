@@ -7,7 +7,6 @@ interface ReferenceData {
 }
 
 const useFetchReferenceData = (url: string): ReferenceData[] => {
-  // Inicializa o estado com um array vazio tipado
   const [reference, setReference] = useState<ReferenceData[]>([]);
 
   useEffect(() => {
