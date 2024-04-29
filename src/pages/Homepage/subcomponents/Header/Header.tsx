@@ -4,6 +4,7 @@ import HeaderLink from "./subcomponents/HeaderLink";
 import { HeaderTheme } from "./HeaterStyle";
 import Logo from "../../../../../public/assets/StartLogos/startwhite.png";
 import { Image } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 interface IHeaderProps {
   show: boolean;
 }
@@ -20,7 +21,9 @@ export default function Header({ show }: IHeaderProps) {
     <Flex sx={HeaderTheme}>
       <Flex width="auto" gap="10%" alignItems={"center"}>
         <Box>
-          <Image src={Logo} alt="Start Logo" />
+          <Link to={"/"}>
+            <Image src={Logo} alt="Start Logo" />
+          </Link>
         </Box>
         {showLinks && (
           <Flex>
