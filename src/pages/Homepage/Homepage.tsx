@@ -4,6 +4,9 @@ import Footer from "./subcomponents/Footer/Footer";
 import Article from "./subcomponents/Article/Article";
 import CollaboratorsCarousel from "./subcomponents/CollaboratorsCaroulse/collaboratorsCarousel";
 import HeroSection from "./subcomponents/HeroSection/HeroSection";
+import img2 from "../../../public/photos/homepagePhotos/examploPhoto02.png";
+import img1 from "../../../public/photos/homepagePhotos/examploPhoto01.png";
+import exemple from "../../../public/photos/homepagePhotos/examploPhoto01.png";
 
 export default function Homepage() {
   return (
@@ -19,7 +22,7 @@ export default function Homepage() {
               Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque
               commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt
               vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla.`}
-          src={"../../../public/photos/homepagePhotos/exemploSoftwareScreens.png"}
+          src={exemple}
           alt={"foto de exemplo"}
           imgPosition={"left"}
           style="light"
@@ -32,7 +35,7 @@ export default function Homepage() {
               Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque
               commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt
               vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla.`}
-          src={"../../../public/photos/homepagePhotos/examploPhoto01.png"}
+          src={img2}
           alt={"foto de exemplo"}
           imgPosition={"right"}
           style="dark"
@@ -47,7 +50,7 @@ export default function Homepage() {
               Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque
               commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt
               vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla.`}
-          src={"../../../public/photos/homepagePhotos/examploPhoto01.png"}
+          src={img1}
           alt={"foto de exemplo"}
           imgPosition={"right"}
           style="dark"
@@ -60,7 +63,7 @@ export default function Homepage() {
               Morbi purus sem, porta a tellus eleifend, vehicula egestas quam. Quisque
               commodo ipsum at tortor semper, at vulputate velit fringilla. Nam tincidunt
               vestibulum lectus. Mauris lacinia ipsum pulvinar dui pellentesque fringilla.`}
-          src={"../../../public/photos/homepagePhotos/examploPhoto02.png"}
+          src={img2}
           alt={"foto de exemplo"}
           imgPosition={"left"}
           style="light"
