@@ -9,7 +9,7 @@ export default function CollaboratorsPage() {
   console.log(collabInfos);
 
   return (
-    <Flex direction={"column"} justify={"space-between"}>
+    <Flex direction={"column"} justify={"space-between"} bgColor={"#C9D9E5"}>
       <Header />
       <Flex mt="150px" mb="50px" h="100%" alignItems={"center"} direction={"column"}>
         <Heading>Colaboradores</Heading>
