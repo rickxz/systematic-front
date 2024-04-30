@@ -38,7 +38,7 @@ export default function ProtocolPartTwo2() {
       </FormControl>
 
       <Box sx={btnBox}>
-        <NavButton text="Next" path="/newRevision/protocolpartThree" w={"30%"} />
+        <NavButton text="Next" path="/newRevision/protocolpartThree" w={"fit-content"} />
       </Box>
     </GridLayout>
   );

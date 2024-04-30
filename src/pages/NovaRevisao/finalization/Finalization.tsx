@@ -19,7 +19,7 @@ export default function Finalization() {
     <FlexLayout defaultOpen={2} navigationType="Accordion">
       <Header text="Review Finalization" />
       <Flex sx={flex}>
-        <Box sx={conteiner}>
+        <Box sx={conteiner} ml={"2rem"}>
           <Box sx={inputconteiner}>
             <InputText type="search" placeholder="Insert article's name" nome="search" />
             <SelectInput
@@ -27,6 +27,7 @@ export default function Finalization() {
               values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
               onSelect={handleSelectChange}
               selectedValue={selectedValue}
+              page={""}
             />
             <ComboBox
               options={headerData}
@@ -45,7 +46,7 @@ export default function Finalization() {
           </Box>
         </Box>
       </Flex>
-      <Box sx={tableconteiner} ml={"2em"} mr={"2em"}>
+      <Box sx={tableconteiner} ml={"2em"} mr={"2em"} w={"78vw"}>
         <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
         <Textarea sx={textArea} placeholder="Write stuff here..."></Textarea>
         <Flex justifyContent="flex-end">
