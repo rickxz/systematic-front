@@ -5,7 +5,9 @@ import InputText from "../../components/Inputs/InputText";
 import NavButton from "../../components/Buttons/NavButton";
 import InputTextArea from "../../components/Inputs/InputTextArea";
 import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
+
 export default function NovaRevisao() {
+
   return (
     <FlexLayout navigationType="Accordion" defaultOpen={0}>
 

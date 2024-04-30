@@ -25,11 +25,13 @@ export default function AccordionElement({
   defaultOpen,
 }: IAccordionElementProps) {
   const isSmallSize = navSize === "small";
+
   const shouldRenderIcon = isSmallSize || (
     <Box sx={iconbox}>
       <Icon as={icon} /> {title}
     </Box>
   );
+  
   const context = useContext(SidebarContext);
   if (!context) {
     return <>Problema com useContext em NavItem.tsx</>;
