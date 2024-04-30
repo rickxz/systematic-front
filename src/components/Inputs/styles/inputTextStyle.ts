@@ -1,7 +1,6 @@
 export const conteiner = {
   display: "flex",
-  flexDir: "column",
-  w: "100%",
+  maxW: "60vw",
 };
 
 export const inputconteiner = {

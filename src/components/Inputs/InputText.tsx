@@ -20,11 +20,9 @@ export default function InputText({ placeholder, type, nome, onChange }: ITextFi
           name={nome}
           placeholder={placeholder}
           onChange={onChange}
-          w={isSearchField ? "250px" : "95%"}
-          maxW={"60vw"}
-          ml={"2em"}
+          w={isSearchField ? "250px" : "100%"}
           bgColor={"#C9D9E5"}
-          _placeholder={{ opacity: 1, color: 'gray.500' }}
+          _placeholder={{ opacity: 1, color: "gray.500" }}
           focusBorderColor="#526D82"
         />
         {isSearchField && <SearchButton />}
