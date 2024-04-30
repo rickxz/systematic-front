@@ -6,7 +6,7 @@ import {ExtractionStatus} from "./../enums/extractionStatus";
 
 
 
-interface StudyReview {
+export interface StudyInterface {
     studyId: number;
     systematicStudyId: number;
     studyType: StudyType;
