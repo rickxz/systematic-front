@@ -11,8 +11,25 @@ interface iGridLayout {
 export default function GridLayout({ navigationType, children, defaultOpen }: iGridLayout) {
   return (
     <Grid templateColumns={"1fr 1fr 1fr"} display={"flex"}>
-      <GridItem>
-        <Sidebar type={navigationType} defaultOpen={defaultOpen} />
+      <GridItem w="fit-content">
+        <Box
+          w={"fit-content"}
+          overflow={"scroll"}
+          bgColor={"#282828"}
+          sx={{
+            "&::-webkit-scrollbar": {
+              width: "8px",
+              borderRadius: "8px",
+              backgroundColor: "#282828",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#282828",
+              borderRadius: "8px",
+            },
+          }}
+        >
+          <Sidebar type={navigationType} defaultOpen={defaultOpen} />
+        </Box>
       </GridItem>
 
       <GridItem sx={gridItem}>
