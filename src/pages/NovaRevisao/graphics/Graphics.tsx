@@ -1,13 +1,13 @@
 import { Box } from "@chakra-ui/react";
-import FlexLayout from "../../../components/ui/Flex/Flex";
 import Header from "../../../components/ui/Header/Header";
 import BarChart from "../../../components/Charts/BarChart/BarChart";
 import PieChart from "../../../components/Charts/PieChart/PieChart";
 import { barchartBox, conteiner, graphicsconteiner, piechartBox } from "../styles/graphicsStyles";
+import GridLayout from "../../../components/ui/Grid/Grid";
 
 export default function Graphics() {
   return (
-    <FlexLayout navigationType="Accordion" defaultOpen={2}>
+    <GridLayout navigationType="Accordion" defaultOpen={2}>
       <Header text="Graphics" />
       <Box sx={conteiner}>
         <Box sx={graphicsconteiner}>
@@ -29,6 +29,6 @@ export default function Graphics() {
           </Box>
         </Box>
       </Box>
-    </FlexLayout>
+    </GridLayout>
   );
 }

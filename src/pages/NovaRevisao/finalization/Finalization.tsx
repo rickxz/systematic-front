@@ -1,6 +1,6 @@
 import { Box, Flex, Textarea } from "@chakra-ui/react";
 import useInputState from "../../../hooks/useInputState";
-import FlexLayout from "../../../components/ui/Flex/Flex";
+
 import Header from "../../../components/ui/Header/Header";
 import ComboBox from "../../../components/Inputs/ComboBox";
 import InputText from "../../../components/Inputs/InputText";
@@ -9,6 +9,7 @@ import EventButton from "../../../components/Buttons/EventButton";
 import DynamicTable from "../../../components/Tables/DynamicTable";
 import useFetchTableData from "../../../hooks/fetch/useFetchTableData";
 import { btnStyles, conteiner, flex, inputconteiner, tableconteiner, textArea } from "../styles/finalizationStyles";
+import GridLayout from "../../../components/ui/Grid/Grid";
 
 export default function Finalization() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
@@ -16,7 +17,7 @@ export default function Finalization() {
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
 
   return (
-    <FlexLayout defaultOpen={2} navigationType="Accordion">
+    <GridLayout defaultOpen={2} navigationType="Accordion">
       <Header text="Review Finalization" />
       <Flex sx={flex}>
         <Box sx={conteiner} ml={"2rem"}>
@@ -59,6 +60,6 @@ export default function Finalization() {
           />
         </Flex>
       </Box>
-    </FlexLayout>
+    </GridLayout>
   );
 }

@@ -16,7 +16,7 @@ export default function GridLayout({ navigationType, children, defaultOpen }: iG
       </GridItem>
 
       <GridItem sx={gridItem}>
-        <Box w={"90.6vw"} maxH={"100vh"} overflow={"auto"}>
+        <Box w={"92vw"} maxH={"100vh"} overflow={"auto"}>
           {children}
         </Box>
       </GridItem>
