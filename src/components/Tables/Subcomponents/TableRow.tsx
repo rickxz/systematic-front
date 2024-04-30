@@ -34,7 +34,7 @@ export default function TableRow({
     if (isExtractionTable) {
       onOpen();
     }
-    if (!isSelectionTable) {
+    if (isSelectionTable) {
       console.log(rowData);
     }
   }
@@ -62,7 +62,7 @@ export default function TableRow({
         ))}
       </Tr>
 
-      {isSelectionTable &&
+      {isExtractionTable &&
         (isOpen ? (
           <ModalProvider>
             <StudiesModal rowData={rowData} isOpen={isOpen} onClose={onClose} />
