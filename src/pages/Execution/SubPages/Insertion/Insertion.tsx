@@ -44,7 +44,7 @@ export default function Insertion() {
         </Box>
       </Box>
 
-      <Box marginLeft={"3em"} marginRight={"3em"}>
+      <Box marginLeft={"3em"} marginRight={"3em"} w={"78vw"}>
         <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
         <Box sx={btnconteiner}>
           <NavButton text={"Back"} path={"/newRevision/identification"} w={"200px"} />
@@ -57,8 +57,6 @@ export default function Insertion() {
           />
         </Box>
       </Box>
-
-
     </FlexLayout>
   );
 }

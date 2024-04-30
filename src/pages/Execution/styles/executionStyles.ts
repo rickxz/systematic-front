@@ -1,6 +1,6 @@
 export const conteiner = {
   mt: 10,
-  w: "80%",
+  w: "98%",
   display: "flex",
   flexWrap: "wrap",
   flexDir: "column",
@@ -24,11 +24,11 @@ export const ckconteiner = {
 };
 
 export const btnconteiner = {
+  w: "fit-content",
   display: "flex",
   flexDir: "row",
   alignItems: "center",
   columnGap: 5,
   alignSelf: "baseline",
-  ml: "70%",
   mt: 10,
 };
