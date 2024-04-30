@@ -8,7 +8,7 @@ export default function KeyWordScreen() {
   return (
     <GridLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Keyword Screen" />
-      <DynamicTable headerData={headerData} bodyData={bodyData} type="keyword" filteredColumns={[]} />
+      <DynamicTable headerData={headerData} bodyData={bodyData} tableType="keyword" filteredColumns={[]} />
     </GridLayout>
   );
 }

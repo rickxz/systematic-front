@@ -41,7 +41,7 @@ export default function Extraction() {
           />
         </Box>
       </Box>
-      <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} type="modal"/>
+      <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} tableType="extraction"/>
     </GridLayout>
   );
 }
