@@ -27,6 +27,7 @@ export default function Selection() {
             values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
             onSelect={handleSelectChange}
             selectedValue={selectedValue}
+            page={"selection"}
           />
           <ComboBox
             text="filter options"
@@ -45,11 +46,10 @@ export default function Selection() {
         </Box>
       </Box>
 
-      <Box ml={"3em"} mr={"3em"}>
+      <Box ml={"3em"} mr={"3em"} w={"78vw"}>
         <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
         <StudySelectionArea />
       </Box>
-
     </FlexLayout>
   );
 }
