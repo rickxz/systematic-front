@@ -12,7 +12,7 @@ export default function NovaRevisao() {
       <Header text="New Systematic Review" />
 
       <FormControl mt={"20px"} display={"flex"} gap={5}
-      flexDir={"column"} w={"80%"} alignItems={"center"} ml={"10em"}>
+      flexDir={"column"} w={"70%"} alignItems={"center"} ml={"10em"}>
 
         <InputText placeholder="Enter review title" type="text" nome="text" />
 

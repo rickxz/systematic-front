@@ -20,7 +20,8 @@ export default function InputText({ placeholder, type, nome, onChange }: ITextFi
           name={nome}
           placeholder={placeholder}
           onChange={onChange}
-          w={isSearchField ? "250px" : "94%"}
+          w={isSearchField ? "250px" : "95%"}
+          maxW={"60vw"}
           ml={"2em"}
           bgColor={"#C9D9E5"}
           _placeholder={{ opacity: 1, color: 'gray.500' }}
