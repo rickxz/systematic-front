@@ -1,6 +1,5 @@
 import { Box } from "@chakra-ui/react";
 import useInputState from "../../../../hooks/useInputState";
-import FlexLayout from "../../../../components/ui/Flex/Flex";
 import Header from "../../../../components/ui/Header/Header";
 import ComboBox from "../../../../components/Inputs/ComboBox";
 import InputText from "../../../../components/Inputs/InputText";
@@ -10,13 +9,14 @@ import EventButton from "../../../../components/Buttons/EventButton";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
 import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
 import { btnconteiner, conteiner, inputconteiner } from "../../styles/executionStyles";
+import GridLayout from "../../../../components/ui/Grid/Grid";
 
 export default function Insertion() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
   const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   return (
-    <FlexLayout defaultOpen={1} navigationType="Accordion">
+    <GridLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Insertion" />
       <Box sx={conteiner} marginLeft={"1em"}>
         <Box sx={inputconteiner}>
@@ -58,6 +58,6 @@ export default function Insertion() {
           />
         </Box>
       </Box>
-    </FlexLayout>
+    </GridLayout>
   );
 }
