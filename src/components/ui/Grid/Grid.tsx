@@ -10,7 +10,7 @@ interface iGridLayout {
 
 export default function GridLayout({ navigationType, children, defaultOpen }: iGridLayout) {
   return (
-    <Grid templateColumns={"1fr 1fr 1fr"}>
+    <Grid templateColumns={"1fr 1fr 1fr"} display={"flex"}>
       <GridItem>
         <Sidebar type={navigationType} defaultOpen={defaultOpen} />
       </GridItem>
