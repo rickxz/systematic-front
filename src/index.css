@@ -18,3 +18,9 @@
     --color-finish-progress: #73B172;
     --color-failed-progress: #E36363;
 }
+
+body {
+    overflow: hidden;
+
+    background-color: var(--bg-color);
+}

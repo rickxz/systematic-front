@@ -1,6 +1,6 @@
 import { gridItem } from "./GridStyle";
 import Sidebar from "../NavBar/Sidebar";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 
 interface iGridLayout {
   navigationType: string;
@@ -15,7 +15,11 @@ export default function GridLayout({ navigationType, children, defaultOpen }: iG
         <Sidebar type={navigationType} defaultOpen={defaultOpen} />
       </GridItem>
 
-      <GridItem sx={gridItem}>{children}</GridItem>
+      <GridItem sx={gridItem}>
+        <Box w={"90.6vw"} maxH={"100vh"} overflow={"auto"}>
+          {children}
+        </Box>
+      </GridItem>
     </Grid>
   );
 }

@@ -9,15 +9,17 @@ import InteractiveTable from "../../components/Tables/InteractiveTable";
 export default function ProtocolPartThree() {
   return (
     <GridLayout navigationType="Accordion" defaultOpen={0}>
-      <Header text="Protocol" />
-      <Progress value={66} />
-      <FormControl sx={formControl}>
-        <InteractiveTable />
-        <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" />
-        <InteractiveTable />
-      </FormControl>
-      <Box sx={buttonBox}>
-        <NavButton text="Save Protocol" path="/newRevision/identification" />
+      <Box w={"100%"}>
+        <Header text="Protocol" />
+        <Progress value={66} />
+        <FormControl sx={formControl}>
+          <InteractiveTable />
+          <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" />
+          <InteractiveTable />
+        </FormControl>
+        <Box sx={buttonBox}>
+          <NavButton text="Save Protocol" path="/newRevision/identification" />
+        </Box>
       </Box>
     </GridLayout>
   );
