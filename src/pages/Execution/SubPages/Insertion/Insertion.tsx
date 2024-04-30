@@ -26,6 +26,7 @@ export default function Insertion() {
             values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
             onSelect={handleSelectChange}
             selectedValue={selectedValue}
+            page={" insertion"}
           />
           <ComboBox
             options={headerData}

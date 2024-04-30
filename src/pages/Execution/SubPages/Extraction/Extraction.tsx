@@ -24,6 +24,7 @@ export default function Extraction() {
             values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
             onSelect={handleSelectChange}
             selectedValue={selectedValue}
+            page={"protocol"}
           />
           <ComboBox
             options={headerData}
@@ -42,7 +43,7 @@ export default function Extraction() {
         </Box>
       </Box>
 
-      <Box ml={"3em"} mr={"3em"}>
+      <Box marginLeft={"3em"} marginRight={"3em"} w={"78vw"}>
         <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
       </Box>
     </FlexLayout>

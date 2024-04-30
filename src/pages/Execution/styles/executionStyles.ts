@@ -15,6 +15,7 @@ export const inputconteiner = {
   alignContent: "center",
   justifyContent: "space-between",
   gap: 5,
+  ml: "2em",
 };
 
 export const ckconteiner = {
