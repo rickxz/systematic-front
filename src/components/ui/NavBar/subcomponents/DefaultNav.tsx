@@ -19,7 +19,7 @@ export default function DefaultNavigation({ navSize }: IDefaultNavigation) {
     <>
       {routes.map((route, index) => (
         <Link key={index} to={route.path}>
-          <NavItem navSize={navSize} icon={route.icon} title={route.title} />
+          <NavItem navSize={navSize} icon={route.icon} title={route.title} submenu={false} />
         </Link>
       ))}
     </>
