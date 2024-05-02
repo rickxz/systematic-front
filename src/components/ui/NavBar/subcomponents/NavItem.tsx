@@ -42,7 +42,7 @@ export default function NavItem({ navSize, icon, title, submenu }: INavItemProps
           h={isSmallSize ? "75px" : "3.5em"}
           alignItems="center"
           gap={1.5}
-          bg={isSelected ? "#FDF0D5" : "#282828"}
+          bg={isSelected ? "#9AA4B9" : "#282828"}
         >
           <Icon color={isSelected ? "#301E1A" : "#FDF0D5"} boxSize={isSmallSize ? "1.8em" : "1.1em"} as={icon} />
           <Text display={isSmallSize ? "none" : "flex"} textColor={isSelected ? "#301E1A" : "#FDF0D5"}>

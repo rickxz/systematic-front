@@ -40,7 +40,7 @@ export default function AccordionElement({
 
   return (
     <AccordionItem alignContent={isSmallSize ? "center" : "flex-start"} w={isSmallSize ? "75px" : "180px"}>
-      <AccordionButton bg={isOpen ? "#FDF0D5" : "#282828"} color={isOpen ? "#301E1A" : "#FDF0D5"}>
+      <AccordionButton bg={isOpen ? "#9AA4B9" : "#282828"} color={isOpen ? "#301E1A" : "#FDF0D5"}>
         {isSmallSize && <Icon as={icon} />}
         {shouldRenderIcon}
         <AccordionIcon />
