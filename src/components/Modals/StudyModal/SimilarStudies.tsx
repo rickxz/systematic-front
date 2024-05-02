@@ -13,7 +13,7 @@ export default function SimilarStudies() {
       </Heading>
 
       <Box style={{ maxHeight: "350px", overflowY: "auto" }} w="39rem">
-        <DynamicTable headerData={headerData} type="modal" bodyData={bodyData} filteredColumns={checkedValues} />
+        <DynamicTable headerData={headerData} tableType="modal" bodyData={bodyData} filteredColumns={checkedValues} />
       </Box>
     </Container>
   );
