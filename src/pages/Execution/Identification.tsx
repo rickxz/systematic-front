@@ -3,16 +3,22 @@ import DataBaseCard from "./Cards/DatabaseCards";
 import Header from "../../components/ui/Header/Header";
 import useFetchDataBases from "../../hooks/fetch/useFetchDataBases";
 import { conteiner, dataBaseconteiner } from "./styles/Identification";
-import GridLayout from "../../components/ui/Grid/Grid";
+import FlexLayout from "../../components/ui/Flex/Flex";
 
 export default function Identification() {
   const { databases } = useFetchDataBases("/data/dataBases.json");
 
   return (
-    <GridLayout defaultOpen={1} navigationType="Accordion">
+    <FlexLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Studies Identification" />
-
-      <Box sx={conteiner} justifyItems={"center"} alignItems={"center"} display={"flex"} flexDirection={"column"}>
+      <Box
+        sx={conteiner}
+        justifyItems={"center"}
+        alignItems={"center"}
+        display={"flex"}
+        flexDirection={"column"}
+        w={"85vw"}
+      >
         <Box borderRadius={"30px"} h={"fit-content"}>
           <DataBaseCard text="All data bases" type="allData" />
         </Box>
@@ -23,6 +29,6 @@ export default function Identification() {
           })}
         </Box>
       </Box>
-    </GridLayout>
+    </FlexLayout>
   );
 }

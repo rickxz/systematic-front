@@ -1,5 +1,5 @@
 export const conteiner = {
-  mt: 20,
+  mt: 5,
 };
 
 export const dataBaseconteiner = {

@@ -6,7 +6,7 @@ import NavButton from "../../components/Buttons/NavButton";
 import DynamicTable from "../../components/Tables/DynamicTable";
 import useFetchTableData from "../../hooks/fetch/useFetchTableData";
 import SearchInformations from "./subcomponents/searchInformations";
-import { ckbox, conteiner, navbtnStyles } from "./styles/searchSessionStyles";
+import { conteiner, navbtnStyles } from "./styles/searchSessionStyles";
 import ComboBox from "../../components/Inputs/ComboBox";
 import { flex } from "../NovaRevisao/styles/finalizationStyles";
 import EventButton from "../../components/Buttons/EventButton";
@@ -17,9 +17,9 @@ export default function SearchSession() {
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   return (
     <FlexLayout navigationType="Accordion" defaultOpen={1}>
+      <Header text={"Database Name-Studies Identification"} />
       <Box w={"80vw"} display={"flex"} flexDir={"column"} alignSelf={"center"} justifySelf={"center"}>
-        <Header text={"Database Name-Studies Identification"} />
-        <Box sx={conteiner}>
+        <Box sx={conteiner} justifyContent={"center"}>
           <SearchInformations />
           <Box sx={flex} flexDir={"column"}>
             <Upload />
@@ -48,9 +48,11 @@ export default function SearchSession() {
             </Box>
           </Box>
         </Box>
-        <Box sx={ckbox}></Box>
-        <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
-        <NavButton text={"Back"} path={"/newRevision/identification"} sx={navbtnStyles} />
+        <Box w={"78vw"} alignSelf={"center"} justifySelf={"center"}>
+          {" "}
+          <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+          <NavButton text={"Back"} path={"/newRevision/identification"} sx={navbtnStyles} />
+        </Box>
       </Box>
     </FlexLayout>
   );
