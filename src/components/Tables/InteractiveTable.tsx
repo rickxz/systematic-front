@@ -20,10 +20,10 @@ export default function InteractiveTable() {
         </Thead>
         <Tbody>
           {rows.map((row, index) => (
-            <Tr key={index}>
+            <Tr key={index} bgColor={"#839CB0"}>
               <Td>{row.id}</Td>
               <Td>
-                <Input value={row.question} onChange={(e) => handleQuestionChange(index, e.target.value)} />
+                <Input bgColor={"#D4DEE4"} value={row.question} onChange={(e) => handleQuestionChange(index, e.target.value)} />
               </Td>
               <Td>
                 <Select value={row.type} onChange={(e) => handleTypeChange(index, e.target.value)}>
@@ -49,7 +49,7 @@ export default function InteractiveTable() {
               </Td>
             </Tr>
           ))}
-          <Tr>
+          <Tr bgColor={"#303D50"}>
             <Td></Td>
             <Td colSpan={2}>
               <Button size="sm" leftIcon={<AddIcon />} onClick={addRow}>
