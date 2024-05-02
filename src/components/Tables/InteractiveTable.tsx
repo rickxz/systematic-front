@@ -23,10 +23,11 @@ export default function InteractiveTable() {
             <Tr key={index} bgColor={"#839CB0"}>
               <Td>{row.id}</Td>
               <Td>
-                <Input bgColor={"#D4DEE4"} value={row.question} onChange={(e) => handleQuestionChange(index, e.target.value)} />
+                <Input value={row.question} onChange={(e) => handleQuestionChange(index, e.target.value)}
+                border={"solid 1px #303D50"} />
               </Td>
               <Td>
-                <Select value={row.type} onChange={(e) => handleTypeChange(index, e.target.value)}>
+                <Select border={"solid 1px #303D50"} value={row.type} onChange={(e) => handleTypeChange(index, e.target.value)}>
                   {options.map((opt, i) => (
                     <option key={i} value={opt.toLowerCase()}>
                       {opt}
