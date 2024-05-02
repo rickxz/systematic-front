@@ -1,4 +1,3 @@
-import GridLayout from "../../components/ui/Grid/Grid";
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
 import { Progress, FormControl, Box } from "@chakra-ui/react";
@@ -6,10 +5,11 @@ import { btnBox, conteiner, flex } from "./styles/partTwooStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";
 import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable";
+import FlexLayout from "../../components/ui/Flex/Flex";
 
 export default function ProtocolPartTwo2() {
   return (
-    <GridLayout defaultOpen={0} navigationType="Accordion">
+    <FlexLayout defaultOpen={0} navigationType="Accordion">
       <Box w={"100%"}>
         <Header text="Protocol" />
         <Progress value={33} />
@@ -42,6 +42,6 @@ export default function ProtocolPartTwo2() {
           <NavButton text="Next" path="/newRevision/protocolpartThree" w={"fit-content"} />
         </Box>
       </Box>
-    </GridLayout>
+    </FlexLayout>
   );
 }

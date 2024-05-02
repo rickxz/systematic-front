@@ -4,11 +4,11 @@ import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
 import { btnBox, formControl } from "./styles/partOneStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
-import GridLayout from "../../components/ui/Grid/Grid";
+import FlexLayout from "../../components/ui/Flex/Flex";
 
 export default function Protocol() {
   return (
-    <GridLayout defaultOpen={0} navigationType="Accordion">
+    <FlexLayout defaultOpen={0} navigationType="Accordion">
       <Box w={"100%"}>
         <Header text="Protocol" />
 
@@ -25,6 +25,6 @@ export default function Protocol() {
           </Box>
         </Flex>
       </Box>
-    </GridLayout>
+    </FlexLayout>
   );
 }
