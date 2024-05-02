@@ -10,9 +10,13 @@ import FlexLayout from "../../components/ui/Flex/Flex";
 export default function ProtocolPartTwo2() {
   return (
     <FlexLayout defaultOpen={0} navigationType="Accordion">
-      <Box w={"100%"}>
+
+      <Box w={"100%"} display={"flex"}
+      flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
+
         <Header text="Protocol" />
-        <Progress value={33} />
+        <Progress value={33} w={"100%"}/>
+
         <FormControl sx={conteiner}>
           <FormControl sx={flex}>
             <AddTextTable text="Keywords" placeholder="Enter keywords" />
@@ -41,7 +45,9 @@ export default function ProtocolPartTwo2() {
         <Box sx={btnBox}>
           <NavButton text="Next" path="/newRevision/protocolpartThree" w={"fit-content"} />
         </Box>
+
       </Box>
+      
     </FlexLayout>
   );
 }

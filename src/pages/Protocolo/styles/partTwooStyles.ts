@@ -1,7 +1,7 @@
 export const conteiner = {
   display: "flex",
   flexDir: "column",
-  gap: 20,
+  gap: 10,
   mt: 20,
   ml: "2%",
   w: "80%",
@@ -12,8 +12,9 @@ export const flex = {
 };
 
 export const btnBox = {
-  ml: "25rem",
-  alignSelf: "flex-end",
+  display: "flex",
+  justifyContent: "flex-end",
+  w: "48%",
   mt: 10,
   mb: 10,
 };
