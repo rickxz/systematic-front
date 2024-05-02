@@ -10,11 +10,11 @@ export default function InteractiveTable() {
 
   return (
     <TableContainer>
-      <Table variant="simple" size="md" w={"60vw"} border={"solid black 1px"} borderRadius={"16px"}>
-        <Thead>
+      <Table variant="striped" size="md" w={"60vw"} border={"solid black 1px"} borderRadius={"16px"}>
+        <Thead bgColor={"#303D50"}>
           <Tr>
             {headers.map((header) => (
-              <Th>{header}</Th>
+              <Th color={"#FDF0D5"}>{header}</Th>
             ))}
           </Tr>
         </Thead>
