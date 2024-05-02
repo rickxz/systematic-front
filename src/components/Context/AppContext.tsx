@@ -10,7 +10,8 @@ interface AppContextType {
   setItem: React.Dispatch<React.SetStateAction<string>>;
   renderForm: string;
   setRenderForm: React.Dispatch<React.SetStateAction<string>>;
-
+  activeButton: string;
+  setActiveButton: React.Dispatch<React.SetStateAction<string>>;
   selectionStudy: StudyInterface;
   setSelectionStudy: React.Dispatch<React.SetStateAction<StudyInterface>>;
   extractionStudy: StudyInterface;
