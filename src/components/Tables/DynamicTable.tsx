@@ -18,8 +18,7 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
   const { handleSort, sortedData } = useTableSorting(headerData, bodyData);
 
   return (
-    <TableContainer sx={tbConteiner} h={isKeyWordTable ? "50vh" : 250}
-    borderBottom={"1em solid #303D50"}>
+    <TableContainer sx={tbConteiner} h={isKeyWordTable ? 300 : 250} borderBottom={"1em solid #303D50"}>
       <Table variant={"striped"}>
         <Thead bgColor={"#303D50"}>
           <Tr>
