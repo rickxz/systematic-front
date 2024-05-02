@@ -7,7 +7,6 @@ export const formControl = {
   w: "80%",
 };
 export const buttonBox = {
-  alignSelf: "flex-end",
   mt: 10,
   mb: 10,
 };

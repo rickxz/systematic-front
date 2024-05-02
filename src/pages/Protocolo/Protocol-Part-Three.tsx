@@ -9,9 +9,10 @@ import FlexLayout from "../../components/ui/Flex/Flex";
 export default function ProtocolPartThree() {
   return (
     <FlexLayout navigationType="Accordion" defaultOpen={0}>
-      <Box w={"100%"}>
+      <Box w={"100%"} display={"flex"} 
+      justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
         <Header text="Protocol" />
-        <Progress value={66} />
+        <Progress w={"100%"} value={66} />
         <FormControl sx={formControl}>
           <InteractiveTable />
           <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" />
