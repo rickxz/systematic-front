@@ -9,7 +9,7 @@ import EventButton from "../../../components/Buttons/EventButton";
 import DynamicTable from "../../../components/Tables/DynamicTable";
 import useFetchTableData from "../../../hooks/fetch/useFetchTableData";
 import { btnStyles, conteiner, flex, inputconteiner, tableconteiner, textArea } from "../styles/finalizationStyles";
-import GridLayout from "../../../components/ui/Grid/Grid";
+import FlexLayout from "../../../components/ui/Flex/Flex";
 
 export default function Finalization() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
@@ -17,7 +17,7 @@ export default function Finalization() {
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
 
   return (
-    <GridLayout defaultOpen={2} navigationType="Accordion">
+    <FlexLayout defaultOpen={2} navigationType="Accordion">
       <Header text="Review Finalization" />
       <Flex sx={flex}>
         <Box sx={conteiner} ml={"2rem"}>
@@ -60,6 +60,6 @@ export default function Finalization() {
           />
         </Flex>
       </Box>
-    </GridLayout>
+    </FlexLayout>
   );
 }
