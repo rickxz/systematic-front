@@ -1,6 +1,6 @@
 import { Box, Flex, Textarea } from "@chakra-ui/react";
 import useInputState from "../../../hooks/useInputState";
-import GridLayout from "../../../components/ui/Grid/Grid";
+
 import Header from "../../../components/ui/Header/Header";
 import ComboBox from "../../../components/Inputs/ComboBox";
 import InputText from "../../../components/Inputs/InputText";
@@ -9,6 +9,7 @@ import EventButton from "../../../components/Buttons/EventButton";
 import DynamicTable from "../../../components/Tables/DynamicTable";
 import useFetchTableData from "../../../hooks/fetch/useFetchTableData";
 import { btnStyles, conteiner, flex, inputconteiner, tableconteiner, textArea } from "../styles/finalizationStyles";
+import FlexLayout from "../../../components/ui/Flex/Flex";
 
 export default function Finalization() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
@@ -16,10 +17,10 @@ export default function Finalization() {
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
 
   return (
-    <GridLayout defaultOpen={2} navigationType="Accordion">
+    <FlexLayout defaultOpen={2} navigationType="Accordion">
       <Header text="Review Finalization" />
       <Flex sx={flex}>
-        <Box sx={conteiner}>
+        <Box sx={conteiner} ml={"2rem"}>
           <Box sx={inputconteiner}>
             <InputText type="search" placeholder="Insert article's name" nome="search" />
             <SelectInput
@@ -27,6 +28,7 @@ export default function Finalization() {
               values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
               onSelect={handleSelectChange}
               selectedValue={selectedValue}
+              page={""}
             />
             <ComboBox
               options={headerData}
@@ -45,7 +47,7 @@ export default function Finalization() {
           </Box>
         </Box>
       </Flex>
-      <Box sx={tableconteiner}>
+      <Box sx={tableconteiner} ml={"2em"} mr={"2em"} w={"78vw"}>
         <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
         <Textarea sx={textArea} placeholder="Write stuff here..."></Textarea>
         <Flex justifyContent="flex-end">
@@ -58,6 +60,6 @@ export default function Finalization() {
           />
         </Flex>
       </Box>
-    </GridLayout>
+    </FlexLayout>
   );
 }

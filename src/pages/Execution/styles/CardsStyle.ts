@@ -7,6 +7,10 @@ export const Accordionbtn = {
 export const accordion = {
   w: "100%",
   justifySelf: "center",
+  bgColor: "#414B53",
+  color: "#969595",
+  borderBottomLeftRadius: "10px",
+  borderBottomRightRadius: "10px",
 };
 
 export const card = {
@@ -18,6 +22,9 @@ export const conteiner = {
   display: "flex",
   flexDir: "row",
   justifyContent: "space-between",
+  h: "6em",
+  borderTopLeftRadius: "10px",
+  borderTopRightRadius: "10px",
 };
 
 export const iconConteiner = {
@@ -31,6 +38,17 @@ export const iconConteiner = {
 export const testo = {
   ml: "5%",
   mt: 5,
+};
+
+export const btnConteinerAllBases = {
+  display: "flex",
+  flexDir: "row",
+  justifyContent: "flex-end",
+  columnGap: "7%",
+  w: "50%",
+  mt: 5,
+  mb: 3,
+  mr: 7,
 };
 
 export const btnConteiner = {

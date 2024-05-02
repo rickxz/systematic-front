@@ -18,7 +18,13 @@ export default function AddSelectTable({ options }: AddSelectTableProps) {
   return (
     <FormControl sx={conteiner} alignContent={"center"}>
       <FormControl sx={formcontrol}>
-        <SelectInput values={options} names={options} onSelect={handleSelectChange} selectedValue={selectedValue} />
+        <SelectInput
+          values={options}
+          names={options}
+          onSelect={handleSelectChange}
+          selectedValue={selectedValue}
+          page={"protocol"}
+        />
         <EventButton text="Add" event={handleSelectAddButtonClick} w={"10%"} />
       </FormControl>
 

@@ -17,18 +17,18 @@ interface AppContextType {
     setExtractionStudy: React.Dispatch<React.SetStateAction<StudyInterface>>;
 }
 
-const AppContext = createContext<AppContextType | undefined >(undefined);
+const AppContext = createContext<AppContextType | undefined>(undefined);
 
 interface AppProviderProps {
-    children: ReactNode;
+  children: ReactNode;
 }
-
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     const [button, setButton] = useState<string>("");
     const [item, setItem] = useState<string>("");
     const [renderForm, setRenderForm] = useState<string>("Login");
     const [selectionStudy, setSelectionStudy] = useState<StudyInterface>(showFirstPossibleStudy(ExcutionFaseEnum.SELECTION));
     const [extractionStudy, setExtractionStudy] = useState<StudyInterface>(showFirstPossibleStudy(ExcutionFaseEnum.EXTRACTION));
+    const [activeButton, setActiveButton] = useState<string>("");
 
     return (
         <AppContext.Provider value={{ button, setButton, item, setItem, renderForm, setRenderForm, selectionStudy, setSelectionStudy, extractionStudy, setExtractionStudy}}>

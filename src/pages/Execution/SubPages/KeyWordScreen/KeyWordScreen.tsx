@@ -1,14 +1,18 @@
-import GridLayout from "../../../../components/ui/Grid/Grid";
 import Header from "../../../../components/ui/Header/Header";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
 import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
+import { Flex } from "@chakra-ui/react";
+import FlexLayout from "../../../../components/ui/Flex/Flex";
 
 export default function KeyWordScreen() {
   const { headerData, bodyData } = useFetchTableData("/data/keywordData.json");
   return (
-    <GridLayout defaultOpen={1} navigationType="Accordion">
+    <FlexLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Keyword Screen" />
-      <DynamicTable headerData={headerData} bodyData={bodyData} tableType="keyword" filteredColumns={[]} />
-    </GridLayout>
+
+      <Flex marginLeft={"4em"} marginRight={"4em"} w={"78vw"}>
+        <DynamicTable headerData={headerData} bodyData={bodyData} type="keyword" filteredColumns={[]} />
+      </Flex>
+    </FlexLayout>
   );
 }

@@ -1,27 +1,34 @@
 import { useEffect, useState } from "react";
 
-const useFetchReferenceData = (url: string) => {
-    const [reference, setReference] = useState([]);
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
+interface ReferenceData {
+  authors: string;
+  year: string;
+  fullReference: string;
+}
 
-                if (data) {
-                    setReference(data);
-                } else {
-                    console.error("O arquivo JSON não possui dados");
-                }
-            } catch (error) {
-                console.error("Erro ao buscar dados: ", error);
-            }
-        };
+const useFetchReferenceData = (url: string): ReferenceData[] => {
+  const [reference, setReference] = useState<ReferenceData[]>([]);
 
-        fetchData();
-    }, [url]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const data = (await response.json()) as ReferenceData[];
 
-    return reference ;
+        if (data) {
+          setReference(data);
+        } else {
+          console.error("O arquivo JSON não possui dados");
+        }
+      } catch (error) {
+        console.error("Erro ao buscar dados: ", error);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  return reference;
 };
 
 export default useFetchReferenceData;

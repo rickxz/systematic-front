@@ -36,7 +36,7 @@ export default function Header({ show }: IHeaderProps) {
         )}
       </Flex>
       <Flex gap="5%">
-        <HeaderButton text="Sing Up" path="/landing" type="Register" />
+        <HeaderButton text="Sign Up" path="/landing" type="Register" />
         <HeaderButton text="Log In" path="/landing" type="Login" />
       </Flex>
     </Flex>

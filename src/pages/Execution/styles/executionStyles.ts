@@ -1,10 +1,11 @@
 export const conteiner = {
   mt: 10,
-  w: "80%",
+  w: "98%",
   display: "flex",
   flexWrap: "wrap",
   flexDir: "column",
   rowGap: 5,
+  ml: "1em",
 };
 
 export const inputconteiner = {
@@ -14,6 +15,7 @@ export const inputconteiner = {
   alignContent: "center",
   justifyContent: "space-between",
   gap: 5,
+  ml: "2em",
 };
 
 export const ckconteiner = {
@@ -23,11 +25,11 @@ export const ckconteiner = {
 };
 
 export const btnconteiner = {
+  w: "fit-content",
   display: "flex",
   flexDir: "row",
   alignItems: "center",
   columnGap: 5,
   alignSelf: "baseline",
-  ml: "70%",
   mt: 10,
 };

@@ -4,6 +4,7 @@ export const conteiner = {
   gap: 20,
   mt: 20,
   ml: "2%",
+  w: "80%",
 };
 
 export const flex = {

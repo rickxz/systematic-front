@@ -45,8 +45,8 @@ export default function TableRow({
     <>
       <Tr key={rowIndex}>
         {!isKeyWordTable && (
-          <Td>
-            <Checkbox />
+          <Td bgColor={"#9CB0C0"}>
+            <Checkbox borderColor={"#2A4F6C"}/>
           </Td>
         )}
         {rowData.map((cell, cellIndex) => (
@@ -56,6 +56,7 @@ export default function TableRow({
             key={cellIndex}
             display={isKeyWordTable ? "" : getColumnVisibility(headerData[cellIndex].toLowerCase()) ? "none" : ""}
             textAlign={"center"}
+            bgColor={"#9CB0C0"}
           >
             {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
           </Td>
