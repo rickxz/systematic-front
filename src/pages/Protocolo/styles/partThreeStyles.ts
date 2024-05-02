@@ -7,6 +7,9 @@ export const formControl = {
   w: "80%",
 };
 export const buttonBox = {
+  display: "flex",
+  justifyContent: "flex-end",
+  w: "48%",
   mt: 10,
   mb: 10,
 };
