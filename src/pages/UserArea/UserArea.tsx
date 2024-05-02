@@ -11,7 +11,7 @@ export default function UserArea() {
   return (
     <FlexLayout defaultOpen={0} navigationType="Default">
       <Header text="My Systematic Reviews" />
-      <Flex sx={flexStyles}>
+      <Flex sx={flexStyles} w={"85vw"}>
         {cardData.map((data) => {
           return (
             <RevisionCard

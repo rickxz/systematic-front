@@ -1,7 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { Upload } from "../../components/upload/Upload";
 import useInputState from "../../hooks/useInputState";
-import GridLayout from "../../components/ui/Grid/Grid";
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
 import DynamicTable from "../../components/Tables/DynamicTable";
@@ -11,12 +10,13 @@ import { ckbox, conteiner, navbtnStyles } from "./styles/searchSessionStyles";
 import ComboBox from "../../components/Inputs/ComboBox";
 import { flex } from "../NovaRevisao/styles/finalizationStyles";
 import EventButton from "../../components/Buttons/EventButton";
+import FlexLayout from "../../components/ui/Flex/Flex";
 
 export default function SearchSession() {
   const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   return (
-    <GridLayout navigationType="Accordion" defaultOpen={1}>
+    <FlexLayout navigationType="Accordion" defaultOpen={1}>
       <Box w={"80vw"} display={"flex"} flexDir={"column"} alignSelf={"center"} justifySelf={"center"}>
         <Header text={"Database Name-Studies Identification"} />
         <Box sx={conteiner}>
@@ -52,6 +52,6 @@ export default function SearchSession() {
         <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
         <NavButton text={"Back"} path={"/newRevision/identification"} sx={navbtnStyles} />
       </Box>
-    </GridLayout>
+    </FlexLayout>
   );
 }
