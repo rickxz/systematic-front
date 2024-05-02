@@ -4,11 +4,11 @@ import InputText from "../../components/Inputs/InputText";
 import NavButton from "../../components/Buttons/NavButton";
 import InputTextArea from "../../components/Inputs/InputTextArea";
 import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
-import GridLayout from "../../components/ui/Grid/Grid";
+import FlexLayout from "../../components/ui/Flex/Flex";
 
 export default function NovaRevisao() {
   return (
-    <GridLayout navigationType="Accordion" defaultOpen={0}>
+    <FlexLayout navigationType="Accordion" defaultOpen={0}>
       <Header text="New Systematic Review" />
 
       <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"70%"} alignItems={"center"} ml={"10em"}>
@@ -22,6 +22,6 @@ export default function NovaRevisao() {
           <NavButton path={"/newRevision/protocol"} text="Create new Review" />
         </Box>
       </FormControl>
-    </GridLayout>
+    </FlexLayout>
   );
 }
