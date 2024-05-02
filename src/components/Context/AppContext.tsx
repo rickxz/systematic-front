@@ -33,6 +33,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [extractionStudy, setExtractionStudy] = useState<StudyInterface>(
     showFirstPossibleStudy(ExcutionFaseEnum.EXTRACTION)
   );
+  const [activeButton, setActiveButton] = useState<string>("");
 
   return (
     <AppContext.Provider
@@ -47,6 +48,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         setSelectionStudy,
         extractionStudy,
         setExtractionStudy,
+        activeButton,
+        setActiveButton,
       }}
     >
       {children}
