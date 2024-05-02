@@ -31,7 +31,7 @@ export default function AccordionElement({
       <Icon as={icon} /> {title}
     </Box>
   );
-  
+
   const context = useContext(SidebarContext);
   if (!context) {
     return <>Problema com useContext em NavItem.tsx</>;
@@ -39,9 +39,8 @@ export default function AccordionElement({
   const isOpen = index === defaultOpen;
 
   return (
-    <AccordionItem alignContent={isSmallSize ? "center" : "flex-start"}
-    w={isSmallSize ? "75px" : "180px"}>
-      <AccordionButton  bg={isOpen ? "#FDF0D5" : "#301E1A"} color={isOpen ? "#301E1A" : "#FDF0D5"}>
+    <AccordionItem alignContent={isSmallSize ? "center" : "flex-start"} w={isSmallSize ? "75px" : "180px"}>
+      <AccordionButton bg={isOpen ? "#FDF0D5" : "#282828"} color={isOpen ? "#301E1A" : "#FDF0D5"}>
         {isSmallSize && <Icon as={icon} />}
         {shouldRenderIcon}
         <AccordionIcon />
@@ -49,7 +48,7 @@ export default function AccordionElement({
       <AccordionPanel padding={"0px"}>
         {names.map((name) => (
           <Link to={`${basePath}/${name.toLowerCase()}`} key={name}>
-            <NavItem title={name} navSize={navSize} submenu={true}/>
+            <NavItem title={name} navSize={navSize} submenu={true} />
           </Link>
         ))}
       </AccordionPanel>
