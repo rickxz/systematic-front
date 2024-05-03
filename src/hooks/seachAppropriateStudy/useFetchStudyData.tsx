@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { StudyInterface } from "../../../public/interfaces/IStudy";
 
-export default function useFetchStudyData (url: string) {
-  const [studyData, setStudyData] = useState<StudyInterface[]>([]);
+export default function useFetchStudyData (url: string):  StudyInterface[] {
+  const [studiesData, setStudyData] = useState<StudyInterface[]>([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,5 +24,6 @@ export default function useFetchStudyData (url: string) {
     fetchData();
   }, [url]);
 
-  return studyData;
+
+  return studiesData;
 };
