@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import useInputState from "../../../../hooks/useInputState";
-import FlexLayout from "../../../../components/ui/Flex/Flex";
 import Header from "../../../../components/ui/Header/Header";
+import FlexLayout from "../../../../components/ui/Flex/Flex";
 import ComboBox from "../../../../components/Inputs/ComboBox";
 import InputText from "../../../../components/Inputs/InputText";
 import SelectInput from "../../../../components/Inputs/SelectInput";

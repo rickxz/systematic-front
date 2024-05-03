@@ -10,23 +10,24 @@ export default function InteractiveTable() {
 
   return (
     <TableContainer>
-      <Table variant="simple" size="md" w={"60vw"} border={"solid black 1px"} borderRadius={"16px"}>
-        <Thead>
+      <Table variant="striped" size="md" w={"60vw"} border={"solid black 1px"} borderRadius={"16px"}>
+        <Thead bgColor={"#303D50"}>
           <Tr>
             {headers.map((header) => (
-              <Th>{header}</Th>
+              <Th color={"#FDF0D5"}>{header}</Th>
             ))}
           </Tr>
         </Thead>
         <Tbody>
           {rows.map((row, index) => (
-            <Tr key={index}>
+            <Tr key={index} bgColor={"#839CB0"}>
               <Td>{row.id}</Td>
               <Td>
-                <Input value={row.question} onChange={(e) => handleQuestionChange(index, e.target.value)} />
+                <Input value={row.question} onChange={(e) => handleQuestionChange(index, e.target.value)}
+                border={"solid 1px #303D50"} />
               </Td>
               <Td>
-                <Select value={row.type} onChange={(e) => handleTypeChange(index, e.target.value)}>
+                <Select border={"solid 1px #303D50"} value={row.type} onChange={(e) => handleTypeChange(index, e.target.value)}>
                   {options.map((opt, i) => (
                     <option key={i} value={opt.toLowerCase()}>
                       {opt}
@@ -49,7 +50,7 @@ export default function InteractiveTable() {
               </Td>
             </Tr>
           ))}
-          <Tr>
+          <Tr bgColor={"#303D50"}>
             <Td></Td>
             <Td colSpan={2}>
               <Button size="sm" leftIcon={<AddIcon />} onClick={addRow}>

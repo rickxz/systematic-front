@@ -1,6 +1,6 @@
 export const gridItem = {
   textAlign: "center",
   justifySelf: "center",
-  w: "90vw",
+  w: "100vw",
   bgColor: "#E5EBEF",
 };
