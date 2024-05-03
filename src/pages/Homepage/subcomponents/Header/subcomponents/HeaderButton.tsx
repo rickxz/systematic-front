@@ -17,7 +17,7 @@ export default function HeaderButton({ text, path, type }: IHeaderButton) {
 
   function handleClick() {
     if (context) {
-      context.SetRenderForm(type);
+      context.setRenderForm(type);
       context.setActiveButton(type);
     }
   }

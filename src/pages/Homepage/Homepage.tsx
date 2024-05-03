@@ -7,10 +7,11 @@ import HeroSection from "./subcomponents/HeroSection/HeroSection";
 import img2 from "/photos/homepagePhotos/examploPhoto02.png";
 import img1 from "/photos/homepagePhotos/examploPhoto01.png";
 import exemple from "/photos/homepagePhotos/examploPhoto01.png";
+import "../../index.css";
 
 export default function Homepage() {
   return (
-    <Box height={"80vh"}>
+    <Box height={"100vh"} overflow={"auto"}>
       <Header show={true} />
 
       <Flex bg="gray.200" direction={"column"} pt="80px">

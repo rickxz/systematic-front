@@ -50,7 +50,12 @@ export default function SearchSession() {
         </Box>
         <Box w={"78vw"} alignSelf={"center"} justifySelf={"center"}>
           {" "}
-          <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+          <DynamicTable
+            headerData={headerData}
+            bodyData={bodyData}
+            filteredColumns={checkedValues}
+            tableType={"selection"}
+          />
           <NavButton text={"Back"} path={"/newRevision/identification"} sx={navbtnStyles} />
         </Box>
       </Box>

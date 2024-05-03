@@ -18,7 +18,7 @@ export default function LandingPage() {
       <Box sx={conteiner}>
         <Box sx={content}>
           <Box sx={formConteiner}></Box>
-          <RenderForm renderForm={context.renderForm} setRenderForm={context.SetRenderForm} />
+          <RenderForm renderForm={context.renderForm} setRenderForm={context.setRenderForm} />
         </Box>
       </Box>
     </Flex>
