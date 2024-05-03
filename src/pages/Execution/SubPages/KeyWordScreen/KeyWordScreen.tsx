@@ -11,7 +11,7 @@ export default function KeyWordScreen() {
       <Header text="Keyword Screen" />
 
       <Flex marginLeft={"4em"} marginRight={"4em"} w={"78vw"}>
-        <DynamicTable headerData={headerData} bodyData={bodyData} type="keyword" filteredColumns={[]} />
+        <DynamicTable headerData={headerData} bodyData={bodyData} tableType="keyword" filteredColumns={[]} />
       </Flex>
     </FlexLayout>
   );

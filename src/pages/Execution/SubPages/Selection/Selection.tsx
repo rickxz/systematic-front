@@ -49,7 +49,7 @@ export default function Selection() {
         </Box>
 
         <Box ml={"3em"} mr={"3em"} w={"78vw"}>
-          <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+          <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} tableType={"selection"} />
           <StudySelectionArea />
         </Box>
       </FlexLayout>
