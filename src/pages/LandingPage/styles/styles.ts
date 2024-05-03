@@ -1,22 +1,18 @@
 export const conteiner = {
-  borderWidth: "1px",
-  borderRadius: "lg",
   display: "flex",
-  flexDir: "row",
-  justifyContent: "space-between",
+  justifyContent: "center",
   alignItems: "center",
-  mt: "9em",
-  mb: 20,
-  h: "500px",
-  gap: 10,
+  h: "100vh",
 };
 
 export const content = {
+  borderWidth: "1px",
+  borderRadius: "lg",
   display: "flex",
   flexDir: "column",
-  gap: 1,
-  justifyContent: "flex-end",
-  w: "50%",
+  justifyContent: "center",
+  alignItems: "center",
+  w: "500px",
   mt: "5em",
   ml: "5em",
 };
@@ -24,6 +20,8 @@ export const content = {
 export const formConteiner = {
   display: "flex",
   flexDir: "row",
+  ml: "-57%",
   gap: 4,
   mb: 3,
+  mt: 3,
 };

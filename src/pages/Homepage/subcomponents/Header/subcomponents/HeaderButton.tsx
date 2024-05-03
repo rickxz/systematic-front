@@ -1,32 +1,37 @@
-import { Button} from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { Button } from "@chakra-ui/react";
+import { Link, useLocation } from "react-router-dom";
+import { useContext } from "react";
 import { buttonTheme } from "./styles/ButtonTheme";
 import AppContext from "../../../../../components/Context/AppContext";
 
 interface IHeaderButton {
-    text: string,
-    path: string,
-    type: string,
+  text: string;
+  path: string;
+  type: string;
 }
 
+export default function HeaderButton({ text, path, type }: IHeaderButton) {
+  const location = useLocation();
+  const context = useContext(AppContext);
+  const isActive = context?.activeButton === type && location.pathname === "/landing";
 
-export default function HeaderButton({text, path, type}: IHeaderButton) {
-    const [onHover, SetOnHover] = useState(false);
-    const context = useContext(AppContext);
-    function handleClick() {
-        if (type == "Login") context?.SetRenderForm("Login");
-        if (type == "Register") context?.SetRenderForm("Register");
-
+  function handleClick() {
+    if (context) {
+      context.SetRenderForm(type);
+      context.setActiveButton(type);
     }
+  }
 
-    return (
-        <Link to={path}>
-            <Button color={onHover? "black ": "white"} variant="outline" sx={buttonTheme}
-            onMouseEnter={() => SetOnHover(true)}
-            onMouseLeave={() => SetOnHover(false)}
-            onClick={handleClick}
-            >{text}</Button>
-        </Link>
-    );
+  return (
+    <Link to={path}>
+      <Button
+        color={isActive ? "black" : "white"}
+        bgColor={isActive ? "white" : "rgba(0,0,0,0)"}
+        sx={buttonTheme}
+        onClick={handleClick}
+      >
+        {text}
+      </Button>
+    </Link>
+  );
 }

@@ -18,9 +18,9 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
   const { handleSort, sortedData } = useTableSorting(headerData, bodyData);
 
   return (
-    <TableContainer sx={tbConteiner} h={isKeyWordTable ? "50vh" : 250}>
+    <TableContainer sx={tbConteiner} h={isKeyWordTable ? 300 : 250} borderBottom={"1em solid #303D50"}>
       <Table variant={"striped"}>
-        <Thead>
+        <Thead bgColor={"#303D50"}>
           <Tr>
             <Th></Th>
             {headerData.map((header) => (
@@ -31,6 +31,7 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
                 id={header.toLowerCase()}
                 display={getColumnVisibility(header.toLowerCase()) ? "none" : ""}
                 textAlign={"center"}
+                color={"#FDF0D5"}
               >
                 {header}
               </Th>

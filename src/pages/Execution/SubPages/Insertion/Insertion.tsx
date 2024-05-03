@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import useInputState from "../../../../hooks/useInputState";
-import GridLayout from "../../../../components/ui/Grid/Grid";
 import Header from "../../../../components/ui/Header/Header";
+import FlexLayout from "../../../../components/ui/Flex/Flex";
 import ComboBox from "../../../../components/Inputs/ComboBox";
 import InputText from "../../../../components/Inputs/InputText";
 import NavButton from "../../../../components/Buttons/NavButton";
@@ -16,9 +16,9 @@ export default function Insertion() {
   const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   return (
-    <GridLayout defaultOpen={1} navigationType="Accordion">
+    <FlexLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Insertion" />
-      <Box sx={conteiner}>
+      <Box sx={conteiner} marginLeft={"1em"}>
         <Box sx={inputconteiner}>
           <InputText type="search" placeholder="Insert article's name" nome="search" />
           <SelectInput
@@ -26,6 +26,7 @@ export default function Insertion() {
             values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
             onSelect={handleSelectChange}
             selectedValue={selectedValue}
+            page={" insertion"}
           />
           <ComboBox
             options={headerData}
@@ -43,17 +44,20 @@ export default function Insertion() {
           />
         </Box>
       </Box>
-      <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
-      <Box sx={btnconteiner}>
-        <NavButton text={"Back"} path={"/newRevision/identification"} w={"200px"} />
-        <EventButton
-          event={function (): void {
-            console.log("Adicionando novo paper!");
-          }}
-          text={"Add Paper"}
-          w={"200px"}
-        />
+
+      <Box marginLeft={"3em"} marginRight={"3em"} w={"78vw"}>
+        <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+        <Box sx={btnconteiner}>
+          <NavButton text={"Back"} path={"/newRevision/identification"} w={"200px"} />
+          <EventButton
+            event={function (): void {
+              console.log("Adicionando novo paper!");
+            }}
+            text={"Add Paper"}
+            w={"200px"}
+          />
+        </Box>
       </Box>
-    </GridLayout>
+    </FlexLayout>
   );
 }

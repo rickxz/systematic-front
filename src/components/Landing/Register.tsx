@@ -35,6 +35,7 @@ export default function Register({ handleRender }: iRegisterProps) {
           names={["Brazil", "England", "France", "Spain"]}
           onSelect={handleSelectChange}
           selectedValue={selectedValue}
+          page={"register"}
         />
         <PasswordInput text="Password..." handlechange={handlePasswordChange} isValid={passwordMatch} />
         <PasswordInput

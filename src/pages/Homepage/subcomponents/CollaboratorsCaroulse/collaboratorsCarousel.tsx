@@ -6,7 +6,7 @@ import shuffleElements from "../../../../hooks/shuffleElements/shuffleElements";
 import { Link } from "react-router-dom";
 
 export default function CollaboratorsCarousel() {
-  const { collabInfos } = useFecthCollaboratorsInfo("./../../../public/data/collaboratorsInfo.json");
+  const { collabInfos } = useFecthCollaboratorsInfo("/data/collaboratorsInfo.json");
   const collabInfosShuffled = shuffleElements(collabInfos);
   [];
 

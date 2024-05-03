@@ -5,6 +5,7 @@ export const formcontrolConteiner = {
   alignItems: "center",
   w: "80%",
   rowGap: 3,
+  pr: 5,
 };
 
 export const bxconteiner = {

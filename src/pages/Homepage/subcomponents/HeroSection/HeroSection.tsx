@@ -25,7 +25,7 @@ export default function HeroSection() {
           </Button>
         </Flex>
         <Image
-          src="../../../../../public/photos/homepagePhotos/HeroSectionPic.png"
+          src="/photos/homepagePhotos/HeroSectionPic.png"
           alt={`Foto de diferentes dispositivos eletronicos conectados a ferramenta StArt 
               - computador deskot, smart phone e tablet.`}
           borderRadius="30px"
