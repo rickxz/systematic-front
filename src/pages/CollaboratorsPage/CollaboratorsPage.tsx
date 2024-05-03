@@ -9,9 +9,9 @@ export default function CollaboratorsPage() {
   console.log(collabInfos);
 
   return (
-    <Flex direction={"column"} justify={"space-between"} bgColor={"#C9D9E5"}>
+    <Flex direction={"column"} h="100vh" justify={"space-between"} bgColor={"#C9D9E5"} overflow={"auto"}>
       <Header show={false} />
-      <Flex mt="150px" mb="50px" h="100%" alignItems={"center"} direction={"column"}>
+      <Flex mt="150px" mb="50px" alignItems={"center"} direction={"column"}>
         <Heading>Colaboradores</Heading>
         <Flex wrap={"wrap"} h="100%" align="center" justify="center" gap={10}>
           {collabInfos.map((person) => {
