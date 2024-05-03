@@ -25,9 +25,10 @@ export const ckconteiner = {
 };
 
 export const btnconteiner = {
-  w: "fit-content",
+  w: "100%",
   display: "flex",
   flexDir: "row",
+  justifyContent: "flex-end",
   alignItems: "center",
   columnGap: 5,
   alignSelf: "baseline",
