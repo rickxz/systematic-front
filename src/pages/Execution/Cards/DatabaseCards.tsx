@@ -39,6 +39,7 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
             color={"#FDF0D5"}
             border={"1px solid #FDF0D5"}
             fontWeight="bold"
+            borderRadius="3px"
           />
           <EventButton
             fontSize={type === "allData" ? 16 : 13}
@@ -46,6 +47,7 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
             w={"170px"}
             color={type === "allData" ? "#C9D9E5" : "#301E1A"}
             fontWeight="bold"
+            borderRadius="3px"
             event={function (): void {
               console.log("Session deleted");
             }}
