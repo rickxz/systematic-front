@@ -64,6 +64,7 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
       background={styles.background}
       id={id}
       w={"100%"}
+      minHeight={"100vh"}
     >
       {" "}
       <Box
@@ -75,44 +76,66 @@ export default function Article({ header, bodyText, src, alt, imgPosition, style
         gap={10}
         w={"100% "}
       >
-        <Flex gap="50px" direction={imgDirection} justifyContent={"space-between"}>
+        <Flex gap="10em" direction={imgDirection} justifyContent={"center"}>
           {imgPosition === "left" || imgPosition === "top" ? (
             <>
               <Image
                 src={src}
                 alt={alt}
-                borderRadius="30px"
+                borderRadius="3px"
                 order={imgIndex}
                 maxW={"400px"}
                 maxHeight={"400px"}
                 objectFit={"scale-down"}
               />
-              <Flex direction="column" w={"50%"} alignItems="center" gap="50px" order={textIndex}>
-                <Heading color={styles.textColor} alignSelf={"center"}>
+
+              <Flex direction="column" w={"35%"} 
+              justifyContent={"flex-end"} gap="50px" order={textIndex}>
+
+                <Heading color={styles.textColor} >
                   {header}
                 </Heading>
                 <Text color={styles.textColor}>{bodyText}</Text>
-                <Button w="fit-content" colorScheme={styles.buttonColor}>
+
+                <Button borderRadius={"3px"} w="30%" colorScheme={styles.buttonColor}>
                   Saiba mais
                 </Button>
+
               </Flex>
+
             </>
           ) : (
             <>
-              <Flex direction="column" alignItems="center" gap="50px" order={textIndex} w={" 300px"}>
-                <Heading color={styles.textColor} alignSelf={"center"}>
+              <Flex direction="column" w={"35%"} justifyContent={"flex-start"} gap="50px" order={textIndex}>
+
+                <Heading color={styles.textColor}>
                   {header}
                 </Heading>
+
                 <Text color={styles.textColor}>{bodyText}</Text>
-                <Button w="40%" colorScheme={styles.buttonColor}>
+
+                <Button w="30%" borderRadius={"3px"} colorScheme={styles.buttonColor}>
                   Saiba mais
                 </Button>
+
               </Flex>
-              <Image src={src} alt={alt} borderRadius="30px" order={imgIndex} maxW={"500px"} maxHeight={"500px"} />
+
+              <Image 
+                src={src}
+                alt={alt}
+                borderRadius="3px"
+                order={imgIndex}
+                maxW={"400px"}
+                maxHeight={"400px"}
+                objectFit={"scale-down"} />
             </>
+
           )}
+
         </Flex>
+
       </Box>
+
     </Flex>
   );
 }
