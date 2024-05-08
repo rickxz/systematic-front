@@ -4,9 +4,8 @@ import useFecthCollaboratorsInfo from "../../../hooks/fetch/useFetchCollaborator
 export default function CollaboratorsCarrocel() {
     const { collabInfos } = useFecthCollaboratorsInfo("./../../../../public/data/collaboratorsInfo.json");
 
-
     return (
-        <Flex >
+        <Flex>
             {collabInfos.map((person) => (
                 <Flex h="100px" w="100px" gap="20px">
                     <Image src={person.photo} alt={"foto de " + person.name}/>
