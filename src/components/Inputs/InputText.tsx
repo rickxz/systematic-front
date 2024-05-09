@@ -22,6 +22,7 @@ export default function InputText({ placeholder, type, nome, onChange }: ITextFi
           onChange={onChange}
           w={isSearchField ? "250px" : "100%"}
           bgColor={"#C9D9E5"}
+          borderRadius={"3px"}
           _placeholder={{ opacity: 1, color: "gray.500" }}
           focusBorderColor="#526D82"
         />
