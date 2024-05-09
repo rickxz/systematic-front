@@ -11,24 +11,32 @@ export default function CollaboratorsCarousel() {
   [];
 
   return (
-    <Flex direction={"column"} justify={"space-between"} alignItems={"center"}>
-      <div id="colaboradores">
-        <Flex mt="150px" mb="50px" h="100%" alignItems={"center"} direction={"column"} pb={"5%"}>
-          <Heading pb={"15%"}>Colaboradores</Heading>
-          <Flex wrap={"wrap"} h="100%" align="center" justify="center">
-            <Carousel>
-              {collabInfosShuffled.map((person) => {
-                return <CollaboratorCard collaborator={person} />;
-              })}
-            </Carousel>
-          </Flex>
-          <Button bgColor={"gray"} color={"white"}>
-            <Link to={"/collaborators"} target="_blank">
-              Veja todos os colaboradores
-            </Link>
-          </Button>
+    <Flex id="colaboradores" minHeight={"100vh"} direction={"column"} justify={"center"} alignItems={"center"}>
+
+      <Flex h="100%" alignItems={"center"} direction={"column"}>
+
+        <Heading mb={"1.5em"}>Colaboradores</Heading>
+
+        <Flex wrap={"wrap"} h="100%" align="center" justify="center">
+
+          <Carousel>
+            {collabInfosShuffled.map((person) => {
+              return <CollaboratorCard collaborator={person} />;
+            })}
+          </Carousel>
+
         </Flex>
-      </div>
+
+        <Button borderRadius={"3px"} bgColor={"gray"} color={"white"}>
+
+          <Link to={"/collaborators"} target="_blank">
+            Veja todos os colaboradores
+          </Link>
+
+        </Button>
+
+      </Flex>
+
     </Flex>
   );
 }

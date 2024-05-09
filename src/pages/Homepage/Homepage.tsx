@@ -14,7 +14,7 @@ export default function Homepage() {
     <Box height={"100vh"} overflow={"auto"}>
       <Header show={true} />
 
-      <Flex bg="gray.200" direction={"column"} pt="80px">
+      <Flex bg="gray.200" direction={"column"} pt="60px">
         <HeroSection />
 
         <Article

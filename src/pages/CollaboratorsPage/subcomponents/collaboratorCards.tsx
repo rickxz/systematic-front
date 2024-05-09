@@ -66,8 +66,12 @@ export default function CollaboratorCard({ collaborator }: { collaborator: Colla
             </Link>
           </Box>
         </Flex>
-        <Text>{collaborator.name}</Text>
-        <Text>{collaborator.filiacao}</Text>
+
+        <Flex mt="0.5em" direction={"column"} textAlign={"center"}>
+          <Text fontWeight={"bold"}>{collaborator.name}</Text>
+          <Text>{collaborator.filiacao}</Text>
+        </Flex>
+        
       </Flex>
     </>
   );
