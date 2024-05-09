@@ -48,7 +48,7 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
             <Center>
               <Stack direction={"row"} p="2">
                 <Text fontSize={"lg"}>Study Data</Text>
-                <IconButton aria-label="Edit Study Data" w="28px" h="28px" icon={<FaPen />} />
+                <IconButton aria-label="Edit Study Data" w="28px" h="28px" icon={<FaPen />} borderRadius={"3px"}/>
               </Stack>
             </Center>
             <Flex marginBottom={"7px"} justify={"center"}>

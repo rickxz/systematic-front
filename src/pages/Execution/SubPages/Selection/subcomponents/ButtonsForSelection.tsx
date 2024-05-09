@@ -51,11 +51,11 @@ export default function ButtonsForSelection() {
         </Flex>
 
         <Flex sx={buttonconteiner}>
-          <Button>Previous</Button>
-          <Button>Next</Button>
+          <Button borderRadius={"3px"}>Previous</Button>
+          <Button borderRadius={"3px"}>Next</Button>
         </Flex>
 
-        <Button>Redifine</Button>
+        <Button borderRadius={"3px"}>Redifine</Button>
       </Flex>
     </>
   );
