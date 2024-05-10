@@ -46,12 +46,6 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
         <Flex sx={isTypeSelection ? selectionSX : extractionSX}>
 
             <Flex flexDirection="column">
-              <Center>
-                <Flex direction={"row"} p="2">
-                  <Text fontSize={"lg"}>Study Data</Text>
-                  <IconButton aria-label="Edit Study Data" w="28px" h="28px" icon={<FaPen />} />
-                </Flex>
-              </Center>
 
               <Flex display="flex" flexDirection="row" gap={"4"} fontFamily={"10"}>
 
