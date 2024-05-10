@@ -21,7 +21,7 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
   const isTypeSelection: boolean = type === "Selection";
 
   const selectionSX = {
-    bg: "gray.300",
+    bg: "white",
     width: "100%",
     height: "100%",
     flexDirection: "column",
