@@ -12,7 +12,7 @@ export default function StudySelectionArea() {
       <Flex mt="10" direction="column" bg="gray.600" w="auto" p="5" alignItems={"center"}>
         <ButtonsForSelection />
         <Box w={"100%"} bg="gray.200">
-          {studyDataAvailable && <StudyDataFiel studyData={[studyData[0]]} type="Selection" />}
+          {studyDataAvailable && <StudyDataFiel studyData={studyData} type="Selection" />}
         </Box>
       </Flex>
     </>
