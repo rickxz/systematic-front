@@ -1,5 +1,5 @@
 import { FaPen } from "react-icons/fa";
-import { IconButton, Flex, Stack, Text, Center } from "@chakra-ui/react";
+import { IconButton, Flex, Text, Center } from "@chakra-ui/react";
 
 interface IStudyData {
   title: string;
@@ -19,7 +19,6 @@ interface IStudyDataFiel {
 export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
   const isTypeValid: boolean = type === "Selection" || type === "Extraction";
   const isTypeSelection: boolean = type === "Selection";
-  var openStudyIndex: number = 1;
 
   const selectionSX = {
     bg: "gray.300",
@@ -65,7 +64,7 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
                   </Text>
                 </Flex>
 
-                <Flex direction={"column"} textAlign={"justify"} w="80%">
+                <Flex direction={"column"} textAlign={"justify"} w="80%" gap="10">
                   <Text fontSize={"40"} fontWeight={"bold"} fontFamily={"Boboni"} lineHeight="1">
                     {studyData[0].title}
                   </Text>
