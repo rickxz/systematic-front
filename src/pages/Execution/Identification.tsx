@@ -19,7 +19,7 @@ export default function Identification() {
         flexDirection={"column"}
         w={"85vw"}
       >
-        <Box borderRadius={"30px"} h={"fit-content"}>
+        <Box borderRadius={"3px"} h={"fit-content"}>
           <DataBaseCard text="All data bases" type="allData" />
         </Box>
 

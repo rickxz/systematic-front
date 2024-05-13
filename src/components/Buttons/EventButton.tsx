@@ -12,12 +12,14 @@ const variants = {
     color: "#E5EBEF",
     hoverBgColor: "#C9D9E5",
     hoverColor: "#526D82",
+    borderRadius: "3px",
   },
   dark: {
     bgColor: "#FDF0D5",
     color: "#301E1A",
     hoverBgColor: "#301E1A",
     hoverColor: "#FDF0D5",
+    borderRadius: "3px",
   },
 }
 
@@ -26,7 +28,7 @@ export default function EventButton({ event, text, variant="default", ...buttonP
     event();
   };
 
-  const { bgColor, color, hoverBgColor, hoverColor } = variants[variant];
+  const { bgColor, color, hoverBgColor, hoverColor, borderRadius} = variants[variant];
 
   return (
     <Button 
@@ -36,7 +38,7 @@ export default function EventButton({ event, text, variant="default", ...buttonP
       bgColor: hoverBgColor,
       color: hoverColor,
      }}
-     
+    borderRadius={borderRadius}
      onClick={handleClick} {...buttonProps}>
       {text}
     </Button>

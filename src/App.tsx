@@ -19,6 +19,7 @@ import SearchSession from "./pages/SearchSession/SearchSession";
 import UserArea from "./pages/UserArea/UserArea";
 import Homepage from "./pages/Homepage/Homepage";
 import CollaboratorsPage from "./pages/CollaboratorsPage/CollaboratorsPage";
+import Visualization from "./pages/NovaRevisao/visualization/Visualization";
 
 function App() {
   const context = useContext(AppContext);
@@ -47,6 +48,7 @@ function App() {
             <Route path="/newRevision/insertion" element={<Insertion />} />
             <Route path="/newRevision/graphics" element={<Graphics />} />
             <Route path="/newRevision/finalization" element={<Finalization />} />
+            <Route path="/newRevision/visualization" element={<Visualization/>}/>
             <Route path="/newRevision/searchSession" element={<SearchSession />} />
           </Routes>
         </AppProvider>
