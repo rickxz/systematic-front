@@ -45,41 +45,35 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
       return (
         <Flex sx={isTypeSelection ? selectionSX : extractionSX}>
 
-            <Flex flexDirection="column">
+            <Flex flexDirection="column" padding="60px">
 
-              <Flex display="flex" flexDirection="row" gap={"4"} fontFamily={"10"}>
-
-                <Flex display="flex" lineHeight="1" gap="5" flexDirection="column" w="20%" pt="10px" fontFamily={"Merriweather"}
+                <Flex display="flex" lineHeight="1" gap="5" flexDirection="column" w="100%" pt="10px" fontFamily={"Merriweather"}
                  maxHeight="250px"
                 >
-                  <Text fontSize={"25px"} align={"right"} as="i" fontWeight={"Bold"}>
-                    {studyData[0].venue}, {studyData[0].year}
+                  <Flex>
+                    <Text marginBottom={"7px"} w="30%" align={"left"}>
+                          <Text fontSize={"14px"} fontWeight={"bold"}>Type: {studyData[0].studyType}</Text> 
+                    </Text>
+                    <Text fontSize={"20px"} align={"right"} as="i" fontWeight={"Bold"} w="70%">
+                      {studyData[0].venue}, {studyData[0].year}
+                    </Text>
+                  </Flex>
+
+                  <Text fontSize={"35"} fontWeight={"bold"} fontFamily={"Boboni"} lineHeight="1" align={"center"}>
+                    {studyData[0].title}
                   </Text>
-                  <Text align={"right"} p="1" fontWeight={"Bold"}>
+
+                  <Text p="1" fontWeight={"Bold"} align={"center"}>
                     {studyData[0].authors.join(", ")}
                   </Text>
+
+                <Flex fontFamily={"Literata"} flexDirection={"column"} align={"right"} gap="15px" pb="60px">
+                    <Text fontSize={"xxl"}><b>Abstract.</b> {studyData[0].abstract}</Text> 
+                    <Text fontSize={"xxl"}><b>Keywords.</b> {studyData[0].keywords.join(", ")}</Text> 
                 </Flex>
 
-                <Box maxHeight="250px" overflowY="auto" width={"80%"} justifyItems={"right"}>
-                  <Flex direction={"column"} textAlign={"justify"} gap="10">
-                    <Text fontSize={"40"} fontWeight={"bold"} fontFamily={"Boboni"} lineHeight="1">
-                      {studyData[0].title}
-                    </Text>
-                    <Flex fontFamily={"Literata"} flexDirection={"column"}>
-                      <Text marginBottom={"7px"}>
-                        <Text fontSize={"xxl"}><b>Type.</b> {studyData[0].studyType}</Text> 
-                      </Text>
-                      <Text>
-                        <Text fontSize={"xxl"}><b>Abstract.</b> {studyData[0].abstract}</Text> 
-                      </Text>
-                      <Text marginBottom={"7px"}>
-                      <Text fontSize={"xxl"}><b>Keywords.</b> {studyData[0].keywords.join(", ")}</Text> 
-                    </Text>
-                    </Flex>
-                  </Flex>
-                </Box>
-                
               </Flex>
+                
             </Flex>
         
         </Flex>
