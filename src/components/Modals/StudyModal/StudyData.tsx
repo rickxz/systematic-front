@@ -1,5 +1,5 @@
 import { FaPen } from "react-icons/fa";
-import { IconButton, Flex, Stack, Text, Center } from "@chakra-ui/react";
+import { IconButton, Flex, Text, Center, Box } from "@chakra-ui/react";
 
 interface IStudyData {
   title: string;
@@ -8,7 +8,7 @@ interface IStudyData {
   venue: string;
   abstract: string;
   keywords: string[];
-  type: string;
+  studyType: string;
 }
 
 interface IStudyDataFiel {
@@ -21,9 +21,9 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
   const isTypeSelection: boolean = type === "Selection";
 
   const selectionSX = {
-    bg: "gray.300",
+    bg: "white",
     width: "100%",
-    height: "100%",
+    height: "300px",
     flexDirection: "column",
     alignContent: "center",
     overflowY: "scroll",
@@ -41,42 +41,92 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
   };
 
   if (isTypeValid) {
-    return (
-      <Flex sx={isTypeSelection ? selectionSX : extractionSX}>
-        {studyData.map((data, index) => (
-          <div key={index}>
-            <Center>
-              <Stack direction={"row"} p="2">
-                <Text fontSize={"lg"}>Study Data</Text>
-                <IconButton aria-label="Edit Study Data" w="28px" h="28px" icon={<FaPen />} borderRadius={"3px"}/>
-              </Stack>
-            </Center>
-            <Flex marginBottom={"7px"} justify={"center"}>
-              <Text>
-                {data.venue}, {data.year}
-              </Text>
+    if (isTypeSelection)
+      return (
+        <Flex sx={isTypeSelection ? selectionSX : extractionSX}>
+
+            <Flex flexDirection="column">
+
+              <Flex display="flex" flexDirection="row" gap={"4"} fontFamily={"10"}>
+
+                <Flex display="flex" lineHeight="1" gap="5" flexDirection="column" w="20%" pt="10px" fontFamily={"Merriweather"}
+                 maxHeight="250px"
+                >
+                  <Text fontSize={"25px"} align={"right"} as="i" fontWeight={"Bold"}>
+                    {studyData[0].venue}, {studyData[0].year}
+                  </Text>
+                  <Text align={"right"} p="1" fontWeight={"Bold"}>
+                    {studyData[0].authors.join(", ")}
+                  </Text>
+                </Flex>
+
+                <Box maxHeight="250px" overflowY="auto" width={"80%"} justifyItems={"right"}>
+                  <Flex direction={"column"} textAlign={"justify"} gap="10">
+                    <Text fontSize={"40"} fontWeight={"bold"} fontFamily={"Boboni"} lineHeight="1">
+                      {studyData[0].title}
+                    </Text>
+                    <Flex fontFamily={"Literata"} flexDirection={"column"}>
+                      <Text marginBottom={"7px"}>
+                        <Text fontSize={"xxl"}><b>Type.</b> {studyData[0].studyType}</Text> 
+                      </Text>
+                      <Text>
+                        <Text fontSize={"xxl"}><b>Abstract.</b> {studyData[0].abstract}</Text> 
+                      </Text>
+                      <Text marginBottom={"7px"}>
+                      <Text fontSize={"xxl"}><b>Keywords.</b> {studyData[0].keywords.join(", ")}</Text> 
+                    </Text>
+                    </Flex>
+                  </Flex>
+                </Box>
+                
+              </Flex>
             </Flex>
-            <Text align={"center"} fontSize={"xl"} fontWeight={"semibold"}>
-              {data.title}
-            </Text>
-            <Text align={"center"} p="1">
-              {data.authors.join(", ")}
-            </Text>
-            <Flex direction={"column"} textAlign={"justify"} p="1">
-              <Text>
-                <Text as="b">Abstract. </Text> {data.abstract}
-              </Text>
-              <Text marginBottom={"7px"}>
-                <Text as="b">Keywords. </Text> {data.keywords.join(", ")}
-              </Text>
-              <Text marginBottom={"7px"}>
-                <Text as="b">Type. </Text> {data.type}
-              </Text>
+        
+        </Flex>
+      );
+
+      return (
+        <Flex sx={isTypeSelection ? selectionSX : extractionSX}>
+
+            <Flex>
+              <Center>
+                <Flex direction={"row"} p="2">
+                  <Text fontSize={"lg"}>Study Data</Text>
+                  <IconButton aria-label="Edit Study Data" w="28px" h="28px" icon={<FaPen />} />
+                </Flex>
+              </Center>
+
+              <Flex display="flex" flexDirection="row" gap={"4"} fontFamily={"10"}>
+
+                <Flex display="flex" flexDirection="column" w="20%" pt="10px">
+                  <Text fontSize={"20px"} align={"right"}>
+                    {studyData[0].venue}, {studyData[0].year}
+                  </Text>
+                  <Text align={"right"} p="1">
+                    {studyData[0].authors.join(", ")}
+                  </Text>
+                </Flex>
+
+                <Flex direction={"column"} textAlign={"justify"} w="80%">
+                  <Text fontSize={"30"} fontWeight={"bold"}>
+                    {studyData[0].title}
+                  </Text>
+                  <Text>
+                    <Text fontSize={"xxl"}><b>Abstract.</b> {studyData[0].abstract}</Text> 
+                  </Text>
+                  <Text marginBottom={"7px"}>
+                    <Text fontSize={"xxl"}><b>Keywords.</b> {studyData[0].keywords.join(", ")}</Text> 
+                  </Text>
+                  <Text marginBottom={"7px"}>
+                    <Text fontSize={"xxl"}><b>Type.</b> {studyData[0].studyType}</Text> 
+                  </Text>
+                </Flex>
+                
+              </Flex>
             </Flex>
-          </div>
-        ))}
-      </Flex>
-    );
+        
+        </Flex>
+      );
   }
 
   return <>Wrong value for type of component StudyData</>;

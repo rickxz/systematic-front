@@ -46,7 +46,12 @@ export default function Insertion() {
       </Box>
 
       <Box marginLeft={"3em"} marginRight={"3em"} w={"78vw"}>
-        <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+        <DynamicTable
+          headerData={headerData}
+          bodyData={bodyData}
+          filteredColumns={checkedValues}
+          tableType={"selection"}
+        />
         <Box sx={btnconteiner}>
           <NavButton text={"Back"} path={"/newRevision/identification"} w={"200px"} />
           <EventButton

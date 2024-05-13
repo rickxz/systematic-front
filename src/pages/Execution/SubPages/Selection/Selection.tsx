@@ -18,10 +18,9 @@ export default function Selection() {
 
   return (
     <StudySelectionAreaProvider>
-
       <FlexLayout defaultOpen={1} navigationType="Accordion">
         <Header text="Selection" />
-    
+
         <Box sx={conteiner}>
           <Box sx={inputconteiner}>
             <InputText type="search" placeholder="Insert article's name" nome="search" />
@@ -48,13 +47,17 @@ export default function Selection() {
             />
           </Box>
         </Box>
-    
+
         <Box ml={"3em"} mr={"3em"} w={"78vw"}>
-          <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} type="isKeyWord"/>
+          <DynamicTable
+            headerData={headerData}
+            bodyData={bodyData}
+            filteredColumns={checkedValues}
+            tableType={"selection"}
+          />
           <StudySelectionArea />
         </Box>
       </FlexLayout>
-
     </StudySelectionAreaProvider>
   );
 }

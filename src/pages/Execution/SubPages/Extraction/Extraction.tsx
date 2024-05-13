@@ -44,7 +44,7 @@ export default function Extraction() {
       </Box>
 
       <Box marginLeft={"3em"} marginRight={"3em"} w={"78vw"}>
-        <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} type="modal"/>
+        <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} tableType={"extraction"} />
       </Box>
     </FlexLayout>
   );

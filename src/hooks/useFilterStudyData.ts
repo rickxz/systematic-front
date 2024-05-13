@@ -7,7 +7,7 @@ interface IStudyData {
   venue: string;
   abstract: string;
   keywords: string[];
-  type: string;
+  studyType: string;
 }
 
 export default function useFilteredStudyData(rowData: (string | number)[], studyData: IStudyData[] | null) {

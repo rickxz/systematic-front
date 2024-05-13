@@ -7,13 +7,22 @@ import { Table, TableContainer, Thead, Tbody, Tr, Th } from "@chakra-ui/react";
 interface DynamicTableProps {
   headerData: string[];
   bodyData: (string | number)[][];
-  type?: string;
+  tableType: string;
   filteredColumns: string[];
 }
 
-export default function DynamicTable({ headerData, bodyData, type, filteredColumns }: DynamicTableProps) {
-  const isKeyWordTable = type === "keyword";
-  const isModalTable = type === "modal";
+enum tableTypeEnum {
+  SELECTION = "selection",
+  EXTRACTION = "extraction",
+  KEYWORD = "keyword"
+}
+
+
+export default function DynamicTable({ headerData, bodyData, tableType, filteredColumns }: DynamicTableProps) {
+  const isKeyWordTable = tableType == tableTypeEnum.KEYWORD;
+  const isSelectionTable = tableType == tableTypeEnum.SELECTION;
+  const isExtractionTable = tableType === tableTypeEnum.EXTRACTION;
+  
   const getColumnVisibility = useColumnVisibility(filteredColumns);
   const { handleSort, sortedData } = useTableSorting(headerData, bodyData);
 
@@ -51,7 +60,9 @@ export default function DynamicTable({ headerData, bodyData, type, filteredColum
               readingPriority={"Very high"}
               searchSession={"Scopus"}
               score={0}
-              isModalTabel={isModalTable}
+              isSelectionTable = {isSelectionTable}
+              isExtractionTable = {isExtractionTable}
+
             />
           ))}
         </Tbody>

@@ -48,7 +48,12 @@ export default function Finalization() {
         </Box>
       </Flex>
       <Box sx={tableconteiner} ml={"2em"} mr={"2em"} w={"78vw"}>
-        <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
+        <DynamicTable
+          headerData={headerData}
+          bodyData={bodyData}
+          filteredColumns={checkedValues}
+          tableType={"selection"}
+        />
         <Textarea sx={textArea} placeholder="Write stuff here..."></Textarea>
         <Flex justifyContent="flex-end">
           <EventButton

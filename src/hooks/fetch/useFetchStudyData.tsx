@@ -7,7 +7,7 @@ interface IStudyData {
   venue: string;
   abstract: string;
   keywords: string[];
-  type: string;
+  studyType: string;
 }
 
 const useFetchStudyData = (url: string) => {

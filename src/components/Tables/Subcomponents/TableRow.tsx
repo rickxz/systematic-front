@@ -15,27 +15,27 @@ interface IStudy {
   readingPriority: "Very high" | "High" | "Low" | "Very low";
   searchSession: "Scopus" | "Web of Science";
   score: number;
-  isModalTabel: boolean;
+  isSelectionTable: boolean;
+  isExtractionTable: boolean;
 }
 
 export default function TableRow({
   rowData,
   rowIndex,
   isKeyWordTable,
-  isModalTabel,
+  isSelectionTable,
+  isExtractionTable,
   getColumnVisibility,
   headerData,
 }: IStudy) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   function handleClick(rowData: (string|number)[]) {
-    if (isModalTabel) {
+    if (isExtractionTable) {
       onOpen();
-      return;
     }
-    if (!isKeyWordTable) {
+    if (isSelectionTable) {
       console.log(rowData);
-      
     }
   }
 
@@ -63,7 +63,7 @@ export default function TableRow({
         ))}
       </Tr>
 
-      {isModalTabel &&
+      {isExtractionTable &&
         (isOpen ? (
           <ModalProvider>
             <StudiesModal rowData={rowData} isOpen={isOpen} onClose={onClose} />

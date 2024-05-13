@@ -1,7 +1,8 @@
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex, IconButton } from "@chakra-ui/react";
 import { boxconteiner, buttonconteiner, conteiner } from "../../../styles/BtnSelectionStyles";
 import ComboBox from "../../../../../components/Inputs/ComboBox";
 import useInputState from "../../../../../hooks/useInputState";
+import { FaPen } from "react-icons/fa6";
 
 export default function ButtonsForSelection() {
   const criteriosExclusao: string[] = [
@@ -35,7 +36,12 @@ export default function ButtonsForSelection() {
   return (
     <>
       <Flex sx={conteiner}>
+      <Flex direction={"row"} p="2">
+        <IconButton aria-label="Edit Study Data" w="28px" h="28px" icon={<FaPen />} />
+      </Flex>
+
         <Flex sx={boxconteiner}>
+          
           <ComboBox
             text="filter options"
             options={criteriosExclusao}

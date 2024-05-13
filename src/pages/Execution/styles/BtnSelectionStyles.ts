@@ -1,15 +1,15 @@
 export const conteiner = {
-  gap: "200px",
-  justify: "center",
+  justifyContent: "space-between",
   m: "2",
   alignItems: "center",
+  width: "100%"
 };
 
 export const boxconteiner = {
-  gap: "20px",
+  gap: "5px",
 };
 
 export const buttonconteiner = {
-  gap: "20px",
+  gap: "5px",
   direction: "row",
 };

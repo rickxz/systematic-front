@@ -17,47 +17,47 @@ export default function SearchSession() {
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   return (
     <FlexLayout navigationType="Accordion" defaultOpen={1}>
-      <Box display={"flex"} flexDir={"column"} alignContent={"center"} justifyContent={"center"}>
-
-        <Header text={"Database Name-Studies Identification"} />
-
-        <Box w={"70vw"} display={"flex"} flexDir={"column"} alignSelf={"center"} justifySelf={"center"}>
-          <Box sx={conteiner} justifyContent={"center"}>
-            <SearchInformations />
-            <Box sx={flex} flexDir={"column"}>
-              <Upload />
-              <Box mt={5} sx={flex} flexDir={"row"} justifyContent={"space-evenly"}>
-                <ComboBox
-                  options={headerData}
-                  handleCheckboxChange={handleCheckboxChange}
-                  selectedItems={[
-                    "title",
-                    "author",
-                    "year",
-                    "status/selection",
-                    "status/extraction",
-                    "reading priority",
-                    "score",
-                  ]}
-                  text={"filter options"}
-                />
-                <EventButton
-                  ml={4}
-                  event={function (): void {
-                    window.alert("Duplicated Pappers removed");
-                  }}
-                  text={"Remove Duplicated Pappers"}
-                />
-              </Box>
+      <Header text={"Database Name-Studies Identification"} />
+      <Box w={"80vw"} display={"flex"} flexDir={"column"} alignSelf={"center"} justifySelf={"center"}>
+        <Box sx={conteiner} justifyContent={"center"}>
+          <SearchInformations />
+          <Box sx={flex} flexDir={"column"}>
+            <Upload />
+            <Box mt={5} sx={flex} flexDir={"row"} justifyContent={"space-evenly"}>
+              <ComboBox
+                options={headerData}
+                handleCheckboxChange={handleCheckboxChange}
+                selectedItems={[
+                  "title",
+                  "author",
+                  "year",
+                  "status/selection",
+                  "status/extraction",
+                  "reading priority",
+                  "score",
+                ]}
+                text={"filter options"}
+              />
+              <EventButton
+                ml={4}
+                event={function (): void {
+                  window.alert("Duplicated Pappers removed");
+                }}
+                text={"Remove Duplicated Pappers"}
+              />
             </Box>
           </Box>
-          <Box w={"65vw"} alignSelf={"center"} justifySelf={"center"}>
-            {" "}
-            <DynamicTable headerData={headerData} bodyData={bodyData} filteredColumns={checkedValues} />
-            <NavButton text={"Back"} path={"/newRevision/identification"} sx={navbtnStyles} />
-          </Box>
         </Box>
-
+        <Box w={"78vw"} alignSelf={"center"} justifySelf={"center"}>
+          {" "}
+          <DynamicTable
+            headerData={headerData}
+            bodyData={bodyData}
+            filteredColumns={checkedValues}
+            tableType={"selection"}
+          />
+          <NavButton text={"Back"} path={"/newRevision/identification"} sx={navbtnStyles} />
+        </Box>
       </Box>
     </FlexLayout>
   );
