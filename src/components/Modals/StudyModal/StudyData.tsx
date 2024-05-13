@@ -1,5 +1,5 @@
 import { FaPen } from "react-icons/fa";
-import { IconButton, Flex, Text, Center, Box } from "@chakra-ui/react";
+import { IconButton, Flex, Text, Center } from "@chakra-ui/react";
 
 interface IStudyData {
   title: string;
