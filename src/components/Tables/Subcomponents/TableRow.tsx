@@ -3,9 +3,10 @@ import { useDisclosure, Tr, Td, Checkbox } from "@chakra-ui/react";
 import ColoredIcon from "../../Icons/ColoredIcon";
 import StudiesModal from "./StudiesModal";
 import { ModalProvider } from "./ModalContext";
+import { StudyInterface } from "../../../../public/interfaces/IStudy";
 
 interface IStudy {
-  rowData: (string | number)[];
+  rowData: StudyInterface;
   rowIndex: number;
   isKeyWordTable: boolean;
   getColumnVisibility: (text: string) => boolean;
@@ -30,7 +31,7 @@ export default function TableRow({
 }: IStudy) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  function handleClick(rowData: (string|number)[]) {
+  function handleClick(rowData: StudyInterface) {
     if (isExtractionTable) {
       onOpen();
     }
@@ -49,16 +50,16 @@ export default function TableRow({
             <Checkbox borderColor={"#2A4F6C"}/>
           </Td>
         )}
-        {rowData.map((cell, cellIndex) => (
+        {Object.values(rowData).map((cell, cellIndex) => (
           <Td
             cursor={"pointer"}
             onClick={ () => {handleClick(rowData)}}
             key={cellIndex}
-            display={isKeyWordTable ? "" : getColumnVisibility(headerData[cellIndex].toLowerCase()) ? "none" : ""}
+            display={isKeyWordTable ? "" : getColumnVisibility(headerData[1].toLowerCase()) ? "none" : ""}
             textAlign={"center"}
             bgColor={"#9CB0C0"}
           >
-            {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
+            {/*cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={cell[1] as number} /> : cell*/}
           </Td>
         ))}
       </Tr>
@@ -66,7 +67,7 @@ export default function TableRow({
       {isExtractionTable &&
         (isOpen ? (
           <ModalProvider>
-            <StudiesModal rowData={rowData} isOpen={isOpen} onClose={onClose} />
+            <StudiesModal rowData={Object.values(rowData)} isOpen={isOpen} onClose={onClose} />
           </ModalProvider>
         ) : (
           <></>

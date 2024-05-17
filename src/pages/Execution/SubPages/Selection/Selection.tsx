@@ -14,7 +14,7 @@ import { StudyInterface } from "../../../../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../../../../public/interfaces/ITableHeaders";
 
 export default function Selection() {
-  const studiesData: StudyInterface[] = useFetchTableData("/data/tableData.json");
+  const studiesData: StudyInterface[] = useFetchTableData("/data/NewStudyData.json");
   const headerData: TableHeadersInterface = {
     title: "Title",
     authors: "Author",
