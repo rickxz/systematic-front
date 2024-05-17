@@ -1,26 +1,32 @@
 import { useState, useMemo } from "react";
+import { StudyInterface } from "../../public/interfaces/IStudy";
+import { TableHeadersInterface } from "../../public/interfaces/ITableHeaders";
 
 interface SortOptions {
   sortBy: string | null;
   sortDesc: boolean;
 }
 
-const useTableSorting = (headerData: string[], bodyData: (string | number)[][]) => {
+const useTableSorting = (newStudiesData: StudyInterface[], newHeader: TableHeadersInterface) => {
   const [sortOptions, setSortOptions] = useState<SortOptions>({ sortBy: null, sortDesc: false });
+
+const a = newStudiesData[0];
+if (a != null) console.log(a[Object.keys(newHeader).find(key => newHeader[key as keyof TableHeadersInterface] === sortOptions.sortBy) as keyof StudyInterface]);
 
   const handleSort = (column: string) => {
     if (sortOptions.sortBy === column) {
       setSortOptions({ ...sortOptions, sortDesc: !sortOptions.sortDesc });
-    } else {
-      setSortOptions({ sortBy: column, sortDesc: false });
+      } else {
+        setSortOptions({ sortBy: column, sortDesc: false });
     }
   };
 
   const sortedData = useMemo(() => {
     if (sortOptions.sortBy !== null) {
-      return [...bodyData].sort((a, b) => {
-        const valueA = a[headerData.indexOf(sortOptions.sortBy!)];
-        const valueB = b[headerData.indexOf(sortOptions.sortBy!)];
+      return [...newStudiesData].sort((a, b) => {
+        console.log(sortOptions.sortBy)
+        const valueA = a[Object.keys(newHeader).find(key => newHeader[key as keyof TableHeadersInterface] === sortOptions.sortBy) as keyof StudyInterface];
+        const valueB = b[Object.keys(newHeader).find(key => newHeader[key as keyof TableHeadersInterface] === sortOptions.sortBy) as keyof StudyInterface];
         const comparison =
           typeof valueA === "number" && typeof valueB === "number"
             ? valueA - valueB
@@ -29,9 +35,9 @@ const useTableSorting = (headerData: string[], bodyData: (string | number)[][]) 
         return sortOptions.sortDesc ? comparison * -1 : comparison;
       });
     } else {
-      return bodyData;
+      return newStudiesData;
     }
-  }, [bodyData, headerData, sortOptions]);
+  }, [newStudiesData, newHeader, sortOptions]);
 
   return { sortOptions, handleSort, sortedData };
 };
