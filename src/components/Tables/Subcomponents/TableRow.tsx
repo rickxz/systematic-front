@@ -1,6 +1,4 @@
 import { useDisclosure, Tr, Td, Checkbox } from "@chakra-ui/react";
-
-import ColoredIcon from "../../Icons/ColoredIcon";
 import StudiesModal from "./StudiesModal";
 import { ModalProvider } from "./ModalContext";
 import { StudyInterface } from "../../../../public/interfaces/IStudy";
@@ -60,6 +58,7 @@ export default function TableRow({
             bgColor={"#9CB0C0"}
           >
             {/*cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={cell[1] as number} /> : cell*/}
+            {cell.toString()}
           </Td>
         ))}
       </Tr>
