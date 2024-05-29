@@ -58,7 +58,7 @@ export default function DynamicTable({ headerData, bodyData, tableType, filtered
               rowIndex={rowIndex}
               isKeyWordTable={isKeyWordTable}
               getColumnVisibility={getColumnVisibility}
-              headerData={Object.values(headerData)}
+              headerData={headerData}
               title={""}
               status={"Accepted"}
               readingPriority={"Very high"}

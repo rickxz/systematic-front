@@ -2,13 +2,14 @@ import { useDisclosure, Tr, Td, Checkbox } from "@chakra-ui/react";
 import StudiesModal from "./StudiesModal";
 import { ModalProvider } from "./ModalContext";
 import { StudyInterface } from "../../../../public/interfaces/IStudy";
+import { TableHeadersInterface } from "../../../../public/interfaces/ITableHeaders";
 
 interface IStudy {
   rowData: StudyInterface;
   rowIndex: number;
   isKeyWordTable: boolean;
   getColumnVisibility: (text: string) => boolean;
-  headerData: string[];
+  headerData: TableHeadersInterface;
   title: string;
   status: "Accepted" | "Rejected" | "Unclassified" | "Duplicated";
   readingPriority: "Very high" | "High" | "Low" | "Very low";
@@ -35,6 +36,7 @@ export default function TableRow({
     }
     if (isSelectionTable) {
       console.log(rowData);
+      console.log(headerData);
     }
   }
 
@@ -48,17 +50,20 @@ export default function TableRow({
             <Checkbox borderColor={"#2A4F6C"}/>
           </Td>
         )}
-        {Object.values(rowData).map((cell, cellIndex) => (
+        
+        {Object.keys(rowData)
+        .filter(key => key in headerData )
+        .map((key, keyIndex) => (
           <Td
             cursor={"pointer"}
             onClick={ () => {handleClick(rowData)}}
-            key={cellIndex}
-            display={isKeyWordTable ? "" : getColumnVisibility(headerData[1].toLowerCase()) ? "none" : ""}
+            key={keyIndex}
+            display={isKeyWordTable ? "" : getColumnVisibility(Object.values(headerData)[1].toLowerCase()) ? "none" : ""}
             textAlign={"center"}
             bgColor={"#9CB0C0"}
           >
-            {/*cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={cell[1] as number} /> : cell*/}
-            {cell.toString()}
+            {/*dataIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={data[1] as number} /> : data*/}
+            {rowData[key as keyof StudyInterface]?.toString()}
           </Td>
         ))}
       </Tr>
