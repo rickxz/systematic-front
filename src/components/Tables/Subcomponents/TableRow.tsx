@@ -3,6 +3,7 @@ import StudiesModal from "./StudiesModal";
 import { ModalProvider } from "./ModalContext";
 import { StudyInterface } from "../../../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../../../public/interfaces/ITableHeaders";
+import ColoredIcon from "../../Icons/ColoredIcon";
 
 interface IStudy {
   rowData: StudyInterface;
@@ -51,8 +52,8 @@ export default function TableRow({
           </Td>
         )}
         
-        {Object.keys(rowData)
-        .filter(key => key in headerData )
+        {Object.keys(headerData)
+        .filter(key => key in rowData )
         .map((key, keyIndex) => (
           <Td
             cursor={"pointer"}
@@ -62,8 +63,7 @@ export default function TableRow({
             textAlign={"center"}
             bgColor={"#9CB0C0"}
           >
-            {/*dataIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={data[1] as number} /> : data*/}
-            {rowData[key as keyof StudyInterface]?.toString()}
+            {keyIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[key as keyof StudyInterface] as number} /> : rowData[key as keyof StudyInterface]?.toString()}
           </Td>
         ))}
       </Tr>
