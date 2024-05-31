@@ -59,7 +59,7 @@ export default function TableRow({
             cursor={"pointer"}
             onClick={ () => {handleClick(rowData)}}
             key={keyIndex}
-            display={isKeyWordTable ? "" : getColumnVisibility(Object.values(headerData)[1].toLowerCase()) ? "none" : ""}
+            display={isKeyWordTable ? "" : getColumnVisibility(headerData[key as keyof TableHeadersInterface].toLowerCase()) ? "none" : ""}
             textAlign={"center"}
             bgColor={"#9CB0C0"}
           >
