@@ -2,16 +2,6 @@ import { FaPen } from "react-icons/fa";
 import { IconButton, Flex, Text, Center } from "@chakra-ui/react";
 import { StudyInterface } from "../../../../public/interfaces/IStudy";
 
-interface IStudyData {
-  title: string;
-  authors: string[];
-  year: string;
-  venue: string;
-  abstract: string;
-  keywords: string[];
-  studyType: string;
-}
-
 interface IStudyDataFiel {
   studyData: StudyInterface;
   type: string;
@@ -20,6 +10,8 @@ interface IStudyDataFiel {
 export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
   const isTypeValid: boolean = type === "Selection" || type === "Extraction";
   const isTypeSelection: boolean = type === "Selection";
+
+  if (!studyData) return <>Study not found</>
 
   const selectionSX = {
     bg: "white",
