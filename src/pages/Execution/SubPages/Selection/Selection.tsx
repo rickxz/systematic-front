@@ -12,9 +12,10 @@ import { conteiner, inputconteiner } from "../../styles/executionStyles";
 import { StudySelectionAreaProvider } from "./subcomponents/StudySelectionAreaContext";
 import { StudyInterface } from "../../../../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../../../../public/interfaces/ITableHeaders";
+import { KeywordInterface } from "../../../../../public/interfaces/KeywordInterface";
 
-export default function Selection() {
-  const studiesData: StudyInterface[] = useFetchTableData("/data/NewStudyData.json");
+export default function Selection<U extends StudyInterface | KeywordInterface>() {
+  const studiesData: U[] | undefined = useFetchTableData("/data/NewStudyData.json");
   const headerData: TableHeadersInterface = {
     title: "Title",
     authors: "Author",
@@ -25,6 +26,8 @@ export default function Selection() {
 }
   const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
+
+  if(!studiesData) return <>Studies data nor found</>
 
   return (
     <StudySelectionAreaProvider>
