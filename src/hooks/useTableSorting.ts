@@ -1,17 +1,24 @@
 import { useState, useMemo } from "react";
 import { StudyInterface } from "../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../public/interfaces/ITableHeaders";
+import { KeyWordHeaderInterface } from "../../public/interfaces/IKeyWordHeard";
+import { KeywordInterface } from "../../public/interfaces/KeywordInterface";
 
 interface SortOptions {
   sortBy: string | null;
   sortDesc: boolean;
 }
 
-const useTableSorting = (newStudiesData: StudyInterface[], newHeader: TableHeadersInterface) => {
+const useStudyTableSorting = <
+T extends TableHeadersInterface | KeyWordHeaderInterface,
+U extends StudyInterface | KeywordInterface
+> (
+    newData: U[], newHeader: T
+  ) => {
   const [sortOptions, setSortOptions] = useState<SortOptions>({ sortBy: null, sortDesc: false });
 
-const a = newStudiesData[0];
-if (a != null) console.log(a[Object.keys(newHeader).find(key => newHeader[key as keyof TableHeadersInterface] === sortOptions.sortBy) as keyof StudyInterface]);
+const a = newData[0];
+if (a != null) console.log(a[Object.keys(newHeader).find(key => newHeader[key as keyof T] === sortOptions.sortBy) as keyof U]);
 
   const handleSort = (column: string) => {
     if (sortOptions.sortBy === column) {
@@ -23,10 +30,10 @@ if (a != null) console.log(a[Object.keys(newHeader).find(key => newHeader[key as
 
   const sortedData = useMemo(() => {
     if (sortOptions.sortBy !== null) {
-      return [...newStudiesData].sort((a, b) => {
+      return [...newData].sort((a, b) => {
         console.log(sortOptions.sortBy)
-        const valueA = a[Object.keys(newHeader).find(key => newHeader[key as keyof TableHeadersInterface] === sortOptions.sortBy) as keyof StudyInterface];
-        const valueB = b[Object.keys(newHeader).find(key => newHeader[key as keyof TableHeadersInterface] === sortOptions.sortBy) as keyof StudyInterface];
+        const valueA = a[Object.keys(newHeader).find(key => newHeader[key as keyof T] === sortOptions.sortBy) as keyof U];
+        const valueB = b[Object.keys(newHeader).find(key => newHeader[key as keyof T] === sortOptions.sortBy) as keyof U];
         const comparison =
           typeof valueA === "number" && typeof valueB === "number"
             ? valueA - valueB
@@ -35,11 +42,11 @@ if (a != null) console.log(a[Object.keys(newHeader).find(key => newHeader[key as
         return sortOptions.sortDesc ? comparison * -1 : comparison;
       });
     } else {
-      return newStudiesData;
+      return newData;
     }
-  }, [newStudiesData, newHeader, sortOptions]);
+  }, [newData, newHeader, sortOptions]);
 
   return { sortOptions, handleSort, sortedData };
 };
 
-export default useTableSorting;
+export default useStudyTableSorting;
