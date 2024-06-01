@@ -16,19 +16,16 @@ import StudyDataFiel from "../../Modals/StudyModal/StudyData";
 import NavegationIconsPanel from "./TableRowSubcomponents/NavigationIconsPanel/NavigationIconPanel";
 import OtherStudyPanels from "./OtherStudyPanels";
 import ModalContext from "./ModalContext";
-import useFetchStudyData from "../../../hooks/fetch/useFetchStudyData";
-import useFilteredStudyData from "../../../hooks/useFilterStudyData";
+import { StudyInterface } from "../../../../public/interfaces/IStudy";
 
 interface IStudy {
-  rowData: (string | number)[];
+  rowData: StudyInterface;
   isOpen: boolean;
   onClose: () => void;
 }
 
 export default function StudiesModal({ rowData, isOpen, onClose }: IStudy) {
   const context = useContext(ModalContext);
-  const studyData = useFetchStudyData("../../../../public/data/studyData.json");
-  const { filteredStudyData } = useFilteredStudyData(rowData, studyData);
 
   return (
     <>
@@ -37,7 +34,7 @@ export default function StudiesModal({ rowData, isOpen, onClose }: IStudy) {
         <ModalContent w="90%">
           <ModalHeader color="white" bg="gray.800">
             <Flex direction={"column"} alignItems={"center"}>
-              <Text>{rowData[0]}</Text>
+              <Text>{rowData.title}</Text>
               <NavegationIconsPanel />
             </Flex>
           </ModalHeader>
@@ -45,7 +42,7 @@ export default function StudiesModal({ rowData, isOpen, onClose }: IStudy) {
           <ModalBody>
             <Flex gap="25px">
               {context?.StudyDataButtonState ? (
-                <StudyDataFiel studyData={filteredStudyData} type={"Extraction"} />
+                <StudyDataFiel studyData={rowData} type={"Extraction"} />
               ) : (
                 <></>
               )}
