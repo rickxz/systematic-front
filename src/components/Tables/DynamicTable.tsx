@@ -5,10 +5,12 @@ import { tbConteiner } from "./styles/DynamicTableStyle";
 import { Table, TableContainer, Thead, Tbody, Tr, Th } from "@chakra-ui/react";
 import { StudyInterface } from "../../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../../public/interfaces/ITableHeaders";
+import { KeywordInterface } from "../../../public/interfaces/KeywordInterface";
+import { KeyWordHeaderInterface } from "../../../public/interfaces/IKeyWordHeard";
 
 interface DynamicTableProps {
-  headerData: TableHeadersInterface;
-  bodyData: StudyInterface[];
+  headerData: TableHeadersInterface | KeyWordHeaderInterface;
+  bodyData: (StudyInterface | KeywordInterface)[];
   tableType: string;
   filteredColumns: string[];
 }
@@ -27,7 +29,6 @@ export default function DynamicTable({ headerData, bodyData, tableType, filtered
   
   const getColumnVisibility = useColumnVisibility(filteredColumns);
   const { handleSort, sortedData } = useTableSorting(bodyData, headerData);
-  console.log(sortedData);
 
 
   return (
