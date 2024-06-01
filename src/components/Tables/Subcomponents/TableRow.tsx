@@ -6,6 +6,8 @@ import { TableHeadersInterface } from "../../../../public/interfaces/ITableHeade
 import ColoredIcon from "../../Icons/ColoredIcon";
 import { KeyWordHeaderInterface } from "../../../../public/interfaces/IKeyWordHeard";
 import { KeywordInterface } from "../../../../public/interfaces/KeywordInterface";
+import { useContext } from "react";
+import AppContext from "../../Context/AppContext";
 
 interface IStudy <T, U> {
   rowData: U;
@@ -35,6 +37,7 @@ U extends StudyInterface | KeywordInterface
   headerData,
 }: IStudy <T, U>) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const context = useContext(AppContext);
 
   function handleClick(rowData: U) {
     if (isExtractionTable) {
@@ -42,6 +45,8 @@ U extends StudyInterface | KeywordInterface
     }
     if (isSelectionTable) {
       console.log(rowData);
+      context?.setSelectionStudy((rowData as StudyInterface))
+      
     }
   }
 
