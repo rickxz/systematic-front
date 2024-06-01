@@ -7,14 +7,25 @@ import InputText from "../../../components/Inputs/InputText";
 import SelectInput from "../../../components/Inputs/SelectInput";
 import EventButton from "../../../components/Buttons/EventButton";
 import DynamicTable from "../../../components/Tables/DynamicTable";
-import useFetchTableData from "../../../hooks/fetch/useFetchTableData";
+import useFetchTableData from "../../../hooks/seachAppropriateStudy/useFetchStudyData";
 import { btnStyles, conteiner, flex, inputconteiner, tableconteiner, textArea } from "../styles/finalizationStyles";
 import FlexLayout from "../../../components/ui/Flex/Flex";
+import { TableHeadersInterface } from "../../../../public/interfaces/ITableHeaders";
 
 export default function Finalization() {
-  const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
+  const bodyData = useFetchTableData("/data/tableData.json");
+  const headerData: TableHeadersInterface = {
+    title: "Title",
+    authors: "Author",
+    year: "Year",
+    selectionStatus: "Status/Selection",
+    extractionStatus: "Status/Extraction",
+    readingPriority: "Reading Priority"
+}
   const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
+
+  if(!bodyData) return <>Studies data nor found</>
 
   return (
     <FlexLayout defaultOpen={2} navigationType="Accordion">
@@ -31,7 +42,7 @@ export default function Finalization() {
               page={""}
             />
             <ComboBox
-              options={headerData}
+              options={Object.values(headerData)}
               handleCheckboxChange={handleCheckboxChange}
               selectedItems={[
                 "title",
