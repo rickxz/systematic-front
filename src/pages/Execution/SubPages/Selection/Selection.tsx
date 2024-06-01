@@ -9,7 +9,7 @@ import StudySelectionArea from "./subcomponents/StudySelectionArea";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
 import useFetchTableData from "../../../../hooks/seachAppropriateStudy/useFetchStudyData";
 import { conteiner, inputconteiner } from "../../styles/executionStyles";
-import { StudySelectionAreaProvider } from "./subcomponents/StudySelectionAreaContext";
+import { AppProvider } from "../../../../components/Context/AppContext";
 import { StudyInterface } from "../../../../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../../../../public/interfaces/ITableHeaders";
 import { KeywordInterface } from "../../../../../public/interfaces/KeywordInterface";
@@ -30,7 +30,7 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
   if(!studiesData) return <>Studies data nor found</>
 
   return (
-    <StudySelectionAreaProvider>
+    <AppProvider>
       <FlexLayout defaultOpen={1} navigationType="Accordion">
         <Header text="Selection" />
 
@@ -71,6 +71,6 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
           <StudySelectionArea />
         </Box>
       </FlexLayout>
-    </StudySelectionAreaProvider>
+    </AppProvider>
   );
 }
