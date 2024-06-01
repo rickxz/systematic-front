@@ -12,10 +12,10 @@ interface AppContextType {
   setRenderForm: React.Dispatch<React.SetStateAction<string>>;
   activeButton: string;
   setActiveButton: React.Dispatch<React.SetStateAction<string>>;
-  selectionStudy: StudyInterface;
-  setSelectionStudy: React.Dispatch<React.SetStateAction<StudyInterface>>;
-  extractionStudy: StudyInterface;
-  setExtractionStudy: React.Dispatch<React.SetStateAction<StudyInterface>>;
+  selectionStudy: StudyInterface | undefined;
+  setSelectionStudy: React.Dispatch<React.SetStateAction<StudyInterface | undefined>>;
+  extractionStudy: StudyInterface | undefined;
+  setExtractionStudy: React.Dispatch<React.SetStateAction<StudyInterface | undefined>>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -27,10 +27,10 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [button, setButton] = useState<string>("");
   const [item, setItem] = useState<string>("");
   const [renderForm, setRenderForm] = useState<string>("Login");
-  const [selectionStudy, setSelectionStudy] = useState<StudyInterface>(
+  const [selectionStudy, setSelectionStudy] = useState<StudyInterface | undefined>(
     showFirstPossibleStudy(ExcutionFaseEnum.SELECTION)
   );
-  const [extractionStudy, setExtractionStudy] = useState<StudyInterface>(
+  const [extractionStudy, setExtractionStudy] = useState<StudyInterface | undefined>(
     showFirstPossibleStudy(ExcutionFaseEnum.EXTRACTION)
   );
   const [activeButton, setActiveButton] = useState<string>("");
