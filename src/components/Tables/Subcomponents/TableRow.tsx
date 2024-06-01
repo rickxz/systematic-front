@@ -42,7 +42,6 @@ U extends StudyInterface | KeywordInterface
     }
     if (isSelectionTable) {
       console.log(rowData);
-      console.log(headerData);
     }
   }
 
