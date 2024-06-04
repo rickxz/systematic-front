@@ -1,26 +1,39 @@
 import { useState, useMemo } from "react";
+import { StudyInterface } from "../../public/interfaces/IStudy";
+import { TableHeadersInterface } from "../../public/interfaces/ITableHeaders";
+import { KeyWordHeaderInterface } from "../../public/interfaces/IKeyWordHeard";
+import { KeywordInterface } from "../../public/interfaces/KeywordInterface";
 
 interface SortOptions {
   sortBy: string | null;
   sortDesc: boolean;
 }
 
-const useTableSorting = (headerData: string[], bodyData: (string | number)[][]) => {
+const useStudyTableSorting = <
+T extends TableHeadersInterface | KeyWordHeaderInterface,
+U extends StudyInterface | KeywordInterface
+> (
+    newData: U[], newHeader: T
+  ) => {
   const [sortOptions, setSortOptions] = useState<SortOptions>({ sortBy: null, sortDesc: false });
+
+const a = newData[0];
+if (a != null) console.log(a[Object.keys(newHeader).find(key => newHeader[key as keyof T] === sortOptions.sortBy) as keyof U]);
 
   const handleSort = (column: string) => {
     if (sortOptions.sortBy === column) {
       setSortOptions({ ...sortOptions, sortDesc: !sortOptions.sortDesc });
-    } else {
-      setSortOptions({ sortBy: column, sortDesc: false });
+      } else {
+        setSortOptions({ sortBy: column, sortDesc: false });
     }
   };
 
   const sortedData = useMemo(() => {
     if (sortOptions.sortBy !== null) {
-      return [...bodyData].sort((a, b) => {
-        const valueA = a[headerData.indexOf(sortOptions.sortBy!)];
-        const valueB = b[headerData.indexOf(sortOptions.sortBy!)];
+      return [...newData].sort((a, b) => {
+        console.log(sortOptions.sortBy)
+        const valueA = a[Object.keys(newHeader).find(key => newHeader[key as keyof T] === sortOptions.sortBy) as keyof U];
+        const valueB = b[Object.keys(newHeader).find(key => newHeader[key as keyof T] === sortOptions.sortBy) as keyof U];
         const comparison =
           typeof valueA === "number" && typeof valueB === "number"
             ? valueA - valueB
@@ -29,11 +42,11 @@ const useTableSorting = (headerData: string[], bodyData: (string | number)[][]) 
         return sortOptions.sortDesc ? comparison * -1 : comparison;
       });
     } else {
-      return bodyData;
+      return newData;
     }
-  }, [bodyData, headerData, sortOptions]);
+  }, [newData, newHeader, sortOptions]);
 
   return { sortOptions, handleSort, sortedData };
 };
 
-export default useTableSorting;
+export default useStudyTableSorting;

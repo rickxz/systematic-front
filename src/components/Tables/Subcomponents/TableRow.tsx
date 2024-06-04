@@ -1,15 +1,20 @@
 import { useDisclosure, Tr, Td, Checkbox } from "@chakra-ui/react";
-
-import ColoredIcon from "../../Icons/ColoredIcon";
 import StudiesModal from "./StudiesModal";
 import { ModalProvider } from "./ModalContext";
+import { StudyInterface } from "../../../../public/interfaces/IStudy";
+import { TableHeadersInterface } from "../../../../public/interfaces/ITableHeaders";
+import ColoredIcon from "../../Icons/ColoredIcon";
+import { KeyWordHeaderInterface } from "../../../../public/interfaces/IKeyWordHeard";
+import { KeywordInterface } from "../../../../public/interfaces/KeywordInterface";
+import { useContext } from "react";
+import AppContext from "../../Context/AppContext";
 
-interface IStudy {
-  rowData: (string | number)[];
+interface IStudy <T, U> {
+  rowData: U;
   rowIndex: number;
   isKeyWordTable: boolean;
   getColumnVisibility: (text: string) => boolean;
-  headerData: string[];
+  headerData: T;
   title: string;
   status: "Accepted" | "Rejected" | "Unclassified" | "Duplicated";
   readingPriority: "Very high" | "High" | "Low" | "Very low";
@@ -19,7 +24,10 @@ interface IStudy {
   isExtractionTable: boolean;
 }
 
-export default function TableRow({
+export default function TableRow <
+T extends TableHeadersInterface | KeyWordHeaderInterface,
+U extends StudyInterface | KeywordInterface
+>({
   rowData,
   rowIndex,
   isKeyWordTable,
@@ -27,15 +35,18 @@ export default function TableRow({
   isExtractionTable,
   getColumnVisibility,
   headerData,
-}: IStudy) {
+}: IStudy <T, U>) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const context = useContext(AppContext);
 
-  function handleClick(rowData: (string|number)[]) {
+  function handleClick(rowData: U) {
     if (isExtractionTable) {
       onOpen();
     }
     if (isSelectionTable) {
       console.log(rowData);
+      context?.setSelectionStudy((rowData as StudyInterface))
+      
     }
   }
 
@@ -49,16 +60,23 @@ export default function TableRow({
             <Checkbox borderColor={"#2A4F6C"}/>
           </Td>
         )}
-        {rowData.map((cell, cellIndex) => (
+        {isKeyWordTable && (
+          <Td bgColor={"#9CB0C0"}>
+            <ColoredIcon frequency={rowData[0 as keyof U] as number} />
+          </Td>
+        )}
+        
+        {Object.keys(headerData)
+        .map((key, keyIndex) => (
           <Td
             cursor={"pointer"}
             onClick={ () => {handleClick(rowData)}}
-            key={cellIndex}
-            display={isKeyWordTable ? "" : getColumnVisibility(headerData[cellIndex].toLowerCase()) ? "none" : ""}
+            key={keyIndex}
+            display={isKeyWordTable ? "" : getColumnVisibility((headerData[key as keyof T] as string).toLowerCase()) ? "none" : ""}
             textAlign={"center"}
             bgColor={"#9CB0C0"}
           >
-            {cellIndex === 0 && isKeyWordTable ? <ColoredIcon frequency={rowData[2] as number} /> : cell}
+            {rowData[key as keyof U]?.toString()}
           </Td>
         ))}
       </Tr>
@@ -66,7 +84,7 @@ export default function TableRow({
       {isExtractionTable &&
         (isOpen ? (
           <ModalProvider>
-            <StudiesModal rowData={rowData} isOpen={isOpen} onClose={onClose} />
+            <StudiesModal rowData={(rowData as StudyInterface)} isOpen={isOpen} onClose={onClose} />
           </ModalProvider>
         ) : (
           <></>

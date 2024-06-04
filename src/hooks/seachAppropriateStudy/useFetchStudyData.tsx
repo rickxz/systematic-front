@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { StudyInterface } from "../../../public/interfaces/IStudy";
+import { KeywordInterface } from "../../../public/interfaces/KeywordInterface"
 
-export default function useFetchStudyData (url: string):  StudyInterface[] {
-  const [studiesData, setStudyData] = useState<StudyInterface[]>([]);
+export default function useFetchStudyData<U extends StudyInterface | KeywordInterface> (url: string):  U[] | undefined {
+  const [requestedData, setRequestedData] = useState<U[]>();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -12,7 +13,7 @@ export default function useFetchStudyData (url: string):  StudyInterface[] {
         }
         const data = await response.json();
         if (Array.isArray(data)) {
-          setStudyData(data);
+          setRequestedData(data);
         } else {
           console.error("O arquivo JSON não possui a estrutura esperada.");
         }
@@ -24,6 +25,5 @@ export default function useFetchStudyData (url: string):  StudyInterface[] {
     fetchData();
   }, [url]);
 
-
-  return studiesData;
+  return requestedData;
 };

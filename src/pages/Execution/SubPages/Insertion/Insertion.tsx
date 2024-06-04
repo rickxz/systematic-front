@@ -8,13 +8,25 @@ import NavButton from "../../../../components/Buttons/NavButton";
 import SelectInput from "../../../../components/Inputs/SelectInput";
 import EventButton from "../../../../components/Buttons/EventButton";
 import DynamicTable from "../../../../components/Tables/DynamicTable";
-import useFetchTableData from "../../../../hooks/fetch/useFetchTableData";
+import useFetchTableData from "../../../../hooks/seachAppropriateStudy/useFetchStudyData";
 import { btnconteiner, conteiner, inputconteiner } from "../../styles/executionStyles";
+import { TableHeadersInterface } from "../../../../../public/interfaces/ITableHeaders";
 
 export default function Insertion() {
-  const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
+  const bodyData = useFetchTableData("/data/tableData.json");
+  const headerData: TableHeadersInterface = {
+    title: "Title",
+    authors: "Author",
+    year: "Year",
+    selectionStatus: "Status/Selection",
+    extractionStatus: "Status/Extraction",
+    readingPriority: "Reading Priority"
+}
   const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
+
+  if(!bodyData) return <>Studies data nor found</>
+
   return (
     <FlexLayout defaultOpen={1} navigationType="Accordion">
       <Header text="Insertion" />
@@ -29,7 +41,7 @@ export default function Insertion() {
             page={" insertion"}
           />
           <ComboBox
-            options={headerData}
+            options={Object.values(headerData)}
             handleCheckboxChange={handleCheckboxChange}
             selectedItems={[
               "title",

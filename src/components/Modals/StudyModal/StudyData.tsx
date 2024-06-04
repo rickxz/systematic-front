@@ -1,24 +1,17 @@
 import { FaPen } from "react-icons/fa";
 import { IconButton, Flex, Text, Center } from "@chakra-ui/react";
-
-interface IStudyData {
-  title: string;
-  authors: string[];
-  year: string;
-  venue: string;
-  abstract: string;
-  keywords: string[];
-  studyType: string;
-}
+import { StudyInterface } from "../../../../public/interfaces/IStudy";
 
 interface IStudyDataFiel {
-  studyData: IStudyData[];
+  studyData: StudyInterface;
   type: string;
 }
 
 export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
   const isTypeValid: boolean = type === "Selection" || type === "Extraction";
   const isTypeSelection: boolean = type === "Selection";
+
+  if (!studyData) return <>Study not found</>
 
   const selectionSX = {
     bg: "white",
@@ -52,24 +45,24 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
                 >
                   <Flex>
                     <Text marginBottom={"7px"} w="30%" align={"left"}>
-                          <Text fontSize={"14px"} fontWeight={"bold"}>Type: {studyData[0].studyType}</Text> 
+                          <Text fontSize={"14px"} fontWeight={"bold"}>Type: {studyData.studyType}</Text> 
                     </Text>
                     <Text fontSize={"20px"} align={"right"} as="i" fontWeight={"Bold"} w="70%">
-                      {studyData[0].venue}, {studyData[0].year}
+                      {studyData.venue}, {studyData.year}
                     </Text>
                   </Flex>
 
                   <Text fontSize={"35"} fontWeight={"bold"} fontFamily={"Boboni"} lineHeight="1" align={"center"}>
-                    {studyData[0].title}
+                    {studyData.title}
                   </Text>
 
                   <Text p="1" fontWeight={"Bold"} align={"center"}>
-                    {studyData[0].authors.join(", ")}
+                    {studyData.authors}
                   </Text>
 
                 <Flex fontFamily={"Literata"} flexDirection={"column"} align={"right"} gap="15px" pb="60px">
-                    <Text fontSize={"xxl"}><b>Abstract.</b> {studyData[0].abstract}</Text> 
-                    <Text fontSize={"xxl"}><b>Keywords.</b> {studyData[0].keywords.join(", ")}</Text> 
+                    <Text fontSize={"xxl"}><b>Abstract.</b> {studyData.abstract}</Text> 
+                    <Text fontSize={"xxl"}><b>Keywords.</b> {studyData.keywords}</Text> 
                 </Flex>
 
               </Flex>
@@ -94,25 +87,25 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
 
                 <Flex display="flex" flexDirection="column" w="20%" pt="10px">
                   <Text fontSize={"20px"} align={"right"}>
-                    {studyData[0].venue}, {studyData[0].year}
+                    {studyData.venue}, {studyData.year}
                   </Text>
                   <Text align={"right"} p="1">
-                    {studyData[0].authors.join(", ")}
+                    {studyData.authors}
                   </Text>
                 </Flex>
 
                 <Flex direction={"column"} textAlign={"justify"} w="80%">
                   <Text fontSize={"30"} fontWeight={"bold"}>
-                    {studyData[0].title}
+                    {studyData.title}
                   </Text>
                   <Text>
-                    <Text fontSize={"xxl"}><b>Abstract.</b> {studyData[0].abstract}</Text> 
+                    <Text fontSize={"xxl"}><b>Abstract.</b> {studyData.abstract}</Text> 
                   </Text>
                   <Text marginBottom={"7px"}>
-                    <Text fontSize={"xxl"}><b>Keywords.</b> {studyData[0].keywords.join(", ")}</Text> 
+                    <Text fontSize={"xxl"}><b>Keywords.</b> {studyData.keywords}</Text> 
                   </Text>
                   <Text marginBottom={"7px"}>
-                    <Text fontSize={"xxl"}><b>Type.</b> {studyData[0].studyType}</Text> 
+                    <Text fontSize={"xxl"}><b>Type.</b> {studyData.studyType}</Text> 
                   </Text>
                 </Flex>
                 

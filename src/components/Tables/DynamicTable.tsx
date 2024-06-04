@@ -3,10 +3,14 @@ import useTableSorting from "../../hooks/useTableSorting";
 import useColumnVisibility from "../../hooks/useColumnVisibility";
 import { tbConteiner } from "./styles/DynamicTableStyle";
 import { Table, TableContainer, Thead, Tbody, Tr, Th } from "@chakra-ui/react";
+import { StudyInterface } from "../../../public/interfaces/IStudy";
+import { TableHeadersInterface } from "../../../public/interfaces/ITableHeaders";
+import { KeywordInterface } from "../../../public/interfaces/KeywordInterface";
+import { KeyWordHeaderInterface } from "../../../public/interfaces/IKeyWordHeard";
 
 interface DynamicTableProps {
-  headerData: string[];
-  bodyData: (string | number)[][];
+  headerData: TableHeadersInterface | KeyWordHeaderInterface;
+  bodyData: (StudyInterface | KeywordInterface)[];
   tableType: string;
   filteredColumns: string[];
 }
@@ -24,7 +28,8 @@ export default function DynamicTable({ headerData, bodyData, tableType, filtered
   const isExtractionTable = tableType === tableTypeEnum.EXTRACTION;
   
   const getColumnVisibility = useColumnVisibility(filteredColumns);
-  const { handleSort, sortedData } = useTableSorting(headerData, bodyData);
+  const { handleSort, sortedData } = useTableSorting(bodyData, headerData);
+
 
   return (
     <TableContainer sx={tbConteiner} h={isKeyWordTable ? 300 : 250} borderBottom={"1em solid #303D50"}>
@@ -32,7 +37,7 @@ export default function DynamicTable({ headerData, bodyData, tableType, filtered
         <Thead bgColor={"#303D50"}>
           <Tr>
             <Th></Th>
-            {headerData.map((header) => (
+            {Object.values(headerData).map((header) => (
               <Th
                 key={header}
                 onClick={() => handleSort(header)}

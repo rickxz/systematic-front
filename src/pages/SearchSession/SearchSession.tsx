@@ -4,17 +4,28 @@ import useInputState from "../../hooks/useInputState";
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
 import DynamicTable from "../../components/Tables/DynamicTable";
-import useFetchTableData from "../../hooks/fetch/useFetchTableData";
+import useFetchTableData from "../../hooks/seachAppropriateStudy/useFetchStudyData";
 import SearchInformations from "./subcomponents/searchInformations";
 import { conteiner, navbtnStyles } from "./styles/searchSessionStyles";
 import ComboBox from "../../components/Inputs/ComboBox";
 import { flex } from "../NovaRevisao/styles/finalizationStyles";
 import EventButton from "../../components/Buttons/EventButton";
 import FlexLayout from "../../components/ui/Flex/Flex";
+import { TableHeadersInterface } from "../../../public/interfaces/ITableHeaders";
 
 export default function SearchSession() {
-  const { headerData, bodyData } = useFetchTableData("/data/tableData.json");
+  const bodyData = useFetchTableData("/data/tableData.json");
+  const headerData: TableHeadersInterface = {
+    title: "Title",
+    authors: "Author",
+    year: "Year",
+    selectionStatus: "Status/Selection",
+    extractionStatus: "Status/Extraction",
+    readingPriority: "Reading Priority"
+}
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
+
+  if(!bodyData) return <>Studies data nor found</>
   return (
     <FlexLayout navigationType="Accordion" defaultOpen={1}>
       <Header text={"Database Name-Studies Identification"} />
@@ -25,7 +36,7 @@ export default function SearchSession() {
             <Upload />
             <Box mt={5} sx={flex} flexDir={"row"} justifyContent={"space-evenly"}>
               <ComboBox
-                options={headerData}
+                options={Object.values(headerData)}
                 handleCheckboxChange={handleCheckboxChange}
                 selectedItems={[
                   "title",
