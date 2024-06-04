@@ -4,7 +4,7 @@ import { StudyInterface } from "../../../../public/interfaces/IStudy";
 
 interface IStudyDataFiel {
   studyData: StudyInterface;
-  type: string;
+  type: "Selection" | "Extraction";
 }
 
 export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
@@ -28,15 +28,13 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
     width: "350px",
     height: "350px",
     flexDirection: "column",
-    alignContent: "center",
-    overflowY: "scroll",
-    padding: "3",
+    alignContent: "center", 
   };
 
   if (isTypeValid) {
     if (isTypeSelection)
       return (
-        <Flex sx={isTypeSelection ? selectionSX : extractionSX}>
+        <Flex sx={selectionSX}>
 
             <Flex flexDirection="column" padding="60px">
 
@@ -73,44 +71,44 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
       );
 
       return (
-        <Flex sx={isTypeSelection ? selectionSX : extractionSX}>
+        <Flex sx={extractionSX}>
 
-            <Flex>
+          <Flex flexDirection="column" >
               <Center>
-                <Flex direction={"row"} p="2">
-                  <Text fontSize={"lg"}>Study Data</Text>
-                  <IconButton aria-label="Edit Study Data" w="28px" h="28px" icon={<FaPen />} />
+                <Flex direction={"row"} justifyContent={"center"} m="2" position={"relative"} w="100%">
+                  <Text as="h3" fontSize={"lg"} fontWeight={"bold"}>Study Data</Text>
+                  <IconButton aria-label="Edit Study Data" w="28px" h="28px" position={"absolute"} right="0px" icon={<FaPen />} />
                 </Flex>
               </Center>
-
-              <Flex display="flex" flexDirection="row" gap={"4"} fontFamily={"10"}>
-
-                <Flex display="flex" flexDirection="column" w="20%" pt="10px">
-                  <Text fontSize={"20px"} align={"right"}>
+              
+              <Flex display="flex" overflowY="scroll" lineHeight="1" gap="10" flexDirection="column" p="20px" fontFamily={"Merriweather"}
+              maxHeight="290px" bg="rgb(240,240,240)" ml="10px" mr="10px"
+              >
+                <Flex>
+                  <Text marginBottom={"7px"} w="40%" align={"left"}>
+                        <Text fontSize={"10px"} fontWeight={"bold"}>Type: {studyData.studyType}</Text> 
+                  </Text>
+                  <Text fontSize={"15px"} align={"right"} as="i" fontWeight={"Bold"} w="60%">
                     {studyData.venue}, {studyData.year}
                   </Text>
-                  <Text align={"right"} p="1">
-                    {studyData.authors}
-                  </Text>
                 </Flex>
 
-                <Flex direction={"column"} textAlign={"justify"} w="80%">
-                  <Text fontSize={"30"} fontWeight={"bold"}>
-                    {studyData.title}
-                  </Text>
-                  <Text>
+                <Text fontSize={"25"} fontWeight={"bold"} fontFamily={"Boboni"} lineHeight="1" align={"center"}>
+                  {studyData.title}
+                </Text>
+
+                <Text p="1" fontSize={"15"} fontWeight={"Bold"} align={"center"}>
+                  {studyData.authors}
+                </Text>
+
+                <Flex fontFamily={"Literata"} flexDirection={"column"} textAlign={"justify"} gap="15px">
                     <Text fontSize={"xxl"}><b>Abstract.</b> {studyData.abstract}</Text> 
-                  </Text>
-                  <Text marginBottom={"7px"}>
                     <Text fontSize={"xxl"}><b>Keywords.</b> {studyData.keywords}</Text> 
-                  </Text>
-                  <Text marginBottom={"7px"}>
-                    <Text fontSize={"xxl"}><b>Type.</b> {studyData.studyType}</Text> 
-                  </Text>
                 </Flex>
-                
+
               </Flex>
-            </Flex>
+
+          </Flex>
         
         </Flex>
       );
