@@ -11,12 +11,6 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
   const isTypeValid: boolean = type === "Selection" || type === "Extraction";
   const isTypeSelection: boolean = type === "Selection";
 
-  if (!studyData) return (
-    <Flex justify="center" bg="gray.600" >
-      <Text fontFamily="40" fontWeight="bold" color="white">Select a study on the table</Text>
-    </Flex>
-  )
-
   const selectionSX = {
     bg: "white",
     width: "100%",
