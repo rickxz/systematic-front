@@ -5,6 +5,14 @@ import useInputState from "../../../../../hooks/useInputState";
 import { FaPen } from "react-icons/fa6";
 
 export default function ButtonsForSelection() {
+
+  function ChangeToNext() {
+    console.log("Next");
+  }
+
+  function ChangeToPrevius() {
+    console.log("Previus");
+  }
   const criteriosExclusao: string[] = [
     "Tipo estudo inadequado",
     "Idioma não compreendido",
@@ -57,8 +65,8 @@ export default function ButtonsForSelection() {
         </Flex>
 
         <Flex sx={buttonconteiner}>
-          <Button borderRadius={"3px"}>Previous</Button>
-          <Button borderRadius={"3px"}>Next</Button>
+          <Button borderRadius={"3px"} onClick={ChangeToPrevius}>Previous</Button>
+          <Button borderRadius={"3px"} onClick={ChangeToNext}>Next</Button>
         </Flex>
 
         <Button borderRadius={"3px"}>Redifine</Button>
