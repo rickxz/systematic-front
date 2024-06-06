@@ -7,6 +7,8 @@ import { StudyInterface } from "../../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../../public/interfaces/ITableHeaders";
 import { KeywordInterface } from "../../../public/interfaces/KeywordInterface";
 import { KeyWordHeaderInterface } from "../../../public/interfaces/IKeyWordHeard";
+import { useContext } from "react";
+import AppContext from "../Context/AppContext";
 
 interface DynamicTableProps {
   headerData: TableHeadersInterface | KeyWordHeaderInterface;
@@ -27,9 +29,12 @@ export default function DynamicTable({ headerData, bodyData, tableType, filtered
   const isSelectionTable = tableType == tableTypeEnum.SELECTION;
   const isExtractionTable = tableType === tableTypeEnum.EXTRACTION;
   
+  const context = useContext(AppContext);
+
   const getColumnVisibility = useColumnVisibility(filteredColumns);
   const { handleSort, sortedData } = useTableSorting(bodyData, headerData);
 
+  context?.setSortedStudies((sortedData as StudyInterface[]));
 
   return (
     <TableContainer sx={tbConteiner} h={isKeyWordTable ? 300 : 250} borderBottom={"1em solid #303D50"}>

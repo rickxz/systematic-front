@@ -17,15 +17,39 @@ import NavegationIconsPanel from "./TableRowSubcomponents/NavigationIconsPanel/N
 import OtherStudyPanels from "./OtherStudyPanels";
 import ModalContext from "./ModalContext";
 import { StudyInterface } from "../../../../public/interfaces/IStudy";
+import AppContext from "../../Context/AppContext";
 
 interface IStudy {
-  rowData: StudyInterface;
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function StudiesModal({ rowData, isOpen, onClose }: IStudy) {
-  const context = useContext(ModalContext);
+export default function StudiesModal({ isOpen, onClose }: IStudy) {
+  const modalContext = useContext(ModalContext);
+  const appContext = useContext(AppContext);
+  const study = (appContext?.extractionStudy as StudyInterface);
+  const sortedStudies = (appContext?.sortedStudies as StudyInterface[])
+  const index = (appContext?.sortedExtractionStudyIndex as number);
+
+
+
+  function ChangeToNext() {
+    if (index < sortedStudies.length - 1) {
+      const newIndex = (index as number) + 1;
+      appContext?.setSortedExtractionStudyIndex(newIndex)
+      appContext?.setExtractionStudy((sortedStudies as StudyInterface[])[newIndex])
+   }
+  }
+
+  function ChangeToPrevius() {
+    console.log(index);
+    console.log(sortedStudies.length);
+    if (index >= 1) {
+      const newIndex = (index as number) - 1;
+      appContext?.setSortedExtractionStudyIndex(newIndex)
+      appContext?.setExtractionStudy((sortedStudies as StudyInterface[])[newIndex])
+    }
+  }
 
   return (
     <>
@@ -34,15 +58,15 @@ export default function StudiesModal({ rowData, isOpen, onClose }: IStudy) {
         <ModalContent w="90%">
           <ModalHeader color="white" bg="gray.800">
             <Flex direction={"column"} alignItems={"center"}>
-              <Text>{rowData.title}</Text>
+              <Text>{study.title}</Text>
               <NavegationIconsPanel />
             </Flex>
           </ModalHeader>
           <ModalCloseButton bg="white" />
           <ModalBody>
             <Flex gap="25px">
-              {context?.StudyDataButtonState ? (
-                <StudyDataFiel studyData={rowData} type={"Extraction"} />
+              {modalContext?.StudyDataButtonState ? (
+                <StudyDataFiel studyData={study} type={"Extraction"} />
               ) : (
                 <></>
               )}
@@ -59,8 +83,8 @@ export default function StudiesModal({ rowData, isOpen, onClose }: IStudy) {
                 <Button>Chose</Button>
               </Flex>
               <Flex gap="10px">
-                <Button>Previous</Button>
-                <Button>Next</Button>
+                <Button onClick={ChangeToPrevius}>Previous</Button>
+                <Button onClick={ChangeToNext}>Next</Button>
               </Flex>
             </Flex>
           </ModalFooter>

@@ -42,11 +42,12 @@ U extends StudyInterface | KeywordInterface
   function handleClick(rowData: U) {
     if (isExtractionTable) {
       onOpen();
+      context?.setExtractionStudy((rowData as StudyInterface))
+      context?.setSortedExtractionStudyIndex(rowIndex);
     }
     if (isSelectionTable) {
-      console.log(rowData);
       context?.setSelectionStudy((rowData as StudyInterface))
-      
+      context?.setSortedSelectionStudyIndex(rowIndex);
     }
   }
 
@@ -84,7 +85,7 @@ U extends StudyInterface | KeywordInterface
       {isExtractionTable &&
         (isOpen ? (
           <ModalProvider>
-            <StudiesModal rowData={(rowData as StudyInterface)} isOpen={isOpen} onClose={onClose} />
+            <StudiesModal isOpen={isOpen} onClose={onClose} />
           </ModalProvider>
         ) : (
           <></>
