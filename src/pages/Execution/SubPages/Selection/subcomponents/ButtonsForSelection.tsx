@@ -3,15 +3,27 @@ import { boxconteiner, buttonconteiner, conteiner } from "../../../styles/BtnSel
 import ComboBox from "../../../../../components/Inputs/ComboBox";
 import useInputState from "../../../../../hooks/useInputState";
 import { FaPen } from "react-icons/fa6";
+import { useContext } from "react";
+import AppContext from "../../../../../components/Context/AppContext";
+import { StudyInterface } from "../../../../../../public/interfaces/IStudy";
 
 export default function ButtonsForSelection() {
+  const context = useContext(AppContext);
+  const sortedStudies = context?.sortedStudies;
+  console.log(sortedStudies);
+  const index = context?.sortedSelectionStudyIndex;
+  console.log(index);
 
   function ChangeToNext() {
-    console.log("Next");
+    const newIndex = (index as number) + 1;
+    context?.setSortedSelectionStudyIndex(newIndex)
+    context?.setSelectionStudy((sortedStudies as StudyInterface[])[newIndex])
   }
 
   function ChangeToPrevius() {
-    console.log("Previus");
+    const newIndex = (index as number) - 1;
+    context?.setSortedSelectionStudyIndex(newIndex)
+    context?.setSelectionStudy((sortedStudies as StudyInterface[])[newIndex])
   }
   const criteriosExclusao: string[] = [
     "Tipo estudo inadequado",

@@ -18,6 +18,10 @@ interface AppContextType {
   setExtractionStudy: React.Dispatch<React.SetStateAction<StudyInterface | undefined>>;
   sortedStudies: StudyInterface[] | undefined;
   setSortedStudies: React.Dispatch<React.SetStateAction<StudyInterface[] | undefined>>;
+  sortedSelectionStudyIndex: number | undefined;
+  setSortedSelectionStudyIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
+  sortedExtractionStudyIndex: number | undefined;
+  setSortedExtractionStudyIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -37,6 +41,10 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   );
   const [activeButton, setActiveButton] = useState<string>("");
   const [sortedStudies, setSortedStudies] = useState<StudyInterface[]>();
+  const [sortedSelectionStudyIndex, setSortedSelectionStudyIndex] = useState<number | undefined>();
+  const [sortedExtractionStudyIndex, setSortedExtractionStudyIndex] = useState<number | undefined>();
+
+
 
   return (
     <AppContext.Provider
@@ -54,7 +62,11 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         activeButton,
         setActiveButton,
         sortedStudies,
-        setSortedStudies
+        setSortedStudies,
+        sortedSelectionStudyIndex,
+        setSortedSelectionStudyIndex,
+        sortedExtractionStudyIndex,
+        setSortedExtractionStudyIndex
       }}
     >
       {children}
