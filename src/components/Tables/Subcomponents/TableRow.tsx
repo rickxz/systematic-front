@@ -85,7 +85,7 @@ U extends StudyInterface | KeywordInterface
       {isExtractionTable &&
         (isOpen ? (
           <ModalProvider>
-            <StudiesModal rowData={(rowData as StudyInterface)} isOpen={isOpen} onClose={onClose} />
+            <StudiesModal isOpen={isOpen} onClose={onClose} />
           </ModalProvider>
         ) : (
           <></>

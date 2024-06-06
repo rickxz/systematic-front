@@ -9,21 +9,25 @@ import { StudyInterface } from "../../../../../../public/interfaces/IStudy";
 
 export default function ButtonsForSelection() {
   const context = useContext(AppContext);
-  const sortedStudies = context?.sortedStudies;
+  const sortedStudies = (context?.sortedStudies as StudyInterface[]);
   console.log(sortedStudies);
-  const index = context?.sortedSelectionStudyIndex;
+  const index = (context?.sortedSelectionStudyIndex as number);
   console.log(index);
 
   function ChangeToNext() {
-    const newIndex = (index as number) + 1;
-    context?.setSortedSelectionStudyIndex(newIndex)
-    context?.setSelectionStudy((sortedStudies as StudyInterface[])[newIndex])
+    if (index < sortedStudies.length -1) {
+      const newIndex = (index as number) + 1;
+      context?.setSortedSelectionStudyIndex(newIndex)
+      context?.setSelectionStudy((sortedStudies as StudyInterface[])[newIndex])
+    }
   }
 
   function ChangeToPrevius() {
-    const newIndex = (index as number) - 1;
-    context?.setSortedSelectionStudyIndex(newIndex)
-    context?.setSelectionStudy((sortedStudies as StudyInterface[])[newIndex])
+    if (index >= 1) {
+      const newIndex = (index as number) - 1;
+      context?.setSortedSelectionStudyIndex(newIndex)
+      context?.setSelectionStudy((sortedStudies as StudyInterface[])[newIndex])
+    }
   }
   const criteriosExclusao: string[] = [
     "Tipo estudo inadequado",

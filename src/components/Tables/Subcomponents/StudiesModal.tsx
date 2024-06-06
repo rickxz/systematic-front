@@ -20,12 +20,11 @@ import { StudyInterface } from "../../../../public/interfaces/IStudy";
 import AppContext from "../../Context/AppContext";
 
 interface IStudy {
-  rowData: StudyInterface;
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function StudiesModal({ rowData, isOpen, onClose }: IStudy) {
+export default function StudiesModal({ isOpen, onClose }: IStudy) {
   const modalContext = useContext(ModalContext);
   const appContext = useContext(AppContext);
   const study = (appContext?.extractionStudy as StudyInterface);
@@ -35,15 +34,21 @@ export default function StudiesModal({ rowData, isOpen, onClose }: IStudy) {
 
 
   function ChangeToNext() {
-    const newIndex = (index as number) + 1;
-    appContext?.setSortedExtractionStudyIndex(newIndex)
-    appContext?.setExtractionStudy((sortedStudies as StudyInterface[])[newIndex])
+    if (index < sortedStudies.length - 1) {
+      const newIndex = (index as number) + 1;
+      appContext?.setSortedExtractionStudyIndex(newIndex)
+      appContext?.setExtractionStudy((sortedStudies as StudyInterface[])[newIndex])
+   }
   }
 
   function ChangeToPrevius() {
-    const newIndex = (index as number) - 1;
-    appContext?.setSortedExtractionStudyIndex(newIndex)
-    appContext?.setExtractionStudy((sortedStudies as StudyInterface[])[newIndex])
+    console.log(index);
+    console.log(sortedStudies.length);
+    if (index >= 1) {
+      const newIndex = (index as number) - 1;
+      appContext?.setSortedExtractionStudyIndex(newIndex)
+      appContext?.setExtractionStudy((sortedStudies as StudyInterface[])[newIndex])
+    }
   }
 
   return (
