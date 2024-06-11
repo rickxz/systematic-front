@@ -7,13 +7,8 @@ import {
     ModalBody,
     ModalCloseButton,
     Text,
-    Button,
-    Flex,
     FormControl,
-    FormLabel,
-    FormErrorMessage,
-    FormHelperText,
-    Input,
+    FormLabel
   } from '@chakra-ui/react'
 import { StudyInterface } from "../../../../public/interfaces/IStudy";
 import { useState } from 'react';
@@ -31,9 +26,9 @@ export default function StudyEdtionModal({ isOpen, onClose, study }: StudyEdtion
     const [authors, setAuthors] = useState(study.authors);
     const [abstract, setAbstract] = useState(study.abstract);
     const [doi, setDoi] = useState(study.doi);
-    const [studyType, setStudyType] = useState(study.studyType);
+    //const [studyType, setStudyType] = useState(study.studyType);
     const [venue, setVenue] = useState(study.venue);
-    const [keywords, setKeywords] = useState(study.keywords);
+    //const [keywords, setKeywords] = useState(study.keywords);
 
     return (
         <>

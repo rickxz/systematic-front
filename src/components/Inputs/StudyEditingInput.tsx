@@ -1,5 +1,4 @@
 import { Input } from "@chakra-ui/react";
-import { StudyType } from "../../../public/enums/studyType";
 
 interface StudyEditingInputProps {
     type: string;
