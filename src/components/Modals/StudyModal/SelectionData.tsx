@@ -1,8 +1,8 @@
 import { Box, Checkbox, CheckboxGroup, Container, Flex, Heading, Spacer, Stack } from "@chakra-ui/react";
-import useFecthSelectionData from "../../../hooks/fetch/useFetchSelectionData";
+import useFetchTextualData from "./../../../hooks/fetch/useFetchTextualData";
 
-export default function StatusSelection() {
-    const { selectionInclusionData, selectionExclusionData } = useFecthSelectionData("./../../../public/data/selectionData.json"); 
+export default function SelectionData() { // Corrigido para "SelectionData"
+    const { selectionInclusionData, selectionExclusionData } = useFetchTextualData("./../../../public/data/protocolData/extractionCriterionDto.json"); // Corrigido para "useFetchTextualData"
     console.log(selectionInclusionData, selectionExclusionData);
     return(
         <Container style={{ maxHeight: "350px", overflowY: "auto"}}>
