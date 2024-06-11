@@ -1,4 +1,4 @@
-import { Button, Flex, IconButton } from "@chakra-ui/react";
+import { Button, Flex, IconButton, useDisclosure } from "@chakra-ui/react";
 import { boxconteiner, buttonconteiner, conteiner } from "../../../styles/BtnSelectionStyles";
 import ComboBox from "../../../../../components/Inputs/ComboBox";
 import useInputState from "../../../../../hooks/useInputState";
@@ -6,13 +6,13 @@ import { FaPen } from "react-icons/fa6";
 import { useContext } from "react";
 import AppContext from "../../../../../components/Context/AppContext";
 import { StudyInterface } from "../../../../../../public/interfaces/IStudy";
+import StudyEdtionModal from "../../../../../components/Modals/StudyModal/StudyEdtionModal";
 
 export default function ButtonsForSelection() {
   const context = useContext(AppContext);
   const sortedStudies = (context?.sortedStudies as StudyInterface[]);
-  console.log(sortedStudies);
   const index = (context?.sortedSelectionStudyIndex as number);
-  console.log(index);
+  const { isOpen, onOpen, onClose} = useDisclosure();
 
   function ChangeToNext() {
     if (index < sortedStudies.length -1) {
@@ -61,7 +61,7 @@ export default function ButtonsForSelection() {
     <>
       <Flex sx={conteiner}>
       <Flex direction={"row"} p="2">
-        <IconButton aria-label="Edit Study Data" w="28px" h="28px" icon={<FaPen />} />
+        <IconButton aria-label="Edit Study Data" w="28px" h="28px" icon={<FaPen />} onClick={onOpen}/>
       </Flex>
 
         <Flex sx={boxconteiner}>
@@ -87,6 +87,11 @@ export default function ButtonsForSelection() {
 
         <Button borderRadius={"3px"}>Redifine</Button>
       </Flex>
+      {
+          isOpen ? (
+            <StudyEdtionModal isOpen={isOpen} onClose={onClose} study={(context?.selectionStudy as StudyInterface)} />
+          ) : (<></>)
+        }
     </>
   );
 }
