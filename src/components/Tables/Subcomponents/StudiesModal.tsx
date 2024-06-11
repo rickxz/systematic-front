@@ -42,8 +42,6 @@ export default function StudiesModal({ isOpen, onClose }: IStudy) {
   }
 
   function ChangeToPrevius() {
-    console.log(index);
-    console.log(sortedStudies.length);
     if (index >= 1) {
       const newIndex = (index as number) - 1;
       appContext?.setSortedExtractionStudyIndex(newIndex)

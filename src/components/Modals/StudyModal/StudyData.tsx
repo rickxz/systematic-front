@@ -1,6 +1,7 @@
 import { FaPen } from "react-icons/fa";
-import { IconButton, Flex, Text, Center } from "@chakra-ui/react";
+import { IconButton, Flex, Text, Center, useDisclosure } from "@chakra-ui/react";
 import { StudyInterface } from "../../../../public/interfaces/IStudy";
+import StudyEdtionModal from "./StudyEdtionModal";
 
 interface IStudyDataFiel {
   studyData: StudyInterface;
@@ -10,6 +11,10 @@ interface IStudyDataFiel {
 export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
   const isTypeValid: boolean = type === "Selection" || type === "Extraction";
   const isTypeSelection: boolean = type === "Selection";
+  const isTypeExtraction: boolean = type === "Extraction";
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
 
   const selectionSX = {
     bg: "white",
@@ -69,13 +74,14 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
       );
 
       return (
+      <>
         <Flex sx={extractionSX}>
 
           <Flex flexDirection="column" >
               <Center>
                 <Flex direction={"row"} justifyContent={"center"} m="2" position={"relative"} w="100%">
                   <Text as="h3" fontSize={"lg"} fontWeight={"bold"}>Study Data</Text>
-                  <IconButton aria-label="Edit Study Data" w="28px" h="28px" position={"absolute"} right="0px" icon={<FaPen />} />
+                  <IconButton aria-label="Edit Study Data" w="28px" h="28px" position={"absolute"} right="0px" icon={<FaPen />} onClick={onOpen} />
                 </Flex>
               </Center>
               
@@ -109,6 +115,12 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
           </Flex>
         
         </Flex>
+        {isTypeExtraction && (
+          isOpen ? (
+            <StudyEdtionModal isOpen={isOpen} onClose={onClose} study={studyData} />
+          ) : (<></>)
+        )}
+      </>
       );
   }
 
