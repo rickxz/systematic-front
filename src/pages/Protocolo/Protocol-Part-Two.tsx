@@ -23,6 +23,7 @@ export default function ProtocolPartTwo2() {
           </FormControl>
 
           <AddSelectionTable
+            label="Languages"
             options={["", "English", "Portuguese", "French", "Spanish", "German"]}
             placeholder={"Languages:"}
             typeField="select"
@@ -32,6 +33,7 @@ export default function ProtocolPartTwo2() {
           <AddTextTable text="Exclusion Criteria:" placeholder="Enter the criteria" />
 
           <AddSelectionTable
+            label="Data Bases"
             options={["", "Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
             placeholder={"Data bases"}
             typeField="select"
