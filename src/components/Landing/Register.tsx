@@ -31,8 +31,8 @@ export default function Register({ handleRender }: iRegisterProps) {
         <RegisterInputs id="affiliation" placeholder={"Affiliation ..."} handlechange={handleAffiliattionChange} />
 
         <SelectInput
-          values={["Brazil", "England", "France", "Spain"]}
-          names={["Brazil", "England", "France", "Spain"]}
+          values={["Select a country", "Brazil", "England", "France", "Spain"]}
+          names={["Select a country", "Brazil", "England", "France", "Spain"]}
           onSelect={handleSelectChange}
           selectedValue={selectedValue}
           page={"register"}
