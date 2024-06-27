@@ -16,8 +16,12 @@ export default function useHandleRegister() {
       window.alert("Name is required!");
       return;
     }
-    if (affiliattion === "") {
-      window.alert("Affiliattion is required");
+    if (!passwordMatch) {
+      window.alert("Passwords don't match!");
+      return;
+    }
+    if (password === "") {
+      window.alert("Password is required!");
       return;
     }
     if (email === "") {
@@ -32,12 +36,8 @@ export default function useHandleRegister() {
       window.alert("Country is required");
       return;
     }
-    if (!passwordMatch) {
-      window.alert("Passwords don't match!");
-      return;
-    }
-    if (password === "") {
-      window.alert("Password is required!");
+    if (affiliattion === "") {
+      window.alert("Affiliattion is required");
       return;
     }
     window.alert("User registered with success!");
