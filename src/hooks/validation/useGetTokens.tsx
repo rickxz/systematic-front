@@ -9,6 +9,6 @@ export const useGetTokens = async (username: string, password: string) => {
 
     const response = await axios.post(`${url}api/v1/auth`, userData);
     localStorage.setItem('accessToken', response.data.accessToken);
-    localStorage.setItem('refreshToken', response.data.refreshToken);
+    document.cookie = `refresh-token=${response.data.refreshToken}`;
     return response;
 }
