@@ -3,6 +3,7 @@ import useNameValidation from "./useNameValidation";
 import useEmailValidation from "./useEmailValidation";
 import usePassWordValidation from "./usePassWordValidation";
 import useAffiliattionValidation from "./useAffiliattionValidation";
+import useSendUser from './useSendUser';
 
 export default function useHandleRegister() {
   const { name, handleNameChange } = useNameValidation();
@@ -57,6 +58,7 @@ export default function useHandleRegister() {
     else{
       data.push(affiliattion);
       console.log(data);
+      useSendUser(data);
     }
     window.alert("User registered with success!");
   };
