@@ -1,25 +1,30 @@
+import { useState } from 'react';
 import EventButton from "../Buttons/EventButton";
+import { useGetTokens } from '../../hooks/validation/useGetTokens';
 import { FormControl, Box } from "@chakra-ui/react";
 import PasswordInput from "../Inputs/PasswordInput";
 import FormOptions from "./subcomponents/FormOptions";
 import RegisterInputs from "./subcomponents/inputs/RegisterInputs";
-import useHandleRegister from "../../hooks/validation/useHandleRegister";
 import { bxconteiner, evbtn, formcontrol } from "./styles/loginstyles";
 
 interface iLoginProps {
   handleRender: (renderForm: string) => void;
 }
 export default function Login({ handleRender }: iLoginProps) {
-  const { handleEmailchange, handlePasswordChange } = useHandleRegister();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   return (
     <Box w={"100%"} mb={"13em"} ml={"20%"}>
       <FormControl sx={formcontrol}>
-        <RegisterInputs id="mail" placeholder={"Email ..."} handlechange={handleEmailchange} />
-        <PasswordInput text="Password..." handlechange={handlePasswordChange} />
+        <RegisterInputs id="username" placeholder={"username ..."} handlechange={(e) => {setUsername(e.target.value)}} />
+        <PasswordInput text="Password..." handlechange={(e) => {setPassword(e.target.value)}} />
         <Box sx={bxconteiner}>
           <EventButton
-            event={() => {
-              window.alert("Loged-in!!!");
+            event={ async () => {
+              console.log(password, username)
+              //window.alert("Loged-in!!!");
+              const response = await useGetTokens(username, password)
+              console.log(response);
             }}
             text={"Log in"}
             sx={evbtn}
