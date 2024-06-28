@@ -10,7 +10,7 @@ export default async function useSendUser(data: string[]){
         'affiliation': data[4]
     }
 
-    axios.post(`${url}/api/v1/user`, userData)  //Doing a requisition to send the json object with the user data
+    axios.post(`${url}/api/v1/user`, userData)  //Doing a request to send the json object with the user data
     .then(response => console.log(response))
     .catch(err => console.error(err));
 }
