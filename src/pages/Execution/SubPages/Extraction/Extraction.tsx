@@ -10,6 +10,7 @@ import useFetchTableData from "../../../../hooks/seachAppropriateStudy/useFetchS
 import { conteiner, inputconteiner } from "../../styles/executionStyles";
 import { StudyInterface } from "../../../../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../../../../public/interfaces/ITableHeaders";
+import { useState } from "react";
 
 export default function Extraction() {
   const studiesData: StudyInterface[] | undefined = useFetchTableData("/data/NewStudyData.json");

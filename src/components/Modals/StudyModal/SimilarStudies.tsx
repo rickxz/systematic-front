@@ -5,7 +5,7 @@ import useInputState from "../../../hooks/useInputState";
 import { TableHeadersInterface } from "../../../../public/interfaces/ITableHeaders";
 
 export default function SimilarStudies() {
-  const studies = useFetchTableData("/data/tableData.json");
+  const studies = useFetchTableData("/data/NewStudyData.json");
   const headerData: TableHeadersInterface = {
     title: "Title",
     authors: "Author",

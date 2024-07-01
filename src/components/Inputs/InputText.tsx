@@ -6,10 +6,9 @@ interface ITextFieldProps {
   placeholder: string;
   type: string;
   nome: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-export default function InputText({ placeholder, type, nome, onChange }: ITextFieldProps) {
+export default function InputText({ placeholder, type, nome }: ITextFieldProps) {
   const isSearchField = type === "search";
 
   return (
@@ -19,7 +18,6 @@ export default function InputText({ placeholder, type, nome, onChange }: ITextFi
           type={type}
           name={nome}
           placeholder={placeholder}
-          onChange={onChange}
           w={isSearchField ? "250px" : "100%"}
           bgColor={"#C9D9E5"}
           borderRadius={"3px"}
