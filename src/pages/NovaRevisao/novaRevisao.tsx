@@ -9,9 +9,6 @@ import useRefreshToken from "../../hooks/validation/useRefreshToken";
 
 export default function NovaRevisao() {
 
-  let newAccessToken = useRefreshToken();
-  console.log(newAccessToken);
-
   return (
     <FlexLayout navigationType="Accordion" defaultOpen={0}>
       <Header text="New Systematic Review" />
