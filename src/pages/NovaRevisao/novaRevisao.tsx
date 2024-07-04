@@ -8,8 +8,6 @@ import FlexLayout from "../../components/ui/Flex/Flex";
 import useRefreshToken from "../../hooks/validation/useRefreshToken";
 
 export default function NovaRevisao() {
-  let newAccessToken = useRefreshToken();
-  console.log(newAccessToken);
 
   return (
     <FlexLayout navigationType="Accordion" defaultOpen={0}>
