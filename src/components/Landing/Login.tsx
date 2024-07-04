@@ -23,8 +23,7 @@ export default function Login({ handleRender }: iLoginProps) {
             event={ async () => {
               console.log(password, username)
               //window.alert("Loged-in!!!");
-              const response = await useGetTokens(username, password)
-              console.log(response);
+              await useGetTokens(username, password);
             }}
             text={"Log in"}
             sx={evbtn}

@@ -7,9 +7,21 @@ export const useGetTokens = async (username: string, password: string) => {
         password: password
     }
 
-    const response = await axios.post(`${url}api/v1/auth`, userData);
-    axios.defaults.headers.common["Authorization"] = `Bearer ${response.data.accessToken}`
-    localStorage.setItem('accessToken', response.data.accessToken);
-    localStorage.setItem('refreshToken', response.data.refreshToken);
-    return response;
+    try{
+        const response = await axios.post(`${url}api/v1/auth`, userData);
+        console.log("Resposta do hook");
+        if(response.status === 200){
+            console.log(response);
+            axios.defaults.headers.common["Authorization"] = `Bearer ${response.data.accessToken}`
+            localStorage.setItem('accessToken', response.data.accessToken);
+            localStorage.setItem('refreshToken', response.data.refreshToken);
+        }
+        else{
+            throw new Error("Falha ao fazer requisição");
+        }  
+    } catch(error){
+        console.error(error);
+    }
+    
+    return 1;
 }

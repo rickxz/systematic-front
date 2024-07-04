@@ -5,8 +5,12 @@ import NavButton from "../../components/Buttons/NavButton";
 import InputTextArea from "../../components/Inputs/InputTextArea";
 import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 import FlexLayout from "../../components/ui/Flex/Flex";
+import useRefreshToken from "../../hooks/validation/useRefreshToken";
 
 export default function NovaRevisao() {
+  let newAccessToken = useRefreshToken();
+  console.log(newAccessToken);
+
   return (
     <FlexLayout navigationType="Accordion" defaultOpen={0}>
       <Header text="New Systematic Review" />
