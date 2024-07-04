@@ -13,7 +13,17 @@ export default function NovaRevisao() {
   const [collaborators, setCollaborators] = useState<string[]>([]);
 
   async function handleData(){
-    
+    console.log(title);
+    console.log(description);
+    console.log(collaborators);
+  }
+
+  function handleTitle(e: React.ChangeEvent<HTMLInputElement>){
+    setTitle(e.target.value);
+  }
+
+  function handleDescription(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setDescription(e.target.value);
   }
 
   function handleCollaborators(e: React.ChangeEvent<HTMLTextAreaElement>){
@@ -26,11 +36,11 @@ export default function NovaRevisao() {
       <Header text="New Systematic Review" />
 
       <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"70%"} alignItems={"center"} ml={"10em"}>
-        <InputText placeholder="Enter review title" type="text" nome="text" onChange={(e) => setTitle(e.target.value)}/>
+        <InputText placeholder="Enter review title" type="text" nome="text" onChange={handleTitle}/>
 
-        <InputTextArea label="Description:" placeholder="Enter review description" onChange={(e) => setTitle(e.target.value)}></InputTextArea>
+        <InputTextArea label="Description:" placeholder="Enter review description" onChange={handleDescription}></InputTextArea>
 
-        <InputTextArea label="Description:" placeholder="Enter review description" onChange={handleCollaborators}></InputTextArea>
+        <InputTextArea label="Collaborators:" placeholder="Enter review collaborators" onChange={handleCollaborators}></InputTextArea>
 
         <Box ml={"71%"}>
           <NavButton event={handleData} path={"/newRevision/protocol"} text="Create new Review" />
