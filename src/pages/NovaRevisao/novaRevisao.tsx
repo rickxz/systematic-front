@@ -5,23 +5,35 @@ import NavButton from "../../components/Buttons/NavButton";
 import InputTextArea from "../../components/Inputs/InputTextArea";
 import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 import FlexLayout from "../../components/ui/Flex/Flex";
-import useRefreshToken from "../../hooks/validation/useRefreshToken";
+import { useState } from "react";
 
 export default function NovaRevisao() {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [collaborators, setCollaborators] = useState<string[]>([]);
+
+  async function handleData(){
+    
+  }
+
+  function handleCollaborators(e: React.ChangeEvent<HTMLTextAreaElement>){
+    let collabs = e.target.value.split(' ');
+    setCollaborators(collabs);
+  }
 
   return (
     <FlexLayout navigationType="Accordion" defaultOpen={0}>
       <Header text="New Systematic Review" />
 
       <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"70%"} alignItems={"center"} ml={"10em"}>
-        <InputText placeholder="Enter review title" type="text" nome="text" />
+        <InputText placeholder="Enter review title" type="text" nome="text" onChange={(e) => setTitle(e.target.value)}/>
 
-        <InputTextArea label="Description:" placeholder="Enter review description"></InputTextArea>
+        <InputTextArea label="Description:" placeholder="Enter review description" onChange={(e) => setTitle(e.target.value)}></InputTextArea>
 
-        <ResearcherFilter />
+        <InputTextArea label="Description:" placeholder="Enter review description" onChange={handleCollaborators}></InputTextArea>
 
         <Box ml={"71%"}>
-          <NavButton path={"/newRevision/protocol"} text="Create new Review" />
+          <NavButton event={handleData} path={"/newRevision/protocol"} text="Create new Review" />
         </Box>
       </FormControl>
     </FlexLayout>
