@@ -6,6 +6,7 @@ import InputTextArea from "../../components/Inputs/InputTextArea";
 import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
+import useCreateRevision from "../../hooks/revisions/useCreateRevision";
 
 export default function NovaRevisao() {
   const [title, setTitle] = useState('');
@@ -13,9 +14,7 @@ export default function NovaRevisao() {
   const [collaborators, setCollaborators] = useState<string[]>([]);
 
   async function handleData(){
-    console.log(title);
-    console.log(description);
-    console.log(collaborators);
+    useCreateRevision(title, description, collaborators);
   }
 
   function handleTitle(e: React.ChangeEvent<HTMLInputElement>){
