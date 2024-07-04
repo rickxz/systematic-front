@@ -15,6 +15,8 @@ form h2{
     font-size: 25px;
 }
 
+
+
 .contentForm{
     display: flex;
     flex-direction: column;
@@ -79,6 +81,17 @@ form h2{
     border-radius: 10px;
     font-weight: 600;
 }
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.inputError {
+    border: 2px solid red !important;
+}
+
 
 @media screen and (max-width : 1000px) {
     form{
