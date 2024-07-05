@@ -27,7 +27,7 @@ export default function UserArea() {
             <RevisionCard
               id={data.key}
               title={data.title}
-              RevisorNames={data.revisors}
+              RevisorNames={data.owner}
               lastEdition={data.lastChange}
               creation={data.creation}
               isEdited={data.isEdited}
