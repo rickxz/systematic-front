@@ -20,6 +20,7 @@ const useFetchRevisionCard = (url: string) => {
         const header = {
           "Authorization": `Bearer ${token}` 
         } 
+        
         const response = await axios.get(url, {headers: header});
         console.log(response);
         // const data = await response.json();
