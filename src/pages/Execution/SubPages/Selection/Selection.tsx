@@ -13,6 +13,7 @@ import { AppProvider } from "../../../../components/Context/AppContext";
 import { StudyInterface } from "../../../../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../../../../public/interfaces/ITableHeaders";
 import { KeywordInterface } from "../../../../../public/interfaces/KeywordInterface";
+import { useState } from "react";
 
 export default function Selection<U extends StudyInterface | KeywordInterface>() {
   const studiesData: U[] | undefined = useFetchTableData("/data/NewStudyData.json");
@@ -26,6 +27,7 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
 }
   const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
+  const [inputValue, setOInputValue] = useState("");
 
   if(!studiesData) return <>Studies data nor found</>
 
@@ -36,7 +38,7 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
 
         <Box sx={conteiner}>
           <Box sx={inputconteiner}>
-            <InputText type="search" placeholder="Insert article's name" nome="search" />
+            <InputText type="search" placeholder="Insert article's name" nome="search" setOInputValue={setOInputValue}/>
             <SelectInput
               names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
               values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
@@ -67,6 +69,7 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
             bodyData={studiesData}
             filteredColumns={checkedValues}
             tableType={"selection"}
+            filterText={inputValue}
           />
           <StudySelectionArea />
         </Box>

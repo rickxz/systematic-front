@@ -15,6 +15,7 @@ interface DynamicTableProps {
   bodyData: (StudyInterface | KeywordInterface)[];
   tableType: string;
   filteredColumns: string[];
+  filterText: string
 }
 
 enum tableTypeEnum {
@@ -24,7 +25,7 @@ enum tableTypeEnum {
 }
 
 
-export default function DynamicTable({ headerData, bodyData, tableType, filteredColumns }: DynamicTableProps) {
+export default function DynamicTable({ headerData, bodyData, tableType, filteredColumns, filterText }: DynamicTableProps) {
   const isKeyWordTable = tableType == tableTypeEnum.KEYWORD;
   const isSelectionTable = tableType == tableTypeEnum.SELECTION;
   const isExtractionTable = tableType === tableTypeEnum.EXTRACTION;

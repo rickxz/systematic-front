@@ -1,15 +1,19 @@
 import { FormControl, Input } from "@chakra-ui/react";
 import SearchButton from "../Buttons/SearchButton";
 import { conteiner, inputconteiner } from "./styles/inputTextStyle";
+import { useState } from "react";
+import { SiTarget } from "react-icons/si";
 
 interface ITextFieldProps {
   placeholder: string;
   type: string;
   nome: string;
+  setOInputValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function InputText({ placeholder, type, nome }: ITextFieldProps) {
+export default function InputText({ placeholder, type, nome, setOInputValue }: ITextFieldProps) {
   const isSearchField = type === "search";
+  
 
   return (
     <FormControl mt={isSearchField ? "" : 10} sx={conteiner}>
@@ -23,6 +27,7 @@ export default function InputText({ placeholder, type, nome }: ITextFieldProps) 
           borderRadius={"3px"}
           _placeholder={{ opacity: 1, color: "gray.500" }}
           focusBorderColor="#526D82"
+          onChange={(e) => (setOInputValue(e.target.value))}
         />
         {isSearchField && <SearchButton />}
       </FormControl>
