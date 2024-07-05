@@ -1,31 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 
-
-const useRefreshToken = () => {
-    const [accessToken, setAccessToken] = useState('');
-    const [refreshed, setRefreshed] = useState(false);
-
-    const url = ("http://localhost:8080/");
+const refreshAccessToken = async (): Promise<string> => {
+    const url = "http://localhost:8080/";
     const refreshToken = localStorage.getItem('refreshToken');
-
-    useEffect(() => {
-        async function fetchData(){
-            try{
-                let response = await axios.post(`${url}api/v1/auth/refresh`, {"refreshToken": refreshToken});
-                setAccessToken(response.data.accessToken);
-                setRefreshed(true);
-            } catch(err){
-                console.error(err);
-                return err;
-            }
-        }
-        fetchData();
-    }, [])
-    
-    if(refreshed){
-        return accessToken;
+    try {
+        const response = await axios.post(`${url}api/v1/auth/refresh`, { "refreshToken": refreshToken });
+        return response.data.accessToken;
+    } catch (err) {
+        console.error("Failed to refresh access token:", err);
+        throw err;
     }
 }
 
-export default useRefreshToken;
+export default refreshAccessToken;
