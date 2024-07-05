@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export default async function useSendUser(data: string[]){
     const url = 'http://localhost:8080/'
+
     const userData = { //putting the userData in a object 
         'username': data[0],
         'password': data[1],

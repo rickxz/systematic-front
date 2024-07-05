@@ -1,4 +1,4 @@
-import { Box, FormControl } from "@chakra-ui/react";
+import { Box, FormControl, Switch } from "@chakra-ui/react";
 import Header from "../../components/ui/Header/Header";
 import InputText from "../../components/Inputs/InputText";
 import NavButton from "../../components/Buttons/NavButton";
@@ -14,7 +14,11 @@ export default function NovaRevisao() {
   const [collaborators, setCollaborators] = useState<string[]>([]);
 
   async function handleData(){
+    if(title == ''){
+      window.alert("O campo título é obrigatório!");
+    } else {
     useCreateRevision(title, description, collaborators);
+    }
   }
 
   function handleTitle(e: React.ChangeEvent<HTMLInputElement>){
@@ -42,7 +46,9 @@ export default function NovaRevisao() {
         <InputTextArea label="Collaborators:" placeholder="Enter review collaborators" onChange={handleCollaborators}></InputTextArea>
 
         <Box ml={"71%"}>
-          <NavButton event={handleData} path={"/newRevision/protocol"} text="Create new Review" />
+          {title != '' ? <NavButton event={handleData} path={"/newRevision/protocol"} text="Create new Review" /> :
+          <NavButton event={handleData} path={"/newRevision"} text="Create new Review" />
+          }
         </Box>
       </FormControl>
     </FlexLayout>
