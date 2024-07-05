@@ -5,6 +5,7 @@ const refreshAccessToken = async (): Promise<string> => {
     const refreshToken = localStorage.getItem('refreshToken');
     try {
         const response = await axios.post(`${url}api/v1/auth/refresh`, { "refreshToken": refreshToken });
+        localStorage.setItem('accessToken', response.data.accessToken);
         return response.data.accessToken;
     } catch (err) {
         console.error("Failed to refresh access token:", err);
