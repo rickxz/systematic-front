@@ -26,6 +26,11 @@ const useCreateRevision = async (title: string, description: string, collaborato
             localStorage.setItem('accessToken', newAccesstoken);
             useCreateRevision(title, description, collaborators, false);
         }
+        else if(err.response?.status === 500 && retry == true){
+            let newAccesstoken = await useRefreshToken();
+            localStorage.setItem('accessToken', newAccesstoken);
+            useCreateRevision(title, description, collaborators, false);
+        }
     }
         console.log(err);
 
