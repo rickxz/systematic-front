@@ -11,6 +11,9 @@ export default async function useSendUser(data: string[]){
     }
 
     axios.post(`${url}api/v1/user`, userData)  //Doing a request to send the json object with the user data
-    .then(response => console.log(response))
+    .then(response => {
+        console.log(response);
+        sessionStorage.setItem('userId', response.data.id);
+    })
     .catch(err => console.error(err));
 }

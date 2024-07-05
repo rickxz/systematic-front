@@ -6,7 +6,9 @@ import RevisionCard from "./subcomponents/RevisionCard";
 import useFetchRevisionCard from "../../hooks/fetch/useFetchRevisionCard";
 
 export default function UserArea() {
-  const { cardData } = useFetchRevisionCard("data/revisions.json");
+  const userID = sessionStorage.getItem('userId');
+  console.log(userID);
+  const { cardData } = useFetchRevisionCard(`http://localhost:8080/api/v1/systematic-study/owner/${userID}`);
 
   return (
     <FlexLayout defaultOpen={0} navigationType="Default">

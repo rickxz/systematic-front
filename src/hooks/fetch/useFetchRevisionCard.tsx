@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 interface cardDataProps {
   key: string;
@@ -14,9 +15,15 @@ const useFetchRevisionCard = (url: string) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
-        const data = await response.json();
-        setCardData(data);
+        let token = localStorage.getItem('accessToken');
+        
+        const header = {
+          "Authorization": `Bearer ${token}` 
+        } 
+        const response = await axios.get(url, {headers: header});
+        console.log(response);
+        // const data = await response.json();
+        // setCardData(data);
       } catch (error) {
         console.log(error);
       }
