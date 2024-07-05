@@ -15,7 +15,8 @@ interface DynamicTableProps {
   bodyData: (StudyInterface | KeywordInterface)[];
   tableType: string;
   filteredColumns: string[];
-  filterText: string
+  searchString: string;
+  selectedStatus: string | null;
 }
 
 enum tableTypeEnum {
@@ -25,7 +26,7 @@ enum tableTypeEnum {
 }
 
 
-export default function DynamicTable({ headerData, bodyData, tableType, filteredColumns, filterText }: DynamicTableProps) {
+export default function DynamicTable({ headerData, bodyData, tableType, filteredColumns, searchString, selectedStatus }: DynamicTableProps) {
   const isKeyWordTable = tableType == tableTypeEnum.KEYWORD;
   const isSelectionTable = tableType == tableTypeEnum.SELECTION;
   const isExtractionTable = tableType === tableTypeEnum.EXTRACTION;
@@ -33,6 +34,8 @@ export default function DynamicTable({ headerData, bodyData, tableType, filtered
   const context = useContext(AppContext);
 
   const getColumnVisibility = useColumnVisibility(filteredColumns);
+  console.log("Status: " + selectedStatus);
+  console.log("Search String: " + searchString);
   const { handleSort, sortedData } = useTableSorting(bodyData, headerData);
 
   context?.setSortedStudies((sortedData as StudyInterface[]));
