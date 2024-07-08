@@ -6,7 +6,7 @@ interface ITextFieldProps {
   placeholder: string;
   type: string;
   nome: string;
-  setSearchString: React.Dispatch<React.SetStateAction<string>>;
+  setSearchString: (value: React.SetStateAction<string>) => void;
 }
 
 export default function InputText({ placeholder, type, nome, setSearchString }: ITextFieldProps) {
