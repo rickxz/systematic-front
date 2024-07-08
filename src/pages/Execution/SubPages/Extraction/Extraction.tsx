@@ -11,6 +11,7 @@ import { conteiner, inputconteiner } from "../../styles/executionStyles";
 import { StudyInterface } from "../../../../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../../../../public/interfaces/ITableHeaders";
 import { useState } from "react";
+import { tableTypeEnum } from "../../../../../public/enums/tableTypeEnum";
 
 export default function Extraction() {
   const studiesData: StudyInterface[] | undefined = useFetchTableData("/data/NewStudyData.json");
@@ -25,6 +26,7 @@ export default function Extraction() {
 
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   const { value: selectedValue, handleChange: handleSelectChange } = useInputState<string | null>(null);
+  const [ searchString, setSearchString ] = useState<string>("");
 
   if(!studiesData) return <>Studies data nor found</>
 
@@ -33,7 +35,7 @@ export default function Extraction() {
       <Header text="Extraction" />
       <Box sx={conteiner}>
         <Box sx={inputconteiner}>
-          <InputText type="search" placeholder="Insert article's name" nome="search" />
+          <InputText type="search" placeholder="Insert article's name" nome="search" setSearchString={setSearchString}/>
           <SelectInput
             names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
             values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
@@ -59,7 +61,8 @@ export default function Extraction() {
       </Box>
 
       <Box marginLeft={"3em"} marginRight={"3em"} w={"78vw"}>
-        <DynamicTable headerData={headerData} bodyData={studiesData} filteredColumns={checkedValues} tableType={"extraction"} />
+        <DynamicTable headerData={headerData} bodyData={studiesData} filteredColumns={checkedValues}
+        tableType={tableTypeEnum.EXTRACTION} searchString={""} selectedStatus={null} />
       </Box>
     </FlexLayout>
   );

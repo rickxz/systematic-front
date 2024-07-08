@@ -14,6 +14,7 @@ import { StudyInterface } from "../../../../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../../../../public/interfaces/ITableHeaders";
 import { KeywordInterface } from "../../../../../public/interfaces/KeywordInterface";
 import { useState } from "react";
+import { tableTypeEnum } from "../../../../../public/enums/tableTypeEnum";
 
 export default function Selection<U extends StudyInterface | KeywordInterface>() {
   const studiesData: U[] | undefined = useFetchTableData("/data/NewStudyData.json");
@@ -69,7 +70,7 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
             headerData={headerData}
             bodyData={studiesData}
             filteredColumns={checkedValues}
-            tableType={"selection"}
+            tableType={tableTypeEnum.SELECTION}
             searchString={searchString}
             selectedStatus={selectedStatus}
           />
