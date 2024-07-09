@@ -4,8 +4,19 @@ import NavButton from "../../components/Buttons/NavButton";
 import { btnBox, formControl } from "./styles/partOneStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import FlexLayout from "../../components/ui/Flex/Flex";
+import { useState } from "react";
 
 export default function Protocol() {
+  const [goal, setGoal] = useState('');
+
+  async function handleData(){
+    console.log(goal);
+  }
+
+  function handleGoal(e){
+    setGoal(e.target.value);
+  }
+
   return (
     <FlexLayout defaultOpen={0} navigationType="Accordion">
       <Box w={"100%"}>
@@ -13,12 +24,12 @@ export default function Protocol() {
 
         <Flex justify={"center"} direction={"column"}>
           <FormControl sx={formControl}>
-            <TextAreaInput label="Objectives:" placeholder="What are your goals?" />
+            <TextAreaInput label="Objectives:" placeholder="What are your goals?" onChange={handleGoal}/>
             <TextAreaInput label="Main question:" placeholder="The reason behind your research..." />
           </FormControl>
 
           <Box sx={btnBox}>
-            <NavButton text="Next" path="/newRevision/protocolpartTwo" w={"30%"} />
+            <NavButton event={handleData} text="Next" path="/newRevision/protocolpartTwo" w={"30%"} />
           </Box>
         </Flex>
       </Box>
