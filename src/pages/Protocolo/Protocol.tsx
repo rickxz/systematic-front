@@ -5,14 +5,18 @@ import { btnBox, formControl } from "./styles/partOneStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import useCreateProtocol from "../../hooks/revisions/useCreateProtocol";
 
 export default function Protocol() {
   const [goal, setGoal] = useState('');
   const [mainQuestion, setMainQuestion] = useState('');
+  const { id = '' } = useParams();
 
   async function handleData(){
     console.log(goal);
     console.log(mainQuestion);
+    useCreateProtocol({goal, mainQuestion, id})
   }
 
   function handleGoal(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
