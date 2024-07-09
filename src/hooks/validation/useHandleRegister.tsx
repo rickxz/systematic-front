@@ -3,6 +3,7 @@ import useNameValidation from "./useNameValidation";
 import useEmailValidation from "./useEmailValidation";
 import usePassWordValidation from "./usePassWordValidation";
 import useAffiliattionValidation from "./useAffiliattionValidation";
+import useSendUser from './useSendUser';
 
 export default function useHandleRegister() {
   const { name, handleNameChange } = useNameValidation();
@@ -11,14 +12,26 @@ export default function useHandleRegister() {
   const { affiliattion, handleAffiliattionChange } = useAffiliattionValidation();
   const { password, passwordMatch, handlePasswordChange, handleConfirmPasswordChange } = usePassWordValidation();
 
+  const data: string[] | null= [];
+
   const handleRegister = () => {
     if (name === "") {
       window.alert("Name is required!");
       return;
     }
-    if (affiliattion === "") {
-      window.alert("Affiliattion is required");
+    else{
+      data.push(name);
+    }
+    if (!passwordMatch) {
+      window.alert("Passwords don't match!");
       return;
+    }
+    if (password === "") {
+      window.alert("Password is required!");
+      return;
+    }
+    else{
+      data.push(password);
     }
     if (email === "") {
       window.alert("email  is required!");
@@ -28,17 +41,24 @@ export default function useHandleRegister() {
       window.alert("Invalid email");
       return;
     }
-    if (selectedValue === "") {
+    else{
+      data.push(email);
+    }
+    if (selectedValue === "" || selectedValue === "Select a country" || !selectedValue) {
       window.alert("Country is required");
       return;
     }
-    if (!passwordMatch) {
-      window.alert("Passwords don't match!");
+    else{
+      data.push(selectedValue);
+    }
+    if (affiliattion === "") {
+      window.alert("Affiliattion is required");
       return;
     }
-    if (password === "") {
-      window.alert("Password is required!");
-      return;
+    else{
+      data.push(affiliattion);
+      console.log(data);
+      useSendUser(data);
     }
     window.alert("User registered with success!");
   };
