@@ -15,6 +15,9 @@ export default function ProtocolPartTwo2() {
   const [exclusionCriteria, setExclusionCriteria] = useState<string[]>([]);
   const [languages, setLanguages] = useState<string[]>([]);
   const [databases, setDatabases] = useState<string[]>([]);
+  const [researchStrategy, setResearchStrategy] = useState<string>('');
+  const [selectProcess, setSelectProcess] = useState<string>('');
+  const [dataAcquisition, setDataAcquisition] = useState<string>('');
 
   async function handleData(){
     console.log(keywords);
@@ -22,6 +25,18 @@ export default function ProtocolPartTwo2() {
     console.log(exclusionCriteria);
     console.log("Languages: ", languages)
     console.log("Databases: ", databases);
+  }
+
+  function handleResearchStrategy(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setResearchStrategy(e.target.value);
+  }
+
+  function handleSelectProcess(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setSelectProcess(e.target.value);
+  }
+
+  function handleDataAcquisition(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setDataAcquisition(e.target.value);
   }
 
   return (
@@ -55,9 +70,9 @@ export default function ProtocolPartTwo2() {
             typeField="select"
           />
 
-          <TextAreaInput label="Research Strategy" placeholder="Enter research strategy" />
-          <TextAreaInput label="Article Selection Process" placeholder="Enter selection process" />
-          <TextAreaInput label="Data Acquisition" placeholder="Enter the data acquisition method" />
+          <TextAreaInput onChange={handleResearchStrategy} label="Research Strategy" placeholder="Enter research strategy" />
+          <TextAreaInput onChange={handleSelectProcess} label="Article Selection Process" placeholder="Enter selection process" />
+          <TextAreaInput onChange={handleDataAcquisition}  label="Data Acquisition" placeholder="Enter the data acquisition method" />
         </FormControl>
 
         <Box sx={btnBox}>
