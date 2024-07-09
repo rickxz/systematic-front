@@ -8,13 +8,19 @@ import { useState } from "react";
 
 export default function Protocol() {
   const [goal, setGoal] = useState('');
+  const [mainQuestion, setMainQuestion] = useState('');
 
   async function handleData(){
     console.log(goal);
+    console.log(mainQuestion);
   }
 
   function handleGoal(e){
     setGoal(e.target.value);
+  }
+
+  function handleMainQuestion(e){
+    setMainQuestion(e.target.value);
   }
 
   return (
@@ -25,7 +31,7 @@ export default function Protocol() {
         <Flex justify={"center"} direction={"column"}>
           <FormControl sx={formControl}>
             <TextAreaInput label="Objectives:" placeholder="What are your goals?" onChange={handleGoal}/>
-            <TextAreaInput label="Main question:" placeholder="The reason behind your research..." />
+            <TextAreaInput label="Main question:" placeholder="The reason behind your research..." onChange={handleMainQuestion}/>
           </FormControl>
 
           <Box sx={btnBox}>
