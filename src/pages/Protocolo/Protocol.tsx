@@ -16,7 +16,7 @@ export default function Protocol() {
   async function handleData(){
     console.log(goal);
     console.log(mainQuestion);
-    useCreateProtocol({goal, mainQuestion, id})
+    useCreateProtocol({goal, mainQuestion, id, retry: true})
   }
 
   function handleGoal(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
