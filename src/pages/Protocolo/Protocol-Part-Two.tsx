@@ -13,12 +13,15 @@ export default function ProtocolPartTwo2() {
   const [keywords, setKeywords] = useState<string[]>([]);
   const [InclusionCriteria, setInclusionCriteria] = useState<string[]>([]);
   const [exclusionCriteria, setExclusionCriteria] = useState<string[]>([]);
-  const [language, setLanguage] = useState<string[]>([])
+  const [languages, setLanguages] = useState<string[]>([]);
+  const [databases, setDatabases] = useState<string[]>([]);
 
   async function handleData(){
     console.log(keywords);
     console.log(InclusionCriteria);
     console.log(exclusionCriteria);
+    console.log("Languages: ", languages)
+    console.log("Databases: ", databases);
   }
 
   return (
@@ -36,6 +39,7 @@ export default function ProtocolPartTwo2() {
           </FormControl>
 
           <AddSelectionTable
+            onUpdate={setLanguages}
             options={["", "English", "Portuguese", "French", "Spanish", "German"]}
             placeholder={"Languages:"}
             typeField="select"
@@ -45,6 +49,7 @@ export default function ProtocolPartTwo2() {
           <AddTextTable text="Exclusion Criteria:" placeholder="Enter the criteria" onUpdate={setExclusionCriteria}/>
 
           <AddSelectionTable
+            onUpdate={setDatabases}
             options={["", "Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
             placeholder={"Data bases"}
             typeField="select"
