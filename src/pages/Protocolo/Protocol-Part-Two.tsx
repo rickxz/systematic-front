@@ -8,6 +8,7 @@ import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable"
 import FlexLayout from "../../components/ui/Flex/Flex";
 
 export default function ProtocolPartTwo2() {
+
   return (
     <FlexLayout defaultOpen={0} navigationType="Accordion">
 
