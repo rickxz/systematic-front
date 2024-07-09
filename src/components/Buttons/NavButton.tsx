@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 interface iButtonProps extends ButtonProps {
   text: string;
-  path: string;
+  path?: string;
   variant?: "default" | "dark";
   event?: (() => Promise<void>) | string;
 }
@@ -25,7 +25,7 @@ const variants = {
   },
 }
 
-export default function NavButton({ text, path, variant = "default", event = '', ...buttonProps }: iButtonProps) {
+export default function NavButton({ text, path = '', variant = "default", event = '', ...buttonProps }: iButtonProps) {
   const { bgColor, color, hoverBgColor, hoverColor, borderRadius } = variants[variant];
 
   const handleClick = async () => {

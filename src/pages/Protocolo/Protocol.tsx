@@ -15,11 +15,11 @@ export default function Protocol() {
     console.log(mainQuestion);
   }
 
-  function handleGoal(e){
+  function handleGoal(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
     setGoal(e.target.value);
   }
 
-  function handleMainQuestion(e){
+  function handleMainQuestion(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
     setMainQuestion(e.target.value);
   }
 

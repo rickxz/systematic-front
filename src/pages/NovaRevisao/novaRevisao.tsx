@@ -7,8 +7,10 @@ import InputTextArea from "../../components/Inputs/InputTextArea";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
 import useCreateRevision from "../../hooks/revisions/useCreateRevision";
+import { useNavigate } from "react-router-dom";
 
 export default function NovaRevisao() {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [collaborators, setCollaborators] = useState<string[]>([]);
@@ -18,6 +20,7 @@ export default function NovaRevisao() {
       window.alert("O campo título é obrigatório!");
     } else {
     const id = await useCreateRevision(title, description, collaborators);
+    window.location.href = `http://localhost:5173/#/newRevision/protocol/${id}`;
     }
   }
 
@@ -46,7 +49,7 @@ export default function NovaRevisao() {
         <InputTextArea label="Collaborators:" placeholder="Enter review collaborators" onChange={handleCollaborators}></InputTextArea>
 
         <Box ml={"71%"}>
-          {title != '' ? <NavButton event={handleData} path={"/newRevision/protocol"} text="Create new Review" /> :
+          {title != '' ? <NavButton event={handleData} text="Create new Review" /> :
           <NavButton event={handleData} path={"/newRevision"} text="Create new Review" />
           }
         </Box>
