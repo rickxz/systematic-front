@@ -17,7 +17,7 @@ export default function NovaRevisao() {
     if(title == ''){
       window.alert("O campo título é obrigatório!");
     } else {
-    useCreateRevision(title, description, collaborators);
+    const id = await useCreateRevision(title, description, collaborators);
     }
   }
 

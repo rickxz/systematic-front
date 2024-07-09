@@ -19,6 +19,7 @@ const useCreateRevision = async (title: string, description: string, collaborato
         });
 
         console.log(response);
+        return response.data.systematicStudyId;
     } catch(err){
     if(axios.isAxiosError(err)){
         if(err.response?.status === 401 && retry == true){
