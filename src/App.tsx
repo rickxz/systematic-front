@@ -39,7 +39,7 @@ function App() {
 
             {/*Nested Routes*/}
             <Route path="/newRevision/protocol/:id" element={<Protocol />} />
-            <Route path="/newRevision/protocolpartTwo" element={<ProtocolPartTwo />} />
+            <Route path="/newRevision/protocolpartTwo/:id" element={<ProtocolPartTwo />} />
             <Route path="/newRevision/protocolpartThree" element={<ProtocolPartThree />} />
             <Route path="/newRevision/identification" element={<Identification />} />
             <Route path="/newRevision/keywords" element={<KeyWordScreen />} />

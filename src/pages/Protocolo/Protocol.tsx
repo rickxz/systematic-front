@@ -16,7 +16,8 @@ export default function Protocol() {
   async function handleData(){
     console.log(goal);
     console.log(mainQuestion);
-    useCreateProtocol({goal, mainQuestion, id, retry: true})
+    await useCreateProtocol({goal, mainQuestion, id, retry: true})
+    window.location.href = `http://localhost:5173/#/newRevision/protocolpartTwo/${id}`;
   }
 
   function handleGoal(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
@@ -39,7 +40,9 @@ export default function Protocol() {
           </FormControl>
 
           <Box sx={btnBox}>
-            <NavButton event={handleData} text="Next" path="/newRevision/protocolpartTwo" w={"30%"} />
+          {goal != '' && mainQuestion != '' ? <NavButton event={handleData} text="Create new Review" /> :
+          <NavButton event={handleData} path={`/newRevision/protocol/${id}`} text="Create new Review" />
+          }
           </Box>
         </Flex>
       </Box>
