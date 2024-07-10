@@ -1,4 +1,4 @@
-import { Box, FormControl, Switch } from "@chakra-ui/react";
+import { Box, FormControl } from "@chakra-ui/react";
 import Header from "../../components/ui/Header/Header";
 import InputText from "../../components/Inputs/InputText";
 import NavButton from "../../components/Buttons/NavButton";
@@ -7,10 +7,8 @@ import InputTextArea from "../../components/Inputs/InputTextArea";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
 import useCreateRevision from "../../hooks/revisions/useCreateRevision";
-import { useNavigate } from "react-router-dom";
 
 export default function NovaRevisao() {
-  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [collaborators, setCollaborators] = useState<string[]>([]);
