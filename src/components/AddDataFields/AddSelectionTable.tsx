@@ -1,4 +1,4 @@
-import { FormControl } from "@chakra-ui/react";
+import { FormControl, FormLabel } from "@chakra-ui/react";
 import SelectInput from "../Inputs/SelectInput";
 import InfosTable from "../Tables/InfosTable";
 import EventButton from "../Buttons/EventButton";
@@ -6,6 +6,7 @@ import { useSelect } from "../../hooks/useSelect";
 import { conteiner, formcontrol } from "./styles/AddSelectionStyles";
 
 interface AddSelectTableProps {
+  label?: string,
   options: string[];
   placeholder: string;
   typeField: string;
@@ -30,6 +31,7 @@ export default function AddSelectTable({ options, onUpdate }: AddSelectTableProp
 
   return (
     <FormControl sx={conteiner} alignContent={"center"}>
+      <FormLabel>{label}</FormLabel>
       <FormControl sx={formcontrol}>
         <SelectInput
           values={options}

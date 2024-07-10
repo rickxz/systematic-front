@@ -7,31 +7,29 @@ import { StudyInterface } from "../../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../../public/interfaces/ITableHeaders";
 import { KeywordInterface } from "../../../public/interfaces/KeywordInterface";
 import { KeyWordHeaderInterface } from "../../../public/interfaces/IKeyWordHeard";
+import { tableTypeEnum } from "../../../public/enums/tableTypeEnum";
 import { useContext } from "react";
 import AppContext from "../Context/AppContext";
+import useStudiesFilter from "../../hooks/useStudiesFilter";
 
 interface DynamicTableProps {
   headerData: TableHeadersInterface | KeyWordHeaderInterface;
   bodyData: (StudyInterface | KeywordInterface)[];
-  tableType: string;
+  tableType: tableTypeEnum;
   filteredColumns: string[];
+  searchString: string;
+  selectedStatus: string | null;
 }
 
-enum tableTypeEnum {
-  SELECTION = "selection",
-  EXTRACTION = "extraction",
-  KEYWORD = "keyword"
-}
-
-
-export default function DynamicTable({ headerData, bodyData, tableType, filteredColumns }: DynamicTableProps) {
+export default function DynamicTable({ headerData, bodyData, tableType, filteredColumns, searchString, selectedStatus }: DynamicTableProps) {
   const isKeyWordTable = tableType == tableTypeEnum.KEYWORD;
   const isSelectionTable = tableType == tableTypeEnum.SELECTION;
   const isExtractionTable = tableType === tableTypeEnum.EXTRACTION;
-  
+  const studiesToFilter = (bodyData as StudyInterface[]);
   const context = useContext(AppContext);
 
   const getColumnVisibility = useColumnVisibility(filteredColumns);
+  const filteredStudies = useStudiesFilter({studiesToFilter, searchString, tableType, selectedStatus})
   const { handleSort, sortedData } = useTableSorting(bodyData, headerData);
 
   context?.setSortedStudies((sortedData as StudyInterface[]));
