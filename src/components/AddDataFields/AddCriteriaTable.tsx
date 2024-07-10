@@ -12,13 +12,21 @@ interface AddCriteriaTableProps {
 }
 
 export default function AddCriteriaTable({ text, placeholder, onUpdate }: AddCriteriaTableProps) {
-  const { AddText, handleAddText, handleDeleteText } = useAddCriteria();
+  const { AddText, handleAddText, setAddText } = useAddCriteria();
+  const { handleDeleteText } = useDeleteText();
 
   const handleUpdate = (newText: string) => {
     const type = text.toLowerCase().includes("inclusion") ? "inclusion" : "exclusion";
     const newCriteria = { description: newText, type: type as "inclusion" | "exclusion" };
     handleAddText(newCriteria);
     onUpdate([...AddText, newCriteria]);
+  };
+
+  const handleDelete = (index: number) => {
+    const updatedAddText = [...AddText];
+    updatedAddText.splice(index, 1);
+    setAddText(updatedAddText);
+    onUpdate(updatedAddText);
   };
 
   return (
@@ -28,7 +36,7 @@ export default function AddCriteriaTable({ text, placeholder, onUpdate }: AddCri
         <AddTextField onAddText={handleUpdate} text={placeholder} />
         <InfosTable
           typeField={""}
-          onDeleteAddedText={(index) => handleDeleteText(index)}
+          onDeleteAddedText={handleDelete}
           AddTexts={AddText.map(criteria => criteria.description)}
         />
       </FormControl>
