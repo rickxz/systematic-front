@@ -9,21 +9,14 @@ const useCreateRevision = async (title: string, description: string, collaborato
         collaborators
     }
 
-    let accessToken = localStorage.getItem('accessToken');
-
     try{
-        let response = await axios.post(url, data, {
-            "headers": {
-                "Authorization": `Bearer ${accessToken}`
-            } 
-        });
+        let response = await axios.post(url, data, {withCredentials: true});
 
         console.log(response);
     } catch(err){
     if(axios.isAxiosError(err)){
         if(err.response?.status === 401 && retry == true){
-            let newAccesstoken = await useRefreshToken();
-            localStorage.setItem('accessToken', newAccesstoken);
+            await useRefreshToken();
             useCreateRevision(title, description, collaborators, false);
         }
         else if(err.response?.status === 500 && retry == true){
