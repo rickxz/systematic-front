@@ -4,6 +4,7 @@ import { Progress, FormControl, Box } from "@chakra-ui/react";
 import { btnBox, conteiner, flex } from "./styles/partTwooStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";
+import AddCriteriaTable from "../../components/AddDataFields/AddCriteriaTable";
 import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
@@ -12,8 +13,8 @@ import { useParams } from "react-router-dom";
 
 export default function ProtocolPartTwo2() {
   const [keywords, setKeywords] = useState<string[]>([]);
-  const [InclusionCriteria, setInclusionCriteria] = useState<string[]>([]);
-  const [exclusionCriteria, setExclusionCriteria] = useState<string[]>([]);
+  const [InclusionCriteria, setInclusionCriteria] = useState<{ description: string; type: "inclusion" | "exclusion"; }[]>([]);
+  const [exclusionCriteria, setExclusionCriteria] = useState<{ description: string; type: "inclusion" | "exclusion"; }[]>([]);
   const [languages, setLanguages] = useState<string[]>([]);
   const [databases, setDatabases] = useState<string[]>([]);
   const [researchStrategy, setResearchStrategy] = useState<string>('');
@@ -62,8 +63,8 @@ export default function ProtocolPartTwo2() {
             typeField="select"
           />
 
-          <AddTextTable text="Inclusion Criteria:" placeholder="Enter the criteria" onUpdate={setInclusionCriteria}/>
-          <AddTextTable text="Exclusion Criteria:" placeholder="Enter the criteria" onUpdate={setExclusionCriteria}/>
+          <AddCriteriaTable text="Inclusion Criteria:" placeholder="Enter the criteria" onUpdate={setInclusionCriteria}/>
+          <AddCriteriaTable text="Exclusion Criteria:" placeholder="Enter the criteria" onUpdate={setExclusionCriteria}/>
 
           <AddSelectionTable
             onUpdate={setDatabases}
