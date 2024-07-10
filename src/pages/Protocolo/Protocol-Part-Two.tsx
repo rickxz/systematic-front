@@ -9,6 +9,7 @@ import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable"
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import useCreateProtocolTwo from "../../hooks/revisions/useCreateProtocolTwo";
 
 
 export default function ProtocolPartTwo2() {
@@ -23,11 +24,7 @@ export default function ProtocolPartTwo2() {
   const { id = '' } = useParams();
 
   async function handleData(){
-    console.log(keywords);
-    console.log(InclusionCriteria);
-    console.log(exclusionCriteria);
-    console.log("Languages: ", languages)
-    console.log("Databases: ", databases);
+    useCreateProtocolTwo(keywords, databases, id);
   }
 
   function handleResearchStrategy(e: React.ChangeEvent<HTMLTextAreaElement>){
