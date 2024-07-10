@@ -10,7 +10,6 @@ interface protocolData{
 
 const useCreateProtocol = async ({goal, mainQuestion, id, retry}: protocolData) => {
   const url = `http://localhost:8080/systematic-study/${id}/protocol`
-  const token = localStorage.getItem("accessToken");
   const data = {
     "goal": goal,
     "justification": mainQuestion
@@ -18,7 +17,7 @@ const useCreateProtocol = async ({goal, mainQuestion, id, retry}: protocolData) 
   console.log(id);
 
   try{
-        let response = await axios.put(url, data, { "headers": {"Authorization": `Bearer ${token}`} })
+        let response = await axios.put(url, data, {withCredentials: true})
         console.log(response);
     } 
     catch(err){

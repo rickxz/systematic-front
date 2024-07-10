@@ -7,6 +7,7 @@ import AddTextTable from "../../components/AddDataFields/AddTextTable";
 import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 
 export default function ProtocolPartTwo2() {
@@ -18,6 +19,7 @@ export default function ProtocolPartTwo2() {
   const [researchStrategy, setResearchStrategy] = useState<string>('');
   const [selectProcess, setSelectProcess] = useState<string>('');
   const [dataAcquisition, setDataAcquisition] = useState<string>('');
+  const { id = '' } = useParams();
 
   async function handleData(){
     console.log(keywords);
