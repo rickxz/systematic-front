@@ -32,7 +32,11 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
             setNameError("");
         }
 
-        if (!validateEmail(email)) {
+        if (!email) {
+            setEmailError("Please enter your email");
+            isValid = false;
+        }
+        else if (!validateEmail(email)) {
             setEmailError("Invalid email address format");
             isValid = false;
         } else {
