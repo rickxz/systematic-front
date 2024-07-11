@@ -8,7 +8,7 @@ import { formcontrol, label } from "./styles/AddTextTableStyles";
 interface AddCriteriaTableProps {
   text: string;
   placeholder: string;
-  onUpdate: (criteria: { description: string; type: "inclusion" | "exclusion"; }[]) => void;
+  onUpdate: (criteria: { description: string; type: "INCLUSION" | "EXCLUSION"; }[]) => void;
 }
 
 export default function AddCriteriaTable({ text, placeholder, onUpdate }: AddCriteriaTableProps) {
@@ -16,8 +16,8 @@ export default function AddCriteriaTable({ text, placeholder, onUpdate }: AddCri
   const { handleDeleteText } = useDeleteText();
 
   const handleUpdate = (newText: string) => {
-    const type = text.toLowerCase().includes("inclusion") ? "inclusion" : "exclusion";
-    const newCriteria = { description: newText, type: type as "inclusion" | "exclusion" };
+    const type = text.toUpperCase().includes("INCLUSION") ? "INCLUSION" : "EXCLUSION";
+    const newCriteria = { description: newText, type: type as "INCLUSION" | "EXCLUSION" };
     handleAddText(newCriteria);
     onUpdate([...AddText, newCriteria]);
   };

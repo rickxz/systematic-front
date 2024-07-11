@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 export function useAddCriteria() {
-  const [AddText, setAddText] = useState<{ description: string, type: "inclusion" | "exclusion" }[]>([]);
+  const [AddText, setAddText] = useState<{ description: string, type: "INCLUSION" | "EXCLUSION" }[]>([]);
 
-  const handleAddText = (newCriteria: { description: string, type: "inclusion" | "exclusion" }) => {
+  const handleAddText = (newCriteria: { description: string, type: "INCLUSION" | "EXCLUSION" }) => {
     setAddText((prevAddText) => [...prevAddText, newCriteria]);
   };
 
