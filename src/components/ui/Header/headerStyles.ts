@@ -1,10 +1,9 @@
 export const header = {
   as: "h1",
-  alignSelf: "center",
-  textAlign: "center",
+  textAlign: "left",
   w: "100%",
-  color: "#C9D9E5",
-  bgColor: "#191919",
+  ml: 10,
+  color: "#263C56",
   pt: "0.5em",
   pb: "0.5em",
 };

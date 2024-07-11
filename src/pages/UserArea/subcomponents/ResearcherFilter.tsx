@@ -27,8 +27,8 @@ export default function ResearcherFilter() {
   return (
     <FormControl sx={FormControlstyle}>
       <TextAreaInput
-        label="Researchers:"
-        placeholder={"Enter researcher name"}
+        label="Researchers"
+        placeholder={"Enter the name of the researchers "}
         onChange={handleInputChange}
       ></TextAreaInput>
     </FormControl>
