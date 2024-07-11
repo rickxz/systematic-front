@@ -8,10 +8,12 @@ import FlexLayout from "../../components/ui/Flex/Flex";
 import { Row } from "../../hooks/useInteractiveTable";
 import useCreateProtocolThree from "../../hooks/revisions/useCreateProtocolThree";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 export default function ProtocolPartThree() {
   const [analysisAndSynthesisProcess, setAnalysisAndSynthesisProcess] = useState('');
   const [questions, setQuestions] = useState<string[]>([]);
+  const {id = ''} = useParams();
 
   async function sendData(){
     for(let i = 0; i < questions.length; i++){
@@ -19,7 +21,7 @@ export default function ProtocolPartThree() {
         questions.splice(i, 1);
       }
     }
-    await useCreateProtocolThree(questions, analysisAndSynthesisProcess);
+    await useCreateProtocolThree(questions, analysisAndSynthesisProcess, id);
   }
 
   function handleSave(data: Row[]){
