@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../index.css";
-import useRegisterUser from "../../../../../../hooks/validation/useSendUser";
+import useRegisterUser from "../../../../../../hooks/validation/useRegisterUser";
 import sendUserProp from "../../../../../../../public/interfaces/sendUserInterface";
 import { useToast } from "@chakra-ui/react";
 
