@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../index.css";
-import useSendUser from "../../../../../../hooks/validation/useSendUser";
+import useRegisterUser from "../../../../../../hooks/validation/useSendUser";
 import sendUserProp from "../../../../../../../public/interfaces/sendUserInterface";
 import { useToast } from "@chakra-ui/react";
 
@@ -25,7 +25,7 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
     };
 
     const toast = useToast();
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let isValid = true;
 
@@ -86,7 +86,31 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
                 "affiliation": affiliation
             }
 
-            useSendUser(data, toast);
+            try {
+                const response = useRegisterUser(data);
+                console.log(response);
+                const user =  (await response).data.username;
+                sessionStorage.setItem('userId', (await response).data.id);
+                if ((await response).status == 201)
+                    toast({
+                        title: 'Account created.',
+                        description: `You can now log in with your account, ${user}.`,
+                        status: 'success',
+                        duration: 9000,
+                        isClosable: true,
+                    }
+                )
+            }
+            catch(err: any) {
+                console.error(err);
+                toast({
+                    title: err.response.data.message,
+                    description: err.response.data.detail,
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                })
+            };
         }
     };
 
