@@ -24,7 +24,7 @@ export default function ProtocolPartTwo2() {
   const { id = '' } = useParams();
 
   async function handleData(){
-    useCreateProtocolTwo(keywords, databases, id);
+    useCreateProtocolTwo(keywords, databases, researchStrategy, selectProcess, dataAcquisition, id);
   }
 
   function handleResearchStrategy(e: React.ChangeEvent<HTMLTextAreaElement>){
