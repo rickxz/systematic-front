@@ -14,8 +14,8 @@ import useCreateProtocolTwo from "../../hooks/revisions/useCreateProtocolTwo";
 
 export default function ProtocolPartTwo2() {
   const [keywords, setKeywords] = useState<string[]>([]);
-  const [InclusionCriteria, setInclusionCriteria] = useState<{ description: string; type: "inclusion" | "exclusion"; }[]>([]);
-  const [exclusionCriteria, setExclusionCriteria] = useState<{ description: string; type: "inclusion" | "exclusion"; }[]>([]);
+  const [InclusionCriteria, setInclusionCriteria] = useState<{ description: string; type: "INCLUSION" | "EXCLUSION"; }[]>([]);
+  const [exclusionCriteria, setExclusionCriteria] = useState<{ description: string; type: "INCLUSION" | "EXCLUSION"; }[]>([]);
   const [languages, setLanguages] = useState<string[]>([]);
   const [databases, setDatabases] = useState<string[]>([]);
   const [researchStrategy, setResearchStrategy] = useState<string>('');
@@ -24,7 +24,7 @@ export default function ProtocolPartTwo2() {
   const { id = '' } = useParams();
 
   async function handleData(){
-    useCreateProtocolTwo(keywords, databases, researchStrategy, selectProcess, dataAcquisition, id);
+    useCreateProtocolTwo(keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, id);
   }
 
   function handleResearchStrategy(e: React.ChangeEvent<HTMLTextAreaElement>){
@@ -55,7 +55,7 @@ export default function ProtocolPartTwo2() {
 
           <AddSelectionTable
             onUpdate={setLanguages}
-            options={["", "English", "Portuguese", "French", "Spanish", "German"]}
+            options={["choose an option", "ENGLISH", "PORTUGUESE", "FRENCH", "SPANISH", "GERMAN"]}
             placeholder={"Languages:"}
             typeField="select"
           />
