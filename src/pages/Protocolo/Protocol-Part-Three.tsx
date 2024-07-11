@@ -6,11 +6,31 @@ import TextAreaInput from "../../components/Inputs/InputTextArea";
 import InteractiveTable from "../../components/Tables/InteractiveTable";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { Row } from "../../hooks/useInteractiveTable";
+import useCreateProtocolThree from "../../hooks/revisions/useCreateProtocolThree";
+import { useState } from "react";
 
 export default function ProtocolPartThree() {
-  const handleSave = (data: Row[]) => {
-    console.log(data);
+  const [analysisAndSynthesisProcess, setAnalysisAndSynthesisProcess] = useState('');
+  const [questions, setQuestions] = useState<string[]>([]);
+
+  async function sendData(){
+    for(let i = 0; i < questions.length; i++){
+      if(questions[i] == ''){
+        questions.splice(i, 1);
+      }
+    }
+    await useCreateProtocolThree(questions, analysisAndSynthesisProcess);
+  }
+
+  function handleSave(data: Row[]){
+    const newQuestions: string[] = [];
+    data.map((item) => {newQuestions.push(item.question)});
+    setQuestions(newQuestions)
   };
+
+  function handleAnalysisAndSynthesis(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setAnalysisAndSynthesisProcess(e.target.value);
+  }
 
   return (
     <FlexLayout navigationType="Accordion" defaultOpen={0}>
@@ -19,11 +39,10 @@ export default function ProtocolPartThree() {
         <Progress w={"100%"} value={66} />
         <FormControl sx={formControl}>
           <InteractiveTable onSave={handleSave} />
-          <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" />
-          <InteractiveTable onSave={handleSave} />
+          <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" onChange={handleAnalysisAndSynthesis}/>
         </FormControl>
         <Box sx={buttonBox}>
-          <NavButton text="Save Protocol" path="/newRevision/identification" />
+          <NavButton event={sendData} text="Save Protocol" path="/newRevision/identification" />
         </Box>
       </Box>
     </FlexLayout>
