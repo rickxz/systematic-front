@@ -24,7 +24,8 @@ export default function ProtocolPartTwo2() {
   const { id = '' } = useParams();
 
   async function handleData(){
-    useCreateProtocolTwo(keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, id);
+    await  useCreateProtocolTwo(keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, id);
+    window.location.href = `http://localhost:5173/#/newRevision/protocolpartThree/${id}`;
   }
 
   function handleResearchStrategy(e: React.ChangeEvent<HTMLTextAreaElement>){
@@ -76,7 +77,7 @@ export default function ProtocolPartTwo2() {
         </FormControl>
 
         <Box sx={btnBox}>
-          <NavButton text="Next" event={handleData} path="/newRevision/protocolpartThree" w={"fit-content"} />
+          <NavButton text="Next" event={handleData} w={"fit-content"} />
         </Box>
 
       </Box>
