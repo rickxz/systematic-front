@@ -1,6 +1,5 @@
 import axios from "axios"
-
-
+import useRefreshToken from "../validation/useRefreshToken";
 
 const useCreateProtocolTwo = async (keywords: string[], studiesLanguages: string[], databases: string[], researchStrategy: string, selectionProcess: string, dataAcquisition: string, inclusionCriteria: {"description": string, "type": "INCLUSION" | "EXCLUSION"}[], exclusionCriteria: {"description": string, "type": "INCLUSION" | "EXCLUSION"}[], id: string, retry = true) => {
 
@@ -32,6 +31,14 @@ const useCreateProtocolTwo = async (keywords: string[], studiesLanguages: string
     }
     catch(err){
         console.log(err);
+        if(axios.isAxiosError(err)){
+            if(err.response?.status == 500 || err.response?.status == 401 && retry == true){
+                useRefreshToken();
+                useCreateProtocolTwo(keywords, studiesLanguages, databases, researchStrategy,
+                selectionProcess, dataAcquisition, inclusionCriteria, exclusionCriteria, id,
+                false);
+            }
+        }
     }
 }
 
