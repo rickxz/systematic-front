@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-interface Row {
+export interface Row {
   id: number;
   question: string;
   type: string;
@@ -33,5 +33,9 @@ export function useInteractiveTable() {
     setRows(updatedRows);
   };
 
-  return { rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers };
+  const getRowsData = () => {
+    return rows;
+  };
+
+  return { rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers, getRowsData };
 }
