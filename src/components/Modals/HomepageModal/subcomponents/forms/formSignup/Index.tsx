@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../index.css";
+import useSendUser from "../../../../../../hooks/validation/useSendUser";
+import sendUserProp from "../../../../../../../public/interfaces/sendUserInterface";
+import { useToast } from "@chakra-ui/react";
 
 export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: () => void }) {
     const [name, setName] = useState<string>("");
@@ -21,6 +24,7 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
         return re.test(String(email).toLowerCase());
     };
 
+    const toast = useToast();
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let isValid = true;
@@ -72,7 +76,17 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
         }
 
         if (isValid) {
-            // submit aq eu acho
+            console.log("inicio da requisição")
+
+            const data: sendUserProp = {
+                "username": name,
+                "password": password,
+                "email": email,
+                "country": state,
+                "affiliation": affiliation
+            }
+
+            useSendUser(data, toast);
         }
     };
 
