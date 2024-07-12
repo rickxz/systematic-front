@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../index.css";
 import useRegisterUser from "../../../../../../hooks/validation/useRegisterUser";
-import sendUserProp from "../../../../../../../public/interfaces/sendUserInterface";
+import userToRegisterProp from "../../../../../../../public/interfaces/userToRegisterInterface";
 import { useToast } from "@chakra-ui/react";
 
 export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: () => void }) {
@@ -76,9 +76,7 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
         }
 
         if (isValid) {
-            console.log("inicio da requisição")
-
-            const data: sendUserProp = {
+            const data: userToRegisterProp = {
                 "username": name,
                 "password": password,
                 "email": email,
