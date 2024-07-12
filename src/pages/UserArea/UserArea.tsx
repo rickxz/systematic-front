@@ -30,7 +30,7 @@ export default function UserArea() {
               revisionId={data.id}
               id={data.key}
               title={data.title}
-              RevisorNames={data.owner}
+              reviewers={data.owner}
               status={data.lastChange}
               creation={data.creation}
               isEdited={data.isEdited}

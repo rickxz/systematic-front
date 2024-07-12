@@ -1,4 +1,4 @@
-import EditionIcon from "./EditionIcon";
+// import EditionIcon from "./EditionIcon";
 import { Box, Text } from "@chakra-ui/react";
 import { conteiner, infosconteiner, text } from "../styles/EditionINfosStyles";
 
