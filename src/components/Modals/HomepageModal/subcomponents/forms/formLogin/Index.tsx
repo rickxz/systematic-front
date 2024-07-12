@@ -61,7 +61,7 @@ export default function FormLogin() {
                 {error && <p className="error">{error}</p>}
                 <div className="actions">
                     <button type="submit">Log in</button>
-                    <Link to="#" >Forgot Password?</Link>
+                    <Link to="#">Forgot Password?</Link>
                 </div>
             </div>
         </form>

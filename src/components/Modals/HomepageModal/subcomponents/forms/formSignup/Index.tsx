@@ -47,7 +47,7 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
         }
 
         if (!state) {
-            setStateError("Please select your state");
+            setStateError("Please select your country");
             isValid = false;
         } else {
             setStateError("");
@@ -110,13 +110,13 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
                     {affiliationError && <p className="error">{affiliationError}</p>}
                 </div>
                 <div className="inputGroup">
-                    <label htmlFor="state">State</label>
+                    <label htmlFor="state">Country</label>
                     <select 
                         value={state} 
                         onChange={(e) => setState(e.target.value)}
                         className={stateError ? "inputError" : ""}
                     >
-                        <option value="">Select State</option>
+                        <option value="">Select Country</option>
                         <option>Brazil</option>
                         <option>Spain</option>
                         <option>England</option>

@@ -1,31 +1,39 @@
-import { FormControl, Input } from "@chakra-ui/react";
+import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import SearchButton from "../Buttons/SearchButton";
 import { conteiner, inputconteiner } from "./styles/inputTextStyle";
 
 interface ITextFieldProps {
-  id?: string;
+  label?: string;
   placeholder: string;
   type: string;
   nome: string;
   setSearchString: (value: React.SetStateAction<string>) => void;
+  labelAbove?: boolean; 
 }
 
-export default function InputText({ id, placeholder, type, nome, setSearchString }: ITextFieldProps) {
+export default function InputText({ label, placeholder, type, nome, setSearchString, labelAbove }: ITextFieldProps) {
   const isSearchField = type === "search";
 
   return (
     <FormControl mt={isSearchField ? "" : 10} sx={conteiner}>
-      <FormControl sx={inputconteiner}>
+      <FormControl sx={{ ...inputconteiner, flexDirection: labelAbove ? 'column' : 'row' }}>
+        {label && (
+          <FormLabel
+            color={"#2E4B6C"}
+            mb={labelAbove ? "0.3rem" : "0"} 
+          >
+            {label}
+          </FormLabel>
+        )}
         <Input
-          id={id}
           type={type}
           name={nome}
           placeholder={placeholder}
           w={isSearchField ? "250px" : "100%"}
-          bgColor="#C9D9E5"
-          borderRadius="3px"
+          bgColor={"#C9D9E5"}
+          borderRadius={"3px"}
           _placeholder={{ opacity: 1, color: "gray.500" }}
-          focusBorderColor="#526D82"
+          focusBorderColor="#2E4B6C"
           onChange={(e) => setSearchString(e.target.value)}
         />
         {isSearchField && <SearchButton />}
