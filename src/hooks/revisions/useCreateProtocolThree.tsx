@@ -8,9 +8,14 @@ const useCreateProtocolThree = async (researchQuestions: string[], analysisAndSy
         researchQuestions,
         analysisAndSynthesisProcess
     }
-
-    let response = await axios.put(url, data, {withCredentials: true});
-    console.log(response);
+    try{
+        let token = localStorage.getItem("accessToken");
+        let response = await axios.put(url, data, {headers: {Authorization: `Bearer ${token}`}});
+        console.log(response);
+    }
+    catch(err){
+        console.log(err);
+    }
 }
 
 export default useCreateProtocolThree

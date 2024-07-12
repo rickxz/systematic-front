@@ -1,5 +1,4 @@
-import axios from "axios";
-import useRefreshToken from "../validation/useRefreshToken";;
+import axios from "../../interceptor/interceptor";
 
 interface protocolData{
     goal: string;
@@ -15,18 +14,13 @@ const useCreateProtocol = async ({goal, mainQuestion, id, retry}: protocolData) 
     "justification": mainQuestion
   }
   console.log(id);
-
   try{
-        let response = await axios.put(url, data, {withCredentials: true})
-        console.log(response);
-    } 
-    catch(err){
-        if(axios.isAxiosError(err)){
-        if((err.response?.status == 400 || err.response?.status == 401 || err.response?.status == 500 || err.response?.status === 404) && retry == true){
-            await useRefreshToken();
-            await useCreateProtocol({goal, mainQuestion, id, retry: false});
-        }
-    }
+    const token = localStorage.getItem("accessToken");
+    let response = await axios.put(url, data, {headers: {Authorization: `Bearer ${token}`}})
+    console.log(response);
+  } 
+  catch(err){
+        console.log(err);
   }
 }
 
