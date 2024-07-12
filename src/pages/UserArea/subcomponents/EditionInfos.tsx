@@ -5,13 +5,13 @@ import { conteiner, infosconteiner, text } from "../styles/EditionINfosStyles";
 interface IEditionInfosProps {
   status: string;
   creation: string;
-  isEdited: boolean;
+  // isEdited: boolean;
 }
 
-export default function EditionInfos({ status, creation, isEdited }: IEditionInfosProps) {
+export default function EditionInfos({ status, creation, /* isEdited */ }: IEditionInfosProps) {
   return (
     <Box sx={conteiner}>
-      <EditionIcon isEdited={isEdited} />
+      {/* <EditionIcon/> */}
       <Box sx={infosconteiner}>
         <Text sx={text}>status: {status}</Text>
         <Text sx={text}>Created: {creation}</Text>

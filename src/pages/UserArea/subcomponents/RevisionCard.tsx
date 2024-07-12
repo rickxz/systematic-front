@@ -34,7 +34,7 @@ export default function RevisionCard({ revisionId, id, title, RevisorNames, stat
         <CardInfos title={title} RevisorNames={RevisorNames} />
         <Box sx={CardInfosConteiner} id={id}>
           <EnterRevisionButton text="Review Info" event={redirectToReview}/>
-          <EditionInfos status={status} creation={creation} isEdited={isEdited} />
+          <EditionInfos status={status} creation={creation} /*isEdited={isEdited} */ />
         </Box>
       </Card>
     </>
