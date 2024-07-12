@@ -1,5 +1,4 @@
-import axios from "axios"
-import useRefreshToken from "../validation/useRefreshToken";
+import axios from "../../interceptor/interceptor";
 
 const useCreateProtocolTwo = async (keywords: string[], studiesLanguages: string[], databases: string[], researchStrategy: string, selectionProcess: string, dataAcquisition: string, inclusionCriteria: {"description": string, "type": "INCLUSION" | "EXCLUSION"}[], exclusionCriteria: {"description": string, "type": "INCLUSION" | "EXCLUSION"}[], id: string, retry = true) => {
 
@@ -26,19 +25,12 @@ const useCreateProtocolTwo = async (keywords: string[], studiesLanguages: string
     const url = `http://localhost:8080/systematic-study/${id}/protocol`
 
     try{
-        let response = await axios.put(url, data, {withCredentials: true});
+        const token = localStorage.getItem("accessToken");
+        let response = await axios.put(url, data, {headers: {Authorization: `Bearer ${token}`}});
         console.log(response);
     }
     catch(err){
         console.log(err);
-        if(axios.isAxiosError(err)){
-            if((err.response?.status == 500 || err.response?.status == 401 || err.response?.status === 404) && retry == true){
-                await useRefreshToken();
-                await useCreateProtocolTwo(keywords, studiesLanguages, databases, researchStrategy,
-                selectionProcess, dataAcquisition, inclusionCriteria, exclusionCriteria, id,
-                false);
-            }
-        }
     }
 }
 
