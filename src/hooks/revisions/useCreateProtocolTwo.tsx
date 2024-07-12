@@ -32,7 +32,7 @@ const useCreateProtocolTwo = async (keywords: string[], studiesLanguages: string
     catch(err){
         console.log(err);
         if(axios.isAxiosError(err)){
-            if(err.response?.status == 500 || err.response?.status == 401 || err.response?.status === 404 && retry == true){
+            if((err.response?.status == 500 || err.response?.status == 401 || err.response?.status === 404) && retry == true){
                 await useRefreshToken();
                 await useCreateProtocolTwo(keywords, studiesLanguages, databases, researchStrategy,
                 selectionProcess, dataAcquisition, inclusionCriteria, exclusionCriteria, id,
