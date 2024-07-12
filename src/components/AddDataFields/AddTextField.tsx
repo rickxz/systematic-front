@@ -28,7 +28,7 @@ export default function AddTextField({ onAddText, text }: IAddTextFieldProps) {
   return (
     <FormControl sx={formcontrol}>
       <TextAreaInput label="" placeholder={text} onChange={handleInputChange}></TextAreaInput>
-      <EventButton event={handleAddText} text="ADD" mt={2} w={"10%"} />
+      <EventButton event={handleAddText} text="Adicionar" mt={2} w={"10%"} />
     </FormControl>
   );
 }

@@ -6,7 +6,9 @@ export const Cardstyles = {
   flexDir: { base: "column", sm: "column", md: "column", lg: "row", xl: "row" },
   borderRadius: "9px",
   fontSize: "12px",
+  //border: "solid 2px #C9D9E5",
   justifySelf: "center",
+  bgColor: "#EBF0F3"
 };
 export const CardInfosConteiner = {
   ml: "100px",

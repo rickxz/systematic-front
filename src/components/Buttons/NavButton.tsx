@@ -13,14 +13,14 @@ const variants = {
     color: "#FFFFFF",
     hoverBgColor: "#C9D9E5",
     hoverColor: "#526D82",
-    borderRadius: "3px",
+    borderRadius: "5px",
   },
   dark: {
     bgColor: "#FDF0D5",
     color: "#301E1A",
     hoverBgColor: "#301E1A",
     hoverColor: "#FDF0D5",
-    borderRadius: "3px",
+    borderRadius: "5px",
   },
 }
 

@@ -19,12 +19,28 @@ export default function Dashboard(){
 
     return (
         <>
-            <Button bgColor={"#263C56"} color={"#C9D9E5"} ml={"5rem"} mt={4} w={"165px"} h={"28px"} onClick={onOpen}>Progress Dashboard</Button>
+            <Button 
+                bgColor={"#263C56"} 
+                color={"#C9D9E5"} 
+                ml={"5rem"} 
+                mt={4} 
+                w={"165px"} 
+                h={"28px"} 
+                boxShadow="0 1px 3px 0 rgba(0, 0 , 0, 0.5)" 
+                onClick={onOpen}
+                sx={{
+                    '&:hover':{
+                        bgColor: "#131E2B",
+                        color: "#C9D9E5",
+                        boxShadow: "0 2px 5px 0 rgba(0, 0, 0, 0.5)"
+                    }
+                }}
+                >Progress Dashboard</Button>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader textAlign='center' paddingBottom='30px'>Revision Progress</ModalHeader>   
+                    <ModalHeader textAlign='center' paddingBottom='30px' color={"#263C56"} >Revision Progress</ModalHeader>   
                     <ModalCloseButton />
                     <ModalBody textAlign='center'>
                     <Box>

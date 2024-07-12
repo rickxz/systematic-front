@@ -28,7 +28,7 @@ export default function AddSelectTable({ label, options, placeholder }: AddSelec
             placeholder={placeholder}
             page={"protocol"}
           />
-          <EventButton text="ADD" event={handleSelectAddButtonClick} w={"10%"} />
+          <EventButton text="Adicionar" event={handleSelectAddButtonClick} w={"10%"} />
         </FormControl>
       <InfosTable
         typeField="select"
