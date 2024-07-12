@@ -10,17 +10,17 @@ export default function InteractiveTable() {
 
   return (
     <TableContainer>
-      <Table variant="striped" size="md" w={"60vw"} border={"solid black 1px"} borderRadius={"16px"}>
-        <Thead bgColor={"#303D50"}>
+      <Table variant="striped" size="md" w={"60vw"} border={"solid #2E4B6C 2px"} borderRadius={"20px"}>
+        <Thead bgColor={"#2E4B6C"}>
           <Tr>
             {headers.map((header) => (
-              <Th color={"#FDF0D5"}>{header}</Th>
+              <Th color={"#DDE4E9"}>{header}</Th>
             ))}
           </Tr>
         </Thead>
         <Tbody>
           {rows.map((row, index) => (
-            <Tr key={index} bgColor={"#839CB0"}>
+            <Tr key={index} bgColor={"#C9D9E5"}>
               <Td>{row.id}</Td>
               <Td>
                 <Input value={row.question} onChange={(e) => handleQuestionChange(index, e.target.value)}

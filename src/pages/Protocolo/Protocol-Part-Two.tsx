@@ -13,7 +13,7 @@ export default function ProtocolPartTwo2() {
     <FlexLayout defaultOpen={0} navigationType="Accordion">
       <Box w={"100%"} display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
         <Header text="Protocol" />
-        <Progress value={33} w={"100%"} />
+        <Progress value={33} w={"100%"} color={"black"} />
         <FormControl sx={conteiner}>
           <FormControl sx={flex}>
             <AddTextTable text="Keywords" placeholder="Enter the keywords related to your review" />
@@ -29,7 +29,7 @@ export default function ProtocolPartTwo2() {
           <AddSelectionTable
             label="Data Bases"
             options={["Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
-            placeholder={"Select database"}
+            placeholder={"Select Data Base"}
             typeField="select"
           />
           <TextAreaInput label="Research Strategy" placeholder="Enter research strategy" />

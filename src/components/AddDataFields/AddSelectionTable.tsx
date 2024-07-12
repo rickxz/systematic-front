@@ -4,7 +4,7 @@ import SelectInput from "../Inputs/SelectInput";
 import InfosTable from "../Tables/InfosTable";
 import EventButton from "../Buttons/EventButton";
 import { useSelect } from "../../hooks/useSelect";
-import { conteiner, formcontrol } from "./styles/AddSelectionStyles";
+import { conteiner, formcontrol, formLabelStyle } from "./styles/AddSelectionStyles";
 
 interface AddSelectTableProps {
   label?: string;
@@ -18,18 +18,18 @@ export default function AddSelectTable({ label, options, placeholder }: AddSelec
 
   return (
     <FormControl sx={conteiner} alignContent={"center"}>
-      <FormLabel>{label}</FormLabel>
-      <FormControl sx={formcontrol}>
-        <SelectInput
-          values={options}
-          names={options}
-          onSelect={handleSelectChange}
-          selectedValue={selectedValue}
-          placeholder={placeholder}
-          page={"protocol"}
-        />
-        <EventButton text="ADD" event={handleSelectAddButtonClick} w={"10%"} />
-      </FormControl>
+      <FormLabel sx={formLabelStyle}>{label}</FormLabel>
+        <FormControl sx={formcontrol}>
+          <SelectInput
+            values={options}
+            names={options}
+            onSelect={handleSelectChange}
+            selectedValue={selectedValue}
+            placeholder={placeholder}
+            page={"protocol"}
+          />
+          <EventButton text="ADD" event={handleSelectAddButtonClick} w={"10%"} />
+        </FormControl>
       <InfosTable
         typeField="select"
         onDeleteAddedText={(index) => handleDeleteSelect(index)}

@@ -10,3 +10,7 @@ export const formcontrol = {
   gap: "5",
   
 };
+
+export const formLabelStyle = {
+  color: "#2E4B6C"
+};
