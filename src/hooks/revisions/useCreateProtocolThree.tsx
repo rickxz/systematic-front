@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from "../../interceptor/interceptor";
 
-const useCreateProtocolThree = async (researchQuestions: string[], analysisAndSynthesisProcess: string, id: string, retry = true) => {
+const useCreateProtocolThree = async (researchQuestions: string[], analysisAndSynthesisProcess: string, id: string) => {
     
     const url = `http://localhost:8080/systematic-study/${id}/protocol`;
 

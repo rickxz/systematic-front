@@ -26,8 +26,6 @@ export default function UserArea() {
       <Flex sx={flexStyles} w={"85vw"}>
         { cardData.length > 0 ? cardData.map((data) => {
 
-          console.log(data);
-
           return (
             <RevisionCard
               revisionId={data.id}
