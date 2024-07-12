@@ -26,6 +26,7 @@ export default function UserArea() {
         { cardData.length > 0 ? cardData.map((data) => {
           return (
             <RevisionCard
+              revisionId={data.id}
               id={data.key}
               title={data.title}
               RevisorNames={data.owner}
