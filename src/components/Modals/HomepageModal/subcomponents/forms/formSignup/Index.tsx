@@ -69,9 +69,11 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
         }
 
         if (password !== confirmPassword) {
+            setPasswordError("Passwords do not match");
             setConfirmPasswordError("Passwords do not match");
             isValid = false;
         } else {
+            setPasswordError("");
             setConfirmPasswordError("");
         }
 
@@ -122,7 +124,7 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
                         type="text" 
                         id="name" 
                         value={name} 
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) => {setName(e.target.value); setNameError("");}}
                         className={nameError ? "inputError" : ""}
                     />
                     {nameError && <p className="error">{nameError}</p>}
@@ -133,7 +135,7 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
                         type="text"
                         id="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => {setEmail(e.target.value); setEmailError("");}}
                         className={emailError ? "inputError" : ""}
                     />
                     {emailError && <p className="error">{emailError}</p>}
@@ -144,7 +146,7 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
                         type="text" 
                         id="affiliation"
                         value={affiliation} 
-                        onChange={(e) => setAffiliation(e.target.value)}
+                        onChange={(e) => {setAffiliation(e.target.value); setAffiliationError("")}}
                         className={affiliationError ? "inputError" : ""}
                     />
                     {affiliationError && <p className="error">{affiliationError}</p>}
@@ -153,7 +155,7 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
                     <label htmlFor="state">State</label>
                     <select 
                         value={state} 
-                        onChange={(e) => setState(e.target.value)}
+                        onChange={(e) => {setState(e.target.value); setStateError("");}}
                         className={stateError ? "inputError" : ""}
                     >
                         <option value="">Select State</option>
@@ -170,7 +172,7 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
                         type="password"
                         id="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e) => {setPassword(e.target.value); setPasswordError(""); setConfirmPasswordError("");}}
                         className={passwordError ? "inputError" : ""}
                     />
                     {passwordError && <p className="error">{passwordError}</p>}
@@ -181,7 +183,7 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
                         type="password"
                         id="confirmPassword"
                         value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        onChange={(e) => {setConfirmPassword(e.target.value); setPasswordError(""); setConfirmPasswordError("");}}
                         className={confirmPasswordError ? "inputError" : ""}
                     />
                     {confirmPasswordError && <p className="error">{confirmPasswordError}</p>}
