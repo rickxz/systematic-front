@@ -10,7 +10,7 @@ import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useCreateProtocolTwo from "../../hooks/revisions/useCreateProtocolTwo";
-
+import { useEffect } from "react";
 
 export default function ProtocolPartTwo2() {
   const [keywords, setKeywords] = useState<string[]>([]);
@@ -22,6 +22,10 @@ export default function ProtocolPartTwo2() {
   const [selectProcess, setSelectProcess] = useState<string>('');
   const [dataAcquisition, setDataAcquisition] = useState<string>('');
   const { id = '' } = useParams();
+
+  useEffect(() => {
+    console.log("protocolPartTwo");
+  })
 
   async function handleData(){
     await  useCreateProtocolTwo(keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, id);
@@ -55,6 +59,7 @@ export default function ProtocolPartTwo2() {
           </FormControl>
 
           <AddSelectionTable
+            label="Languages"
             onUpdate={setLanguages}
             options={["choose an option", "ENGLISH", "PORTUGUESE", "FRENCH", "SPANISH", "GERMAN"]}
             placeholder={"Languages:"}
@@ -65,6 +70,7 @@ export default function ProtocolPartTwo2() {
           <AddCriteriaTable text="Exclusion Criteria:" placeholder="Enter the criteria" onUpdate={setExclusionCriteria}/>
 
           <AddSelectionTable
+            label="Databases"
             onUpdate={setDatabases}
             options={["", "Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
             placeholder={"Data bases"}

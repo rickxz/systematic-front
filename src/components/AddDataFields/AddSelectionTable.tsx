@@ -13,7 +13,7 @@ interface AddSelectTableProps {
   onUpdate: (values: string[]) => void;
 }
 
-export default function AddSelectTable({ options, onUpdate }: AddSelectTableProps) {
+export default function AddSelectTable({ options, onUpdate, label }: AddSelectTableProps) {
   const { selectedValue, selectedValues, handleSelectChange, handleSelectAddButtonClick, handleDeleteSelect } =
     useSelect();
 
