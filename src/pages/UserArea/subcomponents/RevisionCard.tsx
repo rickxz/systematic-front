@@ -11,12 +11,12 @@ interface iRevisionCardProps {
   id: string;
   title: string;
   RevisorNames: string[];
-  lastEdition: string;
+  status: string;
   creation: string;
   isEdited: boolean;
 }
 
-export default function RevisionCard({ revisionId, id, title, RevisorNames, lastEdition, creation, isEdited }: iRevisionCardProps) {
+export default function RevisionCard({ revisionId, id, title, RevisorNames, status, creation, isEdited }: iRevisionCardProps) {
   async function redirectToReview(){
     const url = `http://localhost:8080/systematic-study/${revisionId}/protocol`;
     let token = localStorage.getItem("accessToken");
@@ -34,7 +34,7 @@ export default function RevisionCard({ revisionId, id, title, RevisorNames, last
         <CardInfos title={title} RevisorNames={RevisorNames} />
         <Box sx={CardInfosConteiner} id={id}>
           <EnterRevisionButton text="Review Info" event={redirectToReview}/>
-          <EditionInfos lastEdition={lastEdition} creation={creation} isEdited={isEdited} />
+          <EditionInfos status={status} creation={creation} isEdited={isEdited} />
         </Box>
       </Card>
     </>

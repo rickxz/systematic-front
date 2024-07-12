@@ -7,6 +7,7 @@ import useFetchRevisionCard from "../../hooks/fetch/useFetchRevisionCard";
 import { useState, useEffect } from "react";
 import NavButton from "../../components/Buttons/NavButton";
 
+
 export default function UserArea() {
   const [myRevisionsUrl, setMyRevisionsUrl] = useState('');
 
@@ -30,7 +31,7 @@ export default function UserArea() {
               id={data.key}
               title={data.title}
               RevisorNames={data.owner}
-              lastEdition={data.lastChange}
+              status={data.lastChange}
               creation={data.creation}
               isEdited={data.isEdited}
             />
