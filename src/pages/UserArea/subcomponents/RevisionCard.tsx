@@ -21,7 +21,7 @@ export default function RevisionCard({ id, title, RevisorNames, lastEdition, cre
         <CardIcon />
         <CardInfos title={title} RevisorNames={RevisorNames} />
         <Box sx={CardInfosConteiner} id={id}>
-          <EnterRevisionButton text="Review Info" />
+          <EnterRevisionButton text="Review Info" event={() => {}}/>
           <EditionInfos lastEdition={lastEdition} creation={creation} isEdited={isEdited} />
         </Box>
       </Card>
