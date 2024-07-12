@@ -5,7 +5,7 @@ interface cardDataProps {
   id: string;
   key: string;
   title: string;
-  revisors: string[];
+  collaborators: string[];
   lastChange: string;
   creation: string;
   isEdited: boolean;

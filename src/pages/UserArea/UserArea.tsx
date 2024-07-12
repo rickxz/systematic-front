@@ -25,12 +25,15 @@ export default function UserArea() {
       <Header text="My Systematic Reviews" />
       <Flex sx={flexStyles} w={"85vw"}>
         { cardData.length > 0 ? cardData.map((data) => {
+
+          console.log(data);
+
           return (
             <RevisionCard
               revisionId={data.id}
               id={data.key}
               title={data.title}
-              reviewers={data.owner}
+              reviewers={data.collaborators}
               status={data.lastChange}
               creation={data.creation}
               isEdited={data.isEdited}
