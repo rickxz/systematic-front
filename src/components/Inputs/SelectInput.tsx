@@ -19,7 +19,8 @@ export default function SelectInput({ values, names, onSelect, selectedValue, pl
   const isProtocol = page === "protocol";
   return (
     <FormControl sx={formcontrol} w={isProtocol ? "55%" : "100%"}>
-      <Select bgColor={"#C9D9E5"} placeholder={placeholder} value={selectedValue || ""} onChange={handleSelectChange}>
+      <Select bgColor={"#C9D9E5"} value={selectedValue || ""} onChange={handleSelectChange}>
+        <option value="" disabled>{placeholder}</option>
         {names.map((optionName, index) => (
           <option key={index} value={values[index]}>
             {optionName}
