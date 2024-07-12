@@ -15,7 +15,7 @@ export default function InputText({ label, placeholder, type, nome, setSearchStr
   const isSearchField = type === "search";
 
   return (
-    <FormControl mt={isSearchField ? "" : 10} sx={conteiner}>
+    <FormControl mt={isSearchField ? "" : 10} w={"60vw"}>
       <FormControl sx={{ ...inputconteiner, flexDirection: labelAbove ? 'column' : 'row' }}>
         {label && (
           <FormLabel
