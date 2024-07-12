@@ -17,9 +17,6 @@ U extends StudyInterface | KeywordInterface
   ) => {
   const [sortOptions, setSortOptions] = useState<SortOptions>({ sortBy: null, sortDesc: false });
 
-const a = newData[0];
-if (a != null) console.log(a[Object.keys(newHeader).find(key => newHeader[key as keyof T] === sortOptions.sortBy) as keyof U]);
-
   const handleSort = (column: string) => {
     if (sortOptions.sortBy === column) {
       setSortOptions({ ...sortOptions, sortDesc: !sortOptions.sortDesc });

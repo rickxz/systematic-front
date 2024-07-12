@@ -6,11 +6,12 @@ interface ITextFieldProps {
   placeholder: string;
   type: string;
   nome: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  setSearchString: (value: React.SetStateAction<string>) => void;
 }
 
-export default function InputText({ placeholder, type, nome, onChange }: ITextFieldProps) {
+export default function InputText({ placeholder, type, nome, setSearchString }: ITextFieldProps) {
   const isSearchField = type === "search";
+  
 
   return (
     <FormControl mt={isSearchField ? "" : 10} sx={conteiner}>
@@ -19,12 +20,12 @@ export default function InputText({ placeholder, type, nome, onChange }: ITextFi
           type={type}
           name={nome}
           placeholder={placeholder}
-          onChange={onChange}
           w={isSearchField ? "250px" : "100%"}
           bgColor={"#C9D9E5"}
           borderRadius={"3px"}
           _placeholder={{ opacity: 1, color: "gray.500" }}
           focusBorderColor="#526D82"
+          onChange={(e) => (setSearchString(e.target.value))}
         />
         {isSearchField && <SearchButton />}
       </FormControl>
