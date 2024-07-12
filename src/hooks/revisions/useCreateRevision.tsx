@@ -18,12 +18,15 @@ const useCreateRevision = async (title: string, description: string, collaborato
     if(axios.isAxiosError(err)){
         if(err.response?.status === 401 && retry == true){
             await useRefreshToken();
-            useCreateRevision(title, description, collaborators, false);
+            await useCreateRevision(title, description, collaborators, false);
         }
         else if(err.response?.status === 500 && retry == true){
-            let newAccesstoken = await useRefreshToken();
-            localStorage.setItem('accessToken', newAccesstoken);
-            useCreateRevision(title, description, collaborators, false);
+            await useRefreshToken();
+            await useCreateRevision(title, description, collaborators, false);
+        }
+        else if(err.response?.status === 404 && retry == true){
+            await useRefreshToken();
+            await useCreateRevision(title, description, collaborators, false);
         }
     }
         console.log(err);

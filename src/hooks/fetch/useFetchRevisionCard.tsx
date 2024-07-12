@@ -23,9 +23,9 @@ const useFetchRevisionCard = (url: string, retry = true) => {
       } catch (error) {
         console.log(error);
         if(axios.isAxiosError(error)){
-          if(error.response?.status == 500 || error.response?.status == 401 && retry){
-            useRefreshToken();
-            useFetchRevisionCard(url, false);
+          if(error.response?.status == 500 || error.response?.status == 401 || error.response?.status == 404 && retry){
+            await useRefreshToken();
+            await useFetchRevisionCard(url, false);
           }
         }
       }

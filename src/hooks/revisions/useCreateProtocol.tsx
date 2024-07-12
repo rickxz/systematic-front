@@ -22,9 +22,9 @@ const useCreateProtocol = async ({goal, mainQuestion, id, retry}: protocolData) 
     } 
     catch(err){
         if(axios.isAxiosError(err)){
-        if(err.response?.status == 401 || err.response?.status == 500 && retry == true){
-            useRefreshToken();
-            useCreateProtocol({goal, mainQuestion, id, retry: false});
+        if(err.response?.status == 401 || err.response?.status == 500 || err.response?.status === 404 && retry == true){
+            await useRefreshToken();
+            await useCreateProtocol({goal, mainQuestion, id, retry: false});
         }
     }
   }
