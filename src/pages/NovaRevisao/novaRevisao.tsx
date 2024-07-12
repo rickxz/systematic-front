@@ -6,7 +6,7 @@ import InputTextArea from "../../components/Inputs/InputTextArea";
 // import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
-import useCreateRevision from "../../hooks/revisions/useCreateRevision";
+import useCreateRevision from "../../hooks/revisions/useCreateReview";
 
 export default function NovaRevisao() {
   const [title, setTitle] = useState('');
