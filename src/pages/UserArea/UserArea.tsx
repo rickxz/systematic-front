@@ -17,7 +17,7 @@ export default function UserArea() {
     }
   }, [])
 
-  const { cardData } = useFetchRevisionCard(myRevisionsUrl);
+  const cardData = useFetchRevisionCard(myRevisionsUrl);
 
   return (
     <FlexLayout defaultOpen={0} navigationType="Default">

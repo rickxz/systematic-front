@@ -11,7 +11,7 @@ interface cardDataProps {
   isEdited: boolean;
 }
 
-const useFetchRevisionCard = (url: string, retry = true) => {
+const useFetchRevisionCard = (url: string) => {
   const [cardData, setCardData] = useState<cardDataProps[] | []>([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +26,6 @@ const useFetchRevisionCard = (url: string, retry = true) => {
     };
     fetchData();
   }, [url]);
-  return { cardData };
+  return cardData;
 };
 export default useFetchRevisionCard;
