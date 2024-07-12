@@ -45,7 +45,7 @@ export default function FormLogin() {
         if (isValid) {
             console.log("inicio da requisição")
             try {
-                const response = useLoginUser(data);
+                const response = await useLoginUser(data);
                 console.log(response);
                 if ((await response).status == 200) {
                     toast({

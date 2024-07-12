@@ -16,7 +16,9 @@ const useFetchRevisionCard = (url: string) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(url);
+        const token = localStorage.getItem("accessToken");
+
+        const response = await axios.get(url, {headers: {Authorization: `Bearer ${token}`}});
         console.log(response);
         const data = await response.data.content;
         setCardData(data);
