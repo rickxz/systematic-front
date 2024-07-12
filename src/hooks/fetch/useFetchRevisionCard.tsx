@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import useRefreshToken from '../validation/useRefreshToken';
+import axios from "../../interceptor/interceptor";
 
 interface cardDataProps {
   key: string;
@@ -16,18 +15,12 @@ const useFetchRevisionCard = (url: string, retry = true) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(url, {withCredentials: true});
+        const response = await axios.get(url);
         console.log(response);
         const data = await response.data.content;
         setCardData(data);
       } catch (error) {
         console.log(error);
-        if(axios.isAxiosError(error)){
-          if((error.response?.status == 500 || error.response?.status == 401 || error.response?.status == 404) && retry){
-            await useRefreshToken();
-            await useFetchRevisionCard(url, false);
-          }
-        }
       }
     };
     fetchData();

@@ -8,11 +8,12 @@ export const useGetTokens = async (username: string, password: string) => {
     }
 
     try{
-        const response = await axios.post(`${url}api/v1/auth`, userData, {withCredentials: true});
+        const response = await axios.post(`${url}api/v1/auth`, userData);
         console.log("Resposta do hook");
         if(response.status === 200){
             console.log(response);
-
+            localStorage.setItem("accessToken", response.data.accessToken);
+            localStorage.setItem("refreshToken", response.data.refreshToken);
             localStorage.setItem('myRevisionsLink', response.data._links['find-my-reviews'].href);
         }
         else{
