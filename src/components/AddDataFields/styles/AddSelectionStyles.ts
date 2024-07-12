@@ -8,4 +8,5 @@ export const formcontrol = {
   display: "flex",
   flexDir: "row",
   gap: "5",
+  
 };

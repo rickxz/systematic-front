@@ -27,7 +27,7 @@ export default function AddSelectTable({ label, options }: AddSelectTableProps) 
           selectedValue={selectedValue}
           page={"protocol"}
         />
-        <EventButton text="Add" event={handleSelectAddButtonClick} w={"10%"} />
+        <EventButton text="ADD" event={handleSelectAddButtonClick} w={"10%"} />
       </FormControl>
 
       <InfosTable

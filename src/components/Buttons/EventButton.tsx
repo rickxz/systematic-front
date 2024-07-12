@@ -8,10 +8,10 @@ interface IEventButtonProps extends ButtonProps {
 
 const variants = {
   default: {
-    bgColor: "2E4B6C",
+    bgColor: "#2E4B6C",
     color: "#C9D9E5",
     hoverBgColor: "#C9D9E5",
-    hoverColor: "#526D82",
+    hoverColor: "#2E4B6C",
     borderRadius: "3px",
   },
   dark: {

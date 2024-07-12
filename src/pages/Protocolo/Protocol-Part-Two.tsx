@@ -19,14 +19,15 @@ export default function ProtocolPartTwo2() {
 
         <FormControl sx={conteiner}>
           <FormControl sx={flex}>
-            <AddTextTable text="Keywords" placeholder="Enter keywords" />
+            <AddTextTable text="Keywords" placeholder="Enter the keywords related to your review" />
           </FormControl>
 
           <AddSelectionTable
             label="Languages"
-            options={["", "English", "Portuguese", "French", "Spanish", "German"]}
+            options={["Select language", "English", "Portuguese", "French", "Spanish", "German"]}
             placeholder={"Languages:"}
             typeField="select"
+            color="black"
           />
 
           <AddTextTable text="Inclusion Criteria:" placeholder="Enter the criteria" />
