@@ -1,5 +1,5 @@
 import axios from 'axios';
-import sendUserToRegisterProp from "../../../public/interfaces/sendUserInterface"
+import sendUserToRegisterProp from "../../../public/interfaces/userToRegisterInterface"
 
 export default function useRegisterUser(data: sendUserToRegisterProp){
     const url = 'http://localhost:8080/';
