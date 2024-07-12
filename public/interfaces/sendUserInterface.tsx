@@ -1,4 +1,4 @@
-export default interface sendUserProp{
+export default interface userToRegisterProp{
     username: string,
     password: string,
     email: string,
