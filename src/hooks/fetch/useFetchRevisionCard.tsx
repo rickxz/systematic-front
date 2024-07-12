@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "../../interceptor/interceptor";
 
 interface cardDataProps {
-  Id: string;
+  id: string;
   key: string;
   title: string;
   revisors: string[];

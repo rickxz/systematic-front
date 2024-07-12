@@ -22,6 +22,9 @@ export default function RevisionCard({ revisionId, id, title, RevisorNames, last
     let token = localStorage.getItem("accessToken");
     let response = await axios.get(url, {headers: {Authorization: `Bearer ${token}`}})
     console.log(response);
+    if(response.data.content.goal == null || response.data.content.justification == null){
+      window.location.href = `http://localhost:5173/#/newRevision/protocol/${id}`;
+    }
   }
   
   return (
