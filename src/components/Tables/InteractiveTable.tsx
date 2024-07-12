@@ -50,7 +50,7 @@ export default function InteractiveTable() {
               </Td>
             </Tr>
           ))}
-          <Tr bgColor={"#303D50"}>
+          <Tr bgColor={"#2E4B6C"}>
             <Td></Td>
             <Td colSpan={2}>
               <Button size="sm" leftIcon={<AddIcon />} onClick={addRow}>
