@@ -4,9 +4,9 @@ import "../index.css";
 
 interface iRecoverProps {
     onClose: () => void;
-  }
-  
-  export default function ForgotPassword({ onClose }: iRecoverProps) {
+}
+
+export default function ForgotPassword({ redirectFormLogin }: { redirectFormLogin: () => void }) {
     const [email, setEmail] = useState<string>("");
     const [error, setError] = useState<string>("");
 
@@ -20,36 +20,32 @@ interface iRecoverProps {
         if (!validateEmail(email)) {
             setError("Invalid email");
             return;
-        } else{
-        // lógica de envio do email de recuperação de senha (auth)
-        console.log("Enviar email para:", email); //teste
-        onClose();
+        } else {
+            // lógica de envio do email de recuperação de senha (auth)
+            console.log("Enviar email para:", email); //teste
         }
     };
 
     return (
-        <div className="modal-backdrop" onClick={onClose}>
+        <form onSubmit={handleSubmit}>
             <h2>Forgot Password</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="contentForm">
-                    <div className="inputGroup">
-                        <label htmlFor="forgot-email">Email</label>
-                        <input 
-                            type="text" 
-                            id="forgot-email" 
-                            value={email} 
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
-                    {error && <p className="error">{error}</p>}
-                    <div className="actions">
-                        <Link to="#">Back to Login</Link>
-                        <button type="submit">Recover Password</button>
-                    </div>
+            <div className="contentForm">
+                <div className="inputGroup">
+                    <label htmlFor="forgot-email">Email</label>
+                    <input
+                        type="text"
+                        id="forgot-email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
                 </div>
-            </form>
-            
-        </div>
+                {error && <p className="error">{error}</p>}
+                <div className="actions">
+                    <Link to="#" onClick={redirectFormLogin}>Back to Login</Link>
+                    <button type="submit">Recover Password</button>
+                </div>
+            </div>
+        </form>
     );
 }
 

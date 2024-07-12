@@ -53,8 +53,8 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
             setStateError("");
         }
 
-        if (password.length < 5) {
-            setPasswordError("Password must be at least 5 characters long");
+        if (password.length < 6) {
+            setPasswordError("Password must be at least 6 characters long");
             isValid = false;
         } else {
             setPasswordError("");

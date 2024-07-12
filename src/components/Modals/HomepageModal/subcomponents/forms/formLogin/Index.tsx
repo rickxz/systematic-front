@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../index.css";
 
-export default function FormLogin() {
+export default function FormLogin({ redirectForgotPassword }: { redirectForgotPassword: () => void }) {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [error, setError] = useState<string>("");
@@ -18,12 +18,12 @@ export default function FormLogin() {
         if (!validateEmail(email)) {
             setError("Invalid email or password");
             return;
-        }
+        } else setError ("")
 
         if (password.length < 6) {
             setError("Invalid email or password");
             return;
-        }
+        } else setError ("")
 
         // Simulação(auth)
         const isAuthenticated = email === "test@example.com" && password === "password123";
@@ -61,7 +61,7 @@ export default function FormLogin() {
                 {error && <p className="error">{error}</p>}
                 <div className="actions">
                     <button type="submit">Log in</button>
-                    <Link to="#">Forgot Password?</Link>
+                    <Link to="#" onClick={redirectForgotPassword}>Forgot Password?</Link>
                 </div>
             </div>
         </form>
