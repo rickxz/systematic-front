@@ -7,8 +7,8 @@ interface protocolData{
     retry: boolean;
 }
 
-const useCreateProtocol = async ({goal, mainQuestion, id, retry}: protocolData) => {
-  const url = `http://localhost:8080/systematic-study/${id}/protocol`
+const useCreateProtocol = async ({goal, mainQuestion, id}: protocolData) => {
+  const url = `http://localhost:8080/systematic-study/${id}/protocol`;
   const data = {
     "goal": goal,
     "justification": mainQuestion
