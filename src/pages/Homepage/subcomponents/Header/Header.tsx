@@ -1,5 +1,4 @@
 import { Box, Button, Flex } from "@chakra-ui/react";
-import HeaderButton from "./subcomponents/HeaderButton";
 import HeaderLink from "./subcomponents/HeaderLink";
 import { HeaderTheme } from "./HeaterStyle";
 import Logo from "../../../../../public/assets/StartLogos/startwhite.png";
@@ -9,7 +8,6 @@ import { useState } from "react";
 import HomepageModal from "../../../../components/Modals/HomepageModal/Index";
 import FormLogin from "../../../../components/Modals/HomepageModal/subcomponents/forms/formLogin/Index";
 import FormSignup from "../../../../components/Modals/HomepageModal/subcomponents/forms/formSignup/Index";
-import { color } from "chart.js/helpers";
 
 interface IHeaderProps {
   show: boolean;
