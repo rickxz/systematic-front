@@ -31,8 +31,7 @@ const useCreateProtocolTwo = async (keywords: string[], studiesLanguages: string
     const url = `http://localhost:8080/systematic-study/${id}/protocol`
 
     try{
-        const token = localStorage.getItem("accessToken");
-        let response = await axios.put(url, data, {headers: {Authorization: `Bearer ${token}`}});
+        let response = await axios.put(url, data, {withCredentials: true});
         console.log(response);
     }
     catch(err){

@@ -15,8 +15,7 @@ const useCreateProtocol = async ({goal, mainQuestion, id}: protocolData) => {
   }
   console.log(id);
   try{
-    const token = localStorage.getItem("accessToken");
-    let response = await axios.put(url, data, {headers: {Authorization: `Bearer ${token}`}})
+    let response = await axios.put(url, data, {withCredentials: true})
     console.log(response);
   } 
   catch(err){
