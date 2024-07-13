@@ -1,8 +1,8 @@
 import NavItem from "./NavItem";
 import { Link } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
 import { SiAddthis } from "react-icons/si";
 import { IoLibrarySharp } from "react-icons/io5";
+import LogoutButton from "./LogoutButton";
 
 interface IDefaultNavigation {
   navSize: string;
@@ -10,8 +10,7 @@ interface IDefaultNavigation {
 
 const routes = [
   { path: "/user", icon: IoLibrarySharp, title: "My reviews" },
-  { path: "/newRevision", icon: SiAddthis, title: "New Revision" },
-  { path: "/", icon: FaHome, title: "Homepage" },
+  { path: "/newRevision", icon: SiAddthis, title: "New Revision" }
 ];
 
 export default function DefaultNavigation({ navSize }: IDefaultNavigation) {
@@ -22,6 +21,7 @@ export default function DefaultNavigation({ navSize }: IDefaultNavigation) {
           <NavItem navSize={navSize} icon={route.icon} title={route.title} submenu={false} />
         </Link>
       ))}
+      <LogoutButton navSize={navSize} />
     </>
   );
 }
