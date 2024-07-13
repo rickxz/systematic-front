@@ -69,7 +69,7 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
                         type="password"
                         id="password"
                         value={password}
-                        onChange={(e) => { setPassword(e.target.value); setPasswordError(""); }}
+                        onChange={(e) => { setPassword(e.target.value); setPasswordError(""); setConfirmPasswordError(""); }}
                         className={passwordError ? "inputError" : ""}
                     />
                     {passwordError && <p className="error">{passwordError}</p>}
@@ -80,7 +80,7 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
                         type="password"
                         id="confirmPassword"
                         value={confirmPassword}
-                        onChange={(e) => { setConfirmPassword(e.target.value); setConfirmPasswordError(""); }}
+                        onChange={(e) => { setConfirmPassword(e.target.value); setConfirmPasswordError(""); setPasswordError(""); }}
                         className={confirmPasswordError ? "inputError" : ""}
                     />
                     {confirmPasswordError && <p className="error">{confirmPasswordError}</p>}
