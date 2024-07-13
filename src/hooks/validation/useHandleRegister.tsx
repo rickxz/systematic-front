@@ -1,83 +1,139 @@
-import { useSelect } from "../useSelect";
-import useNameValidation from "./useNameValidation";
-import useEmailValidation from "./useEmailValidation";
-import usePassWordValidation from "./usePassWordValidation";
-import useAffiliattionValidation from "./useAffiliattionValidation";
-import useRegisterUser from './useRegisterUser';
+import { useState } from "react";
+import { useToast } from "@chakra-ui/react";
+import useRegisterUser from "../validation/useRegisterUser";
+import userToRegisterProp from "../../../public/interfaces/userToRegisterInterface";
 
-export default function useHandleRegister() {
-  const { name, handleNameChange } = useNameValidation();
-  const { selectedValue, handleSelectChange } = useSelect();
-  const { email, validEmail, handleEmailchange } = useEmailValidation();
-  const { affiliattion, handleAffiliattionChange } = useAffiliattionValidation();
-  const { password, passwordMatch, handlePasswordChange, handleConfirmPasswordChange } = usePassWordValidation();
+const useHandleRegister = () => {
+    const [name, setName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [affiliation, setAffiliation] = useState<string>("");
+    const [state, setState] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [confirmPassword, setConfirmPassword] = useState<string>("");
+    const [nameError, setNameError] = useState<string>("");
+    const [emailError, setEmailError] = useState<string>("");
+    const [affiliationError, setAffiliationError] = useState<string>("");
+    const [stateError, setStateError] = useState<string>("");
+    const [passwordError, setPasswordError] = useState<string>("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState<string>("");
 
-  const data: string[] | null= [];
+    const toast = useToast();
+    const validateEmail = (email: string): boolean => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    };
 
-  const handleRegister = () => {
-    if (name === "") {
-      window.alert("Name is required!");
-      return;
-    }
-    else{
-      data.push(name);
-    }
-    if (!passwordMatch) {
-      window.alert("Passwords don't match!");
-      return;
-    }
-    if (password === "") {
-      window.alert("Password is required!");
-      return;
-    }
-    else{
-      data.push(password);
-    }
-    if (email === "") {
-      window.alert("email  is required!");
-      return;
-    }
-    if (!validEmail) {
-      window.alert("Invalid email");
-      return;
-    }
-    else{
-      data.push(email);
-    }
-    if (selectedValue === "" || selectedValue === "Select a country" || !selectedValue) {
-      window.alert("Country is required");
-      return;
-    }
-    else{
-      data.push(selectedValue);
-    }
-    if (affiliattion === "") {
-      window.alert("Affiliattion is required");
-      return;
-    }
-    else{
-      data.push(affiliattion);
-      console.log(data);
-      //const response = useRegisterUser(data);
-      //logic of registration
-    }
-    window.alert("User registered with success!");
-  };
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        let isValid = true;
 
-  return {
-    name,
-    handleNameChange,
-    selectedValue,
-    handleSelectChange,
-    email,
-    validEmail,
-    handleEmailchange,
-    affiliattion,
-    handleAffiliattionChange,
-    password,
-    passwordMatch,
-    handlePasswordChange,
-    handleConfirmPasswordChange,
-    handleRegister,
-  };
-}
+        if (!name) {
+            setNameError("Please enter your name");
+            isValid = false;
+        } else {
+            setNameError("");
+        }
+
+        if (!email) {
+            setEmailError("Please enter your email");
+            isValid = false;
+        }
+        else if (!validateEmail(email)) {
+            setEmailError("Invalid email address format");
+            isValid = false;
+        } else {
+            setEmailError("");
+        }
+
+        if (!affiliation) {
+            setAffiliationError("Please enter your affiliation");
+            isValid = false;
+        } else {
+            setAffiliationError("");
+        }
+
+        if (!state) {
+            setStateError("Please select your state");
+            isValid = false;
+        } else {
+            setStateError("");
+        }
+
+        if (password !== confirmPassword) {
+            setPasswordError("Passwords do not match");
+            setConfirmPasswordError("Passwords do not match");
+            isValid = false;
+        } else {
+            setPasswordError("");
+            setConfirmPasswordError("");
+        }
+
+        if (password.length < 5) {
+            setPasswordError("Password must be at least 5 characters long");
+            setConfirmPasswordError("Password must be at least 5 characters long");
+            isValid = false;
+        } else {
+            setPasswordError("");
+        }
+
+        if (isValid) {
+            const data: userToRegisterProp = {
+                "username": name,
+                "password": password,
+                "email": email,
+                "country": state,
+                "affiliation": affiliation
+            }
+
+            try {
+                const response = useRegisterUser(data);
+                console.log(response);
+                const user = (await response).data.username;
+                sessionStorage.setItem('userId', (await response).data.id);
+                if ((await response).status == 201) {
+                    toast({
+                        title: 'Account created.',
+                        description: `You can now log in with your account, ${user}.`,
+                        status: 'success',
+                        duration: 9000,
+                        isClosable: true,
+                    });
+                }
+            }
+            catch (err: any) {
+                console.error(err);
+                toast({
+                    title: err.response.message,
+                    description: err.response.detail,
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                });
+            };
+        }
+    };
+
+    return {
+        name,
+        setName,
+        email,
+        setEmail,
+        affiliation,
+        setAffiliation,
+        state,
+        setState,
+        password,
+        setPassword,
+        confirmPassword,
+        setConfirmPassword,
+        nameError,
+        emailError,
+        affiliationError,
+        stateError,
+        passwordError,
+        confirmPasswordError,
+        handleSubmit
+    };
+};
+
+export default useHandleRegister
