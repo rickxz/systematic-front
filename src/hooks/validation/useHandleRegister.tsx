@@ -59,21 +59,25 @@ const useHandleRegister = () => {
             setStateError("");
         }
 
-        if (password !== confirmPassword) {
+        if (!password) {
+          setPasswordError("Please, enter your password");
+          setConfirmPasswordError("Please, enter your password");
+          isValid = false;
+        } else if (!confirmPassword) {
+          setPasswordError("Please, enter your confirm password");
+          setConfirmPasswordError("Please, enter your confirm password");
+          isValid = false;
+        } else if (password.length < 5) {
+          setPasswordError("Password must be at least 5 characters long");
+          setConfirmPasswordError("Password must be at least 5 characters long");
+          isValid = false;
+        } else if (password !== confirmPassword) {
             setPasswordError("Passwords do not match");
             setConfirmPasswordError("Passwords do not match");
             isValid = false;
         } else {
             setPasswordError("");
             setConfirmPasswordError("");
-        }
-
-        if (password.length < 5) {
-            setPasswordError("Password must be at least 5 characters long");
-            setConfirmPasswordError("Password must be at least 5 characters long");
-            isValid = false;
-        } else {
-            setPasswordError("");
         }
 
         if (isValid) {
