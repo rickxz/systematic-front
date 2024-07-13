@@ -13,7 +13,6 @@ import Finalization from "./pages/NovaRevisao/finalization/Finalization";
 import Graphics from "./pages/NovaRevisao/graphics/Graphics";
 import NovaRevisao from "./pages/NovaRevisao/novaRevisao";
 import Protocol from "./pages/Protocolo/Protocol";
-import ProtocolPartThree from "./pages/Protocolo/Protocol-Part-Three";
 import ProtocolPartTwo from "./pages/Protocolo/Protocol-Part-Two";
 import SearchSession from "./pages/SearchSession/SearchSession";
 import UserArea from "./pages/UserArea/UserArea";
@@ -40,7 +39,6 @@ function App() {
             {/*Nested Routes*/}
             <Route path="/newRevision/protocol/:id" element={<Protocol />} />
             <Route path="/newRevision/protocolpartTwo/:id" element={<ProtocolPartTwo />} />
-            <Route path="/newRevision/protocolpartThree/:id" element={<ProtocolPartThree />} />
             <Route path="/newRevision/identification" element={<Identification />} />
             <Route path="/newRevision/keywords" element={<KeyWordScreen />} />
             <Route path="/newRevision/selection" element={<Selection />} />
