@@ -127,11 +127,17 @@ const useHandleRegister = () => {
         confirmPassword,
         setConfirmPassword,
         nameError,
+        setNameError,
         emailError,
+        setEmailError,
         affiliationError,
+        setAffiliationError,
         stateError,
+        setStateError,
         passwordError,
+        setPasswordError,
         confirmPasswordError,
+        setConfirmPasswordError,
         handleSubmit
     };
 };
