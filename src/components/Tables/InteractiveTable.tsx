@@ -10,7 +10,7 @@ export default function InteractiveTable() {
 
   return (
     <TableContainer>
-      <Table variant="striped" size="md" w={"60vw"} border={"solid #2E4B6C 2px"} borderRadius={"20px"}>
+      <Table variant="striped" size="md" w={"60vw"} border={"solid #2E4B6C 2px"} borderRadius={"5px"} overflow="hidden">
         <Thead bgColor={"#2E4B6C"}>
           <Tr>
             {headers.map((header) => (

@@ -12,7 +12,7 @@ export default function ProtocolPartThree() {
       <Box w={"100%"} display={"flex"} 
       justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
         <Header text="Protocol" />
-        <Progress w={"100%"} value={66} />
+        <Progress w={"100%"} value={66} bgColor={"white"} /> {/*DDE4E9*/}
         <FormControl sx={formControl}>
           <InteractiveTable />
           <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" />
