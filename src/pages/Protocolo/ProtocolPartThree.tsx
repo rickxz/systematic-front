@@ -25,15 +25,11 @@ export default function ProtocolPartThree() {
     } else {
       console.log(keywords, languages);
     }
-    console.log(id);
-    console.log("protocolPartThree");
   }, [location, keywords, languages, id, navigate]);
 
   async function handleData() {
     if (keywords && languages && databases && researchStrategy && selectProcess && dataAcquisition && InclusionCriteria && exclusionCriteria) {
       await useCreateProtocolThree(analysis, questions, keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, id);
-    } else {
-      console.error("Missing necessary data for useCreateProtocolThree");
     }
   }
 
