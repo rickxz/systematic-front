@@ -1,8 +1,7 @@
-import { useContext } from "react";
 import { flexconteiner } from "../styles/Navitemstyles";
 import { IoLogOutOutline } from "react-icons/io5";
-import AppContext from "../../../Context/AppContext";
 import { Flex, Icon, Menu, MenuButton, Text } from "@chakra-ui/react";
+import useLogout from "../../../../hooks/logout/useLogout";
 
 interface ILogoutButtonProps {
   navSize: string;
@@ -10,9 +9,11 @@ interface ILogoutButtonProps {
 
 export default function LogoutButton({ navSize }: ILogoutButtonProps): JSX.Element {
     const isSmallSize = navSize === "small";
+    const logout = useLogout();
 
     const handleClick = () => {
-
+        console.log("Logout")
+        logout();
     };
 
     return (
