@@ -12,7 +12,7 @@ export default function UserArea() {
   const [myRevisionsUrl, setMyRevisionsUrl] = useState('');
 
   useEffect(() => {
-    const url = localStorage.getItem('myRevisionsLink');
+    const url = localStorage.getItem('myReviewsLink');
     if (url) {
       setMyRevisionsUrl(url);
     }
