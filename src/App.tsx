@@ -5,7 +5,7 @@ import Insertion from "./pages/Execution/SubPages/Insertion/Insertion";
 import TestPage from "./pages/TestPage/TestPage";
 import AppContext, { AppProvider } from "./components/Context/AppContext";
 import { useContext } from "react";
-
+import ProtocolPartThree from "./pages/Protocolo/ProtocolPartThree";
 import KeyWordScreen from "./pages/Execution/SubPages/KeyWordScreen/KeyWordScreen";
 import Selection from "./pages/Execution/SubPages/Selection/Selection";
 import LandingPage from "./pages/LandingPage/LandingPage";
@@ -39,6 +39,7 @@ function App() {
             {/*Nested Routes*/}
             <Route path="/newRevision/protocol/:id" element={<Protocol />} />
             <Route path="/newRevision/protocolpartTwo/:id" element={<ProtocolPartTwo />} />
+            <Route path="/newRevision/protocolpartthree/:id" element={<ProtocolPartThree  />}/>
             <Route path="/newRevision/identification" element={<Identification />} />
             <Route path="/newRevision/keywords" element={<KeyWordScreen />} />
             <Route path="/newRevision/selection" element={<Selection />} />

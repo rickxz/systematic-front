@@ -19,8 +19,7 @@ interface iRevisionCardProps {
 export default function RevisionCard({ revisionId, id, title, reviewers, status, creation, /* isEdited */}: iRevisionCardProps) {
   async function redirectToReview(){
     const url = `http://localhost:8080/systematic-study/${revisionId}/protocol`;
-    let token = localStorage.getItem("accessToken");
-    let response = await axios.get(url, {headers: {Authorization: `Bearer ${token}`}})
+    let response = await axios.get(url, {withCredentials: true})
     console.log(response);
     if(response.data.content.goal == null || response.data.content.justification == null){
       window.location.href = `http://localhost:5173/#/newRevision/protocol/${revisionId}`;
