@@ -6,39 +6,46 @@ import TextAreaInput from "../../components/Inputs/InputTextArea";
 import InteractiveTable from "../../components/Tables/InteractiveTable";
 import { Row } from "../../hooks/useInteractiveTable";
 import FlexLayout from "../../components/ui/Flex/Flex";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import useCreateProtocolThree from '../../hooks/revisions/useCreateProtocolThree';
-import { useLocation } from "react-router-dom";
 
 export default function ProtocolPartThree() {
   const [analysis, setAnalysis] = useState('');
   const [questions, setQuestions] = useState<string[]>([]);
   const { id = '' } = useParams();
   const location = useLocation();
-  const {keywords, languages, databases, researchStrategy, selectProcess, 
-    dataAcquisition, InclusionCriteria, exclusionCriteria} = location.state || {};
+  const navigate = useNavigate();
+
+  const { keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria } = location.state || {};
 
   useEffect(() => {
-    console.log(keywords, languages);
+    if (!location.state) {
+      navigate(`/user`);
+    } else {
+      console.log(keywords, languages);
+    }
     console.log(id);
     console.log("protocolPartThree");
-  })
+  }, [location, keywords, languages, id, navigate]);
 
-  async function handleData(){
-    useCreateProtocolThree(analysis, questions, keywords, languages, databases, researchStrategy, selectProcess, 
-        dataAcquisition, InclusionCriteria, exclusionCriteria, id);
-    window.location.href = `http://localhost:5173/#/newRevision/identification`;
+  async function handleData() {
+    if (keywords && languages && databases && researchStrategy && selectProcess && dataAcquisition && InclusionCriteria && exclusionCriteria) {
+      await useCreateProtocolThree(analysis, questions, keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, id);
+    } else {
+      console.error("Missing necessary data for useCreateProtocolThree");
+    }
   }
 
-  function handleSave(data: Row[]){
+  function handleSave(data: Row[]) {
     const newQuestions: string[] = [];
-    data.map((item) => {newQuestions.push(item.question)});
-    setQuestions(newQuestions)
-  };
+    data.forEach((item) => {
+      newQuestions.push(item.question);
+    });
+    setQuestions(newQuestions);
+  }
 
-  function handleAnalysisAndSynthesis(e: React.ChangeEvent<HTMLTextAreaElement>){
+  function handleAnalysisAndSynthesis(e: React.ChangeEvent<HTMLTextAreaElement>) {
     setAnalysis(e.target.value);
   }
 
@@ -46,16 +53,16 @@ export default function ProtocolPartThree() {
     <FlexLayout defaultOpen={0} navigationType="Accordion">
 
       <Box w={"100%"} display={"flex"}
-      flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
+        flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
 
         <Header text="Protocol" />
-        <Progress value={33} w={"100%"}/>
+        <Progress value={33} w={"100%"} />
 
         <FormControl sx={conteiner}>
 
           <InteractiveTable onSave={handleSave} />
-          <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" onChange={handleAnalysisAndSynthesis}/>
-        
+          <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" onChange={handleAnalysisAndSynthesis} />
+
         </FormControl>
 
         <Box sx={btnBox}>
@@ -63,7 +70,7 @@ export default function ProtocolPartThree() {
         </Box>
 
       </Box>
-      
+
     </FlexLayout>
   );
 }
