@@ -6,8 +6,8 @@ export const editionicon = {
 };
 
 export const cardIcon = {
-  w: "60px",
-  h: "60px",
+  w: "50px",
+  h: "50px",
   justifySelf: "center",
   alignSelf: "center",
   ml: "0.5rem",
