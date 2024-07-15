@@ -1,7 +1,6 @@
 import axios from "../../interceptor/interceptor";
-import useRefreshToken from "../validation/useRefreshToken";
 
-const useCreateRevision = async (title: string, description: string, collaborators: string[], retry: boolean = true) => {
+const useCreateRevision = async (title: string, description: string, collaborators: string[]) => {
     const url = 'http://localhost:8080/api/v1/systematic-study';
     const data = {
         title,
@@ -10,8 +9,7 @@ const useCreateRevision = async (title: string, description: string, collaborato
     }
 
     try{
-        const token = localStorage.getItem("accestoken");
-        let response = await axios.post(url, data, {headers: {"Authorization": `Bearer ${token}`}});
+        let response = await axios.post(url, data, {withCredentials: true});
         console.log(response);
         return response.data.systematicStudyId;
     } catch(err){

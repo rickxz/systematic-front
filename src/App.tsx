@@ -5,6 +5,7 @@ import Insertion from "./pages/Execution/SubPages/Insertion/Insertion";
 import TestPage from "./pages/TestPage/TestPage";
 import AppContext, { AppProvider } from "./components/Context/AppContext";
 import { useContext } from "react";
+import ProtocolPartThree from "./pages/Protocolo/ProtocolPartThree";
 import KeyWordScreen from "./pages/Execution/SubPages/KeyWordScreen/KeyWordScreen";
 import Selection from "./pages/Execution/SubPages/Selection/Selection";
 import LandingPage from "./pages/LandingPage/LandingPage";
@@ -42,6 +43,7 @@ function App() {
             {/*Nested Routes*/}
             <Route path="/newRevision/protocol/:id" element={<ProtectedRoute element={<Protocol />} />} />
             <Route path="/newRevision/protocolpartTwo/:id" element={<ProtectedRoute element={<ProtocolPartTwo />} />} />
+            <Route path="/newRevision/protocolpartThree/:id" element={<ProtectedRoute element={<ProtocolPartThree />} />} />
             <Route path="/newRevision/identification" element={<ProtectedRoute element={<Identification />} />} />
             <Route path="/newRevision/keywords" element={<ProtectedRoute element={<KeyWordScreen />} />} />
             <Route path="/newRevision/selection" element={<ProtectedRoute element={<Selection />} />} />
@@ -85,6 +87,7 @@ function App() {
           <Route path="/newRevision/graphics" element={<ProtectedRoute element={<Graphics />} />} />
           <Route path="/newRevision/finalization" element={<ProtectedRoute element={<Finalization />} />} />
           <Route path="/newRevision/searchSession" element={<ProtectedRoute element={<SearchSession />} />} />
+          {/* <Route path="/newRevision/protocolpartThree" element={<ProtocolPartThree />} /> */}
         </Routes>
       </AppProvider>
     </Router>
