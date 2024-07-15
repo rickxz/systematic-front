@@ -1,7 +1,7 @@
 export const conteiner = {
   display: "flex",
   flexDir: "row",
-  mt: "1.5rem",
+  mt: "2.5rem",
   mr: 0,
   ml: 5,
 };

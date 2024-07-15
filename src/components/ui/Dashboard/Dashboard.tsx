@@ -8,9 +8,13 @@ import {
     ModalCloseButton,
     Button,
     useDisclosure,
-    Box
+    Box,
+    Center,
+    Icon
   } from '@chakra-ui/react'
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
+import { BsInfoCircle } from 'react-icons/bs';
+
 
 export default function Dashboard(){
     
@@ -22,10 +26,10 @@ export default function Dashboard(){
             <Button 
                 bgColor={"#263C56"} 
                 color={"#C9D9E5"} 
-                ml={"5rem"} 
-                mt={4} 
-                w={"165px"} 
-                h={"28px"} 
+                w={"40px"} 
+                h={"40px"} 
+                //border={"solid 2px #C9D9E5 "}
+                borderRadius="50%" 
                 boxShadow="0 1px 3px 0 rgba(0, 0 , 0, 0.5)" 
                 onClick={onOpen}
                 sx={{
@@ -35,7 +39,13 @@ export default function Dashboard(){
                         boxShadow: "0 2px 5px 0 rgba(0, 0, 0, 0.5)"
                     }
                 }}
-                >Progress Dashboard</Button>
+                position="absolute"
+                right="8"
+                top="50%"
+                transform="translateY(-50%)"
+                > 
+                    <Icon as={BsInfoCircle} boxSize={6} />                 
+                </Button>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />

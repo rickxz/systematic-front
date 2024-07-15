@@ -10,7 +10,7 @@ export default function EnterRevisionButton({ text }: IButtonProps) {
   return (
     <div>
       <Dashboard></Dashboard>
-      <Button sx={buttonstyles}>{text}</Button>
+      {/*<Button sx={buttonstyles}>{text}</Button>*/}
     </div>
   );
 }

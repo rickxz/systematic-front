@@ -9,4 +9,6 @@ export const conteiner = {
 export const text = {
   as: "h4",
   w: "26em",
+  alignSelf: "center",
+  ml: "10px"
 };
