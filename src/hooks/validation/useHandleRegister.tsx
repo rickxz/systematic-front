@@ -18,6 +18,7 @@ const useHandleRegister = () => {
     const [confirmPasswordError, setConfirmPasswordError] = useState<string>("");
 
     const toast = useToast();
+
     const validateEmail = (email: string): boolean => {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
@@ -60,17 +61,17 @@ const useHandleRegister = () => {
         }
 
         if (!password) {
-          setPasswordError("Please, enter your password");
-          setConfirmPasswordError("Please, enter your password");
-          isValid = false;
+            setPasswordError("Please, enter your password");
+            setConfirmPasswordError("Please, enter your password");
+            isValid = false;
         } else if (!confirmPassword) {
-          setPasswordError("Please, enter your confirm password");
-          setConfirmPasswordError("Please, enter your confirm password");
-          isValid = false;
+            setPasswordError("Please, enter your confirm password");
+            setConfirmPasswordError("Please, enter your confirm password");
+            isValid = false;
         } else if (password.length < 5) {
-          setPasswordError("Password must be at least 5 characters long");
-          setConfirmPasswordError("Password must be at least 5 characters long");
-          isValid = false;
+            setPasswordError("Password must be at least 5 characters long");
+            setConfirmPasswordError("Password must be at least 5 characters long");
+            isValid = false;
         } else if (password !== confirmPassword) {
             setPasswordError("Passwords do not match");
             setConfirmPasswordError("Passwords do not match");
@@ -87,14 +88,14 @@ const useHandleRegister = () => {
                 "email": email,
                 "country": state,
                 "affiliation": affiliation
-            }
+            };
 
             try {
-                const response = useRegisterUser(data);
+                const response = await useRegisterUser(data);
                 console.log(response);
-                const user = (await response).data.username;
-                sessionStorage.setItem('userId', (await response).data.id);
-                if ((await response).status == 201) {
+                const user = response.data.username;
+                sessionStorage.setItem('userId', response.data.id);
+                if (response.status === 201) {
                     toast({
                         title: 'Account created.',
                         description: `You can now log in with your account, ${user}.`,
@@ -103,17 +104,26 @@ const useHandleRegister = () => {
                         isClosable: true,
                     });
                 }
-            }
-            catch (err: any) {
+            } catch (err: any) {
                 console.error(err);
-                toast({
-                    title: err.response.message,
-                    description: err.response.detail,
-                    status: "error",
-                    duration: 9000,
-                    isClosable: true,
-                });
-            };
+                if (err) {
+                    toast({
+                        title: err.response.data.message || 'Error',
+                        description: err.response.data.detail || 'An error occurred.',
+                        status: "error",
+                        duration: 9000,
+                        isClosable: true,
+                    });
+                } else {
+                    toast({
+                        title: 'Network Error',
+                        description: 'Please check your internet connection.',
+                        status: "error",
+                        duration: 9000,
+                        isClosable: true,
+                    });
+                }
+            }
         }
     };
 
@@ -146,4 +156,4 @@ const useHandleRegister = () => {
     };
 };
 
-export default useHandleRegister
+export default useHandleRegister;
