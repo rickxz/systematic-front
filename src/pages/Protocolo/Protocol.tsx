@@ -20,6 +20,10 @@ export default function Protocol() {
     window.location.href = `http://localhost:5173/#/newRevision/protocolpartTwo/${id}`;
   }
 
+  async function alert(){
+    window.alert("Todos os campos do protocolo precisam estar preenchidos");
+  }
+
   function handleGoal(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
     setGoal(e.target.value);
   }
@@ -40,8 +44,8 @@ export default function Protocol() {
           </FormControl>
 
           <Box sx={btnBox}>
-          {goal != '' && mainQuestion != '' ? <NavButton event={handleData} text="Create new Review" /> :
-          <NavButton event={handleData} path={`/newRevision/protocol/${id}`} text="Create new Review" />
+          {goal == '' && mainQuestion == '' ? <NavButton event={alert} text="Create new Review" /> :
+          <NavButton event={handleData} text="Create new Review" />
           }
           </Box>
         </Flex>
