@@ -36,7 +36,7 @@ export default function ProtocolPartTwo2() {
 
   async function handleData(){
     await  useCreateProtocolTwo(keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, questions, analysis, id);
-    navigate(`/newRevision/protocolpartthree/${id}`, {state: {keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria}});
+    navigate(`/newRevision/selection`, {state: {keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria}});
   }
 
   function handleResearchStrategy(e: React.ChangeEvent<HTMLTextAreaElement>){
