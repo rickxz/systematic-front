@@ -1,20 +1,23 @@
 import { FormControl, Input } from "@chakra-ui/react";
 import SearchButton from "../Buttons/SearchButton";
+import { FormLabel } from "@chakra-ui/react";
 import { conteiner, inputconteiner } from "./styles/inputTextStyle";
 
 interface ITextFieldProps {
   placeholder: string;
   type: string;
   nome: string;
+  label: string;
   onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function InputText({ placeholder, type, nome, onChange }: ITextFieldProps) {
+export default function InputText({ label, placeholder, type, nome, onChange }: ITextFieldProps) {
   const isSearchField = type === "search";
   
 
   return (
     <FormControl mt={isSearchField ? "" : 10} sx={conteiner}>
+      <FormLabel>{label}</FormLabel>
       <FormControl sx={inputconteiner}>
         <Input
           type={type}
