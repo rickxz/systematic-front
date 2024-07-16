@@ -106,7 +106,7 @@ const useHandleRegister = () => {
                 }
             } catch (err: any) {
                 console.error(err);
-                if (err) {
+                if (err.response) {
                     toast({
                         title: err.response.data.message || 'Error',
                         description: err.response.data.detail || 'An error occurred.',
