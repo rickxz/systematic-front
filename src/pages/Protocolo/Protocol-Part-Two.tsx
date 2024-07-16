@@ -6,6 +6,8 @@ import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";
 import AddCriteriaTable from "../../components/AddDataFields/AddCriteriaTable";
 import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable";
+import InteractiveTable from "../../components/Tables/InteractiveTable";
+import { Row } from "../../hooks/useInteractiveTable";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -22,6 +24,8 @@ export default function ProtocolPartTwo2() {
   const [researchStrategy, setResearchStrategy] = useState<string>('');
   const [selectProcess, setSelectProcess] = useState<string>('');
   const [dataAcquisition, setDataAcquisition] = useState<string>('');
+  const [analysis, setAnalysis] = useState('');
+  const [questions, setQuestions] = useState<string[]>([]);
   const { id = '' } = useParams();
 
   const navigate = useNavigate();
@@ -31,7 +35,7 @@ export default function ProtocolPartTwo2() {
   })
 
   async function handleData(){
-    await  useCreateProtocolTwo(keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, id);
+    await  useCreateProtocolTwo(keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, questions, analysis, id);
     navigate(`/newRevision/protocolpartthree/${id}`, {state: {keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria}});
   }
 
@@ -45,6 +49,18 @@ export default function ProtocolPartTwo2() {
 
   function handleDataAcquisition(e: React.ChangeEvent<HTMLTextAreaElement>){
     setDataAcquisition(e.target.value);
+  }
+
+  function handleSave(data: Row[]) {
+    const newQuestions: string[] = [];
+    data.forEach((item) => {
+      newQuestions.push(item.question);
+    });
+    setQuestions(newQuestions);
+  }
+
+  function handleAnalysisAndSynthesis(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    setAnalysis(e.target.value);
   }
 
   return (
@@ -84,6 +100,9 @@ export default function ProtocolPartTwo2() {
           <TextAreaInput onChange={handleSelectProcess} label="Article Selection Process" placeholder="Enter selection process" />
           <TextAreaInput onChange={handleDataAcquisition}  label="Data Acquisition" placeholder="Enter the data acquisition method" />
     
+          <InteractiveTable onSave={handleSave} />
+          <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" onChange={handleAnalysisAndSynthesis} />
+
         </FormControl>
 
         <Box sx={btnBox}>
