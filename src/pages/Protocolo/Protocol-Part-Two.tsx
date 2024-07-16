@@ -39,6 +39,10 @@ export default function ProtocolPartTwo2() {
     navigate(`/newRevision/selection`, {state: {keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria}});
   }
 
+  async function alert(){
+    window.alert("Todos os campos do protocolo precisam estar preenchidos");
+  }
+
   function handleResearchStrategy(e: React.ChangeEvent<HTMLTextAreaElement>){
     setResearchStrategy(e.target.value);
   }
@@ -106,7 +110,13 @@ export default function ProtocolPartTwo2() {
         </FormControl>
 
         <Box sx={btnBox}>
-          <NavButton text="save" event={handleData} w={"fit-content"} />
+          {questions.length == 0 && keywords.length == 0 
+          && InclusionCriteria.length == 0 && exclusionCriteria.length == 0
+          && languages.length == 0 && databases.length == 0
+          && researchStrategy == "" && selectProcess == "" && dataAcquisition == ""
+          && analysis == "" && questions.length == 0? <NavButton event={alert} text="Create new Review" /> :
+          <NavButton event={handleData} text="Save" />
+          }
         </Box>
 
       </Box>
