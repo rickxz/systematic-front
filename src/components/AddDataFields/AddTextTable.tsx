@@ -24,6 +24,7 @@ export default function AddTextTable({ text, placeholder, url }: AddTextTablePro
           typeField={""}
           onDeleteAddedText={(index) => handleDeleteText(index, setAddText, url)}
           AddTexts={AddText}
+          url={url}
         />
       </FormControl>
     </FormControl>
