@@ -8,9 +8,10 @@ import { formcontrol, label } from "./styles/AddTextTableStyles";
 interface AddTextTableProps {
   text: string;
   placeholder: string;
+  url: string;
 }
 
-export default function AddTextTable({ text, placeholder }: AddTextTableProps) {
+export default function AddTextTable({ text, placeholder, url }: AddTextTableProps) {
   const { AddText, handleAddText, setAddText } = useAddText();
   const { handleDeleteText } = useDeleteText();
   return (
@@ -18,7 +19,7 @@ export default function AddTextTable({ text, placeholder }: AddTextTableProps) {
       <FormLabel>{text}</FormLabel>
 
       <FormControl sx={formcontrol}>
-        <AddTextField onAddText={handleAddText} text={placeholder} />
+        <AddTextField url={url} onAddText={handleAddText} text={placeholder} />
         <InfosTable
           typeField={""}
           onDeleteAddedText={(index) => handleDeleteText(index, setAddText)}

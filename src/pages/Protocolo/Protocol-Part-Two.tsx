@@ -28,6 +28,7 @@ export default function ProtocolPartTwo2() {
   const { id = '' } = useParams();
 
   const navigate = useNavigate();
+  const url = `http://localhost:8080/systematic-study/${id}/protocol`;
 
   useEffect(() => {
     console.log("protocolPartTwo");
@@ -77,7 +78,7 @@ export default function ProtocolPartTwo2() {
 
         <FormControl sx={conteiner}>
           <FormControl sx={flex}>
-            <AddTextTable text="Keywords" placeholder="Enter keywords"/>
+            <AddTextTable url={url} text="Keywords" placeholder="Enter keywords"/>
           </FormControl>
 
           <AddSelectionTable
