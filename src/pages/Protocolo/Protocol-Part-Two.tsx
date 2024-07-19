@@ -16,7 +16,6 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function ProtocolPartTwo2() {
-  const [keywords, setKeywords] = useState<string[]>([]);
   const [InclusionCriteria, setInclusionCriteria] = useState<{ description: string; type: "INCLUSION" | "EXCLUSION"; }[]>([]);
   const [exclusionCriteria, setExclusionCriteria] = useState<{ description: string; type: "INCLUSION" | "EXCLUSION"; }[]>([]);
   const [languages, setLanguages] = useState<string[]>([]);
@@ -78,7 +77,7 @@ export default function ProtocolPartTwo2() {
 
         <FormControl sx={conteiner}>
           <FormControl sx={flex}>
-            <AddTextTable text="Keywords" placeholder="Enter keywords" onUpdate={setKeywords}/>
+            <AddTextTable text="Keywords" placeholder="Enter keywords"/>
           </FormControl>
 
           <AddSelectionTable
