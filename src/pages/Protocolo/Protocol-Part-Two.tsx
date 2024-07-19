@@ -110,13 +110,7 @@ export default function ProtocolPartTwo2() {
         </FormControl>
 
         <Box sx={btnBox}>
-          {questions.length == 0
-          && InclusionCriteria.length == 0 && exclusionCriteria.length == 0
-          && languages.length == 0 && databases.length == 0
-          && researchStrategy == "" && selectProcess == "" && dataAcquisition == ""
-          && analysis == "" && questions.length == 0? <NavButton event={alert} text="Create new Review" /> :
           <NavButton event={handleData} text="Save" />
-          }
         </Box>
 
       </Box>
