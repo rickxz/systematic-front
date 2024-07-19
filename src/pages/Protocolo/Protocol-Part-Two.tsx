@@ -39,10 +39,6 @@ export default function ProtocolPartTwo2() {
     navigate(`/newRevision/selection`, {state: {languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria}});
   }
 
-  async function alert(){
-    window.alert("Todos os campos do protocolo precisam estar preenchidos");
-  }
-
   function handleResearchStrategy(e: React.ChangeEvent<HTMLTextAreaElement>){
     setResearchStrategy(e.target.value);
   }
