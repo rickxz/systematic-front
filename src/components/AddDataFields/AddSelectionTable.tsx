@@ -10,24 +10,12 @@ interface AddSelectTableProps {
   options: string[];
   placeholder: string;
   typeField: string;
-  onUpdate: (values: string[]) => void;
+  url: string;
 }
 
-export default function AddSelectTable({ options, onUpdate, label }: AddSelectTableProps) {
+export default function AddSelectTable({ label, options, url }: AddSelectTableProps) {
   const { selectedValue, selectedValues, handleSelectChange, handleSelectAddButtonClick, handleDeleteSelect } =
     useSelect();
-
-    const handleSelectAddButtonClickWithUpdate = () => {
-      handleSelectAddButtonClick();
-      if(selectedValue && selectedValues){
-        setTimeout(() => onUpdate([...selectedValues, selectedValue]), 0);
-      }
-    };
-
-    const handleDeleteSelectWithUpdate = (index: number) => {
-      handleDeleteSelect(index);
-      setTimeout(() => onUpdate(selectedValues.filter((_, i) => i !== index)), 0);
-    };
 
   return (
     <FormControl sx={conteiner} alignContent={"center"}>
@@ -40,13 +28,14 @@ export default function AddSelectTable({ options, onUpdate, label }: AddSelectTa
           selectedValue={selectedValue}
           page={"protocol"}
         />
-        <EventButton text="Add" event={handleSelectAddButtonClickWithUpdate} w={"10%"} />
+        <EventButton text="Add" event={handleSelectAddButtonClick} w={"10%"} />
       </FormControl>
 
       <InfosTable
         typeField="select"
-        onDeleteAddedText={handleDeleteSelectWithUpdate}
+        onDeleteAddedText={(index) => handleDeleteSelect(index)}
         AddTexts={selectedValues}
+        url={url}
       />
     </FormControl>
   );

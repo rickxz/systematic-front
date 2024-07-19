@@ -18,8 +18,6 @@ import { useNavigate } from "react-router-dom";
 export default function ProtocolPartTwo2() {
   const [InclusionCriteria, setInclusionCriteria] = useState<{ description: string; type: "INCLUSION" | "EXCLUSION"; }[]>([]);
   const [exclusionCriteria, setExclusionCriteria] = useState<{ description: string; type: "INCLUSION" | "EXCLUSION"; }[]>([]);
-  const [languages, setLanguages] = useState<string[]>([]);
-  const [databases, setDatabases] = useState<string[]>([]);
   const [researchStrategy, setResearchStrategy] = useState<string>('');
   const [selectProcess, setSelectProcess] = useState<string>('');
   const [dataAcquisition, setDataAcquisition] = useState<string>('');
@@ -35,8 +33,8 @@ export default function ProtocolPartTwo2() {
   })
 
   async function handleData(){
-    await  useCreateProtocolTwo(languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, questions, analysis, id);
-    navigate(`/newRevision/selection`, {state: {languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria}});
+    await  useCreateProtocolTwo(researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, questions, analysis, id);
+    navigate(`/newRevision/selection`, {state: {researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria}});
   }
 
   function handleResearchStrategy(e: React.ChangeEvent<HTMLTextAreaElement>){
@@ -79,7 +77,7 @@ export default function ProtocolPartTwo2() {
 
           <AddSelectionTable
             label="Languages"
-            onUpdate={setLanguages}
+            url={url}
             options={["choose an option", "ENGLISH", "PORTUGUESE", "FRENCH", "SPANISH", "GERMAN"]}
             placeholder={"Languages:"}
             typeField="select"
@@ -90,7 +88,7 @@ export default function ProtocolPartTwo2() {
 
           <AddSelectionTable
             label="Databases"
-            onUpdate={setDatabases}
+            url={"#"}
             options={["", "Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
             placeholder={"Data bases"}
             typeField="select"
