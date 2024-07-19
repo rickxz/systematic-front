@@ -1,5 +1,4 @@
 import axios from "../../interceptor/interceptor";
-import { useState } from "react";
 
 interface KeywordType {
     keyword: string;
@@ -7,32 +6,19 @@ interface KeywordType {
 }
 
 const useSendKeywords = () => {
-    const [keywords, setKeywords] = useState<string[]>([]);
-    
-    async function sendKeywords({keyword, url}: KeywordType) {
-        // fetching keywords from the server
+    async function sendKeywords({ keyword, url }: KeywordType) {
+        // Fetching keywords from the server
         let response = await axios.get(url, { withCredentials: true });
         const fetchedKeywords = response.data.content.keywords;
         
-        // setting the fetched keywords
-        setKeywords(fetchedKeywords);
+        // Adding the new keyword to the fetched keywords
+        const updatedKeywords = [...fetchedKeywords, keyword];
+        console.log(`updated array: ${updatedKeywords}`);
         
-        // updating the state with the new keyword
-        setKeywords(prevKeywords => {
-            const updatedKeywords = [...prevKeywords, keyword];
-            // sending updated keywords to the server
-            console.log(`updated array: ${updatedKeywords}`);
-            const data = { keywords: updatedKeywords };
-            axios.put(url, data, { withCredentials: true })
-                .then(putResponse => {
-                    console.log(putResponse);
-                })
-                .catch(error => {
-                    console.error("Error updating keywords:", error);
-                });
-            
-            return updatedKeywords;
-        });
+        // Sending updated keywords to the server
+        const data = { keywords: updatedKeywords };
+        let putResponse = await axios.put(url, data, { withCredentials: true });
+        console.log(putResponse);
     }
 
     return sendKeywords;
