@@ -1,7 +1,7 @@
 import axios from "../../interceptor/interceptor";
 
 
-const useCreateProtocolTwo = async (keywords: string[], studiesLanguages: string[], 
+const useCreateProtocolTwo = async (studiesLanguages: string[], 
     databases: string[], researchStrategy: string, selectionProcess: string, dataAcquisition: string, 
     inclusionCriteria: {"description": string, "type": "INCLUSION" | "EXCLUSION"}[], 
     exclusionCriteria: {"description": string, "type": "INCLUSION" | "EXCLUSION"}[], 
@@ -18,7 +18,6 @@ const useCreateProtocolTwo = async (keywords: string[], studiesLanguages: string
     }
 
     const data = {
-        keywords,
         informationSources: databases,
         studiesLanguages,
         searchMethod: researchStrategy,

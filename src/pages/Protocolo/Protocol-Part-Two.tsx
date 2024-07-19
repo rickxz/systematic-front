@@ -34,8 +34,8 @@ export default function ProtocolPartTwo2() {
   })
 
   async function handleData(){
-    await  useCreateProtocolTwo(keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, questions, analysis, id);
-    navigate(`/newRevision/selection`, {state: {keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria}});
+    await  useCreateProtocolTwo(languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, questions, analysis, id);
+    navigate(`/newRevision/selection`, {state: {languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria}});
   }
 
   async function alert(){
@@ -109,7 +109,7 @@ export default function ProtocolPartTwo2() {
         </FormControl>
 
         <Box sx={btnBox}>
-          {questions.length == 0 && keywords.length == 0 
+          {questions.length == 0
           && InclusionCriteria.length == 0 && exclusionCriteria.length == 0
           && languages.length == 0 && databases.length == 0
           && researchStrategy == "" && selectProcess == "" && dataAcquisition == ""
