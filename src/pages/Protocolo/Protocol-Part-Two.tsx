@@ -77,6 +77,7 @@ export default function ProtocolPartTwo2() {
 
           <AddSelectionTable
             label="Languages"
+            type="studiesLanguages"
             url={url}
             options={["choose an option", "ENGLISH", "PORTUGUESE", "FRENCH", "SPANISH", "GERMAN"]}
             placeholder={"Languages:"}
@@ -88,7 +89,8 @@ export default function ProtocolPartTwo2() {
 
           <AddSelectionTable
             label="Databases"
-            url={"#"}
+            type="databases" 
+            url={url}
             options={["", "Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
             placeholder={"Data bases"}
             typeField="select"

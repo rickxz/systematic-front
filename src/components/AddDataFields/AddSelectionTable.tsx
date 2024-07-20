@@ -11,11 +11,12 @@ interface AddSelectTableProps {
   placeholder: string;
   typeField: string;
   url: string;
+  type: "databases" | 'studiesLanguages';
 }
 
-export default function AddSelectTable({ label, options, url }: AddSelectTableProps) {
+export default function AddSelectTable({ label, options, url, type }: AddSelectTableProps) {
   const { selectedValue, selectedValues, handleSelectChange, handleSelectAddButtonClick, handleDeleteSelect } =
-    useSelect();
+    useSelect(url, type);
 
   return (
     <FormControl sx={conteiner} alignContent={"center"}>
