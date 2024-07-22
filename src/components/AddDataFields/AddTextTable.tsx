@@ -19,7 +19,7 @@ export default function AddTextTable({ text, placeholder, url }: AddTextTablePro
       <FormLabel>{text}</FormLabel>
 
       <FormControl sx={formcontrol}>
-        <AddTextField url={url} onAddText={handleAddText} text={placeholder} />
+        <AddTextField url={url} onAddText={handleAddText} placeholder={placeholder} text={text}/>
         <InfosTable
           typeField={""}
           onDeleteAddedText={(index) => handleDeleteText(index, setAddText, url)}

@@ -4,16 +4,19 @@ import EventButton from "../Buttons/EventButton";
 import { useState } from "react";
 import { formcontrol } from "./styles/AddTextFieldStyle";
 import useSendKeywords from "../../hooks/tables/useSendKeywords";
+import useSendInclusionCriteria from "../../hooks/tables/useSendInclusionCriteria";
 
 interface IAddTextFieldProps {
   onAddText: (newKeyword: string) => void;
-  text: string;
+  placeholder: string;
   url: string;
+  text?: string;
 }
 
-export default function AddTextField({ onAddText, text, url }: IAddTextFieldProps) {
+export default function AddTextField({ onAddText, placeholder, url, text }: IAddTextFieldProps) {
   const [inputValue, setInputValue] = useState<string>("");
   const sendKeywords = useSendKeywords();
+  const sendCriterias = useSendInclusionCriteria();
 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -23,11 +26,18 @@ export default function AddTextField({ onAddText, text, url }: IAddTextFieldProp
   const handleAddText = () => {
     if (inputValue.trim() !== "") {
       onAddText(inputValue.trim());
-      const data = {
-        keyword: inputValue.trim(),
-        url
+      if(text == 'Inclusion criteria'){
+        let criteria = {description: inputValue.trim(), type: "INCLUSION"}
+        const data = {criteria, url}
+        sendCriterias(data);
       }
-      sendKeywords(data);
+      if(text == 'Keywords'){
+        const data = {
+          keyword: inputValue.trim(),
+          url
+        }
+        sendKeywords(data);
+      }
       setInputValue("");
     } else {
       window.alert("The field must be filled!");
@@ -36,7 +46,7 @@ export default function AddTextField({ onAddText, text, url }: IAddTextFieldProp
 
   return (
     <FormControl sx={formcontrol}>
-      <TextAreaInput label="" placeholder={text} onChange={handleInputChange}></TextAreaInput>
+      <TextAreaInput label="" placeholder={placeholder} onChange={handleInputChange}></TextAreaInput>
       <EventButton event={handleAddText} text="ADD" mt={2} w={"10%"} />
     </FormControl>
   );

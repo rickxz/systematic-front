@@ -4,7 +4,6 @@ import { Progress, FormControl, Box } from "@chakra-ui/react";
 import { btnBox, conteiner, flex } from "./styles/partTwooStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";
-import AddCriteriaTable from "../../components/AddDataFields/AddCriteriaTable";
 import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
@@ -14,8 +13,6 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function ProtocolPartTwo2() {
-  const [InclusionCriteria, setInclusionCriteria] = useState<{ description: string; type: "INCLUSION" | "EXCLUSION"; }[]>([]);
-  const [exclusionCriteria, setExclusionCriteria] = useState<{ description: string; type: "INCLUSION" | "EXCLUSION"; }[]>([]);
   const [researchStrategy, setResearchStrategy] = useState<string>('');
   const [selectProcess, setSelectProcess] = useState<string>('');
   const [dataAcquisition, setDataAcquisition] = useState<string>('');
@@ -29,7 +26,7 @@ export default function ProtocolPartTwo2() {
   })
 
   async function handleData(){
-    await  useCreateProtocolTwo(researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, id);
+    await  useCreateProtocolTwo(researchStrategy, selectProcess, dataAcquisition, id);
     navigate(`/newRevision/protocolpartThree/${id}`);
   }
 
@@ -68,8 +65,8 @@ export default function ProtocolPartTwo2() {
             typeField="select"
           />
 
-          <AddCriteriaTable text="Inclusion Criteria:" placeholder="Enter the criteria" onUpdate={setInclusionCriteria}/>
-          <AddCriteriaTable text="Exclusion Criteria:" placeholder="Enter the criteria" onUpdate={setExclusionCriteria}/>
+          <AddTextTable text="Inclusion criteria" placeholder="Inclusion criteria" url={url}/>        
+          <AddTextTable text="Exclusion criteria" placeholder="Exclusion criteria" url={url}/>
 
           <AddSelectionTable
             label="Databases"
