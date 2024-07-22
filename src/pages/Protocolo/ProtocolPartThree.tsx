@@ -4,10 +4,9 @@ import { Progress, FormControl, Box } from "@chakra-ui/react";
 import { btnBox, conteiner } from "./styles/partTwooStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import InteractiveTable from "../../components/Tables/InteractiveTable";
-import { Row } from "../../hooks/useInteractiveTable";
 import FlexLayout from "../../components/ui/Flex/Flex";
-import { useState, useEffect } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import useCreateProtocolThree from '../../hooks/revisions/useCreateProtocolThree';
 
 export default function ProtocolPartThree() {
@@ -17,14 +16,6 @@ export default function ProtocolPartThree() {
 
   async function handleData() {
       await useCreateProtocolThree(analysis, id);
-  }
-
-  function handleSave(data: Row[]) {
-    const newQuestions: string[] = [];
-    data.forEach((item) => {
-      newQuestions.push(item.question);
-    });
-    setQuestions(newQuestions);
   }
 
   function handleAnalysisAndSynthesis(e: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -42,7 +33,7 @@ export default function ProtocolPartThree() {
 
         <FormControl sx={conteiner}>
 
-          <InteractiveTable onSave={handleSave} />
+          <InteractiveTable />
           <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" onChange={handleAnalysisAndSynthesis} />
 
         </FormControl>

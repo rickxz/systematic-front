@@ -4,32 +4,17 @@ import DeleteButton from "../Buttons/DeleteButton";
 import { useInteractiveTable } from "../../hooks/useInteractiveTable";
 import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
 
-interface Row {
-  id: number;
-  question: string;
-  type: string;
-}
-
-interface InteractiveTableProps {
-  onSave: (data: Row[]) => void;
-}
-
-export default function InteractiveTable({ onSave }: InteractiveTableProps) {
+export default function InteractiveTable() {
   const { rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers } =
     useInteractiveTable();
-
-  const handleSave = () => {
-    const rowsData = rows;
-    onSave(rowsData);
-  };
 
   return (
     <TableContainer>
       <Table variant="striped" size="md" w={"60vw"} border={"solid black 1px"} borderRadius={"16px"}>
         <Thead bgColor={"#303D50"}>
           <Tr>
-            {headers.map((header, index) => (
-              <Th key={index} color={"#FDF0D5"}>{header}</Th>
+            {headers.map((header) => (
+              <Th color={"#FDF0D5"}>{header}</Th>
             ))}
           </Tr>
         </Thead>
@@ -72,9 +57,7 @@ export default function InteractiveTable({ onSave }: InteractiveTableProps) {
                 Add Row
               </Button>
             </Td>
-            <Td>
-              <Button size="sm" onClick={handleSave}>Save</Button>
-            </Td>
+            <Td></Td>
           </Tr>
         </Tbody>
       </Table>
