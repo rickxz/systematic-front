@@ -1,17 +1,14 @@
 import axios from "../../interceptor/interceptor";
 
-const useCreateProtocolTwo = async (analysis: string, questions: string[], id: string) => {
+const useCreateProtocolTwo = async (analysis: string, id: string) => {
 
     const data = {
-        analysisAndSynthesisProcess: analysis,
-        researchQuestions: questions
+        analysisAndSynthesisProcess: analysis
     }
 
     console.log(data);
 
     const url = `http://localhost:8080/systematic-study/${id}/protocol`
-
-    console.log(questions, analysis);
 
     try{
         let response = await axios.put(url, data, {withCredentials: true});

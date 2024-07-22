@@ -12,12 +12,11 @@ import useCreateProtocolThree from '../../hooks/revisions/useCreateProtocolThree
 
 export default function ProtocolPartThree() {
   const [analysis, setAnalysis] = useState('');
-  const [questions, setQuestions] = useState<string[]>([]);
   const { id = '' } = useParams();
   const navigate = useNavigate();
 
   async function handleData() {
-      await useCreateProtocolThree(analysis, questions, id);
+      await useCreateProtocolThree(analysis, id);
   }
 
   function handleSave(data: Row[]) {
