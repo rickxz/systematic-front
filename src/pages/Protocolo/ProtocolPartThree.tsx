@@ -16,6 +16,7 @@ export default function ProtocolPartThree() {
 
   async function handleData() {
       await useCreateProtocolThree(analysis, id);
+      navigate("/user");
   }
 
   function handleAnalysisAndSynthesis(e: React.ChangeEvent<HTMLTextAreaElement>) {
