@@ -3,8 +3,7 @@ import axios from "../../interceptor/interceptor";
 
 const useCreateProtocolTwo = async (researchStrategy: string, selectionProcess: string, dataAcquisition: string, 
     inclusionCriteria: {"description": string, "type": "INCLUSION" | "EXCLUSION"}[], 
-    exclusionCriteria: {"description": string, "type": "INCLUSION" | "EXCLUSION"}[], 
-    researchQuestions: string[], analysis: string, id: string) => {
+    exclusionCriteria: {"description": string, "type": "INCLUSION" | "EXCLUSION"}[], id: string) => {
 
     const eligibilityCriteria = [];
 
@@ -20,9 +19,7 @@ const useCreateProtocolTwo = async (researchStrategy: string, selectionProcess: 
         searchMethod: researchStrategy,
         selectionProcess: selectionProcess,
         sourcesSelectionCriteria: dataAcquisition,
-        eligibilityCriteria,
-        researchQuestions,
-        analysisAndSynthesisProcess: analysis
+        eligibilityCriteria
     }
 
     const url = `http://localhost:8080/systematic-study/${id}/protocol`
