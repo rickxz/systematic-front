@@ -5,6 +5,7 @@ import { useState } from "react";
 import { formcontrol } from "./styles/AddTextFieldStyle";
 import useSendKeywords from "../../hooks/tables/useSendKeywords";
 import useSendInclusionCriteria from "../../hooks/tables/useSendInclusionCriteria";
+import useSendExclusionCriteria from "../../hooks/tables/useSendExclusionCriterias";
 
 interface IAddTextFieldProps {
   onAddText: (newKeyword: string) => void;
@@ -17,7 +18,7 @@ export default function AddTextField({ onAddText, placeholder, url, text }: IAdd
   const [inputValue, setInputValue] = useState<string>("");
   const sendKeywords = useSendKeywords();
   const sendCriterias = useSendInclusionCriteria();
-
+  const sendExclusionCriteria = useSendExclusionCriteria();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
@@ -27,11 +28,16 @@ export default function AddTextField({ onAddText, placeholder, url, text }: IAdd
     if (inputValue.trim() !== "") {
       onAddText(inputValue.trim());
       if(text == 'Inclusion criteria'){
-        let criteria = {description: inputValue.trim(), type: "INCLUSION"}
+        let criteria = {description: inputValue.trim(), type: "INCLUSION"};
         const data = {criteria, url}
         sendCriterias(data);
       }
-      if(text == 'Keywords'){
+      else if(text == 'Exclusion criteria'){
+        let criteria = {description: inputValue.trim(), type: "EXCLUSION"};
+        const data = {criteria, url};
+        sendExclusionCriteria(data);
+      }
+      else if(text == 'Keywords'){
         const data = {
           keyword: inputValue.trim(),
           url
