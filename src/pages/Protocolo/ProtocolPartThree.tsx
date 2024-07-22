@@ -14,23 +14,10 @@ export default function ProtocolPartThree() {
   const [analysis, setAnalysis] = useState('');
   const [questions, setQuestions] = useState<string[]>([]);
   const { id = '' } = useParams();
-  const location = useLocation();
   const navigate = useNavigate();
 
-  const { keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria } = location.state || {};
-
-  useEffect(() => {
-    if (!location.state) {
-      navigate(`/user`);
-    } else {
-      console.log(keywords, languages);
-    }
-  }, [location, keywords, languages, id, navigate]);
-
   async function handleData() {
-    if (keywords && languages && databases && researchStrategy && selectProcess && dataAcquisition && InclusionCriteria && exclusionCriteria) {
-      await useCreateProtocolThree(analysis, questions, keywords, languages, databases, researchStrategy, selectProcess, dataAcquisition, InclusionCriteria, exclusionCriteria, id);
-    }
+      await useCreateProtocolThree(analysis, questions, id);
   }
 
   function handleSave(data: Row[]) {
