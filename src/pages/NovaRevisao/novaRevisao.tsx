@@ -10,7 +10,6 @@ import useCreateRevision from "../../hooks/revisions/useCreateReview";
 import { flex } from "./styles/finalizationStyles";
 
 export default function NovaRevisao() {
-  const [searchString, setSearchString] = useState("");
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [collaborators, setCollaborators] = useState<string[]>([]);
@@ -24,7 +23,7 @@ export default function NovaRevisao() {
     }
   }
 
-  function handleTitle(e: React.ChangeEvent<HTMLTextAreaElement>): void{
+  function handleTitle(e: React.ChangeEvent<HTMLInputElement>){
     setTitle(e.target.value);
   }
 
