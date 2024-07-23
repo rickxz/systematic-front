@@ -13,28 +13,18 @@ export function useDeleteText() {
           data = {
             keywords: updatedAddText
           }
+          axios.put(url, data, {withCredentials: true});
         } else if(text == "Inclusion criteria"){
           let response = await axios.get(url, {withCredentials: true});
-          let array = response.data.content.eligibilityCriteria;
-          
-          let newArray = updatedAddText.map(item => ({description: item, type: "INCLUSION"}));
+          let array: {description: string, type: "INCLUSION" | "EXCLUSION"}[] = response.data.content.eligibilityCriteria;
+          array = array.filter(item => item.type !== "INCLUSION");
 
-          for(let i = 0; i < array.length; i++){
-            if(array[i].type == "INCLUSION"){
-              array.splice(i, 1);
-            }
-          }
+          let newArray: {description: string, type: "INCLUSION" | "EXCLUSION"}[] = updatedAddText.map(item => ({description: item, type: "INCLUSION"}));
 
-          for(let i = 0; i < updatedAddText.length; i++){
-            array.push(newArray[i]);
-          }
-
-          data = {
-            eligibilityCriteria: array
-          }
+          array = array.concat(newArray);
+          data = { eligibilityCriteria: array };
+          axios.put(url, data, {withCredentials: true});
         }
-
-        axios.put(url, data, {withCredentials: true});
       }
 
       updateArray();
