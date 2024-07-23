@@ -23,7 +23,7 @@ export default function AddTextTable({ text, placeholder, url }: AddTextTablePro
         <InfosTable
           text={text}
           typeField={""}
-          onDeleteAddedText={(index) => handleDeleteText(index, setAddText, url)}
+          onDeleteAddedText={(index) => handleDeleteText(index, setAddText, url, text)}
           AddTexts={AddText}
           url={url}
         />
