@@ -25,41 +25,27 @@ export default function InfosTable({ AddTexts, onDeleteAddedText, typeField, url
         axios.put(url, data, {withCredentials: true});
       }
       else if(text == "Inclusion criteria"){
-        const objects = AddTexts.map(item => ({description: item, type: "INCLUSION"}));
+        const objects: {description: string, type: "INCLUSION" | "EXCLUSION"}[] = AddTexts.map(item => ({description: item, type: "INCLUSION"}));
         let response = await axios.get(url, {withCredentials: true});
-        const criterias: {description: string, type: string}[] = response.data.content.eligibilityCriteria;
-        for(let i = 0; i < criterias.length; i++){
-          if(criterias[i].type == "INCLUSION"){
-            criterias.splice(i, 1);
-          }
-        }
+        
+        let criterias: {description: string, type: "INCLUSION" | "EXCLUSION"}[] = response.data.content.eligibilityCriteria;
+        criterias = criterias.filter(item => item.type !== "INCLUSION");
+        criterias = criterias.concat(objects);
+        console.log(criterias);
 
-        for(let i = 0; i < objects.length; i ++){
-          criterias.push(objects[i]);
-        }
-
-        const data = {
-          eligibilityCriteria: criterias
-        }
+        const data = { eligibilityCriteria: criterias };
         axios.put(url, data, {withCredentials: true});
       }
       else if(text == "Exclusion criteria"){
-        const objects = AddTexts.map(item => ({description: item, type: "EXCLUSION"}));
+        const objects: {description: string, type: "INCLUSION" | "EXCLUSION"}[] = AddTexts.map(item => ({description: item, type: "EXCLUSION"}));
         let response = await axios.get(url, {withCredentials: true});
-        const criterias: {description: string, type: string}[] = response.data.content.eligibilityCriteria;
-        for(let i = 0; i < criterias.length; i++){
-          if(criterias[i].type == "EXCLUSION"){
-            criterias.splice(i, 1);
-          }
-        }
+        
+        let criterias: {description: string, type: "INCLUSION" | "EXCLUSION"}[] = response.data.content.eligibilityCriteria;
+        criterias = criterias.filter(item => item.type !== "EXCLUSION");
+        criterias = criterias.concat(objects);
+        console.log(criterias);
 
-        for(let i = 0; i < objects.length; i ++){
-          criterias.push(objects[i]);
-        }
-
-        const data = {
-          eligibilityCriteria: criterias
-        }
+        const data = { eligibilityCriteria: criterias };
         axios.put(url, data, {withCredentials: true});
       }
     }
