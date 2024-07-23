@@ -3,14 +3,14 @@ import { conteiner, text } from "../styles/CardInfosStyle";
 
 interface ICardInfosProps {
   title: string;
-  RevisorNames: string[];
+  reviewers: string[];
 }
 
-export default function CardInfos({ title, RevisorNames }: ICardInfosProps) {
+export default function CardInfos({ title, reviewers }: ICardInfosProps) {
   return (
     <Box sx={conteiner}>
       <Text sx={text}>{title}</Text>
-      <Text>Reviewer: {RevisorNames} </Text>
+      <Text>Reviewers: {reviewers} </Text>
     </Box>
   );
 }

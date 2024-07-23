@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import axios from "../../interceptor/interceptor";
 
 interface cardDataProps {
+  id: string;
   key: string;
   title: string;
-  revisors: string[];
+  collaborators: string[];
   lastChange: string;
   creation: string;
   isEdited: boolean;
@@ -14,8 +16,10 @@ const useFetchRevisionCard = (url: string) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
-        const data = await response.json();
+
+        const response = await axios.get(url, {withCredentials: true});
+        console.log(response);
+        const data = await response.data.content;
         setCardData(data);
       } catch (error) {
         console.log(error);
@@ -23,6 +27,6 @@ const useFetchRevisionCard = (url: string) => {
     };
     fetchData();
   }, [url]);
-  return { cardData };
+  return cardData;
 };
 export default useFetchRevisionCard;

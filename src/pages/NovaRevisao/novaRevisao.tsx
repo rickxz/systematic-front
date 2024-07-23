@@ -6,31 +6,46 @@ import InputTextArea from "../../components/Inputs/InputTextArea";
 import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
+import useCreateRevision from "../../hooks/revisions/useCreateReview";
 import { flex } from "./styles/finalizationStyles";
 
 export default function NovaRevisao() {
   const [searchString, setSearchString] = useState("");
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [collaborators, setCollaborators] = useState<string[]>([]);
+
+  async function handleData(){
+    if(title == ''){
+      window.alert("O campo título é obrigatório!");
+    } else {
+    const id = await useCreateRevision({title, description, collaborators});
+    window.location.href = `http://localhost:5173/#/newRevision/protocol/${id}`;
+    }
+  }
+
+  function handleTitle(e: React.ChangeEvent<HTMLTextAreaElement>): void{
+    setTitle(e.target.value);
+  }
+
+  function handleDescription(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setDescription(e.target.value);
+  }
+
+
   return (
     <FlexLayout navigationType="Accordion" defaultOpen={0}>
       <Header text="New Systematic Review" />
 
-      <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"100%"} alignItems={"center"} >
-      
-      <InputText
-            label="Title"
-            placeholder="Enter the review title"
-            type="text"
-            nome="text"
-            setSearchString={setSearchString}
-            labelAbove={true} // Passa a prop labelAbove como true
-          />
-
-        <InputTextArea label="Description" placeholder="Enter the review description"></InputTextArea>
-        
+      <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"70%"} alignItems={"center"} ml={"10em"}>
+        <InputText label="Title" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle}/>
+        <InputTextArea label="Description:" placeholder="Enter review description" onChange={handleDescription}></InputTextArea>
         <ResearcherFilter />
 
         <Box w={"60vw"} display={"flex"} alignItems={"center"} justifyContent={"end"}>
-          <NavButton path={"/newRevision/protocol"} text="Create new Review" />
+          {title != '' ? <NavButton event={handleData} text="Create new Review" /> :
+          <NavButton event={handleData} path={"/newRevision"} text="Create new Review" />
+          }
         </Box>
       </FormControl>
     </FlexLayout>

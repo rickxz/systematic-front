@@ -1,19 +1,19 @@
-import EditionIcon from "./EditionIcon";
+// import EditionIcon from "./EditionIcon";
 import { Box, Text } from "@chakra-ui/react";
 import { conteiner, infosconteiner, text } from "../styles/EditionINfosStyles";
 
 interface IEditionInfosProps {
-  lastEdition: string;
+  status: string;
   creation: string;
-  isEdited: boolean;
+  // isEdited: boolean;
 }
 
-export default function EditionInfos({ lastEdition, creation, isEdited }: IEditionInfosProps) {
+export default function EditionInfos({ status, creation, /* isEdited */ }: IEditionInfosProps) {
   return (
     <Box sx={conteiner}>
-      <EditionIcon isEdited={isEdited} />
+      {/* <EditionIcon/> */}
       <Box sx={infosconteiner}>
-        <Text sx={text}>Latest change: {lastEdition}</Text>
+        <Text sx={text}>status: {status}</Text>
         <Text sx={text}>Created: {creation}</Text>
       </Box>
     </Box>

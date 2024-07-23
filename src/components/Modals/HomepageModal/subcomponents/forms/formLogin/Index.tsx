@@ -1,38 +1,69 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../index.css";
+import userToLoginProp from "../../../../../../../public/interfaces/userToLogin";
+import useLoginUser from "../../../../../../hooks/validation/useLoginUser";
+import { useToast } from "@chakra-ui/react";
 
 export default function FormLogin({ redirectForgotPassword }: { redirectForgotPassword: () => void }) {
-    const [email, setEmail] = useState<string>("");
+    const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [usernameError, setUsernameError] = useState<string>("");
+    const [passwordError, setPasswordError] = useState<string>("");
     const [error, setError] = useState<string>("");
 
-    const validateEmail = (email: string): boolean => {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(String(email).toLowerCase());
-    };
+    
+    const isValid = (error === "" && username !== "" && password !== "");
+    const data: userToLoginProp = {
+        "username": username,
+        "password": password
+    }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const toast = useToast();
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (!validateEmail(email)) {
-            setError("Invalid email or password");
-            return;
-        } else setError ("")
-
-        if (password.length < 6) {
-            setError("Invalid email or password");
-            return;
-        } else setError ("")
-
-        // Simulação(auth)
-        const isAuthenticated = email === "test@example.com" && password === "password123";
-
-        if (!isAuthenticated) {
-            setError("Invalid email or password");
+        if (username == "") {
+            setUsernameError("Please, enter with your username");
         } else {
-            setError("");
-            // aq é p redirecionar ou executar a lógica de login 
+            setUsernameError("");
+        }
+
+        if (password == "") {
+            setPasswordError("Please, enter with your password");
+        }
+        else if (password.length < 4) {
+            setPasswordError("password need to have more than 6 letters");
+            return;
+        } else {
+            setPasswordError("");
+        }
+        
+        
+        if (isValid) {
+            console.log("inicio da requisição")
+            try {
+                const response = await useLoginUser(data);
+                console.log(response);
+                if ((await response).status == 200) {
+                    toast({
+                        title: "Login successful.",
+                        description: `Welcome back, ${username}!`,
+                        status: "success",
+                        duration: 9000,
+                        isClosable: true,
+                    })
+                    navigate('/user');
+                }; 
+            }
+            catch(err: any) {
+                console.error(err.message);
+                setError("Wrong username or password");
+                setUsername("");
+                setPassword("");
+            };
         }
     };
 
@@ -41,13 +72,14 @@ export default function FormLogin({ redirectForgotPassword }: { redirectForgotPa
             <h2>Log In</h2>
             <div className="contentForm">
                 <div className="inputGroup">
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Username</label>
                     <input 
                         type="text" 
-                        id="email" 
-                        value={email} 
-                        onChange={(e) => setEmail(e.target.value)}
+                        id="username" 
+                        value={username} 
+                        onChange={(e) => {setUsername(e.target.value); setError("")}}
                     />
+                    {usernameError && <p className="error">{usernameError}</p>}
                 </div>
                 <div className="inputGroup">
                     <label htmlFor="password">Password</label>
@@ -55,8 +87,9 @@ export default function FormLogin({ redirectForgotPassword }: { redirectForgotPa
                         type="password" 
                         id="password" 
                         value={password} 
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e) => {setPassword(e.target.value); setError("")}}
                     />
+                    {passwordError && <p className="error">{passwordError}</p>}
                 </div>
                 {error && <p className="error">{error}</p>}
                 <div className="actions">

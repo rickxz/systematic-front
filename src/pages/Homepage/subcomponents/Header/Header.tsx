@@ -1,5 +1,4 @@
 import { Box, Button, Flex } from "@chakra-ui/react";
-import HeaderButton from "./subcomponents/HeaderButton";
 import HeaderLink from "./subcomponents/HeaderLink";
 import { HeaderTheme } from "./HeaterStyle";
 import Logo from "../../../../../public/assets/StartLogos/startwhite.png";

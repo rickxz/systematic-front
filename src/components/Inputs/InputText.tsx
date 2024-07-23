@@ -7,11 +7,11 @@ interface ITextFieldProps {
   placeholder: string;
   type: string;
   nome: string;
-  setSearchString: (value: React.SetStateAction<string>) => void;
+  onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
   labelAbove?: boolean; 
 }
 
-export default function InputText({ label, placeholder, type, nome, setSearchString, labelAbove }: ITextFieldProps) {
+export default function InputText({ label, placeholder, type, nome, onChange, labelAbove }: ITextFieldProps) {
   const isSearchField = type === "search";
 
   return (
@@ -34,7 +34,7 @@ export default function InputText({ label, placeholder, type, nome, setSearchStr
           borderRadius={"3px"}
           _placeholder={{ opacity: 1, color: "gray.500" }}
           focusBorderColor="#2E4B6C"
-          onChange={(e) => setSearchString(e.target.value)}
+          onChange={onChange}
         />
         {isSearchField && <SearchButton />}
       </FormControl>

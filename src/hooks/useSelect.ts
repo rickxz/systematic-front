@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "../interceptor/interceptor";
 
-export function useSelect(initialState: string[] = []) {
+export function useSelect(url: string, type: 'databases' | "studiesLanguages", initialState: string[] = []) {
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
   const [selectedValues, setSelectedValues] = useState<string[]>(initialState);
 
@@ -22,6 +23,21 @@ export function useSelect(initialState: string[] = []) {
       return updatedSelectedValues;
     });
   };
+
+  useEffect(()=>{
+    let data = {};
+    if(type == "studiesLanguages"){
+      data = {
+        studiesLanguages: selectedValues 
+      };
+    }
+    else if(type == 'databases'){
+      data ={
+        informationSources: selectedValues
+      };
+    }
+    axios.put(url, data, {withCredentials: true});
+  },[selectedValues])
 
   return { selectedValue, selectedValues, handleSelectChange, handleSelectAddButtonClick, handleDeleteSelect };
 }

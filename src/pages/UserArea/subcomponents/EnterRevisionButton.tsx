@@ -4,13 +4,14 @@ import Dashboard from "../../../components/ui/Dashboard/Dashboard";
 
 interface IButtonProps {
   text: string;
+  event: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-export default function EnterRevisionButton({ text }: IButtonProps) {
+export default function EnterRevisionButton({ text, event }: IButtonProps) {
   return (
     <div>
       <Dashboard></Dashboard>
-      {/*<Button sx={buttonstyles}>{text}</Button>*/}
+      <Button sx={buttonstyles} onClick={event}>{text}</Button>
     </div>
   );
 }
