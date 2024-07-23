@@ -5,7 +5,6 @@ export function useDeleteText() {
     setAddText((prevAddText) => {
       const updatedAddText = [...prevAddText];
       updatedAddText.splice(index, 1);
-      console.log(updatedAddText);
       
       async function updateArray(){
         let data = {};
@@ -22,6 +21,20 @@ export function useDeleteText() {
           let newArray: {description: string, type: "INCLUSION" | "EXCLUSION"}[] = updatedAddText.map(item => ({description: item, type: "INCLUSION"}));
 
           array = array.concat(newArray);
+          
+          data = { eligibilityCriteria: array };
+          axios.put(url, data, {withCredentials: true});
+        } else if(text == "Exclusion criteria"){
+          let response = await axios.get(url, { withCredentials: true });
+          let array: {description: string, type: "INCLUSION" | 'EXCLUSION'}[] = response.data.content.eligibilityCriteria;
+          array = array.filter(item => item.type !== "EXCLUSION");
+
+          let newArray: {description: string, type: "INCLUSION" | "EXCLUSION"}[] = updatedAddText.map(item => ({description: item, type: "EXCLUSION"}));
+
+          array = array.concat(newArray);
+
+          console.log(array);
+
           data = { eligibilityCriteria: array };
           axios.put(url, data, {withCredentials: true});
         }
