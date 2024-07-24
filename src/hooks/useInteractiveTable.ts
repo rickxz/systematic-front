@@ -8,7 +8,7 @@ export interface Row {
 
 export function useInteractiveTable() {
   const [rows, setRows] = useState<Row[]>([]);
-  const options = ["", "Textual", "Pick many list", "Number scale", "Labeled List"];
+  const options = ["", "Textual", "Pick list", "Number scale", "Labeled List"];
   const headers = ["Id", "Question", "Type", ""];
 
   const addRow = () => {

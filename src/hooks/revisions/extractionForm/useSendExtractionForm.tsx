@@ -20,14 +20,33 @@ const useSendExtractionForm = () => {
                     description: question
                 }
                 break;
-            case "Pick list":
+            case "pick list":
                 url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/pick-list`;
+                data = {
+                    code: questionId,
+                    description: question,
+                    options: ["string"]
+                }
                 break;
-            case "Number scale":
+            case "number scale":
                 url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/number-scale`;
+                data = {
+                    code: questionId,
+                    description: question,
+                    lower: 0,
+                    higher: 10
+                }
                 break;
-            case "Labeled scale":
+            case "labeled list":
                 url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/labeled-scale`;
+                data = {
+                    code: questionId,
+                    description: question,
+                    scales: {
+                        aditionalProp1: 0,
+                        aditionalProp2: 0
+                    }
+                }
                 break;
             default: 
                 throw new Error('invalid question type!');
