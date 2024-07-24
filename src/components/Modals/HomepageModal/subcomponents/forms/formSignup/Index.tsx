@@ -8,7 +8,7 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
         state, setState, password, setPassword, confirmPassword, setConfirmPassword,
         nameError, setNameError, emailError, setEmailError, affiliationError,
         setAffiliationError, stateError, setStateError, passwordError, setPasswordError,
-        confirmPasswordError, setConfirmPasswordError, handleSubmit
+        confirmPasswordError, setConfirmPasswordError, handleSubmit, isSubmitting
     } = useHandleSignup(closeModal);
 
     return (
@@ -86,7 +86,9 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                     {confirmPasswordError && <p className="error">{confirmPasswordError}</p>}
                 </div>
                 <div className="actions">
-                    <button type="submit">Create Account</button>
+                    <button type="submit" disabled={isSubmitting}>
+                        {isSubmitting ? 'Submitting...' : 'Create Account'}
+                    </button>
                     <Link to="#" onClick={redirectFormLogin}>
                         Already have an account?
                     </Link>

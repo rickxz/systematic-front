@@ -16,6 +16,7 @@ const useHandleRegister = (closeModal: () => void) => {
     const [stateError, setStateError] = useState<string>("");
     const [passwordError, setPasswordError] = useState<string>("");
     const [confirmPasswordError, setConfirmPasswordError] = useState<string>("");
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
     const toast = useToast();
 
@@ -27,6 +28,7 @@ const useHandleRegister = (closeModal: () => void) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let isValid = true;
+        setIsSubmitting(true);
 
         if (!name) {
             setNameError("Please enter your name");
@@ -107,7 +109,7 @@ const useHandleRegister = (closeModal: () => void) => {
                     closeModal();
                 }
             } catch (err: any) {
-                console.error(err);
+               console.error(err);
                 if (err.response) {
                     toast({
                         title: err.response.data.message || 'Error',
@@ -127,6 +129,8 @@ const useHandleRegister = (closeModal: () => void) => {
                         position: "top"
                     });
                 }
+            } finally {
+                setIsSubmitting(false);
             }
         }
     };
@@ -156,7 +160,8 @@ const useHandleRegister = (closeModal: () => void) => {
         setPasswordError,
         confirmPasswordError,
         setConfirmPasswordError,
-        handleSubmit
+        handleSubmit,
+        isSubmitting
     };
 };
 
