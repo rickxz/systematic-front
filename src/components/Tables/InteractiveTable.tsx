@@ -3,11 +3,16 @@ import EditButton from "../Buttons/EditButton";
 import DeleteButton from "../Buttons/DeleteButton";
 import { useInteractiveTable } from "../../hooks/useInteractiveTable";
 import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
+import useSendExtractionForm from "../../hooks/revisions/extractionForm/useSendExtractionForm";
 
-export default function InteractiveTable() {
+interface Props{
+  id: string
+}
+
+export default function InteractiveTable({id}: Props) {
   const { rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers } =
     useInteractiveTable();
-
+  const { sendExtractionForm } = useSendExtractionForm();
   return (
     <TableContainer>
       <Table variant="striped" size="md" w={"60vw"} border={"solid black 1px"} borderRadius={"16px"}>
@@ -45,7 +50,14 @@ export default function InteractiveTable() {
                   }}
                   handleSaveEdit={() => {
                     // handle save edit logic
-                    console.log(rows[index].question, rows[index].type);
+                    console.log(rows[index].question, rows[index].type, rows[index].id);
+                    const data = {
+                      question: rows[index].question,
+                      type: rows[index].type,
+                      questionId: rows[index].id,
+                      reviewId: id
+                    }
+                    sendExtractionForm(data);
                   }}
                 />
               </Td>

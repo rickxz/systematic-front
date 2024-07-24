@@ -34,7 +34,7 @@ export default function ProtocolPartThree() {
 
         <FormControl sx={conteiner}>
 
-          <InteractiveTable />
+          <InteractiveTable id={id}/>
           <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" onChange={handleAnalysisAndSynthesis} />
 
         </FormControl>
