@@ -41,7 +41,7 @@ export default function Header({ show }: IHeaderProps) {
     <>
       <HomepageModal show={showModal} onClose={() => setShowModal(false)}>
         {openModal == "login" &&  <FormLogin redirectForgotPassword={() => setOpenModal("forgotPassword")}/>}
-        {openModal == "signup" &&  <FormSignup redirectFormLogin={() => setOpenModal("login")}/>}
+        {openModal == "signup" &&  <FormSignup redirectFormLogin={() => setOpenModal("login")} closeModal={() => setOpenModal("")}/>}
         {openModal == "forgotPassword" &&  <ForgotPassword redirectFormLogin={() => setOpenModal("login")}/>}
       </HomepageModal>
 

@@ -3,7 +3,7 @@ import { useToast } from "@chakra-ui/react";
 import useRegisterUser from "../validation/useRegisterUser";
 import userToRegisterProp from "../../../public/interfaces/userToRegisterInterface";
 
-const useHandleRegister = () => {
+const useHandleRegister = (closeModal: () => void) => {
     const [name, setName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [affiliation, setAffiliation] = useState<string>("");
@@ -103,6 +103,7 @@ const useHandleRegister = () => {
                         duration: 9000,
                         isClosable: true,
                     });
+                    closeModal();
                 }
             } catch (err: any) {
                 console.error(err);

@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import "../index.css";
 import useHandleSignup from "../../../../../../hooks/validation/useHandleRegister";
 
-export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: () => void }) {
+export default function FormSignup({ redirectFormLogin, closeModal }: { redirectFormLogin: () => void, closeModal: () => void }) {
     const {
         name, setName, email, setEmail, affiliation, setAffiliation,
         state, setState, password, setPassword, confirmPassword, setConfirmPassword,
         nameError, setNameError, emailError, setEmailError, affiliationError,
         setAffiliationError, stateError, setStateError, passwordError, setPasswordError,
         confirmPasswordError, setConfirmPasswordError, handleSubmit
-    } = useHandleSignup();
+    } = useHandleSignup(closeModal);
 
     return (
         <form onSubmit={handleSubmit}>
