@@ -4,7 +4,7 @@ import DeleteButton from "../Buttons/DeleteButton";
 import { useInteractiveTable } from "../../hooks/useInteractiveTable";
 import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
 import useSendExtractionForm from "../../hooks/revisions/extractionForm/useSendExtractionForm";
-
+import axios from "../../interceptor/interceptor";
 interface Props{
   id: string
 }
@@ -48,7 +48,7 @@ export default function InteractiveTable({id}: Props) {
                   handleEdit={() => {
                     // handle edit logic
                   }}
-                  handleSaveEdit={() => {
+                  handleSaveEdit={async () => {
                     // handle save edit logic
                     console.log(rows[index].question, rows[index].type, rows[index].id);
                     const data = {
@@ -58,6 +58,8 @@ export default function InteractiveTable({id}: Props) {
                       reviewId: id
                     }
                     sendExtractionForm(data);
+                    let response = await axios.get(`http://localhost:8080/api/v1/systematic-study/${id}/protocol/extraction-question`, {withCredentials: true});
+                    console.log(response);
                   }}
                 />
               </Td>
