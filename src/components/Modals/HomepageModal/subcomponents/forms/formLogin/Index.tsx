@@ -1,73 +1,11 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../index.css";
-import userToLoginProp from "../../../../../../../public/interfaces/userToLogin";
-import useLoginUser from "../../../../../../hooks/validation/useLoginUser";
-import { useToast } from "@chakra-ui/react";
+import useHandleLogin from "../../../../../../hooks/validation/useHandleLogin";
 
 export default function FormLogin({ redirectForgotPassword }: { redirectForgotPassword: () => void }) {
-    const [username, setUsername] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [usernameError, setUsernameError] = useState<string>("");
-    const [passwordError, setPasswordError] = useState<string>("");
-    const [error, setError] = useState<string>("");
-
-    
-    const isValid = (error === "" && username !== "" && password !== "");
-    const data: userToLoginProp = {
-        "username": username,
-        "password": password
-    }
-
-    const toast = useToast();
-    const navigate = useNavigate();
-
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        if (username == "") {
-            setUsernameError("Please, enter with your username");
-        } else {
-            setUsernameError("");
-        }
-
-        if (password == "") {
-            setPasswordError("Please, enter with your password");
-        }
-        else if (password.length < 4) {
-            setPasswordError("password need to have more than 6 letters");
-            return;
-        } else {
-            setPasswordError("");
-        }
-        
-        
-        if (isValid) {
-            console.log("inicio da requisição")
-            try {
-                const response = await useLoginUser(data);
-                console.log(response);
-                if ((await response).status == 200) {
-                    toast({
-                        title: "Login successful.",
-                        description: `Welcome back, ${username}!`,
-                        status: "success",
-                        duration: 9000,
-                        isClosable: true,
-                        position: 'top-right'
-                    })
-                    navigate('/user');
-                }; 
-            }
-            catch(err: any) {
-                console.error(err.message);
-                setError("Wrong username or password");
-                setUsername("");
-                setPassword("");
-            };
-        }
-    };
-
+    const {username, setUsername, password, setPassword,
+        usernameError, passwordError,
+        handleSubmit, error, setError} = useHandleLogin();
     return (
         <form onSubmit={handleSubmit}>
             <h2>Log In</h2>
@@ -79,6 +17,7 @@ export default function FormLogin({ redirectForgotPassword }: { redirectForgotPa
                         id="username" 
                         value={username} 
                         onChange={(e) => {setUsername(e.target.value); setError("")}}
+                        className={error || usernameError  ? "inputError" : ''}
                     />
                     {usernameError && <p className="error">{usernameError}</p>}
                 </div>
@@ -89,6 +28,7 @@ export default function FormLogin({ redirectForgotPassword }: { redirectForgotPa
                         id="password" 
                         value={password} 
                         onChange={(e) => {setPassword(e.target.value); setError("")}}
+                        className={error || passwordError ? "inputError" : ''}
                     />
                     {passwordError && <p className="error">{passwordError}</p>}
                 </div>
