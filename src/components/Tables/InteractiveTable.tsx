@@ -45,6 +45,7 @@ export default function InteractiveTable() {
                   }}
                   handleSaveEdit={() => {
                     // handle save edit logic
+                    console.log(rows[index].question, rows[index].type);
                   }}
                 />
               </Td>
