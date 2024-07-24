@@ -26,6 +26,7 @@ export default function Header({ show }: IHeaderProps) {
   const showLinks = show;
   const [showModal, setShowModal] = useState(false);
   const [openModal, setOpenModal] = useState<IModal>("");
+  const [isLoggenIn, setIsLoggedIn] = useState<boolean>(false);
 
   function handleSignUpModal() {
     setOpenModal("signup");
@@ -71,7 +72,16 @@ export default function Header({ show }: IHeaderProps) {
           >
             Sign Up
           </Button>
-
+          { isLoggenIn ?
+          <Button 
+            _hover={{ color: "black", backgroundColor: "white" }}
+            color={openModal == "login" && showModal ? "black" : "white"}
+            bgColor={openModal == "login" && showModal ? "white" : "green"}
+            onClick={handleLoginModal}
+          >
+            Bem vindo, usuário
+          </Button>
+          :
           <Button 
             _hover={{ color: "black", backgroundColor: "white" }}
             color={openModal == "login" && showModal ? "black" : "white"}
@@ -80,7 +90,7 @@ export default function Header({ show }: IHeaderProps) {
           >
             Log In
           </Button>
-
+          }
           
         </Flex>
       </Flex>
