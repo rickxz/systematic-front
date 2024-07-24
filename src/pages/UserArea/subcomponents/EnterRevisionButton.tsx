@@ -7,11 +7,11 @@ interface IButtonProps {
   event: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-export default function EnterRevisionButton({ text, event }: IButtonProps) {
+export default function EnterRevisionButton({ /*text, event*/ }: IButtonProps) {
   return (
     <div>
       <Dashboard></Dashboard>
-      <Button sx={buttonstyles} onClick={event}>{text}</Button>
+      {/*<Button sx={buttonstyles} onClick={event}>{text}</Button>*/}
     </div>
   );
 }

@@ -13,7 +13,7 @@ export default function EditionInfos({ status, creation, /* isEdited */ }: IEdit
     <Box sx={conteiner}>
       {/* <EditionIcon/> */}
       <Box sx={infosconteiner}>
-        <Text sx={text}>status: {status}</Text>
+        <Text sx={text}>Status: {status}</Text>
         <Text sx={text}>Created: {creation}</Text>
       </Box>
     </Box>

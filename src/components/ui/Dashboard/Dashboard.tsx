@@ -13,7 +13,7 @@ import {
     Icon
   } from '@chakra-ui/react'
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
-import { BsInfoCircle } from 'react-icons/bs';
+import { FaChartPie  } from 'react-icons/fa';
 
 
 export default function Dashboard(){
@@ -44,7 +44,7 @@ export default function Dashboard(){
                 top="50%"
                 transform="translateY(-50%)"
                 > 
-                    <Icon as={BsInfoCircle} boxSize={6} />                 
+                    <Icon as={FaChartPie} boxSize={5} />                 
                 </Button>
 
             <Modal isOpen={isOpen} onClose={onClose}>
