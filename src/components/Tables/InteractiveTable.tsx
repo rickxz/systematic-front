@@ -15,17 +15,17 @@ export default function InteractiveTable({id}: Props) {
   const { sendExtractionForm } = useSendExtractionForm();
   return (
     <TableContainer>
-      <Table variant="striped" size="md" w={"60vw"} border={"solid black 1px"} borderRadius={"16px"}>
-        <Thead bgColor={"#303D50"}>
+      <Table variant="striped" size="md" w={"60vw"}  borderRadius={"8px"} overflow="hidden">
+        <Thead bgColor={"#2E4B6C"}>
           <Tr>
             {headers.map((header) => (
-              <Th color={"#FDF0D5"}>{header}</Th>
+              <Th color={"#DDE4E9"}>{header}</Th>
             ))}
           </Tr>
         </Thead>
         <Tbody>
           {rows.map((row, index) => (
-            <Tr key={index} bgColor={"#839CB0"}>
+            <Tr key={index} bgColor={"#C9D9E5"}>
               <Td>{row.id}</Td>
               <Td>
                 <Input value={row.question} onChange={(e) => handleQuestionChange(index, e.target.value)}
@@ -65,7 +65,7 @@ export default function InteractiveTable({id}: Props) {
               </Td>
             </Tr>
           ))}
-          <Tr bgColor={"#303D50"}>
+          <Tr bgColor={"#2E4B6C"}>
             <Td></Td>
             <Td colSpan={2}>
               <Button size="sm" leftIcon={<AddIcon />} onClick={addRow}>

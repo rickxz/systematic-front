@@ -3,7 +3,7 @@ import AddTextField from "./AddTextField";
 import InfosTable from "../Tables/InfosTable";
 import { useAddText } from "../../hooks/useAddText";
 import { useDeleteText } from "../../hooks/useDeleteText";
-import { formcontrol, label } from "./styles/AddTextTableStyles";
+import { formcontrol, label, formLabelStyle } from "./styles/AddTextTableStyles";
 
 interface AddTextTableProps {
   text: string;
@@ -16,7 +16,7 @@ export default function AddTextTable({ text, placeholder, url }: AddTextTablePro
   const { handleDeleteText } = useDeleteText();
   return (
     <FormControl sx={label}>
-      <FormLabel>{text}</FormLabel>
+      <FormLabel sx={formLabelStyle}>{text}</FormLabel>
 
       <FormControl sx={formcontrol}>
         <AddTextField url={url} onAddText={handleAddText} placeholder={placeholder} text={text}/>

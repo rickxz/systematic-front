@@ -1,3 +1,4 @@
+import React from 'react';
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
 import { Progress, FormControl, Box } from "@chakra-ui/react";
@@ -44,36 +45,29 @@ export default function ProtocolPartTwo2() {
 
   return (
     <FlexLayout defaultOpen={0} navigationType="Accordion">
-
-      <Box w={"100%"} display={"flex"}
-      flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
-
+      <Box w={"100%"} display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
         <Header text="Protocol" />
-        <Progress value={33} w={"100%"}/>
-
+        <Progress value={33} w={"100%"} color={"black"} />
         <FormControl sx={conteiner}>
           <FormControl sx={flex}>
-            <AddTextTable url={url} text="Keywords" placeholder="Enter keywords"/>
+            <AddTextTable url={url} text="Keywords" placeholder="Enter the keywords related to your review"/>
           </FormControl>
-
           <AddSelectionTable
             label="Languages"
             type="studiesLanguages"
             url={url}
-            options={["choose an option", "ENGLISH", "PORTUGUESE", "FRENCH", "SPANISH", "GERMAN"]}
-            placeholder={"Languages:"}
+            options={["ENGLISH", "PORTUGUESE", "FRENCH", "SPANISH", "GERMAN"]}
+            placeholder={"Select language"}
             typeField="select"
           />
-
-          <AddTextTable text="Inclusion criteria" placeholder="Inclusion criteria" url={url}/>        
-          <AddTextTable text="Exclusion criteria" placeholder="Exclusion criteria" url={url}/>
-
+          <AddTextTable text="Inclusion criteria" placeholder="Enter the criteria" url={url}/>        
+          <AddTextTable text="Exclusion criteria" placeholder="Enter the criteria" url={url}/>
           <AddSelectionTable
             label="Databases"
             type="databases" 
             url={url}
-            options={["", "Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
-            placeholder={"Data bases"}
+            options={["Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
+            placeholder={"Select Data Base"}
             typeField="select"
           />
 
@@ -82,13 +76,10 @@ export default function ProtocolPartTwo2() {
           <TextAreaInput onChange={handleDataAcquisition}  label="Data Acquisition" placeholder="Enter the data acquisition method" />
 
         </FormControl>
-
         <Box sx={btnBox}>
           <NavButton event={handleData} text="next" />
         </Box>
-
       </Box>
-      
     </FlexLayout>
   );
 }

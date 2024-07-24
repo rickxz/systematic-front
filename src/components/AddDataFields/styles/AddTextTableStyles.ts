@@ -7,3 +7,6 @@ export const formcontrol = {
   flexDir: "column",
   gap: 10,
 };
+export const formLabelStyle = {
+  color: "#2E4B6C"
+};

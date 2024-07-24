@@ -24,6 +24,8 @@ export default function RevisionCard({ revisionId, id, title, reviewers, status,
     if(response.data.content.goal == null || response.data.content.justification == null){
       window.location.href = `http://localhost:5173/#/newRevision/protocol/${revisionId}`;
     }
+    else console.log("continuar lógica de continuar protocolo");
+    
   }
   
   return (

@@ -1,3 +1,3 @@
 export const style = {
-  bgColor: "#E5EBEF",
+  bgColor: "#DDE4E9",
 };

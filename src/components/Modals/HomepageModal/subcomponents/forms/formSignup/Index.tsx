@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import "../index.css";
 import useHandleSignup from "../../../../../../hooks/validation/useHandleRegister";
 
-export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: () => void }) {
+export default function FormSignup({ redirectFormLogin, closeModal }: { redirectFormLogin: () => void, closeModal: () => void }) {
     const {
         name, setName, email, setEmail, affiliation, setAffiliation,
         state, setState, password, setPassword, confirmPassword, setConfirmPassword,
         nameError, setNameError, emailError, setEmailError, affiliationError,
         setAffiliationError, stateError, setStateError, passwordError, setPasswordError,
-        confirmPasswordError, setConfirmPasswordError, handleSubmit
-    } = useHandleSignup();
+        confirmPasswordError, setConfirmPasswordError, handleSubmit, isSubmitting
+    } = useHandleSignup(closeModal);
 
     return (
         <form onSubmit={handleSubmit}>
@@ -55,7 +55,7 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
                         onChange={(e) => { setState(e.target.value); setStateError(""); }}
                         className={stateError ? "inputError" : ""}
                     >
-                        <option value="">Select State</option>
+                        <option value="">Select Country</option>
                         <option>Brazil</option>
                         <option>Spain</option>
                         <option>England</option>
@@ -86,7 +86,9 @@ export default function FormSignup({ redirectFormLogin }: { redirectFormLogin: (
                     {confirmPasswordError && <p className="error">{confirmPasswordError}</p>}
                 </div>
                 <div className="actions">
-                    <button type="submit">Create Account</button>
+                    <button type="submit" disabled={isSubmitting}>
+                        {isSubmitting ? 'Submitting...' : 'Create Account'}
+                    </button>
                     <Link to="#" onClick={redirectFormLogin}>
                         Already have an account?
                     </Link>

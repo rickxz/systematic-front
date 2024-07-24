@@ -10,18 +10,18 @@ interface iButtonProps extends ButtonProps {
 
 const variants = {
   default: {
-    bgColor: "#526D82",
-    color: "#E5EBEF",
+    bgColor: "#2E4B6C",
+    color: "#FFFFFF",
     hoverBgColor: "#C9D9E5",
     hoverColor: "#526D82",
-    borderRadius: "3px",
+    borderRadius: "5px",
   },
   dark: {
     bgColor: "#FDF0D5",
     color: "#301E1A",
     hoverBgColor: "#301E1A",
     hoverColor: "#FDF0D5",
-    borderRadius: "3px",
+    borderRadius: "5px",
   },
 }
 

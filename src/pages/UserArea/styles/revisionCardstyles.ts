@@ -4,9 +4,11 @@ export const Cardstyles = {
   boxShadow: "0 3px 3px 0 rgba(0, 0 , 0, 0.5)",
   display: "flex",
   flexDir: { base: "column", sm: "column", md: "column", lg: "row", xl: "row" },
-  borderRadius: "3px",
+  borderRadius: "9px",
   fontSize: "12px",
+  //border: "solid 2px #C9D9E5",
   justifySelf: "center",
+  bgColor: "#EBF0F3"
 };
 export const CardInfosConteiner = {
   ml: "100px",

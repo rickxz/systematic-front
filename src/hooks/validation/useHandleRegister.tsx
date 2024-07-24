@@ -3,7 +3,7 @@ import { useToast } from "@chakra-ui/react";
 import useRegisterUser from "../validation/useRegisterUser";
 import userToRegisterProp from "../../../public/interfaces/userToRegisterInterface";
 
-const useHandleRegister = () => {
+const useHandleRegister = (closeModal: () => void) => {
     const [name, setName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [affiliation, setAffiliation] = useState<string>("");
@@ -16,6 +16,7 @@ const useHandleRegister = () => {
     const [stateError, setStateError] = useState<string>("");
     const [passwordError, setPasswordError] = useState<string>("");
     const [confirmPasswordError, setConfirmPasswordError] = useState<string>("");
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
     const toast = useToast();
 
@@ -27,6 +28,7 @@ const useHandleRegister = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let isValid = true;
+        setIsSubmitting(true);
 
         if (!name) {
             setNameError("Please enter your name");
@@ -102,10 +104,12 @@ const useHandleRegister = () => {
                         status: 'success',
                         duration: 9000,
                         isClosable: true,
+                        position: "top-right"
                     });
+                    closeModal();
                 }
             } catch (err: any) {
-                console.error(err);
+               console.error(err);
                 if (err.response) {
                     toast({
                         title: err.response.data.message || 'Error',
@@ -113,6 +117,7 @@ const useHandleRegister = () => {
                         status: "error",
                         duration: 9000,
                         isClosable: true,
+                        position: "top"
                     });
                 } else {
                     toast({
@@ -121,8 +126,11 @@ const useHandleRegister = () => {
                         status: "error",
                         duration: 9000,
                         isClosable: true,
+                        position: "top"
                     });
                 }
+            } finally {
+                setIsSubmitting(false);
             }
         }
     };
@@ -152,7 +160,8 @@ const useHandleRegister = () => {
         setPasswordError,
         confirmPasswordError,
         setConfirmPasswordError,
-        handleSubmit
+        handleSubmit,
+        isSubmitting
     };
 };
 

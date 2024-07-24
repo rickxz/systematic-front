@@ -8,10 +8,14 @@ import { useState } from "react";
 import HomepageModal from "../../../../components/Modals/HomepageModal/Index";
 import FormLogin from "../../../../components/Modals/HomepageModal/subcomponents/forms/formLogin/Index";
 import FormSignup from "../../../../components/Modals/HomepageModal/subcomponents/forms/formSignup/Index";
+import { color } from "chart.js/helpers";
+import ForgotPassword from "../../../../components/Modals/HomepageModal/subcomponents/forms/recoverPassword";
 
 interface IHeaderProps {
   show: boolean;
 }
+
+type IModal = "" | "login" | "signup" | "forgotPassword"
 
 export default function Header({ show }: IHeaderProps) {
   enum LinkTypeEnum {
@@ -21,24 +25,24 @@ export default function Header({ show }: IHeaderProps) {
 
   const showLinks = show;
   const [showModal, setShowModal] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+  const [openModal, setOpenModal] = useState<IModal>("");
 
   function handleSignUpModal() {
-    setIsLogin(false);
+    setOpenModal("signup");
     setShowModal(true);
   }
 
   function handleLoginModal() {
-    setIsLogin(true);
+    setOpenModal("login");
     setShowModal(true);
   }
 
   return (
     <>
       <HomepageModal show={showModal} onClose={() => setShowModal(false)}>
-        {
-          isLogin ? <FormLogin/> : <FormSignup redirectFormLogin={() => setIsLogin(true)}/>
-        }
+        {openModal == "login" &&  <FormLogin redirectForgotPassword={() => setOpenModal("forgotPassword")}/>}
+        {openModal == "signup" &&  <FormSignup redirectFormLogin={() => setOpenModal("login")} closeModal={() => setOpenModal("")}/>}
+        {openModal == "forgotPassword" &&  <ForgotPassword redirectFormLogin={() => setOpenModal("login")}/>}
       </HomepageModal>
 
       <Flex sx={HeaderTheme}>
@@ -61,8 +65,8 @@ export default function Header({ show }: IHeaderProps) {
         <Flex gap="5%">
           <Button
            _hover={{ color: "black", backgroundColor: "white" }}
-            color={!isLogin && showModal ? "black" : "white"}
-            bgColor={!isLogin && showModal ? "white" : "rgba(0,0,0,0)"}
+            color={openModal == "signup" && showModal ? "black" : "white"}
+            bgColor={openModal == "signup" && showModal ? "white" : "rgba(0,0,0,0)"}
             onClick={handleSignUpModal}
           >
             Sign Up
@@ -70,8 +74,8 @@ export default function Header({ show }: IHeaderProps) {
 
           <Button 
             _hover={{ color: "black", backgroundColor: "white" }}
-            color={isLogin && showModal ? "black" : "white"}
-            bgColor={isLogin && showModal ? "white" : "rgba(0,0,0,0)"}
+            color={openModal == "login" && showModal ? "black" : "white"}
+            bgColor={openModal == "login" && showModal ? "white" : "rgba(0,0,0,0)"}
             onClick={handleLoginModal}
           >
             Log In
