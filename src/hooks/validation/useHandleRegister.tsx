@@ -102,6 +102,7 @@ const useHandleRegister = (closeModal: () => void) => {
                         status: 'success',
                         duration: 9000,
                         isClosable: true,
+                        position: "top-right"
                     });
                     closeModal();
                 }
@@ -114,6 +115,7 @@ const useHandleRegister = (closeModal: () => void) => {
                         status: "error",
                         duration: 9000,
                         isClosable: true,
+                        position: "top"
                     });
                 } else {
                     toast({
@@ -122,6 +124,7 @@ const useHandleRegister = (closeModal: () => void) => {
                         status: "error",
                         duration: 9000,
                         isClosable: true,
+                        position: "top"
                     });
                 }
             }
