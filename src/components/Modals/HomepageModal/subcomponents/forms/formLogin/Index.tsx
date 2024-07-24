@@ -54,6 +54,7 @@ export default function FormLogin({ redirectForgotPassword }: { redirectForgotPa
                         status: "success",
                         duration: 9000,
                         isClosable: true,
+                        position: 'top-right'
                     })
                     navigate('/user');
                 }; 
