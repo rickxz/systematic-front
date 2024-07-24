@@ -47,7 +47,7 @@ export default function ProtocolPartTwo2() {
     <FlexLayout defaultOpen={0} navigationType="Accordion">
       <Box w={"100%"} display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
         <Header text="Protocol" />
-        <Progress value={33} w={"100%"} color={"black"} />
+        <Progress value={66} w={"100%"} color={"black"} />
         <FormControl sx={conteiner}>
           <FormControl sx={flex}>
             <AddTextTable url={url} text="Keywords" placeholder="Enter the keywords related to your review"/>
@@ -77,7 +77,7 @@ export default function ProtocolPartTwo2() {
 
         </FormControl>
         <Box sx={btnBox}>
-          <NavButton event={handleData} text="next" />
+          <NavButton event={handleData} text="Next" />
         </Box>
       </Box>
     </FlexLayout>

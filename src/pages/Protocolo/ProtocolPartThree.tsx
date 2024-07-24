@@ -1,7 +1,7 @@
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
 import { Progress, FormControl, Box } from "@chakra-ui/react";
-import { btnBox, conteiner } from "./styles/partTwooStyles";
+import { buttonBox, formControl } from "./styles/partThreeStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import InteractiveTable from "../../components/Tables/InteractiveTable";
 import FlexLayout from "../../components/ui/Flex/Flex";
@@ -30,17 +30,17 @@ export default function ProtocolPartThree() {
         flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
 
         <Header text="Protocol" />
-        <Progress value={33} w={"100%"} />
+        <Progress value={100} w={"100%"} />
 
-        <FormControl sx={conteiner}>
+        <FormControl sx={formControl}>
 
           <InteractiveTable />
           <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" onChange={handleAnalysisAndSynthesis} />
 
         </FormControl>
 
-        <Box sx={btnBox}>
-          <NavButton text="save" event={handleData} w={"fit-content"} />
+        <Box sx={buttonBox}>
+          <NavButton text="Save" event={handleData} w={"fit-content"} />
         </Box>
 
       </Box>
