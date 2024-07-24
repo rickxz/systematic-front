@@ -17,6 +17,7 @@ Axios.interceptors.response.use((response) => response, async (error) => {
             throw err;
         }
     }
+    else throw error;
 })
 
 export default Axios;
