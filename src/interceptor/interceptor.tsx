@@ -14,6 +14,7 @@ Axios.interceptors.response.use((response) => response, async (error) => {
         }
         catch(err){
             console.log(err);
+            throw err;
         }
     }
 })
