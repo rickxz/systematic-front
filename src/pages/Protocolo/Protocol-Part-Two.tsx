@@ -7,10 +7,9 @@ import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";
 import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable";
 import FlexLayout from "../../components/ui/Flex/Flex";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useCreateProtocolTwo from "../../hooks/revisions/useCreateProtocolTwo";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function ProtocolPartTwo2() {
@@ -71,9 +70,9 @@ export default function ProtocolPartTwo2() {
             typeField="select"
           />
 
-          <TextAreaInput onChange={handleResearchStrategy} label="Research Strategy" placeholder="Enter research strategy" />
-          <TextAreaInput onChange={handleSelectProcess} label="Article Selection Process" placeholder="Enter selection process" />
-          <TextAreaInput onChange={handleDataAcquisition}  label="Data Acquisition" placeholder="Enter the data acquisition method" />
+          <TextAreaInput value={""} onChange={handleResearchStrategy} label="Research Strategy" placeholder="Enter research strategy" />
+          <TextAreaInput value={""} onChange={handleSelectProcess} label="Article Selection Process" placeholder="Enter selection process" />
+          <TextAreaInput value={""} onChange={handleDataAcquisition}  label="Data Acquisition" placeholder="Enter the data acquisition method" />
 
         </FormControl>
         <Box sx={btnBox}>
