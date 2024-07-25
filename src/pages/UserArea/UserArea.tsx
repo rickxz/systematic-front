@@ -1,4 +1,4 @@
-import { Flex, Text, Image,Icon } from "@chakra-ui/react";
+import { Flex, Text, Icon } from "@chakra-ui/react";
 import { MdSentimentDissatisfied } from "react-icons/md"; // ícone de rosto insatisfeito
 
 import { flexStyles } from "./styles/flexStyles";
