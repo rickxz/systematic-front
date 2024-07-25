@@ -3,13 +3,14 @@ import HeaderLink from "./subcomponents/HeaderLink";
 import { HeaderTheme } from "./HeaterStyle";
 import Logo from "../../../../../public/assets/StartLogos/startwhite.png";
 import { Image } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import HomepageModal from "../../../../components/Modals/HomepageModal/Index";
 import FormLogin from "../../../../components/Modals/HomepageModal/subcomponents/forms/formLogin/Index";
 import FormSignup from "../../../../components/Modals/HomepageModal/subcomponents/forms/formSignup/Index";
 import { color } from "chart.js/helpers";
 import ForgotPassword from "../../../../components/Modals/HomepageModal/subcomponents/forms/recoverPassword";
+import useRecoverUserData from "../../../../hooks/temporaryHooks/useRecoverUserData";
 
 interface IHeaderProps {
   show: boolean;
@@ -26,7 +27,9 @@ export default function Header({ show }: IHeaderProps) {
   const showLinks = show;
   const [showModal, setShowModal] = useState(false);
   const [openModal, setOpenModal] = useState<IModal>("");
-  const [isLoggenIn, setIsLoggedIn] = useState<boolean>(false);
+  const username = useRecoverUserData();
+  const navigate = useNavigate();
+  
 
   function handleSignUpModal() {
     setOpenModal("signup");
@@ -42,7 +45,7 @@ export default function Header({ show }: IHeaderProps) {
     <>
       <HomepageModal show={showModal} onClose={() => setShowModal(false)}>
         {openModal == "login" &&  <FormLogin redirectForgotPassword={() => setOpenModal("forgotPassword")}/>}
-        {openModal == "signup" &&  <FormSignup redirectFormLogin={() => setOpenModal("login")} closeModal={() => setOpenModal("")}/>}
+        {openModal == "signup" &&  <FormSignup redirectFormLogin={() => setOpenModal("login")} closeModal={() => {setOpenModal(""); setShowModal(false)}}/>}
         {openModal == "forgotPassword" &&  <ForgotPassword redirectFormLogin={() => setOpenModal("login")}/>}
       </HomepageModal>
 
@@ -72,14 +75,14 @@ export default function Header({ show }: IHeaderProps) {
           >
             Sign Up
           </Button>
-          { isLoggenIn ?
+          { username ?
           <Button 
             _hover={{ color: "black", backgroundColor: "white" }}
             color={openModal == "login" && showModal ? "black" : "white"}
             bgColor={openModal == "login" && showModal ? "white" : "green"}
-            onClick={handleLoginModal}
+            onClick={() => navigate("/user")}
           >
-            Bem vindo, usuário
+            Bem vindo, {username}
           </Button>
           :
           <Button 
