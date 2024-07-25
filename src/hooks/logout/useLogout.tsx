@@ -1,16 +1,20 @@
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const useLogout = () => {
+export default function useLogout() {
   const navigate = useNavigate();
+  const url = 'http://localhost:8080/';
 
-  const logout = () => {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
-    // Qualquer outra limpeza necessária
-    navigate('/'); // Redirecionar para a página de login
+  const logout = async () => {
+    try {
+      const response = await axios.post(url+"api/v1/auth/logout", {}, {withCredentials: true})
+      console.log(response);
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   };
 
   return logout;
 };
-
-export default useLogout;
