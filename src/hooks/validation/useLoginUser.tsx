@@ -14,9 +14,6 @@ export default async function useLoginUser(data: userToLoginProp){
         localStorage.setItem("myReviewsLink", response.data._links["find-my-reviews"].href);
 
         storageUserData();
-        console.log("username:")
-        console.log(recoverUserData())
-
         return response;
     } catch (err) {
         throw err;
