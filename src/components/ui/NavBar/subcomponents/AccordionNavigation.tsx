@@ -3,7 +3,6 @@ import AccordionElement from "./AccordionItem";
 import NavItem from "./NavItem";
 import { Accordion } from "@chakra-ui/react";
 import { IoLibrarySharp } from "react-icons/io5";
-import { IoLogOutOutline } from "react-icons/io5";
 import LogoutButton from "./LogoutButton";
 
 interface IAccordion {
