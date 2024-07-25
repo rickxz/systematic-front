@@ -12,7 +12,7 @@ interface ICardInfosProps {
 export default function CardInfos({ title, reviewers, reviewId }: ICardInfosProps) {
   return (
     <Box sx={conteiner}>
-      <ChakraLink as={ReactRouterLink} to={`/protocol/${reviewId}`} sx={text}>{title}</ChakraLink>
+      <ChakraLink as={ReactRouterLink} to={`/newRevision/protocol/${reviewId}`} sx={text}>{title}</ChakraLink>
       <Text>Reviewers: {reviewers} </Text>
     </Box>
   );
