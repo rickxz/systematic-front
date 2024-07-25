@@ -1,4 +1,4 @@
-import { Box, FormControl, Flex } from "@chakra-ui/react";
+import { Box, FormControl, Flex, Progress } from "@chakra-ui/react";
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
 import { btnBox, formControl } from "./styles/partOneStyles";
@@ -36,7 +36,7 @@ export default function Protocol() {
     <FlexLayout defaultOpen={0} navigationType="Accordion">
       <Box w={"100%"}>
         <Header text="Protocol" />
-
+        <Progress value={33} w={"100%"} />
         <Flex justify={"center"} direction={"column"}>
           <FormControl sx={formControl}>
             <TextAreaInput label="Objectives:" placeholder="What are your goals?" onChange={handleGoal}/>

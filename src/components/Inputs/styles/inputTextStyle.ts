@@ -1,6 +1,7 @@
 export const conteiner = {
   display: "flex",
   maxW: "60vw",
+  
 };
 
 export const inputconteiner = {
@@ -8,5 +9,6 @@ export const inputconteiner = {
   flexDir: "row",
   gap: ".3rem",
   w: "100%",
+  alignItems: "center",
 };
 

@@ -36,7 +36,7 @@ export default function NovaRevisao() {
     <FlexLayout navigationType="Accordion" defaultOpen={0}>
       <Header text="New Systematic Review" />
 
-      <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"70%"} alignItems={"center"} ml={"10em"}>
+      <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"auto"} alignItems={"center"} >
         <InputText label="Title" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle}/>
         <InputTextArea label="Description:" placeholder="Enter review description" onChange={handleDescription}></InputTextArea>
         <ResearcherFilter />
