@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from '../../interceptor/interceptor';
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
 import { Progress, FormControl, Box } from "@chakra-ui/react";
@@ -7,10 +8,9 @@ import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";
 import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable";
 import FlexLayout from "../../components/ui/Flex/Flex";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useCreateProtocolTwo from "../../hooks/revisions/useCreateProtocolTwo";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function ProtocolPartTwo2() {
@@ -23,8 +23,17 @@ export default function ProtocolPartTwo2() {
   const url = `http://localhost:8080/systematic-study/${id}/protocol`;
 
   useEffect(() => {
-    console.log("protocolPartTwo");
-  })
+    async function fetchValues(){
+      const url = `http://localhost:8080/systematic-study/${id}/protocol`;
+      let response = await axios.get(url, {withCredentials: true});
+
+      setSelectProcess(response.data.content.selectionProcess);
+      setResearchStrategy(response.data.content.searchMethod);
+      setDataAcquisition(response.data.content.sourcesSelectionCriteria);
+    }
+
+    fetchValues();
+  }, [])
 
   async function handleData(){
     await  useCreateProtocolTwo(researchStrategy, selectProcess, dataAcquisition, id);
@@ -50,7 +59,7 @@ export default function ProtocolPartTwo2() {
         <Progress value={66} w={"100%"} color={"black"} />
         <FormControl sx={conteiner}>
           <FormControl sx={flex}>
-            <AddTextTable url={url} text="Keywords" placeholder="Enter the keywords related to your review"/>
+            <AddTextTable url={url} id={id} text="Keywords" placeholder="Enter the keywords related to your review"/>
           </FormControl>
           <AddSelectionTable
             label="Languages"
@@ -60,8 +69,8 @@ export default function ProtocolPartTwo2() {
             placeholder={"Select language"}
             typeField="select"
           />
-          <AddTextTable text="Inclusion criteria" placeholder="Enter the criteria" url={url}/>        
-          <AddTextTable text="Exclusion criteria" placeholder="Enter the criteria" url={url}/>
+          <AddTextTable id={id} text="Inclusion criteria" placeholder="Enter the criteria" url={url}/>        
+          <AddTextTable id={id} text="Exclusion criteria" placeholder="Enter the criteria" url={url}/>
           <AddSelectionTable
             label="Databases"
             type="databases" 
@@ -71,9 +80,9 @@ export default function ProtocolPartTwo2() {
             typeField="select"
           />
 
-          <TextAreaInput onChange={handleResearchStrategy} label="Research Strategy" placeholder="Enter research strategy" />
-          <TextAreaInput onChange={handleSelectProcess} label="Article Selection Process" placeholder="Enter selection process" />
-          <TextAreaInput onChange={handleDataAcquisition}  label="Data Acquisition" placeholder="Enter the data acquisition method" />
+          <TextAreaInput value={researchStrategy} onChange={handleResearchStrategy} label="Research Strategy" placeholder="Enter research strategy" />
+          <TextAreaInput value={selectProcess} onChange={handleSelectProcess} label="Article Selection Process" placeholder="Enter selection process" />
+          <TextAreaInput value={dataAcquisition} onChange={handleDataAcquisition}  label="Data Acquisition" placeholder="Enter the data acquisition method" />
 
         </FormControl>
         <Box sx={btnBox}>
