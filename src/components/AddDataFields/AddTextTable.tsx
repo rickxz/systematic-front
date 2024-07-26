@@ -23,6 +23,7 @@ export default function AddTextTable({ text, placeholder, url, id }: AddTextTabl
       if(id){
         const url = `http://localhost:8080/systematic-study/${id}/protocol`;
         let response = await axios.get(url, {withCredentials: true});
+        
         switch(text){
           case 'Keywords':
             fetchAddText(response.data.content.keywords);

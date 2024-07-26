@@ -4,7 +4,6 @@ export function useAddText() {
   const [AddText, setAddText] = useState<string[]>([]);
 
   const fetchAddText = async (array: string[]) => {
-    console.log(array);
     setAddText(array);
   }
 
