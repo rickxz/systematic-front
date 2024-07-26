@@ -11,7 +11,11 @@ const useCreateProtocolTwo = async (analysis: string, id: string) => {
     const url = `http://localhost:8080/systematic-study/${id}/protocol`;
 
     try{
-        await axios.put(url, data, {withCredentials: true});
+        let response = await axios.put(url, data, {withCredentials: true});
+        console.log(response);
+        
+        response = await axios.get(url, {withCredentials:true});
+        console.log(response);
     }
     catch(err){
         console.log(err);

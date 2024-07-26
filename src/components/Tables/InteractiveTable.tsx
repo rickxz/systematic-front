@@ -5,14 +5,26 @@ import { useInteractiveTable } from "../../hooks/useInteractiveTable";
 import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
 import useSendExtractionForm from "../../hooks/revisions/extractionForm/useSendExtractionForm";
 import axios from "../../interceptor/interceptor";
+import { useEffect } from "react";
 interface Props{
-  id: string
+  id: string;
+  url: string;
 }
 
-export default function InteractiveTable({id}: Props) {
+export default function InteractiveTable({id, url}: Props) {
   const { rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers } =
     useInteractiveTable();
   const { sendExtractionForm } = useSendExtractionForm();
+
+  useEffect(() => {
+    const fetch = async () => {
+      let response = await axios.get(url, {withCredentials: true});
+      console.log(response);
+    }
+
+    fetch();
+  }, [])
+
   return (
     <TableContainer>
       <Table variant="striped" size="md" w={"60vw"}  borderRadius={"8px"} overflow="hidden">
