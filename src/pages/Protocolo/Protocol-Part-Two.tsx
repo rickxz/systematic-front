@@ -69,8 +69,8 @@ export default function ProtocolPartTwo2() {
             placeholder={"Select language"}
             typeField="select"
           />
-          <AddTextTable text="Inclusion criteria" placeholder="Enter the criteria" url={url}/>        
-          <AddTextTable text="Exclusion criteria" placeholder="Enter the criteria" url={url}/>
+          <AddTextTable id={id} text="Inclusion criteria" placeholder="Enter the criteria" url={url}/>        
+          <AddTextTable id={id} text="Exclusion criteria" placeholder="Enter the criteria" url={url}/>
           <AddSelectionTable
             label="Databases"
             type="databases" 

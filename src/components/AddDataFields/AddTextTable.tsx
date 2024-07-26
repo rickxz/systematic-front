@@ -23,12 +23,22 @@ export default function AddTextTable({ text, placeholder, url, id }: AddTextTabl
       if(id){
         const url = `http://localhost:8080/systematic-study/${id}/protocol`;
         let response = await axios.get(url, {withCredentials: true});
-        console.log(response);
         switch(text){
           case 'Keywords':
             fetchAddText(response.data.content.keywords);
             break;
-        }
+          case 'Inclusion criteria':
+            let array: {description: string, type: string}[] = response.data.content.eligibilityCriteria;
+            array = array.filter(item => item.type === "INCLUSION");
+            const criterias: string[] = array.map(item => item.description);
+            fetchAddText(criterias);
+            break;
+          case 'Exclusion criteria': 
+            let exclusionArray: {description: string, type: string}[] = response.data.content.eligibilityCriteria;
+            exclusionArray = exclusionArray.filter(item => item.type === "EXCLUSION");
+            const exclusionCriterias: string[] = exclusionArray.map(item => item.description);
+            fetchAddText(exclusionCriterias);
+          }
       }
     }
 
