@@ -21,10 +21,14 @@ export default function AddSelectTable({ label, options, url, type, placeholder 
 
   useEffect(() => {
     async function fetch(){
+      let array = await axios.get(url, {withCredentials: true});
+
       switch(type){
         case 'studiesLanguages':
-          let array = await axios.get(url, {withCredentials: true});
           setSelectedValues(array.data.content.studiesLanguages);
+          break;
+        case 'databases':
+          setSelectedValues(array.data.content.informationSources);
       }
     }
 
