@@ -14,12 +14,12 @@ export default function ProtocolPartThree() {
   const [analysis, setAnalysis] = useState('');
   const { id = '' } = useParams();
   const navigate = useNavigate();
+  const url = `http://localhost:8080/systematic-study/${id}/protocol`;
 
   useEffect(() => {
     async function fetch(){
-      const url = `http://localhost:8080/systematic-study/${id}/protocol`;
-      let response = axios.get(url, {withCredentials: true})
-      setAnalysis((await response).data.content.analysisAndSynthesisProcess);
+      let response = await axios.get(url, {withCredentials: true})
+      setAnalysis(response.data.content.analysisAndSynthesisProcess);
     }
 
     fetch();
@@ -45,7 +45,7 @@ export default function ProtocolPartThree() {
 
         <FormControl sx={formControl}>
 
-          <InteractiveTable id={id}/>
+          <InteractiveTable id={id} url={url}/>
           <TextAreaInput value={analysis} label="Analysis and Synthesis" placeholder="Enter your analysis" onChange={handleAnalysisAndSynthesis} />
 
         </FormControl>
