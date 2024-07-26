@@ -8,7 +8,6 @@ import { useState } from "react";
 import HomepageModal from "../../../../components/Modals/HomepageModal/Index";
 import FormLogin from "../../../../components/Modals/HomepageModal/subcomponents/forms/formLogin/Index";
 import FormSignup from "../../../../components/Modals/HomepageModal/subcomponents/forms/formSignup/Index";
-import { color } from "chart.js/helpers";
 import ForgotPassword from "../../../../components/Modals/HomepageModal/subcomponents/forms/recoverPassword";
 import useRecoverUserData from "../../../../hooks/temporaryHooks/useRecoverUserData";
 
