@@ -5,14 +5,25 @@ import { buttonBox, formControl } from "./styles/partThreeStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import InteractiveTable from "../../components/Tables/InteractiveTable";
 import FlexLayout from "../../components/ui/Flex/Flex";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useCreateProtocolThree from '../../hooks/revisions/useCreateProtocolThree';
+import axios from "../../interceptor/interceptor";
 
 export default function ProtocolPartThree() {
   const [analysis, setAnalysis] = useState('');
   const { id = '' } = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function fetch(){
+      const url = `http://localhost:8080/systematic-study/${id}/protocol`;
+      let response = axios.get(url, {withCredentials: true})
+      setAnalysis((await response).data.content.analysisAndSynthesisProcess);
+    }
+
+    fetch();
+  }, [])
 
   async function handleData() {
       await useCreateProtocolThree(analysis, id);
@@ -35,7 +46,7 @@ export default function ProtocolPartThree() {
         <FormControl sx={formControl}>
 
           <InteractiveTable id={id}/>
-          <TextAreaInput label="Analysis and Synthesis" placeholder="Enter your analysis" onChange={handleAnalysisAndSynthesis} />
+          <TextAreaInput value={analysis} label="Analysis and Synthesis" placeholder="Enter your analysis" onChange={handleAnalysisAndSynthesis} />
 
         </FormControl>
 
