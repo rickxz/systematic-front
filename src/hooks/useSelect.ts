@@ -39,5 +39,5 @@ export function useSelect(url: string, type: 'databases' | "studiesLanguages", i
     axios.put(url, data, {withCredentials: true});
   },[selectedValues])
 
-  return { selectedValue, selectedValues, handleSelectChange, handleSelectAddButtonClick, handleDeleteSelect };
+  return { setSelectedValues, selectedValue, selectedValues, handleSelectChange, handleSelectAddButtonClick, handleDeleteSelect };
 }
