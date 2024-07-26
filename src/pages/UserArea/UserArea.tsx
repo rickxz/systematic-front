@@ -37,7 +37,7 @@ export default function UserArea() {
               creation={data.creation}
               isEdited={data.isEdited}
             />
-          ))
+          )) //acho que caberia um botao de criar uma nova review na lista de reviews
         ) : (
           <Flex direction="column" align="center" justify="center" w="100%">
             <Icon as={MdSentimentDissatisfied} boxSize={12} color="gray.500" mb={4} mt={"60px"}/>            <Text fontSize="2xl" color="gray.600" mb={4}>

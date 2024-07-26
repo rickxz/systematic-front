@@ -2,7 +2,7 @@ export const conteiner = {
   display: "flex",
   flexDir: "column",
   gap: 10,
-  mt: 20,
+  mt: "50px",
   ml: "2%",
   w: "80%",
 };

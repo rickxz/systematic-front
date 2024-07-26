@@ -30,7 +30,7 @@ export default function AddSelectTable({ label, options, url, type, placeholder 
             placeholder={placeholder}
             page={"protocol"}
           />
-          <EventButton text="Adicionar" event={handleSelectAddButtonClick} w={"10%"} />
+          <EventButton text="+" event={handleSelectAddButtonClick} w={"1%"} />
         </FormControl>
       <InfosTable
         typeField="select"

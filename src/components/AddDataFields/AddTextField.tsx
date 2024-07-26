@@ -53,7 +53,7 @@ export default function AddTextField({ onAddText, placeholder, url, text }: IAdd
   return (
     <FormControl sx={formcontrol}>
       <TextAreaInput label="" placeholder={placeholder} onChange={handleInputChange}></TextAreaInput>
-      <EventButton event={handleAddText} text="ADD" mt={2} w={"10%"} />
+      <EventButton event={handleAddText} text="Add" mt={2} w={"6%"} borderRadius={"8px"}/>
     </FormControl>
   );
 }
