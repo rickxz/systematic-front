@@ -36,14 +36,14 @@ export default function NovaRevisao() {
     <FlexLayout navigationType="Accordion" defaultOpen={0}>
       <Header text="New Systematic Review" />
 
-      <FormControl mt={"20px"} display={"flex"} gap={5} flexDir={"column"} w={"auto"} alignItems={"center"} >
-        <InputText label="Title" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle}/>
-        <InputTextArea label="Description:" placeholder="Enter review description" onChange={handleDescription}></InputTextArea>
+      <FormControl mt={"20px"} display={"flex"} gap={10} flexDir={"column"} w={"80%"} alignItems={"center"} ml={"2%"} >
+        <InputText label="Title" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle} labelAbove={true}/>
+        <InputTextArea label="Description" placeholder="Enter review description" onChange={handleDescription}></InputTextArea>
         <ResearcherFilter />
 
         <Box w={"60vw"} display={"flex"} alignItems={"center"} justifyContent={"end"}>
           {title != '' ? <NavButton event={handleData} text="Create new Review" /> :
-          <NavButton event={handleData} path={"/newRevision"} text="Create new Review" />
+          <NavButton event={handleData} path={"/newRevision"} text="Create new review" />
           }
         </Box>
       </FormControl>

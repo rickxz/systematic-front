@@ -21,6 +21,10 @@ export default function InputText({ label, placeholder, type, nome, onChange, la
           <FormLabel
             color={"#2E4B6C"}
             mb={labelAbove ? "0.3rem" : "0"} 
+            textAlign="left" 
+            width="100%"
+            mr={"5px"}
+            
           >
             {label}
           </FormLabel>

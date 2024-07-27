@@ -49,7 +49,7 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                     {affiliationError && <p className="error">{affiliationError}</p>}
                 </div>
                 <div className="inputGroup">
-                    <label htmlFor="state">State</label>
+                    <label htmlFor="state">Country</label>
                     <select
                         value={state}
                         onChange={(e) => { setState(e.target.value); setStateError(""); }}

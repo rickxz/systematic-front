@@ -14,14 +14,18 @@ const variants = {
     color: "#FFFFFF",
     hoverBgColor: "#C9D9E5",
     hoverColor: "#526D82",
-    borderRadius: "5px",
+    borderRadius: "8px",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", 
+
   },
   dark: {
     bgColor: "#FDF0D5",
     color: "#301E1A",
     hoverBgColor: "#301E1A",
     hoverColor: "#FDF0D5",
-    borderRadius: "5px",
+    borderRadius: "8px",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", 
+
   },
 }
 
@@ -45,8 +49,18 @@ export default function NavButton({ text, path = '', variant = "default", event 
         _hover={{ 
           bgColor: hoverBgColor,
           color: hoverColor,
+          boxShadow: "0 6px 8px rgba(0, 0, 0, 0.15)" 
+
         }}
-        {...buttonProps}>
+        {...buttonProps}
+        transition="all 0.3s ease" 
+        outline="none" 
+        _focus={{
+          boxShadow: "0 0 0 3px rgba(66, 153, 225, 0.6)", 
+        }}
+        
+        
+        >
           {text}
       </Button> 
 
