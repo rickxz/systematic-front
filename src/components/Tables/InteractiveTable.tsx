@@ -5,21 +5,33 @@ import { useInteractiveTable } from "../../hooks/useInteractiveTable";
 import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
 import useSendExtractionForm from "../../hooks/revisions/extractionForm/useSendExtractionForm";
 import axios from "../../interceptor/interceptor";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 interface Props{
   id: string;
   url: string;
 }
 
 export default function InteractiveTable({id, url}: Props) {
-  const { rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers } =
+  const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers } =
     useInteractiveTable();
   const { sendExtractionForm } = useSendExtractionForm();
+
+  const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
     const fetch = async () => {
       let response = await axios.get(url, {withCredentials: true});
+      
+      let link: string = response.data._links['find-all-review-extraction-questions'].href;
+      response = await axios.get(link, {withCredentials: true});
       console.log(response);
+
+      const fetchedRows = response.data.questions.map(item => ({
+        id: item.code,
+        question: item.description,
+        type: item.questionType.toLowerCase()
+      }));
+      setRows(fetchedRows);
     }
 
     fetch();
@@ -36,7 +48,7 @@ export default function InteractiveTable({id, url}: Props) {
           </Tr>
         </Thead>
         <Tbody>
-          {rows.map((row, index) => (
+          { rows.map((row, index) => (
             <Tr key={index} bgColor={"#C9D9E5"}>
               <Td>{row.id}</Td>
               <Td>
