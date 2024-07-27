@@ -9,7 +9,6 @@ import {
     Button,
     useDisclosure,
     Box,
-    Center,
     Icon
   } from '@chakra-ui/react'
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
@@ -21,6 +20,11 @@ export default function Dashboard(){
     const progressValue: number = 60;
     const { isOpen, onOpen, onClose } = useDisclosure()
 
+    const handleClick = (event: { stopPropagation: () => void; }) => {
+        event.stopPropagation();
+        onOpen();
+    };
+
     return (
         <>
             <Button 
@@ -31,7 +35,7 @@ export default function Dashboard(){
                 //border={"solid 2px #C9D9E5 "}
                 borderRadius="50%" 
                 boxShadow="0 1px 3px 0 rgba(0, 0 , 0, 0.5)" 
-                onClick={onOpen}
+                onClick={handleClick}
                 sx={{
                     '&:hover':{
                         bgColor: "#131E2B",

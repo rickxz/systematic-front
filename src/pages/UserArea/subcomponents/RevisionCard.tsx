@@ -21,20 +21,21 @@ export default function RevisionCard({ revisionId, id, title, reviewers, status,
     const url = `http://localhost:8080/systematic-study/${revisionId}/protocol`;
     let response = await axios.get(url, {withCredentials: true})
     console.log(response);
+    /*
     if(response.data.content.goal == null || response.data.content.justification == null){
-      window.location.href = `http://localhost:5173/#/newRevision/protocol/${revisionId}`;
+      //window.location.href = `http://localhost:5173/#/newRevision/protocol/${revisionId}`;
     }
     else console.log("continuar lógica de continuar protocolo");
-    
+    */
   }
   
   return (
     <>
-      <Card sx={Cardstyles}>
+      <Card sx={Cardstyles} onClick={redirectToReview}>
         <CardIcon />
-        <CardInfos title={title} reviewers={reviewers} reviewId={revisionId}/>
+        <CardInfos title={title} reviewers={reviewers}/>
         <Box sx={CardInfosConteiner} id={id}>
-          <EnterRevisionButton text="Review Info" event={redirectToReview}/>
+          <EnterRevisionButton text="Review Info"/>
           <EditionInfos status={status} creation={creation} /*isEdited={isEdited} */ />
         </Box>
       </Card>

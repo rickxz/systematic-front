@@ -4,7 +4,6 @@ import Dashboard from "../../../components/ui/Dashboard/Dashboard";
 
 interface IButtonProps {
   text: string;
-  event: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export default function EnterRevisionButton({ /*text, event*/ }: IButtonProps) {
