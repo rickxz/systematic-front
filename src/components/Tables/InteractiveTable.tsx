@@ -20,22 +20,46 @@ export default function InteractiveTable({id, url}: Props) {
 
   useEffect(() => {
     const fetch = async () => {
-      let response = await axios.get(url, {withCredentials: true});
-      
-      let link: string = response.data._links['find-all-review-extraction-questions'].href;
-      response = await axios.get(link, {withCredentials: true});
-      console.log(response);
-
-      const fetchedRows = response.data.questions.map(item => ({
-        id: item.code,
-        question: item.description,
-        type: item.questionType.toLowerCase()
-      }));
-      setRows(fetchedRows);
-    }
-
+      try {
+        let response = await axios.get(url, { withCredentials: true });
+  
+        let link = response.data._links['find-all-review-extraction-questions'].href;
+        response = await axios.get(link, { withCredentials: true });
+        console.log(response);
+  
+        const fetchedRows = response.data.questions.map(item => {
+          let type;
+          switch (item.questionType) {
+            case 'TEXTUAL':
+              type = 'textual';
+              break;
+            case 'PICK_LIST':
+              type = 'pick list';
+              break;
+            case 'NUMBERED_SCALE':
+              type = 'number scale';
+              break;
+            case 'LABELED_SCALE':
+              type = 'labeled list';
+              break;
+          }
+  
+          return {
+            id: item.code,
+            question: item.description,
+            type: type
+          };
+        });
+  
+        setRows(fetchedRows);
+      } catch (error) {
+        console.error('Erro ao buscar os dados:', error);
+      }
+    };
+  
     fetch();
-  }, [])
+  }, []);
+  
 
   return (
     <TableContainer>
