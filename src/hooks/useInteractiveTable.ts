@@ -11,12 +11,6 @@ export function useInteractiveTable() {
   const options = ["", "Textual", "Pick list", "Number scale", "Labeled List"];
   const headers = ["Id", "Question", "Type", ""];
 
-  const renderAddRow = (question?: string, type?: string) => {
-    if(question && type){
-      setRows([...rows, { id: rows.length + 1, question: question, type: type }])
-    }
-  }
-
   const addRow = () => {
       setRows([...rows, { id: rows.length + 1, question: "", type: "" }]);
   };
@@ -43,5 +37,5 @@ export function useInteractiveTable() {
     return rows;
   };
 
-  return { rows, addRow, renderAddRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers, getRowsData };
+  return { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers, getRowsData };
 }
