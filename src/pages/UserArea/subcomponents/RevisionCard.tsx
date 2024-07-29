@@ -20,7 +20,7 @@ export default function RevisionCard({ revisionId, id, title, reviewers, status,
   async function redirectToReview(){
     const url = `http://localhost:8080/systematic-study/${revisionId}/protocol`;
     let response = await axios.get(url, {withCredentials: true})
-    //primeira página
+    /*
     console.log(response.data.content.id);
     console.log(response.data.content.systematicStudy);
 
@@ -44,28 +44,47 @@ export default function RevisionCard({ revisionId, id, title, reviewers, status,
     console.log(response.data.content.analysisAndSynthesisProcess);
 
     console.log(response.data.content.searchString);
+    */
+
+    function isProtocolPartOneFinished() {return response.data.content.goal == null || response.data.content.justification == null}
+    
+    function isProtocolPartTwoFinished() {return response.data.content.studiesLanguages == null ||
+      response.data.content.eligibilityCriteria == null ||
+      response.data.content.informationSources == null ||
+      response.data.content.keywords == null ||
+      response.data.content.sourcesSelectionCriteria == null ||
+      response.data.content.searchMethod == null ||
+      response.data.content.extractionQuestions == null ||
+      response.data.content.picoc == null ||
+      response.data.content.robQuestions == null ||
+      response.data.content.selectionProcess == null ||
+      response.data.content.studyTypeDefinition == null ||
+      response.data.content.dataCollectionProcess == null}
+
+      function isProtocolPartThreeFinished() {return response.data.content.researchQuestions == null ||
+        response.data.content.analysisAndSynthesisProcess == null}
+
+      function isSelectionProcessFinished() { return true; }
+
+      function isExtractionProcessFinished() { return true; }
 
     
-    if(response.data.content.goal == null || response.data.content.justification == null){
+    if(isProtocolPartOneFinished()) {
       window.location.href = `http://localhost:5173/#/newRevision/protocol/${revisionId}`;
     }
-    else if (response.data.content.studiesLanguages == null ||
-              response.data.content.eligibilityCriteria == null ||
-              response.data.content.informationSources == null ||
-              response.data.content.keywords == null ||
-              response.data.content.sourcesSelectionCriteria == null ||
-              response.data.content.searchMethod == null ||
-              response.data.content.extractionQuestions == null ||
-              response.data.content.picoc == null ||
-              response.data.content.robQuestions == null ||
-              response.data.content.selectionProcess == null ||
-              response.data.content.studyTypeDefinition == null ||
-              response.data.content.dataCollectionProcess == null)
+    else if (isProtocolPartTwoFinished()) {
+                window.location.href = ` http://localhost:5173/#/newRevision/protocolpartTwo/${revisionId}`;
+              }
               
-              window.location.href = ` http://localhost:5173/#/newRevision/protocolpartTwo/${revisionId}`;
-    else if ( response.data.content.researchQuestions == null ||
-              response.data.content.analysisAndSynthesisProcess == null)  
-      window.location.href = ` http://localhost:5173/#/newRevision/selection`;   
+    else if (isProtocolPartThreeFinished()) {
+      window.location.href = ` http://localhost:5173/#/newRevision/protocolpartThree/${revisionId}`;
+    }
+      
+    else if(isSelectionProcessFinished()) {
+      window.location.href = ` http://localhost:5173/#/newRevision/selection`;
+    }
+    else if (isExtractionProcessFinished()) window.location.href = ` http://localhost:5173/#/newRevision/extraction`;
+    else window.location.href = ` http://localhost:5173/#/newRevision/finalization`;
   }
   
   return (
