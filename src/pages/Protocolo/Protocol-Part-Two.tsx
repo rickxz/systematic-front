@@ -86,6 +86,7 @@ export default function ProtocolPartTwo2() {
 
         </FormControl>
         <Box sx={btnBox}>
+          <NavButton text='Return'/>
           <NavButton event={handleData} text="Next" />
         </Box>
       </Box>

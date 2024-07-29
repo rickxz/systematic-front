@@ -42,6 +42,7 @@ export default function NavButton({ text, path = '', variant = "default", event 
     <Link to={path}> 
     
       <Button 
+        ml='2rem'
         onClick={handleClick}
         bgColor={bgColor} 
         color={color}
