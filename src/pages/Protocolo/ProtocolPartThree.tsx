@@ -30,6 +30,11 @@ export default function ProtocolPartThree() {
       navigate("/user");
   }
 
+  async function handleDataReturn() {
+    await useCreateProtocolThree(analysis, id);
+    navigate(`/newRevision/protocolpartTwo/${id}`);
+  }
+
   function handleAnalysisAndSynthesis(e: React.ChangeEvent<HTMLTextAreaElement>) {
     setAnalysis(e.target.value);
   }
@@ -51,7 +56,7 @@ export default function ProtocolPartThree() {
         </FormControl>
 
         <Box sx={buttonBox}>
-          <NavButton text='Return'/>
+          <NavButton text='Return' event={handleDataReturn}/>
           <NavButton text="Save" event={handleData} w={"fit-content"} />
         </Box>
 

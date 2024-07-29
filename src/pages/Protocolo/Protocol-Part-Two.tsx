@@ -40,6 +40,11 @@ export default function ProtocolPartTwo2() {
     navigate(`/newRevision/protocolpartThree/${id}`);
   }
 
+  async function handleDataReturn(){
+    await  useCreateProtocolTwo(researchStrategy, selectProcess, dataAcquisition, id);
+    navigate(`/newRevision/protocol/${id}`);
+  }
+
   function handleResearchStrategy(e: React.ChangeEvent<HTMLTextAreaElement>){
     setResearchStrategy(e.target.value);
   }
@@ -86,7 +91,7 @@ export default function ProtocolPartTwo2() {
 
         </FormControl>
         <Box sx={btnBox}>
-          <NavButton text='Return'/>
+          <NavButton event={handleDataReturn} text='Return'/>
           <NavButton event={handleData} text="Next" />
         </Box>
       </Box>
