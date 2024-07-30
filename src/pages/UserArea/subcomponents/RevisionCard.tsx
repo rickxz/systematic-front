@@ -4,7 +4,6 @@ import EditionInfos from "./EditionInfos";
 import { Box, Card } from "@chakra-ui/react";
 import EnterRevisionButton from "./EnterRevisionButton";
 import { CardInfosConteiner, Cardstyles } from "../styles/revisionCardstyles";
-import axios from "../../../interceptor/interceptor";
 import goToUnfinishedSystematicReviewPart from "../../../hooks/goToUnfinishedSystematicReviewPart";
 
 interface iRevisionCardProps {
