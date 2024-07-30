@@ -32,10 +32,3 @@ interface Criterion {
     robQuestions: string[];
     picoc: Picoc;
   }
-  
-  interface SystematicStudy {
-    userId: string;
-    systematicStudyId: string;
-    Protocol: Protocol;
-  }
-  
