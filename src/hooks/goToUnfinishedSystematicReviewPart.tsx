@@ -2,6 +2,8 @@ import useFetchAllStudies from "./fetch/useFetchAllStudies";
 import useFetchProtocol from "./fetch/useFetchProtocol";
 import { AxiosResponse } from "axios";
 import {Protocol} from "../../public/interfaces/protocolInterface";
+import {StudyReview} from "../../public/interfaces/studyReviewInterface";
+
 
 function isProtocolPartOneFinished(response:  Protocol) {
     console.log(response);
@@ -28,9 +30,21 @@ function isProtocolPartThreeFinished(response:  Protocol) {
            response.analysisAndSynthesisProcess == null
     }
 
-function isSelectionProcessFinished(response:  AxiosResponse<any, any>) { return true; }
+function isSelectionProcessFinished(response:  StudyReview[]) { 
+    for (const study of response) {
+        if (study.selectionStatus === "Unclassified")
+            return false;
+    }
+    return true;
+}
 
-function isExtractionProcessFinished(response:  AxiosResponse<any, any>) { return true; }
+function isExtractionProcessFinished(response:  StudyReview[]) { 
+    for (const study of response) {
+        if (study.extractionStatus === "Unclassified")
+            return false;
+    }
+    return true;
+}
 
 
 
