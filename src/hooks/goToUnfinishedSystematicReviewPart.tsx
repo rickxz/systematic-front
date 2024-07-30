@@ -5,44 +5,30 @@ import {StudyReview} from "../../public/interfaces/studyReviewInterface";
 
 
 function isProtocolPartOneFinished(response:  Protocol) {
-    console.log(response);
-    return response.goal == null || response.justification == null
+    return response.goal !== null && response.justification !== null
 }
     
 function isProtocolPartTwoFinished(response:  Protocol) {
-    return response.studiesLanguages == null ||
-        response.eligibilityCriteria == null ||
-        response.informationSources == null ||
-        response.keywords == null ||
-        response.sourcesSelectionCriteria == null ||
-        response.searchMethod == null ||
-        response.extractionQuestions == null ||
-        response.picoc == null ||
-        response.robQuestions == null ||
-        response.selectionProcess == null ||
-        response.studyTypeDefinition == null ||
-        response.dataCollectionProcess == null
+    return response.studiesLanguages !== null &&
+        response.eligibilityCriteria !== null &&
+        response.informationSources !== null &&
+        response.keywords !== null &&
+        response.sourcesSelectionCriteria !== null &&
+        response.searchMethod !== null &&
+        response.selectionProcess !== null 
     }
 
 function isProtocolPartThreeFinished(response:  Protocol) {
-    return response.researchQuestions == null ||
-           response.analysisAndSynthesisProcess == null
+    return response.researchQuestions !== null &&
+           response.analysisAndSynthesisProcess !== null
     }
 
 function isSelectionProcessFinished(response:  StudyReview[]) { 
-    for (const study of response) {
-        if (study.selectionStatus === "UNCLASSIFIED")
-            return false;
-    }
-    return true;
+    return false;
 }
 
 function isExtractionProcessFinished(response:  StudyReview[]) { 
-    for (const study of response) {
-        if (study.extractionStatus === "UNCLASSIFIED")
-            return false;
-    }
-    return true;
+    return false;
 }
 
 
@@ -54,20 +40,20 @@ export default async function goToUnfinishedSystematicReviewPart(revisionId: str
     const studiesData = await useFetchAllStudies(revisionId);
 
     
-    if(isProtocolPartOneFinished(protocolData)) {
+    if(!isProtocolPartOneFinished(protocolData)) {
         window.location.href = `http://localhost:5173/#/newRevision/protocol/${revisionId}`;
       }
-      else if (isProtocolPartTwoFinished(protocolData)) {
+      else if (!isProtocolPartTwoFinished(protocolData)) {
                   window.location.href = ` http://localhost:5173/#/newRevision/protocolpartTwo/${revisionId}`;
                 }
                 
-      else if (isProtocolPartThreeFinished(protocolData)) {
+      else if (!isProtocolPartThreeFinished(protocolData)) {
         window.location.href = ` http://localhost:5173/#/newRevision/protocolpartThree/${revisionId}`;
       }
         
-      else if(isSelectionProcessFinished(studiesData)) {
+      else if(!isSelectionProcessFinished(studiesData)) {
         window.location.href = ` http://localhost:5173/#/newRevision/selection`;
       }
-      else if (isExtractionProcessFinished(studiesData)) window.location.href = ` http://localhost:5173/#/newRevision/extraction`;
+      else if (!isExtractionProcessFinished(studiesData)) window.location.href = ` http://localhost:5173/#/newRevision/extraction`;
       else window.location.href = ` http://localhost:5173/#/newRevision/finalization`;
 }
