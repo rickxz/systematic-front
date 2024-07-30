@@ -31,7 +31,7 @@ function isProtocolPartThreeFinished(response:  Protocol) {
 
 function isSelectionProcessFinished(response:  StudyReview[]) { 
     for (const study of response) {
-        if (study.selectionStatus === "Unclassified")
+        if (study.selectionStatus === "UNCLASSIFIED")
             return false;
     }
     return true;
@@ -39,7 +39,7 @@ function isSelectionProcessFinished(response:  StudyReview[]) {
 
 function isExtractionProcessFinished(response:  StudyReview[]) { 
     for (const study of response) {
-        if (study.extractionStatus === "Unclassified")
+        if (study.extractionStatus === "UNCLASSIFIED")
             return false;
     }
     return true;
