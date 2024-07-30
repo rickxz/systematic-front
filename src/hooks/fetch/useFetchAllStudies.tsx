@@ -3,7 +3,7 @@ import axios from '../../interceptor/interceptor';
 export default async function fetchProtocol(systematicStudyId: string) {
     const url = "http://localhost:8080/";
     try {
-        const response = await axios.get(`${url}api/v1/systematic-study/${systematicStudyId}/study-review`);
+        const response = await axios.get(`${url}api/v1/systematic-study/${systematicStudyId}/study-review`, {withCredentials: true});
         return response.data;
     } catch (error) {
         console.error("Error fetching studies:", error);
