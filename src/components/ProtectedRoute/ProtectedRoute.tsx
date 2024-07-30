@@ -7,7 +7,7 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
-  const { isLoggedIn, isChecking } = useVerifyIfLoggedIn(); // Use the updated hook
+  const { isLoggedIn, isChecking } = useVerifyIfLoggedIn(); 
   console.log(isLoggedIn);
 
   if (isChecking) {

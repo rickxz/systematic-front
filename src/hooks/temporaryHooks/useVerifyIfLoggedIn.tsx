@@ -3,7 +3,7 @@ import axios from "axios";
 
 export function useVerifyIfLoggedIn() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isChecking, setIsChecking] = useState(true); // Estado para verificar se a verificação está em andamento
+    const [isChecking, setIsChecking] = useState(true);
 
     useEffect(() => {
         const verifyLogin = async () => {
@@ -20,12 +20,12 @@ export function useVerifyIfLoggedIn() {
                 console.error("Login verification failed:", err);
                 setIsLoggedIn(false);
             } finally {
-                setIsChecking(false); // Verificação concluída
+                setIsChecking(false);
             }
         };
 
         verifyLogin();
-    }, []); // Array de dependências vazio para garantir que o efeito seja executado apenas uma vez
+    }, []); 
 
     return { isLoggedIn, isChecking };
 }
