@@ -1,21 +1,22 @@
-// ProtectedRoute.tsx
 import React from 'react';
 import { Navigate } from 'react-router-dom';
+import { useVerifyIfLoggedIn } from '../../hooks/temporaryHooks/useVerifyIfLoggedIn';
 
 interface ProtectedRouteProps {
   element: JSX.Element;
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
-  {/* 
-  const accessToken = localStorage.getItem('accessToken');
-  const refreshToken = localStorage.getItem('refreshToken');
+  const { isLoggedIn, isChecking } = useVerifyIfLoggedIn(); // Use the updated hook
+  console.log(isLoggedIn);
 
-  if (!accessToken || !refreshToken) {
-    console.log("colocar lógica de login")
+  if (isChecking) {
+    return null; // Or render a loading component, e.g., <Loading />
+  }
+
+  if (!isLoggedIn) {
     return <Navigate to="/unauthorized" replace />;
-  } 
-  */}
+  }
 
   return element;
 };
