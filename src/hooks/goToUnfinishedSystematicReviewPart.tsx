@@ -1,6 +1,5 @@
 import useFetchAllStudies from "./fetch/useFetchAllStudies";
 import useFetchProtocol from "./fetch/useFetchProtocol";
-import { AxiosResponse } from "axios";
 import {Protocol} from "../../public/interfaces/protocolInterface";
 import {StudyReview} from "../../public/interfaces/studyReviewInterface";
 
