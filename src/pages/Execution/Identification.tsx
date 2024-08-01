@@ -15,7 +15,9 @@ export default function Identification() {
      setId(id);
     }
   }, [])
-  const { databases } = useFetchDataBases("/data/dataBases.json");
+
+  const url = `http://localhost:8080/systematic-study/${id}/protocol`
+  const { databases } = useFetchDataBases(url);
 
   return (
     <FlexLayout defaultOpen={1} navigationType="Accordion">
@@ -34,7 +36,7 @@ export default function Identification() {
 
         <Box sx={dataBaseconteiner}>
           {databases.map((data) => {
-            return <DataBaseCard text={data.dbName} type={data.type} />;
+            return <DataBaseCard text={data} type="normal" />;
           })}
         </Box>
       </Box>
