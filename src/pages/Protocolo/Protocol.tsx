@@ -24,7 +24,7 @@ export default function Protocol() {
     async function fetchValues(){
       const url = `http://localhost:8080/systematic-study/${id}/protocol`;
       let response = await axios.get(url, {withCredentials: true});
-
+      console.log(response);
       setGoal(response.data.content.goal)
       setMainQuestion(response.data.content.justification);
     }
@@ -35,8 +35,14 @@ export default function Protocol() {
   async function handleData(){
     console.log(goal);
     console.log(mainQuestion);
-    const picoc = {population, intervention, control, outcome, context};
-    await useCreateProtocol({goal, mainQuestion, id, retry: true})
+    const picoc = {
+      "population": population,
+      "intervention": intervention,
+      "control": control,
+      "outcome": outcome,
+      "context": context
+    };
+    await useCreateProtocol({goal, mainQuestion, picoc, id, retry: true})
     window.location.href = `http://localhost:5173/#/newRevision/protocolpartTwo/${id}`;
   }
 
