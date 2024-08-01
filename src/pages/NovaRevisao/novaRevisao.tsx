@@ -7,7 +7,6 @@ import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
 import useCreateRevision from "../../hooks/revisions/useCreateReview";
-import { flex } from "./styles/finalizationStyles";
 
 export default function NovaRevisao() {
   const [title, setTitle] = useState('');
@@ -19,7 +18,7 @@ export default function NovaRevisao() {
       window.alert("O campo título é obrigatório!");
     } else {
     const id = await useCreateRevision({title, description, collaborators});
-    localStorage.setItem("sistematicStudyId", id);
+    localStorage.setItem("systematicStudyId", id);
     window.location.href = `http://localhost:5173/#/newRevision/protocol/${id}`;
     }
   }

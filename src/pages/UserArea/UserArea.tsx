@@ -12,6 +12,7 @@ export default function UserArea() {
   const [myRevisionsUrl, setMyRevisionsUrl] = useState('');
 
   useEffect(() => {
+    localStorage.removeItem("systematicStudyId");
     const url = localStorage.getItem('myReviewsLink');
     if (url) {
       setMyRevisionsUrl(url);
