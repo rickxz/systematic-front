@@ -28,7 +28,6 @@ const useHandleRegister = (closeModal: () => void) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let isValid = true;
-        setIsSubmitting(true);
 
         if (!name) {
             setNameError("Please enter your name");
@@ -84,6 +83,7 @@ const useHandleRegister = (closeModal: () => void) => {
         }
 
         if (isValid) {
+            setIsSubmitting(true);
             const data: userToRegisterProp = {
                 "username": name,
                 "password": password,
@@ -107,19 +107,14 @@ const useHandleRegister = (closeModal: () => void) => {
                         position: "top"
                     });
                     closeModal();
+                    setTimeout(() => (e.target as HTMLFormElement).submit(), 0);
                 }
             } catch (err: any) {
-               console.error(err);
-                if (err.response) {
-                    toast({
-                        title: err.response.data.message || 'Error',
-                        description: err.response.data.detail || 'An error occurred.',
-                        status: "error",
-                        duration: 9000,
-                        isClosable: true,
-                        position: "top"
-                    });
-                } else {
+                console.error(err);
+                const errorMessage = err.response.data.detail;
+                if (errorMessage.includes("username")) setNameError(errorMessage);
+                else if (errorMessage.includes("email"))  setEmailError(errorMessage);    
+                else {
                     toast({
                         title: 'Network Error',
                         description: 'Please check your internet connection.',
