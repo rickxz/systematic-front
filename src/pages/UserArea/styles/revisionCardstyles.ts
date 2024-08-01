@@ -8,9 +8,11 @@ export const Cardstyles = {
   fontSize: "12px",
   //border: "solid 2px #C9D9E5",
   justifySelf: "center",
-  bgColor: "#EBF0F3"
+  bgColor: "#EBF0F3",
 };
 export const CardInfosConteiner = {
   ml: "100px",
   w: { base: "100px", sm: "300px", md: "400px", lg: "650px", xl: "1020px" },
+  h: "min-content",
+  alignItens: "center"
 };

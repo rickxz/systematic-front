@@ -13,10 +13,11 @@ interface iRevisionCardProps {
   reviewers: string[];
   status: string;
   creation: string;
+  lastModification?: string;
   isEdited: boolean;
 }
 
-export default function RevisionCard({ revisionId, id, title, reviewers, status, creation, /* isEdited */}: iRevisionCardProps) {
+export default function RevisionCard({ revisionId, id, title, reviewers, status, lastModification, /* isEdited */}: iRevisionCardProps) {
   async function redirectToReview(){
     goToUnfinishedSystematicReviewPart(revisionId);
   }
@@ -25,10 +26,10 @@ export default function RevisionCard({ revisionId, id, title, reviewers, status,
     <>
       <Card sx={Cardstyles} onClick={redirectToReview}>
         <CardIcon />
-        <CardInfos title={title} reviewers={reviewers}/>
+        <CardInfos title={title} lastModification={(lastModification as string)} />
         <Box sx={CardInfosConteiner} id={id}>
           <EnterRevisionButton text="Review Info"/>
-          <EditionInfos status={status} creation={creation} /*isEdited={isEdited} */ />
+          <EditionInfos reviewers={reviewers} status={status}  /*isEdited={isEdited} */ />
         </Box>
       </Card>
     </>

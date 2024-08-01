@@ -1,16 +1,16 @@
 import { Box, Text } from "@chakra-ui/react";
-import { conteiner, text } from "../styles/CardInfosStyle";
+import { conteiner, text, titleSX } from "../styles/CardInfosStyle";
 
 interface ICardInfosProps {
   title: string;
-  reviewers: string[];
+  lastModification: string;
 }
 
-export default function CardInfos({ title, reviewers }: ICardInfosProps) {
+export default function CardInfos({ title, lastModification }: ICardInfosProps) {
   return (
-    <Box sx={conteiner}>
-      <Text>{title}</Text>
-      <Text sx={text}>Reviewers: {reviewers} </Text>
+    <Box sx={conteiner} >
+      <Text sx={titleSX}>{title}</Text>
+      <Text sx={text}>Last modification: {lastModification} </Text>
     </Box>
   );
 }
