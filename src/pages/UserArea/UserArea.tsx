@@ -1,6 +1,5 @@
 import { Flex, Text, Icon } from "@chakra-ui/react";
 import { MdSentimentDissatisfied } from "react-icons/md"; // ícone de rosto insatisfeito
-
 import { flexStyles } from "./styles/flexStyles";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import Header from "../../components/ui/Header/Header";
