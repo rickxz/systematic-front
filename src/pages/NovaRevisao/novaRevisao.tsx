@@ -19,6 +19,7 @@ export default function NovaRevisao() {
       window.alert("O campo título é obrigatório!");
     } else {
     const id = await useCreateRevision({title, description, collaborators});
+    localStorage.setItem("sistematicStudyId", id);
     window.location.href = `http://localhost:5173/#/newRevision/protocol/${id}`;
     }
   }
