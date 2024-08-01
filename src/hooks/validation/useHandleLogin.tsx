@@ -53,7 +53,7 @@ export default function useHandleLogin() {
                         status: "success",
                         duration: 9000,
                         isClosable: true,
-                        position: 'top-right'
+                        position: 'top'
                     })
                     navigate('/user');
                 }; 
