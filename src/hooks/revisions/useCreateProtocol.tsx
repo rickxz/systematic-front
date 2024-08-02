@@ -20,7 +20,7 @@ const useCreateProtocol = async ({goal, mainQuestion, picoc, id}: protocolData) 
   const url = `http://localhost:8080/systematic-study/${id}/protocol`;
   let data = {};
 
-  if(picoc.context != '' && picoc.control != '' && picoc.intervention != '' && picoc.outcome != ''&& picoc.population != '')
+  if(picoc.context != '' || picoc.control != '' || picoc.intervention != '' || picoc.outcome != '' || picoc.population != '')
     data = {
       "goal": goal,
       "justification": mainQuestion,
