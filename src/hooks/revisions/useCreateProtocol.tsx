@@ -18,11 +18,20 @@ const useCreateProtocol = async ({goal, mainQuestion, picoc, id}: protocolData) 
   console.log(picoc);
 
   const url = `http://localhost:8080/systematic-study/${id}/protocol`;
-  const data = {
-    "goal": goal,
-    "justification": mainQuestion,
-    picoc
-  }
+  let data = {};
+
+  if(picoc.context != '' && picoc.control != '' && picoc.intervention != '' && picoc.outcome != ''&& picoc.population != '')
+    data = {
+      "goal": goal,
+      "justification": mainQuestion,
+      picoc
+    }
+    else
+    data = {
+      "goal": goal,
+      "justification": mainQuestion,
+    }
+
   console.log(id);
   try{
     let response = await axios.put(url, data, {withCredentials: true})
