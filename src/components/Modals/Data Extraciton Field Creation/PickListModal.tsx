@@ -5,10 +5,9 @@ import AddTextTable from "../../AddDataFields/AddTextTable";
 
 interface Props{
     id: string;
-    url: string;
 }
 
-function PickListModal({id, url}: Props) {
+function PickListModal({id}: Props) {
     const { isOpen, onClose, onOpen } = useDisclosure();
     
     useEffect(() => {
@@ -21,7 +20,7 @@ function PickListModal({id, url}: Props) {
             <ModalContent>
                 <ModalHeader>Insert the options</ModalHeader>
                 <ModalBody>
-                    <AddTextTable text="Options" placeholder="Options here" id={id} url={url}/>
+                    <AddTextTable text="Options" placeholder="Options here" id={id} url={''}/>
                 </ModalBody>
                 <ModalCloseButton />
             </ModalContent>
