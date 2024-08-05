@@ -19,6 +19,7 @@ interface iRevisionCardProps {
 
 export default function RevisionCard({ revisionId, id, title, reviewers, status, lastModification, /* isEdited */}: iRevisionCardProps) {
   async function redirectToReview(){
+    localStorage.setItem("systematicStudyId", revisionId);
     goToUnfinishedSystematicReviewPart(revisionId);
   }
   

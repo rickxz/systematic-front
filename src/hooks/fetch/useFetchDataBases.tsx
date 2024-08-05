@@ -1,30 +1,21 @@
 import { useEffect, useState } from "react";
-
-interface Database {
-  id: string;
-  dbName: string;
-  type: string;
-}
+import axios from "../../interceptor/interceptor";
 
 const useFetchDataBases = (url: string) => {
-  const [databases, setdatabase] = useState<Database[] | []>([]);
+  const [databases, setdatabase] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
-        const data = await response.json();
-        if (data && data.databases) {
-          setdatabase(data.databases);
-        } else {
-          console.error("O arquivo JSON não possui a estrutura esperada.");
-        }
+        let response = await axios.get(url, {withCredentials: true});
+        setdatabase(response.data.content.informationSources);
       } catch (error) {
         console.error("Erro ao buscar os dados:", error);
       }
     };
     fetchData();
   }, [url]);
+  console.log(databases);
   return { databases };
 };
 export default useFetchDataBases;

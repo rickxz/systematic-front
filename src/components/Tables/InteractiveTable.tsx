@@ -5,7 +5,10 @@ import { useInteractiveTable } from "../../hooks/useInteractiveTable";
 import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
 import useSendExtractionForm from "../../hooks/revisions/extractionForm/useSendExtractionForm";
 import axios from "../../interceptor/interceptor";
+import PickListModal from "../Modals/Data Extraciton Field Creation/PickListModal";
 import { useEffect, useState } from "react";
+
+
 interface Props{
   id: string;
   url: string;
@@ -17,6 +20,8 @@ export default function InteractiveTable({id, url}: Props) {
   const { sendExtractionForm } = useSendExtractionForm();
 
   const [questions, setQuestions] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState('');
 
   useEffect(() => {
     const fetch = async () => {
@@ -98,6 +103,9 @@ export default function InteractiveTable({id, url}: Props) {
                   }}
                   handleSaveEdit={async () => {
                     // handle save edit logic
+                    setModalType(rows[index].type);
+                    setShowModal(true);
+
                     console.log(rows[index].question, rows[index].type, rows[index].id);
                     const data = {
                       question: rows[index].question,
@@ -124,6 +132,9 @@ export default function InteractiveTable({id, url}: Props) {
           </Tr>
         </Tbody>
       </Table>
+      {showModal == true && modalType == 'pick list' && (
+        <PickListModal id={id} />
+      )}
     </TableContainer>
   );
 }

@@ -4,9 +4,20 @@ import Header from "../../components/ui/Header/Header";
 import useFetchDataBases from "../../hooks/fetch/useFetchDataBases";
 import { conteiner, dataBaseconteiner } from "./styles/Identification";
 import FlexLayout from "../../components/ui/Flex/Flex";
+import { useEffect, useState } from "react";
 
 export default function Identification() {
-  const { databases } = useFetchDataBases("/data/dataBases.json");
+  const [id, setId] = useState('');
+
+  useEffect(() => {
+    const id = localStorage.getItem("systematicStudyId");
+    if(id){
+     setId(id);
+    }
+  }, [])
+
+  const url = `http://localhost:8080/systematic-study/${id}/protocol`
+  const { databases } = useFetchDataBases(url);
 
   return (
     <FlexLayout defaultOpen={1} navigationType="Accordion">
@@ -25,7 +36,7 @@ export default function Identification() {
 
         <Box sx={dataBaseconteiner}>
           {databases.map((data) => {
-            return <DataBaseCard text={data.dbName} type={data.type} />;
+            return <DataBaseCard text={data} type="normal" />;
           })}
         </Box>
       </Box>

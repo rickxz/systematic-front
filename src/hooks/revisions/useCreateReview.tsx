@@ -21,7 +21,6 @@ const useCreateRevision = async ({title, description, collaborators}: ReviewData
 
     try{
         let response = await axios.post(url, data, {withCredentials: true});
-        console.log(response);
         return response.data.systematicStudyId;
     } catch(err){
         console.log(err);

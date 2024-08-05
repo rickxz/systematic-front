@@ -7,7 +7,6 @@ import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
 import useCreateRevision from "../../hooks/revisions/useCreateReview";
-import { flex } from "./styles/finalizationStyles";
 
 export default function NovaRevisao() {
   const [title, setTitle] = useState('');
@@ -19,6 +18,7 @@ export default function NovaRevisao() {
       window.alert("O campo título é obrigatório!");
     } else {
     const id = await useCreateRevision({title, description, collaborators});
+    localStorage.setItem("systematicStudyId", id);
     window.location.href = `http://localhost:5173/#/newRevision/protocol/${id}`;
     }
   }
@@ -38,7 +38,7 @@ export default function NovaRevisao() {
 
       <FormControl mt={"20px"} display={"flex"} gap={10} flexDir={"column"} w={"80%"} alignItems={"center"} ml={"2%"} >
         <InputText label="Title" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle} labelAbove={true}/>
-        <InputTextArea label="Description" placeholder="Enter review description" onChange={handleDescription}></InputTextArea>
+        <InputTextArea value={description} label="Description" placeholder="Enter review description" onChange={handleDescription}></InputTextArea>
         <ResearcherFilter />
 
         <Box w={"60vw"} display={"flex"} alignItems={"center"} justifyContent={"end"}>
