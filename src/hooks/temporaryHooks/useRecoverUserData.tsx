@@ -2,8 +2,10 @@ import { useVerifyIfLoggedIn } from "./useVerifyIfLoggedIn";
 
 export default function useRecoverUserData() {
     const userData = localStorage.getItem("username");
-    const isLoggednIn =  useVerifyIfLoggedIn();
+    const verifyIfLoggedInResponse =  useVerifyIfLoggedIn();
+    
+    if (verifyIfLoggedInResponse.isLoggedIn) return userData;
 
-    if (isLoggednIn) return userData;
+    localStorage.clear();
     return null;
 }
