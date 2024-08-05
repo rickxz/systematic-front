@@ -7,6 +7,7 @@ const Unauthorized: React.FC = () => {
   const navigate = useNavigate();
 
   const handleBackToHome = () => {
+    localStorage.clear();
     navigate('/');
   };
 
