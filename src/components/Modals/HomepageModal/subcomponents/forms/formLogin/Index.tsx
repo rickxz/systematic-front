@@ -5,7 +5,7 @@ import useHandleLogin from "../../../../../../hooks/validation/useHandleLogin";
 export default function FormLogin({ redirectForgotPassword }: { redirectForgotPassword: () => void }) {
     const {username, setUsername, password, setPassword,
         usernameError, passwordError,
-        handleSubmit, error, setError} = useHandleLogin();
+        handleSubmit, error, setError, isSubmitting} = useHandleLogin();
     return (
         <form onSubmit={handleSubmit}>
             <h2>Log In</h2>
@@ -34,7 +34,9 @@ export default function FormLogin({ redirectForgotPassword }: { redirectForgotPa
                 </div>
                 {error && <p className="error">{error}</p>}
                 <div className="actions">
-                    <button type="submit">Log in</button>
+                    <button type="submit" disabled={isSubmitting}>
+                        {isSubmitting ? "Is submitting..." : "Log in"}
+                    </button>
                     <Link to="#" onClick={redirectForgotPassword}>Forgot Password?</Link>
                 </div>
             </div>

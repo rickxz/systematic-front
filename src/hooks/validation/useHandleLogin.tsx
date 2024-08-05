@@ -10,6 +10,7 @@ export default function useHandleLogin() {
     const [usernameError, setUsernameError] = useState<string>("");
     const [passwordError, setPasswordError] = useState<string>("");
     const [error, setError] = useState<string>("");
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
     
     const isValid = (error === "" && username !== "" && password !== "");
@@ -42,7 +43,7 @@ export default function useHandleLogin() {
         
         
         if (isValid) {
-            console.log("inicio da requisição")
+            setIsSubmitting(true);
             try {
                 const response = await useLoginUser(data);
                 console.log(response);
@@ -63,13 +64,15 @@ export default function useHandleLogin() {
                 setError("Wrong username or password");
                 setUsername("");
                 setPassword("");
-            };
+            } finally {
+                setIsSubmitting(false);
+            }
         }
     };
     return {
         username, setUsername, password, setPassword,
         usernameError, setUsernameError, passwordError, setPasswordError,
         handleSubmit,
-        error, setError
+        error, setError, isSubmitting
     };
 }
