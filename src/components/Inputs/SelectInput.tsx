@@ -7,11 +7,12 @@ interface ISelectInputProps {
   names: string[];
   onSelect: (selectValue: string) => void;
   selectedValue: string | null;
+  selectedValues: string[];
   placeholder?: string;
   page: string;
 }
 
-export default function SelectInput({ values, names, onSelect, selectedValue, placeholder, page }: ISelectInputProps) {
+export default function SelectInput({ values, names, onSelect, selectedValue, selectedValues, placeholder, page }: ISelectInputProps) {
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onSelect(event.target.value);
   };
@@ -22,9 +23,10 @@ export default function SelectInput({ values, names, onSelect, selectedValue, pl
       <Select bgColor={"#C9D9E5"} value={selectedValue || ""} onChange={handleSelectChange}>
         <option value="" disabled>{placeholder}</option>
         {names.map((optionName, index) => (
+          !selectedValues.includes(optionName) ?
           <option key={index} value={values[index]}>
             {optionName}
-          </option>
+          </option> : ""
         ))}
       </Select>
     </FormControl>
