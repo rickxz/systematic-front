@@ -11,8 +11,9 @@ export function useSelect(url: string, type: 'databases' | "studiesLanguages", i
 
   const handleSelectAddButtonClick = () => {
     if (selectedValue !== null) {
-      setSelectedValues((prevSelectedValues) => [...prevSelectedValues, selectedValue]);
-      setSelectedValue(null);
+      if(selectedValues.indexOf(selectedValue) == -1){
+        setSelectedValues((prevSelectedValues) => [...prevSelectedValues, selectedValue]);
+      }
     }
   };
 
