@@ -25,6 +25,15 @@ export default function Protocol() {
       const url = `http://localhost:8080/systematic-study/${id}/protocol`;
       let response = await axios.get(url, {withCredentials: true});
       console.log(response);
+      if(response.data.content.picoc.context){
+        setPopulation(response.data.content.picoc.population);
+        setIntervention(response.data.content.picoc.intervention);
+        setControl(response.data.content.picoc.control);
+        setOutcome(response.data.content.picoc.outcome);
+        setContext(response.data.content.picoc.context);
+
+        setIsChecked(true);
+      }
       setGoal(response.data.content.goal)
       setMainQuestion(response.data.content.justification);
     }
