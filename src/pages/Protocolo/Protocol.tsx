@@ -108,9 +108,7 @@ export default function Protocol() {
           </FormControl>
 
           <Box sx={btnBox}>
-          {goal == '' && mainQuestion == '' ? <NavButton event={alert} text="Create new Review" /> :
           <NavButton event={handleData} text="Next" />
-          }
           </Box>
         </Flex>
       </Box>
