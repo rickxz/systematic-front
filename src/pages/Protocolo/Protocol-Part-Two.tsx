@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 export default function ProtocolPartTwo2() {
   const [researchStrategy, setResearchStrategy] = useState<string>('');
   const [selectProcess, setSelectProcess] = useState<string>('');
-  const [dataAcquisition, setDataAcquisition] = useState<string>('');
+  const [sourcesSelectionCriteria, setSourcesSelectionCriteria] = useState<string>('');
   const { id = '' } = useParams();
 
   const navigate = useNavigate();
@@ -29,19 +29,19 @@ export default function ProtocolPartTwo2() {
 
       setSelectProcess(response.data.content.selectionProcess);
       setResearchStrategy(response.data.content.searchMethod);
-      setDataAcquisition(response.data.content.sourcesSelectionCriteria);
+      setSourcesSelectionCriteria(response.data.content.sourcesSelectionCriteria);
     }
 
     fetchValues();
   }, [])
 
   async function handleData(){
-    await  useCreateProtocolTwo(researchStrategy, selectProcess, dataAcquisition, id);
+    await  useCreateProtocolTwo(researchStrategy, selectProcess, sourcesSelectionCriteria, id);
     navigate(`/newRevision/protocolpartThree/${id}`);
   }
 
   async function handleDataReturn(){
-    await  useCreateProtocolTwo(researchStrategy, selectProcess, dataAcquisition, id);
+    await  useCreateProtocolTwo(researchStrategy, selectProcess, sourcesSelectionCriteria, id);
     navigate(`/newRevision/protocol/${id}`);
   }
 
@@ -53,8 +53,8 @@ export default function ProtocolPartTwo2() {
     setSelectProcess(e.target.value);
   }
 
-  function handleDataAcquisition(e: React.ChangeEvent<HTMLTextAreaElement>){
-    setDataAcquisition(e.target.value);
+  function handleSourcesSelectionCriteria(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setSourcesSelectionCriteria(e.target.value);
   }
 
   return (
@@ -87,7 +87,7 @@ export default function ProtocolPartTwo2() {
 
           <TextAreaInput value={researchStrategy} onChange={handleResearchStrategy} label="Research Strategy" placeholder="Enter research strategy" />
           <TextAreaInput value={selectProcess} onChange={handleSelectProcess} label="Article Selection Process" placeholder="Enter selection process" />
-          <TextAreaInput value={dataAcquisition} onChange={handleDataAcquisition}  label="Data Acquisition" placeholder="Enter the data acquisition method" />
+          <TextAreaInput value={sourcesSelectionCriteria} onChange={handleSourcesSelectionCriteria}  label="Sources Selection Criteria" placeholder="Enter the sources selection criteria" />
 
         </FormControl>
         <Box sx={btnBox}>
