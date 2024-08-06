@@ -1,12 +1,13 @@
 form{
-    width: 40%;
-    padding: 40px 30px 20px;
+    width: 35%;
+    padding: 20px 20px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #C9D9E5;
     border-radius: 30px;
     height: min-content;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 form h2{
@@ -19,7 +20,6 @@ form h2{
     display: flex;
     flex-direction: column;
     width: 80%;
-    margin-top: 20px;
     align-items: center;
 }
 
@@ -34,8 +34,8 @@ form h2{
 }
 .inputGroup label{
     color: #2E4B6C;
-    font-size: 17px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .inputGroup input{
@@ -46,7 +46,7 @@ form h2{
     background-color: #EBF0F3;
     outline: 0;
     padding: 0 15px;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .inputGroup select{
@@ -57,11 +57,11 @@ form h2{
     background-color: #EBF0F3;
     outline: 0;
     padding: 0 15px;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .actions{
-    margin: 20px 0 15px;
+    margin: 15px 0 10px;
     display: flex;
     justify-content: space-evenly;
     width: 100%;
@@ -69,21 +69,23 @@ form h2{
 }
 .actions a{
     color: #2E4B6C;
+    font-size: 15px;
+
 }
 .actions button{
     background-color: #2E4B6C;
     border: 0;
-    padding: 7px 20px;
+    padding: 7px 17px;
     color: #EBF0F3;
     font-size: 15px;
     border-radius: 10px;
     font-weight: 600;
+    margin-right: 30px;
 }
 
 .error {
     color: red;
     font-size: 14px;
-    margin-top: 5px;
 }
 
 .inputError {
