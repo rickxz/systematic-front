@@ -2,7 +2,7 @@ import React from 'react';
 import axios from '../../interceptor/interceptor';
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
-import { Progress, FormControl, Box } from "@chakra-ui/react";
+import { Progress, FormControl, Box, Checkbox, Flex } from "@chakra-ui/react";
 import { btnBox, conteiner, flex } from "./styles/partTwooStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";
@@ -19,6 +19,7 @@ export default function ProtocolPartTwo2() {
   const [sourcesSelectionCriteria, setSourcesSelectionCriteria] = useState<string>('');
   const [studyTypeDefinition, setStudyTypeDefinition] = useState<string>('');
   const [searchString, setSearchString] = useState<string>('');
+  const [showMoreQuestionComponents, setShowMoreQuestioComponents] = useState<boolean>(false);
   const { id = '' } = useParams();
 
   const navigate = useNavigate();
@@ -70,6 +71,14 @@ export default function ProtocolPartTwo2() {
     setSearchString(e.target.value);
   }
 
+
+  function handleMoreQuestion() {
+    if (!showMoreQuestionComponents)
+      setShowMoreQuestioComponents(true);
+    else 
+      setShowMoreQuestioComponents(false);
+  }
+
   return (
     <FlexLayout defaultOpen={0} navigationType="Accordion">
       <Box w={"100%"} display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
@@ -80,6 +89,13 @@ export default function ProtocolPartTwo2() {
           <TextAreaInput value={searchString} onChange={handleSearchString}  label="Search String" placeholder="Enter the search string" />
           <TextAreaInput value={studyTypeDefinition} onChange={handleStudyTypeDefinition}  label="Study Type Definition" placeholder="Enter the study type definition" />
           
+          <Checkbox  onChange={handleMoreQuestion}>Add more reasearch questions</Checkbox>
+            {showMoreQuestionComponents && (
+                <Flex>
+                  <AddTextTable url={url} id={id} text="Research Questions" placeholder="Enter the other Research Questions"/>
+                </Flex>
+            )}
+
           <FormControl sx={flex}>
             <AddTextTable url={url} id={id} text="Keywords" placeholder="Enter the keywords related to your review"/>
           </FormControl>
