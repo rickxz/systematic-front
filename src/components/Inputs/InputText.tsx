@@ -1,6 +1,6 @@
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import SearchButton from "../Buttons/SearchButton";
-import { conteiner, inputconteiner } from "./styles/inputTextStyle";
+import { inputconteiner } from "./styles/inputTextStyle";
 
 interface ITextFieldProps {
   label?: string;

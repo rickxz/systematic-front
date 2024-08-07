@@ -17,6 +17,8 @@ export default function ProtocolPartTwo2() {
   const [researchStrategy, setResearchStrategy] = useState<string>('');
   const [selectProcess, setSelectProcess] = useState<string>('');
   const [sourcesSelectionCriteria, setSourcesSelectionCriteria] = useState<string>('');
+  const [studyTypeDefinition, setStudyTypeDefinition] = useState<string>('');
+  const [searchString, setSearchString] = useState<string>('');
   const { id = '' } = useParams();
 
   const navigate = useNavigate();
@@ -30,18 +32,21 @@ export default function ProtocolPartTwo2() {
       setSelectProcess(response.data.content.selectionProcess);
       setResearchStrategy(response.data.content.searchMethod);
       setSourcesSelectionCriteria(response.data.content.sourcesSelectionCriteria);
+      setStudyTypeDefinition(response.data.content.studyTypeDefinition);
+      setSearchString(response.data.content.searchString);
+      
     }
 
     fetchValues();
   }, [])
 
   async function handleData(){
-    await  useCreateProtocolTwo(researchStrategy, selectProcess, sourcesSelectionCriteria, id);
+    await  useCreateProtocolTwo(researchStrategy, selectProcess, sourcesSelectionCriteria, studyTypeDefinition, searchString, id);
     navigate(`/newRevision/protocolpartThree/${id}`);
   }
 
   async function handleDataReturn(){
-    await  useCreateProtocolTwo(researchStrategy, selectProcess, sourcesSelectionCriteria, id);
+    await  useCreateProtocolTwo(researchStrategy, selectProcess, sourcesSelectionCriteria, studyTypeDefinition, searchString, id);
     navigate(`/newRevision/protocol/${id}`);
   }
 
@@ -57,12 +62,24 @@ export default function ProtocolPartTwo2() {
     setSourcesSelectionCriteria(e.target.value);
   }
 
+  function handleStudyTypeDefinition(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setStudyTypeDefinition(e.target.value);
+  }
+
+  function handleSearchString(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setSearchString(e.target.value);
+  }
+
   return (
     <FlexLayout defaultOpen={0} navigationType="Accordion">
       <Box w={"100%"} display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
         <Header text="Protocol" />
         <Progress value={66} w={"100%"} color={"black"} />
         <FormControl sx={conteiner}>
+          
+          <TextAreaInput value={searchString} onChange={handleSearchString}  label="Search String" placeholder="Enter the search string" />
+          <TextAreaInput value={studyTypeDefinition} onChange={handleStudyTypeDefinition}  label="Study Type Definition" placeholder="Enter the study type definition" />
+          
           <FormControl sx={flex}>
             <AddTextTable url={url} id={id} text="Keywords" placeholder="Enter the keywords related to your review"/>
           </FormControl>
