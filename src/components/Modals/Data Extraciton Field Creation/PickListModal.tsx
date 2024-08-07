@@ -33,7 +33,7 @@ function PickListModal({id, show}: Props) {
                     <AddTextTable text="Options" placeholder="Options here" id={id} url={''}/>
                 </ModalBody>
                 <ModalFooter>
-                    <Button onClick={onClose}>Close</Button>
+                    <Button onClick={close}>Close</Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>
