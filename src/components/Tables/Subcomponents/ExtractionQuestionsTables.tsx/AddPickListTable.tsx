@@ -1,8 +1,6 @@
 import { FormControl, FormLabel } from '@chakra-ui/react';
-import React from 'react'
 import { useAddText } from '../../../../hooks/useAddText';
 import { useDeleteText } from '../../../../hooks/useDeleteText';
-import { text } from '../../../../pages/UserArea/styles/CardInfosStyle';
 import AddTextField from '../../../AddDataFields/AddTextField';
 import { label, formLabelStyle } from '../../../AddDataFields/styles/AddTextTableStyles';
 import { formcontrol } from '../../../Inputs/styles/SelectInputStyles';
@@ -15,7 +13,7 @@ interface Props{
 }
 
 export const AddPickListTable = ({placeholder, text, url}: Props) => {
-    const { AddText, handleAddText, setAddText, fetchAddText } = useAddText();
+    const { AddText, handleAddText, setAddText } = useAddText();
     const { handleDeleteText } = useDeleteText();
     
     return (
