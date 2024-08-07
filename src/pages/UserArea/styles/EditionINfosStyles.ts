@@ -8,7 +8,7 @@ export const conteiner = {
 
 export const infosconteiner = {
   display: "flex",
-  flexDir: "row",
+  flexDir: "column",
 };
 
 export const text = {

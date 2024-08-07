@@ -4,17 +4,17 @@ import { conteiner, infosconteiner, text } from "../styles/EditionINfosStyles";
 
 interface IEditionInfosProps {
   status: string;
-  creation: string;
+  reviewers: string[]
   // isEdited: boolean;
 }
 
-export default function EditionInfos({ status, creation, /* isEdited */ }: IEditionInfosProps) {
+export default function EditionInfos({ reviewers, status, /* isEdited */ }: IEditionInfosProps) {
   return (
     <Box sx={conteiner}>
       {/* <EditionIcon/> */}
       <Box sx={infosconteiner}>
         <Text sx={text}>Status: {status}</Text>
-        <Text sx={text}>Created: {creation}</Text>
+        <Text sx={text}>Reviewers: {reviewers}</Text>
       </Box>
     </Box>
   );
