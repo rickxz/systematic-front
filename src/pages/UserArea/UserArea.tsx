@@ -24,7 +24,7 @@ export default function UserArea() {
   return (
     <FlexLayout defaultOpen={0} navigationType="Default">
       <Header text="My Systematic Reviews" />
-      <Flex sx={flexStyles} w={"85vw"} align="center" justify="center">
+      <Flex sx={flexStyles} w={"90%"} align="center" justify="center">
         {cardData.length > 0 ? (
           cardData.map((data) => (
             <RevisionCard
@@ -41,12 +41,12 @@ export default function UserArea() {
         ) : (
           <Flex direction="column" align="center" justify="center" w="100%">
             <Icon as={MdSentimentDissatisfied} boxSize={12} color="gray.500" mb={4} mt={"60px"}/>            <Text fontSize="2xl" color="gray.600" mb={4}>
-              Ops! Não encontramos nenhuma revisão por aqui.
+              Oops! We didn't find any reviews here.
             </Text>
             <Text fontSize="lg" color="gray.500" mb={4}>
-              Que tal criar uma nova? 
+              How about creating a new one? 
             </Text>
-            <NavButton text='Criar nova revisão' path='/newRevision' />
+            <NavButton text='Create review' path='/newRevision' ml='0rem'/>
           </Flex>
         )}
       </Flex>
