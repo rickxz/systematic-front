@@ -25,11 +25,13 @@ function PickListModal({id, show}: Props) {
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader>Insert the options</ModalHeader>
+                <ModalHeader>
+                    Insert the options
+                    <ModalCloseButton onClick={close}/>
+                </ModalHeader>
                 <ModalBody>
                     <AddTextTable text="Options" placeholder="Options here" id={id} url={''}/>
                 </ModalBody>
-                <ModalCloseButton onClick={close}/>
             </ModalContent>
         </Modal>
     )
