@@ -1,4 +1,4 @@
-import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay } from "@chakra-ui/react"
+import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
 import { useDisclosure } from "@chakra-ui/react"
 import { useEffect } from "react";
 import AddTextTable from "../../AddDataFields/AddTextTable";
@@ -32,6 +32,9 @@ function PickListModal({id, show}: Props) {
                 <ModalBody>
                     <AddTextTable text="Options" placeholder="Options here" id={id} url={''}/>
                 </ModalBody>
+                <ModalFooter>
+                    <Button onClick={onClose}>Close</Button>
+                </ModalFooter>
             </ModalContent>
         </Modal>
     )
