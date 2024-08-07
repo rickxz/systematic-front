@@ -44,6 +44,7 @@ export default function AddSelectTable({ label, options, url, type, placeholder 
             names={options}
             onSelect={handleSelectChange}
             selectedValue={selectedValue}
+            selectedValues={selectedValues}
             placeholder={placeholder}
             page={"protocol"}
           />

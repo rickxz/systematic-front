@@ -2,7 +2,7 @@ import React from 'react';
 import axios from '../../interceptor/interceptor';
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
-import { Progress, FormControl, Box } from "@chakra-ui/react";
+import { Progress, FormControl, Box, Checkbox, Flex } from "@chakra-ui/react";
 import { btnBox, conteiner, flex } from "./styles/partTwooStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";
@@ -16,7 +16,11 @@ import { useNavigate } from "react-router-dom";
 export default function ProtocolPartTwo2() {
   const [researchStrategy, setResearchStrategy] = useState<string>('');
   const [selectProcess, setSelectProcess] = useState<string>('');
-  const [dataAcquisition, setDataAcquisition] = useState<string>('');
+  const [sourcesSelectionCriteria, setSourcesSelectionCriteria] = useState<string>('');
+  const [studyTypeDefinition, setStudyTypeDefinition] = useState<string>('');
+  const [searchString, setSearchString] = useState<string>('');
+  const [showMoreQuestionComponents, setShowMoreQuestioComponents] = useState<boolean>(false);
+  const [dataCollectionProcess, setDataCollectionProcess] = useState<string>("");
   const { id = '' } = useParams();
 
   const navigate = useNavigate();
@@ -29,19 +33,23 @@ export default function ProtocolPartTwo2() {
 
       setSelectProcess(response.data.content.selectionProcess);
       setResearchStrategy(response.data.content.searchMethod);
-      setDataAcquisition(response.data.content.sourcesSelectionCriteria);
+      setSourcesSelectionCriteria(response.data.content.sourcesSelectionCriteria);
+      setStudyTypeDefinition(response.data.content.studyTypeDefinition);
+      setSearchString(response.data.content.searchString);
+      setDataCollectionProcess(response.data.content.dataCollectionProcess);
+      
     }
 
     fetchValues();
   }, [])
 
   async function handleData(){
-    await  useCreateProtocolTwo(researchStrategy, selectProcess, dataAcquisition, id);
+    await  useCreateProtocolTwo(researchStrategy, selectProcess, sourcesSelectionCriteria, studyTypeDefinition, searchString, dataCollectionProcess, id);
     navigate(`/newRevision/protocolpartThree/${id}`);
   }
 
   async function handleDataReturn(){
-    await  useCreateProtocolTwo(researchStrategy, selectProcess, dataAcquisition, id);
+    await  useCreateProtocolTwo(researchStrategy, selectProcess, sourcesSelectionCriteria, studyTypeDefinition, searchString, dataCollectionProcess, id);
     navigate(`/newRevision/protocol/${id}`);
   }
 
@@ -53,8 +61,28 @@ export default function ProtocolPartTwo2() {
     setSelectProcess(e.target.value);
   }
 
-  function handleDataAcquisition(e: React.ChangeEvent<HTMLTextAreaElement>){
-    setDataAcquisition(e.target.value);
+  function handleSourcesSelectionCriteria(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setSourcesSelectionCriteria(e.target.value);
+  }
+
+  function handleStudyTypeDefinition(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setStudyTypeDefinition(e.target.value);
+  }
+
+  function handleSearchString(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setSearchString(e.target.value);
+  }
+
+  function handleDataCollectionProcess(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setDataCollectionProcess(e.target.value);
+  }
+
+
+  function handleMoreResearchQuestionArea() {
+    if (!showMoreQuestionComponents)
+      setShowMoreQuestioComponents(true);
+    else 
+      setShowMoreQuestioComponents(false);
   }
 
   return (
@@ -63,6 +91,18 @@ export default function ProtocolPartTwo2() {
         <Header text="Protocol" />
         <Progress value={66} w={"100%"} color={"black"} />
         <FormControl sx={conteiner}>
+          
+          <TextAreaInput value={searchString} onChange={handleSearchString}  label="Search String" placeholder="Enter the search string" />
+          <TextAreaInput value={studyTypeDefinition} onChange={handleStudyTypeDefinition}  label="Study Type Definition" placeholder="Enter the study type definition" />
+          <TextAreaInput value={dataCollectionProcess} onChange={handleDataCollectionProcess}  label="Data Colletion Process" placeholder="Enter the data colletion process" />
+
+          <Checkbox  onChange={handleMoreResearchQuestionArea}>Add more reasearch questions</Checkbox>
+            {showMoreQuestionComponents && (
+                <Flex>
+                  <AddTextTable url={url} id={id} text="Research Questions" placeholder="Enter the other Research Questions"/>
+                </Flex>
+            )}
+
           <FormControl sx={flex}>
             <AddTextTable url={url} id={id} text="Keywords" placeholder="Enter the keywords related to your review"/>
           </FormControl>
@@ -77,17 +117,18 @@ export default function ProtocolPartTwo2() {
           <AddTextTable id={id} text="Inclusion criteria" placeholder="Enter the criteria" url={url}/>        
           <AddTextTable id={id} text="Exclusion criteria" placeholder="Enter the criteria" url={url}/>
           <AddSelectionTable
-            label="Databases"
+            label="Databases and Infortion Source"
             type="databases" 
             url={url}
-            options={["Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
+            options={["Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed", "Expert Suggestion",
+               "Backward Snowballing", "Forward Snowballing", "Grey Literature Sources"]}
             placeholder={"Select Data Base"}
             typeField="select"
           />
 
           <TextAreaInput value={researchStrategy} onChange={handleResearchStrategy} label="Research Strategy" placeholder="Enter research strategy" />
           <TextAreaInput value={selectProcess} onChange={handleSelectProcess} label="Article Selection Process" placeholder="Enter selection process" />
-          <TextAreaInput value={dataAcquisition} onChange={handleDataAcquisition}  label="Data Acquisition" placeholder="Enter the data acquisition method" />
+          <TextAreaInput value={sourcesSelectionCriteria} onChange={handleSourcesSelectionCriteria}  label="Sources Selection Criteria" placeholder="Enter the sources selection criteria" />
 
         </FormControl>
         <Box sx={btnBox}>
