@@ -117,10 +117,11 @@ export default function ProtocolPartTwo2() {
           <AddTextTable id={id} text="Inclusion criteria" placeholder="Enter the criteria" url={url}/>        
           <AddTextTable id={id} text="Exclusion criteria" placeholder="Enter the criteria" url={url}/>
           <AddSelectionTable
-            label="Databases"
+            label="Databases and Infortion Source"
             type="databases" 
             url={url}
-            options={["Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed"]}
+            options={["Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed", "Expert Suggestion",
+               "Backward Snowballing", "Forward Snowballing", "Grey Literature Sources"]}
             placeholder={"Select Data Base"}
             typeField="select"
           />
