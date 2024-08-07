@@ -17,7 +17,7 @@ interface Props{
 export default function InteractiveTable({id, url}: Props) {
   const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers } =
     useInteractiveTable();
-  const { sendExtractionForm } = useSendExtractionForm();
+  const { sendTextualQuestion } = useSendExtractionForm();
 
   const [questions, setQuestions] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -107,13 +107,19 @@ export default function InteractiveTable({id, url}: Props) {
                     setShowModal(true);
 
                     console.log(rows[index].question, rows[index].type, rows[index].id);
-                    const data = {
-                      question: rows[index].question,
-                      type: rows[index].type,
-                      questionId: rows[index].id,
-                      reviewId: id
+                    if(rows[index].type == "textual"){
+                      const data = {
+                        question: rows[index].question,
+                        questionId: rows[index].id,
+                        reviewId: id
+                      }
+
+                      sendTextualQuestion(data);
+                    } else if(rows[index].type == "pick list"){
+                      const data = {
+
+                      }   
                     }
-                    sendExtractionForm(data);
                     let response = await axios.get(`http://localhost:8080/api/v1/systematic-study/${id}/protocol/extraction-question`, {withCredentials: true});
                     console.log(response);
                   }}
