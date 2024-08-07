@@ -3,14 +3,15 @@ import axios from "../../interceptor/interceptor";
 
 const useCreateProtocolTwo = async (researchStrategy: string, selectionProcess: string,
      sourcesSelectionCriteria: string, studyTypeDefinition: string, searchString: string,
-      id: string) => {
+     dataCollectionProcess:string, id: string) => {
 
     const data = {
         searchMethod: researchStrategy,
         selectionProcess: selectionProcess,
         sourcesSelectionCriteria: sourcesSelectionCriteria,
         studyTypeDefinition: studyTypeDefinition,
-        searchString: searchString
+        searchString: searchString,
+        dataCollectionProcess: dataCollectionProcess
     }
 
     const url = `http://localhost:8080/systematic-study/${id}/protocol`

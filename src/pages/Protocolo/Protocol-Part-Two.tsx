@@ -20,6 +20,7 @@ export default function ProtocolPartTwo2() {
   const [studyTypeDefinition, setStudyTypeDefinition] = useState<string>('');
   const [searchString, setSearchString] = useState<string>('');
   const [showMoreQuestionComponents, setShowMoreQuestioComponents] = useState<boolean>(false);
+  const [dataCollectionProcess, setDataCollectionProcess] = useState<string>("");
   const { id = '' } = useParams();
 
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ export default function ProtocolPartTwo2() {
       setSourcesSelectionCriteria(response.data.content.sourcesSelectionCriteria);
       setStudyTypeDefinition(response.data.content.studyTypeDefinition);
       setSearchString(response.data.content.searchString);
+      setDataCollectionProcess(response.data.content.dataCollectionProcess);
       
     }
 
@@ -42,12 +44,12 @@ export default function ProtocolPartTwo2() {
   }, [])
 
   async function handleData(){
-    await  useCreateProtocolTwo(researchStrategy, selectProcess, sourcesSelectionCriteria, studyTypeDefinition, searchString, id);
+    await  useCreateProtocolTwo(researchStrategy, selectProcess, sourcesSelectionCriteria, studyTypeDefinition, searchString, dataCollectionProcess, id);
     navigate(`/newRevision/protocolpartThree/${id}`);
   }
 
   async function handleDataReturn(){
-    await  useCreateProtocolTwo(researchStrategy, selectProcess, sourcesSelectionCriteria, studyTypeDefinition, searchString, id);
+    await  useCreateProtocolTwo(researchStrategy, selectProcess, sourcesSelectionCriteria, studyTypeDefinition, searchString, dataCollectionProcess, id);
     navigate(`/newRevision/protocol/${id}`);
   }
 
@@ -71,8 +73,12 @@ export default function ProtocolPartTwo2() {
     setSearchString(e.target.value);
   }
 
+  function handleDataCollectionProcess(e: React.ChangeEvent<HTMLTextAreaElement>){
+    setDataCollectionProcess(e.target.value);
+  }
 
-  function handleMoreQuestion() {
+
+  function handleMoreResearchQuestionArea() {
     if (!showMoreQuestionComponents)
       setShowMoreQuestioComponents(true);
     else 
@@ -88,8 +94,9 @@ export default function ProtocolPartTwo2() {
           
           <TextAreaInput value={searchString} onChange={handleSearchString}  label="Search String" placeholder="Enter the search string" />
           <TextAreaInput value={studyTypeDefinition} onChange={handleStudyTypeDefinition}  label="Study Type Definition" placeholder="Enter the study type definition" />
-          
-          <Checkbox  onChange={handleMoreQuestion}>Add more reasearch questions</Checkbox>
+          <TextAreaInput value={dataCollectionProcess} onChange={handleDataCollectionProcess}  label="Data Colletion Process" placeholder="Enter the data colletion process" />
+
+          <Checkbox  onChange={handleMoreResearchQuestionArea}>Add more reasearch questions</Checkbox>
             {showMoreQuestionComponents && (
                 <Flex>
                   <AddTextTable url={url} id={id} text="Research Questions" placeholder="Enter the other Research Questions"/>
