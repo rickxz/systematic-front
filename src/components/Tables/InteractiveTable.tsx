@@ -133,7 +133,7 @@ export default function InteractiveTable({id, url}: Props) {
         </Tbody>
       </Table>
       {showModal == true && modalType == 'pick list' && (
-        <PickListModal id={id} show={setShowModal}/>
+        <PickListModal show={setShowModal}/>
       )}
     </TableContainer>
   );
