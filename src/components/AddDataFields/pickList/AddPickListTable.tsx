@@ -1,9 +1,9 @@
 import { FormControl, FormLabel } from "@chakra-ui/react";
 import AddPickListField from "./AddPickListField";
-import InfosPickList from "../Tables/PickListTable";
-import { useAddText } from "../../hooks/useAddText";
-import { useDeletePickList } from "../../hooks/useDeletePickList";
-import { formcontrol, label } from "./styles/AddTextTableStyles";
+import InfosPickList from "../../Tables/PickListTable";
+import { useAddText } from "../../../hooks/useAddText";
+import { useDeletePickList } from "../../../hooks/useDeletePickList";
+import { formcontrol, label } from "../styles/AddTextTableStyles";
 
 interface AddTextTableProps {
   text: string;

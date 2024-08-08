@@ -5,9 +5,9 @@ import { useInteractiveTable } from "../../hooks/useInteractiveTable";
 import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
 import useSendExtractionForm from "../../hooks/revisions/extractionForm/useSendExtractionForm";
 import axios from "../../interceptor/interceptor";
-import PickListModal from "../Modals/Data Extraciton Field Creation/PickListModal";
 import { useEffect, useState } from "react";
-
+import NumberScaleModal from "../Modals/Data Extraciton Field Creation/NumberScaleModal";
+import PickListModal from "../Modals/Data Extraciton Field Creation/PickListModal";
 
 interface Props{
   id: string;
@@ -19,6 +19,7 @@ export default function InteractiveTable({id, url}: Props) {
     useInteractiveTable();
   const { sendTextualQuestion, sendPickListQuestion } = useSendExtractionForm();
 
+  const [numberScale, setnumberScale] = useState<number[]>([]);
   const [questions, setQuestions] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState('');
@@ -74,6 +75,11 @@ export default function InteractiveTable({id, url}: Props) {
     handleTypeChange(index, newValue); // Atualiza o tipo primeiro
   
     if (newValue === 'pick list') {
+      setModalType(newValue);  // Atualiza o tipo do modal
+      setShowModal(true);  // Abre o modal
+    }
+
+    if (newValue === 'number scale') {
       setModalType(newValue);  // Atualiza o tipo do modal
       setShowModal(true);  // Abre o modal
     }
@@ -158,8 +164,8 @@ export default function InteractiveTable({id, url}: Props) {
       {showModal == true && modalType == 'pick list' && (
         <PickListModal show={setShowModal} questionHolder={setQuestions}/>
       )}
-      {showModal == true && modalType == 'numbered list' && (
-        <PickListModal show={setShowModal} questionHolder={setQuestions}/>
+      {showModal == true && modalType == 'number scale' && (
+        <NumberScaleModal show={setShowModal} scaleHolder={setnumberScale}/>
       )}
     </TableContainer>
   );
