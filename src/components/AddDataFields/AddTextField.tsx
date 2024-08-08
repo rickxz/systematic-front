@@ -4,9 +4,6 @@ import EventButton from "../Buttons/EventButton";
 import { useState } from "react";
 import { formcontrol } from "./styles/AddTextFieldStyle";
 import useHandleAddText from "../../hooks/tables/useHandleAddText";
-import useSendKeywords from "../../hooks/tables/useSendKeywords";
-import useSendInclusionCriteria from "../../hooks/tables/useSendInclusionCriteria";
-import useSendExclusionCriteria from "../../hooks/tables/useSendExclusionCriterias";
 
 interface IAddTextFieldProps {
   onAddText: (newKeyword: string) => void;
@@ -17,9 +14,6 @@ interface IAddTextFieldProps {
 
 export default function AddTextField({ onAddText, placeholder, url, text }: IAddTextFieldProps) {
   const [inputValue, setInputValue] = useState<string>("");
-  const sendKeywords = useSendKeywords();
-  const sendCriterias = useSendInclusionCriteria();
-  const sendExclusionCriteria = useSendExclusionCriteria();
   const { handleServerOriented } = useHandleAddText();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
