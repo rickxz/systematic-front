@@ -23,8 +23,8 @@ export default function InteractiveTable({id, url}: Props) {
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState('');
 
+  
   useEffect(() => {
-    console.log(questions);
 
     const fetch = async () => {
       try {
@@ -64,7 +64,20 @@ export default function InteractiveTable({id, url}: Props) {
     };
   
     fetch();
-  }, [questions]);
+  }, []);
+
+  useEffect(() => {
+    console.log(questions);
+  }, [questions])
+  
+  function handleSelect(index: number, newValue: string){
+    handleTypeChange(index, newValue); // Atualiza o tipo primeiro
+  
+    if (newValue === 'pick list') {
+      setModalType(newValue);  // Atualiza o tipo do modal
+      setShowModal(true);  // Abre o modal
+    }
+  }
   
 
   return (
@@ -86,7 +99,7 @@ export default function InteractiveTable({id, url}: Props) {
                 border={"solid 1px #303D50"} />
               </Td>
               <Td>
-                <Select border={"solid 1px #303D50"} value={row.type} onChange={(e) => handleTypeChange(index, e.target.value)}>
+                <Select onChange={(e) => handleSelect(index, e.target.value)} border={"solid 1px #303D50"} value={row.type} >
                   {options.map((opt, i) => (
                     <option key={i} value={opt.toLowerCase()}>
                       {opt}
@@ -104,8 +117,6 @@ export default function InteractiveTable({id, url}: Props) {
                   }}
                   handleSaveEdit={async () => {
                     // handle save edit logic
-                    setModalType(rows[index].type);
-                    setShowModal(true);
 
                     console.log(rows[index].question, rows[index].type, rows[index].id);
                     if(rows[index].type == "textual"){
@@ -145,6 +156,9 @@ export default function InteractiveTable({id, url}: Props) {
         </Tbody>
       </Table>
       {showModal == true && modalType == 'pick list' && (
+        <PickListModal show={setShowModal} questionHolder={setQuestions}/>
+      )}
+      {showModal == true && modalType == 'numbered list' && (
         <PickListModal show={setShowModal} questionHolder={setQuestions}/>
       )}
     </TableContainer>
