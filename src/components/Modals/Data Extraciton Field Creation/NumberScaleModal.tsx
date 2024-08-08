@@ -8,31 +8,35 @@ interface Props{
     scaleHolder: React.Dispatch<React.SetStateAction<number[]>>
 }
 
-function NumberScaleModal({show}: Props) {
+function NumberScaleModal({show, scaleHolder }: Props) {
     
     const { isOpen, onClose, onOpen } = useDisclosure();
-    const [minimalValue, setMinimalValue] = useState<number>();
-    const [maximalValue, setMaximalValue] = useState<number>()
+    const [minimalValue, setMinimalValue] = useState<number>(0); // Inicializando com 0
+    const [maximalValue, setMaximalValue] = useState<number>(5); // Inicializando com 5
 
     useEffect(() => {
         onOpen();
     }, []);
 
-    function close(){
-        show(false);
-        onClose();
-    }
-  
     function handleMinimalValue(valueAsString: string, valueAsNumber: number){
-        setMinimalValue(valueAsNumber);
+        if (!isNaN(valueAsNumber)) {
+            setMinimalValue(valueAsNumber);
+        }
     }
-    
+
     function handleMaximalValue(valueAsString: string, valueAsNumber: number){
-        setMaximalValue(valueAsNumber);
+        if (!isNaN(valueAsNumber)) {
+            setMaximalValue(valueAsNumber);
+        }
     }
 
     function handleSave(){
-        
+        if (minimalValue <= maximalValue) {
+            let array: number[] = [minimalValue, maximalValue];
+            scaleHolder(array);
+        }
+        onClose();
+        show(false);
     }
 
     return (
@@ -41,43 +45,37 @@ function NumberScaleModal({show}: Props) {
             <ModalContent>
                 <ModalHeader>
                     Values to number scale
-                    <ModalCloseButton onClick={close}/>
+                    <ModalCloseButton onClick={onClose} />
                 </ModalHeader>
                 <ModalBody>
-                    
-                <FormControl>
+                    <FormControl>
+                        <FormLabel>Min</FormLabel>
+                        <NumberInput mb={"2rem"} defaultValue={0} onChange={handleMinimalValue}>
+                            <NumberInputField />
+                            <NumberInputStepper>
+                                <NumberIncrementStepper />
+                                <NumberDecrementStepper />
+                            </NumberInputStepper>
+                        </NumberInput>
 
-                    <FormLabel>Min</FormLabel>
-                    <NumberInput mb={"2rem"} defaultValue={0} onChange={handleMinimalValue}>      
-
-                    <NumberInputField />
-                    <NumberInputStepper>
-                        <NumberIncrementStepper />
-                        <NumberDecrementStepper />
-                    </NumberInputStepper>
-
-                    </NumberInput>
-
-                    <FormLabel>Max</FormLabel>
-                    <NumberInput defaultValue={5} onChange={handleMaximalValue}>
-
-                    <NumberInputField />
-                    <NumberInputStepper>
-                        <NumberIncrementStepper />
-                        <NumberDecrementStepper />
-                    </NumberInputStepper>
-
-                    </NumberInput>
-
+                        <FormLabel>Max</FormLabel>
+                        <NumberInput defaultValue={5} onChange={handleMaximalValue}>
+                            <NumberInputField />
+                            <NumberInputStepper>
+                                <NumberIncrementStepper />
+                                <NumberDecrementStepper />
+                            </NumberInputStepper>
+                        </NumberInput>
                     </FormControl>
-
                 </ModalBody>
                 <ModalFooter>
-                    <Button onClick={close}>Close</Button>
+                    <Button onClick={onClose} m={"1rem"}>Close</Button>
+                    <Button onClick={handleSave}>Save</Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>
-    )
+    );
 }
+
 
 export default NumberScaleModal
