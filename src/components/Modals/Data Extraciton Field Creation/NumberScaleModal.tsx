@@ -23,12 +23,12 @@ function NumberScaleModal({show}: Props) {
         onClose();
     }
   
-    function handleMinimalValue(e: { target: { value: SetStateAction<number | undefined>; }; }){
-      setMinimalValue(e.target.value);
+    function handleMinimalValue(valueAsString: string, valueAsNumber: number){
+        setMinimalValue(valueAsNumber);
     }
     
-    function handleMaximalValue(e: { target: { value: SetStateAction<number | undefined>; }; }){
-      setMaximalValue(e.target.value);
+    function handleMaximalValue(valueAsString: string, valueAsNumber: number){
+        setMaximalValue(valueAsNumber);
     }
 
     function handleSave(){
