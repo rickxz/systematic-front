@@ -27,10 +27,10 @@ export default function RevisionCard({ revisionId, id, title, reviewers, status,
     <>
       <Card sx={Cardstyles} onClick={redirectToReview}>
         <CardIcon />
-        <CardInfos title={title} lastModification={(lastModification as string)} />
+        <CardInfos title={title} reviewers={reviewers}/>
         <Box sx={CardInfosConteiner} id={id}>
           <EnterRevisionButton text="Review Info"/>
-          <EditionInfos reviewers={reviewers} status={status}  /*isEdited={isEdited} */ />
+          <EditionInfos lastModification={(lastModification as string)} status={status}   /*isEdited={isEdited} */ />
         </Box>
       </Card>
     </>
