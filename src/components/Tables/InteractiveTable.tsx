@@ -17,20 +17,21 @@ interface Props{
 export default function InteractiveTable({id, url}: Props) {
   const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers } =
     useInteractiveTable();
-  const { sendExtractionForm } = useSendExtractionForm();
+  const { sendTextualQuestion, sendPickListQuestion } = useSendExtractionForm();
 
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState('');
 
+  
   useEffect(() => {
+
     const fetch = async () => {
       try {
         let response = await axios.get(url, { withCredentials: true });
   
         let link = response.data._links['find-all-review-extraction-questions'].href;
         response = await axios.get(link, { withCredentials: true });
-        console.log(response);
   
         const fetchedRows = response.data.questions.map(item => {
           let type;
@@ -64,6 +65,19 @@ export default function InteractiveTable({id, url}: Props) {
   
     fetch();
   }, []);
+
+  useEffect(() => {
+    console.log(questions);
+  }, [questions])
+  
+  function handleSelect(index: number, newValue: string){
+    handleTypeChange(index, newValue); // Atualiza o tipo primeiro
+  
+    if (newValue === 'pick list') {
+      setModalType(newValue);  // Atualiza o tipo do modal
+      setShowModal(true);  // Abre o modal
+    }
+  }
   
 
   return (
@@ -85,7 +99,7 @@ export default function InteractiveTable({id, url}: Props) {
                 border={"solid 1px #303D50"} />
               </Td>
               <Td>
-                <Select border={"solid 1px #303D50"} value={row.type} onChange={(e) => handleTypeChange(index, e.target.value)}>
+                <Select onChange={(e) => handleSelect(index, e.target.value)} border={"solid 1px #303D50"} value={row.type} >
                   {options.map((opt, i) => (
                     <option key={i} value={opt.toLowerCase()}>
                       {opt}
@@ -103,17 +117,26 @@ export default function InteractiveTable({id, url}: Props) {
                   }}
                   handleSaveEdit={async () => {
                     // handle save edit logic
-                    setModalType(rows[index].type);
-                    setShowModal(true);
 
                     console.log(rows[index].question, rows[index].type, rows[index].id);
-                    const data = {
-                      question: rows[index].question,
-                      type: rows[index].type,
-                      questionId: rows[index].id,
-                      reviewId: id
+                    if(rows[index].type == "textual"){
+                      const data = {
+                        question: rows[index].question,
+                        questionId: rows[index].id,
+                        reviewId: id
+                      }
+
+                      sendTextualQuestion(data);
+                    } else if(rows[index].type == "pick list"){
+                      const data = {
+                          question: rows[index].question,
+                          questionId: rows[index].id,
+                          reviewId: id,
+                          options: questions
+                      }   
+                      
+                      sendPickListQuestion(data);
                     }
-                    sendExtractionForm(data);
                     let response = await axios.get(`http://localhost:8080/api/v1/systematic-study/${id}/protocol/extraction-question`, {withCredentials: true});
                     console.log(response);
                   }}
@@ -133,7 +156,10 @@ export default function InteractiveTable({id, url}: Props) {
         </Tbody>
       </Table>
       {showModal == true && modalType == 'pick list' && (
-        <PickListModal id={id} />
+        <PickListModal show={setShowModal} questionHolder={setQuestions}/>
+      )}
+      {showModal == true && modalType == 'numbered list' && (
+        <PickListModal show={setShowModal} questionHolder={setQuestions}/>
       )}
     </TableContainer>
   );

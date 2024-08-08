@@ -1,66 +1,51 @@
 import axios from "../../../interceptor/interceptor";
 
-interface Props{
+interface TextualProps{
     question: string;
-    type: string;
     questionId: number;
     reviewId: string;
 }
 
-const useSendExtractionForm = () => {
-    async function sendExtractionForm({question, type, questionId, reviewId}: Props){
-        let url: string = '';
-        let data = {};
+interface PickListProps{
+    question: string;
+    questionId: number;
+    reviewId: string;
+    options: string[];
+}
 
-        switch (type) {
-            case "textual":
-                url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/textual`;
-                data = {
-                    code: questionId,
-                    description: question
-                }
-                break;
-            case "pick list":
-                url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/pick-list`;
-                data = {
-                    code: questionId,
-                    description: question,
-                    options: ["string"]
-                }
-                break;
-            case "number scale":
-                url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/number-scale`;
-                data = {
-                    code: questionId,
-                    description: question,
-                    lower: 0,
-                    higher: 10
-                }
-                break;
-            case "labeled list":
-                url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/labeled-scale`;
-                data = {
-                    code: questionId,
-                    description: question,
-                    scales: {
-                        aditionalProp1: 0,
-                        aditionalProp2: 0
-                    }
-                }
-                break;
-            default: 
-                throw new Error('invalid question type!');
+const useSendExtractionForm = () => {
+    async function sendTextualQuestion({question, questionId, reviewId}: TextualProps){
+        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/textual`;
+        const data = {
+            code: questionId,
+            description: question
         }
 
         try{
-        let response = await axios.post(url, data, {withCredentials: true});
-        console.log(response);
+            let response = await axios.post(url, data, {withCredentials: true});
+            console.log(response);
         } catch(err){
             console.log(err);
         }
     }
 
-    return { sendExtractionForm };
+    async function sendPickListQuestion({question, questionId, reviewId, options}: PickListProps){
+        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/pick-list`;
+        const data = {
+            code: questionId,
+            description: question,
+            options
+        }
+
+        try{
+            let response = await axios.post(url, data, {withCredentials: true});
+            console.log(response);
+        } catch(err){
+            console.log(err);
+        }
+    }
+
+    return { sendTextualQuestion, sendPickListQuestion };
 }
 
-export default useSendExtractionForm
+export default useSendExtractionForm;
