@@ -4,21 +4,21 @@ export const conteiner = {
   alignSelf: "center",
   justifySelf: "center",
   w: "fit-content",
+  ml: "10px"
 };
 
 export const text = {
-  as: "h4",
   w: "26em",
   alignSelf: "center",
-  ml: "10px"
 };
 
 export const titleSX = {
   as: "h4",
   w: "26em",
   alignSelf: "center",
-  ml: "10px",
   whiteSpace: "nowrap",
   overflow: "hidden",
-  textOverflow: "ellipsis"
+  textOverflow: "ellipsis",
+  fontWeight: 500, 
+  cursor: "pointer"
 };
