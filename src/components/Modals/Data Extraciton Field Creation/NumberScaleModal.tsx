@@ -1,6 +1,6 @@
 import { Button, FormControl, FormLabel, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper } from "@chakra-ui/react"
 import { useDisclosure } from "@chakra-ui/react"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Dispatch, SetStateAction } from "react";
 
 interface Props{
@@ -9,8 +9,11 @@ interface Props{
 }
 
 function NumberScaleModal({show}: Props) {
-    const { isOpen, onClose, onOpen } = useDisclosure();
     
+    const { isOpen, onClose, onOpen } = useDisclosure();
+    const [minimalValue, setMinimalValue] = useState<number>();
+    const [maximalValue, setMaximalValue] = useState<number>()
+
     useEffect(() => {
         onOpen();
     }, []);
@@ -18,6 +21,18 @@ function NumberScaleModal({show}: Props) {
     function close(){
         show(false);
         onClose();
+    }
+  
+    function handleMinimalValue(e: { target: { value: SetStateAction<number | undefined>; }; }){
+      setMinimalValue(e.target.value);
+    }
+    
+    function handleMaximalValue(e: { target: { value: SetStateAction<number | undefined>; }; }){
+      setMaximalValue(e.target.value);
+    }
+
+    function handleSave(){
+        
     }
 
     return (
