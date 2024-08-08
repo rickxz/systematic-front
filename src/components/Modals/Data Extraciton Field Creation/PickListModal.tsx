@@ -1,14 +1,15 @@
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
 import { useDisclosure } from "@chakra-ui/react"
 import { useEffect } from "react";
-import { AddPickListTable } from "../../Tables/Subcomponents/ExtractionQuestionsTables.tsx/AddPickListTable";
+import AddPickListTable from "../../AddDataFields/AddPickListTable";
 import { Dispatch, SetStateAction } from "react";
 
 interface Props{
     show: Dispatch<SetStateAction<boolean>>;
+    questionHolder: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-function PickListModal({show}: Props) {
+function PickListModal({show, questionHolder}: Props) {
     const { isOpen, onClose, onOpen } = useDisclosure();
     
     useEffect(() => {
@@ -29,7 +30,7 @@ function PickListModal({show}: Props) {
                     <ModalCloseButton onClick={close}/>
                 </ModalHeader>
                 <ModalBody>
-                    <AddPickListTable text="Options" placeholder="Options here" url={''}/>
+                    <AddPickListTable text="Options" placeholder="Options here" questionHolder={questionHolder}/>
                 </ModalBody>
                 <ModalFooter>
                     <Button onClick={close}>Close</Button>

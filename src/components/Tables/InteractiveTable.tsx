@@ -17,20 +17,21 @@ interface Props{
 export default function InteractiveTable({id, url}: Props) {
   const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers } =
     useInteractiveTable();
-  const { sendTextualQuestion } = useSendExtractionForm();
+  const { sendTextualQuestion, sendPickListQuestion } = useSendExtractionForm();
 
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState('');
 
   useEffect(() => {
+    console.log(questions);
+
     const fetch = async () => {
       try {
         let response = await axios.get(url, { withCredentials: true });
   
         let link = response.data._links['find-all-review-extraction-questions'].href;
         response = await axios.get(link, { withCredentials: true });
-        console.log(response);
   
         const fetchedRows = response.data.questions.map(item => {
           let type;
@@ -63,7 +64,7 @@ export default function InteractiveTable({id, url}: Props) {
     };
   
     fetch();
-  }, []);
+  }, [questions]);
   
 
   return (
@@ -117,8 +118,13 @@ export default function InteractiveTable({id, url}: Props) {
                       sendTextualQuestion(data);
                     } else if(rows[index].type == "pick list"){
                       const data = {
-
+                          question: rows[index].question,
+                          questionId: rows[index].id,
+                          reviewId: id,
+                          options: questions
                       }   
+                      
+                      sendPickListQuestion(data);
                     }
                     let response = await axios.get(`http://localhost:8080/api/v1/systematic-study/${id}/protocol/extraction-question`, {withCredentials: true});
                     console.log(response);
@@ -139,7 +145,7 @@ export default function InteractiveTable({id, url}: Props) {
         </Tbody>
       </Table>
       {showModal == true && modalType == 'pick list' && (
-        <PickListModal show={setShowModal}/>
+        <PickListModal show={setShowModal} questionHolder={setQuestions}/>
       )}
     </TableContainer>
   );
