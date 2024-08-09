@@ -1,4 +1,4 @@
-import { Box, FormControl, Flex, Progress, Checkbox } from "@chakra-ui/react";
+import { Box, FormControl, Flex, Progress, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Heading, Divider } from "@chakra-ui/react";
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
 import { btnBox, formControl } from "./styles/partOneStyles";
@@ -99,20 +99,31 @@ export default function Protocol() {
           <FormControl sx={formControl}>
             <TextAreaInput value={goal} label="Objectives:" placeholder="What are your goals?" onChange={handleGoal}/>
             <TextAreaInput value={mainQuestion} label="Main question:" placeholder="The reason behind your research..." onChange={handleMainQuestion}/>
-            <Checkbox  onChange={handleCheck}>picoc</Checkbox>
-            {isChecked && (
-              <>
-                <TextAreaInput value={population} label="Population:" placeholder="What are your study population?" onChange={handlePopulation}/>
-                <TextAreaInput value={intervention} label = "Intervention:" placeholder="what is your intervention?" onChange={handleIntervention}/>
-                <TextAreaInput value={control} label = "Control:" placeholder="what is your control?" onChange={handleControl}/>
-                <TextAreaInput value={outcome} label = "Outcome:" placeholder="what is your outcome?" onChange={handleOutcome}/>
-                <TextAreaInput value={context} label = "Context:" placeholder="what is your context?" onChange={handleContext}/>
-              </>
-            )}
+            
+            <Accordion allowToggle mt={6} w="80%">
+              <AccordionItem>
+                <h2 style={{color: "#2E4B6C"}}>
+                  <AccordionButton>
+                    <Box flex="1" textAlign="center">
+                      <Heading size="md">PICOC Criteria (Optional)</Heading>
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  <Divider mb={4} />
+                  <TextAreaInput value={population} label="Population:" placeholder="What is your study population?" onChange={handlePopulation} mt={4}/>
+                  <TextAreaInput value={intervention} label="Intervention:" placeholder="What is your intervention?" onChange={handleIntervention} mt={4}/>
+                  <TextAreaInput value={control} label="Control:" placeholder="What is your control?" onChange={handleControl} mt={4}/>
+                  <TextAreaInput value={outcome} label="Outcome:" placeholder="What is your outcome?" onChange={handleOutcome} mt={4}/>
+                  <TextAreaInput value={context} label="Context:" placeholder="What is your context?" onChange={handleContext} mt={4}/>
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
           </FormControl>
 
           <Box sx={btnBox}>
-          <NavButton event={handleData} text="Next" />
+          <NavButton event={handleData} text="Next"  />
           </Box>
         </Flex>
       </Box>
