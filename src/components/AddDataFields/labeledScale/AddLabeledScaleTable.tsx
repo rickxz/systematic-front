@@ -1,5 +1,5 @@
 import { FormControl, FormLabel } from "@chakra-ui/react";
-import AddPickListField from "./AddPickListField";
+import AddPickListField from "../pickList/AddPickListField";
 import InfosPickList from "../../Tables/PickListTable";
 import { useAddText } from "../../../hooks/useAddText";
 import { useDeletePickList } from "../../../hooks/useDeleteList";
@@ -8,14 +8,11 @@ import { formcontrol, label } from "../styles/AddTextTableStyles";
 interface AddTextTableProps {
   text: string;
   placeholder: string;
-  questionHolder: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-export default function AddPickListTable({ text, placeholder, questionHolder }: AddTextTableProps) {
+export default function AddLabeledScaleTable({ text, placeholder }: AddTextTableProps) {
   const { AddText, handleAddText, setAddText } = useAddText();
   const { handleDeletePickList } = useDeletePickList();
-  questionHolder(AddText);
-
   return (
     <FormControl sx={label}>
       <FormLabel>{text}</FormLabel>
