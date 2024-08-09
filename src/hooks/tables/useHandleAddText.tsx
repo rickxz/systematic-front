@@ -1,6 +1,7 @@
 import useSendKeywords from "../../hooks/tables/useSendKeywords";
 import useSendInclusionCriteria from "../../hooks/tables/useSendInclusionCriteria";
 import useSendExclusionCriteria from "../../hooks/tables/useSendExclusionCriterias";
+import useSendResearchQuestions from "../../hooks/tables/useSendResearchQuestions";
 
 interface ServerOrientedProps{
     value: string;
@@ -13,6 +14,7 @@ interface ServerOrientedProps{
 const useHandleAddText = () => {
 
     const sendKeywords = useSendKeywords();
+    const sendResearchQuestion = useSendResearchQuestions();
     const sendCriterias = useSendInclusionCriteria();
     const sendExclusionCriteria = useSendExclusionCriteria();
 
@@ -35,6 +37,13 @@ const useHandleAddText = () => {
                 url
               }
               sendKeywords(data);
+            }
+            else if(text == 'Research Questions'){
+              const data = {
+                researchQuestions: value.trim(),
+                url
+              }
+              sendResearchQuestion(data);
             }
             setValue("");
           } else {

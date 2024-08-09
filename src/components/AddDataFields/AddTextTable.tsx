@@ -4,7 +4,7 @@ import InfosTable from "../Tables/InfosTable";
 import { useAddText } from "../../hooks/useAddText";
 import { useDeleteText } from "../../hooks/useDeleteText";
 import { formcontrol, label, formLabelStyle } from "./styles/AddTextTableStyles";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "../../interceptor/interceptor";
 
 interface AddTextTableProps {
@@ -26,6 +26,8 @@ export default function AddTextTable({ text, placeholder, url, id }: AddTextTabl
         
         if(text == 'Keywords'){
           fetchAddText(response.data.content.keywords);
+        } else if(text == "Research Questions"){
+          fetchAddText(response.data.content.researchQuestions);
         } else if(text == 'Inclusion criteria'){
             let array: {description: string, type: string}[] = response.data.content.eligibilityCriteria;
             array = array.filter(item => item.type === "INCLUSION");

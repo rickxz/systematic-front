@@ -21,6 +21,7 @@ export default function ProtocolPartTwo2() {
   const [searchString, setSearchString] = useState<string>('');
   const [showMoreQuestionComponents, setShowMoreQuestioComponents] = useState<boolean>(false);
   const [dataCollectionProcess, setDataCollectionProcess] = useState<string>("");
+  const [researchQuestions, setResearchQuestions] = useState<string>("");
   const { id = '' } = useParams();
 
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ export default function ProtocolPartTwo2() {
       setStudyTypeDefinition(response.data.content.studyTypeDefinition);
       setSearchString(response.data.content.searchString);
       setDataCollectionProcess(response.data.content.dataCollectionProcess);
+      setResearchQuestions(response.data.content.researchQuestions);
       
     }
 
@@ -96,13 +98,21 @@ export default function ProtocolPartTwo2() {
           <TextAreaInput value={studyTypeDefinition} onChange={handleStudyTypeDefinition}  label="Study Type Definition" placeholder="Enter the study type definition" />
           <TextAreaInput value={dataCollectionProcess} onChange={handleDataCollectionProcess}  label="Data Colletion Process" placeholder="Enter the data colletion process" />
 
-          <Checkbox  onChange={handleMoreResearchQuestionArea}>Add more reasearch questions</Checkbox>
-            {showMoreQuestionComponents && (
-                <Flex>
-                  <AddTextTable url={url} id={id} text="Research Questions" placeholder="Enter the other Research Questions"/>
-                </Flex>
-            )}
 
+          { researchQuestions ?
+             <Flex>
+              <AddTextTable url={url} id={id} text="Research Questions" placeholder="Enter the other Research Questions"/>
+            </Flex>
+          :
+            <>
+              <Checkbox  onChange={handleMoreResearchQuestionArea}>Add more reasearch questions</Checkbox>
+              {showMoreQuestionComponents && (
+                  <Flex>
+                    <AddTextTable url={url} id={id} text="Research Questions" placeholder="Enter the other Research Questions"/>
+                  </Flex>
+              )}
+            </>
+          }
           <FormControl sx={flex}>
             <AddTextTable url={url} id={id} text="Keywords" placeholder="Enter the keywords related to your review"/>
           </FormControl>
