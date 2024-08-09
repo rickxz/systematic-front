@@ -2,7 +2,7 @@ import { AddIcon } from "@chakra-ui/icons";
 import EditButton from "../Buttons/EditButton";
 import DeleteButton from "../Buttons/DeleteButton";
 import { useInteractiveTable } from "../../hooks/useInteractiveTable";
-import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
+import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input, FormLabel } from "@chakra-ui/react";
 import useSendExtractionForm from "../../hooks/revisions/extractionForm/useSendExtractionForm";
 import axios from "../../interceptor/interceptor";
 import PickListModal from "../Modals/Data Extraciton Field Creation/PickListModal";
@@ -12,9 +12,10 @@ import { useEffect, useState } from "react";
 interface Props{
   id: string;
   url: string;
+  label: string
 }
 
-export default function InteractiveTable({id, url}: Props) {
+export default function InteractiveTable({id, url, label}: Props) {
   const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers } =
     useInteractiveTable();
   const { sendTextualQuestion, sendPickListQuestion } = useSendExtractionForm();
@@ -82,6 +83,7 @@ export default function InteractiveTable({id, url}: Props) {
 
   return (
     <TableContainer>
+      <FormLabel  color={"#2E4B6C"}>{label}</FormLabel>
       <Table variant="striped" size="md" w={"60vw"}  borderRadius={"8px"} overflow="hidden">
         <Thead bgColor={"#2E4B6C"}>
           <Tr>
