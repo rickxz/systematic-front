@@ -5,9 +5,9 @@ import { useInteractiveTable } from "../../hooks/useInteractiveTable";
 import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input } from "@chakra-ui/react";
 import useSendExtractionForm from "../../hooks/revisions/extractionForm/useSendExtractionForm";
 import axios from "../../interceptor/interceptor";
-import PickListModal from "../Modals/Data Extraciton Field Creation/PickListModal";
 import { useEffect, useState } from "react";
-
+import NumberScaleModal from "../Modals/Data Extraciton Field Creation/NumberScaleModal";
+import PickListModal from "../Modals/Data Extraciton Field Creation/PickListModal";
 
 interface Props{
   id: string;
@@ -17,8 +17,9 @@ interface Props{
 export default function InteractiveTable({id, url}: Props) {
   const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers } =
     useInteractiveTable();
-  const { sendTextualQuestion, sendPickListQuestion } = useSendExtractionForm();
+  const { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion } = useSendExtractionForm();
 
+  const [numberScale, setnumberScale] = useState<number[]>([]);
   const [questions, setQuestions] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState('');
@@ -32,6 +33,7 @@ export default function InteractiveTable({id, url}: Props) {
   
         let link = response.data._links['find-all-review-extraction-questions'].href;
         response = await axios.get(link, { withCredentials: true });
+        console.log(response);
   
         const fetchedRows = response.data.questions.map(item => {
           let type;
@@ -74,6 +76,11 @@ export default function InteractiveTable({id, url}: Props) {
     handleTypeChange(index, newValue); // Atualiza o tipo primeiro
   
     if (newValue === 'pick list') {
+      setModalType(newValue);  // Atualiza o tipo do modal
+      setShowModal(true);  // Abre o modal
+    }
+
+    if (newValue === 'number scale') {
       setModalType(newValue);  // Atualiza o tipo do modal
       setShowModal(true);  // Abre o modal
     }
@@ -136,7 +143,19 @@ export default function InteractiveTable({id, url}: Props) {
                       }   
                       
                       sendPickListQuestion(data);
+                    } else if(rows[index].type == "number scale"){
+                      const data = {
+                        question: rows[index].question,
+                        questionId: rows[index].id,
+                        reviewId: id,
+                        lower: numberScale[0],
+                        higher: numberScale[1]
+                      }
+                      
+                      sendNumberScaleQuestion(data);
                     }
+
+                    
                     let response = await axios.get(`http://localhost:8080/api/v1/systematic-study/${id}/protocol/extraction-question`, {withCredentials: true});
                     console.log(response);
                   }}
@@ -158,8 +177,8 @@ export default function InteractiveTable({id, url}: Props) {
       {showModal == true && modalType == 'pick list' && (
         <PickListModal show={setShowModal} questionHolder={setQuestions}/>
       )}
-      {showModal == true && modalType == 'numbered list' && (
-        <PickListModal show={setShowModal} questionHolder={setQuestions}/>
+      {showModal == true && modalType == 'number scale' && (
+        <NumberScaleModal show={setShowModal} scaleHolder={setnumberScale}/>
       )}
     </TableContainer>
   );
