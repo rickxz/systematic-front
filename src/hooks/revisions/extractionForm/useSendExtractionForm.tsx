@@ -13,6 +13,14 @@ interface PickListProps{
     options: string[];
 }
 
+interface NumberScaleProps{
+    question: string;
+    questionId: number;
+    reviewId: string;
+    lower: number,
+    higher: number
+}
+
 const useSendExtractionForm = () => {
     async function sendTextualQuestion({question, questionId, reviewId}: TextualProps){
         let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/textual`;
@@ -45,7 +53,26 @@ const useSendExtractionForm = () => {
         }
     }
 
-    return { sendTextualQuestion, sendPickListQuestion };
+    async function sendNumberScaleQuestion({question, questionId, reviewId, lower, higher}: NumberScaleProps){
+        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/number-scale`;
+        console.log(typeof(lower));
+        
+        const data = {
+            code: questionId,
+            description: question,
+            lower: lower,
+            higher: higher
+        }
+
+        try{
+            let response = await axios.post(url, data, {withCredentials: true});
+            console.log(response);
+        } catch(err){
+            console.log(err);
+        }
+    }
+
+    return { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion };
 }
 
 export default useSendExtractionForm;

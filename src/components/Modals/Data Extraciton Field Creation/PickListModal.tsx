@@ -1,7 +1,7 @@
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
 import { useDisclosure } from "@chakra-ui/react"
 import { useEffect } from "react";
-import AddPickListTable from "../../AddDataFields/AddPickListTable";
+import AddPickListTable from "../../AddDataFields/pickList/AddPickListTable";
 import { Dispatch, SetStateAction } from "react";
 
 interface Props{

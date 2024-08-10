@@ -1,8 +1,8 @@
 import { FormControl } from "@chakra-ui/react";
-import TextAreaInput from "../Inputs/InputTextArea";
-import EventButton from "../Buttons/EventButton";
+import TextAreaInput from "../../Inputs/InputTextArea";
+import EventButton from "../../Buttons/EventButton";
 import { useState } from "react";
-import { formcontrol } from "./styles/AddTextFieldStyle";
+import { formcontrol } from "../styles/AddTextFieldStyle";
 
 interface IAddTextFieldProps {
   onAddText: (newKeyword: string) => void;
