@@ -4,12 +4,22 @@ import { flexStyles } from "./styles/flexStyles";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import Header from "../../components/ui/Header/Header";
 import RevisionCard from "./subcomponents/RevisionCard";
-import useFetchRevisionCard from "../../hooks/fetch/useFetchRevisionCard";
+import { useFetchRevisionCard } from "../../hooks/fetch/useFetchRevisionCard";
 import { useState, useEffect } from "react";
 import NavButton from "../../components/Buttons/NavButton";
+import axios from "axios";
+
+//hooks imports
+import verifyUnfinishedStudy from "../../hooks/verifyUnfinishedStudy";
+
+//interfaces import
+import { Protocol } from "../../../public/interfaces/protocolInterface";
+import { cardDataProps } from "../../hooks/fetch/useFetchRevisionCard";
 
 export default function UserArea() {
   const [myRevisionsUrl, setMyRevisionsUrl] = useState('');
+  const [cardData, setCardData] = useState<cardDataProps[]>([]);
+  const [fetchedData, setFetchedData] = useState<cardDataProps[]>([]);
 
   useEffect(() => {
     localStorage.removeItem("systematicStudyId");
@@ -19,34 +29,58 @@ export default function UserArea() {
     }
   }, []);
 
-  const cardData = useFetchRevisionCard(myRevisionsUrl);
+  useEffect(() => {
+    async function fetchData() {
+      const fetched = await Promise.all(cardData.map(async (data) => {
+        const url = "http://localhost:8080/";
+        const response = await axios.get(`${url}systematic-study/${data.id}/protocol`, { withCredentials: true });
+        
+        const status = await verifyUnfinishedStudy(data.id);
+        
+        return { ...data, responseData: response.data, status }
+      }));
+        
+      setFetchedData(fetched);
+    }
+
+    if (cardData.length > 0) {
+      fetchData();
+    }
+  }, [cardData]);
+
+  const rawData = useFetchRevisionCard(myRevisionsUrl);
+
+  useEffect(() => {
+    setCardData(rawData);
+  }, [rawData]);
 
   return (
     <FlexLayout defaultOpen={0} navigationType="Default">
       <Header text="My Systematic Reviews" />
       <Flex sx={flexStyles} w={"90%"} align="center" justify="center">
-        {cardData.length > 0 ? (
-          cardData.map((data) => (
+        {fetchedData.length > 0 ? (
+          fetchedData.map((data) => (
             <RevisionCard
               key={data.id}
               revisionId={data.id}
               id={data.key}
               title={data.title}
               reviewers={data.collaborators}
-              status={data.lastChange}
+              status={data.status}
               creation={data.creation}
               isEdited={data.isEdited}
             />
-          )) //acho que caberia um botao de criar uma nova review na lista de reviews
+          ))
         ) : (
           <Flex direction="column" align="center" justify="center" w="100%">
-            <Icon as={MdSentimentDissatisfied} boxSize={12} color="gray.500" mb={4} mt={"60px"}/>            <Text fontSize="2xl" color="gray.600" mb={4}>
+            <Icon as={MdSentimentDissatisfied} boxSize={12} color="gray.500" mb={4} mt={"60px"} />
+            <Text fontSize="2xl" color="gray.600" mb={4}>
               Oops! We didn't find any reviews here.
             </Text>
             <Text fontSize="lg" color="gray.500" mb={4}>
-              How about creating a new one? 
+              How about creating a new one?
             </Text>
-            <NavButton text='Create review' path='/newRevision' ml='0rem'/>
+            <NavButton text='Create review' path='/newRevision' ml='0rem' />
           </Flex>
         )}
       </Flex>

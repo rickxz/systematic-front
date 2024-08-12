@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "../../interceptor/interceptor";
 
-interface cardDataProps {
+export interface cardDataProps {
   id: string;
   key: string;
   title: string;
@@ -29,4 +29,4 @@ const useFetchRevisionCard = (url: string) => {
   }, [url]);
   return cardData;
 };
-export default useFetchRevisionCard;
+export { useFetchRevisionCard };
