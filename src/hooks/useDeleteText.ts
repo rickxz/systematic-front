@@ -37,6 +37,12 @@ export function useDeleteText() {
 
           data = { eligibilityCriteria: array };
           axios.put(url, data, {withCredentials: true});
+        } else if(text == "Research Questions"){
+          data = {
+            researchQuestions: updatedAddText
+          }
+          const response = axios.put(url, data, {withCredentials: true});
+          console.log(response)
         }
       }
 

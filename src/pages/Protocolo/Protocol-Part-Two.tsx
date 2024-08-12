@@ -99,7 +99,7 @@ export default function ProtocolPartTwo2() {
           <TextAreaInput value={dataCollectionProcess} onChange={handleDataCollectionProcess}  label="Data Colletion Process" placeholder="Enter the data colletion process" />
 
 
-          { researchQuestions ?
+          { researchQuestions.length != 0 ?
              <Flex>
               <AddTextTable url={url} id={id} text="Research Questions" placeholder="Enter the other Research Questions"/>
             </Flex>
