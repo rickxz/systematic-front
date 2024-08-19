@@ -46,8 +46,9 @@ export default function useHandleLogin() {
             setIsSubmitting(true);
             try {
                 const response = await useLoginUser(data);
-                console.log(response);
                 if ((await response).status == 200) {
+                    localStorage.setItem('accessToken', response.data.accessToken);
+                    
                     toast({
                         title: "Login successful.",
                         description: `Welcome back, ${username}!`,
