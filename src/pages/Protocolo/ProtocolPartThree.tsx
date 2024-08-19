@@ -18,7 +18,12 @@ export default function ProtocolPartThree() {
 
   useEffect(() => {
     async function fetch(){
-      let response = await axios.get(url, {withCredentials: true})
+      const accessToken = localStorage.getItem('accessToken');
+      let options = {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      }
+
+      let response = await axios.get(url, options)
       setAnalysis(response.data.content.analysisAndSynthesisProcess);
     }
 

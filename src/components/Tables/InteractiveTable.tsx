@@ -160,10 +160,12 @@ export default function InteractiveTable({id, url, label}: Props) {
                       
                       sendNumberScaleQuestion(data);
                     }
-
+                    const accessToken = localStorage.getItem('accessToken');
+                    let options = {
+                      headers: { Authorization: `Bearer ${accessToken}` }
+                    }
                     
-                    let response = await axios.get(`http://localhost:8080/api/v1/systematic-study/${id}/protocol/extraction-question`, {withCredentials: true});
-                    console.log(response);
+                    await axios.get(`http://localhost:8080/api/v1/systematic-study/${id}/protocol/extraction-question`, options);
                   }}
                 />
               </Td>
