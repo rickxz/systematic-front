@@ -13,11 +13,16 @@ export interface cardDataProps {
 
 const useFetchRevisionCard = (url: string) => {
   const [cardData, setCardData] = useState<cardDataProps[] | []>([]);
+  const accessToken = localStorage.getItem('AccessToken');
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
+        let options = {
+          headers: { "Authorization":  `Bearer ${accessToken}`}
+        }
 
-        const response = await axios.get(url, {withCredentials: true});
+        const response = await axios.get(url, options);
         console.log(response);
         const data = await response.data.content;
         setCardData(data);

@@ -21,6 +21,8 @@ export default function UserArea() {
   const [cardData, setCardData] = useState<cardDataProps[]>([]);
   const [fetchedData, setFetchedData] = useState<cardDataProps[]>([]);
 
+  const accessToken = localStorage.getItem("accessToken");
+
   useEffect(() => {
     localStorage.removeItem("systematicStudyId");
     const url = localStorage.getItem('myReviewsLink');
@@ -32,8 +34,11 @@ export default function UserArea() {
   useEffect(() => {
     async function fetchData() {
       const fetched = await Promise.all(cardData.map(async (data) => {
+        const options = {
+          headers: { "Authorization": `Bearer ${accessToken}` }
+        }
         const url = "http://localhost:8080/";
-        const response = await axios.get(`${url}systematic-study/${data.id}/protocol`, { withCredentials: true });
+        const response = await axios.get(`${url}systematic-study/${data.id}/protocol`, options);
         
         const status = await verifyUnfinishedStudy(data.id);
         
