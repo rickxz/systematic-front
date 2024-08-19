@@ -16,11 +16,9 @@ const useSendResearchQuestions = () => {
         const fetchedResearchQuestions = response.data.content.researchQuestions;
         
         const updatedResearchQuestions = [...fetchedResearchQuestions, researchQuestions];
-        console.log(`updated array: ${updatedResearchQuestions}`);
         
         const data = { researchQuestions: updatedResearchQuestions };
-        let putResponse = await axios.put(url, data, options);
-        console.log(putResponse);
+        await axios.put(url, data, options);
     }
 
     return sendResearchQuestions;

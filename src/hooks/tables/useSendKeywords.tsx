@@ -17,12 +17,10 @@ const useSendKeywords = () => {
         
         
         const updatedKeywords = [...fetchedKeywords, keyword];
-        console.log(`updated array: ${updatedKeywords}`);
         
         
         const data = { keywords: updatedKeywords };
-        let putResponse = await axios.put(url, data, options);
-        console.log(putResponse);
+        await axios.put(url, data, options);
     }
 
     return sendKeywords;

@@ -16,11 +16,9 @@ const useSendInclusionCriteria= () => {
         const fetchedCriterias = response.data.content.eligibilityCriteria;
 
         const updatedCriterias = [...fetchedCriterias, criteria];
-        console.log(`updated array: ${updatedCriterias}`);
         
         const data = { eligibilityCriteria: updatedCriterias };
-        let putResponse = await axios.put(url, data, options);
-        console.log(putResponse);
+        await axios.put(url, data, options);
     }
 
     return sendCriterias;
