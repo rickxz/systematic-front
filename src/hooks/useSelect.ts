@@ -26,7 +26,12 @@ export function useSelect(url: string, type: 'databases' | "studiesLanguages", i
   };
 
   useEffect(()=>{
+    const accessToken = localStorage.getItem('accessToken');
+    let options = {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    }
     let data = {};
+
     if(type == "studiesLanguages"){
       data = {
         studiesLanguages: selectedValues 
@@ -37,7 +42,7 @@ export function useSelect(url: string, type: 'databases' | "studiesLanguages", i
         informationSources: selectedValues
       };
     }
-    axios.put(url, data, {withCredentials: true});
+    axios.put(url, data, options);
   },[selectedValues])
 
   return { setSelectedValues, selectedValue, selectedValues, handleSelectChange, handleSelectAddButtonClick, handleDeleteSelect };
