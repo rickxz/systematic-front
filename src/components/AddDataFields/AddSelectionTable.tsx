@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import axios from '../../interceptor/interceptor';
-import { FormControl, FormLabel, withDefaultColorScheme } from "@chakra-ui/react";
+import { FormControl, FormLabel } from "@chakra-ui/react";
 import SelectInput from "../Inputs/SelectInput";
 import InfosTable from "../Tables/InfosTable";
 import EventButton from "../Buttons/EventButton";
@@ -21,7 +21,12 @@ export default function AddSelectTable({ label, options, url, type, placeholder 
 
   useEffect(() => {
     async function fetch(){
-      let array = await axios.get(url, {withCredentials: true});
+      const accessToken = localStorage.getItem('accessToken');
+      let options = {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      }
+
+      let array = await axios.get(url, options);
 
       switch(type){
         case 'studiesLanguages':
