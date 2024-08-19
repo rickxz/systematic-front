@@ -40,7 +40,7 @@ export default function InteractiveTable({id, url, label}: Props) {
         let link = response.data._links['find-all-review-extraction-questions'].href;
         response = await axios.get(link, options);
   
-        const fetchedRows = response.data.questions.map(item => {
+        const fetchedRows = response.data.questions.map((item: { questionType: any; code: any; description: any; }) => {
           let type;
           switch (item.questionType) {
             case 'TEXTUAL':
