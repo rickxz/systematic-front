@@ -32,9 +32,13 @@ const useCreateProtocol = async ({goal, mainQuestion, picoc, id}: protocolData) 
       "justification": mainQuestion,
     }
 
-  console.log(id);
   try{
-    let response = await axios.put(url, data, {withCredentials: true})
+    const accessToken = localStorage.getItem('accessToken');
+    let options = {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    }
+
+    let response = await axios.put(url, data, options);
     console.log(response);
   } 
   catch(err){

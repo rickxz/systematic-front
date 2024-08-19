@@ -12,7 +12,7 @@ import axios from "../../interceptor/interceptor";
 export default function Protocol() {
   const [goal, setGoal] = useState('');
   const [mainQuestion, setMainQuestion] = useState('');
-  const [isChecked, setIsChecked] = useState(false);
+//  const [isChecked, setIsChecked] = useState(false);
   const [population, setPopulation] = useState('');
   const [intervention, setIntervention] = useState('');
   const [control, setControl] = useState('');
@@ -22,8 +22,13 @@ export default function Protocol() {
 
   useEffect(() => {
     async function fetchValues(){
+      let accessToken = localStorage.getItem('accessToken');
+      let options = {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      }
+
       const url = `http://localhost:8080/systematic-study/${id}/protocol`;
-      let response = await axios.get(url, {withCredentials: true});
+      let response = await axios.get(url, options);
       console.log(response);
       if(response.data.content.picoc){
         setPopulation(response.data.content.picoc.population);
@@ -31,7 +36,7 @@ export default function Protocol() {
         setControl(response.data.content.picoc.control);
         setContext(response.data.content.picoc.context);
         setOutcome(response.data.content.picoc.outcome);
-        setIsChecked(true);
+//        setIsChecked(true);
       }
       setGoal(response.data.content.goal)
       setMainQuestion(response.data.content.justification);
@@ -62,13 +67,15 @@ export default function Protocol() {
     setMainQuestion(e.target.value);
   }
 
+  /*
   function handleCheck(){
     if(isChecked == false){
       setIsChecked(true);
     } else{
       setIsChecked(false);
     }
-  }
+  } 
+  */
 
   function handlePopulation(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
     setPopulation(e.target.value);
