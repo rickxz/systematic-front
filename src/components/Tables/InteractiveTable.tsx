@@ -30,11 +30,15 @@ export default function InteractiveTable({id, url, label}: Props) {
 
     const fetch = async () => {
       try {
-        let response = await axios.get(url, { withCredentials: true });
+        const accessToken = localStorage.getItem('accessToken');
+        let options = {
+          headers: { Authorization: `Bearer ${accessToken}` }
+        }
+
+        let response = await axios.get(url, options);
   
         let link = response.data._links['find-all-review-extraction-questions'].href;
-        response = await axios.get(link, { withCredentials: true });
-        console.log(response);
+        response = await axios.get(link, options);
   
         const fetchedRows = response.data.questions.map(item => {
           let type;
