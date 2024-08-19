@@ -49,9 +49,17 @@ const searchInDirectory = (dir, substring) => {
   });
 };
 
+const substringToSearch = process.argv[2];
+if (!substringToSearch) {
+    console.error(
+        `\nPlease provide a substring to serach for. You can do this comanding \n
+        'node searchSubString.js <substringToSearch>'`
+    );
+    process.exit(1);
+}
+
 // Diretório alvo e substring a procurar
 const directoryToSearch = join(__dirname, '../../src'); // Mude 'src' para o diretório que deseja vasculhar
-const substringToSearch = 'deleteUserData'; // Mude para a substring que deseja procurar
 
 // Executa a busca
 searchInDirectory(directoryToSearch, substringToSearch);
