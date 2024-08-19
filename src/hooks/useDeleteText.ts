@@ -7,14 +7,19 @@ export function useDeleteText() {
       updatedAddText.splice(index, 1);
       
       async function updateArray(){
+        const accessToken = localStorage.getItem('accessToken');
+        let options = {
+          headers: { Authorization: `Bearer ${accessToken}` }
+        }
         let data = {};
+
         if(text == "Keywords"){
           data = {
             keywords: updatedAddText
           }
-          axios.put(url, data, {withCredentials: true});
+          axios.put(url, data, options);
         } else if(text == "Inclusion criteria"){
-          let response = await axios.get(url, {withCredentials: true});
+          let response = await axios.get(url, options);
           let array: {description: string, type: "INCLUSION" | "EXCLUSION"}[] = response.data.content.eligibilityCriteria;
           array = array.filter(item => item.type !== "INCLUSION");
 
@@ -23,7 +28,7 @@ export function useDeleteText() {
           array = array.concat(newArray);
           
           data = { eligibilityCriteria: array };
-          axios.put(url, data, {withCredentials: true});
+          axios.put(url, data, options);
         } else if(text == "Exclusion criteria"){
           let response = await axios.get(url, { withCredentials: true });
           let array: {description: string, type: "INCLUSION" | 'EXCLUSION'}[] = response.data.content.eligibilityCriteria;
@@ -36,12 +41,12 @@ export function useDeleteText() {
           console.log(array);
 
           data = { eligibilityCriteria: array };
-          axios.put(url, data, {withCredentials: true});
+          axios.put(url, data, options);
         } else if(text == "Research Questions"){
           data = {
             researchQuestions: updatedAddText
           }
-          const response = axios.put(url, data, {withCredentials: true});
+          const response = axios.put(url, data, options);
           console.log(response)
         }
       }

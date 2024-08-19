@@ -21,20 +21,31 @@ export default function AddTextTable({ text, placeholder, url, id }: AddTextTabl
   useEffect(() => {
     async function fetchData(){
       if(id){
+        const accessToken = localStorage.getItem('accessToken');
+        let options = {
+          headers: { Authorization: `Bearer ${accessToken}` }
+        }
+        
         const url = `http://localhost:8080/systematic-study/${id}/protocol`;
-        let response = await axios.get(url, {withCredentials: true});
+        let response = await axios.get(url, options);
         
         if(text == 'Keywords'){
           fetchAddText(response.data.content.keywords);
-        } else if(text == "Research Questions"){
+        } 
+        
+        else if(text == "Research Questions"){
           fetchAddText(response.data.content.researchQuestions);
-        } else if(text == 'Inclusion criteria'){
+        } 
+        
+        else if(text == 'Inclusion criteria'){
             let array: {description: string, type: string}[] = response.data.content.eligibilityCriteria;
             array = array.filter(item => item.type === "INCLUSION");
             
             const criterias: string[] = array.map(item => item.description);
             fetchAddText(criterias);
-        } else if (text = 'Exclusion criteria'){
+        } 
+        
+        else if (text = 'Exclusion criteria'){
             let exclusionArray: {description: string, type: string}[] = response.data.content.eligibilityCriteria;
             exclusionArray = exclusionArray.filter(item => item.type === "EXCLUSION");
             
