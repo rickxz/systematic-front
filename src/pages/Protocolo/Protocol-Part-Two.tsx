@@ -29,8 +29,13 @@ export default function ProtocolPartTwo2() {
 
   useEffect(() => {
     async function fetchValues(){
+      const accessToken = localStorage.getItem('accessToken');
+      let options = {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      }
+
       const url = `http://localhost:8080/systematic-study/${id}/protocol`;
-      let response = await axios.get(url, {withCredentials: true});
+      let response = await axios.get(url, options);
 
       setSelectProcess(response.data.content.selectionProcess);
       setResearchStrategy(response.data.content.searchMethod);

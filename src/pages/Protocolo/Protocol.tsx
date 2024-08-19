@@ -29,7 +29,7 @@ export default function Protocol() {
 
       const url = `http://localhost:8080/systematic-study/${id}/protocol`;
       let response = await axios.get(url, options);
-      console.log(response);
+      
       if(response.data.content.picoc){
         setPopulation(response.data.content.picoc.population);
         setIntervention(response.data.content.picoc.intervention);
