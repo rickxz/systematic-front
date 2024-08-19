@@ -23,14 +23,18 @@ const useFetchRevisionCard = (url: string) => {
         }
 
         const response = await axios.get(url, options);
-        console.log(response);
         const data = await response.data.content;
+        console.log(data)
         setCardData(data);
-      } catch (error) {
+      } 
+
+      catch (error) {
         console.log(error);
       }
     };
+
     fetchData();
+    
   }, [url]);
   return cardData;
 };
