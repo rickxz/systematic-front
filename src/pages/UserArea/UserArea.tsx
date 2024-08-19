@@ -13,7 +13,7 @@ import axios from "axios";
 import verifyUnfinishedStudy from "../../hooks/verifyUnfinishedStudy";
 
 //interfaces import
-import { Protocol } from "../../../public/interfaces/protocolInterface";
+
 import { cardDataProps } from "../../hooks/fetch/useFetchRevisionCard";
 
 export default function UserArea() {

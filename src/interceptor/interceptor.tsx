@@ -9,6 +9,9 @@ Axios.interceptors.response.use((response) => response, async (error) => {
             console.log(response);
             
             if(response.status == 200){
+                localStorage.setItem("accessToken", response.data.accessToken);
+                error.config.headers['Authorization'] = `Bearer ${response.data.accessToken}`;
+
                 return axios(error.config)
             }
         }
