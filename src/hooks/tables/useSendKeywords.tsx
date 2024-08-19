@@ -7,17 +7,21 @@ interface KeywordType {
 
 const useSendKeywords = () => {
     async function sendKeywords({ keyword, url }: KeywordType) {
-        // Fetching keywords from the server
-        let response = await axios.get(url, { withCredentials: true });
+        const accessToken = localStorage.getItem('accessToken');
+        let options = {
+          headers: { Authorization: `Bearer ${accessToken}` }
+        }
+        
+        let response = await axios.get(url, options);
         const fetchedKeywords = response.data.content.keywords;
         
-        // Adding the new keyword to the fetched keywords
+        
         const updatedKeywords = [...fetchedKeywords, keyword];
         console.log(`updated array: ${updatedKeywords}`);
         
-        // Sending updated keywords to the server
+        
         const data = { keywords: updatedKeywords };
-        let putResponse = await axios.put(url, data, { withCredentials: true });
+        let putResponse = await axios.put(url, data, options);
         console.log(putResponse);
     }
 

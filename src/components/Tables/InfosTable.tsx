@@ -17,16 +17,22 @@ export default function InfosTable({ AddTexts, onDeleteAddedText, typeField, url
   const { editIndex, handleEdit, handleSaveEdit, editedValue, handleChange } = useEditState({
     AddTexts,
     onSaveEdit: async (editedValue, editIndex) => {
+      const accessToken = localStorage.getItem('accessToken');
+      let options = {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      }
+
       AddTexts[editIndex] = editedValue;
       if(text == "Keywords"){
         const data = {
           keywords: AddTexts
         }
-        axios.put(url, data, {withCredentials: true});
+        axios.put(url, data, options);
       }
+
       else if(text == "Inclusion criteria"){
         const objects: {description: string, type: "INCLUSION" | "EXCLUSION"}[] = AddTexts.map(item => ({description: item, type: "INCLUSION"}));
-        let response = await axios.get(url, {withCredentials: true});
+        let response = await axios.get(url, options);
         
         let criterias: {description: string, type: "INCLUSION" | "EXCLUSION"}[] = response.data.content.eligibilityCriteria;
         criterias = criterias.filter(item => item.type !== "INCLUSION");
@@ -34,11 +40,12 @@ export default function InfosTable({ AddTexts, onDeleteAddedText, typeField, url
         console.log(criterias);
 
         const data = { eligibilityCriteria: criterias };
-        axios.put(url, data, {withCredentials: true});
+        axios.put(url, data, options);
       }
+
       else if(text == "Exclusion criteria"){
         const objects: {description: string, type: "INCLUSION" | "EXCLUSION"}[] = AddTexts.map(item => ({description: item, type: "EXCLUSION"}));
-        let response = await axios.get(url, {withCredentials: true});
+        let response = await axios.get(url, options);
         
         let criterias: {description: string, type: "INCLUSION" | "EXCLUSION"}[] = response.data.content.eligibilityCriteria;
         criterias = criterias.filter(item => item.type !== "EXCLUSION");
@@ -46,7 +53,7 @@ export default function InfosTable({ AddTexts, onDeleteAddedText, typeField, url
         console.log(criterias);
 
         const data = { eligibilityCriteria: criterias };
-        axios.put(url, data, {withCredentials: true});
+        axios.put(url, data, options);
       }
     }
   });

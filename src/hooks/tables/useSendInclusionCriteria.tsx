@@ -7,17 +7,19 @@ interface CriteriaType {
 
 const useSendInclusionCriteria= () => {
     async function sendCriterias({ criteria, url }: CriteriaType) {
-        // Fetching inclusionCriterias from the server
-        let response = await axios.get(url, { withCredentials: true });
+        const accessToken = localStorage.getItem('accessToken');
+        let options = {
+          headers: { Authorization: `Bearer ${accessToken}` }
+        }
+
+        let response = await axios.get(url, options);
         const fetchedCriterias = response.data.content.eligibilityCriteria;
-        
-        // Adding the new keyword to the fetched keywords
+
         const updatedCriterias = [...fetchedCriterias, criteria];
         console.log(`updated array: ${updatedCriterias}`);
         
-        // Sending updated keywords to the server
         const data = { eligibilityCriteria: updatedCriterias };
-        let putResponse = await axios.put(url, data, { withCredentials: true });
+        let putResponse = await axios.put(url, data, options);
         console.log(putResponse);
     }
 

@@ -7,19 +7,19 @@ interface ResearchQuestionsType {
 
 const useSendResearchQuestions = () => {
     async function sendResearchQuestions({ researchQuestions, url }: ResearchQuestionsType) {
-
-        console.log({ researchQuestions, url })
-        // Fetching researchQuestions from the server
-        let response = await axios.get(url, { withCredentials: true });
+        const accessToken = localStorage.getItem('accessToken');
+        let options = {
+          headers: { Authorization: `Bearer ${accessToken}` }
+        }
+        
+        let response = await axios.get(url, options);
         const fetchedResearchQuestions = response.data.content.researchQuestions;
         
-        // Adding the new researchQuestion to the fetched researchQuestions
         const updatedResearchQuestions = [...fetchedResearchQuestions, researchQuestions];
         console.log(`updated array: ${updatedResearchQuestions}`);
         
-        // Sending updated keywords to the server
         const data = { researchQuestions: updatedResearchQuestions };
-        let putResponse = await axios.put(url, data, { withCredentials: true });
+        let putResponse = await axios.put(url, data, options);
         console.log(putResponse);
     }
 
