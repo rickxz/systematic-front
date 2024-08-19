@@ -20,7 +20,13 @@ const useCreateRevision = async ({title, description, collaborators}: ReviewData
     }
 
     try{
-        let response = await axios.post(url, data, {withCredentials: true});
+        const accessToken = localStorage.getItem('accessToken');
+        let options = {
+            headers: { Authorization: `Bearer ${accessToken}` }
+        }
+
+        let response = await axios.post(url, data, options);
+
         return response.data.systematicStudyId;
     } catch(err){
         console.log(err);
