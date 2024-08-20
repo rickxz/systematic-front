@@ -107,7 +107,6 @@ const useHandleRegister = (closeModal: () => void) => {
                         position: "top"
                     });
                     closeModal();
-                    setTimeout(() => (e.target as HTMLFormElement).submit(), 0);
                 }
             } catch (err: any) {
                 console.error(err);
