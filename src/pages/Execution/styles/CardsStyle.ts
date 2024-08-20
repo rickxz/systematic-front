@@ -7,7 +7,7 @@ export const Accordionbtn = {
 export const accordion = {
   w: "100%",
   justifySelf: "center",
-  bgColor: "#414B53",
+  bgColor: "#40586B",
   color: "#969595",
   borderRadius: "3px",
 };
@@ -24,6 +24,7 @@ export const conteiner = {
   h: "6em",
   borderTopLeftRadius: "3px",
   borderTopRightRadius: "3px",
+
 };
 
 export const iconConteiner = {
@@ -32,6 +33,7 @@ export const iconConteiner = {
   alignContent: "center",
   justifyContent: "flex-start",
   w: "50%",
+  
 };
 
 export const testo = {
