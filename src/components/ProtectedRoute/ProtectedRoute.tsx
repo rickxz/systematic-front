@@ -10,8 +10,7 @@ interface ProtectedRouteProps {
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
   const { isLoggedIn, isChecking } = useVerifyIfLoggedIn(); 
 
-  if (isChecking && element.type.name == "UserArea") {
-    console.log(element)
+  if (isChecking) {
     return  <LoadingPage />;
   }
 
