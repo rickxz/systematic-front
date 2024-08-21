@@ -19,7 +19,7 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
       justifyContent={"space-between"}
       alignItems={"center"}
       flexDirection={"row"}
-      bgColor={type === "allData" ? "#C9D9E5" : "#301E1A"}
+      bgColor={type === "allData" ? "#EBF0F3" : "#301E1A"}
       color={type === "allData" ? "#301E1A" : "#C9D9E5"}
       borderRadius={"1%"}>
 
@@ -35,19 +35,19 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
             w={"fit-content"}
             text={"Add Session"}
             path={"/newRevision/searchSession"}
-            bgColor={"#414B53"}
-            color={"#FDF0D5"}
-            border={"1px solid #FDF0D5"}
+            bgColor={"#263C56"}
+            color={"#C9D9E5"}
+            //border={"1px solid #FDF0D5"}
             fontWeight="bold"
-            borderRadius="3px"
+            borderRadius="10px"
           />
           <EventButton
             fontSize={type === "allData" ? 16 : 13}
-            bgColor={type === "allData" ? "#301E1A" : "#C9D9E5"}
+            bgColor={type === "allData" ? "#C9D9E5" : "#C9D9E5"}
             w={"170px"}
-            color={type === "allData" ? "#C9D9E5" : "#301E1A"}
+            color={type === "allData" ? "#263C56" : "#301E1A"}
             fontWeight="bold"
-            borderRadius="3px"
+            borderRadius="10px"
             event={function (): void {
               console.log("Session deleted");
             }}
