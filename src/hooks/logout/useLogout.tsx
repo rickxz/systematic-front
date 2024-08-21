@@ -7,7 +7,7 @@ export default function useLogout() {
 
   const logout = async () => {
     try {
-      const response = await axios.post(url+"api/v1/auth/logout", {}, {withCredentials: true})
+      const response = await axios.post(url + "api/v1/auth/logout", {}, {withCredentials: true})
       console.log(response);
       deleteUserData();
     } catch (error) {
