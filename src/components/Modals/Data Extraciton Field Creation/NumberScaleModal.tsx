@@ -50,7 +50,7 @@ function NumberScaleModal({show, scaleHolder }: Props) {
                 <ModalBody>
                     <FormControl>
                         <FormLabel>Min</FormLabel>
-                        <NumberInput mb={"2rem"} defaultValue={0} onChange={handleMinimalValue}>
+                        <NumberInput mb={"2rem"} defaultValue={0} onChange={handleMinimalValue} min={0}>
                             <NumberInputField />
                             <NumberInputStepper>
                                 <NumberIncrementStepper />
@@ -59,7 +59,7 @@ function NumberScaleModal({show, scaleHolder }: Props) {
                         </NumberInput>
 
                         <FormLabel>Max</FormLabel>
-                        <NumberInput defaultValue={5} onChange={handleMaximalValue}>
+                        <NumberInput defaultValue={5} onChange={handleMaximalValue} min={0}>
                             <NumberInputField />
                             <NumberInputStepper>
                                 <NumberIncrementStepper />
