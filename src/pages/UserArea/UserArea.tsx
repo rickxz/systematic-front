@@ -42,7 +42,7 @@ export default function UserArea() {
         }
         const url = "http://localhost:8080/";
         const response = await axios.get(`${url}systematic-study/${data.id}/protocol`, options);
-        
+        console.log(response);
         const status = await verifyUnfinishedStudy(data.id);
         
         return { ...data, responseData: response.data, status }
