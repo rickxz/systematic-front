@@ -20,11 +20,14 @@ export default function UserArea() {
   const [myRevisionsUrl, setMyRevisionsUrl] = useState('');
   const [cardData, setCardData] = useState<cardDataProps[]>([]);
   const [fetchedData, setFetchedData] = useState<cardDataProps[]>([]);
+  const [firstAccess, setFirstAccess] = useState(false);
 
   const accessToken = localStorage.getItem("accessToken");
 
   useEffect(() => {
     localStorage.removeItem("systematicStudyId");
+    if(sessionStorage.getItem('firstAccess') == undefined) setFirstAccess(true); 
+
     const url = localStorage.getItem('myReviewsLink');
     if (url) {
       setMyRevisionsUrl(url);
@@ -63,7 +66,7 @@ export default function UserArea() {
     <FlexLayout defaultOpen={0} navigationType="Default">
       <Header text="My Systematic Reviews" />
       <Flex sx={flexStyles} w={"90%"} align="center" justify="center">
-        {fetchedData.length > 0 ? (
+        {fetchedData.length > 0 || !firstAccess ? (
           fetchedData.map((data) => (
             <RevisionCard
               key={data.id}

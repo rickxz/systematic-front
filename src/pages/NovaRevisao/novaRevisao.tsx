@@ -19,6 +19,7 @@ export default function NovaRevisao() {
     } else {
     const id = await useCreateRevision({title, description, collaborators});
     localStorage.setItem("systematicStudyId", id);
+    sessionStorage.setItem("firstAccess", "false");
     window.location.href = `http://localhost:5173/#/newRevision/protocol/${id}`;
     }
   }
