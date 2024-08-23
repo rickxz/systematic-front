@@ -8,8 +8,8 @@ export default async function useFetchSystematicReview(systematicStudyId: string
             headers: { Authorization: `Bearer ${accessToken}` }
         }
         const response = await axios.get(`${url}systematic-study/${systematicStudyId}`, options);
-        console.log(response);
-        return response;
+        console.log(response.data.content);
+        return response.data.content;
     } catch (error) {
         console.log("Error fetching systematic review infos:", error);
         throw error;
