@@ -41,6 +41,7 @@ function App() {
             <Route path="/serverError" element={<ServerError />} />
 
             {/*Nested Routes*/}
+            <Route path="/revision/:id" element={<ProtectedRoute element={<NovaRevisao />} />} />
             <Route path="/newRevision/protocol/:id" element={<ProtectedRoute element={<Protocol />} />} />
             <Route path="/newRevision/protocolpartTwo/:id" element={<ProtectedRoute element={<ProtocolPartTwo />} />} />
             <Route path="/newRevision/protocolpartThree/:id" element={<ProtectedRoute element={<ProtocolPartThree />} />} />

@@ -7,19 +7,35 @@ import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState } from "react";
 import useCreateRevision from "../../hooks/revisions/useCreateReview";
+import useEditRevision from "../../hooks/revisions/useEditReview";
+import { useParams } from "react-router-dom";
 
 export default function NovaRevisao() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [collaborators, setCollaborators] = useState<string[]>([]);
+  const { id = "" } = useParams();
 
-  async function handleData(){
+  function saveDataAndNavegate(idInUse: string){
+    localStorage.setItem("systematicStudyId", idInUse);
+    window.location.href = `http://localhost:5173/#/newRevision/protocol/${idInUse}`;
+  }
+  async function handleEdition() {
     if(title == ''){
       window.alert("O campo título é obrigatório!");
     } else {
-    const id = await useCreateRevision({title, description, collaborators});
-    localStorage.setItem("systematicStudyId", id);
-    window.location.href = `http://localhost:5173/#/newRevision/protocol/${id}`;
+
+      const response = await useEditRevision({title, description, id});
+      console.log(response)
+      saveDataAndNavegate(id)
+    }
+  }
+  async function handleCreation(){
+    if(title == ''){
+      window.alert("O campo título é obrigatório!");
+    } else {
+      const idOfCreation = await useCreateRevision({title, description, collaborators});
+      saveDataAndNavegate(idOfCreation);
     }
   }
 
@@ -42,8 +58,8 @@ export default function NovaRevisao() {
         <ResearcherFilter />
 
         <Box w={"60vw"} display={"flex"} alignItems={"center"} justifyContent={"end"}>
-          {title != '' ? <NavButton event={handleData} text="Create new Review" /> :
-          <NavButton event={handleData} path={"/newRevision"} text="Create new review" />
+          {id ? <NavButton event={handleEdition} text="Save" /> :
+          <NavButton event={handleCreation} path={"/newRevision"} text="Create new review" />
           }
         </Box>
       </FormControl>

@@ -12,6 +12,5 @@ export default async function useFetchSystematicReview(systematicStudyId: string
         return response.data.content;
     } catch (error) {
         console.log("Error fetching systematic review infos:", error);
-        throw error;
     }
 }
