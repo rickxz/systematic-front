@@ -7,7 +7,13 @@ export default function useLogout() {
 
   const logout = async () => {
     try {
-      const response = await axios.post(url + "api/v1/auth/logout", {}, {withCredentials: true})
+      const accessToken = localStorage.getItem('accessToken');
+      let options = {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      }
+
+      console.log(`${url}auth/logout   ` + accessToken)
+      const response = await axios.post(`${url}auth/logout`, options)
       console.log(response);
       deleteUserData();
     } catch (error) {
