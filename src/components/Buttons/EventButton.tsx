@@ -37,8 +37,8 @@ export default function EventButton({ event, text, variant="default", ...buttonP
       bgColor={bgColor} 
       color={color}
       _hover={{ 
-        bgColor: hoverBgColor,
-        color: hoverColor,
+        bgColor: "#263C56",
+        color: "#C9D9E5",
         boxShadow: "0 6px 8px rgba(0, 0, 0, 0.15)" 
       }}
       borderRadius={borderRadius}
