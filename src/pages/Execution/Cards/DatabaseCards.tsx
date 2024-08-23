@@ -30,7 +30,7 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
 
         <Box sx={type === "allData" ? btnConteinerAllBases : btnConteiner}>
 
-          <NavButton
+          {/* <NavButton
             fontSize={type === "allData" ? 16 : 13}
             w={"fit-content"}
             text={"Add Session"}
@@ -40,8 +40,8 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
             //border={"1px solid #FDF0D5"}
             fontWeight="bold"
             borderRadius="10px"
-          />
-          <EventButton
+          /> */}
+          {/* <EventButton
             fontSize={type === "allData" ? 16 : 13}
             bgColor={type === "allData" ? "#C9D9E5" : "#C9D9E5"}
             w={"170px"}
@@ -52,7 +52,7 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
               console.log("Session deleted");
             }}
             text={"Remove Session"}
-          />
+          /> */}
         </Box>
 
       </Box>
