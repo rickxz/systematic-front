@@ -4,6 +4,7 @@ import NavItem from "./NavItem";
 import { Accordion } from "@chakra-ui/react";
 import { IoLibrarySharp } from "react-icons/io5";
 import LogoutButton from "./LogoutButton";
+import ReviewInfosButton from "./ReviewInfosButton";
 
 interface IAccordion {
   navSize: string;
@@ -14,6 +15,7 @@ export default function AccordionNav({ navSize, defaultOpen }: IAccordion) {
   return (
     <>
       <Accordion defaultIndex={defaultOpen} allowMultiple>
+        <ReviewInfosButton navSize={navSize} />
         <AccordionElement
           navSize={navSize}
           title="Planning"
