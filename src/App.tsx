@@ -22,6 +22,7 @@ import Visualization from "./pages/NovaRevisao/visualization/Visualization";
 import Unauthorized from "./pages/UnauthorizedPage/UnauthorizedPage";
 import ServerError from "./pages/ServerErrorPage/ServerErrorPage";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import IdentificationSession from "./pages/Execution/IdentificationSession";
 
 function App() {
   const context = useContext(AppContext);
@@ -45,6 +46,7 @@ function App() {
             <Route path="/newRevision/protocolpartTwo/:id" element={<ProtectedRoute element={<ProtocolPartTwo />} />} />
             <Route path="/newRevision/protocolpartThree/:id" element={<ProtectedRoute element={<ProtocolPartThree />} />} />
             <Route path="/newRevision/identification" element={<ProtectedRoute element={<Identification />} />} />
+            <Route path="/newRevision/identification/:session" element={<IdentificationSession/>} />
             <Route path="/newRevision/keywords" element={<ProtectedRoute element={<KeyWordScreen />} />} />
             <Route path="/newRevision/selection" element={<ProtectedRoute element={<Selection />} />} />
             <Route path="/newRevision/extraction" element={<ProtectedRoute element={<Extraction />} />} />
