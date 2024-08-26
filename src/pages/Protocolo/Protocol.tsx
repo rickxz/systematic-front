@@ -45,9 +45,20 @@ export default function Protocol() {
     fetchValues();
   }, [])
 
+  async function handleDataReturn(){
+    const picoc = {
+      "population": population,
+      "intervention": intervention,
+      "control": control,
+      "outcome": outcome,
+      "context": context
+    };
+    await useCreateProtocol({goal, mainQuestion, picoc, id, retry: true})
+    window.location.href = `http://localhost:5173/#/newRevision`;
+  }
+
   async function handleData(){
-    console.log(goal);
-    console.log(mainQuestion);
+
     const picoc = {
       "population": population,
       "intervention": intervention,
@@ -130,7 +141,8 @@ export default function Protocol() {
           </FormControl>
 
           <Box sx={btnBox}>
-          <NavButton event={handleData} text="Next"  />
+            <NavButton event={handleDataReturn} text='Return'/>
+            <NavButton event={handleData} text="Next" />
           </Box>
         </Flex>
       </Box>
