@@ -6,7 +6,7 @@ import InputTextArea from "../../components/Inputs/InputTextArea";
 import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useEffect, useState } from "react";
-import useCreateRevision from "../../hooks/revisions/useCreateReview";
+import useCreateRevision from "../../hooks/revisions/useCreateReviewPost";
 
 
 export default function NovaRevisao() {
@@ -23,7 +23,14 @@ export default function NovaRevisao() {
   }, [])
 
   async function handleDataPut() {
-    
+    if(title == ''){
+      window.alert("O campo título é obrigatório!");
+    } else {
+    const id = await useCreateRevision({title, description, collaborators});
+    localStorage.setItem("systematicStudyId", id);
+    sessionStorage.setItem("firstAccess", "false");
+    window.location.href = `http://localhost:5173/#/newRevision/protocol/${id}`;
+    }
   }
 
   async function handleDataPost() {
@@ -56,9 +63,9 @@ export default function NovaRevisao() {
         <ResearcherFilter />
 
         <Box w={"60vw"} display={"flex"} alignItems={"center"} justifyContent={"end"}>
-          {title != '' ? <NavButton event={handleDataPost} text="Create new Review" /> :
-          <NavButton event={handleDataPost} path={"/newRevision"} text="Create new review" />
-          }
+          
+          { title != '' && <NavButton event={handleDataPost} text="Create new Review" /> }
+        
         </Box>
       </FormControl>
     </FlexLayout>
