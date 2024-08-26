@@ -8,6 +8,15 @@ function isProtocolPartOneFinished(response:  Protocol) {
     return response.goal !== null && response.justification !== null
 }
     
+function isPicocInitialized(response: Protocol){
+    return response.picoc !== null;
+}
+
+function isPicocFinished(response: Protocol){
+    return response.picoc.context !== '' && response.picoc.control !== '' && response.picoc.intervention !== ''
+    && response.picoc.outcome !== '' && response.picoc.population !== ''; 
+}
+
 function isProtocolPartTwoFinished(response:  Protocol) {
     return response.studiesLanguages !== null &&
         response.eligibilityCriteria !== null &&
@@ -43,6 +52,11 @@ export default async function verifyUnfinishedStudy(revisionId: string) {
     if(!isProtocolPartOneFinished(protocolData)) {
         return "Protocol part 1";
       }
+
+      else if(isPicocInitialized(protocolData) && !isPicocFinished(protocolData)){
+        return 'Picoc';
+      }
+
       else if (!isProtocolPartTwoFinished(protocolData)) {
                   return "Protocol part 2";
                 }
