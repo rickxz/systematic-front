@@ -55,9 +55,12 @@ export default function ProtocolPartThree() {
 
         <FormControl sx={formControl}>
 
-          <InteractiveTable id={id} url={url} label={"Risk of Bias Questions"}/>
+          
           <InteractiveTable id={id} url={url} label={"Extraction Questions"}/>
+          
           <TextAreaInput value={analysis} label="Analysis and Synthesis" placeholder="Enter your analysis" onChange={handleAnalysisAndSynthesis} />
+          
+          <InteractiveTable id={id} url={url} label={"Risk of Bias Questions"}/>
 
         </FormControl>
 
