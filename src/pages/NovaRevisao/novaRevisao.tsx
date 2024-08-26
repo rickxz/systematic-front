@@ -7,40 +7,56 @@ import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useEffect, useState } from "react";
 import useCreateRevision from "../../hooks/revisions/useCreateReviewPost";
+import useCreateReviewPut from "../../hooks/revisions/useCreateReviewPut";
 
 
 export default function NovaRevisao() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [collaborators, setCollaborators] = useState<string[]>([]);
-  const [isreturn, setIsReturn] = useState(false);
+  const [isReturn, setIsReturn] = useState(false);
+  const [id, setId] = useState('');
 
   useEffect(() => {
 
     const id = localStorage.getItem('systematicStudyId');
-    if(id) setIsReturn(true);
+    if(id) {
+      setIsReturn(true);
+      setId(id);
+
+      
+    }
 
   }, [])
 
   async function handleDataPut() {
     if(title == ''){
       window.alert("O campo título é obrigatório!");
-    } else {
-    const id = await useCreateRevision({title, description, collaborators});
-    localStorage.setItem("systematicStudyId", id);
-    sessionStorage.setItem("firstAccess", "false");
-    window.location.href = `http://localhost:5173/#/newRevision/protocol/${id}`;
+    } 
+
+    else {
+      if(id) {
+        await useCreateReviewPut({title, description, id});
+      }
+
+      sessionStorage.setItem("firstAccess", "false");
+      window.location.href = `http://localhost:5173/#/newRevision/protocol/${id}`;
+    
     }
   }
 
   async function handleDataPost() {
     if(title == ''){
       window.alert("O campo título é obrigatório!");
-    } else {
-    const id = await useCreateRevision({title, description, collaborators});
-    localStorage.setItem("systematicStudyId", id);
-    sessionStorage.setItem("firstAccess", "false");
-    window.location.href = `http://localhost:5173/#/newRevision/protocol/${id}`;
+    } 
+
+    else {
+      const id = await useCreateRevision({title, description, collaborators});
+
+      localStorage.setItem("systematicStudyId", id);
+      sessionStorage.setItem("firstAccess", "false");
+
+      window.location.href = `http://localhost:5173/#/newRevision/protocol/${id}`;
     }
   }
 
@@ -64,7 +80,7 @@ export default function NovaRevisao() {
 
         <Box w={"60vw"} display={"flex"} alignItems={"center"} justifyContent={"end"}>
           
-          { title != '' && <NavButton event={handleDataPost} text="Create new Review" /> }
+          { !isReturn ? <NavButton event={handleDataPost} text="Create new Review" /> : <NavButton event={handleDataPut} text="next"/> }
         
         </Box>
       </FormControl>
