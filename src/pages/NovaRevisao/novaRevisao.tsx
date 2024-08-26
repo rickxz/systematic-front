@@ -13,14 +13,20 @@ export default function NovaRevisao() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [collaborators, setCollaborators] = useState<string[]>([]);
+  const [isreturn, setIsReturn] = useState(false);
 
   useEffect(() => {
 
-    
+    const id = localStorage.getItem('systematicStudyId');
+    if(id) setIsReturn(true);
 
   }, [])
 
-  async function handleDataPost(){
+  async function handleDataPut() {
+    
+  }
+
+  async function handleDataPost() {
     if(title == ''){
       window.alert("O campo título é obrigatório!");
     } else {
