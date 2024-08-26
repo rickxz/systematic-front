@@ -5,15 +5,22 @@ import NavButton from "../../components/Buttons/NavButton";
 import InputTextArea from "../../components/Inputs/InputTextArea";
 import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 import FlexLayout from "../../components/ui/Flex/Flex";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useCreateRevision from "../../hooks/revisions/useCreateReview";
+
 
 export default function NovaRevisao() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [collaborators, setCollaborators] = useState<string[]>([]);
 
-  async function handleData(){
+  useEffect(() => {
+
+    
+
+  }, [])
+
+  async function handleDataPost(){
     if(title == ''){
       window.alert("O campo título é obrigatório!");
     } else {
@@ -43,8 +50,8 @@ export default function NovaRevisao() {
         <ResearcherFilter />
 
         <Box w={"60vw"} display={"flex"} alignItems={"center"} justifyContent={"end"}>
-          {title != '' ? <NavButton event={handleData} text="Create new Review" /> :
-          <NavButton event={handleData} path={"/newRevision"} text="Create new review" />
+          {title != '' ? <NavButton event={handleDataPost} text="Create new Review" /> :
+          <NavButton event={handleDataPost} path={"/newRevision"} text="Create new review" />
           }
         </Box>
       </FormControl>
