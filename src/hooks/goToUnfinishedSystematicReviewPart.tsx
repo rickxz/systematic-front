@@ -7,6 +7,15 @@ import {StudyReview} from "../../public/interfaces/studyReviewInterface";
 function isProtocolPartOneFinished(response:  Protocol) {
     return response.goal !== null && response.justification !== null
 }
+
+function isPicocInitialized(response: Protocol){
+    return response.picoc !== null;
+}
+
+function isPicocFinished(response: Protocol){
+    return response.picoc.context !== '' && response.picoc.control !== '' && response.picoc.intervention !== ''
+    && response.picoc.outcome !== '' && response.picoc.population !== ''; 
+}
     
 function isProtocolPartTwoFinished(response:  Protocol) {
     return response.studiesLanguages !== null &&
@@ -43,6 +52,12 @@ export default async function goToUnfinishedSystematicReviewPart(revisionId: str
     if(!isProtocolPartOneFinished(protocolData)) {
         window.location.href = `http://localhost:5173/#/newRevision/protocol/${revisionId}`;
       }
+
+      else if (isPicocInitialized(protocolData) && !isPicocFinished(protocolData)){
+        window.location.href = ` http://localhost:5173/#/newRevision/protocol/${revisionId}`;
+      }
+
+
       else if (!isProtocolPartTwoFinished(protocolData)) {
                   window.location.href = ` http://localhost:5173/#/newRevision/protocolpartTwo/${revisionId}`;
                 }
