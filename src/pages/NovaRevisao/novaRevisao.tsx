@@ -5,10 +5,12 @@ import NavButton from "../../components/Buttons/NavButton";
 import InputTextArea from "../../components/Inputs/InputTextArea";
 import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 import FlexLayout from "../../components/ui/Flex/Flex";
+
+//importin hooks
 import { useEffect, useState } from "react";
 import useCreateRevision from "../../hooks/revisions/useCreateReviewPost";
 import useCreateReviewPut from "../../hooks/revisions/useCreateReviewPut";
-
+import useSystematicStudyInfo from "../../hooks/revisions/useSystematicStudyInfo";
 
 export default function NovaRevisao() {
   const [title, setTitle] = useState('');
@@ -19,13 +21,24 @@ export default function NovaRevisao() {
 
   useEffect(() => {
 
-    const id = localStorage.getItem('systematicStudyId');
-    if(id) {
-      setIsReturn(true);
-      setId(id);
+    async function fetch() {
 
+      const id = localStorage.getItem('systematicStudyId');
+
+      if(id) {
+        setIsReturn(true);
+        setId(id);
+
+        const reviewData = await useSystematicStudyInfo(id);
+
+        setTitle(reviewData.title);
+        setDescription(reviewData.description);
+        console.log(reviewData);
+      }
       
     }
+
+    fetch();
 
   }, [])
 
@@ -74,7 +87,7 @@ export default function NovaRevisao() {
       <Header text="New Systematic Review" />
 
       <FormControl mt={"20px"} display={"flex"} gap={10} flexDir={"column"} w={"80%"} alignItems={"center"} ml={"2%"} >
-        <InputText label="Title" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle} labelAbove={true}/>
+        <InputText value={title} label="Title" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle} labelAbove={true}/>
         <InputTextArea value={description} label="Description" placeholder="Enter review description" onChange={handleDescription}></InputTextArea>
         <ResearcherFilter />
 
