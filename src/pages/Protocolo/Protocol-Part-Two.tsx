@@ -131,6 +131,8 @@ export default function ProtocolPartTwo2() {
           />
           <AddTextTable id={id} text="Inclusion criteria" placeholder="Enter the criteria" url={url}/>        
           <AddTextTable id={id} text="Exclusion criteria" placeholder="Enter the criteria" url={url}/>
+          
+          <TextAreaInput value={sourcesSelectionCriteria} onChange={handleSourcesSelectionCriteria}  label="Sources Selection Criteria" placeholder="Enter the sources selection criteria" />
           <AddSelectionTable
             label="Databases and Infortion Source"
             type="databases" 
@@ -143,7 +145,6 @@ export default function ProtocolPartTwo2() {
 
           <TextAreaInput value={researchStrategy} onChange={handleResearchStrategy} label="Research Strategy" placeholder="Enter research strategy" />
           <TextAreaInput value={selectProcess} onChange={handleSelectProcess} label="Article Selection Process" placeholder="Enter selection process" />
-          <TextAreaInput value={sourcesSelectionCriteria} onChange={handleSourcesSelectionCriteria}  label="Sources Selection Criteria" placeholder="Enter the sources selection criteria" />
 
         </FormControl>
         <Box sx={btnBox}>
