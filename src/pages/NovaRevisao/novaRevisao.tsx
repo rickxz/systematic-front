@@ -5,16 +5,42 @@ import NavButton from "../../components/Buttons/NavButton";
 import InputTextArea from "../../components/Inputs/InputTextArea";
 import ResearcherFilter from "../UserArea/subcomponents/ResearcherFilter";
 import FlexLayout from "../../components/ui/Flex/Flex";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useCreateRevision from "../../hooks/revisions/useCreateReview";
 import useEditRevision from "../../hooks/revisions/useEditReview";
 import { useParams } from "react-router-dom";
+import useFetchSystematicReview from "../../hooks/fetch/useFetchSystematicReview";
+import axios from "axios";
 
 export default function NovaRevisao() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [collaborators, setCollaborators] = useState<string[]>([]);
   const { id = "" } = useParams();
+
+  useEffect( () => {
+    if(id) {
+        async function fetchReviewData() {
+            try {
+                const accessToken = localStorage.getItem("accessToken");
+                let options = {
+                    headers: { Authorization: `Bearer ${accessToken}` }
+                }
+                const url = `http://localhost:8080/api/v1/systematic-study/${id}`;
+                const response = await axios.get(url, options);
+                console.log(response.data.content);
+
+                setTitle(response.data.content.title);
+                setDescription(response.data.content.description)
+            } catch (error) {
+                console.log("Error fetching systematic review infos:", error);
+            }
+        }
+
+        fetchReviewData();
+    }
+    else console.log("creation")
+  }, [])
 
   function saveDataAndNavegate(idInUse: string){
     localStorage.setItem("systematicStudyId", idInUse);
@@ -53,7 +79,7 @@ export default function NovaRevisao() {
       <Header text="New Systematic Review" />
 
       <FormControl mt={"20px"} display={"flex"} gap={10} flexDir={"column"} w={"80%"} alignItems={"center"} ml={"2%"} >
-        <InputText label="Title" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle} labelAbove={true}/>
+        <InputText value={title} label="Title" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle} labelAbove={true}/>
         <InputTextArea value={description} label="Description" placeholder="Enter review description" onChange={handleDescription}></InputTextArea>
         <ResearcherFilter />
 
