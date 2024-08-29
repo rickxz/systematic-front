@@ -6,9 +6,8 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
     const {
         name, setName, email, setEmail, affiliation, setAffiliation,
         state, setState, password, setPassword, confirmPassword, setConfirmPassword,
-        nameError, setNameError, emailError, setEmailError, affiliationError,
-        setAffiliationError, stateError, setStateError, passwordError, setPasswordError,
-        confirmPasswordError, setConfirmPasswordError, handleSubmit, isSubmitting
+        nameError, emailError, affiliationError, stateError, passwordError,
+        confirmPasswordError, handleSubmit, isSubmitting
     } = useHandleSignup(closeModal);
 
     return (
@@ -22,8 +21,8 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                         type="text"
                         id="name"
                         value={name}
-                        onChange={(e) => { setName(e.target.value); setNameError(""); }}
-                        className={nameError ? "inputError" : ""}
+                        onChange={ (e) => setName(e.target.value) }
+                        className={ nameError ? "inputError" : "" }
                     />
                     {nameError && <p className="error">{nameError}</p>}
                 </div>
@@ -34,7 +33,7 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                         type="text"
                         id="email"
                         value={email}
-                        onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
+                        onChange={ (e) => setEmail(e.target.value) }
                         className={emailError ? "inputError" : ""}
                     />
                     {emailError && <p className="error">{emailError}</p>}
@@ -46,7 +45,7 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                         type="text"
                         id="affiliation"
                         value={affiliation}
-                        onChange={(e) => { setAffiliation(e.target.value); setAffiliationError("") }}
+                        onChange={ (e) => setAffiliation(e.target.value) }
                         className={affiliationError ? "inputError" : ""}
                     />
                     {affiliationError && <p className="error">{affiliationError}</p>}
@@ -56,7 +55,7 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                     <label htmlFor="state">Country</label>
                     <select
                         value={state}
-                        onChange={(e) => { setState(e.target.value); setStateError(""); }}
+                        onChange={ (e) => setState(e.target.value) }
                         className={stateError ? "inputError" : ""}
                     >
                         <option value="">Select Country</option>
@@ -74,7 +73,7 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                         type="password"
                         id="password"
                         value={password}
-                        onChange={(e) => { setPassword(e.target.value); setPasswordError(""); setConfirmPasswordError(""); }}
+                        onChange={ (e) => setPassword(e.target.value) }
                         className={passwordError ? "inputError" : ""}
                     />
                     {passwordError && <p className="error">{passwordError}</p>}
@@ -86,7 +85,7 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                         type="password"
                         id="confirmPassword"
                         value={confirmPassword}
-                        onChange={(e) => { setConfirmPassword(e.target.value); setConfirmPasswordError(""); setPasswordError(""); }}
+                        onChange={ (e) => setConfirmPassword(e.target.value) }
                         className={confirmPasswordError ? "inputError" : ""}
                     />
                     {confirmPasswordError && <p className="error">{confirmPasswordError}</p>}
