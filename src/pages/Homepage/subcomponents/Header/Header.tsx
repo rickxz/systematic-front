@@ -6,9 +6,9 @@ import { Image } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import HomepageModal from "../../../../components/Modals/HomepageModal/Index";
-import FormLogin from "../../../../components/Modals/HomepageModal/authModals/formLogin/Index";
-import FormSignup from "../../../../components/Modals/HomepageModal/authModals/formSignup/Index";
-import ForgotPassword from "../../../../components/Modals/HomepageModal/authModals/recoverPassword";
+import FormLogin from "../../../../components/Modals/HomepageModal/AuthModals/formLogin/Index";
+import FormSignup from "../../../../components/Modals/HomepageModal/AuthModals/formSignup/Index";
+import ForgotPassword from "../../../../components/Modals/HomepageModal/AuthModals/recoverPassword";
 import useRecoverUserData from "../../../../hooks/temporaryHooks/useRecoverUserData";
 
 interface IHeaderProps {
