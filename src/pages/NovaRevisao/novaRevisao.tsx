@@ -10,7 +10,7 @@ import FlexLayout from "../../components/ui/Flex/Flex";
 import useCreateReview from "../../hooks/reviews/useCreateReview";
 
 export default function NovaRevisao() {
-  const { description, title, collaborators, handleDescription, handleTitle, handlePost, 
+  const { description, title, handleDescription, handleTitle, handlePost, 
     handlePut, isReturn } = useCreateReview();
 
 
