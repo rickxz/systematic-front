@@ -3,7 +3,7 @@ import EditButton from "../Buttons/EditButton";
 import DeleteButton from "../Buttons/DeleteButton";
 import { useInteractiveTable } from "../../hooks/useInteractiveTable";
 import { TableContainer, Table, Thead, Tbody, Tr, Th, Td, Button, Select, Input, FormLabel } from "@chakra-ui/react";
-import useSendExtractionForm from "../../hooks/revisions/extractionForm/useSendExtractionForm";
+import useSendExtractionForm from "../../hooks/reviews/extractionForm/useSendExtractionForm";
 import axios from "../../interceptor/interceptor";
 import { useEffect, useState } from "react";
 import NumberScaleModal from "../Modals/Data Extraciton Field Creation/NumberScaleModal";

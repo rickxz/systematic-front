@@ -8,9 +8,9 @@ import FlexLayout from "../../components/ui/Flex/Flex";
 
 //importin hooks
 import { useEffect, useState } from "react";
-import useCreateRevision from "../../hooks/revisions/useCreateReviewPost";
-import useCreateReviewPut from "../../hooks/revisions/useCreateReviewPut";
-import useSystematicStudyInfo from "../../hooks/revisions/useSystematicStudyInfo";
+import useCreateRevision from "../../hooks/reviews/useCreateReviewPost";
+import useCreateReviewPut from "../../hooks/reviews/useCreateReviewPut";
+import useSystematicStudyInfo from "../../hooks/reviews/useSystematicStudyInfo";
 
 export default function NovaRevisao() {
   const [title, setTitle] = useState('');

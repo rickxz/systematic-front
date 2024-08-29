@@ -6,7 +6,7 @@ import TextAreaInput from "../../components/Inputs/InputTextArea";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import useCreateProtocol from "../../hooks/revisions/useCreateProtocol";
+import useCreateProtocol from "../../hooks/reviews/useCreateProtocol";
 import axios from "../../interceptor/interceptor";
 
 export default function Protocol() {

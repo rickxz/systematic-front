@@ -7,7 +7,7 @@ import InteractiveTable from "../../components/Tables/InteractiveTable";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import useCreateProtocolThree from '../../hooks/revisions/useCreateProtocolThree';
+import useCreateProtocolThree from '../../hooks/reviews/useCreateProtocolThree';
 import axios from "../../interceptor/interceptor";
 
 export default function ProtocolPartThree() {

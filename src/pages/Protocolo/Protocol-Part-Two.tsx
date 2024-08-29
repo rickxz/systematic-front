@@ -10,7 +10,7 @@ import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable"
 import FlexLayout from "../../components/ui/Flex/Flex";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import useCreateProtocolTwo from "../../hooks/revisions/useCreateProtocolTwo";
+import useCreateProtocolTwo from "../../hooks/reviews/useCreateProtocolTwo";
 import { useNavigate } from "react-router-dom";
 
 export default function ProtocolPartTwo2() {
