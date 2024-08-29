@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../index.css";
-import useHandleSignup from "../../../../../../hooks/validation/useHandleRegister";
+import useHandleSignup from "../../../../../hooks/validation/useHandleRegister";
 
 export default function FormSignup({ redirectFormLogin, closeModal }: { redirectFormLogin: () => void, closeModal: () => void }) {
     const {

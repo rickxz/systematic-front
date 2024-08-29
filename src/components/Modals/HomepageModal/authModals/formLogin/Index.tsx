@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../index.css";
-import useHandleLogin from "../../../../../../hooks/validation/useHandleLogin";
+import useHandleLogin from "../../../../../hooks/validation/useHandleLogin";
 
 export default function FormLogin({ redirectForgotPassword }: { redirectForgotPassword: () => void }) {
     const {username, setUsername, password, setPassword,
