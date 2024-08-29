@@ -3,7 +3,6 @@ import { MdSentimentDissatisfied } from "react-icons/md";
 import { flexStyles } from "./styles/flexStyles";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import Header from "../../components/ui/Header/Header";
-import RevisionCard from "./subcomponents/RevisionCard";
 import NavButton from "../../components/Buttons/NavButton";
 
 //hooks imports
@@ -11,6 +10,7 @@ import useGetReviewCard from "../../hooks/reviewCard/useGetReviewCard";
 
 //component imports
 import Loader from "../../components/Icons/Loader";
+import RenderCards from "./subcomponents/RenderCards";
 
 export default function UserArea() {
 
@@ -23,19 +23,7 @@ export default function UserArea() {
 
         { !isLoaded && <Loader />}
         
-        { cardData && cardData.length > 0 && isLoaded && (
-          cardData.map((data) => (
-            <RevisionCard
-              key={data.id}
-              revisionId={data.id}
-              id={data.key}
-              title={data.title}
-              reviewers={data.collaborators}
-              status={data.status}
-              creation={data.creation}
-              isEdited={data.isEdited}
-            />
-          )) )}
+        { cardData && cardData.length > 0 && isLoaded && ( <RenderCards data={cardData}/> ) }
 
         { cardData && cardData.length == 0 && isLoaded && (
           <Flex direction="column" align="center" justify="center" w="100%">
