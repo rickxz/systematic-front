@@ -109,7 +109,7 @@ const useCreateReview = () => {
 
         else {
             await useCreateReviewPost( { title, description, collaborators } )
-            navigate('/protocol');
+            navigate(`newRevision/protocol/${id}`);
         }
     }
 
@@ -118,7 +118,7 @@ const useCreateReview = () => {
 
         else {
             await useCreateReviewPut( { title, description, id } )
-            navigate('/protocol');
+            navigate(`/newRevision/protocol/${id}`);
         }
     }
 
