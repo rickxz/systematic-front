@@ -3,7 +3,7 @@ import { Box, Text } from "@chakra-ui/react";
 import { conteiner, infosconteiner, text } from "../styles/EditionINfosStyles";
 
 interface IEditionInfosProps {
-  status: string;
+  status?: string;
   lastModification: string;
   // isEdited: boolean;
 }

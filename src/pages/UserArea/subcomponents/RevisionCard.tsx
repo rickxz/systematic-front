@@ -11,7 +11,7 @@ interface iRevisionCardProps {
   id: string;
   title: string;
   reviewers: string[];
-  status: string;
+  status?: string;
   creation: string;
   lastModification?: string;
   isEdited: boolean;
