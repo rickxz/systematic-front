@@ -71,8 +71,7 @@ export default function UserArea() {
               creation={data.creation}
               isEdited={data.isEdited}
             />
-          ))
-        ) }
+          )) )}
 
         { cardData && cardData.length == 0 && isLoaded && (
           <Flex direction="column" align="center" justify="center" w="100%">
