@@ -4,70 +4,63 @@ import { flexStyles } from "./styles/flexStyles";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import Header from "../../components/ui/Header/Header";
 import RevisionCard from "./subcomponents/RevisionCard";
-import { useFetchRevisionCard } from "../../hooks/fetch/useFetchRevisionCard";
-import { useState, useEffect } from "react";
 import NavButton from "../../components/Buttons/NavButton";
-import axios from "axios";
 
 //hooks imports
 import verifyUnfinishedStudy from "../../hooks/verifyUnfinishedStudy";
-
+import { useFetchRevisionCard } from "../../hooks/fetch/useFetchRevisionCard";
+import { useState, useEffect } from "react";
 //interfaces import
 
 import { cardDataProps } from "../../hooks/fetch/useFetchRevisionCard";
+import Loader from "../../components/Icons/Loader";
 
 export default function UserArea() {
   const [myRevisionsUrl, setMyRevisionsUrl] = useState('');
-  const [cardData, setCardData] = useState<cardDataProps[]>([]);
-  const [fetchedData, setFetchedData] = useState<cardDataProps[]>([]);
-  const [firstAccess, setFirstAccess] = useState(false);
-
-  const accessToken = localStorage.getItem("accessToken");
-
+  const [cardData, setCardData] = useState< cardDataProps[] | undefined >(undefined);
+  const [isLoaded, setIsloaded] = useState(false);
+  
   useEffect(() => {
     localStorage.removeItem("systematicStudyId");
-    if(sessionStorage.getItem('firstAccess') == undefined) setFirstAccess(true); 
-
     const url = localStorage.getItem('myReviewsLink');
+
     if (url) {
       setMyRevisionsUrl(url);
     }
+
   }, []);
 
-  useEffect(() => {
-    async function fetchData() {
-      const fetched = await Promise.all(cardData.map(async (data) => {
-        const options = {
-          headers: { "Authorization": `Bearer ${accessToken}` }
-        }
-        const url = "http://localhost:8080/";
-        const response = await axios.get(`${url}systematic-study/${data.id}/protocol`, options);
-        console.log(response);
-        const status = await verifyUnfinishedStudy(data.id);
-        
-        return { ...data, responseData: response.data, status }
-      }));
-        
-      setFetchedData(fetched);
-    }
-
-    if (cardData.length > 0) {
-      fetchData();
-    }
-  }, [cardData]);
-
-  const rawData = useFetchRevisionCard(myRevisionsUrl);
+  let rawData = useFetchRevisionCard(myRevisionsUrl);
 
   useEffect(() => {
-    setCardData(rawData);
+
+    async function fetch(){
+    console.log("raw data:");
+    console.log(rawData);
+
+    let newCardData = await Promise.all(rawData.map(async (study) => {
+      let status = await verifyUnfinishedStudy(study.id);
+
+      return {...study, status};
+    }));
+
+    setCardData(newCardData);
+    if( cardData ) setIsloaded(true);
+
+    }
+
+    fetch();
   }, [rawData]);
 
   return (
     <FlexLayout defaultOpen={0} navigationType="Default">
       <Header text="My Systematic Reviews" />
       <Flex sx={flexStyles} w={"90%"} align="center" justify="center">
-        {fetchedData.length > 0 || !firstAccess ? (
-          fetchedData.map((data) => (
+
+        { !isLoaded && <Loader />}
+        
+        { cardData && cardData.length > 0 && isLoaded && (
+          cardData.map((data) => (
             <RevisionCard
               key={data.id}
               revisionId={data.id}
@@ -79,7 +72,9 @@ export default function UserArea() {
               isEdited={data.isEdited}
             />
           ))
-        ) : (
+        ) }
+
+        { cardData && cardData.length == 0 && isLoaded && (
           <Flex direction="column" align="center" justify="center" w="100%">
             <Icon as={MdSentimentDissatisfied} boxSize={12} color="gray.500" mb={4} mt={"60px"} />
             <Text fontSize="2xl" color="gray.600" mb={4}>
@@ -90,7 +85,8 @@ export default function UserArea() {
             </Text>
             <NavButton text='Create review' path='/newRevision' ml='0rem' />
           </Flex>
-        )}
+        ) }
+
       </Flex>
     </FlexLayout>
   );

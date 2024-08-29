@@ -1,4 +1,3 @@
-import loading from '../../../public/assets/loadingIcon.svg';
 
 //imorting styles
 import Style from './Loader.module.css';
@@ -6,7 +5,8 @@ import Style from './Loader.module.css';
 const Loader = () => {
   return (
     <div className={Style.loader}>   
-        <img src={loading} alt="Loading" />
+        <img src='/assets/loader.svg' alt="Loading" />
+        <p>Procurando por estudos</p>
     </div>
   )
 }
