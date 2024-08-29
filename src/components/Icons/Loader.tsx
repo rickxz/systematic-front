@@ -6,7 +6,7 @@ const Loader = () => {
   return (
     <div className={Style.loader}>   
         <img src='/assets/loader.svg' alt="Loading" />
-        <p>Procurando por estudos</p>
+        <p>Searching for existent studies</p>
     </div>
   )
 }
