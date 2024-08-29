@@ -94,10 +94,11 @@ const useHandleRegister = (closeModal: () => void) => {
 
             try {
                 const response = await useRegisterUser(data);
-                console.log(response);
                 const user = response.data.username;
                 sessionStorage.setItem('userId', response.data.id);
+
                 if (response.status === 201) {
+                    
                     toast({
                         title: 'Account created.',
                         description: `You can now log in with your account, ${user}.`,
@@ -106,6 +107,7 @@ const useHandleRegister = (closeModal: () => void) => {
                         isClosable: true,
                         position: "top"
                     });
+
                     closeModal();
                     setTimeout(() => (e.target as HTMLFormElement).submit(), 0);
                 }
