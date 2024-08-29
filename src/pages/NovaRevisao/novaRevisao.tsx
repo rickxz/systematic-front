@@ -8,11 +8,12 @@ import FlexLayout from "../../components/ui/Flex/Flex";
 
 //importin hooks
 import useCreateReview from "../../hooks/reviews/useCreateReview";
+import AlertInputText from "../../components/Inputs/AlertInputText";
+import { useEffect } from "react";
 
 export default function NovaRevisao() {
   const { description, title, handleDescription, handleTitle, handlePost, 
-    handlePut, isReturn } = useCreateReview();
-
+    handlePut, isReturn, isTitleValid } = useCreateReview();
 
   return (
     <FlexLayout navigationType="Accordion" defaultOpen={0}>
@@ -20,7 +21,8 @@ export default function NovaRevisao() {
 
       <FormControl mt={"20px"} display={"flex"} gap={10} flexDir={"column"} w={"80%"} alignItems={"center"} ml={"2%"} >
         
-        <InputText value={title} label="Title" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle} labelAbove={true}/>
+        { isTitleValid ? <InputText value={title} label="Title" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle} labelAbove={true}/> 
+        : <AlertInputText border="red" value={title} label="Title is required" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle} labelAbove={true} /> }
         
         <InputTextArea value={description} label="Description" placeholder="Enter review description" onChange={handleDescription}></InputTextArea>
         

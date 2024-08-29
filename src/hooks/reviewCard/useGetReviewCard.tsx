@@ -8,7 +8,7 @@ const useGetReviewCard = () => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        localStorage.removeItem("systematicStudyId");
+        localStorage.removeItem("systematicReviewId");
         const url = localStorage.getItem('myReviewsLink');
     
         if (url) {

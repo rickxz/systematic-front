@@ -31,8 +31,9 @@ const useCreateReview = () => {
 
         async function fetch() {
     
-          const id = localStorage.getItem('systematicStudyId');
-    
+          const id = localStorage.getItem('systematicReviewId');
+          console.log(id);
+
           if(id) {
             setIsReturn(true);
             setId(id);
@@ -108,8 +109,11 @@ const useCreateReview = () => {
         if(title === '') setIsTitleValid(false);
 
         else {
-            await useCreateReviewPost( { title, description, collaborators } )
-            navigate(`newRevision/protocol/${id}`);
+            const reviewId = await useCreateReviewPost( { title, description, collaborators } )
+            
+            localStorage.setItem('systematicReviewId', reviewId);
+
+            navigate(`/newRevision/protocol/${reviewId}`);
         }
     }
 
@@ -123,7 +127,7 @@ const useCreateReview = () => {
     }
 
     return { useCreateReviewPut, useCreateReviewPost, title, description, collaborators, isReturn,
-    handleTitle, handleDescription, setDescription, setTitle, setIsTitleValid, handlePost, handlePut };
+    handleTitle, handleDescription, setDescription, setTitle, setIsTitleValid, handlePost, handlePut, isTitleValid };
 }
 
 export default useCreateReview;
