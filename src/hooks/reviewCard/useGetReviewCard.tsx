@@ -1,0 +1,48 @@
+import { useEffect, useState } from 'react'
+import { cardDataProps, useFetchRevisionCard } from '../fetch/useFetchRevisionCard';
+import verifyUnfinishedStudy from '../verifyUnfinishedStudy';
+
+const useGetReviewCard = () => {
+    const [myRevisionsUrl, setMyRevisionsUrl] = useState('');
+    const [cardData, setCardData] = useState< cardDataProps[] | undefined >(undefined);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        localStorage.removeItem("systematicStudyId");
+        const url = localStorage.getItem('myReviewsLink');
+    
+        if (url) {
+          setMyRevisionsUrl(url);
+        }
+    
+      }, []);
+    
+      let rawData = useFetchRevisionCard(myRevisionsUrl);
+    
+      useEffect(() => {
+    
+        async function fetch(){
+            console.log("raw data:");
+            console.log(rawData);
+        
+            let newCardData = await Promise.all(rawData.map(async (study) => {
+            let status = await verifyUnfinishedStudy(study.id);
+        
+            return {...study, status};
+        }));
+    
+        setCardData(newCardData);
+        if( cardData ) setIsLoaded(true);
+    
+        }
+    
+        fetch();
+      }, [rawData]);
+
+      console.log('cardData:');
+      console.log(cardData);
+    
+    return { cardData, isLoaded }
+}
+
+export default useGetReviewCard

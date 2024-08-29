@@ -7,50 +7,14 @@ import RevisionCard from "./subcomponents/RevisionCard";
 import NavButton from "../../components/Buttons/NavButton";
 
 //hooks imports
-import verifyUnfinishedStudy from "../../hooks/verifyUnfinishedStudy";
-import { useFetchRevisionCard } from "../../hooks/fetch/useFetchRevisionCard";
-import { useState, useEffect } from "react";
-//interfaces import
+import useGetReviewCard from "../../hooks/reviewCard/useGetReviewCard";
 
-import { cardDataProps } from "../../hooks/fetch/useFetchRevisionCard";
+//component imports
 import Loader from "../../components/Icons/Loader";
 
 export default function UserArea() {
-  const [myRevisionsUrl, setMyRevisionsUrl] = useState('');
-  const [cardData, setCardData] = useState< cardDataProps[] | undefined >(undefined);
-  const [isLoaded, setIsloaded] = useState(false);
-  
-  useEffect(() => {
-    localStorage.removeItem("systematicStudyId");
-    const url = localStorage.getItem('myReviewsLink');
 
-    if (url) {
-      setMyRevisionsUrl(url);
-    }
-
-  }, []);
-
-  let rawData = useFetchRevisionCard(myRevisionsUrl);
-
-  useEffect(() => {
-
-    async function fetch(){
-    console.log("raw data:");
-    console.log(rawData);
-
-    let newCardData = await Promise.all(rawData.map(async (study) => {
-      let status = await verifyUnfinishedStudy(study.id);
-
-      return {...study, status};
-    }));
-
-    setCardData(newCardData);
-    if( cardData ) setIsloaded(true);
-
-    }
-
-    fetch();
-  }, [rawData]);
+  let { cardData, isLoaded } = useGetReviewCard();
 
   return (
     <FlexLayout defaultOpen={0} navigationType="Default">
