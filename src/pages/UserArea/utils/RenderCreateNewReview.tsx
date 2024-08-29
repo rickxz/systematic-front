@@ -6,12 +6,11 @@ const RenderCreateNewReview = () => {
     return (
         <Flex direction="column" align="center" justify="center" w="100%">
             <Icon as={MdSentimentDissatisfied} boxSize={12} color="gray.500" mb={4} mt={"60px"} />
-            <Text fontSize="2xl" color="gray.600" mb={4}>
-            Oops! We didn't find any reviews here.
-            </Text>
-            <Text fontSize="lg" color="gray.500" mb={4}>
-            How about creating a new one?
-            </Text>
+
+            <Text fontSize="2xl" color="gray.600" mb={4}> Oops! We didn't find any reviews here. </Text>
+
+            <Text fontSize="lg" color="gray.500" mb={4}> How about creating a new one? </Text>
+
             <NavButton text='Create review' path='/newRevision' ml='0rem' />
         </Flex>
     )
