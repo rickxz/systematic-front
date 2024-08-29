@@ -1,16 +1,15 @@
-import { Flex, Text, Icon } from "@chakra-ui/react";
-import { MdSentimentDissatisfied } from "react-icons/md";
+import { Flex } from "@chakra-ui/react";
 import { flexStyles } from "./styles/flexStyles";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import Header from "../../components/ui/Header/Header";
-import NavButton from "../../components/Buttons/NavButton";
 
 //hooks imports
 import useGetReviewCard from "../../hooks/reviewCard/useGetReviewCard";
 
 //component imports
 import Loader from "../../components/Icons/Loader";
-import RenderCards from "./subcomponents/RenderCards";
+import RenderCards from "./utils/RenderCards";
+import RenderCreateNewReview from "./utils/RenderCreateNewReview";
 
 export default function UserArea() {
 
@@ -25,18 +24,7 @@ export default function UserArea() {
         
         { cardData && cardData.length > 0 && isLoaded && ( <RenderCards data={cardData}/> ) }
 
-        { cardData && cardData.length == 0 && isLoaded && (
-          <Flex direction="column" align="center" justify="center" w="100%">
-            <Icon as={MdSentimentDissatisfied} boxSize={12} color="gray.500" mb={4} mt={"60px"} />
-            <Text fontSize="2xl" color="gray.600" mb={4}>
-              Oops! We didn't find any reviews here.
-            </Text>
-            <Text fontSize="lg" color="gray.500" mb={4}>
-              How about creating a new one?
-            </Text>
-            <NavButton text='Create review' path='/newRevision' ml='0rem' />
-          </Flex>
-        ) }
+        { cardData && cardData.length == 0 && isLoaded && ( <RenderCreateNewReview /> ) }
 
       </Flex>
     </FlexLayout>

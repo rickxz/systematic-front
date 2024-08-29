@@ -1,4 +1,4 @@
-import RevisionCard from './RevisionCard';
+import RevisionCard from '../subcomponents/RevisionCard';
 import { cardDataProps } from '../../../hooks/fetch/useFetchRevisionCard';
 
 interface RenderCardsProps {
