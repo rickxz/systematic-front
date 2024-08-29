@@ -15,6 +15,7 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
         <form onSubmit={handleSubmit}>
             <h2>Sign Up</h2>
             <div className="contentForm">
+
                 <div className="inputGroup">
                     <label htmlFor="name">Name</label>
                     <input
@@ -26,6 +27,7 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                     />
                     {nameError && <p className="error">{nameError}</p>}
                 </div>
+
                 <div className="inputGroup">
                     <label htmlFor="email">Email</label>
                     <input
@@ -37,6 +39,7 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                     />
                     {emailError && <p className="error">{emailError}</p>}
                 </div>
+
                 <div className="inputGroup">
                     <label htmlFor="affiliation">Affiliation</label>
                     <input
@@ -48,6 +51,7 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                     />
                     {affiliationError && <p className="error">{affiliationError}</p>}
                 </div>
+
                 <div className="inputGroup">
                     <label htmlFor="state">Country</label>
                     <select
@@ -63,6 +67,7 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                     </select>
                     {stateError && <p className="error">{stateError}</p>}
                 </div>
+
                 <div className="inputGroup">
                     <label htmlFor="password">Password</label>
                     <input
@@ -74,6 +79,7 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                     />
                     {passwordError && <p className="error">{passwordError}</p>}
                 </div>
+
                 <div className="inputGroup">
                     <label htmlFor="confirmPassword">Confirm password</label>
                     <input
@@ -85,14 +91,18 @@ export default function FormSignup({ redirectFormLogin, closeModal }: { redirect
                     />
                     {confirmPasswordError && <p className="error">{confirmPasswordError}</p>}
                 </div>
+
                 <div className="actions">
+
                     <button type="submit" disabled={isSubmitting}>
                         {isSubmitting ? 'Submitting...' : 'Create Account'}
                     </button>
                     <Link to="#" onClick={redirectFormLogin}>
                         Already have an account?
                     </Link>
+                
                 </div>
+                
             </div>
         </form>
     );
