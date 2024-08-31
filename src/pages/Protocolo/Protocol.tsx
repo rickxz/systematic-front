@@ -6,14 +6,19 @@ import TextAreaInput from "../../components/Inputs/InputTextArea";
 import FlexLayout from "../../components/ui/Flex/Flex";
 
 import useCreatePortocol from '../../hooks/reviews/useCreateProtocol';
+import { useEffect } from "react";
 
 
 export default function Protocol() {
   
   const { handleDataAndGoNext, handleDataAndReturn, setGoal, setJustification, setPopulation, 
     setIntervention, setControl, setOutcome, setContext, goal, justification, population, intervention,
-    control, outcome, context } = useCreatePortocol();
+    control, outcome, context, setFlag } = useCreatePortocol();
   
+  useEffect(() => {
+    setFlag('protocol');
+  }, [])
+
   return (
     <FlexLayout defaultOpen={0} navigationType="Accordion">
 

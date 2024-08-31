@@ -9,13 +9,19 @@ import FlexLayout from "../../components/ui/Flex/Flex";
 
 //importimg hook
 import useCreateProtocol from "../../hooks/reviews/useCreateProtocol";
+import { useEffect } from "react";
 
 export default function ProtocolPartTwo2() {
 
   const { searchString, studyTypeDefinition, dataCollectionProcess, 
     sourcesSelectionCriteria, searchMethod, selectionProcess, setSearchString, setDataCollectionProcess, 
-    setStudyTypeDefinition, setSourcesSelectionCriteria, setSearchMethod, setSelectionProcess } = useCreateProtocol();
+    setStudyTypeDefinition, setSourcesSelectionCriteria, setSearchMethod, setSelectionProcess,
+  handleDataAndGoNext, handleDataAndReturn, setFlag } = useCreateProtocol();
 
+    useEffect(() => {
+      setFlag('protocolTwo');
+    }, [])
+  
   return (
     <FlexLayout defaultOpen={0} navigationType="Accordion">
       <Box w={"100%"} display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
@@ -70,8 +76,8 @@ export default function ProtocolPartTwo2() {
         </FormControl>
        
         <Box sx={btnBox}>
-          <NavButton event={async () => {}} text='Return'/>
-          <NavButton event={async () => {}} text="Next" />
+          <NavButton event={handleDataAndReturn} text='Return'/>
+          <NavButton event={handleDataAndGoNext} text="Next" />
         </Box>
       </Box>
     </FlexLayout>

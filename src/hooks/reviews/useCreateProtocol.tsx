@@ -2,10 +2,11 @@ import axios from '../../interceptor/interceptor';
 
 //importing hooks
 import { useEffect, useState } from 'react';
-import { FaLanguage } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 
 const useCreateProtocol = () => {
+
+    const [ flag, setFlag ] = useState('');
 
     //protocolOne States
     const [ goal, setGoal ] = useState('');
@@ -17,18 +18,18 @@ const useCreateProtocol = () => {
     const [ context, setContext ] = useState('');
 
     //protocolTwo states
-    const [ searchString, setSearchString ] = useState('');
-    const [ studyTypeDefinition, setStudyTypeDefinition ] = useState('');
-    const [ dataCollectionProcess, setDataCollectionProcess ] = useState('');
+    const [ searchString, setSearchString ] = useState('null');
+    const [ studyTypeDefinition, setStudyTypeDefinition ] = useState('null');
+    const [ dataCollectionProcess, setDataCollectionProcess ] = useState('null');
     const [ researchQuestions, setResearchQuestions ] = useState< string[] >([]);
     const [ keywords, setKeywords ] = useState< string [] >([]);
     const [ studiesLanguages, setStydiesLanguages ] = useState< string[] >([]);
     const [ inclusionCriteria, setInclusionCriteria ] = useState< string[] >([]);
     const [ exclusionCriteria, setExclusionCriteria ] = useState< string[] >([]);
-    const [ sourcesSelectionCriteria, setSourcesSelectionCriteria ] = useState('');
+    const [ sourcesSelectionCriteria, setSourcesSelectionCriteria ] = useState('null');
     const [ informationSources, setInformationSources ] = useState< string[] >([]); 
-    const [ searchMethod, setSearchMethod ] = useState('');  
-    const [ selectionProcess, setSelectionProcess ] = useState('');
+    const [ searchMethod, setSearchMethod ] = useState('null');  
+    const [ selectionProcess, setSelectionProcess ] = useState('null');
 
     const navigate = useNavigate();
 
@@ -47,7 +48,13 @@ const useCreateProtocol = () => {
             
             setGoal(data.content.goal);
             setJustification(data.content.justification);
-            
+            setSearchString(data.content.searchString);
+            setStudyTypeDefinition(data.content.studyTypeDefinition);
+            setDataCollectionProcess(data.content.dataCollectionProcess);
+            setSourcesSelectionCriteria(data.content.sourcesSelectionCriteria);
+            setSearchMethod(data.content.searchMethod);
+            setSelectionProcess(data.content.selectionProcess);
+        
             if( data.content.picoc != null ) {
                 setPopulation(data.content.picoc.population);
                 setIntervention(data.content.picoc.intervention);
@@ -56,8 +63,8 @@ const useCreateProtocol = () => {
                 setContext(data.content.picoc.context);
             }
         }
-        console.log(`goals: ${goal}`)
-        fetch()
+
+        fetch();
     }, [])
 
     //protocolOne
@@ -75,10 +82,30 @@ const useCreateProtocol = () => {
 
         if ( picoc.context != '' || picoc.control != '' || picoc.intervention != '' || picoc.outcome != '' || picoc.population != '' ) {
         
-            data = { goal, justification, picoc };
+            data = { 
+                goal, 
+                justification, 
+                picoc,
+                searchString,
+                studyTypeDefinition,
+                dataCollectionProcess,
+                sourcesSelectionCriteria,
+                searchMethod,
+                selectionProcess
+            };
         
         }
-        else data = { goal, justification }; 
+        else data = { 
+                goal, 
+                justification, 
+                picoc,
+                searchString,
+                studyTypeDefinition,
+                dataCollectionProcess,
+                sourcesSelectionCriteria,
+                searchMethod,
+                selectionProcess
+            };
 
         return await axios.put(url, data, options);
     }
@@ -88,18 +115,26 @@ const useCreateProtocol = () => {
 
         try {
             await createProtocol();
-            navigate(`/newRevision/ProtocolPartTwo/${id}`);
+
+            if( flag == 'protocol' ) navigate(`/newRevision/protocolPartTwo/${id}`);
+
+            if( flag == 'protocolTwo' ) navigate(`/newRevision/ProtocolPartThree/${id}`);
         }
         catch( err ) { console.log(err); }
     }
 
     async function handleDataAndReturn() {
-        await createProtocol();
-        navigate(`/newRevision`);
+        const id = localStorage.getItem('systematicReviewId');
+
+        try{
+            await createProtocol();
+            if( flag == 'protocol' )  navigate(`/newRevision`);
+            if( flag == 'protocolTwo' ) navigate(`/newRevision/Protocol/${id}`);
+        }
+        catch( err ) { console.log(err); }
     } 
 
     //protocolTwo
-
 
 
 
@@ -110,7 +145,7 @@ const useCreateProtocol = () => {
         setInformationSources, setSearchMethod, setSelectionProcess, goal, justification,
         population, intervention, control, outcome, context, searchString, studyTypeDefinition, 
         dataCollectionProcess, researchQuestions, keywords, studiesLanguages, inclusionCriteria,
-        exclusionCriteria, sourcesSelectionCriteria, informationSources, searchMethod, selectionProcess };
+        exclusionCriteria, sourcesSelectionCriteria, informationSources, searchMethod, selectionProcess, setFlag };
 }
 
 export default useCreateProtocol;
