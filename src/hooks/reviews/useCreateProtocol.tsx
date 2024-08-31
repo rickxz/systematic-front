@@ -2,10 +2,12 @@ import axios from '../../interceptor/interceptor';
 
 //importing hooks
 import { useEffect, useState } from 'react';
+import { FaLanguage } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 
 const useCreateProtocol = () => {
 
+    //protocolOne States
     const [ goal, setGoal ] = useState('');
     const [ justification, setJustification ] = useState('');
     const [ population, setPopulation ] = useState('');
@@ -13,7 +15,21 @@ const useCreateProtocol = () => {
     const [ control, setControl ] = useState('');
     const [ outcome, setOutcome ] = useState('');
     const [ context, setContext ] = useState('');
- 
+
+    //protocolTwo states
+    const [ searchString, setSearchString ] = useState('');
+    const [ studyTypeDefinition, setStudyTypeDefinition ] = useState('');
+    const [ dataCollectionProcess, setDataCollectionProcess ] = useState('');
+    const [ researchQuestions, setResearchQuestions ] = useState< string[] >([]);
+    const [ keywords, setKeywords ] = useState< string [] >([]);
+    const [ studiesLanguages, setStydiesLanguages ] = useState< string[] >([]);
+    const [ inclusionCriteria, setInclusionCriteria ] = useState< string[] >([]);
+    const [ exclusionCriteria, setExclusionCriteria ] = useState< string[] >([]);
+    const [ sourcesSelectionCriteria, setSourcesSelectionCriteria ] = useState('');
+    const [ informationSources, setInformationSources ] = useState< string[] >([]); 
+    const [ searchMethod, setSearchMethod ] = useState('');  
+    const [ selectionProcess, setSelectionProcess ] = useState('');
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -43,6 +59,8 @@ const useCreateProtocol = () => {
         console.log(`goals: ${goal}`)
         fetch()
     }, [])
+
+    //protocolOne
 
     async function createProtocol() {
         let data;
@@ -80,10 +98,19 @@ const useCreateProtocol = () => {
         navigate(`/newRevision`);
     } 
 
+    //protocolTwo
+
+
+
 
     return { createProtocol, handleDataAndGoNext, handleDataAndReturn, setGoal, setJustification,
-        setPopulation, setIntervention, setControl, setOutcome, setContext, goal, justification,
-        population, intervention, control, outcome, context };
+        setPopulation, setIntervention, setControl, setOutcome, setContext, setSearchString, 
+        setStudyTypeDefinition, setDataCollectionProcess, setResearchQuestions, setKeywords,
+        setStydiesLanguages, setInclusionCriteria, setExclusionCriteria, setSourcesSelectionCriteria,
+        setInformationSources, setSearchMethod, setSelectionProcess, goal, justification,
+        population, intervention, control, outcome, context, searchString, studyTypeDefinition, 
+        dataCollectionProcess, researchQuestions, keywords, studiesLanguages, inclusionCriteria,
+        exclusionCriteria, sourcesSelectionCriteria, informationSources, searchMethod, selectionProcess };
 }
 
 export default useCreateProtocol;

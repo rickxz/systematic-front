@@ -7,7 +7,14 @@ import AddTextTable from "../../components/AddDataFields/AddTextTable";
 import AddSelectionTable from "../../components/AddDataFields/AddSelectionTable";
 import FlexLayout from "../../components/ui/Flex/Flex";
 
+//importimg hook
+import useCreateProtocol from "../../hooks/reviews/useCreateProtocol";
+
 export default function ProtocolPartTwo2() {
+
+  const { searchString, studyTypeDefinition, dataCollectionProcess, 
+    sourcesSelectionCriteria, searchMethod, selectionProcess, setSearchString, setDataCollectionProcess, 
+    setStudyTypeDefinition, setSourcesSelectionCriteria, setSearchMethod, setSelectionProcess } = useCreateProtocol();
 
   return (
     <FlexLayout defaultOpen={0} navigationType="Accordion">
@@ -17,11 +24,11 @@ export default function ProtocolPartTwo2() {
 
         <FormControl sx={conteiner}>
           
-          <TextAreaInput value={''} onChange={(e) => {e}}  label="Search String" placeholder="Enter the search string" />
+          <TextAreaInput value={searchString} onChange={ (e) => {setSearchString(e.target.value)} }  label="Search String" placeholder="Enter the search string" />
           
-          <TextAreaInput value={''} onChange={(e) => {e}}  label="Study Type Definition" placeholder="Enter the study type definition" />
+          <TextAreaInput value={studyTypeDefinition} onChange={ (e) => { setStudyTypeDefinition(e.target.value)} }  label="Study Type Definition" placeholder="Enter the study type definition" />
           
-          <TextAreaInput value={''} onChange={(e) => {e}}  label="Data Colletion Process" placeholder="Enter the data colletion process" />
+          <TextAreaInput value={dataCollectionProcess} onChange={ (e) => {setDataCollectionProcess(e.target.value)} }  label="Data Collection Process" placeholder="Enter the data colletion process" />
 
           <Flex>
             <AddTextTable url={''} id={''} text="Research Questions" placeholder="Enter the other Research Questions"/>
@@ -44,10 +51,10 @@ export default function ProtocolPartTwo2() {
          
           <AddTextTable id={''} text="Exclusion criteria" placeholder="Enter the criteria" url={''}/>
           
-          <TextAreaInput value={''} onChange={() => {}}  label="Sources Selection Criteria" placeholder="Enter the sources selection criteria" />
+          <TextAreaInput value={sourcesSelectionCriteria} onChange={ (e) => {setSourcesSelectionCriteria(e.target.value)} }  label="Sources Selection Criteria" placeholder="Enter the sources selection criteria" />
          
           <AddSelectionTable
-            label="Databases and Infortion Source"
+            label="Databases and Information Source"
             type="databases" 
             url={''}
             options={["Google Scholar", "Scopus", "Scielo", "BDTD", "PubMed", "Expert Suggestion",
@@ -56,9 +63,9 @@ export default function ProtocolPartTwo2() {
             typeField="select"
           />
 
-          <TextAreaInput value={''} onChange={(e) => {e}} label="Research Strategy" placeholder="Enter research strategy" />
+          <TextAreaInput value={searchMethod} onChange={(e) => {setSearchMethod(e.target.value)} } label="Research Strategy" placeholder="Enter research strategy" />
           
-          <TextAreaInput value={''} onChange={(e) => {e}} label="Article Selection Process" placeholder="Enter selection process" />
+          <TextAreaInput value={selectionProcess} onChange={ (e) => {setSelectionProcess(e.target.value)} } label="Article Selection Process" placeholder="Enter selection process" />
 
         </FormControl>
        
