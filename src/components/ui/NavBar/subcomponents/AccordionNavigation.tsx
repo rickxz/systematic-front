@@ -13,7 +13,7 @@ interface IAccordion {
 export default function AccordionNav({ navSize, defaultOpen }: IAccordion) {
   return (
     <>
-      <Accordion defaultIndex={defaultOpen} allowMultiple>
+      <Accordion defaultIndex={defaultOpen} >
         <AccordionElement
           navSize={navSize}
           title="Planning"
