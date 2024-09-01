@@ -18,18 +18,18 @@ const useCreateProtocol = () => {
     const [ context, setContext ] = useState();
 
     //protocolTwo states
-    const [ searchString, setSearchString ] = useState(null);
-    const [ studyTypeDefinition, setStudyTypeDefinition ] = useState(null);
-    const [ dataCollectionProcess, setDataCollectionProcess ] = useState(null);
+    const [ searchString, setSearchString ] = useState< string | null >(null);
+    const [ studyTypeDefinition, setStudyTypeDefinition ] = useState< string | null >(null);
+    const [ dataCollectionProcess, setDataCollectionProcess ] = useState< string | null >(null);
     const [ researchQuestions, setResearchQuestions ] = useState< string[] >([]);
     const [ keywords, setKeywords ] = useState< string [] >([]);
     const [ studiesLanguages, setStydiesLanguages ] = useState< string[] >([]);
     const [ inclusionCriteria, setInclusionCriteria ] = useState< string[] >([]);
     const [ exclusionCriteria, setExclusionCriteria ] = useState< string[] >([]);
-    const [ sourcesSelectionCriteria, setSourcesSelectionCriteria ] = useState(null);
+    const [ sourcesSelectionCriteria, setSourcesSelectionCriteria ] = useState< string | null >(null);
     const [ informationSources, setInformationSources ] = useState< string[] >([]); 
-    const [ searchMethod, setSearchMethod ] = useState(null);  
-    const [ selectionProcess, setSelectionProcess ] = useState(null);
+    const [ searchMethod, setSearchMethod ] = useState< string | null >(null);  
+    const [ selectionProcess, setSelectionProcess ] = useState< string | null >(null);
 
     const navigate = useNavigate();
 

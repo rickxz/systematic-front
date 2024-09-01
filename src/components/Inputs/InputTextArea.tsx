@@ -14,6 +14,8 @@ export default function TextAreaInput({ label, placeholder, onChange, value, ...
     }
   };
 
+  if( value == null) value = ''; 
+
   return (
     <FormControl maxW={"60vw"}>
       <FormLabel color={"#2E4B6C"}>{label}</FormLabel>
