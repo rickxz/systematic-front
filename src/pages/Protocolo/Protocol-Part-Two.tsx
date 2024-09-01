@@ -1,6 +1,6 @@
 import Header from "../../components/ui/Header/Header";
 import NavButton from "../../components/Buttons/NavButton";
-import { Progress, FormControl, Box, Checkbox, Flex } from "@chakra-ui/react";
+import { Progress, FormControl, Box, Flex } from "@chakra-ui/react";
 import { btnBox, conteiner, flex } from "./styles/partTwooStyles";
 import TextAreaInput from "../../components/Inputs/InputTextArea";
 import AddTextTable from "../../components/AddDataFields/AddTextTable";

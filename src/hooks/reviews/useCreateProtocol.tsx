@@ -9,13 +9,13 @@ const useCreateProtocol = () => {
     const [ flag, setFlag ] = useState('');
 
     //protocolOne States
-    const [ goal, setGoal ] = useState('');
-    const [ justification, setJustification ] = useState('');
-    const [ population, setPopulation ] = useState();
-    const [ intervention, setIntervention ] = useState();
-    const [ control, setControl ] = useState();
-    const [ outcome, setOutcome ] = useState();
-    const [ context, setContext ] = useState();
+    const [ goal, setGoal ] = useState< string | null >(null);
+    const [ justification, setJustification ] = useState< string | null >(null);
+    const [ population, setPopulation ] = useState< string | null >(null);
+    const [ intervention, setIntervention ] = useState< string | null >(null);
+    const [ control, setControl ] = useState< string | null >(null);
+    const [ outcome, setOutcome ] = useState< string | null >(null);
+    const [ context, setContext ] = useState< string | null >(null);
 
     //protocolTwo states
     const [ searchString, setSearchString ] = useState< string | null >(null);
