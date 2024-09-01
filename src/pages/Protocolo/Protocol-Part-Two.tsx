@@ -37,11 +37,11 @@ export default function ProtocolPartTwo2() {
           <TextAreaInput value={dataCollectionProcess} onChange={ (e) => {setDataCollectionProcess(e.target.value)} }  label="Data Collection Process" placeholder="Enter the data colletion process" />
 
           <Flex>
-            <AddTextTable url={''} id={''} text="Research Questions" placeholder="Enter the other Research Questions"/>
+            <AddTextTable text="Research Questions" placeholder="Enter the other Research Questions"/>
           </Flex>
 
           <FormControl sx={flex}>
-            <AddTextTable url={''} id={''} text="Keywords" placeholder="Enter the keywords related to your review"/>
+            <AddTextTable text="Keywords" placeholder="Enter the keywords related to your review"/>
           </FormControl>
 
           <AddSelectionTable
@@ -53,9 +53,9 @@ export default function ProtocolPartTwo2() {
             typeField="select"
           />
 
-          <AddTextTable id={''} text="Inclusion criteria" placeholder="Enter the criteria" url={''}/>        
-         
-          <AddTextTable id={''} text="Exclusion criteria" placeholder="Enter the criteria" url={''}/>
+          <AddTextTable text="Inclusion criteria" placeholder="Enter the criteria" />      
+          
+          <AddTextTable text="Exclusion criteria" placeholder="Enter the criteria" />
           
           <TextAreaInput value={sourcesSelectionCriteria} onChange={ (e) => {setSourcesSelectionCriteria(e.target.value)} }  label="Sources Selection Criteria" placeholder="Enter the sources selection criteria" />
          

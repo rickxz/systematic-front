@@ -3,40 +3,32 @@ import TextAreaInput from "../Inputs/InputTextArea";
 import EventButton from "../Buttons/EventButton";
 import { useState } from "react";
 import { formcontrol } from "./styles/AddTextFieldStyle";
-import useHandleAddText from "../../hooks/tables/useHandleAddText";
 
 interface IAddTextFieldProps {
   onAddText: (newKeyword: string) => void;
-  placeholder: string;
-  url: string;
-  text?: string;
+  text: string;
 }
 
-export default function AddTextField({ onAddText, placeholder, url, text }: IAddTextFieldProps) {
+export default function AddTextField({ onAddText, text }: IAddTextFieldProps) {
   const [inputValue, setInputValue] = useState<string>("");
-  const { handleServerOriented } = useHandleAddText();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
   };
 
   const handleAddText = () => {
-    if(text){
-      const data = {
-        value: inputValue.trim(),
-        text,
-        onAddText,
-        url,
-        setValue: setInputValue
-      }
-      handleServerOriented(data)
-    }  
+    if (inputValue.trim() !== "") {
+      onAddText(inputValue.trim());
+      setInputValue("");
+    } else {
+      window.alert("The field must be filled!");
+    }
   };
 
   return (
     <FormControl sx={formcontrol}>
-      <TextAreaInput value={inputValue} label="" placeholder={placeholder} onChange={handleInputChange}></TextAreaInput>
-      <EventButton event={handleAddText} text="Add" mt={2} w={"6%"} borderRadius={"8px"}/>
+      <TextAreaInput value={''} label="" placeholder={text} onChange={handleInputChange}></TextAreaInput>
+      <EventButton event={handleAddText} text="ADD" mt={2} w={"10%"} />
     </FormControl>
   );
 }
