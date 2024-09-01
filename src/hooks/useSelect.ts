@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import axios from "../interceptor/interceptor";
+import { useState } from "react";
 
-export function useSelect(url: string, type: 'databases' | "studiesLanguages", initialState: string[] = []) {
+export function useSelect(initialState: string[] = []) {
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
   const [selectedValues, setSelectedValues] = useState<string[]>(initialState);
 
@@ -11,9 +10,8 @@ export function useSelect(url: string, type: 'databases' | "studiesLanguages", i
 
   const handleSelectAddButtonClick = () => {
     if (selectedValue !== null) {
-      if(selectedValues.indexOf(selectedValue) == -1){
-        setSelectedValues((prevSelectedValues) => [...prevSelectedValues, selectedValue]);
-      }
+      setSelectedValues((prevSelectedValues) => [...prevSelectedValues, selectedValue]);
+      setSelectedValue(null);
     }
   };
 
@@ -25,25 +23,5 @@ export function useSelect(url: string, type: 'databases' | "studiesLanguages", i
     });
   };
 
-  useEffect(()=>{
-    const accessToken = localStorage.getItem('accessToken');
-    let options = {
-      headers: { Authorization: `Bearer ${accessToken}` }
-    }
-    let data = {};
-
-    if(type == "studiesLanguages"){
-      data = {
-        studiesLanguages: selectedValues 
-      };
-    }
-    else if(type == 'databases'){
-      data ={
-        informationSources: selectedValues
-      };
-    }
-    axios.put(url, data, options);
-  },[selectedValues])
-
-  return { setSelectedValues, selectedValue, selectedValues, handleSelectChange, handleSelectAddButtonClick, handleDeleteSelect };
+  return { selectedValue, selectedValues, handleSelectChange, handleSelectAddButtonClick, handleDeleteSelect };
 }

@@ -7,12 +7,11 @@ interface ISelectInputProps {
   names: string[];
   onSelect: (selectValue: string) => void;
   selectedValue: string | null;
-  selectedValues: string[];
   placeholder?: string;
   page: string;
 }
 
-export default function SelectInput({ values, names, onSelect, selectedValue, selectedValues, placeholder, page }: ISelectInputProps) {
+export default function SelectInput({ values, names, onSelect, selectedValue, placeholder, page }: ISelectInputProps) {
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onSelect(event.target.value);
   };
@@ -20,13 +19,11 @@ export default function SelectInput({ values, names, onSelect, selectedValue, se
   const isProtocol = page === "protocol";
   return (
     <FormControl sx={formcontrol} w={isProtocol ? "55%" : "100%"}>
-      <Select bgColor={"#C9D9E5"} value={selectedValue || ""} onChange={handleSelectChange}>
-        <option value="" disabled>{placeholder}</option>
+      <Select bgColor={"#C9D9E5"} placeholder={placeholder} value={selectedValue || ""} onChange={handleSelectChange}>
         {names.map((optionName, index) => (
-          !selectedValues.includes(optionName) ?
           <option key={index} value={values[index]}>
             {optionName}
-          </option> : ""
+          </option>
         ))}
       </Select>
     </FormControl>
