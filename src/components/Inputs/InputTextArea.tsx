@@ -1,9 +1,9 @@
-import { FormControl, FormLabel, Textarea, TextareaProps } from "@chakra-ui/react";
+import { FormControl, FormLabel, Textarea } from "@chakra-ui/react";
 
-interface ITextInputProps extends TextareaProps {
+interface ITextInputProps {
   label: string;
   placeholder: string;
-  value: string;
+  value: string | null;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
