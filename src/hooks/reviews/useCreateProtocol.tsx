@@ -11,25 +11,25 @@ const useCreateProtocol = () => {
     //protocolOne States
     const [ goal, setGoal ] = useState('');
     const [ justification, setJustification ] = useState('');
-    const [ population, setPopulation ] = useState('');
-    const [ intervention, setIntervention ] = useState('');
-    const [ control, setControl ] = useState('');
-    const [ outcome, setOutcome ] = useState('');
-    const [ context, setContext ] = useState('');
+    const [ population, setPopulation ] = useState();
+    const [ intervention, setIntervention ] = useState();
+    const [ control, setControl ] = useState();
+    const [ outcome, setOutcome ] = useState();
+    const [ context, setContext ] = useState();
 
     //protocolTwo states
-    const [ searchString, setSearchString ] = useState('null');
-    const [ studyTypeDefinition, setStudyTypeDefinition ] = useState('null');
-    const [ dataCollectionProcess, setDataCollectionProcess ] = useState('null');
+    const [ searchString, setSearchString ] = useState(null);
+    const [ studyTypeDefinition, setStudyTypeDefinition ] = useState(null);
+    const [ dataCollectionProcess, setDataCollectionProcess ] = useState(null);
     const [ researchQuestions, setResearchQuestions ] = useState< string[] >([]);
     const [ keywords, setKeywords ] = useState< string [] >([]);
     const [ studiesLanguages, setStydiesLanguages ] = useState< string[] >([]);
     const [ inclusionCriteria, setInclusionCriteria ] = useState< string[] >([]);
     const [ exclusionCriteria, setExclusionCriteria ] = useState< string[] >([]);
-    const [ sourcesSelectionCriteria, setSourcesSelectionCriteria ] = useState('null');
+    const [ sourcesSelectionCriteria, setSourcesSelectionCriteria ] = useState(null);
     const [ informationSources, setInformationSources ] = useState< string[] >([]); 
-    const [ searchMethod, setSearchMethod ] = useState('null');  
-    const [ selectionProcess, setSelectionProcess ] = useState('null');
+    const [ searchMethod, setSearchMethod ] = useState(null);  
+    const [ selectionProcess, setSelectionProcess ] = useState(null);
 
     const navigate = useNavigate();
 
