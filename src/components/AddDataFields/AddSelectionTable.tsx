@@ -14,7 +14,7 @@ interface AddSelectTableProps {
 
 export default function AddSelectTable({ options, label, placeholder }: AddSelectTableProps) {
   const { selectedValue, selectedValues, handleSelectChange, handleSelectAddButtonClick, handleDeleteSelect } =
-    useSelect();
+    useSelect( [], label );
 
   return (
     <FormControl sx={conteiner} alignContent={"center"}>

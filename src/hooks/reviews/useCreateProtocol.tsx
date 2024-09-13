@@ -33,6 +33,9 @@ const useCreateProtocol = () => {
 
     const navigate = useNavigate();
 
+    const id = localStorage.getItem('systematicReviewId');
+    const url = `http://localhost:8080/systematic-study/${id}/protocol`;
+
     useEffect(() => {
         let token = localStorage.getItem('accessToken');
         let id = localStorage.getItem('systematicReviewId');
@@ -71,8 +74,6 @@ const useCreateProtocol = () => {
 
     async function createProtocol() {
         let data;
-        const id = localStorage.getItem('systematicReviewId');
-        const url = `http://localhost:8080/systematic-study/${id}/protocol`
         const token = localStorage.getItem('accessToken');
         let picoc = { population, intervention, control, outcome, context };
         
@@ -81,7 +82,6 @@ const useCreateProtocol = () => {
         } 
 
         if ( picoc.context != '' || picoc.control != '' || picoc.intervention != '' || picoc.outcome != '' || picoc.population != '' ) {
-        
             data = { 
                 goal, 
                 justification, 
@@ -93,7 +93,6 @@ const useCreateProtocol = () => {
                 searchMethod,
                 selectionProcess
             };
-        
         }
         else data = { 
                 goal, 
@@ -136,13 +135,25 @@ const useCreateProtocol = () => {
 
     //protocolTwo
 
+    async function sendSelectData(data: string[]){
 
+        const token = localStorage.getItem('accessToken');
+        let options = {
+            headers: { Authentication: `Bearer ${ token }` }
+        }
+
+        try{
+            let content = { studiesLanguages: data };
+            await axios.put(url, content, options);
+        }
+        catch(err) { console.log(err); } 
+    }
 
     return { createProtocol, handleDataAndGoNext, handleDataAndReturn, setGoal, setJustification,
         setPopulation, setIntervention, setControl, setOutcome, setContext, setSearchString, 
         setStudyTypeDefinition, setDataCollectionProcess, setResearchQuestions, setKeywords,
         setStydiesLanguages, setInclusionCriteria, setExclusionCriteria, setSourcesSelectionCriteria,
-        setInformationSources, setSearchMethod, setSelectionProcess, goal, justification,
+        setInformationSources, setSearchMethod, setSelectionProcess, sendSelectData, goal, justification,
         population, intervention, control, outcome, context, searchString, studyTypeDefinition, 
         dataCollectionProcess, researchQuestions, keywords, studiesLanguages, inclusionCriteria,
         exclusionCriteria, sourcesSelectionCriteria, informationSources, searchMethod, selectionProcess, setFlag };
