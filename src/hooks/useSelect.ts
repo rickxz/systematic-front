@@ -17,11 +17,12 @@ export function useSelect(initialState: string[] = [], context: string) {
       const options = { 
         headers: { Authentication: `Bearer ${token}` } 
       }
+      let response = await axios.get(url, options);
 
       if( context == 'Languages' ) {
-        let response = await axios.get(url, options);
         setSelectedValues(response.data.content.studiesLanguages);
       }
+      else setSelectedValues(response.data.content.informationSources);
     }
 
     fetchSelectedValues();
@@ -37,7 +38,7 @@ export function useSelect(initialState: string[] = [], context: string) {
       setSelectedValues((prevSelectedValues) => {
         
         let data = [ ...prevSelectedValues, selectedValue ];
-        sendSelectData(data);
+        sendSelectData(data, context);
 
         return data;
       });
@@ -51,7 +52,7 @@ export function useSelect(initialState: string[] = [], context: string) {
       const updatedSelectedValues = [...prevSelectedValues];
       updatedSelectedValues.splice(index, 1);
 
-      sendSelectData(updatedSelectedValues);
+      sendSelectData(updatedSelectedValues, context);
 
       return updatedSelectedValues;
     });
