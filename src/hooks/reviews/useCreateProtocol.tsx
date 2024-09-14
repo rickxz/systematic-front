@@ -30,9 +30,7 @@ const useCreateProtocol = () => {
     const [ informationSources, setInformationSources ] = useState< string[] >([]); 
     const [ searchMethod, setSearchMethod ] = useState< string | null >(null);  
     const [ selectionProcess, setSelectionProcess ] = useState< string | null >(null);
-
     const navigate = useNavigate();
-
     const id = localStorage.getItem('systematicReviewId');
     const url = `http://localhost:8080/systematic-study/${id}/protocol`;
 
@@ -152,11 +150,49 @@ const useCreateProtocol = () => {
         catch(err) { console.log(err); } 
     }
 
+    async function sendAddText(data: string[], context: string) {
+        let content;
+        let token = localStorage.getItem(`accessToken`);
+        let options = {
+            headers: { Authorization: `Bearer ${ token }` }
+        }
+
+        if( context == 'Research Questions' ) content = { researchQuestions: data };
+        if( context == 'Keywords' ) content = { keywords: data };
+        if( context == 'Inclusion criteria' ) {
+            let array: { description: string, type: string }[] = data.map((item: string) => {
+                return { description: item, type: 'INCLUSION' };
+            })
+
+            let response = await axios.get(url, options);
+            let aux: {description: string, type: string}[] = response.data.content.eligibilityCriteria;
+
+            content = [...aux, ...array];
+            content = { eligibilityCriteria: content };
+        }
+        if( context == 'Exclusion criteria' ) {
+            let array: { description: string, type: string }[] = data.map((item: string) => {
+                return { description: item, type: 'EXCLUSION' };
+            })
+
+            let response = await axios.get(url, options);
+            let aux: {description: string, type: string}[] = response.data.content.eligibilityCriteria;
+
+            content = [...aux, ...array];
+            content = { eligibilityCriteria: content };
+        }
+
+        try {
+            await axios.put(url, content, options);
+        }
+        catch( err ) { console.log(err) }
+    }
+
     return { createProtocol, handleDataAndGoNext, handleDataAndReturn, setGoal, setJustification,
         setPopulation, setIntervention, setControl, setOutcome, setContext, setSearchString, 
         setStudyTypeDefinition, setDataCollectionProcess, setResearchQuestions, setKeywords,
         setStydiesLanguages, setInclusionCriteria, setExclusionCriteria, setSourcesSelectionCriteria,
-        setInformationSources, setSearchMethod, setSelectionProcess, sendSelectData, goal, justification,
+        setInformationSources, setSearchMethod, setSelectionProcess, sendSelectData, sendAddText, goal, justification,
         population, intervention, control, outcome, context, searchString, studyTypeDefinition, 
         dataCollectionProcess, researchQuestions, keywords, studiesLanguages, inclusionCriteria,
         exclusionCriteria, sourcesSelectionCriteria, informationSources, searchMethod, selectionProcess, setFlag };

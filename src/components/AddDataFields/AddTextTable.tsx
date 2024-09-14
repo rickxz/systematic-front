@@ -11,7 +11,7 @@ interface AddTextTableProps {
 }
 
 export default function AddTextTable({ text, placeholder }: AddTextTableProps) {
-  const { AddText, handleAddText, setAddText } = useAddText();
+  const { AddText, handleAddText, setAddText } = useAddText(text);
   const { handleDeleteText } = useDeleteText();
   return (
     <FormControl sx={label}>
