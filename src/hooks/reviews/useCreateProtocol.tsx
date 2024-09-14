@@ -135,16 +135,19 @@ const useCreateProtocol = () => {
 
     //protocolTwo
 
-    async function sendSelectData(data: string[]){
-
+    async function sendSelectData(data: string[], context: string){
+        let content;
         const token = localStorage.getItem('accessToken');
         let options = {
             headers: { Authentication: `Bearer ${ token }` }
         }
 
         try{
-            let content = { studiesLanguages: data };
-            await axios.put(url, content, options);
+            if( context == 'Languages' ) content = { studiesLanguages: data };
+            else content = { informationSources: data };
+            
+            let response = await axios.put(url, content, options);
+            console.log(response);
         }
         catch(err) { console.log(err); } 
     }
