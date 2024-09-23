@@ -1,11 +1,12 @@
 import { useVerifyIfLoggedIn } from "./useVerifyIfLoggedIn";
 
-export default function useRecoverUserData() {
+export default async function useRecoverUserData(setUsername: React.Dispatch<React.SetStateAction<string | null>>) {
     const userData = localStorage.getItem("username");
-    const verifyIfLoggedInResponse =  useVerifyIfLoggedIn();
+    const verifyIfLoggedInResponse = await useVerifyIfLoggedIn();
     
-    if (verifyIfLoggedInResponse.isLoggedIn) return userData;
-
-    localStorage.clear();
-    return null;
+    if (verifyIfLoggedInResponse.isLoggedIn) setUsername(userData);
+    else {
+        localStorage.clean()
+        setUsername(userData);
+    }
 }

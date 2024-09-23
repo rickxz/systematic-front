@@ -1,6 +1,5 @@
 import { useState } from "react";
 import userToLoginProp from "../../../public/interfaces/userToLogin";
-import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import useLoginUser from "./useLoginUser";
 
@@ -19,7 +18,6 @@ export default function useHandleLogin() {
         "password": password
     }
 
-    const toast = useToast();
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

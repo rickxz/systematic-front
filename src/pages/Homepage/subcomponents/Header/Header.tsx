@@ -26,9 +26,10 @@ export default function Header({ show }: IHeaderProps) {
   const showLinks = show;
   const [showModal, setShowModal] = useState(false);
   const [openModal, setOpenModal] = useState<IModal>("");
-  const username = useRecoverUserData();
+  const [username, setUsername] = useState<string | null>(null);
   const navigate = useNavigate();
   
+  useRecoverUserData(setUsername);
 
   function handleSignUpModal() {
     setOpenModal("signup");
