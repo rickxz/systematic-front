@@ -10,7 +10,7 @@ export default function Identification() {
   const [id, setId] = useState('');
 
   useEffect(() => {
-    const id = localStorage.getItem("systematicStudyId");
+    const id = localStorage.getItem("systematicReviewId");
     if(id){
      setId(id);
     }
@@ -18,6 +18,7 @@ export default function Identification() {
 
   const url = `http://localhost:8080/systematic-study/${id}/protocol`
   const { databases } = useFetchDataBases(url);
+  console.log(databases);
 
   return (
     <FlexLayout defaultOpen={1} navigationType="Accordion">

@@ -65,9 +65,9 @@ export default async function verifyUnfinishedStudy(revisionId: string) {
         return "Protocol part 3";
       }
         
-      else if(!isSelectionProcessFinished(studiesData)) {
-        window.location.href = ` http://localhost:5173/#/newRevision/selection`;
-      }
-      else if (!isExtractionProcessFinished(studiesData)) window.location.href = ` http://localhost:5173/#/newRevision/extraction`;
-      else window.location.href = ` http://localhost:5173/#/newRevision/finalization`;
+    //   else if(!isSelectionProcessFinished(studiesData)) {
+    //     window.location.href = ` http://localhost:5173/#/newRevision/selection`;
+    //   }
+    //   else if (!isExtractionProcessFinished(studiesData)) window.location.href = ` http://localhost:5173/#/newRevision/extraction`;
+    //   else window.location.href = ` http://localhost:5173/#/newRevision/finalization`;
 }

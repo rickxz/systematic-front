@@ -66,9 +66,9 @@ export default async function goToUnfinishedSystematicReviewPart(revisionId: str
         window.location.href = ` http://localhost:5173/#/newRevision/protocolpartThree/${revisionId}`;
       }
         
-      else if(!isSelectionProcessFinished(studiesData)) {
-        window.location.href = ` http://localhost:5173/#/newRevision/selection`;
-      }
+    //   else if(!isSelectionProcessFinished(studiesData)) {
+    //     window.location.href = ` http://localhost:5173/#/newRevision/selection`;
+    //   }
       else if (!isExtractionProcessFinished(studiesData)) window.location.href = ` http://localhost:5173/#/newRevision/extraction`;
       else window.location.href = ` http://localhost:5173/#/newRevision/finalization`;
 }

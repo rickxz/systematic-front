@@ -30,6 +30,7 @@ const useCreateProtocol = () => {
     const [ informationSources, setInformationSources ] = useState< string[] >([]); 
     const [ searchMethod, setSearchMethod ] = useState< string | null >(null);  
     const [ selectionProcess, setSelectionProcess ] = useState< string | null >(null);
+    const [ analysisAndSynthesisProcess, setAnalysisAndSynthesisProcess ] = useState<string | null>(null);
     const navigate = useNavigate();
     const id = localStorage.getItem('systematicReviewId');
     const url = `http://localhost:8080/systematic-study/${id}/protocol`;
@@ -55,6 +56,7 @@ const useCreateProtocol = () => {
             setSourcesSelectionCriteria(data.content.sourcesSelectionCriteria);
             setSearchMethod(data.content.searchMethod);
             setSelectionProcess(data.content.selectionProcess);
+            setAnalysisAndSynthesisProcess(data.content.analysisAndSynthesisProcess);
         
             if( data.content.picoc != null ) {
                 setPopulation(data.content.picoc.population);
@@ -116,6 +118,8 @@ const useCreateProtocol = () => {
             if( flag == 'protocol' ) navigate(`/newRevision/protocolPartTwo/${id}`);
 
             if( flag == 'protocolTwo' ) navigate(`/newRevision/ProtocolPartThree/${id}`);
+
+            if( flag == 'protocolThree' ) navigate(``)
         }
         catch( err ) { console.log(err); }
     }
@@ -188,6 +192,10 @@ const useCreateProtocol = () => {
         catch( err ) { console.log(err) }
     }
 
+    //protocol three
+
+
+
     return { createProtocol, handleDataAndGoNext, handleDataAndReturn, setGoal, setJustification,
         setPopulation, setIntervention, setControl, setOutcome, setContext, setSearchString, 
         setStudyTypeDefinition, setDataCollectionProcess, setResearchQuestions, setKeywords,
@@ -195,7 +203,7 @@ const useCreateProtocol = () => {
         setInformationSources, setSearchMethod, setSelectionProcess, sendSelectData, sendAddText, goal, justification,
         population, intervention, control, outcome, context, searchString, studyTypeDefinition, 
         dataCollectionProcess, researchQuestions, keywords, studiesLanguages, inclusionCriteria,
-        exclusionCriteria, sourcesSelectionCriteria, informationSources, searchMethod, selectionProcess, setFlag };
+        exclusionCriteria, sourcesSelectionCriteria, informationSources, searchMethod, selectionProcess, analysisAndSynthesisProcess, setFlag };
 }
 
 export default useCreateProtocol;

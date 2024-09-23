@@ -32,7 +32,7 @@ export default function ProtocolPartThree() {
 
   async function handleData() {
       await useCreateProtocolThree(analysis, id);
-      navigate("/user");
+      navigate("/newRevision/identification");
   }
 
   async function handleDataReturn() {
