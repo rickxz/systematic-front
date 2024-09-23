@@ -36,10 +36,6 @@ export default function ProtocolPartTwo2() {
           
           <TextAreaInput value={dataCollectionProcess} onChange={ (e) => {setDataCollectionProcess(e.target.value)} }  label="Data Collection Process" placeholder="Enter the data colletion process" />
 
-          <Flex>
-            <AddTextTable text="Research Questions" placeholder="Enter the other Research Questions"/>
-          </Flex>
-
           <FormControl sx={flex}>
             <AddTextTable text="Keywords" placeholder="Enter the keywords related to your review"/>
           </FormControl>

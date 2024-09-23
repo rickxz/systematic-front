@@ -7,6 +7,7 @@ import FlexLayout from "../../components/ui/Flex/Flex";
 
 import useCreatePortocol from '../../hooks/reviews/useCreateProtocol';
 import { useEffect } from "react";
+import AddTextTable from "../../components/AddDataFields/AddTextTable";
 
 
 export default function Protocol() {
@@ -30,6 +31,9 @@ export default function Protocol() {
           <FormControl sx={formControl}>
             <TextAreaInput value={goal} label="Objectives:" placeholder="What are your goals?" onChange={(e) => { setGoal(e.target.value) }}/>
             <TextAreaInput value={justification} label="Main question:" placeholder="The reason behind your research..." onChange={(e) => { setJustification(e.target.value) }}/>
+            <Flex>
+              <AddTextTable text="Research Questions" placeholder="Enter the other Research Questions"/>
+            </Flex>
             
             <Accordion allowToggle mt={6} w="80%">
               
