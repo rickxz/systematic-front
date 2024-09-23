@@ -48,15 +48,6 @@ export default function useHandleLogin() {
                 const response = await useLoginUser(data);
                 if ((await response).status == 200) {
                     localStorage.setItem('accessToken', response.data.accessToken);
-                    
-                    toast({
-                        title: "Login successful.",
-                        description: `Welcome back, ${username}!`,
-                        status: "success",
-                        duration: 9000,
-                        isClosable: true,
-                        position: 'top'
-                    })
                     navigate('/user');
                 }; 
             }
