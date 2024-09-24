@@ -38,6 +38,8 @@ export default function AccordionElement({
   }
   const isOpen = index === defaultOpen;
 
+  const id = localStorage.getItem('systematicReviewId');
+
   return (
     <AccordionItem alignContent={isSmallSize ? "center" : "flex-start"} w={isSmallSize ? "75px" : "180px"}>
       <AccordionButton bg={isOpen ? "#9AA4B9" : "#282828"} color={isOpen ? "#301E1A" : "#FDF0D5"}>
@@ -47,6 +49,11 @@ export default function AccordionElement({
       </AccordionButton>
       <AccordionPanel padding={"0px"}>
         {names.map((name) => (
+          name == 'Protocol' ? 
+          <Link to={`${basePath}/${name.toLowerCase()}/${id}`} key={name}>
+            <NavItem title={name} navSize={navSize} submenu={true} />
+          </Link> :
+          
           <Link to={`${basePath}/${name.toLowerCase()}`} key={name}>
             <NavItem title={name} navSize={navSize} submenu={true} />
           </Link>

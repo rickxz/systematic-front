@@ -119,7 +119,7 @@ const useCreateProtocol = () => {
 
             if( flag == 'protocolTwo' ) navigate(`/newRevision/ProtocolPartThree/${id}`);
 
-            if( flag == 'protocolThree' ) navigate(``)
+            if( flag == 'protocolThree' ) navigate(`/newRevision/extraction`);
         }
         catch( err ) { console.log(err); }
     }
@@ -130,7 +130,8 @@ const useCreateProtocol = () => {
         try{
             await createProtocol();
             if( flag == 'protocol' )  navigate(`/newRevision`);
-            if( flag == 'protocolTwo' ) navigate(`/newRevision/Protocol/${id}`);
+            if( flag == 'protocolTwo' ) navigate(`/newRevision/protocol/${id}`);
+            if( flag == 'protocolThree' ) navigate(`/newRevision/protocolpartTwo/${id}`);
         }
         catch( err ) { console.log(err); }
     } 
