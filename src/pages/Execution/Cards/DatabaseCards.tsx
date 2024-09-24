@@ -12,16 +12,16 @@ interface DatabaseCardProps {
 
 export default function DataBaseCard({ text, type }: DatabaseCardProps) {
   return (
-    <Card w={type === "allData" ? "80vw" : "38vw"} sx={card}>
+    <Card w={type === "allData" ? "80vw" : "26vw"} sx={card}>
 
       <Box sx={conteiner} 
       display={"flex"}
       justifyContent={"space-between"}
       alignItems={"center"}
       flexDirection={"row"}
-      bgColor={type === "allData" ? "#EBF0F3" : "#301E1A"}
-      color={type === "allData" ? "#301E1A" : "#C9D9E5"}
-      borderRadius={"1%"}>
+      bgColor={type === "allData" ? "#EBF0F3" : "#EBF0F3"}
+      color={type === "allData" ? "#263C56" : "#263C56"}
+      >
 
         <Box sx={iconConteiner} ml={"1em"}>
           <DataBaseIcon/>
@@ -30,7 +30,7 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
 
         <Box sx={type === "allData" ? btnConteinerAllBases : btnConteiner}>
 
-          {/* <NavButton
+          { /*<NavButton
             fontSize={type === "allData" ? 16 : 13}
             w={"fit-content"}
             text={"Add Session"}
@@ -41,18 +41,17 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
             fontWeight="bold"
             borderRadius="10px"
           /> */}
-          {/* <EventButton
-            fontSize={type === "allData" ? 16 : 13}
-            bgColor={type === "allData" ? "#C9D9E5" : "#C9D9E5"}
-            w={"170px"}
-            color={type === "allData" ? "#263C56" : "#301E1A"}
-            fontWeight="bold"
+          { <EventButton
+            fontSize={type === "allData" ? 16 : 14}
+            bgColor={type === "allData" ? "#263C56" : "#263C56"}
+            w={"80px"}
+            color={type === "allData" ? "#C9D9E5" : "#C9D9E5"}
             borderRadius="10px"
             event={function (): void {
-              console.log("Session deleted");
+              console.log("View");
             }}
-            text={"Remove Session"}
-          /> */}
+            text={"View"}
+          /> }
         </Box>
 
       </Box>
