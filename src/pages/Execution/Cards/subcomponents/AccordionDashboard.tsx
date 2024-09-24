@@ -26,6 +26,33 @@ export default function AccordionDashboard() {
           <Flex justifyContent="space-between" p={1} fontWeight="bold">
               <Text flex="1" textAlign="left">Date</Text>
               <Text flex="1" textAlign="left">Studies</Text>
+              {/*<Box display="flex" flex={1}>
+                <Button  
+                    size="sm"  
+                    colorScheme="gray" 
+                    ml={2}
+                    fontSize={15}
+                    > 
+                    Add Session
+                  </Button>
+              </Box>  */}
+              {/*<Box display="flex" flex={1}>
+                 <Button  
+                  size="xs"  
+                  colorScheme="gray" 
+                  borderRadius="full"
+                  width="25px"
+                  height="25px" 
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  ml={2}
+                  fontSize="12px"
+                  > 
+                  +
+                </Button>
+              </Box> */}
+
               <Box flex="1" textAlign="right" />
           </Flex>
 
