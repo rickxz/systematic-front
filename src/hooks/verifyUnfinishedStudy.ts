@@ -64,6 +64,8 @@ export default async function verifyUnfinishedStudy(revisionId: string) {
       else if (!isProtocolPartThreeFinished(protocolData)) {
         return "Protocol part 3";
       }
+
+      else return 'Extraction';
         
     //   else if(!isSelectionProcessFinished(studiesData)) {
     //     window.location.href = ` http://localhost:5173/#/newRevision/selection`;
