@@ -7,8 +7,8 @@ export const Accordionbtn = {
 export const accordion = {
   w: "100%",
   justifySelf: "center",
-  bgColor: "#40586B",
-  color: "#969595",
+  bgColor: "#263C56",
+  color: "#C9D9E5",
   borderRadius: "3px",
 };
 
@@ -47,18 +47,16 @@ export const btnConteinerAllBases = {
   justifyContent: "flex-end",
   columnGap: "7%",
   w: "50%",
-  mt: 5,
-  mb: 3,
-  mr: 7,
+  mt: 2,
+  mr: 4,
 };
 
 export const btnConteiner = {
   display: "flex",
   flexDir: "row",
-  justifyContent: "space-evenly",
+  justifyContent: "flex-end",
   columnGap: "10%",
-  w: "50%",
-  mt: 5,
-  mb: 3,
+  w: "20%",
+  mt: 2,
   mr: 4,
 };
