@@ -23,61 +23,50 @@ export default function AccordionDashboard() {
 
         <AccordionPanel>
 
-          <Flex justifyContent="space-between" p={1} fontWeight="bold">
-              <Text flex="1" textAlign="left">Date</Text>
-              <Text flex="1" textAlign="left">Studies</Text>
-              {/*<Box display="flex" flex={1}>
-                <Button  
-                    size="sm"  
-                    colorScheme="gray" 
-                    ml={2}
-                    fontSize={15}
-                    > 
-                    Add Session
-                  </Button>
-              </Box>  */}
-              {/*<Box display="flex" flex={1}>
-                 <Button  
-                  size="xs"  
-                  colorScheme="gray" 
-                  borderRadius="full"
-                  width="25px"
-                  height="25px" 
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                  ml={2}
-                  fontSize="12px"
-                  > 
-                  +
-                </Button>
-              </Box> */}
+          <Flex flex={1} justifyContent="space-between" fontWeight="bold">
+            <Flex >
+              <Text flex="1" textAlign="left" width={"60px"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>Date</Text>
+            </Flex>
 
-              <Box flex="1" textAlign="right" />
+            <Flex flex={1}>
+              <Text flex="1" textAlign="center">Studies</Text>
+            </Flex>
+
+            <Flex width={"140px"}>
+              <Button
+                width={"100%"}
+                colorScheme="gray"
+                fontSize={15}
+                height={"35px"}
+              >
+                Add Session
+              </Button>
+            </Flex>
+
           </Flex>
 
-          <Flex justifyContent="space-between" alignItems="center" py={2}>
-            <Text flex="1" textAlign="left">20/07</Text>
-            <Text flex="1" textAlign="center" mr="8%">300</Text>
-            <Box flex="1" display="flex" p={1} justifyContent="flex-end" mt={2}>
-              <Button as={Link} to={"/newRevision/identification/15"} size="sm" colorScheme="gray" mr={2}>View</Button>
-              <Button size="sm" colorScheme="gray">Edit</Button>
-            </Box>
+          <Flex flex={1} justifyContent="space-between" alignItems="center" py={2} gap={"5px"}>
+            <Text textAlign="left" width={"60px"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>20/07</Text>
+            <Text flex="1" textAlign="center" >300</Text>
+            <Flex width={"140px !important"} justifyContent="flex-end" mt={2}>
+              <Button as={Link} to={"/newRevision/identification/15"} flex={1} colorScheme="gray" mr={2} height={"35px"}>View</Button>
+              <Button flex={1} colorScheme="gray" height={"35px"}>Edit</Button>
+            </Flex>
           </Flex>
 
-          <Flex justifyContent="space-between" alignItems="center" py={2}>
-            <Text flex="1" textAlign="left">20/07</Text>
-            <Text flex="1" textAlign="center" mr="8%">300</Text>
-            <Box flex="1" display="flex" p={1} justifyContent="flex-end" mt={2}>
-              <Button as={Link} to={"/newRevision/identification/15"} size="sm" colorScheme="gray" mr={2}>View</Button>
-              <Button size="sm" colorScheme="gray">Edit</Button>
-            </Box>
+          <Flex flex={1} justifyContent="space-between" alignItems="center" py={2} gap={"5px"}>
+            <Text textAlign="left" width={"60px"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>20/07</Text>
+            <Text flex="1" textAlign="center"  >300</Text>
+            <Flex width={"140px !important"} justifyContent="flex-end" mt={2}>
+              <Button as={Link} to={"/newRevision/identification/15"} flex={1} colorScheme="gray" mr={2} height={"35px"}>View</Button>
+              <Button flex={1} colorScheme="gray" height={"35px"}>Edit</Button>
+            </Flex>
           </Flex>
-            
-          <Flex justifyContent="flex-start" fontWeight="semi-bold" mt={2}>
+
+          <Flex flex={1} justifyContent="flex-start" fontWeight="semi-bold" mt={2}>
             <Text>Total: 600</Text>
           </Flex>
-          
+
 
         </AccordionPanel>
 
