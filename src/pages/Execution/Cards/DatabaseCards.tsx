@@ -56,7 +56,7 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
 
       </Box>
 
-      <AccordionDashboard/>
+      <AccordionDashboard isAllDatabase={type === "allData" ? true : false}/>
 
     </Card>
   );
