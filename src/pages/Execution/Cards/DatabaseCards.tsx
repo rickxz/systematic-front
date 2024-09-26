@@ -28,7 +28,7 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
           <Text sx={testo}> {text}</Text>
         </Box>
 
-        <Box sx={type === "allData" ? btnConteinerAllBases : btnConteiner}>
+        <Box sx={btnConteiner}>
 
           { /*<NavButton
             fontSize={type === "allData" ? 16 : 13}
@@ -42,10 +42,10 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
             borderRadius="10px"
           /> */}
           { <EventButton
-            fontSize={type === "allData" ? 16 : 14}
-            bgColor={type === "allData" ? "#263C56" : "#263C56"}
+            fontSize={14}
+            bgColor={ "#263C56"}
             w={"80px"}
-            color={type === "allData" ? "#C9D9E5" : "#C9D9E5"}
+            color={"#EBF0F3"}
             borderRadius="10px"
             event={function (): void {
               console.log("View");

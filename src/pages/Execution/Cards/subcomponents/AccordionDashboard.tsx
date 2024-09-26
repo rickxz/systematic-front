@@ -3,12 +3,10 @@ import { Accordionbtn, accordion } from "../../styles/CardsStyle";
 import { Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Box, Button, Flex, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { flex } from "../../../NovaRevisao/styles/finalizationStyles";
+import IdentificationModal from "../../../../components/Modals/IdentificationModal";
 
-interface AccordionProps{
-  isAllDatabase ?: boolean
-}
 
-export default function AccordionDashboard({isAllDatabase = false}:AccordionProps) {
+export default function AccordionDashboard({isAllDatabase = false}) {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -18,9 +16,11 @@ export default function AccordionDashboard({isAllDatabase = false}:AccordionProp
 
   return (
     <Accordion allowToggle sx={accordion} onChange={handleAccordionToggle}>
-      {/* {showModal == true && (
-        <meuModal show={setShowModal}/>
-      )} */}
+
+      {showModal == true && (
+        <IdentificationModal show={setShowModal}/>
+      )} 
+
       <AccordionItem>
 
         <AccordionButton sx={Accordionbtn}>
