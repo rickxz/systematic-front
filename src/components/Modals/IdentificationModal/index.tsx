@@ -3,8 +3,11 @@ import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 
+interface IdentificationModalProps {
+    show: (value: boolean) => void;
+}
 
-function IdentificationModal({ show }) {
+function IdentificationModal({ show } : IdentificationModalProps) {
     const { isOpen, onClose, onOpen } = useDisclosure();
     const [referenceFiles, setReferenceFiles] = useState<string[]>([]);
 
