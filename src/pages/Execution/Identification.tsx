@@ -31,10 +31,7 @@ export default function Identification() {
         flexDirection={"column"}
         w={"85vw"}
       >
-        <Box borderRadius={"3px"} h={"fit-content"}>
-          <DataBaseCard text="All data bases" type="allData" />
-        </Box>
-
+        
         <Box sx={dataBaseconteiner}>
           {databases.map((data) => {
             return <DataBaseCard text={data} type="normal" />;

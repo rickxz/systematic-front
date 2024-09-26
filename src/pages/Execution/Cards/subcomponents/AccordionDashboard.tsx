@@ -10,6 +10,7 @@ interface AccordionProps{
 
 export default function AccordionDashboard({isAllDatabase = false}:AccordionProps) {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleAccordionToggle = () => {
     setIsAccordionOpen(!isAccordionOpen);
@@ -17,7 +18,9 @@ export default function AccordionDashboard({isAllDatabase = false}:AccordionProp
 
   return (
     <Accordion allowToggle sx={accordion} onChange={handleAccordionToggle}>
-
+      {/* {showModal == true && (
+        <meuModal show={setShowModal}/>
+      )} */}
       <AccordionItem>
 
         <AccordionButton sx={Accordionbtn}>
@@ -43,16 +46,16 @@ export default function AccordionDashboard({isAllDatabase = false}:AccordionProp
             :<></>}
 
             <Flex width={"140px"}>
-              { 
-                !isAllDatabase ?
-                <Button
+              <Button
                 width={"100%"}
                 colorScheme="gray"
                 fontSize={15}
                 height={"35px"}
+
+                onClick={()=>setShowModal(true)}
               >
-                Add Session
-              </Button> : <Flex flex={1} justifyContent={"center"}>Actions</Flex>}
+                Add Session 
+              </Button>
             </Flex>
 
           </Flex>
@@ -60,10 +63,7 @@ export default function AccordionDashboard({isAllDatabase = false}:AccordionProp
           <Flex flex={1} justifyContent="space-between" alignItems="center" py={2} gap={"5px"}>
             <Text textAlign="left" width={"calc(min(60px, 30%))"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>20/07</Text>
             <Text flex="1" textAlign="center" >300</Text>
-            {
-              isAllDatabase ?
-              <Text flex="1" textAlign="center" >Google Schoolar</Text>
-            :<></>}
+            
             <Flex width={"140px !important"} justifyContent="flex-end" mt={2}>
               <Button as={Link} to={"/newRevision/identification/15"} flex={1} colorScheme="gray" mr={2} height={"35px"}>View</Button>
               <Button flex={1} colorScheme="gray" height={"35px"}>Edit</Button>
@@ -72,11 +72,8 @@ export default function AccordionDashboard({isAllDatabase = false}:AccordionProp
 
           <Flex flex={1} justifyContent="space-between" alignItems="center" py={2} gap={"5px"}>
             <Text textAlign="left" width={"calc(min(60px, 30%))"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>20/07</Text>
-            <Text flex="1" textAlign="center"  >300</Text>
-            {
-              isAllDatabase ?
-              <Text flex="1" textAlign="center" >Scielo</Text>
-            :<></>}
+            <Text flex="1" textAlign="center" >300</Text>
+            
             <Flex width={"140px !important"} justifyContent="flex-end" mt={2}>
               <Button as={Link} to={"/newRevision/identification/15"} flex={1} colorScheme="gray" mr={2} height={"35px"}>View</Button>
               <Button flex={1} colorScheme="gray" height={"35px"}>Edit</Button>
