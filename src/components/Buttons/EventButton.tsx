@@ -46,7 +46,6 @@ export default function EventButton({ event, text, variant="default", ...buttonP
       onClick={handleClick} 
       {...buttonProps}
       lineHeight="1" 
-      fontWeight="bold"
       transition="all 0.3s ease" 
       outline="none" 
       _focus={{
