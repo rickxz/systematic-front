@@ -17,7 +17,7 @@ interface Props{
 
 export default function InteractiveTable({id, url, label}: Props) {
   const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers, 
-    handleServerSend, handleAddQuestions } =
+    handleServerSend, handleAddQuestions, values, setValues } =
     useInteractiveTable();
   const { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion } = useSendExtractionForm();
 
@@ -43,9 +43,10 @@ export default function InteractiveTable({id, url, label}: Props) {
         response = await axios.get(link, options);
   
         const fetchedRows = response.data.questions.map((item: { questionType: any; code: any; 
-          description: any; questionId: string; options: string[]}) => {
+          description: any; questionId: string; options: string[], lower: number, higher: number}) => {
           let type;
           let questions;
+          console.log(item);
 
           switch (item.questionType) {
             case 'TEXTUAL':
@@ -69,7 +70,9 @@ export default function InteractiveTable({id, url, label}: Props) {
             type: type,
             questionId: item.questionId,
             isNew: false,
-            questions: questions
+            questions: questions,
+            higher: item.higher,
+            lower: item.lower
           };
         });
   
@@ -179,6 +182,8 @@ export default function InteractiveTable({id, url, label}: Props) {
                   index={index}
                   editIndex={editIndex}
                   handleEdit={() => {
+                    console.log(row.higher, row.lower, row.questions);
+                    setValues([row.lower, row.higher]);
                     setEditIndex(index);
                     setShowModal(true);
                     setModalType(row.type);
@@ -206,7 +211,7 @@ export default function InteractiveTable({id, url, label}: Props) {
         <PickListModal show={setShowModal} questionHolder={setQuestions} questions={questions} />
       )}
       {showModal == true && modalType == 'number scale' && (
-        <NumberScaleModal show={setShowModal} scaleHolder={setnumberScale}/>
+        <NumberScaleModal show={setShowModal} scaleHolder={setnumberScale} values={values}/>
       )}
     </TableContainer>
   );
