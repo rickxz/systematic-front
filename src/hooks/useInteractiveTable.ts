@@ -17,8 +17,9 @@ export function useInteractiveTable() {
   const options = ["", "Textual", "Pick list", "Number scale", "Labeled List"];
   const headers = ["Id", "Question", "Type", ""];
 
-  const addRow = (setEditIndex: React.Dispatch<SetStateAction<number | null>>) => {
-      setRows([...rows, { higher: 0, lower: 5, questions: [], isNew: true, questionId: null, id: rows.length + 1, question: "", type: "" }]);
+  const addRow = (setEditIndex: React.Dispatch<SetStateAction<number | null>>, setQuestions: React.Dispatch<SetStateAction<string[]>>) => {
+      setRows([...rows, { higher: 5, lower: 0, questions: [], isNew: true, questionId: null, id: rows.length + 1, question: "", type: "" }]);
+      setQuestions([]);
       setEditIndex(rows.length);
     };
 
@@ -52,9 +53,17 @@ export function useInteractiveTable() {
     setRows(updatedRows);
   }
 
+  const handleNumberScale = (index: number, lower: number, higher: number) => {
+    const updatedRows = [...rows];
+    updatedRows[index].lower = lower;
+    updatedRows[index].higher = higher;
+    setRows(updatedRows);
+  }
+
   const getRowsData = () => {
     return rows;
   };
 
-  return { setRows, rows, addRow, handleServerSend, handleDelete, handleQuestionChange, handleTypeChange, handleAddQuestions, options, headers, getRowsData, setValues, values };
+  return { setRows, rows, addRow, handleServerSend, handleNumberScale, handleDelete, handleQuestionChange, 
+    handleTypeChange, handleAddQuestions, options, headers, getRowsData, setValues, values };
 }
