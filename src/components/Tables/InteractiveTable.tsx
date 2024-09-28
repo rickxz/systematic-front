@@ -20,6 +20,7 @@ export default function InteractiveTable({id, url, label}: Props) {
     useInteractiveTable();
   const { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion } = useSendExtractionForm();
 
+  const [editIndex, setEditIndex] = useState<number | null>(null);
   const [numberScale, setnumberScale] = useState<number[]>([]);
   const [questions, setQuestions] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false);
@@ -61,7 +62,8 @@ export default function InteractiveTable({id, url, label}: Props) {
             id: item.code,
             question: item.description,
             type: type,
-            questionId: item.questionId
+            questionId: item.questionId,
+            isNew: false
           };
         });
   
@@ -74,8 +76,6 @@ export default function InteractiveTable({id, url, label}: Props) {
     fetch();
   }, []);
 
-
-  
   function handleSelect(index: number, newValue: string){
     handleTypeChange(index, newValue); // Atualiza o tipo primeiro
   
@@ -89,7 +89,10 @@ export default function InteractiveTable({id, url, label}: Props) {
       setShowModal(true);  // Abre o modal
     }
   }
-  
+
+  function addNewRow() {
+    addRow(setEditIndex);
+  }
 
   return (
     <TableContainer>
@@ -123,9 +126,9 @@ export default function InteractiveTable({id, url, label}: Props) {
                 <DeleteButton index={index} handleDelete={() => handleDelete(index)} />
                 <EditButton
                   index={index}
-                  editIndex={index}
+                  editIndex={editIndex}
                   handleEdit={() => {
-                    // handle edit logic
+                    setEditIndex(index);
                   }}
                   handleSaveEdit={async () => {
                     // handle save edit logic
@@ -169,6 +172,7 @@ export default function InteractiveTable({id, url, label}: Props) {
                       headers: { Authorization: `Bearer ${accessToken}` }
                     }
                     
+                    setEditIndex(null);
                     await axios.get(`http://localhost:8080/api/v1/systematic-study/${id}/protocol/extraction-question`, options);
                   }}
                 />
@@ -178,7 +182,7 @@ export default function InteractiveTable({id, url, label}: Props) {
           <Tr bgColor={"#2E4B6C"}>
             <Td></Td>
             <Td colSpan={2}>
-              <Button size="sm" leftIcon={<AddIcon />} onClick={addRow}>
+              <Button size="sm" leftIcon={<AddIcon />} onClick={addNewRow}>
                 Add Row
               </Button>
             </Td>

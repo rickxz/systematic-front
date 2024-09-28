@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 
 export interface Row {
+  isNew: boolean;
   id: number;
   questionId: string | null;
   question: string;
@@ -12,9 +13,10 @@ export function useInteractiveTable() {
   const options = ["", "Textual", "Pick list", "Number scale", "Labeled List"];
   const headers = ["Id", "Question", "Type", ""];
 
-  const addRow = () => {
-      setRows([...rows, { questionId: null, id: rows.length + 1, question: "", type: "" }]);
-  };
+  const addRow = (setEditIndex: React.Dispatch<SetStateAction<number | null>>) => {
+      setRows([...rows, { isNew: true, questionId: null, id: rows.length + 1, question: "", type: "" }]);
+      setEditIndex(rows.length);
+    };
 
   const handleDelete = (index: number) => {
     const updatedRows = [...rows];
