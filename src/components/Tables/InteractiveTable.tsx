@@ -90,6 +90,50 @@ export default function InteractiveTable({id, url, label}: Props) {
     }
   }
 
+  async function handleSaveEdit(index: number) {
+    console.log(rows[index].question, rows[index].type, rows[index].id);
+    if(rows[index].type == "textual"){
+      const data = {
+        question: rows[index].question,
+        questionId: rows[index].id,
+        reviewId: id
+      }
+
+      let questionId = await sendTextualQuestion(data);
+      
+      handleServerSend(index, questionId);
+
+    } else if(rows[index].type == "pick list"){
+      const data = {
+          question: rows[index].question,
+          questionId: rows[index].id,
+          reviewId: id,
+          options: questions
+      }   
+      
+      let questionId = await sendPickListQuestion(data);
+      handleServerSend(index, questionId);
+    } else if(rows[index].type == "number scale"){
+      const data = {
+        question: rows[index].question,
+        questionId: rows[index].id,
+        reviewId: id,
+        lower: numberScale[0],
+        higher: numberScale[1]
+      }
+      
+      let questionId = await sendNumberScaleQuestion(data);
+      handleServerSend(index, questionId);
+    }
+    const accessToken = localStorage.getItem('accessToken');
+    let options = {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    }
+    
+    setEditIndex(null);
+    await axios.get(`http://localhost:8080/api/v1/systematic-study/${id}/protocol/extraction-question`, options);
+  }
+
   function addNewRow() {
     addRow(setEditIndex);
   }
@@ -129,51 +173,11 @@ export default function InteractiveTable({id, url, label}: Props) {
                   editIndex={editIndex}
                   handleEdit={() => {
                     setEditIndex(index);
+                    setShowModal(true);
+                    setModalType(row.type);
                   }}
                   handleSaveEdit={async () => {
-                    // handle save edit logic
-
-                    console.log(rows[index].question, rows[index].type, rows[index].id);
-                    if(rows[index].type == "textual"){
-                      const data = {
-                        question: rows[index].question,
-                        questionId: rows[index].id,
-                        reviewId: id
-                      }
-
-                      let questionId = await sendTextualQuestion(data);
-                      
-                      handleServerSend(index, questionId);
-
-                    } else if(rows[index].type == "pick list"){
-                      const data = {
-                          question: rows[index].question,
-                          questionId: rows[index].id,
-                          reviewId: id,
-                          options: questions
-                      }   
-                      
-                      let questionId = await sendPickListQuestion(data);
-                      handleServerSend(index, questionId);
-                    } else if(rows[index].type == "number scale"){
-                      const data = {
-                        question: rows[index].question,
-                        questionId: rows[index].id,
-                        reviewId: id,
-                        lower: numberScale[0],
-                        higher: numberScale[1]
-                      }
-                      
-                      let questionId = await sendNumberScaleQuestion(data);
-                      handleServerSend(index, questionId);
-                    }
-                    const accessToken = localStorage.getItem('accessToken');
-                    let options = {
-                      headers: { Authorization: `Bearer ${accessToken}` }
-                    }
-                    
-                    setEditIndex(null);
-                    await axios.get(`http://localhost:8080/api/v1/systematic-study/${id}/protocol/extraction-question`, options);
+                    handleSaveEdit(index);
                   }}
                 />
               </Td>
