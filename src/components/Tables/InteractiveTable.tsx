@@ -16,7 +16,8 @@ interface Props{
 }
 
 export default function InteractiveTable({id, url, label}: Props) {
-  const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers, handleServerSend } =
+  const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers, 
+    handleServerSend, handleAddQuestions } =
     useInteractiveTable();
   const { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion } = useSendExtractionForm();
 
@@ -105,7 +106,7 @@ export default function InteractiveTable({id, url, label}: Props) {
       }
 
       let questionId = await sendTextualQuestion(data);
-      
+
       handleServerSend(index, questionId);
 
     } else if(rows[index].type == "pick list"){
@@ -116,6 +117,7 @@ export default function InteractiveTable({id, url, label}: Props) {
           options: questions
       }   
       
+      handleAddQuestions(index, questions);
       let questionId = await sendPickListQuestion(data);
       handleServerSend(index, questionId);
     } else if(rows[index].type == "number scale"){

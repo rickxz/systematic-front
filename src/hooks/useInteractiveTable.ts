@@ -43,9 +43,15 @@ export function useInteractiveTable() {
     setRows(updatedRows);
   }
 
+  const handleAddQuestions = (index: number, value: string[]) => {
+    const updatedRows = [...rows];
+    updatedRows[index].questions = value;
+    setRows(updatedRows);
+  }
+
   const getRowsData = () => {
     return rows;
   };
 
-  return { setRows, rows, addRow, handleServerSend, handleDelete, handleQuestionChange, handleTypeChange, options, headers, getRowsData };
+  return { setRows, rows, addRow, handleServerSend, handleDelete, handleQuestionChange, handleTypeChange, handleAddQuestions, options, headers, getRowsData };
 }
