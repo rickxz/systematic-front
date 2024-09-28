@@ -16,7 +16,7 @@ interface Props{
 }
 
 export default function InteractiveTable({id, url, label}: Props) {
-  const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers } =
+  const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers, handleServerSend } =
     useInteractiveTable();
   const { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion } = useSendExtractionForm();
 
@@ -40,7 +40,7 @@ export default function InteractiveTable({id, url, label}: Props) {
         let link = response.data._links['find-all-review-extraction-questions'].href;
         response = await axios.get(link, options);
   
-        const fetchedRows = response.data.questions.map((item: { questionType: any; code: any; description: any; }) => {
+        const fetchedRows = response.data.questions.map((item: { questionType: any; code: any; description: any; questionId: string}) => {
           let type;
           switch (item.questionType) {
             case 'TEXTUAL':
@@ -60,7 +60,8 @@ export default function InteractiveTable({id, url, label}: Props) {
           return {
             id: item.code,
             question: item.description,
-            type: type
+            type: type,
+            questionId: item.questionId
           };
         });
   
@@ -73,9 +74,7 @@ export default function InteractiveTable({id, url, label}: Props) {
     fetch();
   }, []);
 
-  useEffect(() => {
-    console.log(questions);
-  }, [questions])
+
   
   function handleSelect(index: number, newValue: string){
     handleTypeChange(index, newValue); // Atualiza o tipo primeiro
@@ -139,7 +138,10 @@ export default function InteractiveTable({id, url, label}: Props) {
                         reviewId: id
                       }
 
-                      sendTextualQuestion(data);
+                      let questionId = await sendTextualQuestion(data);
+                      
+                      handleServerSend(index, questionId);
+
                     } else if(rows[index].type == "pick list"){
                       const data = {
                           question: rows[index].question,
@@ -148,7 +150,8 @@ export default function InteractiveTable({id, url, label}: Props) {
                           options: questions
                       }   
                       
-                      sendPickListQuestion(data);
+                      let questionId = await sendPickListQuestion(data);
+                      handleServerSend(index, questionId);
                     } else if(rows[index].type == "number scale"){
                       const data = {
                         question: rows[index].question,
@@ -158,7 +161,8 @@ export default function InteractiveTable({id, url, label}: Props) {
                         higher: numberScale[1]
                       }
                       
-                      sendNumberScaleQuestion(data);
+                      let questionId = await sendNumberScaleQuestion(data);
+                      handleServerSend(index, questionId);
                     }
                     const accessToken = localStorage.getItem('accessToken');
                     let options = {

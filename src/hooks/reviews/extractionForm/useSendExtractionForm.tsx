@@ -32,11 +32,11 @@ const useSendExtractionForm = () => {
         try{
             let response = await axios.post(url, data, {withCredentials: true});
             console.log(response);
+            return response.data.questionId;
         } catch(err){
             console.log(err);
         }
     }
-
     async function sendPickListQuestion({question, questionId, reviewId, options}: PickListProps){
         let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/pick-list`;
         const data = {
@@ -48,6 +48,7 @@ const useSendExtractionForm = () => {
         try{
             let response = await axios.post(url, data, {withCredentials: true});
             console.log(response);
+            return response.data.questionId;
         } catch(err){
             console.log(err);
         }
@@ -67,6 +68,7 @@ const useSendExtractionForm = () => {
         try{
             let response = await axios.post(url, data, {withCredentials: true});
             console.log(response);
+            return response.data.questionId;
         } catch(err){
             console.log(err);
         }

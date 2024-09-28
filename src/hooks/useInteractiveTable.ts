@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export interface Row {
   id: number;
+  questionId: string | null;
   question: string;
   type: string;
 }
@@ -12,7 +13,7 @@ export function useInteractiveTable() {
   const headers = ["Id", "Question", "Type", ""];
 
   const addRow = () => {
-      setRows([...rows, { id: rows.length + 1, question: "", type: "" }]);
+      setRows([...rows, { questionId: null, id: rows.length + 1, question: "", type: "" }]);
   };
 
   const handleDelete = (index: number) => {
@@ -33,9 +34,15 @@ export function useInteractiveTable() {
     setRows(updatedRows);
   };
 
+  const handleServerSend = (index: number, id: string) => {
+    const updatedRows = [...rows];
+    updatedRows[index].questionId = id;
+    setRows(updatedRows);
+  }
+
   const getRowsData = () => {
     return rows;
   };
 
-  return { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers, getRowsData };
+  return { setRows, rows, addRow, handleServerSend, handleDelete, handleQuestionChange, handleTypeChange, options, headers, getRowsData };
 }
