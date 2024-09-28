@@ -7,9 +7,10 @@ import { Dispatch, SetStateAction } from "react";
 interface Props{
     show: Dispatch<SetStateAction<boolean>>;
     questionHolder: React.Dispatch<React.SetStateAction<string[]>>
+    questions: string[];
 }
 
-function PickListModal({show, questionHolder}: Props) {
+function PickListModal({show, questionHolder, questions}: Props) {
     const { isOpen, onClose, onOpen } = useDisclosure();
     
     useEffect(() => {
@@ -30,7 +31,7 @@ function PickListModal({show, questionHolder}: Props) {
                     <ModalCloseButton onClick={close}/>
                 </ModalHeader>
                 <ModalBody>
-                    <AddPickListTable text="Options" placeholder="Options here" questionHolder={questionHolder}/>
+                    <AddPickListTable text="Options" placeholder="Options here" questionHolder={questionHolder} questions={questions} />
                 </ModalBody>
                 <ModalFooter>
                     <Button onClick={close}>Close</Button>

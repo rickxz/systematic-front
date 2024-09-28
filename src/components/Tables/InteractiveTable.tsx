@@ -41,14 +41,18 @@ export default function InteractiveTable({id, url, label}: Props) {
         let link = response.data._links['find-all-review-extraction-questions'].href;
         response = await axios.get(link, options);
   
-        const fetchedRows = response.data.questions.map((item: { questionType: any; code: any; description: any; questionId: string}) => {
+        const fetchedRows = response.data.questions.map((item: { questionType: any; code: any; 
+          description: any; questionId: string; options: string[]}) => {
           let type;
+          let questions;
+
           switch (item.questionType) {
             case 'TEXTUAL':
               type = 'textual';
               break;
             case 'PICK_LIST':
               type = 'pick list';
+              questions = item.options;
               break;
             case 'NUMBERED_SCALE':
               type = 'number scale';
@@ -63,7 +67,8 @@ export default function InteractiveTable({id, url, label}: Props) {
             question: item.description,
             type: type,
             questionId: item.questionId,
-            isNew: false
+            isNew: false,
+            questions: questions
           };
         });
   
@@ -175,6 +180,7 @@ export default function InteractiveTable({id, url, label}: Props) {
                     setEditIndex(index);
                     setShowModal(true);
                     setModalType(row.type);
+                    setQuestions(row.questions);
                   }}
                   handleSaveEdit={async () => {
                     handleSaveEdit(index);
@@ -195,7 +201,7 @@ export default function InteractiveTable({id, url, label}: Props) {
         </Tbody>
       </Table>
       {showModal == true && modalType == 'pick list' && (
-        <PickListModal show={setShowModal} questionHolder={setQuestions}/>
+        <PickListModal show={setShowModal} questionHolder={setQuestions} questions={questions} />
       )}
       {showModal == true && modalType == 'number scale' && (
         <NumberScaleModal show={setShowModal} scaleHolder={setnumberScale}/>

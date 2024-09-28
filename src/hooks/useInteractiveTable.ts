@@ -6,6 +6,7 @@ export interface Row {
   questionId: string | null;
   question: string;
   type: string;
+  questions: string[];
 }
 
 export function useInteractiveTable() {
@@ -14,7 +15,7 @@ export function useInteractiveTable() {
   const headers = ["Id", "Question", "Type", ""];
 
   const addRow = (setEditIndex: React.Dispatch<SetStateAction<number | null>>) => {
-      setRows([...rows, { isNew: true, questionId: null, id: rows.length + 1, question: "", type: "" }]);
+      setRows([...rows, { questions: [], isNew: true, questionId: null, id: rows.length + 1, question: "", type: "" }]);
       setEditIndex(rows.length);
     };
 
