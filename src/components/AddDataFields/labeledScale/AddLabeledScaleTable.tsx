@@ -1,9 +1,9 @@
 import { FormControl, FormLabel } from "@chakra-ui/react";
-import AddPickListField from "../pickList/AddPickListField";
-import InfosPickList from "../../Tables/PickListTable";
-import { useAddText } from "../../../hooks/useAddText";
-import { useDeletePickList } from "../../../hooks/useDeleteList";
+import AddLabeledListField from "./AddLabeledScaleField";
+import InfosLabeled from "../../Tables/labeledListTable";
+import { useDeleteLabel } from "../../../hooks/useDeleteLabel";
 import { formcontrol, label } from "../styles/AddTextTableStyles";
+import { useAddLabeledList } from "../../../hooks/useAddLabeledList";
 
 interface AddTextTableProps {
   text: string;
@@ -11,17 +11,18 @@ interface AddTextTableProps {
 }
 
 export default function AddLabeledScaleTable({ text, placeholder }: AddTextTableProps) {
-  const { AddText, handleAddText, setAddText } = useAddText();
-  const { handleDeletePickList } = useDeletePickList();
+  const { AddText, handleAddText, setAddText } = useAddLabeledList();
+  const { handleDeleteLabel} = useDeleteLabel();
   return (
+
     <FormControl sx={label}>
       <FormLabel>{text}</FormLabel>
 
       <FormControl sx={formcontrol}>
-        <AddPickListField onAddText={handleAddText} text={placeholder} />
-        <InfosPickList
+        <AddLabeledListField onAddText={handleAddText} text={placeholder} />
+        <InfosLabeled
           typeField={""}
-          onDeleteAddedText={(index) => handleDeletePickList(index, setAddText)}
+          onDeleteAddedText={(index: number) => handleDeleteLabel(index, setAddText)}
           AddTexts={AddText}
         />
       </FormControl>
