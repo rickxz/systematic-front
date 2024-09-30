@@ -1,6 +1,6 @@
 import EditButton from "../Buttons/EditButton";
 import DeleteButton from "../Buttons/DeleteButton";
-import { useEditLabel } from "../../hooks/useEditLabel";
+import { useEditLabeledList } from "../../hooks/useEditLabeledList";
 import { tbConteiner } from "./styles/infosTableStyles";
 import { Table, Tbody, Tr, Td, TableContainer, Input } from "@chakra-ui/react";
 
@@ -11,7 +11,7 @@ interface InfosTableProps {
 }
 
 export default function InfosLabeled({ AddTexts, onDeleteAddedText, typeField }: InfosTableProps) {
-  const { editIndex, handleEdit, handleSaveEdit, editedValue, handleChange } = useEditLabel({
+  const { editIndex, handleEdit, handleSaveEdit, editedValue, handleChange } = useEditLabeledList({
     AddTexts,
     onSaveEdit: (editedValue: {label: string, value: number}, editIndex: number) => {
       AddTexts[editIndex] = editedValue;

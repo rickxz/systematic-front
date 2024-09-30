@@ -8,6 +8,7 @@ import axios from "../../interceptor/interceptor";
 import { useEffect, useState } from "react";
 import NumberScaleModal from "../Modals/Data Extraciton Field Creation/NumberScaleModal";
 import PickListModal from "../Modals/Data Extraciton Field Creation/PickListModal";
+import LabeledScaleModal from "../Modals/Data Extraciton Field Creation/labeledScale";
 
 interface Props{
   id: string;
@@ -30,6 +31,7 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [numberScale, setnumberScale] = useState<number[]>([]);
   const [questions, setQuestions] = useState<string[]>([]);
+  const [labeledQuestions, setLabeledQuestions] = useState<{label: string, value: number}[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState('');
 
@@ -103,6 +105,11 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
     }
 
     if (newValue === 'number scale') {
+      setModalType(newValue);  // Atualiza o tipo do modal
+      setShowModal(true);  // Abre o modal
+    }
+
+    if (newValue == 'labeled list') {
       setModalType(newValue);  // Atualiza o tipo do modal
       setShowModal(true);  // Abre o modal
     }
@@ -219,8 +226,13 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
       {showModal == true && modalType == 'pick list' && (
         <PickListModal show={setShowModal} questionHolder={setQuestions} questions={questions} />
       )}
+      
       {showModal == true && modalType == 'number scale' && (
         <NumberScaleModal show={setShowModal} scaleHolder={setnumberScale} values={values}/>
+      )}
+
+      {showModal == true && modalType == 'labeled list' && (
+        <LabeledScaleModal show={setShowModal} questionHolder={setLabeledQuestions}/>
       )}
     </TableContainer>
   );

@@ -6,10 +6,10 @@ import AddLabeledScaleTable from "../../AddDataFields/labeledScale/AddLabeledSca
 
 interface Props{
     show: Dispatch<SetStateAction<boolean>>;
-    scaleHolder: React.Dispatch<React.SetStateAction<number[]>>
+    scaleHolder: React.Dispatch<React.SetStateAction<{label: string, value: number}[]>>
 }
 
-function NumberScaleModal({show, scaleHolder }: Props) {
+function LabeledScaleModal({show, scaleHolder }: Props) {
     
     const { isOpen, onClose, onOpen } = useDisclosure();
 
@@ -47,4 +47,4 @@ function NumberScaleModal({show, scaleHolder }: Props) {
 }
 
 
-export default NumberScaleModal
+export default LabeledScaleModal;

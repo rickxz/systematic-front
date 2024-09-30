@@ -1,7 +1,7 @@
 import { FormControl, FormLabel } from "@chakra-ui/react";
 import AddLabeledListField from "./AddLabeledScaleField";
-import InfosLabeled from "../../Tables/labeledListTable";
-import { useDeleteLabel } from "../../../hooks/useDeleteLabel";
+import InfosLabeled from "../../Tables/LabeledListInfosTable";
+import { useDeleteLabeledList } from "../../../hooks/useDeleteLabeledList";
 import { formcontrol, label } from "../styles/AddTextTableStyles";
 import { useAddLabeledList } from "../../../hooks/useAddLabeledList";
 
@@ -12,7 +12,7 @@ interface AddTextTableProps {
 
 export default function AddLabeledScaleTable({ text, placeholder }: AddTextTableProps) {
   const { AddText, handleAddText, setAddText } = useAddLabeledList();
-  const { handleDeleteLabel} = useDeleteLabel();
+  const { handleDeleteLabeledList} = useDeleteLabeledList();
   return (
 
     <FormControl sx={label}>
@@ -22,7 +22,7 @@ export default function AddLabeledScaleTable({ text, placeholder }: AddTextTable
         <AddLabeledListField onAddText={handleAddText} text={placeholder} />
         <InfosLabeled
           typeField={""}
-          onDeleteAddedText={(index: number) => handleDeleteLabel(index, setAddText)}
+          onDeleteAddedText={(index: number) => handleDeleteLabeledList(index, setAddText)}
           AddTexts={AddText}
         />
       </FormControl>
