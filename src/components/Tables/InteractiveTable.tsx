@@ -16,10 +16,16 @@ interface Props{
 }
 
 export default function InteractiveTable({id, url, label}: Props) {
+  let adress = '';
+
+if(label == 'Extraction Questions') adress = 'extraction-question';
+
+if(label == 'Risk of Bias Questions') adress = 'rob-question';
+  
   const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers, 
     handleServerSend, handleAddQuestions, handleNumberScale, values, setValues } =
     useInteractiveTable();
-  const { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion } = useSendExtractionForm();
+  const { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion } = useSendExtractionForm(adress);
 
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [numberScale, setnumberScale] = useState<number[]>([]);
@@ -29,6 +35,8 @@ export default function InteractiveTable({id, url, label}: Props) {
 
   
   useEffect(() => {
+    console.log(adress);
+
     setQuestions([]);
 
     const fetch = async () => {
@@ -40,7 +48,7 @@ export default function InteractiveTable({id, url, label}: Props) {
 
         let response = await axios.get(url, options);
   
-        let link = response.data._links['find-all-review-extraction-questions'].href;
+        let link = `http://localhost:8080/api/v1/systematic-study/${id}/protocol/${adress}`;
         response = await axios.get(link, options);
   
         const fetchedRows = response.data.questions.map((item: { questionType: any; code: any; 

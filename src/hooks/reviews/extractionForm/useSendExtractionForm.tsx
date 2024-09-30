@@ -21,9 +21,9 @@ interface NumberScaleProps{
     higher: number
 }
 
-const useSendExtractionForm = () => {
+const useSendExtractionForm = (adress: string) => {
     async function sendTextualQuestion({question, questionId, reviewId}: TextualProps){
-        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/textual`;
+        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/${adress}/textual`;
         const data = {
             code: questionId,
             description: question
@@ -38,7 +38,7 @@ const useSendExtractionForm = () => {
         }
     }
     async function sendPickListQuestion({question, questionId, reviewId, options}: PickListProps){
-        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/pick-list`;
+        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/${adress}/pick-list`;
         const data = {
             code: questionId,
             description: question,
@@ -55,7 +55,7 @@ const useSendExtractionForm = () => {
     }
 
     async function sendNumberScaleQuestion({question, questionId, reviewId, lower, higher}: NumberScaleProps){
-        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/extraction-question/number-scale`;
+        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/${adress}/number-scale`;
         console.log(typeof(lower));
         
         const data = {
