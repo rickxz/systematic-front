@@ -1,11 +1,7 @@
-export function useDeleteLabeledList() {
-    const handleDeleteLabeledList = (index: number, setAddText: React.Dispatch<React.SetStateAction<{label: string, value: number}[]>>) => {
-      setAddText((prevAddText) => {
-        const updatedAddText = [...prevAddText];
-        updatedAddText.splice(index, 1);
-        return updatedAddText;
-      });
-    };
-  
-    return { handleDeleteLabeledList };
-  }
+export const handleDeleteLabeledList = (label: string, setAddText: React.Dispatch<React.SetStateAction<Record<string, number>>>) => {
+  setAddText((prevAddText) => {
+    const updatedAddText = { ...prevAddText };
+    delete updatedAddText[label]; // Remove a chave do objeto
+    return updatedAddText;
+  });
+};

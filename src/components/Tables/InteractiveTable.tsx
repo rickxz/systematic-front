@@ -31,7 +31,7 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [numberScale, setnumberScale] = useState<number[]>([]);
   const [questions, setQuestions] = useState<string[]>([]);
-  const [labeledQuestions, setLabeledQuestions] = useState<{label: string, value: number}[]>([]);
+  const [labeledQuestions, setLabeledQuestions] = useState<Record<string, number>>({});
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState('');
 
@@ -232,7 +232,7 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
       )}
 
       {showModal == true && modalType == 'labeled list' && (
-        <LabeledScaleModal show={setShowModal} questionHolder={setLabeledQuestions}/>
+        <LabeledScaleModal show={setShowModal} questionHolder={setLabeledQuestions} questions={labeledQuestions} />
       )}
     </TableContainer>
   );

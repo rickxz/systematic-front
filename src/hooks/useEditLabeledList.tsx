@@ -1,37 +1,28 @@
-import { useState, useCallback, ChangeEvent } from "react";
+import { useState } from "react";
 
-interface UseEditStateProps {
-  AddTexts: {label: string, value: number}[];
-  onSaveEdit: (editedValue: {label: string, value: number}, editIndex: number) => void;
-}
+export function useEditLabeledList({ AddTexts, onSaveEdit }: any) {
+  const [editLabel, setEditLabel] = useState<string | null>(null);
+  const [editedValue, setEditedValue] = useState<{ label: string; value: number }>({ label: "", value: 0 });
 
-export function useEditLabeledList({ AddTexts, onSaveEdit }: UseEditStateProps) {
-  const [editIndex, setEditIndex] = useState<number | null>(null);
-  const [editedValue, setEditedValue] = useState<{label: string, value: number}>({label: '', value: 0});
+  const handleEdit = (label: string) => {
+    setEditLabel(label);
+    setEditedValue({ label, value: AddTexts[label] });
+  };
 
-  const handleEdit = useCallback(
-    (index: number) => {
-      setEditIndex(index);
-      setEditedValue(AddTexts[index]);
-    },
-    [AddTexts]
-  );
-
-  const handleSaveEdit = useCallback(() => {
-    if (editIndex !== null) {
-      onSaveEdit(editedValue, editIndex);
-      setEditIndex(null);
-      setEditedValue({label: '', value: 0});
-    }
-  }, [editIndex, editedValue, onSaveEdit]);
-
-  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setEditedValue((prev) => ({
       ...prev,
-      [name]: name === "value" ? parseInt(value, 10) : value,
+      [name]: name === "value" ? Number(value) : value,
     }));
-  }, []);
+  };
 
-  return { editIndex, handleEdit, handleSaveEdit, editedValue, handleChange };
+  const handleSaveEdit = () => {
+    if (editLabel) {
+      onSaveEdit(editedValue, editLabel);
+      setEditLabel(null);
+    }
+  };
+
+  return { editLabel, handleEdit, handleSaveEdit, editedValue, handleChange };
 }

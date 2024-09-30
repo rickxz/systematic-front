@@ -1,21 +1,23 @@
-import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Text } from "@chakra-ui/react"
+import { Button, FormControl, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
 import { useDisclosure } from "@chakra-ui/react"
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Dispatch, SetStateAction } from "react";
 import AddLabeledScaleTable from "../../AddDataFields/labeledScale/AddLabeledScaleTable";
 
 interface Props{
     show: Dispatch<SetStateAction<boolean>>;
-    scaleHolder: React.Dispatch<React.SetStateAction<{label: string, value: number}[]>>
+    questionHolder: React.Dispatch<React.SetStateAction<Record<string, number>>>
+    questions: Record<string, number>;
 }
 
-function LabeledScaleModal({show, scaleHolder }: Props) {
+function LabeledScaleModal({show, questionHolder, questions }: Props) {
     
     const { isOpen, onClose, onOpen } = useDisclosure();
 
     useEffect(() => {
         onOpen();
-    }, []);
+        console.log(questions);
+    }, [questions]);
 
     function handleSave(){
         onClose();
@@ -33,7 +35,7 @@ function LabeledScaleModal({show, scaleHolder }: Props) {
                 <ModalBody>
                     <FormControl>
 
-                        <AddLabeledScaleTable placeholder="Insert your question here" text="question"/>
+                        <AddLabeledScaleTable questionHolder={questionHolder} placeholder="Insert your question here" text="question"/>
 
                     </FormControl>
                 </ModalBody>

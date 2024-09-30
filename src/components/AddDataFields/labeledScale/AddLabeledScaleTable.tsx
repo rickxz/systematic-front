@@ -1,20 +1,22 @@
 import { FormControl, FormLabel } from "@chakra-ui/react";
 import AddLabeledListField from "./AddLabeledScaleField";
 import InfosLabeled from "../../Tables/LabeledListInfosTable";
-import { useDeleteLabeledList } from "../../../hooks/useDeleteLabeledList";
+import { handleDeleteLabeledList } from "../../../hooks/useDeleteLabeledList";
 import { formcontrol, label } from "../styles/AddTextTableStyles";
 import { useAddLabeledList } from "../../../hooks/useAddLabeledList";
+import { SetStateAction } from "react";
 
 interface AddTextTableProps {
   text: string;
   placeholder: string;
+  questionHolder: React.Dispatch<SetStateAction<Record<string, number>>>;
 }
 
-export default function AddLabeledScaleTable({ text, placeholder }: AddTextTableProps) {
+export default function AddLabeledScaleTable({ text, placeholder, questionHolder }: AddTextTableProps) {
   const { AddText, handleAddText, setAddText } = useAddLabeledList();
-  const { handleDeleteLabeledList} = useDeleteLabeledList();
-  return (
+  questionHolder(AddText);
 
+  return (
     <FormControl sx={label}>
       <FormLabel>{text}</FormLabel>
 
@@ -22,7 +24,7 @@ export default function AddLabeledScaleTable({ text, placeholder }: AddTextTable
         <AddLabeledListField onAddText={handleAddText} text={placeholder} />
         <InfosLabeled
           typeField={""}
-          onDeleteAddedText={(index: number) => handleDeleteLabeledList(index, setAddText)}
+          onDeleteAddedText={(label: string) => handleDeleteLabeledList(label, setAddText)} // Passa o label em vez do index
           AddTexts={AddText}
         />
       </FormControl>

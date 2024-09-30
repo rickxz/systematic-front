@@ -5,16 +5,16 @@ import { tbConteiner } from "./styles/infosTableStyles";
 import { Table, Tbody, Tr, Td, TableContainer, Input } from "@chakra-ui/react";
 
 interface InfosTableProps {
-  AddTexts: { label: string; value: number }[];
-  onDeleteAddedText: (index: number) => void;
+  AddTexts: Record<string, number>; // Agora é um objeto
+  onDeleteAddedText: (label: string) => void; // Alterado para lidar com labels como chave
   typeField: string;
 }
 
 export default function InfosLabeled({ AddTexts, onDeleteAddedText, typeField }: InfosTableProps) {
-  const { editIndex, handleEdit, handleSaveEdit, editedValue, handleChange } = useEditLabeledList({
+  const { editLabel, handleEdit, handleSaveEdit, editedValue, handleChange } = useEditLabeledList({
     AddTexts,
-    onSaveEdit: (editedValue: {label: string, value: number}, editIndex: number) => {
-      AddTexts[editIndex] = editedValue;
+    onSaveEdit: (editedValue: {label: string, value: number}, editLabel: string) => {
+      AddTexts[editLabel] = editedValue.value; // Atualizando valor do label
     },
   });
 
@@ -22,25 +22,25 @@ export default function InfosLabeled({ AddTexts, onDeleteAddedText, typeField }:
     <TableContainer sx={tbConteiner}>
       <Table variant="simple" size="md">
         <Tbody className="tableBody">
-          {AddTexts.map((addText, index) => (
-            <Tr key={index}>
+          {Object.entries(AddTexts).map(([label, value], index) => (
+            <Tr key={label}>
               <Td>
-                {editIndex === index ? (
+                {editLabel === label ? (
                   <>
                     <Input name="label" value={editedValue.label} onChange={handleChange} placeholder="Edit label" />
                     <Input name="value" value={editedValue.value} onChange={handleChange} placeholder="Edit value" mt={2} type="number" />
                   </>
                 ) : (
-                  `${addText.label}: ${addText.value}`
+                  `${label}: ${value}`
                 )}
               </Td>
               <Td textAlign={"right"}>
-                <DeleteButton index={index} handleDelete={() => onDeleteAddedText(index)} />
+                <DeleteButton index={index} handleDelete={() => onDeleteAddedText(label)} />
                 {typeField !== "select" && (
                   <EditButton
                     index={index}
-                    editIndex={editIndex}
-                    handleEdit={() => handleEdit(index)}
+                    editIndex={editLabel === label ? index : -1}
+                    handleEdit={() => handleEdit(label)}
                     handleSaveEdit={handleSaveEdit}
                   />
                 )}
