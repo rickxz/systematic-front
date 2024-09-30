@@ -38,13 +38,6 @@ export default function AccordionDashboard({isAllDatabase = false}) {
               <Text flex="1" textAlign="center">Studies</Text>
             </Flex>
 
-            {
-              isAllDatabase ?
-              <Flex flex={1}>
-                <Text flex={1} textAlign="center">Source</Text>
-              </Flex>
-            :<></>}
-
             <Flex width={"140px"}>
               <Button
                 width={"100%"}
