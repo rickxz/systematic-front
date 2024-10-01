@@ -14,7 +14,7 @@ export default function AccordionDashboard() {
   const [showModal, setShowModal] = useState(false);
   const [actionModal, setActionModal] = useState<"create" | "update">("create");
 
-  const handleOpenModal = ({action} : actionsModal) => {
+  const handleOpenModal = ({ action }: actionsModal) => {
     setActionModal(action);
     setShowModal(true);
   };
@@ -54,7 +54,7 @@ export default function AccordionDashboard() {
                 fontSize={15}
                 height={"35px"}
 
-                onClick={() => handleOpenModal({action: "create"})}
+                onClick={() => handleOpenModal({ action: "create" })}
               >
                 Add Session
               </Button>
@@ -69,7 +69,7 @@ export default function AccordionDashboard() {
             <Flex width={"140px !important"} justifyContent="flex-end" mt={2}>
               <Button as={Link} to={"/newRevision/identification/15"} flex={1} colorScheme="gray" mr={2} height={"35px"}>View</Button>
               <Button flex={1} colorScheme="gray" height={"35px"}
-                onClick={() => handleOpenModal({action: "update"})}
+                onClick={() => handleOpenModal({ action: "update" })}
               >
                 Edit
               </Button>
@@ -82,7 +82,11 @@ export default function AccordionDashboard() {
 
             <Flex width={"140px !important"} justifyContent="flex-end" mt={2}>
               <Button as={Link} to={"/newRevision/identification/15"} flex={1} colorScheme="gray" mr={2} height={"35px"}>View</Button>
-              <Button flex={1} colorScheme="gray" height={"35px"}>Edit</Button>
+              <Button flex={1} colorScheme="gray" height={"35px"}
+                onClick={() => handleOpenModal({ action: "update" })}
+              >
+                Edit
+              </Button>
             </Flex>
           </Flex>
 
