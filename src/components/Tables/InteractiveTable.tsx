@@ -24,9 +24,9 @@ if(label == 'Extraction Questions') adress = 'extraction-question';
 if(label == 'Risk of Bias Questions') adress = 'rob-question';
   
   const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers, 
-    handleServerSend, handleAddQuestions, handleNumberScale, values, setValues } =
+    handleServerSend, handleAddQuestions, handleNumberScale, handleLabeledList, values, setValues } =
     useInteractiveTable();
-  const { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion } = useSendExtractionForm(adress);
+  const { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion, sendLabeledListQuestion } = useSendExtractionForm(adress);
 
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [numberScale, setnumberScale] = useState<number[]>([]);
@@ -109,9 +109,9 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
       setShowModal(true);  // Abre o modal
     }
 
-    if (newValue == 'labeled list') {
-      setModalType(newValue);  // Atualiza o tipo do modal
-      setShowModal(true);  // Abre o modal
+    if (newValue === 'labeled list') {
+      setModalType(newValue);
+      setShowModal(true); 
     }
   }
 
@@ -150,6 +150,19 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
       
       handleNumberScale(index, numberScale[0], numberScale[1]);
       let questionId = await sendNumberScaleQuestion(data);
+      handleServerSend(index, questionId);
+    }
+
+    else if(rows[index].type == "labeled list"){
+      const data = {
+        question: rows[index].question,
+        questionId: rows[index].id,
+        reviewId: id,
+        scales: labeledQuestions
+      }
+      
+      handleLabeledList(index, labeledQuestions);
+      let questionId = await sendLabeledListQuestion(data);
       handleServerSend(index, questionId);
     }
     const accessToken = localStorage.getItem('accessToken');
@@ -228,7 +241,7 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
       )}
       
       {showModal == true && modalType == 'number scale' && (
-        <NumberScaleModal show={setShowModal} scaleHolder={setnumberScale} values={values}/>
+        <NumberScaleModal show={setShowModal} scaleHolder={setnumberScale} values={values} />
       )}
 
       {showModal == true && modalType == 'labeled list' && (

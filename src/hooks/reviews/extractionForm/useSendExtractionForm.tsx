@@ -21,6 +21,13 @@ interface NumberScaleProps{
     higher: number
 }
 
+interface LabeledProps{
+    question: string;
+    questionId: number;
+    reviewId: string;
+    scales: Record<string, number>;
+}
+
 const useSendExtractionForm = (adress: string) => {
     async function sendTextualQuestion({question, questionId, reviewId}: TextualProps){
         let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/${adress}/textual`;
@@ -74,7 +81,24 @@ const useSendExtractionForm = (adress: string) => {
         }
     }
 
-    return { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion };
+    async function sendLabeledListQuestion({question, questionId, reviewId, scales}: LabeledProps) {
+        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/${adress}/labeled-scale`;
+        const data = {
+            code: questionId,
+            description: question,
+            scales
+        }
+
+        try{
+            let response = await axios.post(url, data, {withCredentials: true});
+            console.log(response);
+            return response.data.questionId;
+        } catch(err){
+            console.log(err);
+        }
+    }
+
+    return { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion, sendLabeledListQuestion};
 }
 
 export default useSendExtractionForm;

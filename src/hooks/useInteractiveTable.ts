@@ -9,6 +9,7 @@ export interface Row {
   questions: string[];
   higher: number;
   lower: number;
+  scale: Record<string, number>;
 }
 
 export function useInteractiveTable() {
@@ -18,7 +19,7 @@ export function useInteractiveTable() {
   const headers = ["Id", "Question", "Type", ""];
 
   const addRow = (setEditIndex: React.Dispatch<SetStateAction<number | null>>, setQuestions: React.Dispatch<SetStateAction<string[]>>) => {
-      setRows([...rows, { higher: 5, lower: 0, questions: [], isNew: true, questionId: null, id: rows.length + 1, question: "", type: "" }]);
+      setRows([...rows, { scale: {}, higher: 5, lower: 0, questions: [], isNew: true, questionId: null, id: rows.length + 1, question: "", type: "" }]);
       setQuestions([]);
       setEditIndex(rows.length);
     };
@@ -60,10 +61,16 @@ export function useInteractiveTable() {
     setRows(updatedRows);
   }
 
+  const handleLabeledList = (index: number, scale: Record<string, number>) => {
+    const updatedRows = [...rows];
+    updatedRows[index].scale = scale;
+    setRows(updatedRows);
+  }
+
   const getRowsData = () => {
     return rows;
   };
 
   return { setRows, rows, addRow, handleServerSend, handleNumberScale, handleDelete, handleQuestionChange, 
-    handleTypeChange, handleAddQuestions, options, headers, getRowsData, setValues, values };
+    handleTypeChange, handleLabeledList, handleAddQuestions, options, headers, getRowsData, setValues, values };
 }
