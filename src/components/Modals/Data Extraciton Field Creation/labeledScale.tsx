@@ -35,7 +35,7 @@ function LabeledScaleModal({show, questionHolder, questions }: Props) {
                 <ModalBody>
                     <FormControl>
 
-                        <AddLabeledScaleTable questionHolder={questionHolder} placeholder="Insert your question here" text="question"/>
+                        <AddLabeledScaleTable questions={questions} questionHolder={questionHolder} placeholder="Insert your question here" text="question"/>
 
                     </FormControl>
                 </ModalBody>

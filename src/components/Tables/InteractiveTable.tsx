@@ -54,7 +54,8 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
         response = await axios.get(link, options);
   
         const fetchedRows = response.data.questions.map((item: { questionType: any; code: any; 
-          description: any; questionId: string; options: string[], lower: number, higher: number}) => {
+          description: any; questionId: string; options: string[], lower: number, 
+          higher: number, scales: Record<string, number>}) => {
           let type;
           let questions;
           console.log(item);
@@ -83,7 +84,8 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
             isNew: false,
             questions: questions,
             higher: item.higher,
-            lower: item.lower
+            lower: item.lower,
+            scale: item.scales
           };
         });
   
@@ -214,6 +216,7 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
                   handleEdit={() => {
                     setValues([row.lower, row.higher]);
                     setQuestions(row.questions);
+                    setLabeledQuestions(row.scale);
                     setEditIndex(index);
                     setShowModal(true);
                     setModalType(row.type);

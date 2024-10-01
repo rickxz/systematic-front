@@ -4,17 +4,22 @@ import InfosLabeled from "../../Tables/LabeledListInfosTable";
 import { handleDeleteLabeledList } from "../../../hooks/useDeleteLabeledList";
 import { formcontrol, label } from "../styles/AddTextTableStyles";
 import { useAddLabeledList } from "../../../hooks/useAddLabeledList";
-import { SetStateAction } from "react";
+import { SetStateAction, useEffect } from "react";
 
 interface AddTextTableProps {
   text: string;
   placeholder: string;
   questionHolder: React.Dispatch<SetStateAction<Record<string, number>>>;
+  questions: Record<string, number>;
 }
 
-export default function AddLabeledScaleTable({ text, placeholder, questionHolder }: AddTextTableProps) {
+export default function AddLabeledScaleTable({ text, placeholder, questionHolder, questions }: AddTextTableProps) {
   const { AddText, handleAddText, setAddText } = useAddLabeledList();
   questionHolder(AddText);
+
+  useEffect(() => {
+    if(questions) setAddText(questions);
+  }, [])
 
   return (
     <FormControl sx={label}>
