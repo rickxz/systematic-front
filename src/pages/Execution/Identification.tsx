@@ -26,15 +26,16 @@ export default function Identification() {
       <Box
         sx={conteiner}
         justifyItems={"center"}
+        boxSizing={"border-box"}
         alignItems={"center"}
         display={"flex"}
         flexDirection={"column"}
-        w={"85vw"}
+        w={"100%"}
       >
         
         <Box sx={dataBaseconteiner}>
           {databases.map((data) => {
-            return <DataBaseCard text={data} type="normal" />;
+            return <DataBaseCard text={data} />;
           })}
         </Box>
       </Box>

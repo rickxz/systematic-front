@@ -7,20 +7,19 @@ import { btnConteiner, btnConteinerAllBases, card, conteiner, iconConteiner, tes
 
 interface DatabaseCardProps {
   text: string;
-  type: string;
 }
 
-export default function DataBaseCard({ text, type }: DatabaseCardProps) {
+export default function DataBaseCard({ text }: DatabaseCardProps) {
   return (
-    <Card w={type === "allData" ? "80vw" : "26vw"} sx={card}>
+    <Card sx={card}>
 
       <Box sx={conteiner} 
       display={"flex"}
       justifyContent={"space-between"}
       alignItems={"center"}
       flexDirection={"row"}
-      bgColor={type === "allData" ? "#EBF0F3" : "#EBF0F3"}
-      color={type === "allData" ? "#263C56" : "#263C56"}
+      bgColor={"#EBF0F3"}
+      color={"#263C56"}
       >
 
         <Box sx={iconConteiner} ml={"1em"}>
@@ -56,7 +55,7 @@ export default function DataBaseCard({ text, type }: DatabaseCardProps) {
 
       </Box>
 
-      <AccordionDashboard isAllDatabase={type === "allData" ? true : false}/>
+      <AccordionDashboard />
 
     </Card>
   );

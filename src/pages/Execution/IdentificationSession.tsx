@@ -47,7 +47,13 @@ export default function IdentificationSession() {
             <Header text="Search Sessions" />
 
             <Flex justifyContent={"center"}>
-                <TableContainer maxWidth={"80%"} mt={5}  borderRadius="15px 15px 0 0" >
+                <TableContainer 
+                    width={"80%"}
+                    mt={5}  
+                    borderRadius="15px 15px 0 0" 
+                    boxShadow="lg" 
+                    bg="#EBF0F3"
+                >
                     <Table
                         variant="simple"
                         colorScheme="#263C56"
@@ -59,58 +65,61 @@ export default function IdentificationSession() {
                                 <Th color="white">ID Paper</Th>
                                 <Th color="white">Title</Th>
                                 <Th color="white">Author</Th>
-                                <Th color="white">Year</Th>
+                                <Th color="white">Journal</Th>
+
+                                {/* <Th color="white">Year</Th>
                                 <Th color="white">Status/Selection</Th>
                                 <Th color="white">Status/Extraction</Th>
                                 <Th color="white">Reading Priority</Th>
-                                <Th color="white">Score</Th>
+                                <Th color="white">Score</Th> */}
                             </Tr>
                             
                         </Thead>
                         <Tbody>
-
+                            {/*     <Tr
+                                    key={index}
+                                    _hover={{ bg: "teal.50", boxShadow: "md" }}
+                                    transition="background-color 0.3s, box-shadow 0.3s"
+                                >
+                                    <Td>{article.id}</Td>
+                                    <Td>{article.title}</Td>
+                                    <Td>{article.author}</Td>
+                                    <Td>{article.journal}</Td>
+                                </Tr>
+                            ))} */}
 
                             <Tr
-                                _hover={{ bg: "#EBF0F3" }}
-                                transition="background-color 0.3s"
+                                _hover={{ bg: "#F5F8F9" }}
+                                transition="background-color 0.3s, box-shadow 0.3s"
                             >
 
                                 <Td>1</Td>
                                 <Td>title</Td>
                                 <Td>author</Td>
-                                <Td>year</Td>
-                                <Td>status/selection</Td>
-                                <Td>status/extraction</Td>
-                                <Td>reading priority</Td>
-                                <Td>score</Td>
+                                <Td>journal</Td>
+                                
                             </Tr>
                             <Tr
-                                _hover={{ bg: "#EBF0F3" }}
-                                transition="background-color 0.3s"
+                                _hover={{ bg: "#F5F8F9" }}
+                                transition="background-color 0.3s, box-shadow 0.3s"
                             >
 
                                 <Td>2</Td>
                                 <Td>title</Td>
                                 <Td>author</Td>
-                                <Td>year</Td>
-                                <Td>status/selection</Td>
-                                <Td>status/extraction</Td>
-                                <Td>reading priority</Td>
-                                <Td>score</Td>
+                                <Td>Journal</Td>
+                                
                             </Tr>
                             <Tr
-                                _hover={{ bg: "#EBF0F3" }}
-                                transition="background-color 0.3s"
+                                _hover={{ bg: "#F5F8F9" }}
+                                transition="background-color 0.3s,box-shadow 0.3s"
                             >
 
                                 <Td>3</Td>
                                 <Td>title</Td>
                                 <Td>author</Td>
-                                <Td>year</Td>
-                                <Td>status/selection</Td>
-                                <Td>status/extraction</Td>
-                                <Td>reading priority</Td>
-                                <Td>score</Td>
+                                <Td>Journal</Td>
+                                
                             </Tr>
 
 

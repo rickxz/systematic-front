@@ -5,9 +5,10 @@ import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 
 interface IdentificationModalProps {
     show: (value: boolean) => void;
+    action: "create" | "update";
 }
 
-function IdentificationModal({ show } : IdentificationModalProps) {
+function IdentificationModal({ show, action }: IdentificationModalProps) {
     const { isOpen, onClose, onOpen } = useDisclosure();
     const [referenceFiles, setReferenceFiles] = useState<string[]>([]);
 
@@ -41,8 +42,8 @@ function IdentificationModal({ show } : IdentificationModalProps) {
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader color={"#263C56"}>
-                    New Search Session
-                    <ModalCloseButton onClick={close}/>
+                    {action == "create" ? "New Search Session" : "Update Session"}
+                    <ModalCloseButton onClick={close} />
                 </ModalHeader>
                 <ModalBody>
                     <FormControl mb={4}>
@@ -60,7 +61,7 @@ function IdentificationModal({ show } : IdentificationModalProps) {
                         <Textarea placeholder="Add comments" />
                     </FormControl>
 
-                    <FormControl mb={4}>
+                    {action == "create" && <FormControl mb={4}>
                         <FormLabel>Reference Files</FormLabel>
                         {referenceFiles.map((file, index) => (
                             <Flex key={index} alignItems="center" mb={2}>
@@ -80,7 +81,7 @@ function IdentificationModal({ show } : IdentificationModalProps) {
                             icon={<AddIcon />}
                             onClick={addReferenceFile}
                         />
-                    </FormControl>
+                    </FormControl>}
                 </ModalBody>
                 <ModalFooter>
                     <Button onClick={close}
@@ -89,7 +90,7 @@ function IdentificationModal({ show } : IdentificationModalProps) {
                         boxShadow="sm"
                         _hover={{ bg: "#2A4A6D", boxShadow: "md" }}
                     >
-                        Create</Button>
+                        {action == "create" ? "Create" : "Update"}</Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>

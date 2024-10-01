@@ -10,7 +10,7 @@ interface iFlexLayout {
 
 export default function FlexLayout({ navigationType, children, defaultOpen }: iFlexLayout) {
   return (
-    <Flex direction={"row"} justify={"space-between"} w={"fit-content"} alignItems={"center"} bgColor={"#E5EBEF"}>
+    <Flex direction={"row"} justify={"space-between"} w={"100%"} alignItems={"center"} bgColor={"#E5EBEF"}>
       <Box
         w={"fit-content"}
         overflow={"scroll"}
@@ -30,7 +30,7 @@ export default function FlexLayout({ navigationType, children, defaultOpen }: iF
       >
         <Sidebar type={navigationType} defaultOpen={defaultOpen} />
       </Box>
-      <Box sx={style} w={"96vw"} h={"100vh"} overflow={"auto"}>
+      <Box sx={style} w={"100%"} h={"100vh"} overflow={"auto"}>
         {children}
       </Box>
     </Flex>

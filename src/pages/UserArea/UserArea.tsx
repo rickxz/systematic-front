@@ -18,7 +18,7 @@ export default function UserArea() {
   return (
     <FlexLayout defaultOpen={0} navigationType="Default">
       <Header text="My Systematic Reviews" />
-      <Flex sx={flexStyles} w={"90%"} align="center" justify="center">
+      <Flex sx={flexStyles} w={"100%"} align="center" justify="center">
 
         { !isLoaded && <Loader />}
         

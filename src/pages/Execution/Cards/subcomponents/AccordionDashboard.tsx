@@ -5,10 +5,19 @@ import { Link } from "react-router-dom";
 import { flex } from "../../../NovaRevisao/styles/finalizationStyles";
 import IdentificationModal from "../../../../components/Modals/IdentificationModal";
 
+interface actionsModal {
+  action: "create" | "update";
+}
 
-export default function AccordionDashboard({isAllDatabase = false}) {
+export default function AccordionDashboard() {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [actionModal, setActionModal] = useState<"create" | "update">("create");
+
+  const handleOpenModal = ({ action }: actionsModal) => {
+    setActionModal(action);
+    setShowModal(true);
+  };
 
   const handleAccordionToggle = () => {
     setIsAccordionOpen(!isAccordionOpen);
@@ -18,8 +27,8 @@ export default function AccordionDashboard({isAllDatabase = false}) {
     <Accordion allowToggle sx={accordion} onChange={handleAccordionToggle}>
 
       {showModal == true && (
-        <IdentificationModal show={setShowModal}/>
-      )} 
+        <IdentificationModal show={setShowModal} action={actionModal} />
+      )}
 
       <AccordionItem>
 
@@ -29,7 +38,7 @@ export default function AccordionDashboard({isAllDatabase = false}) {
 
         <AccordionPanel>
 
-          <Flex flex={1} justifyContent="space-between" fontWeight="bold">
+          <Flex flex={1} fontWeight="bold">
             <Flex >
               <Text flex="1" textAlign="left" width={"60px"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>Date</Text>
             </Flex>
@@ -38,13 +47,6 @@ export default function AccordionDashboard({isAllDatabase = false}) {
               <Text flex="1" textAlign="center">Studies</Text>
             </Flex>
 
-            {
-              isAllDatabase ?
-              <Flex flex={1}>
-                <Text flex={1} textAlign="center">Source</Text>
-              </Flex>
-            :<></>}
-
             <Flex width={"140px"}>
               <Button
                 width={"100%"}
@@ -52,9 +54,9 @@ export default function AccordionDashboard({isAllDatabase = false}) {
                 fontSize={15}
                 height={"35px"}
 
-                onClick={()=>setShowModal(true)}
+                onClick={() => handleOpenModal({ action: "create" })}
               >
-                Add Session 
+                Add Session
               </Button>
             </Flex>
 
@@ -63,20 +65,28 @@ export default function AccordionDashboard({isAllDatabase = false}) {
           <Flex flex={1} justifyContent="space-between" alignItems="center" py={2} gap={"5px"}>
             <Text textAlign="left" width={"calc(min(60px, 30%))"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>20/07</Text>
             <Text flex="1" textAlign="center" >300</Text>
-            
+
             <Flex width={"140px !important"} justifyContent="flex-end" mt={2}>
               <Button as={Link} to={"/newRevision/identification/15"} flex={1} colorScheme="gray" mr={2} height={"35px"}>View</Button>
-              <Button flex={1} colorScheme="gray" height={"35px"}>Edit</Button>
+              <Button flex={1} colorScheme="gray" height={"35px"}
+                onClick={() => handleOpenModal({ action: "update" })}
+              >
+                Edit
+              </Button>
             </Flex>
           </Flex>
 
           <Flex flex={1} justifyContent="space-between" alignItems="center" py={2} gap={"5px"}>
             <Text textAlign="left" width={"calc(min(60px, 30%))"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>20/07</Text>
             <Text flex="1" textAlign="center" >300</Text>
-            
+
             <Flex width={"140px !important"} justifyContent="flex-end" mt={2}>
               <Button as={Link} to={"/newRevision/identification/15"} flex={1} colorScheme="gray" mr={2} height={"35px"}>View</Button>
-              <Button flex={1} colorScheme="gray" height={"35px"}>Edit</Button>
+              <Button flex={1} colorScheme="gray" height={"35px"}
+                onClick={() => handleOpenModal({ action: "update" })}
+              >
+                Edit
+              </Button>
             </Flex>
           </Flex>
 
