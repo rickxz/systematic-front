@@ -98,7 +98,24 @@ const useSendExtractionForm = (adress: string) => {
         }
     }
 
-    return { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion, sendLabeledListQuestion};
+    async function updateTextualQuestion({question, questionId, reviewId}: TextualProps, serverId: string | null, questionType: string){
+        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/${adress}/${serverId}`;
+        const data = {
+            questionType: questionType,
+            code: questionId,
+            description: question
+        }
+
+        try{
+            let response = await axios.put(url, data, {withCredentials: true});
+            console.log(response);
+            return response.data.questionId;
+        } catch(err){
+            console.log(err);
+        }
+    }
+
+    return { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion, sendLabeledListQuestion, updateTextualQuestion};
 }
 
 export default useSendExtractionForm;
