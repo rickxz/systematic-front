@@ -48,7 +48,7 @@ export default function IdentificationSession() {
 
             <Flex justifyContent={"center"}>
                 <TableContainer 
-                    maxWidth={"80%"} 
+                    width={"80%"}
                     mt={5}  
                     borderRadius="15px 15px 0 0" 
                     boxShadow="lg" 
