@@ -26,7 +26,9 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
   const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers, 
     handleServerSend, handleAddQuestions, handleNumberScale, handleLabeledList, values, setValues } =
     useInteractiveTable();
-  const { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion, sendLabeledListQuestion, updateTextualQuestion } = useSendExtractionForm(adress);
+  const { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion, sendLabeledListQuestion, updateTextualQuestion,
+    updatePickListQuestion
+   } = useSendExtractionForm(adress);
 
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [numberScale, setnumberScale] = useState<number[]>([]);
@@ -142,7 +144,9 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
       }   
       
       handleAddQuestions(index, questions);
-      let questionId = await sendPickListQuestion(data);
+      let questionId
+      if(rows[index].isNew) questionId = await sendPickListQuestion(data);
+      else updatePickListQuestion(data, rows[index].questionId, "PICK_LIST");
       handleServerSend(index, questionId);
     } else if(rows[index].type == "number scale"){
       const data = {

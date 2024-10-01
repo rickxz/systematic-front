@@ -44,6 +44,7 @@ const useSendExtractionForm = (adress: string) => {
             console.log(err);
         }
     }
+
     async function sendPickListQuestion({question, questionId, reviewId, options}: PickListProps){
         let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/${adress}/pick-list`;
         const data = {
@@ -115,7 +116,25 @@ const useSendExtractionForm = (adress: string) => {
         }
     }
 
-    return { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion, sendLabeledListQuestion, updateTextualQuestion};
+    async function updatePickListQuestion({question, questionId, reviewId, options}: PickListProps, serverId: string | null, questionType: string){
+        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/${adress}/${serverId}`;
+        const data = {
+            questionType: questionType,
+            code: questionId,
+            description: question,
+            options
+        }
+
+        try{
+            let response = await axios.put(url, data, {withCredentials: true});
+            console.log(response);
+            return response.data.questionId;
+        } catch(err){
+            console.log(err);
+        }
+    }
+
+    return { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion, sendLabeledListQuestion, updateTextualQuestion, updatePickListQuestion};
 }
 
 export default useSendExtractionForm;
