@@ -11,7 +11,7 @@ interface DatabaseCardProps {
 
 export default function DataBaseCard({ text }: DatabaseCardProps) {
   return (
-    <Card w={"30%"} minWidth={"25vw"} sx={card}>
+    <Card sx={card}>
 
       <Box sx={conteiner} 
       display={"flex"}

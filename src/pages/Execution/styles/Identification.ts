@@ -3,14 +3,13 @@ export const conteiner = {
 };
 
 export const dataBaseconteiner = {
-  display: "flex",
-  flexDir: "row",
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fill, minmax(27vw, 1fr))",
   boxSizing: "border-box",
+  p:"20px",
   w: "100%",
-  flexWrap: "wrap",
   gap: "19px",
   mt: 10,
   h: "fit-content",
-  justifySelf: "center",
   margin: "0 !important" 
 };
