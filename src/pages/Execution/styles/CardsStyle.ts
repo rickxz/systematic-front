@@ -9,7 +9,6 @@ export const accordion = {
   justifySelf: "center",
   bgColor: "#263C56",
   color: "#C9D9E5",
-  borderRadius: "3px",
 };
 
 export const card = {

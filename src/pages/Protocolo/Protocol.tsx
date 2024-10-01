@@ -27,7 +27,7 @@ export default function Protocol() {
       
         <Header text="Protocol" />
         <Progress value={33} w={"100%"} />
-        <Flex justify={"center"} direction={"column"}>
+        <Flex w={"100%"} justifyContent={"center"} direction={"column"} alignItems={"center"}>
           <FormControl sx={formControl}>
             <TextAreaInput value={goal} label="Objectives:" placeholder="What are your goals?" onChange={(e) => { setGoal(e.target.value) }}/>
             <TextAreaInput value={justification} label="Main question:" placeholder="The reason behind your research..." onChange={(e) => { setJustification(e.target.value) }}/>
@@ -35,7 +35,7 @@ export default function Protocol() {
               <AddTextTable text="Research Questions" placeholder="Enter the other Research Questions"/>
             </Flex>
             
-            <Accordion allowToggle mt={6} w="80%">
+            <Accordion allowToggle mt={6} w="60vw">
               
               <AccordionItem>
                 <h2 style={{color: "#2E4B6C"}}>

@@ -4,16 +4,14 @@ export const formControl = {
   gap: 10,
   mt: "50px",
   alignItems: "center",
-  w: "80%",
-  ml: "2%",
-
+  w: "100%",
 };
 
 
 export const btnBox = {
   display: "flex",
   justifyContent: "flex-end",
-  w: "73.3%",
+  w: "60vw",
   mt: 10,
   mb: 10,
 };

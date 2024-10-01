@@ -19,7 +19,7 @@ export default function NovaRevisao() {
     <FlexLayout navigationType="Accordion" defaultOpen={0}>
       <Header text="New Systematic Review" />
 
-      <FormControl mt={"20px"} display={"flex"} gap={10} flexDir={"column"} w={"80%"} alignItems={"center"} ml={"2%"} >
+      <FormControl m={"20px auto 0"} display={"flex"} gap={10} flexDir={"column"} w={"60vw"} alignItems={"center"} >
         
         { isTitleValid ? <InputText value={title} label="Title" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle} labelAbove={true}/> 
         : <AlertInputText border="red" value={title} label="Title is required" placeholder="Enter review title" type="text" nome="text" onChange={handleTitle} labelAbove={true} /> }
@@ -30,7 +30,7 @@ export default function NovaRevisao() {
 
         <Box w={"60vw"} display={"flex"} alignItems={"center"} justifyContent={"end"}>
           
-          { !isReturn ? <NavButton event={handlePost} text="Create new Review" /> : <NavButton event={handlePut} text="next"/> }
+          { !isReturn ? <NavButton event={handlePost} text="Create new Review" /> : <NavButton event={handlePut} text="Next"/> }
         
         </Box>
 

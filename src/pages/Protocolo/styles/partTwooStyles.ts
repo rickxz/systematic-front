@@ -3,8 +3,7 @@ export const conteiner = {
   flexDir: "column",
   gap: 10,
   mt: "50px",
-  ml: "2%",
-  w: "80%",
+  w: "60vw",
 };
 
 export const flex = {
@@ -14,7 +13,7 @@ export const flex = {
 export const btnBox = {
   display: "flex",
   justifyContent: "flex-end",
-  w: "48%",
+  w: "60vw",
   mt: 10,
   mb: 10,
 };

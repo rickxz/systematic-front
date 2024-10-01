@@ -6,7 +6,7 @@ import { flex } from "../../../NovaRevisao/styles/finalizationStyles";
 import IdentificationModal from "../../../../components/Modals/IdentificationModal";
 
 
-export default function AccordionDashboard({isAllDatabase = false}) {
+export default function AccordionDashboard() {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -29,7 +29,7 @@ export default function AccordionDashboard({isAllDatabase = false}) {
 
         <AccordionPanel>
 
-          <Flex flex={1} justifyContent="space-between" fontWeight="bold">
+          <Flex flex={1} fontWeight="bold">
             <Flex >
               <Text flex="1" textAlign="left" width={"60px"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>Date</Text>
             </Flex>

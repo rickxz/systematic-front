@@ -5,12 +5,12 @@ export const conteiner = {
 export const dataBaseconteiner = {
   display: "flex",
   flexDir: "row",
-  w: "80vw",
+  boxSizing: "border-box",
+  w: "100%",
   flexWrap: "wrap",
-  justifyContent: "space-between",
+  gap: "19px",
   mt: 10,
   h: "fit-content",
-  alignSelf: "center",
   justifySelf: "center",
-  margin: "auto",
+  margin: "0 !important" 
 };
