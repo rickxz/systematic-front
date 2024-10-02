@@ -156,6 +156,7 @@ const useCreateProtocol = () => {
     }
 
     async function sendAddText(data: string[], context: string) {
+        console.log(data, context);
         let content;
         let token = localStorage.getItem(`accessToken`);
         let options = {
