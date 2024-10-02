@@ -172,6 +172,9 @@ const useCreateProtocol = () => {
 
             let response = await axios.get(url, options);
             let aux: {description: string, type: string}[] = response.data.content.eligibilityCriteria;
+            aux = aux.filter((item) => {
+                if(item.type == "EXCLUSION") return item;
+            })
 
             content = [...aux, ...array];
             content = { eligibilityCriteria: content };
@@ -183,12 +186,16 @@ const useCreateProtocol = () => {
 
             let response = await axios.get(url, options);
             let aux: {description: string, type: string}[] = response.data.content.eligibilityCriteria;
+            aux = aux.filter((item) => {
+                if(item.type == "INCLUSION") return item;
+            })
 
             content = [...aux, ...array];
             content = { eligibilityCriteria: content };
         }
 
         try {
+            console.log(content);
             await axios.put(url, content, options);
         }
         catch( err ) { console.log(err) }
