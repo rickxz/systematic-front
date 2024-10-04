@@ -9,13 +9,16 @@ const useFetchDataBases = (url: string) => {
       try {
         let response = await axios.get(url, {withCredentials: true});
         setdatabase(response.data.content.informationSources);
-      } catch (error) {
+      } 
+      
+      catch (error) {
         console.error("Erro ao buscar os dados:", error);
       }
     };
+    
     fetchData();
   }, [url]);
-  console.log(databases);
+
   return { databases };
 };
 export default useFetchDataBases;

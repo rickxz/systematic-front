@@ -2,6 +2,7 @@ import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, 
 import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
+import useHandleExportedFiles from "../../../hooks/reviews/useHandleExportedFiles";
 
 interface IdentificationModalProps {
     show: (value: boolean) => void;
@@ -10,7 +11,8 @@ interface IdentificationModalProps {
 
 function IdentificationModal({ show, action }: IdentificationModalProps) {
     const { isOpen, onClose, onOpen } = useDisclosure();
-    const [referenceFiles, setReferenceFiles] = useState<string[]>([]);
+
+    const { handleFile, setShowInput, showInput, referenceFiles, setReferenceFiles } = useHandleExportedFiles();
 
     useEffect(() => {
         onOpen();
@@ -30,7 +32,7 @@ function IdentificationModal({ show, action }: IdentificationModalProps) {
     };
 
     function addReferenceFile() {
-        setReferenceFiles([...referenceFiles, `File ${referenceFiles.length + 1}`]);
+        setShowInput(true);
     }
 
     function removeReferenceFile(index: number) {
@@ -66,7 +68,7 @@ function IdentificationModal({ show, action }: IdentificationModalProps) {
                         {referenceFiles.map((file, index) => (
                             <Flex key={index} alignItems="center" mb={2}>
                                 <Box flex="1" border="1px" borderRadius="md" p={2}>
-                                    {file}
+                                    {file.name}
                                 </Box>
                                 <IconButton
                                     aria-label="Remove file"
@@ -76,11 +78,12 @@ function IdentificationModal({ show, action }: IdentificationModalProps) {
                                 />
                             </Flex>
                         ))}
-                        <IconButton
+
+                        {showInput ? <Input type="file" onChange={handleFile}/> : <IconButton
                             aria-label="Add file"
                             icon={<AddIcon />}
                             onClick={addReferenceFile}
-                        />
+                        />}
                     </FormControl>}
                 </ModalBody>
                 <ModalFooter>
