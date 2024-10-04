@@ -14,7 +14,6 @@ export interface Row {
 
 export function useInteractiveTable() {
   const [rows, setRows] = useState<Row[]>([]);
-  const [values, setValues] = useState<number[]>([]);
   const options = ["", "Textual", "Pick list", "Number scale", "Labeled List"];
   const headers = ["Id", "Question", "Type", ""];
 
@@ -56,6 +55,7 @@ export function useInteractiveTable() {
 
   const handleNumberScale = (index: number, lower: number, higher: number) => {
     const updatedRows = [...rows];
+    console.log(updatedRows[index].questionId);
     updatedRows[index].lower = lower;
     updatedRows[index].higher = higher;
     setRows(updatedRows);
@@ -72,5 +72,5 @@ export function useInteractiveTable() {
   };
 
   return { setRows, rows, addRow, handleServerSend, handleNumberScale, handleDelete, handleQuestionChange, 
-    handleTypeChange, handleLabeledList, handleAddQuestions, options, headers, getRowsData, setValues, values };
+    handleTypeChange, handleLabeledList, handleAddQuestions, options, headers, getRowsData };
 }

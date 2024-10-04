@@ -24,10 +24,10 @@ if(label == 'Extraction Questions') adress = 'extraction-question';
 if(label == 'Risk of Bias Questions') adress = 'rob-question';
   
   const { setRows, rows, addRow, handleDelete, handleQuestionChange, handleTypeChange, options, headers, 
-    handleServerSend, handleAddQuestions, handleNumberScale, handleLabeledList, values, setValues } =
+    handleServerSend, handleAddQuestions, handleNumberScale, handleLabeledList } =
     useInteractiveTable();
   const { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion, sendLabeledListQuestion, updateTextualQuestion,
-    updatePickListQuestion
+    updatePickListQuestion, updateNumberScaleQuestion, updateLabeledListQuestion
    } = useSendExtractionForm(adress);
 
   const [editIndex, setEditIndex] = useState<number | null>(null);
@@ -100,6 +100,10 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
     fetch();
   }, []);
 
+  useEffect(() => {
+    console.log(rows);
+  }, [rows])
+
   function handleSelect(index: number, newValue: string){
     handleTypeChange(index, newValue); // Atualiza o tipo primeiro
   
@@ -135,7 +139,9 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
       
       handleServerSend(index, questionId);
 
-    } else if(rows[index].type == "pick list"){
+    } 
+    
+    else if(rows[index].type == "pick list"){
       const data = {
           question: rows[index].question,
           questionId: rows[index].id,
@@ -148,7 +154,10 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
       if(rows[index].isNew) questionId = await sendPickListQuestion(data);
       else updatePickListQuestion(data, rows[index].questionId, "PICK_LIST");
       handleServerSend(index, questionId);
-    } else if(rows[index].type == "number scale"){
+    }
+    
+    else if(rows[index].type == "number scale"){
+      console.log(rows[index]);
       const data = {
         question: rows[index].question,
         questionId: rows[index].id,
@@ -156,9 +165,13 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
         lower: numberScale[0],
         higher: numberScale[1]
       }
+
+      console.log(data);
       
       handleNumberScale(index, numberScale[0], numberScale[1]);
-      let questionId = await sendNumberScaleQuestion(data);
+      let questionId
+      if(rows[index].isNew) questionId = await sendNumberScaleQuestion(data);
+      else updateNumberScaleQuestion(data, rows[index].questionId);
       handleServerSend(index, questionId);
     }
 
@@ -171,9 +184,12 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
       }
       
       handleLabeledList(index, labeledQuestions);
-      let questionId = await sendLabeledListQuestion(data);
+      let questionId 
+      if(rows[index].isNew) questionId = await sendLabeledListQuestion(data);
+      else updateLabeledListQuestion(data, rows[index].questionId);
       handleServerSend(index, questionId);
     }
+
     const accessToken = localStorage.getItem('accessToken');
     let options = {
       headers: { Authorization: `Bearer ${accessToken}` }
@@ -221,7 +237,8 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
                   index={index}
                   editIndex={editIndex}
                   handleEdit={() => {
-                    setValues([row.lower, row.higher]);
+                    console.log(row);
+                    setnumberScale([row.lower, row.higher]);
                     setQuestions(row.questions);
                     setLabeledQuestions(row.scale);
                     setEditIndex(index);
@@ -251,7 +268,7 @@ if(label == 'Risk of Bias Questions') adress = 'rob-question';
       )}
       
       {showModal == true && modalType == 'number scale' && (
-        <NumberScaleModal show={setShowModal} scaleHolder={setnumberScale} values={values} />
+        <NumberScaleModal show={setShowModal} scaleHolder={setnumberScale} values={numberScale} />
       )}
 
       {showModal == true && modalType == 'labeled list' && (

@@ -73,6 +73,8 @@ const useSendExtractionForm = (adress: string) => {
             higher: higher
         }
 
+        console.log(lower);
+
         try{
             let response = await axios.post(url, data, {withCredentials: true});
             console.log(response);
@@ -134,7 +136,46 @@ const useSendExtractionForm = (adress: string) => {
         }
     }
 
-    return { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion, sendLabeledListQuestion, updateTextualQuestion, updatePickListQuestion};
+    async function updateNumberScaleQuestion({question, questionId, reviewId, lower, higher}: NumberScaleProps, serverId: string | null){
+        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/${adress}/${serverId}`;
+        console.log(typeof(lower));
+        
+        const data = {
+            code: questionId,
+            description: question,
+            lower: lower,
+            higher: higher,
+            questionType: 'NUMBERED_SCALE'
+        }
+
+        try{
+            let response = await axios.put(url, data, {withCredentials: true});
+            console.log(response);
+            return response.data.questionId;
+        } catch(err){
+            console.log(err);
+        }
+    }
+
+    async function updateLabeledListQuestion({question, questionId, reviewId, scales}: LabeledProps, serverId: string | null) {
+        let url = `http://localhost:8080/api/v1/systematic-study/${reviewId}/protocol/${adress}/${serverId}`;
+        const data = {
+            code: questionId,
+            description: question,
+            scales,
+            questionType: 'LABELED_SCALE'
+        }
+
+        try{
+            let response = await axios.put(url, data, {withCredentials: true});
+            console.log(response);
+            return response.data.questionId;
+        } catch(err){
+            console.log(err);
+        }
+    }
+
+    return { sendTextualQuestion, sendPickListQuestion, sendNumberScaleQuestion, sendLabeledListQuestion, updateTextualQuestion, updatePickListQuestion, updateNumberScaleQuestion, updateLabeledListQuestion};
 }
 
 export default useSendExtractionForm;
