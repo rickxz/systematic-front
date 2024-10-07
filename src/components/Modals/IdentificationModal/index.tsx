@@ -1,6 +1,6 @@
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, FormControl, FormLabel, Input, Textarea, Box, IconButton, Flex } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 import useHandleExportedFiles from "../../../hooks/reviews/useHandleExportedFiles";
 
@@ -12,13 +12,14 @@ interface IdentificationModalProps {
 function IdentificationModal({ show, action }: IdentificationModalProps) {
     const { isOpen, onClose, onOpen } = useDisclosure();
 
-    const { handleFile, setShowInput, showInput, referenceFiles, setReferenceFiles } = useHandleExportedFiles();
+    const { handleFile, setShowInput, showInput, referenceFiles, setReferenceFiles, sendFilesToServer } = useHandleExportedFiles();
 
     useEffect(() => {
         onOpen();
     }, []);
 
     function close() {
+        sendFilesToServer();
         show(false);
         onClose();
     }
