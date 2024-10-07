@@ -9,7 +9,7 @@ interface actionsModal {
   action: "create" | "update";
 }
 
-export default function AccordionDashboard() {
+export default function AccordionDashboard({type}: { type: string }) {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [actionModal, setActionModal] = useState<"create" | "update">("create");
@@ -27,7 +27,7 @@ export default function AccordionDashboard() {
     <Accordion allowToggle sx={accordion} onChange={handleAccordionToggle}>
 
       {showModal == true && (
-        <IdentificationModal show={setShowModal} action={actionModal} />
+        <IdentificationModal show={setShowModal} action={actionModal} type={type} />
       )}
 
       <AccordionItem>

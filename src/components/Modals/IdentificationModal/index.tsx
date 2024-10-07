@@ -7,14 +7,16 @@ import useHandleExportedFiles from "../../../hooks/reviews/useHandleExportedFile
 interface IdentificationModalProps {
     show: (value: boolean) => void;
     action: "create" | "update";
+    type: string;
 }
 
-function IdentificationModal({ show, action }: IdentificationModalProps) {
+function IdentificationModal({ show, action, type }: IdentificationModalProps) {
     const { isOpen, onClose, onOpen } = useDisclosure();
 
-    const { handleFile, setShowInput, showInput, referenceFiles, setReferenceFiles, sendFilesToServer } = useHandleExportedFiles();
+    const { handleFile, setShowInput, showInput, referenceFiles, setReferenceFiles, sendFilesToServer, setSource } = useHandleExportedFiles();
 
     useEffect(() => {
+        setSource(type);
         onOpen();
     }, []);
 

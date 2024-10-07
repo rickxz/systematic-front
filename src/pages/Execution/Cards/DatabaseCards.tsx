@@ -6,7 +6,7 @@ import AccordionDashboard from "./subcomponents/AccordionDashboard";
 import { btnConteiner, btnConteinerAllBases, card, conteiner, iconConteiner, testo } from "../styles/CardsStyle";
 
 interface DatabaseCardProps {
-  text: string;
+  text: string
 }
 
 export default function DataBaseCard({ text }: DatabaseCardProps) {
@@ -55,7 +55,7 @@ export default function DataBaseCard({ text }: DatabaseCardProps) {
 
       </Box>
 
-      <AccordionDashboard />
+      <AccordionDashboard type={text} />
 
     </Card>
   );

@@ -4,6 +4,7 @@ import axios from "../../interceptor/interceptor";
 const useHandleExportedFiles = () => {
     const [showInput, setShowInput] = useState(false);
     const [ referenceFiles, setReferenceFiles ] = useState<File[]>([]);
+    const [source, setSource] = useState('');
 
     function handleFile(e: React.FormEvent<HTMLInputElement>) {
         const target = e.target as HTMLInputElement & {
@@ -17,7 +18,7 @@ const useHandleExportedFiles = () => {
 
     async function sendFilesToServer() {
         const formData = new FormData();
-        const data = JSON.stringify({ source: "Google Scholar", searchString: "Machine Learning", additionalInfo: "Referências para revisão" });
+        const data = JSON.stringify({ source: source, searchString: "Machine Learning", additionalInfo: "Referências para revisão" });
         const token = localStorage.getItem('accessToken');
         const options = {
             headers: { Authorization: `Bearer ${token}` }
@@ -33,7 +34,7 @@ const useHandleExportedFiles = () => {
         catch( err ) { console.log(err); }
     } 
   
-    return { handleFile, showInput, setShowInput, referenceFiles, setReferenceFiles, sendFilesToServer }
+    return { handleFile, showInput, setShowInput, referenceFiles, setReferenceFiles, sendFilesToServer, setSource }
 }
 
 export default useHandleExportedFiles;
