@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "../../interceptor/interceptor";
+import useGetSession from "./useGetSession";
 
 const useHandleExportedFiles = () => {
     const [showInput, setShowInput] = useState(false);
@@ -29,7 +30,10 @@ const useHandleExportedFiles = () => {
         formData.append('data', data);
         
         try{
-            axios.post(url, formData, options);   
+            await axios.post(url, formData, options);   
+
+            let searchSessions = await useGetSession("Scopus");
+            console.log(searchSessions); 
         }
         catch( err ) { console.log(err); }
     } 
