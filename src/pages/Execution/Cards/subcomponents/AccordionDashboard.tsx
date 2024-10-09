@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Accordionbtn, accordion } from "../../styles/CardsStyle";
 import { Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Box, Button, Flex, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { flex } from "../../../NovaRevisao/styles/finalizationStyles";
 import IdentificationModal from "../../../../components/Modals/IdentificationModal";
+import SessionPrev from "./SessionPrev";
+
+//hooks
+import useGetSession from "../../../../hooks/reviews/useGetSession";
 
 interface actionsModal {
   action: "create" | "update";
@@ -13,7 +16,19 @@ export default function AccordionDashboard({type}: { type: string }) {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [actionModal, setActionModal] = useState<"create" | "update">("create");
+  const [sessions, setSessions] = useState<{id: string, systematicStudyd: string, userId: string, 
+    searchString: string, additionalInfo: string, timestamp: string, source: string, numberOfRelatedStudies: number }[]>([])
 
+  useEffect(() => {
+    async function fetchSessions() {
+      let response = await useGetSession(type);
+      console.log(response.data.searchSessions);
+      setSessions(response.data.searchSessions);
+    }
+
+    fetchSessions();
+  }, [])    
+ 
   const handleOpenModal = ({ action }: actionsModal) => {
     setActionModal(action);
     setShowModal(true);
@@ -62,21 +77,13 @@ export default function AccordionDashboard({type}: { type: string }) {
 
           </Flex>
 
-          <Flex flex={1} justifyContent="space-between" alignItems="center" py={2} gap={"5px"}>
-            <Text textAlign="left" width={"calc(min(60px, 30%))"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>20/07</Text>
-            <Text flex="1" textAlign="center" >300</Text>
+          {/* <SessionPrev handleOpenModal={handleOpenModal} /> */}
 
-            <Flex width={"140px !important"} justifyContent="flex-end" mt={2}>
-              <Button as={Link} to={"/newRevision/identification/15"} flex={1} colorScheme="gray" mr={2} height={"35px"}>View</Button>
-              <Button flex={1} colorScheme="gray" height={"35px"}
-                onClick={() => handleOpenModal({ action: "update" })}
-              >
-                Edit
-              </Button>
-            </Flex>
-          </Flex>
+          { sessions.map((item, index) => {
+            return <SessionPrev handleOpenModal={handleOpenModal} timestamp={item.timestamp} numberOfStudies={item.numberOfRelatedStudies} />
+          }) }
 
-          <Flex flex={1} justifyContent="space-between" alignItems="center" py={2} gap={"5px"}>
+          {/* <Flex flex={1} justifyContent="space-between" alignItems="center" py={2} gap={"5px"}>
             <Text textAlign="left" width={"calc(min(60px, 30%))"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>20/07</Text>
             <Text flex="1" textAlign="center" >300</Text>
 
@@ -92,7 +99,7 @@ export default function AccordionDashboard({type}: { type: string }) {
 
           <Flex flex={1} justifyContent="flex-start" fontWeight="semi-bold" mt={2}>
             <Text>Total: 600</Text>
-          </Flex>
+          </Flex> */}
 
 
         </AccordionPanel>
