@@ -38,7 +38,7 @@ export default function NavItem({ navSize, icon, title, submenu }: INavItemProps
         <Flex
           justifyContent={isSmallSize ? "center" : "none"}
           pl={isSmallSize ? "none" : "20px"}
-          w={isSmallSize ? "75px" : "180px" && isSubMenu ? "180px" : "180px"}
+          w={"250px"}
           h={isSmallSize ? "75px" : "3.5em"}
           alignItems="center"
           gap={1.5}

@@ -25,7 +25,7 @@ export default function LogoutButton({ navSize }: ILogoutButtonProps): JSX.Eleme
         <Flex
             justifyContent={isSmallSize ? "center" : "none"}
             pl={isSmallSize ? "none" : "20px"}
-            w={isSmallSize ? "75px" : "180px"}
+            w={"100%"}
             h={isSmallSize ? "75px" : "3.5em"}
             alignItems="center"
             gap={1.5}
