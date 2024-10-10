@@ -7,11 +7,12 @@ interface actionsModal{
 
 interface Props {
     handleOpenModal: (action: actionsModal) => void;
-    timestamp: string,
-    numberOfStudies: number
+    timestamp: string;
+    numberOfStudies: number;
+    sessionId: string;
 }
 
-const SessionPrev = ({ handleOpenModal, timestamp, numberOfStudies}: Props) => {
+const SessionPrev = ({ handleOpenModal, timestamp, numberOfStudies, sessionId}: Props) => {
 
     const date = new Date(timestamp);
     let day, month;
@@ -30,7 +31,9 @@ const SessionPrev = ({ handleOpenModal, timestamp, numberOfStudies}: Props) => {
         <Text flex="1" textAlign="center" >{numberOfStudies}</Text>
 
         <Flex width={"140px !important"} justifyContent="flex-end" mt={2}>
-            <Button as={Link} to={"/newRevision/identification/15"} flex={1} colorScheme="gray" mr={2} height={"35px"}>View</Button>
+            <Button as={Link} to={`/newRevision/identification/${sessionId}`} 
+                flex={1} colorScheme="gray" mr={2} height={"35px"}>View</Button>
+
             <Button flex={1} colorScheme="gray" height={"35px"}
             onClick={() => handleOpenModal({ action: "update" })}
             >

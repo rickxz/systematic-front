@@ -14,28 +14,19 @@ import {
     Tr,
     Box,
 } from "@chakra-ui/react";
+import useGetSessionStudies from "../../hooks/useGetSessionStudies";
 
 export default function IdentificationSession() {
     const { session = "" } = useParams();
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
-        console.log(session);
-        // async function fetchValues(){
-        //   let accessToken = localStorage.getItem('accessToken');
-        //   let options = {
-        //     headers: { Authorization: `Bearer ${accessToken}` }
-        //   }
+        async function fetchArticles() {
+            let response = await useGetSessionStudies(session);
+            console.log(response);
+        }
 
-        //   //mudar para url da tabela dos artigos (session)
-        //   const url = `http://localhost:8080/systematic-study/identification/${session}`;
-        //   let response = await axios.get(url, options);
-
-        //   if(response.data.content){
-        //     setArticles(response.data.content);        
-        //   }
-        // }
-        // fetchValues();
+        fetchArticles();
     }, []);
 
     function returnIdentification() {

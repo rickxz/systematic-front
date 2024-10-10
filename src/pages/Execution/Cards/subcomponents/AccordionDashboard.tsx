@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Accordionbtn, accordion } from "../../styles/CardsStyle";
 import { Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Box, Button, Flex, Text } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
 import IdentificationModal from "../../../../components/Modals/IdentificationModal";
 import SessionPrev from "./SessionPrev";
 
@@ -80,7 +79,7 @@ export default function AccordionDashboard({type}: { type: string }) {
           {/* <SessionPrev handleOpenModal={handleOpenModal} /> */}
 
           { sessions.map((item, index) => {
-            return <SessionPrev handleOpenModal={handleOpenModal} timestamp={item.timestamp} numberOfStudies={item.numberOfRelatedStudies} />
+            return <SessionPrev key={index} sessionId={item.id} handleOpenModal={handleOpenModal} timestamp={item.timestamp} numberOfStudies={item.numberOfRelatedStudies} />
           }) }
 
           {/* <Flex flex={1} justifyContent="space-between" alignItems="center" py={2} gap={"5px"}>
