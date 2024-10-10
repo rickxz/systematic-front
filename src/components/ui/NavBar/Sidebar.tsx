@@ -58,10 +58,10 @@ export default function Sidebar({defaultOpen, type}: ISidebarProps): JSX.Element
         stiffness: 400,
         damping: 40,
       },
-    },}} style={{width: !isOpen ? "140px" : "350px" , transition: isOpen ? "0s" : "1.5s"}}>
+    },}} style={{width: isOpen ? "140px" : "350px" , transition: !isOpen ? "0s" : "1.5s"}}>
       <motion.nav
         initial={false}
-        animate={isOpen ? "open" : "closed"}
+        animate={!isOpen ? "open" : "closed"}
         custom={height}
         ref={containerRef}
         style={{ margin: "20px" }}
