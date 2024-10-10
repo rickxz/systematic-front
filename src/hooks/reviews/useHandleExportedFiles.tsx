@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import axios from "../../interceptor/interceptor";
 import useGetSession from "./useGetSession";
 
-const useHandleExportedFiles = () => {
+interface Props {
+    setSessions: React.Dispatch<SetStateAction<{id: string, systematicStudyd: string, userId: string, 
+        searchString: string, additionalInfo: string, timestamp: string, 
+        source: string, numberOfRelatedStudies: number }[]>>
+}
+
+const useHandleExportedFiles = ({setSessions}: Props) => {
     const [showInput, setShowInput] = useState(false);
     const [ referenceFiles, setReferenceFiles ] = useState<File[]>([]);
     const [source, setSource] = useState('');
@@ -33,7 +39,8 @@ const useHandleExportedFiles = () => {
             await axios.post(url, formData, options);   
 
             let searchSessions = await useGetSession("Scopus");
-            console.log(searchSessions); 
+            console.log(searchSessions);
+            setSessions(searchSessions.data.searchSessions); 
         }
         catch( err ) { console.log(err); }
     } 

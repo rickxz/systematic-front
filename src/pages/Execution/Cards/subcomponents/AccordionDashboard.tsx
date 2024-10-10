@@ -41,7 +41,7 @@ export default function AccordionDashboard({type}: { type: string }) {
     <Accordion allowToggle sx={accordion} onChange={handleAccordionToggle}>
 
       {showModal == true && (
-        <IdentificationModal show={setShowModal} action={actionModal} type={type} />
+        <IdentificationModal show={setShowModal} action={actionModal} type={type} setSessions={setSessions} />
       )}
 
       <AccordionItem>

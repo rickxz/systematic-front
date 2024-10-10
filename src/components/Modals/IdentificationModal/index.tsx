@@ -1,6 +1,6 @@
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, FormControl, FormLabel, Input, Textarea, Box, IconButton, Flex } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { SetStateAction, useEffect } from "react";
 import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 import useHandleExportedFiles from "../../../hooks/reviews/useHandleExportedFiles";
 
@@ -8,12 +8,16 @@ interface IdentificationModalProps {
     show: (value: boolean) => void;
     action: "create" | "update";
     type: string;
+    setSessions: React.Dispatch<SetStateAction<{id: string, systematicStudyd: string, userId: string, 
+        searchString: string, additionalInfo: string, timestamp: string, 
+        source: string, numberOfRelatedStudies: number }[]>>
 }
 
-function IdentificationModal({ show, action, type }: IdentificationModalProps) {
+function IdentificationModal({ show, action, type, setSessions }: IdentificationModalProps) {
     const { isOpen, onClose, onOpen } = useDisclosure();
 
-    const { handleFile, setShowInput, showInput, referenceFiles, setReferenceFiles, sendFilesToServer, setSource } = useHandleExportedFiles();
+    const { handleFile, setShowInput, showInput, referenceFiles, setReferenceFiles, 
+        sendFilesToServer, setSource } = useHandleExportedFiles({setSessions: setSessions});
 
     useEffect(() => {
         setSource(type);
