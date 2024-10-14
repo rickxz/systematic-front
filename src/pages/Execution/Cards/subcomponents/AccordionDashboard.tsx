@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Accordionbtn, accordion } from "../../styles/CardsStyle";
-import { Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Box, Button, Flex, Text } from "@chakra-ui/react";
+import { Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Button, Flex, Text } from "@chakra-ui/react";
 import IdentificationModal from "../../../../components/Modals/IdentificationModal";
 import SessionPrev from "./SessionPrev";
 

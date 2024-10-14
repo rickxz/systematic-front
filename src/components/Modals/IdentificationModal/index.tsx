@@ -17,7 +17,7 @@ function IdentificationModal({ show, action, type, setSessions }: Identification
     const { isOpen, onClose, onOpen } = useDisclosure();
 
     const { handleFile, setShowInput, showInput, referenceFiles, setReferenceFiles, 
-        sendFilesToServer, setSource } = useHandleExportedFiles({setSessions: setSessions});
+        sendFilesToServer, setSource } = useHandleExportedFiles({setSessions: setSessions, type});
 
     useEffect(() => {
         setSource(type);

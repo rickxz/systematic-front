@@ -6,9 +6,10 @@ interface Props {
     setSessions: React.Dispatch<SetStateAction<{id: string, systematicStudyd: string, userId: string, 
         searchString: string, additionalInfo: string, timestamp: string, 
         source: string, numberOfRelatedStudies: number }[]>>
+    type: string;
 }
 
-const useHandleExportedFiles = ({setSessions}: Props) => {
+const useHandleExportedFiles = ({setSessions, type}: Props) => {
     const [showInput, setShowInput] = useState(false);
     const [ referenceFiles, setReferenceFiles ] = useState<File[]>([]);
     const [source, setSource] = useState('');
@@ -38,7 +39,7 @@ const useHandleExportedFiles = ({setSessions}: Props) => {
         try{
             await axios.post(url, formData, options);   
 
-            let searchSessions = await useGetSession("Scopus");
+            let searchSessions = await useGetSession(type);
             console.log(searchSessions);
             setSessions(searchSessions.data.searchSessions); 
         }
