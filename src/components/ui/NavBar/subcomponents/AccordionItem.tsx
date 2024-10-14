@@ -41,8 +41,8 @@ export default function AccordionElement({
   const id = localStorage.getItem('systematicReviewId');
 
   return (
-    <AccordionItem alignContent={isSmallSize ? "center" : "flex-start"} w={isSmallSize ? "75px" : "180px"}>
-      <AccordionButton bg={isOpen ? "#9AA4B9" : "#282828"} color={isOpen ? "#301E1A" : "#FDF0D5"}>
+    <AccordionItem alignContent={isSmallSize ? "center" : "flex-start"} w={"100%"}>
+      <AccordionButton bg={isOpen ? "#C9D9E5" : "#263C56"} color={isOpen ? "#263C56" : "#C9D9E5"}>
         {isSmallSize && <Icon as={icon} />}
         {shouldRenderIcon}
         <AccordionIcon />

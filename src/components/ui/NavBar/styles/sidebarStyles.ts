@@ -1,10 +1,6 @@
 export const conteiner = {
   position: "sticky",
-  h: "100vh",
-  boxShadow: "0 4px 12px 0 rgba(0, 0 , 0, 0.05)",
-  flexDir: "column",
-  justifyContent: "space-between",
-  bgColor: "#282828",
+  h: "100vh"
 };
 
 export const content = {
