@@ -1,3 +1,4 @@
+import { AddIcon } from "@chakra-ui/icons";
 import { Button, ButtonProps } from "@chakra-ui/react";
 
 interface IEventButtonProps extends ButtonProps {
@@ -52,7 +53,8 @@ export default function EventButton({ event, text, variant="default", ...buttonP
         boxShadow: "0 0 0 3px rgba(66, 153, 225, 0.6)", 
       }}
     >
-      {text}
+      <AddIcon />
+      {/* {text} */}
     </Button>
   );
 }
