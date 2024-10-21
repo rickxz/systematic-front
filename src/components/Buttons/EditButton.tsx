@@ -15,7 +15,7 @@ export default function EditButton({ editIndex, index, handleSaveEdit, handleEdi
     <>
       {editIndex === index ? (
         <Button variant="ghost" onClick={handleSaveEdit}>
-          <i className="pi pi-save" style={{ color: '#2E4B6C' }}></i>
+          <i className="pi pi-save" style={{ color: 'black' }}></i>
         </Button>
       ) : (
         <Button variant="ghost" onClick={() => handleEdit(index)}>
