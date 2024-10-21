@@ -1,5 +1,7 @@
 import { EditIcon } from "@chakra-ui/icons";
 import { Button, Icon } from "@chakra-ui/react";
+import 'primeicons/primeicons.css';
+        
 
 interface editButtonProps {
   editIndex: number | null;
@@ -13,7 +15,7 @@ export default function EditButton({ editIndex, index, handleSaveEdit, handleEdi
     <>
       {editIndex === index ? (
         <Button variant="ghost" onClick={handleSaveEdit}>
-          Save
+          <i className="pi pi-save" style={{ color: '#2E4B6C' }}></i>
         </Button>
       ) : (
         <Button variant="ghost" onClick={() => handleEdit(index)}>
