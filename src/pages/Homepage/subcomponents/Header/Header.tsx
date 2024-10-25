@@ -67,14 +67,14 @@ export default function Header({ show }: IHeaderProps) {
           )}
         </Flex>
         <Flex gap="5%">
-          <Button
+          {!username && <Button
            _hover={{ color: "black", backgroundColor: "white" }}
             color={openModal == "signup" && showModal ? "black" : "white"}
             bgColor={openModal == "signup" && showModal ? "white" : "rgba(0,0,0,0)"}
             onClick={handleSignUpModal}
           >
             Sign Up
-          </Button>
+          </Button>}
           { username ?
           <Button 
             _hover={{ color: "black", backgroundColor: "white" }}
