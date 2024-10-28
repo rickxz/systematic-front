@@ -61,8 +61,11 @@ export const btnConteiner = {
 };
 
 export const tdSX = {
+  w: "10em",
+  alignSelf: "center",
   whiteSpace: "nowrap",
   overflow: "hidden",
   textOverflow: "ellipsis",
-  maxWidth: "10em", // Adjust max width as needed
+  fontWeight: 500, 
+  cursor: "pointer"
 };

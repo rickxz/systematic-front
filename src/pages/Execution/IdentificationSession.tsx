@@ -14,8 +14,11 @@ import {
     Thead,
     Tr,
     Box,
+    Tooltip,
+    Text,
 } from "@chakra-ui/react";
 import useGetSessionStudies from "../../hooks/useGetSessionStudies";
+import { titleSX } from "../UserArea/styles/CardInfosStyle";
 
 export default function IdentificationSession() {
     const { session = "" } = useParams();
@@ -81,15 +84,44 @@ export default function IdentificationSession() {
                                 </Tr>
                             ))} */}
 
-                            {articles ? articles.map(e => <Tr
+                            {articles ? articles.map((e, index) => <Tr
                                 _hover={{ bg: "#F5F8F9" }}
                                 transition="background-color 0.3s, box-shadow 0.3s"
                             >
 
-                                <Td sx={tdSX}></Td>
-                                <Td sx={tdSX}>{e.title}</Td>
-                                <Td sx={tdSX}>{e.authors}</Td>
-                                <Td sx={tdSX}>{e.venue}</Td>
+                                <Td sx={tdSX}>{index + 1}</Td>
+                                
+                                <Td sx={tdSX}>
+                                    <Tooltip label={e.title} aria-label="Título completo"
+                                    hasArrow
+                                    placement="right" // Pode ser "top", "bottom", "left", "right"
+                                    fontSize="xs" // Tamanho da fonte
+                                    p={3} // Padding do tooltip>
+                                    >
+                                        <Text sx={tdSX}>{e.title}</Text>
+                                    </Tooltip>
+                                </Td>
+
+                                <Td sx={tdSX}>
+                                    <Tooltip label={e.authors} aria-label="Título completo"
+                                        hasArrow
+                                        placement="right" // Pode ser "top", "bottom", "left", "right"
+                                        fontSize="xs" // Tamanho da fonte
+                                        p={3} // Padding do tooltip>
+                                        >
+                                            <Text sx={tdSX}>{e.authors}</Text>
+                                    </Tooltip>
+                                </Td>
+                                <Td sx={tdSX}>
+                                    <Tooltip label={e.venue} aria-label="Título completo"
+                                        hasArrow
+                                        placement="right" // Pode ser "top", "bottom", "left", "right"
+                                        fontSize="xs" // Tamanho da fonte
+                                        p={3} // Padding do tooltip>
+                                        >
+                                            <Text sx={tdSX}>{e.venue}</Text>
+                                    </Tooltip>
+                                </Td>
                                 
                             </Tr>) : <p>no articles Found</p>}
                             {/* <Tr
