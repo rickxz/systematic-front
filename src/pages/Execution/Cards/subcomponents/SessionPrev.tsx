@@ -17,8 +17,7 @@ const SessionPrev = ({ handleOpenModal, timestamp, numberOfStudies, sessionId}: 
     const date = new Date(timestamp);
     let day, month;
 
-    if(date.getDay() < 10) day = `0${date.getDate()}`;
-    else day = date.getDay();
+    day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
     
     if(date.getMonth() < 9) month = `0${date.getMonth() + 1}`;
     else month = `${date.getMonth() + 1}`;
