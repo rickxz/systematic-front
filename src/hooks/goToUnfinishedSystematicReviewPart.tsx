@@ -13,8 +13,8 @@ function isPicocInitialized(response: Protocol){
 }
 
 function isPicocFinished(response: Protocol){
-    return response.picoc.context !== '' && response.picoc.control !== '' && response.picoc.intervention !== ''
-    && response.picoc.outcome !== '' && response.picoc.population !== ''; 
+    return response.picoc.control !== null && response.picoc.intervention !== null
+    && response.picoc.outcome !== null && response.picoc.population !== null; 
 }
     
 function isProtocolPartTwoFinished(response:  Protocol) {
@@ -54,21 +54,21 @@ export default async function goToUnfinishedSystematicReviewPart(revisionId: str
       }
 
       else if (isPicocInitialized(protocolData) && !isPicocFinished(protocolData)){
-        window.location.href = ` http://localhost:5173/#/newRevision/protocol/${revisionId}`;
+        window.location.href = `http://localhost:5173/#/newRevision/protocol/${revisionId}`;
       }
 
 
       else if (!isProtocolPartTwoFinished(protocolData)) {
-                  window.location.href = ` http://localhost:5173/#/newRevision/protocolpartTwo/${revisionId}`;
+                  window.location.href = `http://localhost:5173/#/newRevision/protocolpartTwo/${revisionId}`;
                 }
                 
       else if (!isProtocolPartThreeFinished(protocolData)) {
-        window.location.href = ` http://localhost:5173/#/newRevision/protocolpartThree/${revisionId}`;
+        window.location.href = `http://localhost:5173/#/newRevision/protocolpartThree/${revisionId}`;
       }
         
     //   else if(!isSelectionProcessFinished(studiesData)) {
     //     window.location.href = ` http://localhost:5173/#/newRevision/selection`;
     //   }
-      else if (!isExtractionProcessFinished(studiesData)) window.location.href = ` http://localhost:5173/#/newRevision/extraction`;
-      else window.location.href = ` http://localhost:5173/#/newRevision/finalization`;
+      else if (!isExtractionProcessFinished(studiesData)) window.location.href = `http://localhost:5173/#/newRevision/extraction`;
+      else window.location.href = `http://localhost:5173/#/newRevision/finalization`;
 }

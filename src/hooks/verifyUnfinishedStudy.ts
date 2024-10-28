@@ -13,7 +13,7 @@ function isPicocInitialized(response: Protocol){
 }
 
 function isPicocFinished(response: Protocol){
-    return response.picoc.context !== null && response.picoc.control !== null && response.picoc.intervention !== null
+    return response.picoc.control !== null && response.picoc.intervention !== null
     && response.picoc.outcome !== null && response.picoc.population !== null; 
 }
 
