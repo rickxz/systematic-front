@@ -59,3 +59,10 @@ export const btnConteiner = {
   mt: 2,
   mr: 4,
 };
+
+export const tdSX = {
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  maxWidth: "10em", // Adjust max width as needed
+};

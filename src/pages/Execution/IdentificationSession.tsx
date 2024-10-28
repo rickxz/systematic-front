@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "../../interceptor/interceptor";
+import { tdSX } from "./styles/CardsStyle";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import Header from "../../components/ui/Header/Header";
 import {
@@ -85,10 +86,10 @@ export default function IdentificationSession() {
                                 transition="background-color 0.3s, box-shadow 0.3s"
                             >
 
-                                <Td></Td>
-                                <Td>{e.title}</Td>
-                                <Td>{e.authors}</Td>
-                                <Td>{e.venue}</Td>
+                                <Td sx={tdSX}></Td>
+                                <Td sx={tdSX}>{e.title}</Td>
+                                <Td sx={tdSX}>{e.authors}</Td>
+                                <Td sx={tdSX}>{e.venue}</Td>
                                 
                             </Tr>) : <p>no articles Found</p>}
                             {/* <Tr
