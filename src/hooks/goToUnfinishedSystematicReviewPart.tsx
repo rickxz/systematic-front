@@ -9,7 +9,8 @@ function isProtocolPartOneFinished(response:  Protocol) {
 }
 
 function isPicocInitialized(response: Protocol){
-    return response.picoc !== null;
+    return response.picoc.control !== null || response.picoc.intervention !== null
+    || response.picoc.outcome !== null || response.picoc.population !== null; 
 }
 
 function isPicocFinished(response: Protocol){
