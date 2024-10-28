@@ -13,8 +13,8 @@ function isPicocInitialized(response: Protocol){
 }
 
 function isPicocFinished(response: Protocol){
-    return response.picoc.context !== '' && response.picoc.control !== '' && response.picoc.intervention !== ''
-    && response.picoc.outcome !== '' && response.picoc.population !== ''; 
+    return response.picoc.context !== null && response.picoc.control !== null && response.picoc.intervention !== null
+    && response.picoc.outcome !== null && response.picoc.population !== null; 
 }
 
 function isProtocolPartTwoFinished(response:  Protocol) {
