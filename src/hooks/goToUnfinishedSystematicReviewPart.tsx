@@ -9,8 +9,10 @@ function isProtocolPartOneFinished(response:  Protocol) {
 }
 
 function isPicocInitialized(response: Protocol){
-    return response.picoc.control !== null || response.picoc.intervention !== null
-    || response.picoc.outcome !== null || response.picoc.population !== null; 
+    return (response.picoc.control && response.picoc.control.trim() !== "") ||
+           (response.picoc.intervention && response.picoc.intervention.trim() !== "") ||
+           (response.picoc.outcome && response.picoc.outcome.trim() !== "") ||
+           (response.picoc.population && response.picoc.population.trim() !== ""); 
 }
 
 function isPicocFinished(response: Protocol){
