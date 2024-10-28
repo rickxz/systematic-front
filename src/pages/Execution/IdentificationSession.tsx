@@ -18,12 +18,13 @@ import useGetSessionStudies from "../../hooks/useGetSessionStudies";
 
 export default function IdentificationSession() {
     const { session = "" } = useParams();
-    const [articles, setArticles] = useState([]);
+    const [articles, setArticles] = useState<{title: string, authors: string, venue: string} []>([]);
 
     useEffect(() => {
         async function fetchArticles() {
             let response = await useGetSessionStudies(session);
             console.log(response);
+            setArticles(response.data.studyReviews);
         }
 
         fetchArticles();
@@ -79,18 +80,18 @@ export default function IdentificationSession() {
                                 </Tr>
                             ))} */}
 
-                            <Tr
+                            {articles ? articles.map(e => <Tr
                                 _hover={{ bg: "#F5F8F9" }}
                                 transition="background-color 0.3s, box-shadow 0.3s"
                             >
 
-                                <Td>1</Td>
-                                <Td>title</Td>
-                                <Td>author</Td>
-                                <Td>journal</Td>
+                                <Td></Td>
+                                <Td>{e.title}</Td>
+                                <Td>{e.authors}</Td>
+                                <Td>{e.venue}</Td>
                                 
-                            </Tr>
-                            <Tr
+                            </Tr>) : <p>no articles Found</p>}
+                            {/* <Tr
                                 _hover={{ bg: "#F5F8F9" }}
                                 transition="background-color 0.3s, box-shadow 0.3s"
                             >
@@ -111,7 +112,7 @@ export default function IdentificationSession() {
                                 <Td>author</Td>
                                 <Td>Journal</Td>
                                 
-                            </Tr>
+                            </Tr> */}
 
 
                         </Tbody>
