@@ -19,6 +19,8 @@ export function useAddText(context: string) {
       if( context == 'Research Questions' ) setAddText(response.data.content.researchQuestions);
       
       if( context == 'Keywords' ) setAddText(response.data.content.keywords);
+      console.log("API Response:", response.data);
+      console.log("Keywords:", response.data.content.keywords);
       
       if( context == 'Inclusion criteria' ) {
         let criterias = response.data.content.eligibilityCriteria
@@ -29,7 +31,7 @@ export function useAddText(context: string) {
           return item.description;
         })
 
-        console.log(criterias);
+        console.log("Criteirosssssssss", criterias);
 
         setAddText(criterias);
       }
@@ -51,10 +53,15 @@ export function useAddText(context: string) {
   }, [])
 
   const handleAddText = (newKeyword: string) => {
-    setAddText((prevAddText) => {
-      const data = [...prevAddText, newKeyword];
-      sendAddText(data, context);
+    setAddText((prevKeyWord) => {
 
+      if(prevKeyWord.includes(newKeyword)){
+        window.alert("This keyword already exists!");
+        return prevKeyWord;
+      }
+
+      const data = [...prevKeyWord, newKeyword];
+      sendAddText(data, context);
       return data;
     });
   };
