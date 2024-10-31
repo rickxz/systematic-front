@@ -3,6 +3,8 @@ import TextAreaInput from "../Inputs/InputTextArea";
 import EventButton from "../Buttons/EventButton";
 import { useState } from "react";
 import { formcontrol } from "./styles/AddTextFieldStyle";
+import { capitalize } from "../../utils/CapitalizeText";
+import { useToast } from "@chakra-ui/react";
 
 interface IAddTextFieldProps {
   onAddText: (newKeyword: string) => void;
@@ -11,17 +13,25 @@ interface IAddTextFieldProps {
 
 export default function AddTextField({ onAddText, text }: IAddTextFieldProps) {
   const [inputValue, setInputValue] = useState<string>("");
+  const toast = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
   };
 
   const handleAddText = () => {
-    if (inputValue.trim() !== "") {
-      onAddText(inputValue.trim());
+    const normalizedAddTextValue = capitalize(inputValue.toLowerCase().trim());
+    if (normalizedAddTextValue !== "") {
+      onAddText(normalizedAddTextValue);
       setInputValue("");
     } else {
-      window.alert("The field must be filled!");
+      toast({
+        title: "Empty Field",
+        description: "The field must be filled!",
+        status: "warning",
+        duration: 4500,
+        isClosable: true,
+      });
     }
   };
 

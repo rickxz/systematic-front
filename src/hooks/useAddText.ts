@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import useCreateProtocol from "./reviews/useCreateProtocol";
 import axios from "../interceptor/interceptor";
+import { useToast } from "@chakra-ui/react";
 
 export function useAddText(context: string) {
   const { sendAddText } = useCreateProtocol();
   const [AddText, setAddText] = useState<string[]>([]);
+  const toast = useToast();
 
   useEffect(() => {
     let id = localStorage.getItem('systematicReviewId');
@@ -15,7 +17,7 @@ export function useAddText(context: string) {
 
     async function fetchAddTexts(){
       let response = await axios.get(`http://localhost:8080/systematic-study/${id}/protocol`, options);
-      
+       
       if( context == 'Research Questions' ) setAddText(response.data.content.researchQuestions);
       
       if( context == 'Keywords' ) setAddText(response.data.content.keywords);
@@ -53,10 +55,16 @@ export function useAddText(context: string) {
   }, [])
 
   const handleAddText = (newKeyword: string) => {
+    
     setAddText((prevKeyWord) => {
-
       if(prevKeyWord.includes(newKeyword)){
-        window.alert("This keyword already exists!");
+        toast({
+          title: "Duplicate Keyword",
+          description: "This keyword already exists!",
+          status: "warning",
+          duration: 4500,
+          isClosable: true,
+        });
         return prevKeyWord;
       }
 
