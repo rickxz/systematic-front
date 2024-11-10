@@ -11,22 +11,18 @@ interface actionsModal {
   action: "create" | "update";
 }
 
-export default function AccordionDashboard({type}: { type: string }) {
+interface Props {
+  type: string;
+  sessions: {id: string, systematicStudyd: string, userId: string, 
+    searchString: string, additionalInfo: string, timestamp: string, source: string, numberOfRelatedStudies: number }[]
+}
+
+export default function AccordionDashboard({type, sessions}: Props) {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [actionModal, setActionModal] = useState<"create" | "update">("create");
-  const [sessions, setSessions] = useState<{id: string, systematicStudyd: string, userId: string, 
+  const [sessionsTwo, setSessions] = useState<{id: string, systematicStudyd: string, userId: string, 
     searchString: string, additionalInfo: string, timestamp: string, source: string, numberOfRelatedStudies: number }[]>([])
-
-  useEffect(() => {
-    async function fetchSessions() {
-      let response = await useGetSession(type);
-      console.log(response.data.searchSessions);
-      setSessions(response.data.searchSessions);
-    }
-
-    fetchSessions();
-  }, [])    
  
   const handleOpenModal = ({ action }: actionsModal) => {
     setActionModal(action);
