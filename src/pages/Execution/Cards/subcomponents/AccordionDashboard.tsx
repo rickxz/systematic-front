@@ -58,16 +58,6 @@ export default function AccordionDashboard({type, sessions}: Props) {
             </Flex>
 
             <Flex width={"140px"}>
-              <Button
-                width={"100%"}
-                colorScheme="gray"
-                fontSize={15}
-                height={"35px"}
-
-                onClick={() => handleOpenModal({ action: "create" })}
-              >
-                Add Session
-              </Button>
             </Flex>
 
           </Flex>
