@@ -13,8 +13,9 @@ import { AppProvider } from "../../../../components/Context/AppContext";
 import { StudyInterface } from "../../../../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../../../../public/interfaces/ITableHeaders";
 import { KeywordInterface } from "../../../../../public/interfaces/KeywordInterface";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { tableTypeEnum } from "../../../../../public/enums/tableTypeEnum";
+import useGetAllReviewArticles from "../../../../hooks/useGetAllReviewArticles";
 
 export default function Selection<U extends StudyInterface | KeywordInterface>() {
   const studiesData: U[] | undefined = useFetchTableData("/data/NewStudyData.json");
@@ -30,6 +31,10 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   const [ searchString, setSearchString ] = useState<string>("");
 
+  useEffect(() => {
+    const articles = useGetAllReviewArticles();
+    console.log(articles)
+  }, [])
 
   if(!studiesData) return <>Studies data nor found</>
 
