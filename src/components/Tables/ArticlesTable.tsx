@@ -2,9 +2,13 @@ import { Flex, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text, Tooltip } 
 import { tdSX } from "../../pages/Execution/styles/CardsStyle";
 import FlexLayout from "../ui/Flex/Flex";
 import Header from "../ui/Header/Header";
-import ArticleInterface from "../../../public/interfaces/ArticleInterface";
+import ArticlesInterface from '../../../public/interfaces/ArticleInterface';
 
-function ArticlesTable(articles: ArticleInterface[]) {
+interface Props {
+    articles: ArticlesInterface[]
+}
+
+function ArticlesTable({articles}: Props) {
     return (
     <FlexLayout defaultOpen={1} navigationType="Accordion">
             <Header text="Search Sessions" />
@@ -122,3 +126,5 @@ function ArticlesTable(articles: ArticleInterface[]) {
         </FlexLayout>
     )
 }
+
+export default ArticlesTable;
