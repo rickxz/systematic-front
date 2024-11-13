@@ -22,6 +22,8 @@ interface AppContextType {
   setSortedSelectionStudyIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
   sortedExtractionStudyIndex: number | undefined;
   setSortedExtractionStudyIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
+  sidebarState: 'open' | 'collapsed' | 'semi-collapsed';
+  setSidebarState: React.Dispatch<React.SetStateAction<'open' | 'collapsed' | 'semi-collapsed'>>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -43,6 +45,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [sortedStudies, setSortedStudies] = useState<StudyInterface[]>();
   const [sortedSelectionStudyIndex, setSortedSelectionStudyIndex] = useState<number | undefined>();
   const [sortedExtractionStudyIndex, setSortedExtractionStudyIndex] = useState<number | undefined>();
+  const [sidebarState, setSidebarState] = useState<'open' | 'collapsed' | 'semi-collapsed'>('open');
 
 
 
@@ -66,7 +69,9 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         sortedSelectionStudyIndex,
         setSortedSelectionStudyIndex,
         sortedExtractionStudyIndex,
-        setSortedExtractionStudyIndex
+        setSortedExtractionStudyIndex,
+        sidebarState,
+        setSidebarState
       }}
     >
       {children}
