@@ -69,3 +69,13 @@ export const tdSX = {
   fontWeight: 500, 
   cursor: "pointer"
 };
+
+export const collapsedTdSX = {
+  w: "5em",
+  alignSelf: "center",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  fontWeight: 500, 
+  cursor: "pointer"
+}

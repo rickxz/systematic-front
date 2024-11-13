@@ -3,12 +3,20 @@ import { tdSX } from "../../pages/Execution/styles/CardsStyle";
 import FlexLayout from "../ui/Flex/Flex";
 import Header from "../ui/Header/Header";
 import ArticlesInterface from '../../../public/interfaces/ArticleInterface';
+import AppContext from "../Context/AppContext";
+import { useContext, useEffect } from "react";
 
 interface Props {
     articles: ArticlesInterface[]
 }
 
 function ArticlesTable({articles}: Props) {
+    const context = useContext(AppContext);
+
+    useEffect(() => {
+        console.log(context?.sidebarState);
+    }, [context?.sidebarState])
+
     return (
         <TableContainer 
             width={"80%"}

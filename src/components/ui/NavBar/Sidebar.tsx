@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import DefaultNavigation from "./subcomponents/DefaultNav";
 import AccordionNav from "./subcomponents/AccordionNavigation";
 import UserInfos from "./subcomponents/UserInfos";
@@ -10,6 +10,7 @@ import { useDimensions } from "./use-dimensions";
 import "./styles.css"
 import { Navigation } from "./Navigation";
 import { MenuToggle } from "./MenuToggle";
+import AppContext from "../../Context/AppContext";
 
 interface ISidebarProps {
   type: string;
@@ -37,7 +38,11 @@ const sidebar = {
 };
 
 export default function Sidebar({defaultOpen, type}: ISidebarProps): JSX.Element {
-  const [sidebarState, setSidebarState] = useState<'open' | 'collapsed' | 'semi-collapsed'>('open'); // Adiciona o estado do sidebar
+  const context = useContext(AppContext);
+  if(!context) {
+    throw new Error("Failed to get the app context");
+  }
+  const { sidebarState, setSidebarState } = context;
   const [isOpen, toggleOpen] = useCycle(false, true); 
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef); 
