@@ -39,12 +39,6 @@ function ArticlesTable({articles}: Props) {
                         <Th color="white">Title</Th>
                         <Th color="white">Author</Th>
                         <Th color="white">Journal</Th>
-
-                        {/* <Th color="white">Year</Th>
-                        <Th color="white">Status/Selection</Th>
-                        <Th color="white">Status/Extraction</Th>
-                        <Th color="white">Reading Priority</Th>
-                        <Th color="white">Score</Th> */}
                     </Tr>
                     
                 </Thead>
@@ -148,12 +142,14 @@ function ArticlesTable({articles}: Props) {
             >
                 <Thead bg="#263C56" borderRadius={10}>
                     <Tr>
-                        <Th color="white">ID Paper</Th>
-                        <Th color="white">Title</Th>
-                        <Th color="white">Author</Th>
-                        <Th color="white">Journal</Th>
-
-                        {/* <Th color="white">Year</Th>
+                        <Th w={'5rem'} color="white">ID Paper</Th>
+                        <Th w={'5rem'} color="white">Title</Th>
+                        <Th w={'5rem'} color="white">Author</Th>
+                        <Th w='5rem' color="white">Year</Th>
+                        <Th w='5rem' color="white">Selection</Th>
+                        <Th w='5rem' color="white">Extraction</Th>
+                        <Th w={'5rem'} color="white">Journal</Th>
+                        {/* 
                         <Th color="white">Status/Selection</Th>
                         <Th color="white">Status/Extraction</Th>
                         <Th color="white">Reading Priority</Th>
