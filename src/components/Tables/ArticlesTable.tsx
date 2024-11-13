@@ -1,5 +1,5 @@
 import { Flex, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text, Tooltip } from "@chakra-ui/react";
-import { tdSX } from "../../pages/Execution/styles/CardsStyle";
+import { collapsedTdSX, tdSX } from "../../pages/Execution/styles/CardsStyle";
 import FlexLayout from "../ui/Flex/Flex";
 import Header from "../ui/Header/Header";
 import ArticlesInterface from '../../../public/interfaces/ArticleInterface';
@@ -12,10 +12,10 @@ interface Props {
 
 function ArticlesTable({articles}: Props) {
     const context = useContext(AppContext);
-
-    useEffect(() => {
-        console.log(context?.sidebarState);
-    }, [context?.sidebarState])
+    if(!context) {
+        throw new Error('Failed to get the context on articles table');
+    }
+    const { sidebarState } = context
 
     return (
         <TableContainer 
@@ -64,37 +64,37 @@ function ArticlesTable({articles}: Props) {
                         transition="background-color 0.3s, box-shadow 0.3s"
                     >
 
-                        <Td sx={tdSX}>{index + 1}</Td>
+                        <Td sx={sidebarState == 'open' ? tdSX : collapsedTdSX}>{index + 1}</Td>
                         
-                        <Td sx={tdSX}>
+                        <Td sx={sidebarState == 'open' ? tdSX : collapsedTdSX}>
                             <Tooltip label={e.title} aria-label="Título completo"
                             hasArrow
                             placement="right" // Pode ser "top", "bottom", "left", "right"
                             fontSize="xs" // Tamanho da fonte
                             p={3} // Padding do tooltip>
                             >
-                                <Text sx={tdSX}>{e.title}</Text>
+                                <Text sx={sidebarState == 'open' ? tdSX : collapsedTdSX}>{e.title}</Text>
                             </Tooltip>
                         </Td>
 
-                        <Td sx={tdSX}>
+                        <Td sx={sidebarState == 'open' ? tdSX : collapsedTdSX}>
                             <Tooltip label={e.authors} aria-label="Título completo"
                                 hasArrow
                                 placement="right" // Pode ser "top", "bottom", "left", "right"
                                 fontSize="xs" // Tamanho da fonte
                                 p={3} // Padding do tooltip>
                                 >
-                                    <Text sx={tdSX}>{e.authors}</Text>
+                                    <Text sx={sidebarState == 'open' ? tdSX : collapsedTdSX}>{e.authors}</Text>
                             </Tooltip>
                         </Td>
-                        <Td sx={tdSX}>
+                        <Td sx={sidebarState == 'open' ? tdSX : collapsedTdSX}>
                             <Tooltip label={e.venue} aria-label="Título completo"
                                 hasArrow
                                 placement="right" // Pode ser "top", "bottom", "left", "right"
                                 fontSize="xs" // Tamanho da fonte
                                 p={3} // Padding do tooltip>
                                 >
-                                    <Text sx={tdSX}>{e.venue}</Text>
+                                    <Text sx={sidebarState == 'open' ? tdSX : collapsedTdSX}>{e.venue}</Text>
                             </Tooltip>
                         </Td>
                         

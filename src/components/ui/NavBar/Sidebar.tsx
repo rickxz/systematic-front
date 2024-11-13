@@ -40,7 +40,7 @@ const sidebar = {
 export default function Sidebar({defaultOpen, type}: ISidebarProps): JSX.Element {
   const context = useContext(AppContext);
   if(!context) {
-    throw new Error("Failed to get the app context");
+    throw new Error("Failed to get the app context on sidebar");
   }
   const { sidebarState, setSidebarState } = context;
   const [isOpen, toggleOpen] = useCycle(false, true); 
