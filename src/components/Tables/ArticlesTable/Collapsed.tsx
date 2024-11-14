@@ -45,6 +45,7 @@ export default function Collapsed({articles}: Props) {
                     ))} */}
 
                     {articles ? articles.map((e, index) => <Tr
+                        key={index}
                         _hover={{ bg: "#F5F8F9" }}
                         transition="background-color 0.3s, box-shadow 0.3s"
                     >

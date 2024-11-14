@@ -1,10 +1,7 @@
-import { Flex, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text, Tooltip } from "@chakra-ui/react";
-import { collapsedTdSX, tdSX } from "../../../pages/Execution/styles/CardsStyle";
-import FlexLayout from "../../ui/Flex/Flex";
-import Header from "../../ui/Header/Header";
+
 import ArticlesInterface from '../../../../public/interfaces/ArticleInterface';
 import AppContext from "../../Context/AppContext";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Collapsed from "./Collapsed";
 import Expanded from "./Expanded";
 
