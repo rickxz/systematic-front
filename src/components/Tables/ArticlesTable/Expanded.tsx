@@ -81,40 +81,47 @@ export default function Expanded({articles}: Props) {
                             </Tooltip>
                         </Td>
                         <Td sx={collapsedTdSX}>
-                            <Tooltip label={e.venue} aria-label="Título completo"
+                            <Tooltip label={e.year} aria-label="Título completo"
                                 hasArrow
                                 placement="right" // Pode ser "top", "bottom", "left", "right"
                                 fontSize="xs" // Tamanho da fonte
                                 p={3} // Padding do tooltip>
                                 >
-                                    <Text sx={collapsedTdSX}>{e.venue}</Text>
+                                    <Text sx={collapsedTdSX}>{e.year}</Text>
+                            </Tooltip>
+                        </Td>
+                        <Td sx={collapsedTdSX}>
+                            <Tooltip label={'accepted'} aria-label="Título completo"
+                                hasArrow
+                                placement="right" // Pode ser "top", "bottom", "left", "right"
+                                fontSize="xs" // Tamanho da fonte
+                                p={3} // Padding do tooltip>
+                                >
+                                    <Text sx={collapsedTdSX}>{'accepted'}</Text>
+                            </Tooltip>
+                        </Td>
+                        <Td sx={collapsedTdSX}>
+                            <Tooltip label={'accepted'} aria-label="Título completo"
+                                hasArrow
+                                placement="right" // Pode ser "top", "bottom", "left", "right"
+                                fontSize="xs" // Tamanho da fonte
+                                p={3} // Padding do tooltip>
+                                >
+                                    <Text sx={collapsedTdSX}>{'accepted'}</Text>
+                            </Tooltip>
+                        </Td>
+                        <Td sx={collapsedTdSX}>
+                            <Tooltip label={e.readingPriority} aria-label="Título completo"
+                                hasArrow
+                                placement="right" // Pode ser "top", "bottom", "left", "right"
+                                fontSize="xs" // Tamanho da fonte
+                                p={3} // Padding do tooltip>
+                                >
+                                    <Text sx={collapsedTdSX}>{e.readingPriority}</Text>
                             </Tooltip>
                         </Td>
                         
                     </Tr>) : <p>no articles Found</p>}
-                    {/* <Tr
-                        _hover={{ bg: "#F5F8F9" }}
-                        transition="background-color 0.3s, box-shadow 0.3s"
-                    >
-
-                        <Td>2</Td>
-                        <Td>title</Td>
-                        <Td>author</Td>
-                        <Td>Journal</Td>
-                        
-                    </Tr>
-                    <Tr
-                        _hover={{ bg: "#F5F8F9" }}
-                        transition="background-color 0.3s,box-shadow 0.3s"
-                    >
-
-                        <Td>3</Td>
-                        <Td>title</Td>
-                        <Td>author</Td>
-                        <Td>Journal</Td>
-                        
-                    </Tr> */}
-
 
                 </Tbody>
             </Table>
