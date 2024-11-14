@@ -8,17 +8,7 @@ import ArticlesTable from "../../components/Tables/ArticlesTable/ArticlesTable";
 
 export default function IdentificationSession() {
     const { session = "" } = useParams();
-    const [articles, setArticles] = useState<{title: string, authors: string, venue: string} []>([]);
-
-    useEffect(() => {
-        async function fetchArticles() {
-            let response = await useGetSessionStudies(session);
-            console.log(response);
-            setArticles(response.data.studyReviews);
-        }
-
-        fetchArticles();
-    }, []);
+    const articles = useGetSessionStudies(session);
 
     return (
         // <ArticlesTable articles={articles}/>
