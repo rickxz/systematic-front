@@ -4,7 +4,7 @@ import FlexLayout from "../../components/ui/Flex/Flex";
 import Header from "../../components/ui/Header/Header";
 import {Flex} from "@chakra-ui/react";
 import useGetSessionStudies from "../../hooks/useGetSessionStudies";
-import ArticlesTable from "../../components/Tables/ArticlesTable";
+import ArticlesTable from "../../components/Tables/ArticlesTable/ArticlesTable";
 
 export default function IdentificationSession() {
     const { session = "" } = useParams();
