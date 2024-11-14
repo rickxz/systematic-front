@@ -1,14 +1,17 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import FlexLayout from "../../components/ui/Flex/Flex";
 import Header from "../../components/ui/Header/Header";
 import {Flex} from "@chakra-ui/react";
 import useGetSessionStudies from "../../hooks/useGetSessionStudies";
 import ArticlesTable from "../../components/Tables/ArticlesTable/ArticlesTable";
+import ArticleInterface from "../../../public/interfaces/ArticleInterface";
 
 export default function IdentificationSession() {
-    const { session = "" } = useParams();
-    const articles = useGetSessionStudies(session);
+    let articles: ArticleInterface[] = [];
+    try{
+        const { session = "" } = useParams();
+        articles = useGetSessionStudies(session);
+    } catch(e) { console.error(e + " failed to get the studies of the session on identificationSession.tsx"); }
 
     return (
         // <ArticlesTable articles={articles}/>
