@@ -24,10 +24,10 @@ export default function Collapsed({articles}: Props) {
             >
                 <Thead bg="#263C56" borderRadius={10}>
                     <Tr>
-                        <Th color="white">ID Paper</Th>
-                        <Th color="white">Title</Th>
-                        <Th color="white">Author</Th>
-                        <Th color="white">Journal</Th>
+                        <Th textAlign='center' color="white">ID Paper</Th>
+                        <Th textAlign='center' color="white">Title</Th>
+                        <Th textAlign='center' color="white">Author</Th>
+                        <Th textAlign='center' color="white">Journal</Th>
                     </Tr>
                     
                 </Thead>

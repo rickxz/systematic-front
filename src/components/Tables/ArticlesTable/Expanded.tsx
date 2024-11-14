@@ -24,13 +24,13 @@ export default function Expanded({articles}: Props) {
             >
                 <Thead bg="#263C56" borderRadius={10}>
                     <Tr>
-                        <Th w={'5rem'} color="white">ID Paper</Th>
-                        <Th w={'5rem'} color="white">Title</Th>
-                        <Th w={'5rem'} color="white">Author</Th>
-                        <Th w='5rem' color="white">Year</Th>
-                        <Th w='5rem' color="white">Selection</Th>
-                        <Th w='5rem' color="white">Extraction</Th>
-                        <Th w={'5rem'} color="white">Reading priority</Th>
+                        <Th w={'5rem'} textAlign='center' color="white">ID Paper</Th>
+                        <Th w={'5rem'} textAlign='center' color="white">Title</Th>
+                        <Th w={'5rem'} textAlign='center' color="white">Author</Th>
+                        <Th w='5rem' textAlign='center' color="white">Year</Th>
+                        <Th w='5rem' textAlign='center' color="white">Selection</Th>
+                        <Th w='5rem' textAlign='center' color="white">Extraction</Th>
+                        <Th w={'5rem'} textAlign='center'  color="white">Reading priority</Th>
                         {/* 
                         <Th color="white">Status/Selection</Th>
                         <Th color="white">Status/Extraction</Th>
