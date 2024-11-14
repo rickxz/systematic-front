@@ -13,9 +13,11 @@ import { AppProvider } from "../../../../components/Context/AppContext";
 import { StudyInterface } from "../../../../../public/interfaces/IStudy";
 import { TableHeadersInterface } from "../../../../../public/interfaces/ITableHeaders";
 import { KeywordInterface } from "../../../../../public/interfaces/KeywordInterface";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { tableTypeEnum } from "../../../../../public/enums/tableTypeEnum";
 import useGetAllReviewArticles from "../../../../hooks/useGetAllReviewArticles";
+import ArticleInterface from "../../../../../public/interfaces/ArticleInterface";
+import ArticlesTable from "../../../../components/Tables/ArticlesTable/ArticlesTable";
 
 export default function Selection<U extends StudyInterface | KeywordInterface>() {
   const studiesData: U[] | undefined = useFetchTableData("/data/NewStudyData.json");
@@ -30,11 +32,8 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
   const { value: selectedStatus, handleChange: handleSelectChange } = useInputState<string | null>(null);
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   const [ searchString, setSearchString ] = useState<string>("");
-
-  useEffect(() => {
-    const articles = useGetAllReviewArticles();
-    console.log(articles)
-  }, [])
+  let articles: ArticleInterface[] = [];
+  articles = useGetAllReviewArticles();
 
   if(!studiesData) return <>Studies data nor found</>
 
@@ -70,14 +69,7 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
           </Box>
                 
           <Flex ml={"3em"} mr={"3em"} w={"90%"} flexDirection={'column'}>
-            <DynamicTable
-              headerData={headerData}
-              bodyData={studiesData}
-              filteredColumns={checkedValues}
-              tableType={tableTypeEnum.SELECTION}
-              searchString={searchString}
-              selectedStatus={selectedStatus}
-            />
+            <ArticlesTable articles={articles} />
             <StudySelectionArea />
           </Flex>
       </FlexLayout>
