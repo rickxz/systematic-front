@@ -29,6 +29,7 @@ export default function StudySelectionArea() {
     <>
       <Flex mt="10" direction="column" bg="gray.600" w="100%" p="5" alignItems={"center"}>
         <ButtonsForSelection />
+        
         <Box w={"100%"} bg="gray.200">
           <StudyDataFiel studyData={(studyData[studyIndex] as StudyInterface)} type="Selection" />
         </Box>
