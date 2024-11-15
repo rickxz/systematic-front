@@ -8,8 +8,9 @@ import AppContext from "../../../../../components/Context/AppContext";
 export default function StudySelectionArea() {
   const context = useContext(AppContext);
   const studyData = context?.selectionStudy;
+  const showSelectionModal = context?.showSelectionModal;
 
-  if (!studyData) return (
+  if (!showSelectionModal) return (
     <Flex mt="10" direction="column" bg="gray.600" w="100%" p="5" alignItems="center">
       <Text color="white">Click on a study on the table</Text>
     </Flex>
