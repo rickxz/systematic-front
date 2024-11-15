@@ -17,9 +17,11 @@ export default function Expanded({articles}: Props) {
             <TableContainer 
                 width={"80%"}
                 mt={5}  
-                borderRadius="15px 15px 0 0" 
+                borderRadius="15px 15px 15px 15px" 
                 boxShadow="lg" 
                 bg="#EBF0F3"
+                maxH={'75vh'}
+                overflowY={'auto'}
             >
                 <Table
                     variant="simple"
