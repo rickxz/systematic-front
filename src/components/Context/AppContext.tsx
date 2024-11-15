@@ -20,10 +20,10 @@ interface AppContextType {
   setShowSelectionModal: React.Dispatch<React.SetStateAction<boolean>>
   showExtractionModal: boolean;
   setShowExtractionModal: React.Dispatch<React.SetStateAction<boolean>>
-  sortedStudies: StudyInterface[] | undefined;
-  setSortedStudies: React.Dispatch<React.SetStateAction<StudyInterface[] | undefined>>;
-  sortedSelectionStudyIndex: number | undefined;
-  setSortedSelectionStudyIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
+  selectionStudies: StudyInterface[] | undefined;
+  setSelectionStudies: React.Dispatch<React.SetStateAction<StudyInterface[] | undefined>>;
+  selectionStudyIndex: number | undefined;
+  setSelectionStudyIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
   sortedExtractionStudyIndex: number | undefined;
   setSortedExtractionStudyIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
   sidebarState: 'open' | 'collapsed' | 'semi-collapsed';
@@ -49,8 +49,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     showFirstPossibleStudy(ExcutionFaseEnum.EXTRACTION)
   );
   const [activeButton, setActiveButton] = useState<string>("");
-  const [sortedStudies, setSortedStudies] = useState<StudyInterface[]>();
-  const [sortedSelectionStudyIndex, setSortedSelectionStudyIndex] = useState<number | undefined>();
+  const [selectionStudies, setSelectionStudies] = useState<StudyInterface[]>();
+  const [selectionStudyIndex, setSelectionStudyIndex] = useState<number | undefined>();
   const [sortedExtractionStudyIndex, setSortedExtractionStudyIndex] = useState<number | undefined>();
   const [sidebarState, setSidebarState] = useState<'open' | 'collapsed' | 'semi-collapsed'>('open');
 
@@ -75,10 +75,10 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         setShowExtractionModal,
         activeButton,
         setActiveButton,
-        sortedStudies,
-        setSortedStudies,
-        sortedSelectionStudyIndex,
-        setSortedSelectionStudyIndex,
+        selectionStudies,
+        setSelectionStudies,
+        selectionStudyIndex,
+        setSelectionStudyIndex,
         sortedExtractionStudyIndex,
         setSortedExtractionStudyIndex,
         sidebarState,

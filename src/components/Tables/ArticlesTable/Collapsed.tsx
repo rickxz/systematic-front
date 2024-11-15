@@ -11,8 +11,9 @@ interface Props {
 export default function Collapsed({articles}: Props) {
     const context = useContext(AppContext);
     const setShowSelectionModal = context?.setShowSelectionModal;
+    const setSelectionStudyIndex = context?.setSelectionStudyIndex;
 
-    if(setShowSelectionModal)
+    if(setShowSelectionModal && setSelectionStudyIndex) 
         return (
             <TableContainer 
                 width={"80%"}
@@ -40,7 +41,10 @@ export default function Collapsed({articles}: Props) {
                     </Thead>
                     <Tbody>
                         {articles ? articles.map((e, index) => <Tr
-                            onClick={() => {setShowSelectionModal(true);}}
+                            onClick={() => {
+                                setSelectionStudyIndex(index);
+                                setShowSelectionModal(true);
+                            }}
                             key={index}
                             _hover={{ bg: "#F5F8F9" }}
                             transition="background-color 0.3s, box-shadow 0.3s"

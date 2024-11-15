@@ -10,14 +10,14 @@ import StudyEdtionModal from "../../../../../components/Modals/StudyModal/StudyE
 
 export default function ButtonsForSelection() {
   const context = useContext(AppContext);
-  const sortedStudies = (context?.sortedStudies as StudyInterface[]);
-  const index = (context?.sortedSelectionStudyIndex as number);
+  const sortedStudies = (context?.selectionStudies as StudyInterface[]);
+  const index = (context?.selectionStudyIndex as number);
   const { isOpen, onOpen, onClose} = useDisclosure();
 
   function ChangeToNext() {
     if (index < sortedStudies.length -1) {
       const newIndex = (index as number) + 1;
-      context?.setSortedSelectionStudyIndex(newIndex)
+      context?.setSelectionStudyIndex(newIndex)
       context?.setSelectionStudy((sortedStudies as StudyInterface[])[newIndex])
     }
   }
@@ -25,7 +25,7 @@ export default function ButtonsForSelection() {
   function ChangeToPrevius() {
     if (index >= 1) {
       const newIndex = (index as number) - 1;
-      context?.setSortedSelectionStudyIndex(newIndex)
+      context?.setSelectionStudyIndex(newIndex)
       context?.setSelectionStudy((sortedStudies as StudyInterface[])[newIndex])
     }
   }
