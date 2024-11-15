@@ -2,13 +2,18 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 import ButtonsForSelection from "./ButtonsForSelection";
 import StudyDataFiel from "../../../../../components/Modals/StudyModal/StudyData";
 import { StudyInterface } from "../../../../../../public/interfaces/IStudy";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AppContext from "../../../../../components/Context/AppContext";
+import useGetAllReviewArticles from "../../../../../hooks/useGetAllReviewArticles";
 
 export default function StudySelectionArea() {
   const context = useContext(AppContext);
-  const studyData = context?.selectionStudy;
+  const studyData = useGetAllReviewArticles();
   const showSelectionModal = context?.showSelectionModal;
+
+  useEffect(() => {
+    console.log(studyData);
+  }, [])
 
   if (!showSelectionModal) return (
     <Flex mt="10" direction="column" bg="gray.600" w="100%" p="5" alignItems="center">

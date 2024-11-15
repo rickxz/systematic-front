@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ArticleInterface from '../../public/interfaces/ArticleInterface';
 import axios from '../interceptor/interceptor';
+import { StudyInterface } from '../../public/interfaces/IStudy';
 
 const useGetAllReviewArticles = () => {
     const id = localStorage.getItem('systematicReviewId');
@@ -9,7 +10,7 @@ const useGetAllReviewArticles = () => {
     const options = {
         headers: {Authorization: `Bearer ${token}`}
     }
-    const [articles, setArticles] = useState<ArticleInterface[]>([]);
+    const [articles, setArticles] = useState<ArticleInterface[] | StudyInterface[]>([]);
 
     useEffect(() => {
         axios.get(path, options)
