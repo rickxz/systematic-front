@@ -68,7 +68,7 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
             </Box>
           </Box>
                 
-          <Flex ml={"3em"} mr={"3em"} w={"90%"} flexDirection={'column'}>
+          <Flex justifyContent='center' alignItems={'center'} flexDirection={'column'}>
             <ArticlesTable articles={articles} />
             <StudySelectionArea />
           </Flex>
