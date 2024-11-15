@@ -33,7 +33,7 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
   const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   const [ searchString, setSearchString ] = useState<string>("");
   let articles: ArticleInterface[] = [];
-  articles = useGetAllReviewArticles();
+  articles = useGetAllReviewArticles() as ArticleInterface[];
 
   if(!studiesData) return <>Studies data nor found</>
 
