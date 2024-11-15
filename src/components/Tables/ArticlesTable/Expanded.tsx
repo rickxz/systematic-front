@@ -104,13 +104,13 @@ export default function Expanded({articles}: Props) {
                                 </Tooltip>
                             </Td>
                             <Td sx={collapsedTdSX}>
-                                <Tooltip label={'accepted'} aria-label="Título completo"
+                                <Tooltip label={e.selectionStatus} aria-label="Título completo"
                                     hasArrow
                                     placement="right" // Pode ser "top", "bottom", "left", "right"
                                     fontSize="xs" // Tamanho da fonte
                                     p={3} // Padding do tooltip>
                                     >
-                                        <Text sx={collapsedTdSX}>{'accepted'}</Text>
+                                        <Text sx={collapsedTdSX}>{e.selectionStatus}</Text>
                                 </Tooltip>
                             </Td>
                             <Td sx={collapsedTdSX}>

@@ -6,6 +6,7 @@ interface ArticleInterface {
     selection: string,
     extraction: string,
     readingPriority: string;
+    selectionStatus: string
 }
 
 export default ArticleInterface;
