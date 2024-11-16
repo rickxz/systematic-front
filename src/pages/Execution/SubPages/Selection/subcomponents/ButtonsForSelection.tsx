@@ -7,6 +7,7 @@ import { useContext } from "react";
 import AppContext from "../../../../../components/Context/AppContext";
 import { StudyInterface } from "../../../../../../public/interfaces/IStudy";
 import StudyEdtionModal from "../../../../../components/Modals/StudyModal/StudyEdtionModal";
+import useFetchInclusionCriteria from "../../../../../hooks/fetch/useFetchInclusionCriteria";
 
 export default function ButtonsForSelection() {
   const context = useContext(AppContext);
@@ -41,20 +42,9 @@ export default function ButtonsForSelection() {
     "Baixa qualidade metodológica",
     "Dados incompletos/indisponíveis",
   ];
-
-  // Critérios de Inclusão (Inclusion Criteria)
-  const criteriosInclusao: string[] = [
-    "Tipo estudo adequado",
-    "Idioma compreendido",
-    "Data publicação dentro período",
-    "Publicação revisada",
-    "População incluída",
-    "Intervenção igual",
-    "Comparador adequado",
-    "Desfechos medidos",
-    "Alta qualidade metodológica",
-    "Dados completos/disponíveis",
-  ];
+  
+  const criteriosInclusao: string[] = useFetchInclusionCriteria();
+  console.log(criteriosInclusao);
   const { handleChange: handleCheckboxChange } = useInputState<string[]>([]);
 
   return (
