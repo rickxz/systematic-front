@@ -1,4 +1,6 @@
 interface ArticleInterface {
+    studyReviewId: number //front id
+    systematicStudyId: string //backend systematicStudyId;
     title: string, 
     authors: string, 
     venue: string,

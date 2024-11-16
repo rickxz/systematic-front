@@ -70,7 +70,7 @@ export default function Expanded({articles}: Props) {
                             transition="background-color 0.3s, box-shadow 0.3s"
                         >
 
-                            <Td sx={collapsedTdSX}>{index + 1}</Td>
+                            <Td sx={collapsedTdSX}>{e.studyReviewId}</Td>
                             
                             <Td sx={collapsedTdSX}>
                                 <Tooltip label={e.title} aria-label="Título completo"

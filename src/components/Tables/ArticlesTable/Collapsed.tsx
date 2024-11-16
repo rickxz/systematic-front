@@ -50,7 +50,7 @@ export default function Collapsed({articles}: Props) {
                             transition="background-color 0.3s, box-shadow 0.3s"
                         >
 
-                            <Td sx={tdSX}>{index + 1}</Td>
+                            <Td sx={tdSX}>{e.studyReviewId}</Td>
                             
                             <Td sx={tdSX}>
                                 <Tooltip label={e.title} aria-label="Título completo"
