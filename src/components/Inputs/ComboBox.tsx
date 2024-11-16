@@ -14,9 +14,11 @@ export default function ComboBox({ text, options, selectedItems, handleCheckboxC
 
   return (
     <Menu closeOnSelect={false}>
+
       <MenuButton bgColor={"#303D50"} color={"#9DB2BF"} borderRadius={"3px"} as={Button} rightIcon={<ChevronDownIcon />} w={"40%"}>
         {text}
       </MenuButton>
+
       <MenuList>
         {options.map((option, index) => (
           <MenuItem key={index}>
@@ -26,6 +28,7 @@ export default function ComboBox({ text, options, selectedItems, handleCheckboxC
           </MenuItem>
         ))}
       </MenuList>
+
     </Menu>
   );
 }
