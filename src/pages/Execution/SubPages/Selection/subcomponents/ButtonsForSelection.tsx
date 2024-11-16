@@ -8,12 +8,16 @@ import AppContext from "../../../../../components/Context/AppContext";
 import { StudyInterface } from "../../../../../../public/interfaces/IStudy";
 import StudyEdtionModal from "../../../../../components/Modals/StudyModal/StudyEdtionModal";
 import useFetchInclusionCriteria from "../../../../../hooks/fetch/useFetchInclusionCriteria";
+import useFetchExclusionCriteria from "../../../../../hooks/fetch/useFetchExclusionCriterias";
 
 export default function ButtonsForSelection() {
   const context = useContext(AppContext);
   const sortedStudies = (context?.selectionStudies as StudyInterface[]);
   const index = (context?.selectionStudyIndex as number);
   const { isOpen, onOpen, onClose} = useDisclosure();
+  const criteriosExclusao: string[] = useFetchExclusionCriteria();
+  const criteriosInclusao: string[] = useFetchInclusionCriteria();
+  const { handleChange: handleCheckboxChange } = useInputState<string[]>([]);
 
   function ChangeToNext() {
     if (index < sortedStudies.length -1) {
@@ -30,22 +34,6 @@ export default function ButtonsForSelection() {
       context?.setSelectionStudy((sortedStudies as StudyInterface[])[newIndex])
     }
   }
-  const criteriosExclusao: string[] = [
-    "Tipo estudo inadequado",
-    "Idioma não compreendido",
-    "Data publicação fora período",
-    "Publicação não revisada",
-    "População não incluída",
-    "Intervenção diferente",
-    "Comparador inadequado",
-    "Desfechos não medidos",
-    "Baixa qualidade metodológica",
-    "Dados incompletos/indisponíveis",
-  ];
-  
-  const criteriosInclusao: string[] = useFetchInclusionCriteria();
-  console.log(criteriosInclusao);
-  const { handleChange: handleCheckboxChange } = useInputState<string[]>([]);
 
   return (
     <>
