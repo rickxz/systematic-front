@@ -1,7 +1,6 @@
 import { Button, Flex, IconButton, useDisclosure } from "@chakra-ui/react";
 import { boxconteiner, buttonconteiner, conteiner } from "../../../styles/BtnSelectionStyles";
 import ComboBox from "../../../../../components/Inputs/ComboBox";
-import useInputState from "../../../../../hooks/useInputState";
 import { FaPen } from "react-icons/fa6";
 import { useContext } from "react";
 import AppContext from "../../../../../components/Context/AppContext";
@@ -22,7 +21,6 @@ export default function ButtonsForSelection() {
   const { isOpen, onOpen, onClose} = useDisclosure();
   const criteriosExclusao: string[] = useFetchExclusionCriteria();
   const criteriosInclusao: string[] = useFetchInclusionCriteria();
-  const { handleChange: handleCheckboxChange } = useInputState<string[]>([]);
 
   function ChangeToNext() {
     if (index < sortedStudies.length -1) {
@@ -54,15 +52,11 @@ export default function ButtonsForSelection() {
             isDisabled={isIncluded}
             text="Exclude"
             options={criteriosExclusao}
-            handleCheckboxChange={handleCheckboxChange}
-            selectedItems={criteriosExclusao}
           />
           <ComboBox
             isDisabled={isExcluded}
             text="Include"
             options={criteriosInclusao}
-            handleCheckboxChange={handleCheckboxChange}
-            selectedItems={criteriosInclusao}
           />
         </Flex>
 

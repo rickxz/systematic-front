@@ -30,7 +30,6 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
     readingPriority: "Reading Priority"
 }
   const { value: selectedStatus, handleChange: handleSelectChange } = useInputState<string | null>(null);
-  const { value: checkedValues, handleChange: handleCheckboxChange } = useInputState<string[]>([]);
   const [ searchString, setSearchString ] = useState<string>("");
   let articles: ArticleInterface[] = [];
   articles = useGetAllReviewArticles() as ArticleInterface[];
@@ -55,16 +54,6 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
                 isDisabled={false}
                 text="filter options"
                 options={Object.values(headerData)}
-                handleCheckboxChange={handleCheckboxChange}
-                selectedItems={[
-                  "title",
-                  "author",
-                  "year",
-                  "status/selection",
-                  "status/extraction",
-                  "reading priority",
-                  "score",
-                ]}
               />
             </Box>
           </Box>

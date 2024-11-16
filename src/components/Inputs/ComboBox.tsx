@@ -5,13 +5,11 @@ import { Button, Checkbox, Menu, MenuButton, MenuItem, MenuList } from "@chakra-
 interface IComboBoxProps {
   text: string;
   options: string[];
-  selectedItems: string[];
-  handleCheckboxChange: (selectedItems: string[]) => void;
   isDisabled: boolean;
 }
 
-export default function ComboBox({ text, options, selectedItems, handleCheckboxChange, isDisabled }: IComboBoxProps) {
-  const { handleItemClick } = useComboBoxSelection(selectedItems, handleCheckboxChange);
+export default function ComboBox({ text, options, isDisabled }: IComboBoxProps) {
+  const { handleIncludeItemClick, handleExcludeItemClick } = useComboBoxSelection();
 
   return (
     <Menu closeOnSelect={false}>
@@ -23,9 +21,17 @@ export default function ComboBox({ text, options, selectedItems, handleCheckboxC
       <MenuList>
         {options.map((option, index) => (
           <MenuItem key={index}>
-            <Checkbox isDisabled={isDisabled} onChange={() => handleItemClick(option.toLowerCase())}>
+
+            { text == 'Include' ?
+            <Checkbox isDisabled={isDisabled} onChange={(e) => handleIncludeItemClick(e.target.checked)}>
+              {option}
+            </Checkbox> 
+            : 
+            <Checkbox isDisabled={isDisabled} onChange={(e) => handleExcludeItemClick(e.target.checked)}>
               {option}
             </Checkbox>
+            }
+
           </MenuItem>
         ))}
       </MenuList>
