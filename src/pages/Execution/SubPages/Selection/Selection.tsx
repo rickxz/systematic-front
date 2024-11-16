@@ -52,6 +52,7 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
                 page={"selection"}
               />
               <ComboBox
+                isDisabled={false}
                 text="filter options"
                 options={Object.values(headerData)}
                 handleCheckboxChange={handleCheckboxChange}

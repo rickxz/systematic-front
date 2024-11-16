@@ -5,7 +5,7 @@ import { StudyInterface } from "../../../../../../public/interfaces/IStudy";
 import { useContext, useEffect } from "react";
 import AppContext from "../../../../../components/Context/AppContext";
 import useGetAllReviewArticles from "../../../../../hooks/useGetAllReviewArticles";
-import StudySelectionProvider from "../../../../../components/Context/StudiesSelectionContext";
+import { StudySelectionProvider } from "../../../../../components/Context/StudiesSelectionContext";
 
 export default function StudySelectionArea() {
   const context = useContext(AppContext);

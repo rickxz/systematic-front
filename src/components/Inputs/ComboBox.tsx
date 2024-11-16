@@ -7,9 +7,10 @@ interface IComboBoxProps {
   options: string[];
   selectedItems: string[];
   handleCheckboxChange: (selectedItems: string[]) => void;
+  isDisabled: boolean;
 }
 
-export default function ComboBox({ text, options, selectedItems, handleCheckboxChange }: IComboBoxProps) {
+export default function ComboBox({ text, options, selectedItems, handleCheckboxChange, isDisabled }: IComboBoxProps) {
   const { handleItemClick } = useComboBoxSelection(selectedItems, handleCheckboxChange);
 
   return (
@@ -22,7 +23,7 @@ export default function ComboBox({ text, options, selectedItems, handleCheckboxC
       <MenuList>
         {options.map((option, index) => (
           <MenuItem key={index}>
-            <Checkbox onChange={() => handleItemClick(option.toLowerCase())}>
+            <Checkbox isDisabled={isDisabled} onChange={() => handleItemClick(option.toLowerCase())}>
               {option}
             </Checkbox>
           </MenuItem>

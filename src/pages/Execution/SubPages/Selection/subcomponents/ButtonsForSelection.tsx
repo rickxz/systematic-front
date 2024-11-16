@@ -5,6 +5,7 @@ import useInputState from "../../../../../hooks/useInputState";
 import { FaPen } from "react-icons/fa6";
 import { useContext } from "react";
 import AppContext from "../../../../../components/Context/AppContext";
+import StudySelectionContext from "../../../../../components/Context/StudiesSelectionContext";
 import { StudyInterface } from "../../../../../../public/interfaces/IStudy";
 import StudyEdtionModal from "../../../../../components/Modals/StudyModal/StudyEdtionModal";
 import useFetchInclusionCriteria from "../../../../../hooks/fetch/useFetchInclusionCriteria";
@@ -12,6 +13,10 @@ import useFetchExclusionCriteria from "../../../../../hooks/fetch/useFetchExclus
 
 export default function ButtonsForSelection() {
   const context = useContext(AppContext);
+  const selectionContext = useContext(StudySelectionContext);
+  
+  const isIncluded = selectionContext?.isIncluded;
+  const isExcluded = selectionContext?.isExcluded;
   const sortedStudies = (context?.selectionStudies as StudyInterface[]);
   const index = (context?.selectionStudyIndex as number);
   const { isOpen, onOpen, onClose} = useDisclosure();
@@ -35,6 +40,7 @@ export default function ButtonsForSelection() {
     }
   }
 
+  if(isExcluded != undefined && isIncluded != undefined)
   return (
     <>
       <Flex sx={conteiner}>
@@ -45,12 +51,14 @@ export default function ButtonsForSelection() {
         <Flex sx={boxconteiner}>
           
           <ComboBox
+            isDisabled={isIncluded}
             text="Exclude"
             options={criteriosExclusao}
             handleCheckboxChange={handleCheckboxChange}
             selectedItems={criteriosExclusao}
           />
           <ComboBox
+            isDisabled={isExcluded}
             text="Include"
             options={criteriosInclusao}
             handleCheckboxChange={handleCheckboxChange}
