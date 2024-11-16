@@ -64,6 +64,7 @@ export function useAddText(context: string) {
           status: "warning",
           duration: 4500,
           isClosable: true,
+          position: 'top'
         });
         return prevKeyWord;
       }

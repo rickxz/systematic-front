@@ -2,6 +2,7 @@ import useSendKeywords from "../../hooks/tables/useSendKeywords";
 import useSendInclusionCriteria from "../../hooks/tables/useSendInclusionCriteria";
 import useSendExclusionCriteria from "../../hooks/tables/useSendExclusionCriterias";
 import useSendResearchQuestions from "../../hooks/tables/useSendResearchQuestions";
+import { useToast } from "@chakra-ui/react";
 
 interface ServerOrientedProps{
     value: string;
@@ -12,11 +13,11 @@ interface ServerOrientedProps{
 }
 
 const useHandleAddText = () => {
-
     const sendKeywords = useSendKeywords();
     const sendResearchQuestion = useSendResearchQuestions();
     const sendCriterias = useSendInclusionCriteria();
     const sendExclusionCriteria = useSendExclusionCriteria();
+    const toast = useToast();
 
     function handleServerOriented({value, text, onAddText, url, setValue}: ServerOrientedProps){
         if (value.trim() !== "") {
@@ -47,7 +48,14 @@ const useHandleAddText = () => {
             }
             setValue("");
           } else {
-            window.alert("The field must be filled!");
+            toast({
+              title: "Empty Field",
+              description: "The field must be filled!",
+              status: "warning",
+              duration: 4500,
+              isClosable: true,
+              position: 'top'
+            });
           }
     }
 

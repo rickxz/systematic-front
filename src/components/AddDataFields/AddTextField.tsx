@@ -31,6 +31,7 @@ export default function AddTextField({ onAddText, text }: IAddTextFieldProps) {
         status: "warning",
         duration: 4500,
         isClosable: true,
+        position: 'top'
       });
     }
   };

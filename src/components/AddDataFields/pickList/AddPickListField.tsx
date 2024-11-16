@@ -1,4 +1,4 @@
-import { FormControl } from "@chakra-ui/react";
+import { FormControl, useToast } from "@chakra-ui/react";
 import TextAreaInput from "../../Inputs/InputTextArea";
 import EventButton from "../../Buttons/EventButton";
 import { useState } from "react";
@@ -11,6 +11,7 @@ interface IAddTextFieldProps {
 
 export default function AddPickListField({ onAddText, text }: IAddTextFieldProps) {
   const [inputValue, setInputValue] = useState<string>("");
+  const toast = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
@@ -21,7 +22,14 @@ export default function AddPickListField({ onAddText, text }: IAddTextFieldProps
       onAddText(inputValue.trim());
       setInputValue("");
     } else {
-      window.alert("The field must be filled!");
+      toast({
+        title: "Empty Field",
+        description: "The field must be filled!",
+        status: "warning",
+        duration: 4500,
+        isClosable: true,
+        position: 'top'
+      });
     }
   };
 
