@@ -26,7 +26,7 @@ export default function ComboBox({ text, options, isDisabled }: IComboBoxProps) 
             <Checkbox isDisabled={isDisabled} onChange={(e) => handleIncludeItemClick(e.target.checked)}>
               {option}
             </Checkbox> 
-            : 
+              : 
             <Checkbox isDisabled={isDisabled} onChange={(e) => handleExcludeItemClick(e.target.checked)}>
               {option}
             </Checkbox>
