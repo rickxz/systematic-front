@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from '../../interceptor/interceptor';
 import getRequestOptions from '../../utils/getRequestOptions';
 
-const useGetInclusionCriteria = () => {
+const useFetchInclusionCriteria = () => {
     const id = localStorage.getItem('systematicStudyId');
     const path = `http://localhost:8080/systematic-study/${id}/protocol`;
     const options = getRequestOptions();
@@ -17,4 +17,4 @@ const useGetInclusionCriteria = () => {
     return inclusionCriterias;
 }
 
-export default useGetInclusionCriteria;
+export default useFetchInclusionCriteria;
