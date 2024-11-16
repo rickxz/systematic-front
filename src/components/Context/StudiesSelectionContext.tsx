@@ -7,18 +7,18 @@ interface AppContextType {
     setIsExcluded: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const AppContext = createContext<AppContextType | undefined>(undefined);
+const StudySelection = createContext<AppContextType | undefined>(undefined);
 
 interface AppProviderProps {
   children: ReactNode;
 }
 
-export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
+export const StudySelectionProvider: React.FC<AppProviderProps> = ({ children }) => {
     const [isIncluded, setIsIncluded] = useState(false);
     const [isExcluded, setIsExcluded] = useState(false);
 
   return (
-    <AppContext.Provider
+    <StudySelection.Provider
       value={{
         isIncluded, 
         setIsIncluded,
@@ -27,8 +27,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       }}
     >
       {children}
-    </AppContext.Provider>
+    </StudySelection.Provider>
   );
 };
 
-export default AppContext;
+export default StudySelectionProvider;
