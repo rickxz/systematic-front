@@ -22,7 +22,7 @@ export default function ComboBox({ text, options, selectedItems, handleCheckboxC
       <MenuList>
         {options.map((option, index) => (
           <MenuItem key={index}>
-            <Checkbox defaultChecked onChange={() => handleItemClick(option.toLowerCase())}>
+            <Checkbox onChange={() => handleItemClick(option.toLowerCase())}>
               {option}
             </Checkbox>
           </MenuItem>

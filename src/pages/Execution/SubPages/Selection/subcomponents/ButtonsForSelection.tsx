@@ -45,13 +45,13 @@ export default function ButtonsForSelection() {
         <Flex sx={boxconteiner}>
           
           <ComboBox
-            text="filter options"
+            text="Exclude"
             options={criteriosExclusao}
             handleCheckboxChange={handleCheckboxChange}
             selectedItems={criteriosExclusao}
           />
           <ComboBox
-            text="filter options"
+            text="Include"
             options={criteriosInclusao}
             handleCheckboxChange={handleCheckboxChange}
             selectedItems={criteriosInclusao}
