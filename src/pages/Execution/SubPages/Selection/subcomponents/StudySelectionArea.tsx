@@ -5,6 +5,7 @@ import { StudyInterface } from "../../../../../../public/interfaces/IStudy";
 import { useContext, useEffect } from "react";
 import AppContext from "../../../../../components/Context/AppContext";
 import useGetAllReviewArticles from "../../../../../hooks/useGetAllReviewArticles";
+import StudySelectionProvider from "../../../../../components/Context/StudiesSelectionContext";
 
 export default function StudySelectionArea() {
   const context = useContext(AppContext);
@@ -26,7 +27,7 @@ export default function StudySelectionArea() {
   );
   
   return (
-    <>
+    <StudySelectionProvider>
       <Flex mt="10" direction="column" bg="gray.600" w="100%" p="5" alignItems={"center"}>
         <ButtonsForSelection />
         
@@ -34,6 +35,6 @@ export default function StudySelectionArea() {
           <StudyDataFiel studyData={(studyData[studyIndex] as StudyInterface)} type="Selection" />
         </Box>
       </Flex>
-    </>
+    </StudySelectionProvider>
   );
 }
