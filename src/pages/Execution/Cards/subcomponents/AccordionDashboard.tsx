@@ -1,6 +1,15 @@
 import { useEffect, useState } from "react";
 import { Accordionbtn, accordion } from "../../styles/CardsStyle";
-import { Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Button, Flex, Text } from "@chakra-ui/react";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionIcon,
+  AccordionPanel,
+  Flex,
+  Text,
+  Box,
+} from "@chakra-ui/react";
 import IdentificationModal from "../../../../components/Modals/IdentificationModal";
 import SessionPrev from "./SessionPrev";
 
@@ -11,12 +20,32 @@ interface actionsModal {
   action: "create" | "update";
 }
 
-export default function AccordionDashboard({type}: { type: string }) {
+export default function AccordionDashboard({ type }: { type: string }) {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [actionModal, setActionModal] = useState<"create" | "update">("create");
-  const [sessions, setSessions] = useState<{id: string, systematicStudyd: string, userId: string, 
-    searchString: string, additionalInfo: string, timestamp: string, source: string, numberOfRelatedStudies: number }[]>([])
+  const [sessions, setSessions] = useState<
+    {
+      id: string;
+      systematicStudyd: string;
+      userId: string;
+      searchString: string;
+      additionalInfo: string;
+      timestamp: string;
+      source: string;
+      numberOfRelatedStudies: number;
+    }[]
+  >([]);
+
+  const getTotalStudiesRelated = () => {
+    let totalStudies = 0;
+
+    sessions.map((item) => {
+      totalStudies += item.numberOfRelatedStudies;
+    });
+
+    return totalStudies;
+  };
 
   useEffect(() => {
     async function fetchSessions() {
@@ -26,11 +55,15 @@ export default function AccordionDashboard({type}: { type: string }) {
     }
 
     fetchSessions();
-  }, [])    
- 
+  }, []);
+
   const handleOpenModal = ({ action }: actionsModal) => {
     setActionModal(action);
     setShowModal(true);
+  };
+
+  const handleDeleteStudies = (id: string) => {
+    setSessions(sessions.filter((prevStudies) => prevStudies.id != id));
   };
 
   const handleAccordionToggle = () => {
@@ -39,72 +72,69 @@ export default function AccordionDashboard({type}: { type: string }) {
 
   return (
     <Accordion allowToggle sx={accordion} onChange={handleAccordionToggle}>
-
       {showModal == true && (
-        <IdentificationModal show={setShowModal} action={actionModal} type={type} setSessions={setSessions} />
+        <IdentificationModal
+          show={setShowModal}
+          action={actionModal}
+          type={type}
+          setSessions={setSessions}
+        />
       )}
 
       <AccordionItem>
-
         <AccordionButton sx={Accordionbtn}>
           <AccordionIcon />
         </AccordionButton>
 
         <AccordionPanel>
-
-          <Flex flex={1} fontWeight="bold">
-            <Flex >
-              <Text flex="1" textAlign="left" width={"60px"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>Date</Text>
-            </Flex>
-
-            <Flex flex={1}>
-              <Text flex="1" textAlign="center">Studies</Text>
-            </Flex>
-
-            <Flex width={"140px"}>
-              <Button
-                width={"100%"}
-                colorScheme="gray"
-                fontSize={15}
-                height={"35px"}
-
-                onClick={() => handleOpenModal({ action: "create" })}
+          {sessions && sessions.length > 0 ? (
+            <>
+              <Flex
+                flex={1}
+                fontWeight="bold"
+                justifyContent="space-between"
+                alignItems="center"
+                py={2}
+                gap={"3rem"}
               >
-                Add Session
-              </Button>
-            </Flex>
+                <Flex>
+                  <Text
+                    
+                    textAlign="left"
+                    whiteSpace={"nowrap"}
+                    overflow={"hidden"}
+                  >
+                    Date
+                  </Text>
+                </Flex>
 
-          </Flex>
-
-          {/* <SessionPrev handleOpenModal={handleOpenModal} /> */}
-
-          { sessions.map((item, index) => {
-            return <SessionPrev key={index} sessionId={item.id} handleOpenModal={handleOpenModal} timestamp={item.timestamp} numberOfStudies={item.numberOfRelatedStudies} />
-          }) }
-
-          {/* <Flex flex={1} justifyContent="space-between" alignItems="center" py={2} gap={"5px"}>
-            <Text textAlign="left" width={"calc(min(60px, 30%))"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>20/07</Text>
-            <Text flex="1" textAlign="center" >300</Text>
-
-            <Flex width={"140px !important"} justifyContent="flex-end" mt={2}>
-              <Button as={Link} to={"/newRevision/identification/15"} flex={1} colorScheme="gray" mr={2} height={"35px"}>View</Button>
-              <Button flex={1} colorScheme="gray" height={"35px"}
-                onClick={() => handleOpenModal({ action: "update" })}
-              >
-                Edit
-              </Button>
-            </Flex>
-          </Flex>
-
-          <Flex flex={1} justifyContent="flex-start" fontWeight="semi-bold" mt={2}>
-            <Text>Total: 600</Text>
-          </Flex> */}
-
-
+                <Flex flex={1}>
+                  <Text textAlign="center">
+                    Studies
+                  </Text>
+                </Flex>
+              </Flex>
+              {sessions.map((item, index) => {
+                return (
+                  <SessionPrev
+                    key={index}
+                    sessionId={item.id}
+                    handleOpenModal={handleOpenModal}
+                    handleDelete={handleDeleteStudies}
+                    timestamp={item.timestamp}
+                    numberOfStudies={item.numberOfRelatedStudies}
+                  />
+                );
+              })}
+              <Box>
+                <Text>Total: {getTotalStudiesRelated()}</Text>
+              </Box>
+            </>
+          ) : (
+            <Text>Studies not found</Text>
+          )}
         </AccordionPanel>
-
       </AccordionItem>
-
     </Accordion>
   );
 }
