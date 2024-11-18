@@ -1,21 +1,17 @@
 export const conteiner = {
   mt: 10,
-  w: "98%",
   display: "flex",
-  flexWrap: "wrap",
-  flexDir: "column",
-  rowGap: 5,
+  justifyContent: "center", 
+  alignItems: "flex-start", 
   ml: "1em",
+  width: "100%"
 };
 
 export const inputconteiner = {
-  display: "flex",
-  flexDir: "row",
-  w: "70%",
-  alignContent: "center",
-  justifyContent: "space-between",
-  gap: 5,
-  ml: "10em",
+  display: 'flex',
+  width: '60%',
+  gap: '2rem',
+  justifyContent: 'center'
 };
 
 export const ckconteiner = {
