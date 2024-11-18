@@ -17,7 +17,7 @@ export default function StudyDataFiel({ studyData, type }: IStudyDataFiel) {
     flexDirection: "column",
     alignContent: "center",
     overflowY: "scroll",
-    padding: "3",
+    padding: "3"
   };
 
   if (isTypeValid) {
