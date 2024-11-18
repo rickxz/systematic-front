@@ -1,22 +1,13 @@
 import { useEffect, useState } from "react";
+import { Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Flex, Text, Box } from "@chakra-ui/react";
 import { Accordionbtn, accordion } from "../../styles/CardsStyle";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionIcon,
-  AccordionPanel,
-  Flex,
-  Text,
-  Box,
-} from "@chakra-ui/react";
 import IdentificationModal from "../../../../components/Modals/IdentificationModal";
 import SessionPrev from "./SessionPrev";
 
-//hooks
+// hooks
 import useGetSession from "../../../../hooks/reviews/useGetSession";
 
-interface actionsModal {
+interface ActionsModal {
   action: "create" | "update";
 }
 
@@ -38,32 +29,26 @@ export default function AccordionDashboard({ type }: { type: string }) {
   >([]);
 
   const getTotalStudiesRelated = () => {
-    let totalStudies = 0;
-
-    sessions.map((item) => {
-      totalStudies += item.numberOfRelatedStudies;
-    });
-
-    return totalStudies;
+    return sessions.reduce((total, item) => total + item.numberOfRelatedStudies, 0);
   };
 
   useEffect(() => {
     async function fetchSessions() {
-      let response = await useGetSession(type);
+      const response = await useGetSession(type);
       console.log(response.data.searchSessions);
       setSessions(response.data.searchSessions);
     }
 
     fetchSessions();
-  }, []);
+  }, [type]);
 
-  const handleOpenModal = ({ action }: actionsModal) => {
+  const handleOpenModal = ({ action }: ActionsModal) => {
     setActionModal(action);
     setShowModal(true);
   };
 
   const handleDeleteStudies = (id: string) => {
-    setSessions(sessions.filter((prevStudies) => prevStudies.id != id));
+    setSessions(sessions.filter((prevStudies) => prevStudies.id !== id));
   };
 
   const handleAccordionToggle = () => {
@@ -72,7 +57,7 @@ export default function AccordionDashboard({ type }: { type: string }) {
 
   return (
     <Accordion allowToggle sx={accordion} onChange={handleAccordionToggle}>
-      {showModal == true && (
+      {showModal && (
         <IdentificationModal
           show={setShowModal}
           action={actionModal}
@@ -87,7 +72,7 @@ export default function AccordionDashboard({ type }: { type: string }) {
         </AccordionButton>
 
         <AccordionPanel>
-          {sessions && sessions.length > 0 ? (
+          {sessions.length > 0 ? (
             <>
               <Flex
                 flex={1}
@@ -98,34 +83,25 @@ export default function AccordionDashboard({ type }: { type: string }) {
                 gap={"3rem"}
               >
                 <Flex>
-                  <Text
-                    
-                    textAlign="left"
-                    whiteSpace={"nowrap"}
-                    overflow={"hidden"}
-                  >
+                  <Text textAlign="left" whiteSpace={"nowrap"} overflow={"hidden"}>
                     Date
                   </Text>
                 </Flex>
 
                 <Flex flex={1}>
-                  <Text textAlign="center">
-                    Studies
-                  </Text>
+                  <Text textAlign="center">Studies</Text>
                 </Flex>
               </Flex>
-              {sessions.map((item, index) => {
-                return (
-                  <SessionPrev
-                    key={index}
-                    sessionId={item.id}
-                    handleOpenModal={handleOpenModal}
-                    handleDelete={handleDeleteStudies}
-                    timestamp={item.timestamp}
-                    numberOfStudies={item.numberOfRelatedStudies}
-                  />
-                );
-              })}
+              {sessions.map((item) => (
+                <SessionPrev
+                  key={item.id}
+                  sessionId={item.id}
+                  handleOpenModal={handleOpenModal}
+                  handleDelete={handleDeleteStudies}
+                  timestamp={item.timestamp}
+                  numberOfStudies={item.numberOfRelatedStudies}
+                />
+              ))}
               <Box>
                 <Text mt="1rem">Total: {getTotalStudiesRelated()}</Text>
               </Box>
