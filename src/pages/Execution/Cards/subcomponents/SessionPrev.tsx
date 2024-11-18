@@ -3,6 +3,7 @@ import { Flex, Button, Text } from "@chakra-ui/react";
 import { FaRegEye } from "react-icons/fa6";
 import { IoEyeOffOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
 interface actionsModal {
   action: "create" | "update";
@@ -25,6 +26,18 @@ const SessionPrev = ({
 }: Props) => {
   const date = new Date(timestamp);
   let day, month;
+  const toast = useToast();
+
+  const handleToastAlert = () => {
+    toast({
+      title: "Studies without references associated",
+      description: "There are no references associated with this study",
+      status: "info",
+      duration: 4500,
+      isClosable: true,
+      position: 'top'
+    });
+  }
 
   day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
 
@@ -72,7 +85,7 @@ const SessionPrev = ({
             <FaRegEye />
           </Button>
         ) : (
-          <Button flex={1} colorScheme="gray" mr={2} height={"35px"}>
+          <Button flex={1} colorScheme="gray" mr={2} height={"35px"} onClick={() => handleToastAlert()}>
             <IoEyeOffOutline />
           </Button>
         )}

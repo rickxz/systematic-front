@@ -48,7 +48,7 @@ export default function DataBaseCard({ text }: DatabaseCardProps) {
             bgColor={ "#263C56"}
             w={"80px"}
             color={"#EBF0F3"}
-            borderRadius="10px"
+            borderRadius="50px"
             event={function (): void {
               console.log("View");
             }}

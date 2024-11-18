@@ -127,7 +127,7 @@ export default function AccordionDashboard({ type }: { type: string }) {
                 );
               })}
               <Box>
-                <Text>Total: {getTotalStudiesRelated()}</Text>
+                <Text mt="1rem">Total: {getTotalStudiesRelated()}</Text>
               </Box>
             </>
           ) : (
