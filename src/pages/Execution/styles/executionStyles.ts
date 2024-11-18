@@ -10,6 +10,7 @@ export const conteiner = {
 export const inputconteiner = {
   display: 'flex',
   width: '70%',
+  mr: '2rem',
   gap: '2rem',
   justifyContent: 'center'
 };
