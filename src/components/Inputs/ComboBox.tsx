@@ -14,7 +14,7 @@ export default function ComboBox({ text, options, isDisabled }: IComboBoxProps) 
   return (
     <Menu closeOnSelect={false}>
 
-      <MenuButton bgColor={"#303D50"} color={"#9DB2BF"} borderRadius={"3px"} as={Button} rightIcon={<ChevronDownIcon />} w={"50%"}>
+      <MenuButton bgColor={"#EBF0F3"} color={"#303D50"} borderRadius={"3px"} as={Button} rightIcon={<ChevronDownIcon />} w={"50%"}>
         {text}
       </MenuButton>
 
