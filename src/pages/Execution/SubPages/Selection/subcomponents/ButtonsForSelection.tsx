@@ -18,7 +18,6 @@ export default function ButtonsForSelection() {
   const isExcluded = selectionContext?.isExcluded;
   const sortedStudies = (context?.selectionStudies as StudyInterface[]);
   const index = (context?.selectionStudyIndex as number);
-  const { isOpen, onOpen, onClose} = useDisclosure();
   const criteriosExclusao: string[] = useFetchExclusionCriteria();
   const criteriosInclusao: string[] = useFetchInclusionCriteria();
 
@@ -42,10 +41,6 @@ export default function ButtonsForSelection() {
   return (
     <>
       <Flex sx={conteiner}>
-      <Flex direction={"row"} p="2">
-        <IconButton aria-label="Edit Study Data" w="28px" h="28px" icon={<FaPen />} onClick={onOpen}/>
-      </Flex>
-
         <Flex sx={boxconteiner}>
           
           <ComboBox
@@ -61,17 +56,12 @@ export default function ButtonsForSelection() {
         </Flex>
 
         <Flex sx={buttonconteiner}>
-          <Button borderRadius={"3px"} onClick={ChangeToPrevius}>Previous</Button>
+          <Button borderRadius={"3px"} onClick={ChangeToPrevius}>Prev</Button>
           <Button borderRadius={"3px"} onClick={ChangeToNext}>Next</Button>
         </Flex>
 
         <Button borderRadius={"3px"}>Redifine</Button>
       </Flex>
-      {
-          isOpen ? (
-            <StudyEdtionModal isOpen={isOpen} onClose={onClose} study={(context?.selectionStudy as StudyInterface)} />
-          ) : (<></>)
-        }
     </>
   );
 }
