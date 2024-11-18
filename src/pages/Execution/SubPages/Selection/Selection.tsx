@@ -43,6 +43,7 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
           <Box sx={conteiner}>
             <Box sx={inputconteiner}>
               <InputText type="search" placeholder="Insert article's name" nome="search" onChange={(e) => setSearchString(e.target.value)}/>
+              
               <SelectInput
                 names={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
                 values={["", "Accepted", "Duplicated", "Rejected", "Unclassified"]}
@@ -50,6 +51,7 @@ export default function Selection<U extends StudyInterface | KeywordInterface>()
                 selectedValue={selectedStatus}
                 page={"selection"}
               />
+
               <ComboBox
                 isDisabled={false}
                 text="filter options"
