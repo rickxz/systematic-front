@@ -28,7 +28,7 @@ export default function StudySelectionArea() {
   
   return (
     <StudySelectionProvider>
-      <Flex mt="10" direction="column" bg="gray.600" w="80%" p="5" alignItems={"center"}>
+      <Flex mt="10" direction="column" bg="#263C56" w="80%" p="5" alignItems={"center"}>
         <ButtonsForSelection />
         
         <Box w={"100%"} bg="gray.200">
