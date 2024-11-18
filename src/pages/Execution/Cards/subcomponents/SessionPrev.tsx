@@ -1,46 +1,116 @@
-import { Flex, Button, Text } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { Flex, Button, Text } from "@chakra-ui/react";
+import { FaRegEye } from "react-icons/fa6";
+import { IoEyeOffOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
-interface actionsModal{
-    action: "create" | "update";
+interface actionsModal {
+  action: "create" | "update";
 }
 
 interface Props {
-    handleOpenModal: (action: actionsModal) => void;
-    timestamp: string;
-    numberOfStudies: number;
-    sessionId: string;
+  handleOpenModal: (action: actionsModal) => void;
+  handleDelete: (id: string) => void;
+  timestamp: string;
+  numberOfStudies: number;
+  sessionId: string;
 }
 
-const SessionPrev = ({ handleOpenModal, timestamp, numberOfStudies, sessionId}: Props) => {
+const SessionPrev = ({
+  handleOpenModal,
+  handleDelete,
+  timestamp,
+  numberOfStudies,
+  sessionId,
+}: Props) => {
+  const date = new Date(timestamp);
+  let day, month;
+  const toast = useToast();
 
-    const date = new Date(timestamp);
-    let day, month;
+  const handleToastAlert = () => {
+    toast({
+      title: "Studies without references associated",
+      description: "There are no references associated with this study",
+      status: "info",
+      duration: 4500,
+      isClosable: true,
+      position: 'top'
+    });
+  }
 
-    day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
-    
-    if(date.getMonth() < 9) month = `0${date.getMonth() + 1}`;
-    else month = `${date.getMonth() + 1}`;
-    
-    const sessionDate = day + '/' + month;
+  day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
 
-    return (
-    <Flex flex={1} justifyContent="space-between" alignItems="center" py={2} gap={"5px"}>
-        <Text textAlign="left" width={"calc(min(60px, 30%))"} textOverflow={"ellipsis"} whiteSpace={"nowrap"} overflow={"hidden"}>{sessionDate}</Text>
-        <Text flex="1" textAlign="center" >{numberOfStudies}</Text>
+  if (date.getMonth() < 9) month = `0${date.getMonth() + 1}`;
+  else month = `${date.getMonth() + 1}`;
 
-        <Flex width={"140px !important"} justifyContent="flex-end" mt={2}>
-            <Button as={Link} to={`/newRevision/identification/${sessionId}`} 
-                flex={1} colorScheme="gray" mr={2} height={"35px"}>View</Button>
+  const sessionDate = day + "/" + month;
 
-            <Button flex={1} colorScheme="gray" height={"35px"}
-            onClick={() => handleOpenModal({ action: "update" })}
-            >
-            Edit
-            </Button>
+  return (
+    <Flex
+      flex={1}
+      justifyContent="space-between"
+      alignItems="center"
+      gap={"10px"}
+    >
+        <Flex gap="3rem">
+            <Text
+            textAlign="left"
+            width="100%"
+            textOverflow={"ellipsis"}
+            whiteSpace={"nowrap"}
+            overflow={"hidden"}
+        >
+            {sessionDate}
+        </Text>
+        
+        <Text flex="1" textAlign="center" gap='10px'>
+            {numberOfStudies}
+        </Text>
         </Flex>
-    </Flex>
-    )
-}
+     
 
-export default SessionPrev
+      <Flex justifyContent="flex-end" mt={2}>
+     
+
+        {numberOfStudies && numberOfStudies > 0 ? (
+          <Button
+            as={Link}
+            to={`/newRevision/identification/${sessionId}`}
+            flex={1}
+            colorScheme="gray"
+            mr={2}
+            height={"35px"}
+          >
+            <FaRegEye />
+          </Button>
+        ) : (
+          <Button flex={1} colorScheme="gray" mr={2} height={"35px"} onClick={() => handleToastAlert()}>
+            <IoEyeOffOutline />
+          </Button>
+        )}
+        <Button
+          flex={1}
+          colorScheme="gray"
+          height={"35px"}
+          mr={2}
+          onClick={() => handleOpenModal({ action: "update" })}
+        >
+          <EditIcon />
+        </Button>
+
+        <Button
+          flex={1}
+          colorScheme="gray"
+          height={"35px"}
+          mr={2}
+          onClick={() => handleDelete(sessionId)}
+        >
+          <DeleteIcon />
+        </Button>
+      </Flex>
+    </Flex>
+  );
+};
+
+export default SessionPrev;

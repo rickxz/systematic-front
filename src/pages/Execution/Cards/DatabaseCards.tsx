@@ -39,9 +39,6 @@ export default function DataBaseCard({ text }: DatabaseCardProps) {
 
   return (
     <Card sx={card}>
-
-      { showModal && <IdentificationModal show={setShowModal} action={actionModal} type={text} setSessions={setSessions} /> }
-
       <Box sx={conteiner} 
       display={"flex"}
       justifyContent={"space-between"}
@@ -57,35 +54,26 @@ export default function DataBaseCard({ text }: DatabaseCardProps) {
         </Box>
 
         <Box sx={btnConteiner}>
-
-          { /*<NavButton
-            fontSize={type === "allData" ? 16 : 13}
-            w={"fit-content"}
-            text={"Add Session"}
-            path={"/newRevision/searchSession"}
-            bgColor={"#263C56"}
-            color={"#C9D9E5"}
-            //border={"1px solid #FDF0D5"}
-            fontWeight="bold"
-            borderRadius="10px"
-          /> */}
           { <EventButton
             fontSize={14}
             bgColor={ "#263C56"}
             w={"80px"}
             color={"#EBF0F3"}
-            borderRadius="10px"
+            borderRadius="50px"
             event={function (): void {
               handleOpenModal({action: 'create'});
             }}
             text={"View"}
+            onClick={() => handleOpenModal({ action: "create" })}
           /> }
         </Box>
 
       </Box>
 
-      <AccordionDashboard type={text} sessions={sessions} />
-
+      <AccordionDashboard type={text} />
+      {showModal == true && (
+        <IdentificationModal show={setShowModal} action={actionModal} type={text} setSessions={setSessions} />
+      )}
     </Card>
   );
 }

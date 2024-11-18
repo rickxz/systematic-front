@@ -3,6 +3,8 @@ import TextAreaInput from "../../Inputs/InputTextArea";
 import EventButton from "../../Buttons/EventButton";
 import { useState } from "react";
 import { formcontrol } from "../styles/AddTextFieldStyle";
+import { useToast } from "@chakra-ui/react";
+
 
 interface IAddTextFieldProps {
   onAddText: (newKeyword: {label: string, value: number}) => void;
@@ -12,6 +14,7 @@ interface IAddTextFieldProps {
 export default function AddLabeledListField({ onAddText, text }: IAddTextFieldProps) {
   const [inputValue, setInputValue] = useState<string>("");
   const [value, setValue] = useState(0);
+  const toast = useToast;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
@@ -22,7 +25,14 @@ export default function AddLabeledListField({ onAddText, text }: IAddTextFieldPr
       onAddText({label: inputValue.trim(), value});
       setInputValue("");
     } else {
-      window.alert("The field must be filled!");
+      toast({
+        title: "Empty Field",
+        description: "The field must be filled!",
+        status: "warning",
+        duration: 4500,
+        isClosable: true,
+        position: 'top'
+      });
     }
   };
 
