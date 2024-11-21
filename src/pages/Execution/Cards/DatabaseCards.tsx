@@ -1,9 +1,8 @@
 import { Card, Box, Text } from "@chakra-ui/react";
-import NavButton from "../../../components/Buttons/NavButton";
 import EventButton from "../../../components/Buttons/EventButton";
 import DataBaseIcon from "../../../components/Icons/DataBaseIcon";
 import AccordionDashboard from "./subcomponents/AccordionDashboard";
-import { btnConteiner, btnConteinerAllBases, card, conteiner, iconConteiner, testo } from "../styles/CardsStyle";
+import { btnConteiner, card, conteiner, iconConteiner, testo } from "../styles/CardsStyle";
 import IdentificationModal from "../../../components/Modals/IdentificationModal";
 import { useEffect, useState } from "react";
 import useGetSession from "../../../hooks/reviews/useGetSession";
