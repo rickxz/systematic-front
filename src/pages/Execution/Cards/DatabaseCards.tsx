@@ -70,7 +70,7 @@ export default function DataBaseCard({ text }: DatabaseCardProps) {
 
       </Box>
 
-      <AccordionDashboard type={text} />
+      <AccordionDashboard type={text} sessions={sessions} setSessions={setSessions} />
       {showModal == true && (
         <IdentificationModal show={setShowModal} action={actionModal} type={text} setSessions={setSessions} />
       )}

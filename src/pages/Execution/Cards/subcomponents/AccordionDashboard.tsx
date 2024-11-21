@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Accordionbtn, accordion } from "../../styles/CardsStyle";
 import {
   Accordion,
@@ -12,30 +12,16 @@ import {
 } from "@chakra-ui/react";
 import IdentificationModal from "../../../../components/Modals/IdentificationModal";
 import SessionPrev from "./SessionPrev";
-
-//hooks
-import useGetSession from "../../../../hooks/reviews/useGetSession";
+import IAccordionDashBoard from '../../../../../public/interfaces/IAccordionDashboard'
 
 interface actionsModal {
   action: "create" | "update";
 }
 
-export default function AccordionDashboard({ type }: { type: string }) {
+export default function AccordionDashboard({ type, sessions, setSessions }: IAccordionDashBoard) {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [actionModal, setActionModal] = useState<"create" | "update">("create");
-  const [sessions, setSessions] = useState<
-    {
-      id: string;
-      systematicStudyd: string;
-      userId: string;
-      searchString: string;
-      additionalInfo: string;
-      timestamp: string;
-      source: string;
-      numberOfRelatedStudies: number;
-    }[]
-  >([]);
 
   const getTotalStudiesRelated = () => {
     let totalStudies = 0;
@@ -46,16 +32,6 @@ export default function AccordionDashboard({ type }: { type: string }) {
 
     return totalStudies;
   };
-
-  useEffect(() => {
-    async function fetchSessions() {
-      let response = await useGetSession(type);
-      console.log(response.data.searchSessions);
-      setSessions(response.data.searchSessions);
-    }
-
-    fetchSessions();
-  }, []);
 
   const handleOpenModal = ({ action }: actionsModal) => {
     setActionModal(action);
